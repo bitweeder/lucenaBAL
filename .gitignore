@@ -1,0 +1,45 @@
+# global stuff
+.DS_Store
+/build/
+/proj/
+
+
+# CMake stuff; only intended to catch accidental spills
+/CMakeFiles/
+CMakeCache.txt
+
+
+# Visual Studio build data and per-user settings
+MSVS/*.asm
+MSVS/*.ncb
+MSVS/*.opensdf
+MSVS/*.sdf
+MSVS/*.suo
+MSVS/*.vcproj*.user
+MSVS/*.vcxproj*.user
+MSVS/Build/
+MSVS/ipch/
+.vs
+
+
+# Xcode build data and per-user settings
+Xcode/**/*.mode1v3
+Xcode/**/*.mode2
+Xcode/**/*.mode2v3
+Xcode/**/*.pbxuser
+xcuserdata/
+
+
+# CodeLite per-user settings
+CodeLite/**/tags
+CodeLite/**/workspace.*
+CodeLite/**/wsp.mk
+CodeLite/**/.clang
+CodeLite/**/.build*
+CodeLite/**/compilation.db
+
+
+# Netbeans build data and per-user settings
+nbproject/private/
+nbproject/**/*.bash
+nbproject/**/.dep.inc

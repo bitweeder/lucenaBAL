@@ -1,0 +1,308 @@
+#[[#############################################################################
+
+    Lucena Build Abstraction Library
+    “CMakeLists.txt”
+    Copyright © 2018-2019 Lucena
+    All Rights Reserved
+
+    This file is distributed under the University of Illinois Open Source
+    License. See license/License.txt for details.
+
+	Library usage example:
+
+	-----
+		project("lbalTest")
+
+		find_package(lucenaBAL CONFIG REQUIRED)
+
+		add_executable(${PROJECT_NAME} src/main.cpp)
+		target_link_libraries(${PROJECT_NAME} lucenaBAL::lucenaBAL)
+	-----
+
+##############################################################################]]
+
+
+#[[#############################################################################
+    initialization
+#]]
+
+# This minimum is for
+#   - correct cross-compilation for all Apple OS’s (3.14)
+#   - correct Xcode project generation (3.15)
+cmake_minimum_required (VERSION 3.15)
+
+
+# Forbid poisoning the source tree, ’cuz we’re authoritarian that way. Note,
+# though, that CMake will have already left a few droppings at this point.
+if ("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
+    message (FATAL_ERROR "FATAL: In-source builds are not allowed. "
+        "You must create a separate directory for build files.")
+endif()
+
+
+# Versioning; propagates to headers
+set (PROJECT_VERSION_MAJOR 2)
+set (PROJECT_VERSION_MINOR 0)
+set (PROJECT_VERSION_PATCH 0)
+set (PROJECT_VERSION_TWEAK 4)
+
+if (${PROJECT_VERSION_TWEAK})
+	set (LBAL_PROXY_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}.${PROJECT_VERSION_TWEAK})
+else()
+	set (LBAL_PROXY_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH})
+endif()
+
+
+project ("lucenaBAL"
+    VERSION ${LBAL_PROXY_VERSION}
+    DESCRIPTION
+        "Lucena Build Abstraction Library for C++ - compiler, library, and build platform feature detection"
+    HOMEPAGE_URL
+        "https://github.com/bitweeder/lucenaBAL"
+    LANGUAGES CXX)
+
+# Define a short name for use with ancillary projects.
+set (LBAL_PROJECT_PREFIX "lbal")
+
+# Simplify finding our internal CMake tools.
+set (CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}" "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+
+
+# Generate the config header so that it has up-to-date version info.
+configure_file (
+	"${PROJECT_SOURCE_DIR}/cmake/${LBAL_PROJECT_PREFIX}Config.hpp.in"
+	"${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/${LBAL_PROJECT_PREFIX}Config.hpp"
+	@ONLY
+	NEWLINE_STYLE UNIX
+)
+
+
+#[[#############################################################################
+    option setup
+#]]
+
+include (CTest)
+include (CMakeDependentOption)
+
+option (LBAL_BUILD_DOCS "Build documentation" ON)
+
+# CMAKE_SYSTEM_NAME is expected to be set correctly somewhere, e.g., as a
+# commandline option is cross-compiling. Note that as of CMake 3.14, the
+# various Apple OS’s an be targeted individually, so the full list of
+# recognized and supported names is {"Darwin", "iOS", "tvOS", "watchOS",
+# "Windows", "Linux", "FreeBSD", "NetBSD", "OpenBSD"}.
+
+
+#[[#############################################################################
+    global configuration
+#]]
+
+# Symbol visibility defaults; note that the source code overrides these, as
+# necessary.
+set (CMAKE_CXX_VISIBILITY_PRESET hidden)
+set (CMAKE_VISIBILITY_INLINES_HIDDEN 1)
+
+# Listing out individual features is a bit silly as it creates too much
+# coupling, and attempting to get by with proxies is brittle. Note that
+# CXX_STANDARD appears to be completely useless for its intended purpose
+# since it’s viewed as an unenforced suggestion; we set it anyway. Also,
+# note that this is probably unreliable under MSVC, but we can just invoke
+# “/permissive-” explicitly there.
+set (CMAKE_CXX_STANDARD 17)
+set (CMAKE_CXX_EXTENSIONS OFF)
+
+
+#[[#############################################################################
+    set up targets
+#]]
+
+# Define standard directory locations; applies to Windows, as well.
+include (GNUInstallDirs)
+
+add_library (
+	${PROJECT_NAME}
+	INTERFACE)
+
+# Alias to allow the library to be used with add_subdirectory.
+add_library (
+	${PROJECT_NAME}::${PROJECT_NAME}
+	ALIAS
+		${PROJECT_NAME})
+
+# Use generators to ensure that the headers are installed in the proper
+# locations, as defined by GNUInstallDirs.
+target_include_directories(
+  ${PROJECT_NAME}
+  INTERFACE $<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include/${PROJECT_NAME}>
+            $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}>)
+
+target_compile_features(
+	${PROJECT_NAME}
+	INTERFACE
+		cxx_std_17)
+
+# Customized packaging boilerplate
+target_compile_definitions (
+	${PROJECT_NAME}
+	INTERFACE
+		LBAL_PACKAGING_PRODUCT_IDENTIFIER="${CMAKE_PROJECT_NAME}"
+		LBAL_PACKAGING_SIGNATURE="lbal"
+		LBAL_PACKAGING_COPYRIGHT_HOLDER="Lucena"
+		LBAL_PACKAGING_COPYRIGHT_DATE="2019"
+		LBAL_PACKAGING_PRODUCT_DOMAIN="com.lucena"
+		LBAL_PACKAGING_PREFIX="lbal"
+		LBAL_PACKAGING_DESCRIPTION="${CMAKE_PROJECT_DESCRIPTION}"
+		LBAL_PACKAGING_BUILD="${PROJECT_VERSION_TWEAK}"
+		LBAL_PACKAGING_VERSION="${PROJECT_VERSION}"
+		$<$<CONFIG:DEBUG>:LBAL_CONFIG_debug=1>
+)
+
+# FIXME Simulator targets for Apple OS’s are effectively unavailable, as
+# they will not be configured properly. Even with proper configuration,
+# it will be necessary to manually specify Xcode generator arguments to CMake
+# on the command line, or rely on making correct choices Xcode itself if not
+# building from the commandline.
+if ("${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
+	target_compile_definitions (
+		${PROJECT_NAME}
+		INTERFACE
+			LBAL_PACKAGING_API="macOS"
+			LBAL_TARGET_OS_MACOS=1
+	)
+elseif ("${CMAKE_SYSTEM_NAME}" MATCHES "iOS")
+	target_compile_definitions (
+		${PROJECT_NAME}
+		INTERFACE
+			LBAL_PACKAGING_API="iOS"
+			LBAL_TARGET_OS_IOS=1
+	)
+elseif ("${CMAKE_SYSTEM_NAME}" MATCHES "tvOS")
+	target_compile_definitions (
+		${PROJECT_NAME}
+		INTERFACE
+			LBAL_PACKAGING_API="tvOS"
+			LBAL_TARGET_OS_TVOS=1
+	)
+elseif ("${CMAKE_SYSTEM_NAME}" MATCHES "watchOS")
+	target_compile_definitions (
+		${PROJECT_NAME}
+		INTERFACE
+			LBAL_PACKAGING_API="watchOS"
+			LBAL_TARGET_OS_WATCHOS=1
+	)
+elseif ("${CMAKE_SYSTEM_NAME}" MATCHES "Windows")
+	target_compile_definitions (
+		${PROJECT_NAME}
+		INTERFACE
+			LBAL_PACKAGING_API="WinAPI"
+			LBAL_TARGET_OS_WIN=1
+	)
+elseif ("${CMAKE_SYSTEM_NAME}" MATCHES "Linux" OR
+		"${CMAKE_SYSTEM_NAME}" MATCHES "FreeBSD" OR
+		"${CMAKE_SYSTEM_NAME}" MATCHES "NetBSD" OR
+		"${CMAKE_SYSTEM_NAME}" MATCHES "OpenBSD")
+	target_compile_definitions (
+		${PROJECT_NAME}
+		INTERFACE
+			LBAL_PACKAGING_API="X11"
+			LBAL_TARGET_OS_X11=1
+	)
+else()
+	message (FATAL_ERROR "${PROJECT_NAME} does not appear to support this platform")
+endif()
+
+
+#[[#############################################################################
+    install targets
+#]]
+
+# Note that we omit INCLUDE because INSTALL_INTERFACE already specifies it.
+install (
+	TARGETS
+		${PROJECT_NAME}
+    EXPORT
+    	${PROJECT_NAME}_Targets
+    ARCHIVE
+    	DESTINATION
+    		${CMAKE_INSTALL_LIBDIR}
+    LIBRARY
+        DESTINATION
+        	${CMAKE_INSTALL_LIBDIR}
+    RUNTIME
+    	DESTINATION
+    		${CMAKE_INSTALL_BINDIR}
+)
+
+
+#[[#############################################################################
+    packaging configuration
+#]]
+
+include (CMakePackageConfigHelpers)
+
+write_basic_package_version_file (
+	"${PROJECT_NAME}ConfigVersion.cmake"
+    VERSION ${PROJECT_VERSION}
+    COMPATIBILITY SameMajorVersion)
+
+configure_package_config_file (
+    "${PROJECT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in"
+    "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+    INSTALL_DESTINATION
+        ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake
+)
+
+
+#[[#############################################################################
+    installation
+#]]
+
+install (
+	EXPORT
+		${PROJECT_NAME}_Targets
+    FILE
+    	${PROJECT_NAME}Targets.cmake
+    NAMESPACE
+    	${PROJECT_NAME}::
+    DESTINATION
+    	${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake
+)
+
+install (
+	FILES
+		"${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+        "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+    DESTINATION
+    	${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake
+)
+
+install (
+	DIRECTORY
+		${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}
+	DESTINATION
+		include
+)
+
+
+#[[#############################################################################
+    subdirectories
+#]]
+
+if (${BUILD_TESTING})
+    add_subdirectory (test)
+endif()
+
+if (${LBAL_BUILD_DOCS})
+    add_subdirectory (docs)
+endif()
+
+
+#[[#############################################################################
+    packaging
+
+    FIXME Currently unused.
+#]]
+
+#set(CPACK_RESOURCE_FILE_LICENSE "${PROJECT_SOURCE_DIR}/LICENSE.md")
+
+#include(CPack)
