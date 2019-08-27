@@ -8,11 +8,11 @@
 	This file is distributed under the University of Illinois Open Source
 	License. See license/License.txt for details.
 
-	Config documents the internal options used in a given build of the
-	Lucena Build Abstraction Library. The contents of this file should not
-	typically be changed unless the library is rebuilt at the same time; in
-	particular, a client program that modifies this file risks crashing when
-	built against a version of the library that is not using the same settings.
+	Config documents the internal options used in a given build of lucenaBAL.
+	The contents of this file should not typically be changed unless the
+	library is rebuilt at the same time; in particular, a client program that
+	modifies this file risks crashing when built against a version of the
+	library that is not using the same settings.
 
 	Settings available in client code that can be set independently of those
 	used to build the library are also documented here, as well as certain
@@ -53,9 +53,8 @@
 	macros are invoked correctly, e.g., guard values to keep from accidentally
 	embedding std in our library namespace.
 */
-#define LBAL_version_major 2
-#define LBAL_version_minor 0
-#define LBAL_version_patch 0
+
+#include <details/lbalGenerated.hpp>
 
 #define LBAL_version \
 	( LBAL_version_major << 24 \

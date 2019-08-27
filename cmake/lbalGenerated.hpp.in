@@ -1,0 +1,21 @@
+/*------------------------------------------------------------------------------
+
+	Lucena Build Abstraction Library
+	“Generated.hpp”
+	Copyright © 2019 Lucena
+	All Rights Reserved
+
+	This file is distributed under the University of Illinois Open Source
+	License. See license/License.txt for details.
+
+	@LBAL_GENERATION_MESSAGE@
+
+------------------------------------------------------------------------------*/
+
+
+#pragma once
+
+
+#define LBAL_version_major @PROJECT_VERSION_MAJOR@
+#define LBAL_version_minor @PROJECT_VERSION_MINOR@
+#define LBAL_version_patch @PROJECT_VERSION_PATCH@

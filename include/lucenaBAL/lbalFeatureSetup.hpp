@@ -11,8 +11,8 @@
 	lbalFeatureSetup.hpp is a metaheader which includes various detail headers
 	to handle feature detection and macro configuration for the compiler, the
 	Standard Library implementation, and platform details that impact the build
-	environment. Users should include <Lucena-Build-Abstraction/Lucena-Build-Abstraction.hpp>,
-	which includes this, in favor of attempting to cherry-pick headers.
+	environment. Users should include <lucenaBAL/lucenaBAL.hpp>, which includes
+	this, in favor of attempting to cherry-pick headers.
 
 	The goal of this header is to safeguard a functionality baseline for the
 	build environment in terms of compiler and Standard Library features. We
