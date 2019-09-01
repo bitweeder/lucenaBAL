@@ -104,6 +104,7 @@
 		LBAL_TARGET_STANDARD_LIBRARY_MSVC
 		LBAL_TARGET_STANDARD_LIBRARY_STDLIBCPP
 
+
 	LBAL_TARGET_CPU
 	These conditionals specify which microprocessor instruction set is being
 	generated.	At most one of these is 1, the rest are 0.
@@ -112,11 +113,20 @@
 	Candidates for additions include console-specific processors/families, and
 	explicit differentiation for AMD processors/families.
 
-		LBAL_TARGET_CPU_X86							generic 32-bit x86
-		LBAL_TARGET_CPU_X86_64						generic 64-bit x86
-		LBAL_TARGET_CPU_IA64							generic 64-bit Itanium
-		LBAL_TARGET_CPU_ARM							generic 32-bit ARM
-		LBAL_TARGET_CPU_ARM_64						generic 64-bit ARM
+		LBAL_TARGET_CPU_X86
+			generic 32-bit x86
+
+		LBAL_TARGET_CPU_X86_64
+			generic 64-bit x86
+
+		LBAL_TARGET_CPU_IA64
+			generic 64-bit Itanium
+
+		LBAL_TARGET_CPU_ARM
+			generic 32-bit ARM
+
+		LBAL_TARGET_CPU_ARM_64
+			generic 64-bit ARM
 
 		LBAL_TARGET_CPU_ARM_FAMILY
 		LBAL_TARGET_CPU_X86_FAMILY
@@ -1109,6 +1119,7 @@
 			inheritance and targeting MSVS; at least VS2015 Update 3 is
 			required (note that Update 2, which actually introduced the
 			feature, had a bug which caused it to violate the Standard).
+			
 			APIME How aggravating is it that you can’t decorate the empty
 			base class itself instead of having to force a weird
 			requirement on derived classes? Sadly, we’re at the mercy of
