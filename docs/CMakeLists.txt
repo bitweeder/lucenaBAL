@@ -15,8 +15,49 @@
 ##############################################################################]]
 
 
-#[[#############################################################################
-	FIXME Currently, we don’t generate documentation; this is a placeholder
-#]]
+find_package(Doxygen REQUIRED)
 
-message (WARNING "Documentation generation is unimplemented")
+get_target_property (
+	LBAL_PUBLIC_HEADER_DIR
+		lucenaBAL
+	INTERFACE_INCLUDE_DIRECTORIES
+)
+
+file (
+	GLOB_RECURSE
+		LBAL_PUBLIC_HEADERS
+			"${LBAL_PUBLIC_HEADER_DIR}/*.h"
+)
+
+set (DOXYGEN_INPUT_PATH "${PROJECT_SOURCE_DIR}/include")
+set (DOXYGEN_OUTPUT_PATH "${CMAKE_CURRENT_BINARY_DIR}/docs/doxygen")
+set (DOXYGEN_INDEX_FILE "${DOXYGEN_OUTPUT_PATH}/html/index.html")
+set (DOXYFILE_IN "${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in")
+set (DOXYFILE_OUT "${CMAKE_CURRENT_BINARY_DIR}/Doxyfile")
+
+configure_file (
+	"${DOXYFILE_IN}"
+	"${DOXYFILE_OUT}"
+	@ONLY)
+
+# Doxygen won’t create this for us.
+file (MAKE_DIRECTORY "${DOXYGEN_OUTPUT_PATH}")
+
+add_custom_command (
+	OUTPUT
+		"${DOXYGEN_INDEX_FILE}"
+	DEPENDS
+		"${LBAL_PUBLIC_HEADERS}"
+	COMMAND
+		"${DOXYGEN_EXECUTABLE}" "${DOXYFILE_OUT}"
+	MAIN_DEPENDENCY
+		${DOXYFILE_OUT}
+		${DOXYFILE_IN}
+	COMMENT
+		"Generating docs"
+)
+
+add_custom_target (
+	Doxygen
+		ALL DEPENDS "${DOXYGEN_INDEX_FILE}"
+)
