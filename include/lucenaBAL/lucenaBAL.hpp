@@ -8,26 +8,56 @@
 	This file is distributed under the University of Illinois Open Source
 	License. See license/License.txt for details.
 
-	This master header file includes all of the Lucena Build Abstraction public
-	interface headers. It is intended for use as a prefix header, and it is
-	also safe for use in precompiled headers. Most users should simply include
-	this header and not worry about the component headers.
-
 ------------------------------------------------------------------------------*/
+
+/**
+	@file lucenaBAL/lucenaBAL.hpp
+
+	@brief Metaheader providing full access to the entire library
+
+	@details This master header file includes all of the Lucena Build
+	Abstraction Library public interface headers. It is compatible with usage
+	as a prefix header, and it is also safe for use in precompiled headers.
+	Library clients should simply include this header rather than the
+	component headers.
+*/
 
 
 #pragma once
 
 
 /**
-	@defgroup lbal_usage Usage Instructions
+	@mainpage Lucena Build Abstraction Library
 
-	Generally, all that’s needed in order to make use of lucenaBAL is to
-	issue `#include <lucenaBAL/lucenaBAL.hpp>` in each target file. As a
+	@section lbal_intro Introduction
+
+	The Lucena Build Abstraction Library (*lucenaBAL*) is a tool for
+	identifying the characteristics of the environment used to build your code
+	and for describing the capabilities of the C++ compiler and Standard
+	Library implementation being used. Additionally, it provides uniform
+	abstractions for certain compiler- and linker-dependent decorators used for
+	things like branch prediction and symbol visibility that would otherwise
+	require testing and knowledge of the toolchain to expose, and even then
+	would require proprietary constructs to use.
+
+	The primary objective of this  library is to facilitate cross-platform
+	interoperability between triples of mostly-conforming modern compilers,
+	Standard Libraries implementations, and build environments. In particular,
+	rather than being forced to use a least-common denominator set of features,
+	lucenaBAL provides the tools to determine maximally-available feature sets.
+	Glue code libraries may then be provided on top of this to make certain
+	otherwise-limited-availability features generally available, or the
+	decision could be made to provide multiple paths of execution.
+
+
+	@section lbal_usage Usage Instructions
+
+	All that’s needed to make use of lucenaBAL is to issue
+	`#include <lucenaBAL/lucenaBAL.hpp>` in each participating file. As a
 	header-only library with no dependencies beyond a nominal inclusion of
 	`<ciso646>` from the C++ Standard Library, there’s nothing else to link or
-	install. Additionally, there’s nothing much to configure, though you can
-	see [Configuration](@ref lbal_config) for details.
+	install. Additionally, there’s not much to configure, though you can see
+	[Configuration](@ref lbal_config) for options.
 
 	The library itself comprises a large collection of preprocessor macros,
 	grouped loosely into [build-time descriptors](@ref lbal_build_env),
@@ -35,29 +65,31 @@
 	[linker decorators](@ref lbal_decorators). See the relevant sections for
 	more information.
 
-	@{
-		@defgroup lbal_structure Header Organization
 
-		lucenaBAL comprises a small number of public headers and some number of
-		private headers. Generally, only the public `<lucenaBAL/lucenaBAL.hpp>`
-		header needs to be directly referenced. Additionally, there is:
+	@section lbal_structure Header Organization
 
-			- `<lucenaBAL/lbalConfig.hpp>`, which is used to configure the
-			library as described in [Configuration](@ref lbal_config)
-			- `<lucenaBAL/lbalFeatureSetup.hpp>`, which describes most
-			[platform](@ref lbal_platform) and [compiler](@ref lbal_compiler)
-			features, [build-time descriptors](@ref lbal_build_env), and the
-			[linker decorators](@ref lbal_decorators)
-			- `<lucenaBAL/lbalVersion.hpp>`, which sets up
-			[Standard Library feature detection](@ref lbal_platform) macros.
-			These supplement whatever may have been set up by
-			`lbalFeatureSetup.hpp`; the two sets are not fully orthogonal, as
-			the build environment may influence the availability of certain
-			Standard Library features.
+	lucenaBAL comprises a small number of public headers and some number of
+	private headers. Generally, only the public `<lucenaBAL/lucenaBAL.hpp>`
+	header needs to be directly referenced. Additionally, there are:
 
-		The private headers are included by these as necessary, and should
-		never be invoked directly.
-	@}
+	- `<lucenaBAL/lbalConfig.hpp>`, which is used to configure the library as
+	described in [Configuration](@ref lbal_config)
+
+	- `<lucenaBAL/lbalFeatureSetup.hpp>`, which describes most
+	[platform](@ref lbal_platform) and [compiler](@ref lbal_compiler) features,
+	[build-time descriptors](@ref lbal_build_env), and the
+	[linker decorators](@ref lbal_decorators)
+
+	- `<lucenaBAL/lbalVersion.hpp>`, which sets up
+	[Standard Library feature detection](@ref lbal_platform) macros.
+	These supplement whatever may have been set up by `lbalFeatureSetup.hpp`;
+	the two sets are not fully orthogonal, as the build environment may
+	influence the availability of certain Standard Library features.
+
+	The private headers are included by these as necessary, and should never be
+	invoked directly.
+
+
 	@defgroup lbal_config Configuration
 	@defgroup lbal_build_env Build-time Environment
 	@defgroup lbal_features Feature Detection Macros

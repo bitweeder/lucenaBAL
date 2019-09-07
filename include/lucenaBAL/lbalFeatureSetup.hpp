@@ -8,11 +8,18 @@
 	This file is distributed under the University of Illinois Open Source
 	License. See license/License.txt for details.
 
-	lbalFeatureSetup.hpp is a metaheader which includes various detail headers
-	to handle feature detection and macro configuration for the compiler, the
-	Standard Library implementation, and platform details that impact the build
-	environment. Users should include <lucenaBAL/lucenaBAL.hpp>, which includes
-	this, in favor of attempting to cherry-pick headers.
+------------------------------------------------------------------------------*/
+
+/**
+	@file lucenaBAL/lbalFeatureSetup.hpp
+
+	@brief Metaheader which bundles headers containing the bulk of the library
+
+	@details This master header file handles feature detection and macro
+	configuration for the compiler, the Standard Library implementation, and
+	platform details that impact the build environment. Users should include
+	`<lucenaBAL/lucenaBAL.hpp>`, which includes this, in favor of attempting to
+	cherry-pick headers.
 
 	The goal of this header is to safeguard a functionality baseline for the
 	build environment in terms of compiler and Standard Library features. We
@@ -20,25 +27,51 @@
 	thereof. Note that the detail headers may evolve in compatibility-breaking
 	ways in the future as we track compliance with newer language features,
 	but such changes should be documented and restricted to point releases.
+*/
 
-	Note that we set all preprocessor conditionals unless we explicitly state
-	otherwise in the conditional description; those whose requirements are not
-	met get set to 0. By default, we set conditionals that are met to 1, but
-	they could conceivably be set to any non-0 number, and tests need to
-	reflect that.
+/**
+	@addtogroup lbal_build_env
 
-	Generally, we don’t bother testing for things that are guaranteed by our
-	minimum-supported compilers. For example, all supported compilers have C99-
-	style ints, so we don’t test for the presence of support. This may change
-	in the future if a compiler we’d like to support violates this standard.
+	@brief Describes aspects of the build-time environment relevant to library
+	clients
 
-	As a general rule, if a feature is available and stable, it is assumed to
-	be used. This is not boost, and we do not seek to incent or support
-	thousands of micro-variants on the Standard. The sole objective of this
-	library is to facilitate interoperability between otherwise-conforming
-	modern compilers and their libraries.
+	@details These are mostly descriptors of various kinds.
+*/
 
+/**
+	@addtogroup lbal_features
 
+	@brief Provides feature detection describing the target platform, compiler,
+	and Standard Library
+
+	@details Note that we set all preprocessor conditionals unless we
+	explicitly state otherwise in the conditional description; those whose
+	requirements are not met are set to `0`. By default, we set conditionals
+	that are met to `1`, but they could conceivably be set to any non-`0`
+	value, as per their specific usage instructions, so tests of these
+	conditionals need to reflect that.
+*/
+
+/**
+	@addtogroup lbal_compiler
+
+	@brief Provides feature detection describing the capabilities of the
+	compiler
+
+	@details These are a mix of binary-choice availability flags and versioned
+	values describing levels of support. Where possible, these mimic the
+	equivalent [SD-6 macros](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations),
+	both in their naming and in their range of values.
+
+	Generally, we don’t bother testing for things that are guaranteed
+	by our minimum-supported compilers. For example, all supported compilers
+	have C99-style `int`s, so we don’t test for the presence of support. This
+	may change in the future if a compiler we’d like to support violates this
+	standard. Additionally, we may add tests for previously-assumed features if
+	we lower the bar on “minimum-supported compilers”.
+*/
+
+/**
 	LBAL_NAME
 	These macros resolve to human-readable strings that identify the specified
 	entities. If the entity has a version value associated with it, such as a
@@ -1156,7 +1189,7 @@
 			branch prediction hinting that something is most likely false;
 			LBAL_expr_ must resolve to a boolean
 
-------------------------------------------------------------------------------*/
+*/
 
 
 #pragma once
