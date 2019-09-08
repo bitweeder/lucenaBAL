@@ -29,7 +29,7 @@
 		//	of <ciso646> abuse, providing the same functionality as well as
 		//	(eventually) acting as a clearinghouse for SD-6 macros related to
 		//	library features.
-		//	SEEME This must not be lbalVersion.hpp, as that header depends on
+		//	__SEEME__ This must not be lbalVersion.hpp, as that header depends on
 		//	this one.
 #else
 	#include <ciso646>
@@ -83,7 +83,7 @@
 /*------------------------------------------------------------------------------
 	Platform Macros
 
-	SEEME Arguably, it would be more desirable to give each platform its own
+	__SEEME__ Arguably, it would be more desirable to give each platform its own
 	#include file and include them here conditionally rather than go the
 	monolithic route. We trade off potential unnecessary recompilation of
 	unaffected projects for simplified maintenance at this time.
@@ -91,7 +91,7 @@
 
 #if (LBAL_TARGET_OS_MACOS || LBAL_TARGET_OS_IOS || LBAL_TARGET_OS_IOS_SIM)
 	#if __has_include (<Availability.h>)
-		//	SEEME If we get here, we assume we’re also using Apple’s Standard
+		//	__SEEME__ If we get here, we assume we’re also using Apple’s Standard
 		//	Library runtime; a more precise test may be necessary if this turns
 		//	out to be an overly broad assumption.
 
@@ -108,7 +108,7 @@
 		#elif LBAL_TARGET_OS_IOS || LBAL_TARGET_OS_IOS_SIM
 			#define LBAL_TARGET_API_COCOA_TOUCH 1
 
-			//	FIXME We should do some verification of this; there seems to be
+			//	__FIXME__ We should do some verification of this; there seems to be
 			//	enough drift in iOS that it might fail many of the prgmatic
 			//	litmus tests for POSIX-compatibility.
 			#define LBAL_TARGET_API_POSIX 1
@@ -240,7 +240,7 @@
 	//	prefix header-originated definitions that might be in use.
 	#ifndef WIN32_LEAN_AND_MEAN
 		#define WIN32_LEAN_AND_MEAN
-			//	FIXME Maybe not super-smart to set this up globally
+			//	__FIXME__ Maybe not super-smart to set this up globally
 	#endif
 
 	#ifndef NOMINMAX

@@ -113,7 +113,7 @@
 	you’ll have to resort to drect querying, though it may still sensible to
 	filter first on these for the aforementioned reason.
 
-	SEEME These are blunt instruments. In particular, there‘s no
+	__SEEME__ These are blunt instruments. In particular, there‘s no
 	differentiation between frontened (e.g., c1xx or clang) and backend
 	(e.g., c2 or llvm). In practice, this mattered more when c2/clang was a
 	thing, but is moot now. We’ll consider revisiting if the extra granularity
@@ -142,7 +142,7 @@
 	These conditionals specify which microprocessor instruction set is being
 	generated.	At most one of these is 1, the rest are 0.
 
-	SEEME There used to be more of these, but they’ve been largely mooted.
+	__SEEME__ There used to be more of these, but they’ve been largely mooted.
 	Candidates for additions include console-specific processors/families, and
 	explicit differentiation for AMD processors/families.
 
@@ -184,9 +184,9 @@
 
 		//	LBAL_TARGET_VEC_AVX512
 
-	SEEME We don’t currently independently check for SSE-Math and similar
+	__SEEME__ We don’t currently independently check for SSE-Math and similar
 	instruction splits; this may be a defect.
-	SEEME There used to be more of these, but they’ve been largely mooted.
+	__SEEME__ There used to be more of these, but they’ve been largely mooted.
 	Candidates for additions include console-specific vector instruction sets,
 	and explicit differentiation for AMD instruction sets.
 
@@ -197,11 +197,11 @@
 	LBAL_TARGET_OS_IOS, which is set whenever LBAL_TARGET_OS_IOS_SIM is set, but
 	can also be set alone).
 
-	SEEME Candidates for additions include console-specific operating systems,
+	__SEEME__ Candidates for additions include console-specific operating systems,
 	Android, tvOS, and watchOS. BSD could conceivably have its own flag, but we
 	currently roll it in under LBAL_TARGET_OS_X11.
 
-	SEEME These focus primarily on UI characteristics, as opposed to system
+	__SEEME__ These focus primarily on UI characteristics, as opposed to system
 	internals, which is why we have LBAL_TARGET_OS_X11 and not
 	LBAL_TARGET_OS_POSIX. A case could be made that we realistically need to
 	track both, but in practice - during the implementation of Lucena PAL - no
@@ -254,7 +254,7 @@
 	in order to disambiguate.  Note that values are descriptive; if the
 	condition is met, the value will be 1, otherwise 0.
 
-	SEEME This is not intended to be an exhaustive list of APIs. Originally,
+	__SEEME__ This is not intended to be an exhaustive list of APIs. Originally,
 	it was useful for differentiating between possible supported and available
 	Apple APIs (e.g., QuickDraw, Carbon, Cocoa, and whatever other flavor of
 	the week floats in), but it’s academic on platforms that don’t deprecate
@@ -278,7 +278,7 @@
 	be useful to indicate, for example, the NON-availability of some requisite
 	feature, such as tight struct packing.
 
-	SEEME Previously, this section contained #pragmas related to alignment
+	__SEEME__ Previously, this section contained #pragmas related to alignment
 	within structs. They’ve been mooted thanks to standardized ways of handling
 	this and widespread support. This section is being kept in as a placeholder
 	should we add more #pragma detection in the future.
@@ -321,7 +321,7 @@
 			It is assumed that the file system uses UTF-8 unless this
 			feature conditional is set. Really only necessary for Windows.
 
-			FIXME We can probably retire this after updating the code to
+			__FIXME__ We can probably retire this after updating the code to
 			always use the relevant std::filesystem path types instead of
 			doing our own conversions.
 
@@ -333,7 +333,7 @@
 			whether a given function is -probably- able to be declared
 			constexpr.
 
-			SEEME This is probably insufficiently granular, but it’s academic
+			__SEEME__ This is probably insufficiently granular, but it’s academic
 			for now: none of the supportedcompilers advertise constexpr
 			intrinsics, and to the extent that they have any, it’s pure
 			happenstance and dangerous to rely on.
@@ -382,7 +382,7 @@
 		- the SD-6 value equivalent to the available feature support, or
 		- 1, if there is no equivalent SD-6 macro
 
-	SEEME Note that this leaves an ambiguous case where a feature may have been
+	__SEEME__ Note that this leaves an ambiguous case where a feature may have been
 	updated, e.g., as a result of a Defect Report, but a new SD-6 value has not
 	been assigned; this can be further complicated if the DR resolution is not
 	finalized, meaning that the available feature is in an intermediate state.
@@ -394,7 +394,7 @@
 	backwards compatibility is affected by a breaking change, which would
 	complicate a simple greater-than test against a macro value.
 
-	APIME Previous iterations of this header also attempted to determine
+	__APIME__ Previous iterations of this header also attempted to determine
 	whether various C99 and C11 features were available. This turned out to be
 	impractical and a bit pointless. As a result, such features are only
 	tracked - if they are tracked at all - in the context of their
@@ -453,7 +453,7 @@
 	is to not bother. However, when it -has- been done, we note it, as well as
 	how to make use of the emulated feature.
 
-	SEEME Somewhat awkwardly, a lot of proposed new language and library
+	__SEEME__ Somewhat awkwardly, a lot of proposed new language and library
 	features and fixes don’t include SD-6 macros (yet?); this makes identifying
 	availability more challenging than it needs to be. Note that a proposal to
 	standardize SD-6 macros was accepted for C++2a, but the current SD-6 itself
@@ -582,7 +582,7 @@
 	otherwise.
 
 		LBAL_C99_PREPROCESSOR
-		SEEME Only MSVS is known to have problems with this, and it appears
+		__SEEME__ Only MSVS is known to have problems with this, and it appears
 		progress is finally being made to fully address it, at which point this
 		flag will be retired. Note that if support requires having a particular
 		compiler switch set to get compatibility, setting the switch will
@@ -615,7 +615,7 @@
 		- the experimental version is/was completely broken
 		- we’re transitioning to a new baseline and looking to eliminate cruft
 
-	SEEME Note that regardless of how these macros are set, a feature may be
+	__SEEME__ Note that regardless of how these macros are set, a feature may be
 	available, anyway, if there is a reference implementation for it; see the
 	lbalConfig.hpp header for details of how this works, and see the relevant
 	Wrapper header, if there is one.
@@ -748,10 +748,10 @@
 		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4736.pdf>
 		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4760.pdf>
 		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0912r2.html>
-		__cpp_coroutines (SEEME proxy)
+		__cpp_coroutines (__SEEME__ proxy)
 			This does not currently have its own SD-6 macro. No wrapper is
 			provided. Note that <coroutine> requires language support.
-			SEEME Confusingly, n4736 was voted into the Standard, but n4760 is
+			__SEEME__ Confusingly, n4736 was voted into the Standard, but n4760 is
 			the fixed version of it.
 
 		LBAL_LIBCPP2A_DESTROYING_DELETE
@@ -851,7 +851,7 @@
 	Generally, these will eventually be aliased (and then moved) into
 	LBAL_LIBCPP2A_xxx, LBAL_LIBCPP20_xxx, LBAL_LIBCPP23_xxx, and the like.
 
-	SEEME The TSs can be highly mutable, and support should be considered very
+	__SEEME__ The TSs can be highly mutable, and support should be considered very
 	experimental. No effort at all will be expended to maintain backwards-
 	compatibility with a TS once a feature has been voted in.
 
@@ -936,7 +936,7 @@
 	unaliased macro can be used - or those may be aliased uniformly aliased as
 	well, for API consistency.
 
-	SEEME These have been changed to more closely approximate libc++’s usage,
+	__SEEME__ These have been changed to more closely approximate libc++’s usage,
 	mostly because it’s thoughfully designed for use with modules and the
 	emerging C++ ABI proposals. Note, however, that many of these designations
 	are currently only meaningful as annotations, in particular when running
@@ -946,7 +946,7 @@
 	of the class if the class itself was given an explicit visibility
 	decorator.
 
-	SEEME Without support from a static analyzer, there’s no way to know if a
+	__SEEME__ Without support from a static analyzer, there’s no way to know if a
 	decorator has been misused, e.g., applying LBAL_VIS_FUNC_EXPORT to a class.
 	Such misuses may not be immediately obvious with a given implementation;
 	additionally, misuses that are not problematic now may become problematic
@@ -963,7 +963,7 @@
 			Apply this to [class] enum declarations to mark the symbols for
 			the type’s typeinfo as visible.
 
-			SEEME gcc makes enum typeinfo visible by default, and then throws
+			__SEEME__ gcc makes enum typeinfo visible by default, and then throws
 			up warnings if a visiility attribute conflicts with this; for this
 			reason, this macro is a NOP under gcc.
 
@@ -981,7 +981,7 @@
 			Do not use this with classes that are not templates; instead, use
 			LBAL_VIS_CLASS_EXPORT_xxx.
 
-			SEEME This only works as described under clang. Under gcc, there
+			__SEEME__ This only works as described under clang. Under gcc, there
 			is currently no __type_visibility__ attribute, so we fall back to
 			using __visibility__, which means members inherit the class
 			visibility. For this reason, class template members should have
@@ -1061,7 +1061,7 @@
 			decorator can be used with all inline functions, except inline
 			member functions of extern templates.
 
-			SEEME “inline” in this context means, literally, “defined in the
+			__SEEME__ “inline” in this context means, literally, “defined in the
 			header”, and not necessarily just “functions explicitly declared
 			inline”. libc++ names their equivalent macro _LIBCPP_HIDE_FROM_ABI,
 			describing what it does, insted of how it’s used. In this case,
@@ -1072,7 +1072,7 @@
 			confusing. We’re currently going this route and relying on
 			documentation for clarity.
 
-			SEEME Because of the brittle usage requirements,
+			__SEEME__ Because of the brittle usage requirements,
 			LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC may just end up
 			getting removed, with LBAL_VIS_INLINE_FUNC inheriting its
 			implementation.
@@ -1084,7 +1084,7 @@
 			decorator is needed because of differences in how different
 			compilers handle visibility in this situation.
 
-			SEEME Note that we could eliminate this macro entirely by folding
+			__SEEME__ Note that we could eliminate this macro entirely by folding
 			its extra handling into LBAL_VIS_INLINE_FUNC, but this would be at
 			the cost of some symbol table bloat on certain compilers. This
 			means that a given project could choose to alias their own general-
@@ -1097,13 +1097,13 @@
 			defined in the library binary but that allow user-supplied
 			overloads.
 
-			SEEME Pragmatically, this sort of customization point is a bad
+			__SEEME__ Pragmatically, this sort of customization point is a bad
 			idea. That aside, in practice, this separate designation for
 			LBAL_VIS_FUNC_xxx is only needed by Windows due to how DLLs are
 			handled, namely, a function marked with dllimport cannot be
 			overloaded locally.
 
-			FIXME Our method for handling this derives from how libc++ does it:
+			__FIXME__ Our method for handling this derives from how libc++ does it:
 			they simply don’t decorate the function declaration for import. The
 			method has not been tested, and I haven’t seen examples in the
 			wild of other people using it.
@@ -1148,12 +1148,12 @@
 			LBAL_CLASS_FORCE_EBCO applied, then any compiler that supports
 			the EBCO will apply it to both Derived1 -and- Derived2.
 
-			SEEME This is really only necessary when using multiple
+			__SEEME__ This is really only necessary when using multiple
 			inheritance and targeting MSVS; at least VS2015 Update 3 is
 			required (note that Update 2, which actually introduced the
 			feature, had a bug which caused it to violate the Standard).
 			
-			APIME How aggravating is it that you can’t decorate the empty
+			__APIME__ How aggravating is it that you can’t decorate the empty
 			base class itself instead of having to force a weird
 			requirement on derived classes? Sadly, we’re at the mercy of
 			the built-in compiler decorators, here.
@@ -1208,7 +1208,7 @@
 		//	of <ciso646> abuse, providing the same functionality as well as
 		//	(eventually) acting as a clearinghouse for SD-6 macros related to
 		//	library features.
-		//	SEEME This must not be lbalVersion.hpp, as that header depends on
+		//	__SEEME__ This must not be lbalVersion.hpp, as that header depends on
 		//	this one.
 #else
 	#include <ciso646>

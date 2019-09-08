@@ -70,7 +70,7 @@ GTEST_TEST (lbalTest, Validation)
 		your IDE, you may not even need to explicitly compile to see the test
 		results.
 
-		SEEME Note that we can’t use preprocessor or template magic when
+		__SEEME__ Note that we can’t use preprocessor or template magic when
 		displaying compile-time messages; if #warning allowed macro
 		substitution, we’d be in luck, but unfortunately, that feature is an
 		MSVC extension, only, so gratuitous boilerplate is needed.

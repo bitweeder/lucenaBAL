@@ -47,12 +47,12 @@
 	remove the affected headers from our development tools releases for several
 	years.”
 
-	APIME Some of these depend on lbalFeatureSetup.hpp being included, as they
+	__APIME__ Some of these depend on lbalFeatureSetup.hpp being included, as they
 	may need to be overridden based on an otherwise undetectable defect, e.g.,
 	Apple’s failure to include required object code for <any> in most versions
 	of its platforms’ runtime libraries.
 
-	FIXME Add __cplusplus guards to header inclusion, as simple availability
+	__FIXME__ Add __cplusplus guards to header inclusion, as simple availability
 	may be an insufficient test if an older std variant is being used.
 
 ------------------------------------------------------------------------------*/
@@ -67,7 +67,7 @@
 
 
 //	First, set up any SD-6 macros, if available.
-//	SEEME The use of <version> to contain SD-6 macros has not really been
+//	__SEEME__ The use of <version> to contain SD-6 macros has not really been
 //	formalized, yet, only its use as a replacement for <ciso646> abuse, as well
 //	as a way to version the Standard Library implementation version. We’re
 //	working under the asumption that this usage will be de facto, if not
@@ -84,7 +84,7 @@
 			#if __cpp_lib_version
 				#define LBAL_LIBCPP2A_VERSION __cpp_lib_version
 			#else
-				//	SEEME Value not yet assigned.
+				//	__SEEME__ Value not yet assigned.
 				#define LBAL_LIBCPP2A_VERSION 1L
 			#endif
 
@@ -444,9 +444,9 @@
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY
 
 
-//	SEEME This was originally a TS (with competing versions), and so has
+//	__SEEME__ This was originally a TS (with competing versions), and so has
 //	experimental implementations we track.
-//	SEEME Note that there is no separate SD-6 macro for the library header vs.
+//	__SEEME__ Note that there is no separate SD-6 macro for the library header vs.
 //	the language feature, so we just use language feature macro; this will
 //	almost definitely change to __cpp_lib_coroutine in the future, but until it
 //	does, we’re following the approved proposal.
@@ -557,7 +557,7 @@
 //	There is no SD-6 macro, yet.
 #if !defined (LBAL_LIBCPP2A_SPAN)
 	#if __has_include (<span>)
-		//	SEEME Value not yet assigned.
+		//	__SEEME__ Value not yet assigned.
 		#define LBAL_LIBCPP2A_SPAN 1L
 	#else
 		#define LBAL_LIBCPP2A_SPAN 0L
@@ -613,7 +613,7 @@
 		#if __cpp_lib_syncstream
 			#define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM __cpp_lib_syncstream
 		#else
-			//	SEEME Value not yet assigned.
+			//	__SEEME__ Value not yet assigned.
 			#define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM 1L
 		#endif
 	#else
@@ -634,7 +634,7 @@
 		#if __cpp_lib_three_way_comparison
 			#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE __cpp_lib_three_way_comparison
 		#else
-			//	SEEME Value not yet assigned.
+			//	__SEEME__ Value not yet assigned.
 			#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE 201711L
 		#endif
 	#else
@@ -673,7 +673,7 @@
 		#if __cpp_lib_net
 			#define LBAL_LIBCPPTS_NETWORKING __cpp_lib_net
 		#else
-			//	SEEME This value is a proxy; the Networking TS has not yet been
+			//	__SEEME__ This value is a proxy; the Networking TS has not yet been
 			//	approved.
 			#define LBAL_LIBCPPTS_NETWORKING 201803L
 		#endif
@@ -722,14 +722,14 @@
 
 //	Networking functionality spans an array of new headers; we only check for
 //	the presence of the convenience header, <net>.
-//	FIXME this may be incorrect for the networking extensions; check the TS.
+//	__FIXME__ this may be incorrect for the networking extensions; check the TS.
 #if !defined (LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE)
 	#if __has_include (<net>) && !LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP \
 			&& (__cpp_lib_net_extensible || !defined (__cpp_lib_net_extensible))
 		#if __cpp_lib_net_extensible
 			#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE __cpp_lib_net_extensible
 		#else
-			//	SEEME This value is a proxy; the Networking TS has not yet been
+			//	__SEEME__ This value is a proxy; the Networking TS has not yet been
 			//	approved.
 			#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE 201803L
 		#endif
@@ -779,7 +779,7 @@
 //	This functionality lives in <memory>, and requires either the SD-6 macro
 //	or an override to detect it; if no explicit override is set and the SD-6
 //	macro is unavailable, we default to 0.
-//	SEEME It might make sense to check for the existence of an experimental
+//	__SEEME__ It might make sense to check for the existence of an experimental
 //	version of <memory> when using __cpp_lib_experimental_observer_ptr. For
 //	now, we don’t over-think it since there are no examples in the wild to
 //	consider.

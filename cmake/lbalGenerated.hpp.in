@@ -19,3 +19,5 @@
 #define LBAL_version_major @PROJECT_VERSION_MAJOR@
 #define LBAL_version_minor @PROJECT_VERSION_MINOR@
 #define LBAL_version_patch @PROJECT_VERSION_PATCH@
+
+#define LBAL_abi_version @LBAL_ABI_VERSION@

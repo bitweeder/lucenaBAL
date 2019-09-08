@@ -44,7 +44,8 @@ endif()
 set (PROJECT_VERSION_MAJOR 2)
 set (PROJECT_VERSION_MINOR 0)
 set (PROJECT_VERSION_PATCH 0)
-set (PROJECT_VERSION_TWEAK 5)
+set (PROJECT_VERSION_TWEAK 6)
+set (LBAL_ABI_VERSION 2)
 
 if (${PROJECT_VERSION_TWEAK})
 	set (LBAL_PROXY_VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}.${PROJECT_VERSION_TWEAK})
@@ -159,7 +160,7 @@ target_compile_definitions (
 		$<$<CONFIG:DEBUG>:LBAL_CONFIG_debug=1>
 )
 
-# FIXME Simulator targets for Apple OS’s are effectively unavailable, as
+# __FIXME__ Simulator targets for Apple OS’s are effectively unavailable, as
 # they will not be configured properly. Even with proper configuration,
 # it will be necessary to manually specify Xcode generator arguments to CMake
 # on the command line, or rely on making correct choices Xcode itself if not
@@ -302,7 +303,7 @@ endif()
 #[[#############################################################################
     packaging
 
-    FIXME Currently unused.
+    __FIXME__ Currently unused.
 #]]
 
 #set(CPACK_RESOURCE_FILE_LICENSE "${PROJECT_SOURCE_DIR}/LICENSE.md")

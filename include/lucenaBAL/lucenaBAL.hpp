@@ -31,7 +31,7 @@
 
 	@section lbal_intro Introduction
 
-	The Lucena Build Abstraction Library (*lucenaBAL*) is a tool for
+	The Lucena Build Abstraction Library (**lucenaBAL**) is a tool for
 	identifying the characteristics of the environment used to build your code
 	and for describing the capabilities of the C++ compiler and Standard
 	Library implementation being used. Additionally, it provides uniform
@@ -88,6 +88,33 @@
 
 	The private headers are included by these as necessary, and should never be
 	invoked directly.
+
+
+	@section lbal_notes Header Notes
+
+	Labels can appear in the source comments to indicate areas that require
+	special attention; we document those here:
+
+	- __FIXME__: something that is a known bug, incomplete, or a likely trouble
+	area targeted for a future rewrite. These tags typically decorate
+	in-development code, but may persist across multiple releases depending on
+	triage outcomes.
+
+	- __APIME__: a likely API problem. These tags make note of surprising behavior
+	that may pose a future maintenance problem, and are typically the result of
+	poor design in the library or its dependencies.
+
+	- __OPTME__: something that could be made more efficient with a high probable
+	performance return. This notation is generally reserved for speed-critical
+	sections that would benefit from further attention.
+
+	- __VERME__: a place where an assumption has been made about performance,
+	stability, usefulness, etc. These tags document areas that would benefit
+	from future testing.
+
+	- __SEEME__: something noteworthy that requires care to use correctly.
+	These tags demarcate a counterintuitive flow or algorithmic approach that
+	can be tricky to understand or that involves non-obvious tradeoffs.
 
 
 	@defgroup lbal_config Configuration

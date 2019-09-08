@@ -32,7 +32,7 @@
 		(eventually) acting as a clearinghouse for SD-6 macros related to
 		library features.
 
-		SEEME This must not be lbalVersion.hpp, as that header depends on
+		__SEEME__ This must not be lbalVersion.hpp, as that header depends on
 		this one.
 	*/
 	#include <version>
@@ -86,7 +86,7 @@
 /*------------------------------------------------------------------------------
 	Library Macros
 
-	SEEME Arguably, it would be more desirable to give each Standard Library
+	__SEEME__ Arguably, it would be more desirable to give each Standard Library
 	implementation its own #include file and include them here conditionally
 	rather than go the monolithic route. We trade off potential unnecessary
 	recompilation of unaffected projects for simplified maintenance at this
@@ -96,11 +96,11 @@
 #if defined (_LIBCPP_VERSION)
 	#if defined (__apple_build_version__)
 		/*
-			SEEME We use this as a proxy for detecting Apple’s hacked-up
+			__SEEME__ We use this as a proxy for detecting Apple’s hacked-up
 			version of libc++; there doesn’t appear to be a reliable way to
 			actually determine this.
 
-			SEEME Speculating about future availability in Apple’s libc++ is
+			__SEEME__ Speculating about future availability in Apple’s libc++ is
 			fraught, as features fail to be adopted from vanilla clang for any
 			number of reasons (e.g., std::any, std::filesystem), and oddities
 			persist for years (e.g., std::is_callable vs std::is_invocable). We
@@ -133,11 +133,11 @@
 		#if (_LIBCPP_VERSION >= 7000)
 			#define LBAL_LIBCPP2A_STD_ENDIAN 1L
 
-			//	SEEME In-progress
+			//	__SEEME__ In-progress
 //			#define LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY 1L
 //			#define LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX 1L
 
-			//	SEEME This appears to be in, though we await confirmation.
+			//	__SEEME__ This appears to be in, though we await confirmation.
 			#define LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE 1L
 		#endif
 
@@ -151,7 +151,7 @@
 	#define LBAL_NAME_STANDARD_LIBRARY u8"libc++ version " LBAL_Stringify_ (_LIBCPP_VERSION)
 	#define LBAL_TARGET_STANDARD_LIBRARY_LIBCPP 1
 #elif defined (__GLIBCXX__)
-	//	SEEME Note that older iterations of libstdc++ used __GLIBCPP__
+	//	__SEEME__ Note that older iterations of libstdc++ used __GLIBCPP__
 
 	#if (__GNUC__ >= 7)
 		#if __cpp_lib_launder
@@ -168,7 +168,7 @@
 	#endif
 
 	#if (__GNUC__ >= 8)
-		//	SEEME Only ints are supported; floats are forthcoming.
+		//	__SEEME__ Only ints are supported; floats are forthcoming.
 //		#if __cpp_lib_to_chars
 //			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS __cpp_lib_to_chars
 //		#else
@@ -189,7 +189,7 @@
 	#define LBAL_NAME_STANDARD_LIBRARY u8"GNU libstdc++ version " LBAL_Stringify_ (__GLIBCXX__)
 	#define LBAL_TARGET_STANDARD_LIBRARY_STDLIBCPP 1
 #elif defined (_MSC_VER)
-	//	SEEME Not exactly an equivalent test, but I don’t know of a documented
+	//	__SEEME__ Not exactly an equivalent test, but I don’t know of a documented
 	//	way to reliably identify the MSVC Standard Library.
 
 	#if (_MSC_VER >= 1911)
@@ -221,7 +221,7 @@
 			#define LBAL_LIBCPP17_PARALLEL_ALGORITHM 201603L
 		#endif
 
-		//	SEEME There is partial support for this, but only for ints; floats
+		//	__SEEME__ There is partial support for this, but only for ints; floats
 		//	are being actively worked on.
 //		#if __cpp_lib_to_chars
 //			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS __cpp_lib_to_chars

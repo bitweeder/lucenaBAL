@@ -80,7 +80,7 @@ target_compile_features (
         cxx_std_17
 )
 
-# FIXME Needs refinement. Or elimination.
+# __FIXME__ Needs refinement. Or elimination.
 target_compile_options (
   lbalTest
   PRIVATE

@@ -18,7 +18,7 @@
 
 
 //	std
-//	SEEME We always guard inclusion of system headers when using MSVS due to
+//	__SEEME__ We always guard inclusion of system headers when using MSVS due to
 //	their noisiness at high warning levels.
 #if defined (_MSC_VER) && defined (_WIN32)
 	#pragma warning (push, 0)
@@ -30,7 +30,7 @@
 		//	of <ciso646> abuse, providing the same functionality as well as
 		//	(eventually) acting as a clearinghouse for SD-6 macros related to
 		//	library features.
-		//	SEEME This must not be lbalVersion.hpp, as that header depends on
+		//	__SEEME__ This must not be lbalVersion.hpp, as that header depends on
 		//	this one.
 #else
 	#include <ciso646>
@@ -192,7 +192,7 @@
 /*------------------------------------------------------------------------------
 	Compiler Macros
 
-	SEEME Arguably, it would be more desirable to give each compiler its own
+	__SEEME__ Arguably, it would be more desirable to give each compiler its own
 	#include file and include them here conditionally rather than go the
 	monolithic route. We trade off potential unnecessary recompilation of
 	unaffected projects for simplified maintenance at this time.
@@ -205,7 +205,7 @@
 	//	and __clang_patchlevel__ macros, so they are no longer in line with
 	//	other clang distributions. We can test whether we’re in Apple clang by
 	//	looking for __APPLE_CC__, __apple_build_version__, or some other macro.
-	//	SEEME Apple LLVM 9.1 is the first release that actually advertises
+	//	__SEEME__ Apple LLVM 9.1 is the first release that actually advertises
 	//	C++17 support (as per __cplusplus); previously, it only had C++14 with
 	//	almost all C++17 extensions. Note that libc++ is still broken due to
 	//	runtime issues, as described below, as well as other things.
@@ -215,7 +215,7 @@
 		//	Tested with a minimum of Xcode 10.0; the bundled compiler and
 		//	Standard Library are roughly compatible with clang 6 and libc++,
 		//	while adding some Apple-proprietary stuff.
-		//	SEEME We’re actually compatible with LLVM 9.4+, mostly, but we
+		//	__SEEME__ We’re actually compatible with LLVM 9.4+, mostly, but we
 		//	don’t test with it any more since various non-compiler defects with
 		//	regard to C++17 make it an annoyance to support.
 	#endif
@@ -344,7 +344,7 @@
 	#define LBAL_TYPE_EXACT_WIDTH_INTEGERS 1
 
 
-	//	SEEME Apparently, __STDC_VERSION__ only gets set if we’re using the C
+	//	__SEEME__ Apparently, __STDC_VERSION__ only gets set if we’re using the C
 	//	compiler, so this test doesn’t work. Since we’re requiring C++17 or
 	//	greater, we assume the following C99 features are available.
 	#define LBAL_C99_PREPROCESSOR 1
@@ -352,7 +352,7 @@
 
 	//	Test for C++98 features.
 	//	These can be conditionally disabled.
-	//	SEEME Note that we can’t rely on the SD-6 macros for these since
+	//	__SEEME__ Note that we can’t rely on the SD-6 macros for these since
 	//	they’ve been removed for standardization.
 	#if __has_feature(cxx_exceptions)
 		#define LBAL_CPP98_EXCEPTIONS 199711L
@@ -377,7 +377,7 @@
 	#endif
 
 	//	Test for C++17 features.
-	//	SEEME Apple continues to lag vanilla clang by over a year in odd ways.
+	//	__SEEME__ Apple continues to lag vanilla clang by over a year in odd ways.
 	//	As of Apple LLVM 10.0, their clang compiler advertises full C++17
 	//	compliance, but a number of feature test macros fail (and then there’s
 	//	the real Standard Library deficiencies...):
@@ -400,15 +400,15 @@
 	#endif
 
 	//	Test for C++2a features.
-	//	SEEME There is partial support for this going back years, but it’s not
+	//	__SEEME__ There is partial support for this going back years, but it’s not
 	//	fully in-line with the accepted proposal. No ETA for compliance.
 //	#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 1L
 
-	//	SEEME This may not be fully compliant, as the proposal values may not
+	//	__SEEME__ This may not be fully compliant, as the proposal values may not
 	//	be what actually gets returned by various macros. Untested.
 	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 
-	//	FIXME Speculative; Xcode 10 seems to be tracking vanilla clang 6, but
+	//	__FIXME__ Speculative; Xcode 10 seems to be tracking vanilla clang 6, but
 	//	these are untested.
 	#if (__clang_major__ >= 10)
 		#define LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 1L
@@ -474,18 +474,18 @@
 	#define LBAL_VIS_MEMBER_CLASS_TEMPLATE __attribute__ ((__visibility__("hidden")))
 
 	#define LBAL_VIS_MEMBER_FUNCTION_TEMPLATE inline __attribute__ ((__visibility__("hidden")))
-		//	SEEME The “inline” declaration is extraneous, but required due to
+		//	__SEEME__ The “inline” declaration is extraneous, but required due to
 		//	 a currently unaddressed clang defect (cf., the elusive PR32114).
 
 	#define LBAL_VIS_FUNC_EXPORT __attribute__ ((__visibility__("default")))
 	#define LBAL_VIS_FUNC_IMPORT __attribute__ ((__visibility__("default")))
 
-	//	SEEME The first definition is a fallback if it turns out I’ve
+	//	__SEEME__ The first definition is a fallback if it turns out I’ve
 	//	misunderstood the requirements on general inline functions.
 //	#define LBAL_VIS_INLINE_FUNC LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC
 	#define LBAL_VIS_INLINE_FUNC __attribute__ ((__visibility__("hidden")))
 
-	//	SEEME Using the internal_linkage attribute is equivalent to using the
+	//	__SEEME__ Using the internal_linkage attribute is equivalent to using the
 	//	static keyword in C, and is semantically preferrable to inlining.
 	//	However, what we -really- want is be able to strip this down to just
 	//	LBAL_VIS_HIDDEN, but this requires linker support we don’t have, yet.
@@ -522,7 +522,7 @@
 	#if (__clang_major__ < 6)
 		#error "Settings are only valid for clang 6.0+"
 	#else
-		//	FIXME This is actually untested, as it’s just a fix-up of the
+		//	__FIXME__ This is actually untested, as it’s just a fix-up of the
 		//	Apple LLVM section.
 	#endif
 
@@ -625,7 +625,7 @@
 	#define LBAL_TYPE_EXACT_WIDTH_INTEGERS 1
 
 
-	//	SEEME Apparently, __STDC_VERSION__ only gets set if we’re using the C
+	//	__SEEME__ Apparently, __STDC_VERSION__ only gets set if we’re using the C
 	//	compiler, so this test doesn’t work. Since we’re requiring C++14 or
 	//	greater, we assume the following C99 features are available.
 	#if 1	//	__STDC_VERSION__ >= 199901L
@@ -637,7 +637,7 @@
 
 	//	Test for C++98 features.
 	//	These can be conditionally disabled.
-	//	SEEME Note that we can’t rely on the SD-6 macros for these since
+	//	__SEEME__ Note that we can’t rely on the SD-6 macros for these since
 	//	they’ve been removed for standardization.
 	#if __has_feature(cxx_exceptions)
 		#define LBAL_CPP98_EXCEPTIONS 199711L
@@ -670,11 +670,11 @@
 	#endif
 
 	//	Test for C++2a features.
-	//	SEEME There is partial support for this going back years, but it’s not
+	//	__SEEME__ There is partial support for this going back years, but it’s not
 	//	fully in-line with the accepted proposal. No ETA for compliance.
 //	#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 1L
 
-	//	SEEME This may not be fully compliant, as the proposal values may not
+	//	__SEEME__ This may not be fully compliant, as the proposal values may not
 	//	be what actually gets returned by vrious macros. Untested.
 	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 
@@ -742,18 +742,18 @@
 	#define LBAL_VIS_MEMBER_CLASS_TEMPLATE __attribute__ ((__visibility__("hidden")))
 
 	#define LBAL_VIS_MEMBER_FUNCTION_TEMPLATE inline __attribute__ ((__visibility__("hidden")))
-		//	SEEME The “inline” declaration is extraneous, but required due to
+		//	__SEEME__ The “inline” declaration is extraneous, but required due to
 		//	 a currently unaddressed clang defect (cf., the elusive PR32114).
 
 	#define LBAL_VIS_FUNC_EXPORT __attribute__ ((__visibility__("default")))
 	#define LBAL_VIS_FUNC_IMPORT __attribute__ ((__visibility__("default")))
 
-	//	SEEME The first definition is a fallback if it turns out I’ve
+	//	__SEEME__ The first definition is a fallback if it turns out I’ve
 	//	misunderstood the requirements on general inline functions.
 //	#define LBAL_VIS_INLINE_FUNC LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC
 	#define LBAL_VIS_INLINE_FUNC __attribute__ ((__visibility__("hidden")))
 
-	//	SEEME Using the internal_linkage attribute is equivalent to using the
+	//	__SEEME__ Using the internal_linkage attribute is equivalent to using the
 	//	static keyword in C, and is semantically preferrable to inlining.
 	//	However, what we -really- want is be able to strip this down to just
 	//	LBAL_VIS_HIDDEN, but this requires linker support we don’t have, yet.
@@ -789,7 +789,7 @@
 	//	Note that gcc guarantees that all system-specific predefined macros in
 	//	the reserved namespace (i.e., __xxx__) will never resolve to 0 if they
 	//	are actually defined.
-	//	SEEME This must appear after clang, as the llvm derivatives have a
+	//	__SEEME__ This must appear after clang, as the llvm derivatives have a
 	//	tendency to define gcc’s macros; Apple LLVM, in particular, likes to
 	//	pretend to be a crufty, ancient version of gcc.
 	#if (__GNUC__ < 7) || ((__GNUC__ == 7) && (__GNUC_MINOR__ < 3))
@@ -871,7 +871,7 @@
 
 
 	//	Identify executable file fromat
-	//	SEEME Architecture is the same across Linux derivatives (ignoring old
+	//	__SEEME__ Architecture is the same across Linux derivatives (ignoring old
 	//	a.out), but binary compatibility is not guaranteed.
 	#if defined (__ELF__)
 		#define LBAL_TARGET_RT_ELF 1
@@ -901,7 +901,7 @@
 
 	//	Test for C++98 features.
 	//	These can be conditionally disabled.
-	//	SEEME Note that we can’t rely on the SD-6 macros for these since
+	//	__SEEME__ Note that we can’t rely on the SD-6 macros for these since
 	//	they’ve been removed for standardization.
 	#if __EXCEPTIONS
 		#define LBAL_CPP98_EXCEPTIONS 199711L
@@ -928,7 +928,7 @@
 	#endif
 
 	//	Test for C++2a features.
-	//	SEEME This may not be fully compliant, as the proposal values may not
+	//	__SEEME__ This may not be fully compliant, as the proposal values may not
 	//	be what actually gets returned by vrious macros. Untested.
 	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 
@@ -941,7 +941,7 @@
 		#define LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS 1L
 
 		#define LBAL_CPP2A_VA_OPT 1L
-			//	SEEME This is arguably only a partial implementation since it
+			//	__SEEME__ This is arguably only a partial implementation since it
 			//	fails for at least one corner case.
 	#endif
 
@@ -1006,19 +1006,19 @@
 	#define LBAL_VIS_MEMBER_CLASS_TEMPLATE __attribute__ ((__visibility__("hidden")))
 
 	#define LBAL_VIS_MEMBER_FUNCTION_TEMPLATE __attribute__ ((__visibility__("hidden")))
-		//	FIXME There is a clang defect which requires an extraneous “inline”
+		//	__FIXME__ There is a clang defect which requires an extraneous “inline”
 		//	declaration to be prepended here; it’s currently unknown if gcc is
 		//	impacted by the same defect.
 
 	#define LBAL_VIS_FUNC_EXPORT __attribute__ ((__visibility__("default")))
 	#define LBAL_VIS_FUNC_IMPORT __attribute__ ((__visibility__("default")))
 
-	//	SEEME The first definition is a fallback if it turns out I’ve
+	//	__SEEME__ The first definition is a fallback if it turns out I’ve
 	//	misunderstood the requirements on general inline functions.
 //	#define LBAL_VIS_INLINE_FUNC LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC
 	#define LBAL_VIS_INLINE_FUNC __attribute__ ((__visibility__("hidden")))
 
-	//	SEEME Using the internal_linkage attribute is equivalent to using the
+	//	__SEEME__ Using the internal_linkage attribute is equivalent to using the
 	//	static keyword in C, and is semantically preferrable to inlining.
 	//	However, what we -really- want is be able to strip this down to just
 	//	LBAL_VIS_HIDDEN, but this requires linker support we don’t have, yet.
@@ -1051,7 +1051,7 @@
 
 #elif defined (_MSC_VER) && defined (_WIN32)
 	//	Visual C++ targeting Windows; _WIN32 is also defined for 64-bit
-	//	SEEME This must always appear last, as other compilers have a tendency
+	//	__SEEME__ This must always appear last, as other compilers have a tendency
 	//	to emulate MSVC by defining its macros.
 	#if (_MSC_VER < 1914)
 		#error "Settings are only known to be valid for MSVS 2017 15.7+."
@@ -1099,7 +1099,7 @@
 			#define LBAL_TARGET_VEC_SSE 1
 			#define LBAL_TARGET_VEC_SSE2 1
 
-			//	SEEME There are no independent tests for these in MSVC, and
+			//	__SEEME__ There are no independent tests for these in MSVC, and
 			//	it’s unclear if support for these particular instruction sets
 			//	is implied for 64-bit architectures, as is the case for SSE1
 			//	and SSE2; we make an assumption, as these should be available
@@ -1119,14 +1119,14 @@
 			#define LBAL_TARGET_VEC_AVX2 1
 		#endif
 
-		//	SEEME There appear to be no intrinsics for detecting AVX-512
+		//	__SEEME__ There appear to be no intrinsics for detecting AVX-512
 		//	support in MSVC, yet, though support may be undocumented or
 		//	under-reported. It‘s currently moot, though, as we don’t support
 		//	this instrcution set family at this time.
 	#endif
 
 
-	//	SEEME These are unverified for Win32
+	//	__SEEME__ These are unverified for Win32
 	#define LBAL_TYPE_DOUBLE_GT_FLOAT 1
 	#define LBAL_TYPE_LONG_DOUBLE_GT_DOUBLE 1
 
@@ -1136,7 +1136,7 @@
 
 
 	#define LBAL_TYPE_HAS_INT64 1
-		//	SEEME We assume the availability of 64-bit ints under supported
+		//	__SEEME__ We assume the availability of 64-bit ints under supported
 		//	versions of MSVC, and also assume the unavaibility of intrinsic
 		//	128-bit ints.
 
@@ -1154,7 +1154,7 @@
 	#define _CRT_SECURE_NO_WARNINGS 1
 
 	//	Standardize on a gcc-ism.
-	//	SEEME This violates the rule about defining preprocessor macros
+	//	__SEEME__ This violates the rule about defining preprocessor macros
 	//	with double-underscores (among other things). The usage should be
 	//	safe.
 	#ifndef __PRETTY_FUNCTION__
@@ -1164,7 +1164,7 @@
 
 	//	Test for C++98 features.
 	//	These can be conditionally disabled.
-	//	SEEME _CPPUNWIND is not an exact analog, but seems to serve.
+	//	__SEEME__ _CPPUNWIND is not an exact analog, but seems to serve.
 	#if _CPPUNWIND
 		#define LBAL_CPP98_EXCEPTIONS 199711L
 	#endif
@@ -1175,18 +1175,18 @@
 
 	//	Test for C++11 features.
 	//	These can be conditionally disabled.
-	//	SEEME There doesn’t seem to be a way to determine whether this has
+	//	__SEEME__ There doesn’t seem to be a way to determine whether this has
 	//	been disabled (which can be done with “/Zc:threadSafeInit-”). We just
 	//	assume it hasn’t been disabled, which is not ideal.
 	#define LBAL_CPP11_THREADSAFE_STATIC_INIT 200806L
 
 	//	C++14 features
-	//	FIXME C++2a These feature detection tests will become more manageable
+	//	__FIXME__ C++2a These feature detection tests will become more manageable
 	//	once Microsoft starts integrating the now-mandated SD-6 macros, but
 	//	we’ll also have to fix some of this hard-coding.
 	//	VS 2017 15.0
 	#if (_MSC_VER >= 1900)
-		//	SEEME There doesn’t seem to be a way to determine whether this has
+		//	__SEEME__ There doesn’t seem to be a way to determine whether this has
 		//	been disabled (which can be done with “/Zc:sizedDealloc-”). We just
 		//	assume it hasn’t been disabled, which is not ideal.
 		#define LBAL_CPP14_SIZED_DEALLOCATION 201309L
@@ -1195,7 +1195,7 @@
 	//	C++17 features
 	//	VS 2017 15.5
 	#if (_MSC_VER >= 1912)
-		//	SEEME This is implemented, but it’s unclear if the DR that affected
+		//	__SEEME__ This is implemented, but it’s unclear if the DR that affected
 		//	the proposal has been addressed.
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS 201611L
 	#endif
@@ -1203,14 +1203,14 @@
 	//	C++2a features
 	//	VS 2017 15.7
 	#if (_MSC_VER >= 1914)
-		//	SEEME As of this time, MSVC has implemented none of the C++2a
+		//	__SEEME__ As of this time, MSVC has implemented none of the C++2a
 		//	language features, though 1915 is laying the groundwork for a
 		//	number of them.
 	#endif
 
 	//	C99 features
 	#if (_MSC_VER >= 1914)
-		//	SEEME Support for a conforming C preprocessor is in the works;
+		//	__SEEME__ Support for a conforming C preprocessor is in the works;
 		//	as of VS 2017 5.8 a previewable C99-conformant preprocessor is
 		//	available for testing; a fully C++2a-compliant one will be made
 		//	available to /permissive- mode soon. The current support may be
@@ -1242,7 +1242,7 @@
 	#define LBAL_VIS_FUNC_EXPORT __declspec(dllexport)
 	#define LBAL_VIS_FUNC_IMPORT __declspec(dllimport)
 
-	//	SEEME These appear to be required by DLLs, as they like to save
+	//	__SEEME__ These appear to be required by DLLs, as they like to save
 	//	fallback versions of inline functions as object code in case the
 	//	header version is unavailable for some reason; if not for this
 	//	requirement, these would just be LBAL_VIS_HIDDEN.

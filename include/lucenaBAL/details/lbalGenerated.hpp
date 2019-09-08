@@ -19,3 +19,5 @@
 #define LBAL_version_major 2
 #define LBAL_version_minor 0
 #define LBAL_version_patch 0
+
+#define LBAL_abi_version 2
