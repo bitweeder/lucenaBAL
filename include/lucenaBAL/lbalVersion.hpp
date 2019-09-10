@@ -8,54 +8,67 @@
 	This file is distributed under the University of Illinois Open Source
 	License. See license/License.txt for details.
 
-	Include this instead of including <version> or <experimental/version>.
-	This placeholder will select the correct header based on availability. The
-	real <version> will define SD-6 macros of the form __cpp_lib_xxx; we don’t
-	do that here. Instead, we include <version>, if it’s available, and then
-	define our own macros that extend the SD-6 offering. See the notes under
-	LBAL_CPPxx in lbalFeatureSetup.hpp for more information regarding macros,
-	their names, and their values. Note that if __cpp_lib_xxx - or
-	__cpp_lib_experimental_xxx - is set to 0, even if the corresponding header,
-	if any, is found, we will ignore it and set the corresponding LBAL_CPPxx -
-	or LBAL_LIBCPPxx_xxx_EXP - macro to 0; if the SD-6 macro is undefined, this
-	caveat does not apply.
-
-	Most LBAL_LIBCPPxx_xxx macros have a corresponding LBAL_LIBCPPxx_xxx_EXP
-	macro; these latter macros are only set to non-zero values if an
-	experimental header is being used. Note that LBAL_LIBCPPxx_xxx and
-	LBAL_LIBCPPxx_xxx_EXP are mutually exclusive: if a Standard Library
-	implementation ships with both regular and experimental versions of a
-	given header, the experimental version will be ignored; if both
-	LBAL_LIBCPPxx_xxx and LBAL_LIBCPPxx_xxx_EXP are defined to non-zero values,
-	and the Standard header exists, LBAL_LIBCPPxx_xxx_EXP will be set to 0 and
-	a warning will be generated. If LBAL_LIBCPPxx_xxx has been set to 0 and
-	LBAL_LIBCPPxx_xxx_EXP left undefined, LBAL_LIBCPPxx_xxx_EXP will also be set
-	to 0, even if the experimental feature in question is available; this is
-	done to prevent surprises in the event that a feature was explicitly
-	disabled, and then later an experimental version of the same feature is
-	made available. The reverse, case, though, is not true; if left undefined,
-	LBAL_LIBCPPxx_xxx will always be assigned a value based on actual feature
-	detection. Finally, note that if either macro is predefined to 0, its value
-	will not be changed, regardless of circumstances.
-
-	Note that this header should _always_ be used instead of - or in addition
-	to - including <version> directly, even once the time comes that <version>
-	is ubiquitous. The reason is that ultimately, <version> can only document
-	intent, but it may fail to reflect reality. For example, there is no SD-6
-	macro for “our internal policy precludes us from making changes to our C++
-	stdlib runtime ABI between major OS releases, but our engineers forgot to
-	remove the affected headers from our development tools releases for several
-	years.”
-
-	__APIME__ Some of these depend on lbalFeatureSetup.hpp being included, as they
-	may need to be overridden based on an otherwise undetectable defect, e.g.,
-	Apple’s failure to include required object code for <any> in most versions
-	of its platforms’ runtime libraries.
-
-	__FIXME__ Add __cplusplus guards to header inclusion, as simple availability
-	may be an insufficient test if an older std variant is being used.
-
 ------------------------------------------------------------------------------*/
+
+/**
+	@file lucenaBAL/lbalVersion.hpp
+
+	@brief Include this instead of `<version>` or `<experimental/version>`.
+
+	@details This proxy header will select the correct header based on
+	availability. The real `<version>` defines [SD-6 macros](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations),
+	of the form `__cpp_lib_xxx`; we don’t do that here. Instead, we include
+	`<version>`, if it’s available, and then define our own macros that extend
+	the SD-6 offering. See the [Standard Library feature detection documentation](@ref lbal_platform)
+	for more information regarding these macros, their names, and their values.
+	Note that if `__cpp_lib_xxx` (or `__cpp_lib_experimental_xxx`) is set to 0—
+	even if the corresponding header, if any, is found—we will ignore it and
+	set the corresponding `LBAL_CPPxx_xxx` (or `LBAL_LIBCPPxx_xxx_EXP`) macro
+	to 0. If the SD-6 macro is undefined, this caveat does not apply.
+
+	Certain `LBAL_CPPxx_xxx` macros have corresponding `LBAL_LIBCPPxx_xxx_EXP`
+	macros; these latter macros are only set to non-zero values if an
+	experimental header is being used, typically as a result of a given feature
+	having been part of a [Technical Specification](https://en.cppreference.com/w/cpp/experimental).
+	Note that `LBAL_LIBCPPxx_xxx` and `LBAL_LIBCPPxx_xxx_EXP` are mutually
+	exclusive:
+
+	- If a Standard Library implementation ships with both regular and
+	experimental versions of a given header, the experimental version will be
+	ignored.
+	- If both `LBAL_LIBCPPxx_xxx` and `LBAL_LIBCPPxx_xxx_EXP` are defined to
+	non-zero values, and the Standard header exists, `LBAL_LIBCPPxx_xxx_EXP`
+	will be set to 0 and a warning will be generated.
+	- If `LBAL_LIBCPPxx_xxx` has been set to 0 and `LBAL_LIBCPPxx_xxx_EXP` left
+	undefined, `LBAL_LIBCPPxx_xxx_EXP` will also be set to 0, even if the
+	experimental feature in question is available; this is done to prevent
+	surprises in the event that a feature was explicitly disabled, and then
+	later an experimental version of the same feature is made available. The
+	reverse, case, though, is not true; if left undefined, `LBAL_LIBCPPxx_xxx`
+	will always be assigned a value based on actual feature detection.
+
+	Finally, note that if either macro is predefined to 0, its value will not
+	be changed, regardless of circumstances.
+
+	Note that this header should _always_ be used instead of—or in addition
+	to—including `<version>` directly, even once the time comes that
+	`<version>` is ubiquitous. The reason is that ultimately, `<version>` can
+	only document intent, but it may fail to reflect reality. For example,
+	there is no SD-6 macro for “our internal policy precludes us from making
+	changes to our C++ Standard Library runtime ABI between major OS releases,
+	but our engineers forgot to remove the affected headers from our
+	development tools releases for several years.”
+
+	__APIME__ Some of these macros depend upon
+	`<lucenaBAL/lbalFeatureSetup.hpp>` being included, as they may need to be
+	overridden based on an otherwise undetectable defect, e.g., Apple’s failure
+	to include required object code for `<any>` in most versions of its
+	platforms’ runtime libraries.
+
+	__FIXME__ Add `__cplusplus` guards to header inclusion, as simple
+	availability may be an insufficient test if an older std variant is being
+	used.
+*/
 
 
 #pragma once

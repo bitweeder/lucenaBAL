@@ -81,10 +81,11 @@
 	[linker decorators](@ref lbal_decorators)
 
 	- `<lucenaBAL/lbalVersion.hpp>`, which sets up
-	[Standard Library feature detection](@ref lbal_platform) macros.
-	These supplement whatever may have been set up by `lbalFeatureSetup.hpp`;
-	the two sets are not fully orthogonal, as the build environment may
-	influence the availability of certain Standard Library features.
+	[Standard Library feature detection](@ref lbal_library) macros.
+	These supplement whatever may have been set up by
+	`<lucenaBAL/lbalFeatureSetup.hpp>`; the two sets are not fully orthogonal,
+	as the build environment may influence the availability of certain Standard
+	Library features.
 
 	The private headers are included by these as necessary, and should never be
 	invoked directly.
