@@ -23,7 +23,7 @@
 
 	The goal of this header is to safeguard a functionality baseline for the
 	build environment in terms of compiler and Standard Library features. We
-	currently require C++17 compiler support - or at least close emulation
+	currently require C++17 compiler support—or at least close emulation
 	thereof. Note that the detail headers may evolve in compatibility-breaking
 	ways in the future as we track compliance with newer language features,
 	but such changes should be documented and restricted to point releases.

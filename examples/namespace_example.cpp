@@ -36,7 +36,7 @@ int main()
 					//	resolves to something like `::lucena::bal::A()`.
 
 	LBAL_v_::B();	//	Invoke functions B() and C() from a specific versioned
-	LBAL_v_::C();	//	namespace; thes eresolve to something like
+	LBAL_v_::C();	//	namespace; these resolve to something like
 					//	`::lucena::bal::inline bal_2::B()` and
 					//	`::lucena::bal::inline bal_2::C()`.
 
@@ -45,7 +45,7 @@ int main()
 					//	current versioned namespace at the time of compilation.
 					//	It will behave as if it resolves to something like
 					//	`::lucena::bal::B()`, but the actual fully qualified
-					// name will be like `::lucena::bal::inline bal_2::B()`.
+					//	name will be like `::lucena::bal::inline bal_2::B()`.
 
 	return 0;
 }
