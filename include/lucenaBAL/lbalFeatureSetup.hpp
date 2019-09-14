@@ -29,14 +29,44 @@
 	but such changes should be documented and restricted to point releases.
 */
 
-/**
-	@addtogroup lbal_build_env
+#pragma once
 
-	@brief Describes aspects of the build-time environment relevant to library
-	clients
 
-	@details These are mostly descriptors of various kinds.
-*/
+//	std
+#if defined (_MSC_VER) && defined (_WIN32)
+	//	We guard inclusion of system headers when using MSVS due to its
+	//	noisiness at high warning levels.
+	#pragma warning (push, 0)
+#endif
+
+#if __has_include (<version>)
+	#include <version>
+		//	Once this header is universally available, it will take the place
+		//	of <ciso646> abuse, providing the same functionality as well as
+		//	(eventually) acting as a clearinghouse for SD-6 macros related to
+		//	library features.
+		//	__SEEME__ This must not be lbalVersion.hpp, as that header depends on
+		//	this one.
+#else
+	#include <ciso646>
+		//	In C++, this is a do-nothing header we include just for the side
+		//	effects: the Standard Library implementation will be configured
+		//	and many assorted compiler-dependent feature detection macros will
+		//	be defined.
+#endif
+
+#if defined (_MSC_VER) && defined (_WIN32)
+	#pragma warning (pop)
+#endif
+
+
+//	lbal
+#include <lucenaBAL/lbalConfig.hpp>
+
+#include <lucenaBAL/details/lbalPlatformSetup.hpp>
+#include <lucenaBAL/details/lbalCompilerSetup.hpp>
+#include <lucenaBAL/details/lbalLibrarySetup.hpp>
+
 
 /**
 	@addtogroup lbal_features
@@ -72,9 +102,23 @@
 */
 
 /**
-	LBAL_NAME
-	These macros resolve to human-readable strings that identify the specified
-	entities. If the entity has a version value associated with it, such as a
+	@addtogroup lbal_build_env
+
+	@brief Describes aspects of the build-time environment relevant to library
+	clients
+
+	@details These are mostly descriptors of various kinds.
+
+	@{
+*/
+
+/**
+	@name LBAL_NAME
+
+	@brief These macros resolve to human-readable strings that identify the
+	specified entities.
+
+	@details If the entity has a version value associated with it, such as a
 	compiler does, the string -may- include that version, but it is not
 	required to do so. It is important to understand that since these values
 	are generated in a header at compile time, and so they will change; if it
@@ -84,34 +128,68 @@
 	storage in a source file in the library and providing an accessor to it.
 
 	Note that it is not safe to use these for comparisons, either directly or
-	in parsed form, as their format is not guaranteed; they are intended
-	strictly for reporting.
+	in parsed form, as their format is not guaranteed. While these are intended
+	strictly for reporting, there are other macros more appropriate for
+	testing.
 
-		LBAL_NAME_TARGET_CPU
-			At a minimum, this will identify the CPU family that the code was
-			compiled for, but it may contain a much more detailed descriptor.
+	@{
+*/
 
-		LBAL_NAME_TARGET_OS
-			This may identify the minimum supported version of the target OS,
-			as well as the OS itself, but is not required to do so.
+/**
+	@def LBAL_NAME_TARGET_CPU
+	At a minimum, this will name the CPU family that the code was compiled
+	for, but it may contain much more detailed information.
+*/
+#ifndef LBAL_NAME_TARGET_CPU
+	#define LBAL_NAME_TARGET_CPU u8"Doxygen CPU"
+	#error "LBAL_NAME_TARGET_CPU must be defined"
+#endif
 
-		LBAL_NAME_COMPILER
-			This identifies the compiler used to build the code.
+/**
+	@def LBAL_NAME_TARGET_OS
+	This names the target OS, and may identify the minimum supported
+	version of the target OS, as well, though is not required to do so.
+*/
+#ifndef LBAL_NAME_TARGET_OS
+	#define LBAL_NAME_TARGET_OS u8"Doxygen OS"
+	#error "LBAL_NAME_TARGET_OS must be defined"
+#endif
 
-		LBAL_NAME_STANDARD_LIBRARY
-			This identifies the implementation of the C++ Standard Library used
-			to build the code.
+/**
+	@def LBAL_NAME_COMPILER
+	This names the compiler used to build the code.
+*/
+#ifndef LBAL_NAME_COMPILER
+	#define LBAL_NAME_COMPILER u8"Doxygen Compiler"
+	#error "LBAL_NAME_COMPILER must be defined"
+#endif
 
+/**
+	@def LBAL_NAME_STANDARD_LIBRARY
+	This names the implementation of the C++ Standard Library used
+	to build the code.
+*/
+#ifndef LBAL_NAME_STANDARD_LIBRARY
+	#define LBAL_NAME_STANDARD_LIBRARY u8"Doxygen C++ Standard Library"
+	#error "LBAL_NAME_STANDARD_LIBRARY must be defined"
+#endif
 
-	LBAL_TARGET_COMPILER
-	Report 1 or 0 depending on which mutually exclusive macro matches the
-	compiler used to build the code. This takes the place of direct querying,
-	as some compilers are in the habit of self-identifying as something else.
-	These are not generally useful, as there’s typically another, better
-	mechanism for solving whatever this is meant to solve, but they’re here for
-	when nothing else will do. Note that if you also need version information,
-	you’ll have to resort to drect querying, though it may still sensible to
-	filter first on these for the aforementioned reason.
+/**
+	@}
+*/
+
+/**	@name LBAL_TARGET_COMPILER
+
+	@brief Report 1 or 0 depending on which mutually exclusive macro matches
+	the compiler used to build the code.
+
+	@details This takes the place of direct querying, as some compilers are in
+	the habit of self-identifying as something else. These are not generally
+	useful, as there’s typically another, better mechanism for solving whatever
+	this is meant to solve, but they’re here for when nothing else will do.
+	Note that if you also need version information, you’ll have to resort to
+	direct querying, though it may still sensible to filter first on these for
+	the aforementioned reason.
 
 	__SEEME__ These are blunt instruments. In particular, there‘s no
 	differentiation between frontened (e.g., c1xx or clang) and backend
@@ -119,158 +197,560 @@
 	thing, but is moot now. We’ll consider revisiting if the extra granularity
 	turns out to be useful
 
-		LBAL_TARGET_COMPILER_CLANG
-		LBAL_TARGET_COMPILER_GCC
-		LBAL_TARGET_COMPILER_MSVC
+	@{
+*/
 
+/**
+	@def LBAL_TARGET_COMPILER_CLANG
+	@brief The compiler being used is llvm/clang.
+	@details More information is available from [the llvm project](https://clang.llvm.org/).
+*/
+#ifndef LBAL_TARGET_COMPILER_CLANG
+	#define LBAL_TARGET_COMPILER_CLANG 0
+#endif
 
-	LBAL_TARGET_STANDARD_LIBRARY
-	Report 1 or 0 depending on which mutually exclusive macro matches the C++
-	Standard Library used to build the code. This takes the place of direct
-	querying, as this may not even be an option in some cases. These are not
-	generally useful, as there’s typically another, better mechanism for
-	solving whatever this is meant to solve, but they’re here for when nothing
-	else will do. Note that if you also need version information, you’ll have
-	to resort to drect querying.
+/**
+	@def LBAL_TARGET_COMPILER_GCC
+	@brief The compiler being used is gcc.
+	@details More information is available from [the gcc project](https://gcc.gnu.org/).
+*/
+#ifndef LBAL_TARGET_COMPILER_GCC
+	#define LBAL_TARGET_COMPILER_GCC 0
+#endif
 
-		LBAL_TARGET_STANDARD_LIBRARY_LIBCPP
-		LBAL_TARGET_STANDARD_LIBRARY_MSVC
-		LBAL_TARGET_STANDARD_LIBRARY_STDLIBCPP
+/**
+	@def LBAL_TARGET_COMPILER_MSVC
+	@brief The compiler being used is MSVC.
+	@details More information is available from [Microsoft](https://visualstudio.microsoft.com/).
+*/
+#ifndef LBAL_TARGET_COMPILER_MSVC
+	#define LBAL_TARGET_COMPILER_MSVC 0
+#endif
 
+/**
+	@}
+*/
 
-	LBAL_TARGET_CPU
-	These conditionals specify which microprocessor instruction set is being
-	generated.	At most one of these is 1, the rest are 0.
+/**
+	@name LBAL_TARGET_STANDARD_LIBRARY
 
-	__SEEME__ There used to be more of these, but they’ve been largely mooted.
-	Candidates for additions include console-specific processors/families, and
-	explicit differentiation for AMD processors/families.
+	@brief Report 1 or 0 depending on which mutually exclusive macro matches
+	the C++ Standard Library used to build the code.
 
-		LBAL_TARGET_CPU_X86
-			generic 32-bit x86
+	@details This takes the place of direct querying, as this may not even be
+	an option in some cases. These are not generally useful, as there’s
+	typically another, better mechanism for solving whatever this is meant to
+	solve, but they’re here for when nothing else will do. Note that if you
+	also need version information, you’ll have to resort to direct querying.
 
-		LBAL_TARGET_CPU_X86_64
-			generic 64-bit x86
+	@{
+*/
 
-		LBAL_TARGET_CPU_IA64
-			generic 64-bit Itanium
+/**
+	@def LBAL_TARGET_STANDARD_LIBRARY_LIBCPP
+	@brief C++ Standard Library implementation is libc++
+	@details Information available from [the llvm project](https://libcxx.llvm.org/).
+*/
+#ifndef LBAL_TARGET_STANDARD_LIBRARY_LIBCPP
+	#define LBAL_TARGET_STANDARD_LIBRARY_LIBCPP 0
+#endif
 
-		LBAL_TARGET_CPU_ARM
-			generic 32-bit ARM
+/**
+	@def LBAL_TARGET_STANDARD_LIBRARY_MSVC
+	@brief C++ Standard Library implementation is Microsoft’s.
+	@details Information available from [Microsoft](https://docs.microsoft.com/en-us/cpp/standard-library/cpp-standard-library-overview).
+*/
+#ifndef LBAL_TARGET_STANDARD_LIBRARY_MSVC
+	#define LBAL_TARGET_STANDARD_LIBRARY_MSVC 0
+#endif
 
-		LBAL_TARGET_CPU_ARM_64
-			generic 64-bit ARM
+/**
+	@def LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP
+	@brief C++ Standard Library implementation is libstdc++
+	@details Information available from [the gcc project](https://gcc.gnu.org/onlinedocs/libstdc++/).
+*/
+#ifndef LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP
+	#define LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP 0
+#endif
 
-		LBAL_TARGET_CPU_ARM_FAMILY
-		LBAL_TARGET_CPU_X86_FAMILY
+///@cond LBAL_INTERNAL
+//	__APIME__ The library was previously being misidentified. This is here as
+//	a temporary measure, but it is deprecated and will be going away.
+#ifndef LBAL_TARGET_STANDARD_LIBRARY_STDLIBCPP
+	#define LBAL_TARGET_STANDARD_LIBRARY_STDLIBCPP LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP
+#endif
+///@endcond
 
+/**
+	@}
+*/
 
-	LBAL_TARGET_VEC
-	These conditionals specify which vector instruction set is being generated,
-	if any. Multiple conditionals may be true, but some are mutually exclusive.
+/**
+	@name LBAL_TARGET_FAMILY
 
-		LBAL_TARGET_VEC_SSE
-		LBAL_TARGET_VEC_SSE2
-		LBAL_TARGET_VEC_SSE3
-		LBAL_TARGET_VEC_SSE41
-		LBAL_TARGET_VEC_SSE42
-		LBAL_TARGET_VEC_AVX
-		LBAL_TARGET_VEC_AVX2
+	@brief Specify roughly which microprocessor family code is being generated
+	for.
 
-	Note that there is no corresponding test for AVX-512, as it’s not a
-	monolithic instruction set, and we don’t have the operational experience
+	@details At most one of these is 1, the rest are 0.
+
+	@remarks __SEEME__ One additional candidate for inclusion is
+	LBAL_TARGET_CPU_FAMILY_AMD, but there has been no pragmatic reason to add
+	it.
+
+	@{
+*/
+
+/**
+	@def LBAL_TARGET_CPU_FAMILY_ARM
+	The CPU is in the ARM chip family.
+*/
+#ifndef LBAL_TARGET_CPU_FAMILY_ARM
+	#define LBAL_TARGET_CPU_FAMILY_ARM 0
+#endif
+
+/**
+	@def LBAL_TARGET_CPU_FAMILY_X86
+	The CPU is x86 instruction set-compatible, including Intel and AMD
+	processors.
+*/
+#ifndef LBAL_TARGET_CPU_FAMILY_X86
+	#define LBAL_TARGET_CPU_FAMILY_X86 0
+#endif
+
+/**
+	@}
+ */
+
+/**
+	@name LBAL_TARGET_CPU
+
+	@brief Specify for which microprocessor instruction set code is being
+	generated.
+
+	@details At most one of these is 1, the rest are 0.
+
+	@remarks __SEEME__ There used to be more of these, but they’ve been largely
+	mooted. Candidates for additions include console-specific processors and
+	explicit differentiation for AMD processors.
+
+	@remarks __SEEME__ More granular responses are possible, though it’s been
+	viewed as more useful to differentiate on feature sets, instead (e.g.,
+	AVX2 availability).
+
+	@remarks __FIXME__ Testing for specific non-SIMD instruction availability,
+	and additionally providing instrinsics, would be very helpful.
+	Specifically, generic ways to invoke POPCNT and LZCNT would be helpful.
+
+	@{
+*/
+
+/**
+	@def LBAL_TARGET_CPU_ARM
+	Generic 32-bit ARM
+*/
+#ifndef LBAL_TARGET_CPU_ARM
+	#define LBAL_TARGET_CPU_ARM 0
+#endif
+
+/**
+	@def LBAL_TARGET_CPU_ARM_64
+	Generic 64-bit ARM
+*/
+#ifndef LBAL_TARGET_CPU_ARM_64
+	#define LBAL_TARGET_CPU_ARM_64 0
+#endif
+
+/**
+	@def LBAL_TARGET_CPU_X86
+	Generic 32-bit x86
+*/
+#ifndef LBAL_TARGET_CPU_X86
+	#define LBAL_TARGET_CPU_X86 0
+#endif
+
+/**
+	@def LBAL_TARGET_CPU_X86_64
+	Generic 64-bit x86
+*/
+#ifndef LBAL_TARGET_CPU_X86_64
+	#define LBAL_TARGET_CPU_X86_64 0
+#endif
+
+/**
+	@def LBAL_TARGET_CPU_IA64
+	Generic 64-bit Itanium
+*/
+#ifndef LBAL_TARGET_CPU_IA64
+	#define LBAL_TARGET_CPU_IA64 0
+#endif
+
+/**
+	@}
+ */
+
+/**
+	@name LBAL_TARGET_VEC
+
+	@brief Specify which vector instruction set is being generated, if any.
+
+	@details Multiple conditionals may be true, but some are mutually
+	exclusive.
+
+	@remarks __APIME__ There is no corresponding test for AVX-512, as it’s not
+	a monolithic instruction set, and we don’t have the operational experience
 	needed to evaluate a meaningful breakdown beyond just mirroring any
 	predfined macros the compiler may happen to have.
 
-		//	LBAL_TARGET_VEC_AVX512
+	@remarks __SEEME__ We don’t currently independently check for SSE-Math and
+	similar instruction splits; this may be a defect.
 
-	__SEEME__ We don’t currently independently check for SSE-Math and similar
-	instruction splits; this may be a defect.
-	__SEEME__ There used to be more of these, but they’ve been largely mooted.
-	Candidates for additions include console-specific vector instruction sets,
-	and explicit differentiation for AMD instruction sets.
+	@remarks __SEEME__ There used to be more of these, but they’ve been largely
+	mooted. Candidates for additions include console-specific vector
+	instruction sets, and explicit differentiation for AMD instruction sets.
 
+	@{
+*/
 
-	LBAL_TARGET_OS
-	These conditionals specify in which Operating System the generated code
-	will run. At most one of the these is 1, the rest are 0 (except for
-	LBAL_TARGET_OS_IOS, which is set whenever LBAL_TARGET_OS_IOS_SIM is set, but
-	can also be set alone).
+/**
+	@def LBAL_TARGET_VEC_SSE
+	Intel SSE SIMD instruction set.
+*/
+#ifndef LBAL_TARGET_VEC_SSE
+	#define LBAL_TARGET_VEC_SSE 0
+#endif
 
-	__SEEME__ Candidates for additions include console-specific operating systems,
-	Android, tvOS, and watchOS. BSD could conceivably have its own flag, but we
-	currently roll it in under LBAL_TARGET_OS_X11.
+/**
+	@def LBAL_TARGET_VEC_SSE2
+	Intel SSE2 SIMD instruction set.
+*/
+#ifndef LBAL_TARGET_VEC_SSE2
+	#define LBAL_TARGET_VEC_SSE2 0
+#endif
 
-	__SEEME__ These focus primarily on UI characteristics, as opposed to system
-	internals, which is why we have LBAL_TARGET_OS_X11 and not
+/**
+	@def LBAL_TARGET_VEC_SSE3
+	Intel SSE3 SIMD instruction set.
+*/
+#ifndef LBAL_TARGET_VEC_SSE3
+	#define LBAL_TARGET_VEC_SSE3 0
+#endif
+
+/**
+	@def LBAL_TARGET_VEC_SSE41
+	Intel SSE4.1 SIMD instruction set.
+*/
+#ifndef LBAL_TARGET_VEC_SSE41
+	#define LBAL_TARGET_VEC_SSE41 0
+#endif
+
+/**
+	@def LBAL_TARGET_VEC_SSE42
+	Intel SSE4.2 SIMD instruction set.
+*/
+#ifndef LBAL_TARGET_VEC_SSE42
+	#define LBAL_TARGET_VEC_SSE42 0
+#endif
+
+/**
+	@def LBAL_TARGET_VEC_AVX
+	Intel AVX SIMD instruction set.
+*/
+#ifndef LBAL_TARGET_VEC_AVX
+	#define LBAL_TARGET_VEC_AVX 0
+#endif
+
+/**
+	@def LBAL_TARGET_VEC_AVX2
+	Intel AVX2 SIMD instruction set.
+*/
+#ifndef LBAL_TARGET_VEC_AVX2
+	#define LBAL_TARGET_VEC_AVX2 0
+#endif
+
+/**
+	@}
+*/
+
+/**
+	@name LBAL_TARGET_OS
+
+	@brief Specify which Operating System code is being generated for.
+
+	@details At most one of the these is 1, the rest are 0 (except for
+	LBAL_TARGET_OS_IOS, which is set whenever LBAL_TARGET_OS_IOS_SIM is set,
+	but can also be set alone).
+
+	@remarks __SEEME__ Candidates for additions include console-specific
+	operating systems, Android, tvOS, and watchOS. BSD could conceivably have
+	its own flag, but we currently roll it in under LBAL_TARGET_OS_X11.
+
+	@remarks __SEEME__ These focus primarily on UI characteristics, as opposed
+	to system internals, which is why we have LBAL_TARGET_OS_X11 and not
 	LBAL_TARGET_OS_POSIX. A case could be made that we realistically need to
-	track both, but in practice - during the implementation of Lucena PAL - no
+	track both, but in practice - during the implementation of lucenaPAL - no
 	practical need was found. It’s possible that once additional platform
 	support is added to that library, we’ll find we need to revisit this design
 	decision.
 
-		LBAL_TARGET_OS_X11
-		LBAL_TARGET_OS_MACOS
-		LBAL_TARGET_OS_WIN
-		LBAL_TARGET_OS_IOS
-		LBAL_TARGET_OS_IOS_SIM
+	@remarks __FIXME__ Wayland needs to be accounted for; currently, it’s
+	rolled into LBAL_TARGET_OS_X11.
 
+	@{
+*/
 
-	LBAL_TARGET_RT
-	These conditionals specify the runtime environment which the generated code
-	is being compled for. This is needed when the OS and/or CPU supports more
-	than one runtime (e.g. macOS on PPC supports CFM and Mach-O). Note that
-	values are descriptive; if the condition is met, the value will be 1,
-	otherwise 0.
+/**
+	@def LBAL_TARGET_OS_IOS
+	Apple’s iOS
+*/
+#ifndef LBAL_TARGET_OS_IOS
+	#define LBAL_TARGET_OS_IOS 0
+#endif
 
-		LBAL_TARGET_RT_LITTLE_ENDIAN
-		LBAL_TARGET_RT_BIG_ENDIAN
-			We don’t call out processors that can do either; all the processors
-			we support operate in one mode or the other for the duration of
-			execution, which is all we care about. Note that this is only used
-			to determine the “native” format.
+/**
+	@def LBAL_TARGET_OS_IOS_SIM
+	Apple‘s iOS running under a Simulator
+*/
+#ifndef LBAL_TARGET_OS_IOS_SIM
+	#define LBAL_TARGET_OS_IOS_SIM 0
+#endif
 
-		LBAL_TARGET_RT_32_BIT
-		LBAL_TARGET_RT_64_BIT
-			This identifies whether the binary is being generated for 32-bit
-			or 64-bit execution.
+/**
+	@def LBAL_TARGET_OS_X11
+	X.org‘s X11
+*/
+#ifndef LBAL_TARGET_OS_X11
+	#define LBAL_TARGET_OS_X11 0
+#endif
 
-		LBAL_TARGET_RT_COFF
-		LBAL_TARGET_RT_ELF
-		LBAL_TARGET_RT_MACHO
-		LBAL_TARGET_RT_WASM
-			These identify the executable format. They are somewhat arbitrary,
-			but we’ve only bothered to define them for cases we’ve encountered
-			in practice. Additional operations experience (and supported
-			platforms) will probably lead to some additions.
+/**
+	@def LBAL_TARGET_OS_MACOS
+	Apple’s macOS
+*/
+#ifndef LBAL_TARGET_OS_MACOS
+	#define LBAL_TARGET_OS_MACOS 0
+#endif
 
+/**
+	@def LBAL_TARGET_OS_WIN
+	Microsoft’s Windows
+*/
+#ifndef LBAL_TARGET_OS_WIN
+	#define LBAL_TARGET_OS_WIN 0
+#endif
 
-	LBAL_TARGET_API
-	These conditionals are used to differentiate between sets of core System
-	API’s on the same processor under the same OS. Unlike LBAL_TARGET_OS and
-	LBAL_TARGET_CPU, these conditionals are not mutally exclusive. This header
-	will attempt to auto-configure all LBAL_TARGET_API values, but will often
-	need a LBAL_TARGET_API value predefined, e.g., in a .prop or .xcconfig file,
-	in order to disambiguate.  Note that values are descriptive; if the
-	condition is met, the value will be 1, otherwise 0.
+/**
+	@}
+*/
 
-	__SEEME__ This is not intended to be an exhaustive list of APIs. Originally,
-	it was useful for differentiating between possible supported and available
-	Apple APIs (e.g., QuickDraw, Carbon, Cocoa, and whatever other flavor of
-	the week floats in), but it’s academic on platforms that don’t deprecate
-	their APIs with abandon. Further operational experience might find us
-	wanting to differentiate between other available OS-level APIs.
+/**
+	@name LBAL_TARGET_RT_[EXECUTABLE_FORMAT]
 
-		LBAL_TARGET_API_COCOA
-		LBAL_TARGET_API_COCOA_TOUCH
+	@brief Identiy the executable format which the compiled code is being
+	linked in.
 
-		LBAL_TARGET_API_WIN32
-		LBAL_TARGET_API_WIN64
+	@details These are most needed when the OS and/or CPU supports more than
+	one format (e.g. Mac OS X on PPC supports CFM and Mach-O). Note that values
+	are descriptive; if the condition is met, the value will be 1, otherwise 0.
 
-		LBAL_TARGET_API_POSIX
-		LBAL_TARGET_API_X11
+	@remarks __APIME__ Inclusion of specific formats is somewhat arbitrary,
+	as we’ve only bothered to define them for cases we’ve encountered in
+	practice. Additional operational experience—and supported platforms—will
+	probably lead to some additions.
 
+	@{
+*/
 
+/**
+	@def LBAL_TARGET_RT_COFF
+	A COFF derivative is being used, including COFF and PE/COFF.
+*/
+
+#ifndef LBAL_TARGET_RT_COFF
+	#define LBAL_TARGET_RT_COFF 0
+#endif
+
+/**
+	@def LBAL_TARGET_RT_ELF
+	The ELF executable format, currently the default for Linux and BSD, is
+	being used.
+*/
+
+#ifndef LBAL_TARGET_RT_ELF
+	#define LBAL_TARGET_RT_ELF 0
+#endif
+
+/**
+	@def LBAL_TARGET_RT_MACHO
+	The Mach-O executable format, currently the default for macOS and iOS, is
+	being used.
+*/
+
+#ifndef LBAL_TARGET_RT_MACHO
+	#define LBAL_TARGET_RT_MACHO 0
+#endif
+
+/**
+	@def LBAL_TARGET_RT_WASM
+	The Wasm byte code executable format is being used.
+*/
+
+#ifndef LBAL_TARGET_RT_WASM
+	#define LBAL_TARGET_RT_WASM 0
+#endif
+
+/**
+	@}
+*/
+
+/**
+	@name LBAL_TARGET_RT_[ENDIANESS]
+
+	@brief Identify the byte-ordering of the code being generated.
+
+	@details Note that this is only used to determine the “native” format. We
+	don’t call out processors that can do either; all the processors we support
+	operate in one mode or the other for the duration of execution, which is
+	all we care about.
+
+	@{
+*/
+
+/**
+	@def LBAL_TARGET_RT_LITTLE_ENDIAN
+	The Intel-standard Little Endian byte-ordering is being used.
+*/
+#ifndef LBAL_TARGET_RT_LITTLE_ENDIAN
+	#define LBAL_TARGET_RT_LITTLE_ENDIAN 0
+#endif
+
+/**
+	@def LBAL_TARGET_RT_BIG_ENDIAN
+	The PowerPC-standard Big Endian byte-ordering is being used.
+*/
+#ifndef LBAL_TARGET_RT_BIG_ENDIAN
+	#define LBAL_TARGET_RT_BIG_ENDIAN 0
+#endif
+
+/**
+	@}
+*/
+
+/**
+	@name LBAL_TARGET_RT_[ADDRESSING]
+
+	@brief Identify the address table size of the runtime environment which the
+	code is being generated for.
+
+	@details This identifies whether the binary is being generated for 32-bit
+	or 64-bit execution.
+*/
+
+/**
+	@def LBAL_TARGET_RT_32_BIT
+	32-bit addressing is being used.
+*/
+#ifndef LBAL_TARGET_RT_32_BIT
+	#define LBAL_TARGET_RT_32_BIT 0
+#endif
+
+/**
+	@def LBAL_TARGET_RT_64_BIT
+	64-bit addressing is being used.
+*/
+#ifndef LBAL_TARGET_RT_64_BIT
+	#define LBAL_TARGET_RT_64_BIT 0
+#endif
+
+/**
+	@}
+*/
+
+/**
+	@name LBAL_TARGET_API
+
+	@brief Differentiate between sets of core System API’s on the same
+	processor under the same OS.
+
+	@details Unlike LBAL_TARGET_OS and LBAL_TARGET_CPU, these tokens are not
+	mutally exclusive. lucenaBAL attempts to auto-configure all LBAL_TARGET_API
+	values, but will often need a LBAL_TARGET_API value predefined—e.g., in a
+	build file—in order to disambiguate.  Note that values are descriptive; if
+	the condition is met, the value will be 1, otherwise 0.
+
+	@remarks __SEEME__ This is not intended to be an exhaustive list of APIs.
+	Originally, it was useful for differentiating between possible supported
+	and available Apple APIs (e.g., QuickDraw, Carbon, Cocoa, and whatever
+	other toolbox flavor of the week floats in), but it’s academic on platforms
+	that don’t deprecate their APIs with abandon. Further operational
+	experience might find us wanting to differentiate between other available
+	OS-level APIs.
+
+	@{
+*/
+
+/**
+	@def LBAL_TARGET_API_COCOA
+	Apple’s object-oriented API for macOS.
+*/
+
+#ifndef LBAL_TARGET_API_COCOA
+	#define LBAL_TARGET_API_COCOA 0
+#endif
+
+/**
+	@def LBAL_TARGET_API_COCOA_TOUCH
+	Apple’s object-oriented API for iOS, watchOS, and tvOS.
+*/
+
+#ifndef LBAL_TARGET_API_COCOA_TOUCH
+	#define LBAL_TARGET_API_COCOA_TOUCH 0
+#endif
+
+/**
+	@def LBAL_TARGET_API_POSIX
+	The standard C API used by all flavors of UNIX.
+*/
+
+#ifndef LBAL_TARGET_API_POSIX
+	#define LBAL_TARGET_API_POSIX 0
+#endif
+
+/**
+	@def LBAL_TARGET_API_WIN32
+	A Microsoft’s C API for Windows.
+*/
+
+#ifndef LBAL_TARGET_API_WIN32
+	#define LBAL_TARGET_API_WIN32 0
+#endif
+
+/**
+	@def LBAL_TARGET_API_WIN64
+	A Microsoft’s C API for Windows, specific to 64-bit implementations.
+*/
+
+#ifndef LBAL_TARGET_API_WIN64
+	#define LBAL_TARGET_API_WIN64 0
+#endif
+
+/**
+	@def LBAL_TARGET_API_X11
+	The standard C Graphics API used by most flavors of UNIX.
+*/
+
+#ifndef LBAL_TARGET_API_X11
+	#define LBAL_TARGET_API_X11 0
+#endif
+
+/**
+	@}
+*/
+
+/**
+	@}
+*/
+
+/**
 	LBAL_PRAGMA
 	These conditionals specify whether the compiler supports particular
 	#pragma’s. Arguably, these are gratuitous since compilers should ignore
@@ -1152,7 +1632,7 @@
 			inheritance and targeting MSVS; at least VS2015 Update 3 is
 			required (note that Update 2, which actually introduced the
 			feature, had a bug which caused it to violate the Standard).
-			
+
 			__APIME__ How aggravating is it that you can’t decorate the empty
 			base class itself instead of having to force a weird
 			requirement on derived classes? Sadly, we’re at the mercy of
@@ -1190,42 +1670,3 @@
 			LBAL_expr_ must resolve to a boolean
 
 */
-
-
-#pragma once
-
-
-//	std
-#if defined (_MSC_VER) && defined (_WIN32)
-	//	We guard inclusion of system headers when using MSVS due to its
-	//	noisiness at high warning levels.
-	#pragma warning (push, 0)
-#endif
-
-#if __has_include (<version>)
-	#include <version>
-		//	Once this header is universally available, it will take the place
-		//	of <ciso646> abuse, providing the same functionality as well as
-		//	(eventually) acting as a clearinghouse for SD-6 macros related to
-		//	library features.
-		//	__SEEME__ This must not be lbalVersion.hpp, as that header depends on
-		//	this one.
-#else
-	#include <ciso646>
-		//	In C++, this is a do-nothing header we include just for the side
-		//	effects: the Standard Library implementation will be configured
-		//	and many assorted compiler-dependent feature detection macros will
-		//	be defined.
-#endif
-
-#if defined (_MSC_VER) && defined (_WIN32)
-	#pragma warning (pop)
-#endif
-
-
-//	lbal
-#include <lucenaBAL/lbalConfig.hpp>
-
-#include <lucenaBAL/details/lbalPlatformSetup.hpp>
-#include <lucenaBAL/details/lbalCompilerSetup.hpp>
-#include <lucenaBAL/details/lbalLibrarySetup.hpp>

@@ -79,8 +79,8 @@
 	#error "Don’t define LBAL_TARGET_CPU_xxx outside of this file."
 #endif	//	LBAL_TARGET_CPU check
 
-#if defined (LBAL_TARGET_CPU_X86_FAMILY) or \
-	defined (LBAL_TARGET_CPU_ARM_FAMILY)
+#if defined (LBAL_TARGET_CPU_FAMILY_X86) or \
+	defined (LBAL_TARGET_CPU_FAMILY_ARM)
 
 	#error "Don’t define LBAL_TARGET_CPU_xxx_FAMILY outside of this file."
 #endif	//	LBAL_TARGET_CPU_FAMILY check
@@ -229,16 +229,16 @@
 	//	simply refer to all of them as LBAL_TARGET_CPU_X86_64.
 	#if __x86_64__ or __amd64__
 		#define LBAL_TARGET_CPU_X86_64 1
-		#define LBAL_TARGET_CPU_X86_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_X86 1
 	#elif __i386__
 		#define LBAL_TARGET_CPU_X86 1
-		#define LBAL_TARGET_CPU_X86_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_X86 1
 	#elif __aarch64__
 		#define LBAL_TARGET_CPU_ARM_64 1
-		#define LBAL_TARGET_CPU_ARM_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_ARM 1
 	#elif __arm__
 		#define LBAL_TARGET_CPU_ARM 1
-		#define LBAL_TARGET_CPU_ARM_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_ARM 1
 	#else
 		#error "Processor unknown. Update lbalCompilerSetup.hpp."
 	#endif
@@ -535,16 +535,16 @@
 	//	simply refer to all of them as LBAL_TARGET_CPU_X86_64.
 	#if __x86_64__ or __amd64__
 		#define LBAL_TARGET_CPU_X86_64 1
-		#define LBAL_TARGET_CPU_X86_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_X86 1
 	#elif __i386__
 		#define LBAL_TARGET_CPU_X86 1
-		#define LBAL_TARGET_CPU_X86_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_X86 1
 	#elif __aarch64__
 		#define LBAL_TARGET_CPU_ARM_64 1
-		#define LBAL_TARGET_CPU_ARM_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_ARM 1
 	#elif __arm__
 		#define LBAL_TARGET_CPU_ARM 1
-		#define LBAL_TARGET_CPU_ARM_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_ARM 1
 	#else
 		#error "Processor unknown. Update lbalCompilerSetup.hpp."
 	#endif
@@ -811,16 +811,16 @@
 	//	simply refer to all of them as LBAL_TARGET_CPU_X86_64.
 	#if defined (__x86_64__) or defined (__amd64__)
 		#define LBAL_TARGET_CPU_X86_64 1
-		#define LBAL_TARGET_CPU_X86_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_X86 1
 	#elif defined (__i386__) //	 or defined (__i486__) or defined (__i586__) or defined (__i686__)
 		#define LBAL_TARGET_CPU_X86 1
-		#define LBAL_TARGET_CPU_X86_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_X86 1
 	#elif defined (__aarch64__)
 		#define LBAL_TARGET_CPU_ARM_64 1
-		#define LBAL_TARGET_CPU_ARM_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_ARM 1
 	#elif defined (__arm__)
 		#define LBAL_TARGET_CPU_ARM 1
-		#define LBAL_TARGET_CPU_ARM_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_ARM 1
 	#else
 		#error "Processor unknown. Update lbalCompilerSetup.hpp."
 	#endif
@@ -1066,15 +1066,15 @@
 	//	Note that AMD64 and x86_64 have the same identifier.
 	#if defined (_M_IX86)
 		#define LBAL_TARGET_CPU_X86 1
-		#define LBAL_TARGET_CPU_X86_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_X86 1
 		#define LBAL_TARGET_RT_LITTLE_ENDIAN 1
 	#elif defined (_M_X64)
 		#define LBAL_TARGET_CPU_X86_64 1
-		#define LBAL_TARGET_CPU_X86_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_X86 1
 		#define LBAL_TARGET_RT_LITTLE_ENDIAN 1
 	#elif defined (_M_IA64)
 		#define LBAL_TARGET_CPU_IA64 1
-		#define LBAL_TARGET_CPU_X86_FAMILY 1
+		#define LBAL_TARGET_CPU_FAMILY_X86 1
 		#define LBAL_TARGET_RT_LITTLE_ENDIAN 1
 	#else
 		#error "Processor unknown. Update lbalCompilerSetup.hpp."
@@ -1281,64 +1281,8 @@
 
 
 /*------------------------------------------------------------------------------
-	These -must- be defined by this point.
+	Set up the CPU name.
 */
-
-#if !defined (LBAL_NAME_COMPILER)
-	#error "LBAL_NAME_COMPILER must be defined"
-#endif	//	LBAL_NAME_COMPILER
-
-
-/*------------------------------------------------------------------------------
-	Set up the rest of the target compiler conditionals
-*/
-
-#ifndef LBAL_TARGET_COMPILER_CLANG
-	#define LBAL_TARGET_COMPILER_CLANG 0
-#endif
-
-#ifndef LBAL_TARGET_COMPILER_GCC
-	#define LBAL_TARGET_COMPILER_GCC 0
-#endif
-
-#ifndef LBAL_TARGET_COMPILER_MSVC
-	#define LBAL_TARGET_COMPILER_MSVC 0
-#endif
-
-
-/*------------------------------------------------------------------------------
-	Set up the rest of the CPU conditionals
-*/
-
-#ifndef LBAL_TARGET_CPU_ARM
-	#define LBAL_TARGET_CPU_ARM 0
-#endif
-
-#ifndef LBAL_TARGET_CPU_ARM_64
-	#define LBAL_TARGET_CPU_ARM_64 0
-#endif
-
-#ifndef LBAL_TARGET_CPU_X86
-	#define LBAL_TARGET_CPU_X86 0
-#endif
-
-#ifndef LBAL_TARGET_CPU_X86_64
-	#define LBAL_TARGET_CPU_X86_64 0
-#endif
-
-#ifndef LBAL_TARGET_CPU_IA64
-	#define LBAL_TARGET_CPU_IA64 0
-#endif
-
-
-#ifndef LBAL_TARGET_CPU_ARM_FAMILY
-	#define LBAL_TARGET_CPU_ARM_FAMILY 0
-#endif
-
-#ifndef LBAL_TARGET_CPU_X86_FAMILY
-	#define LBAL_TARGET_CPU_X86_FAMILY 0
-#endif
-
 
 #if LBAL_TARGET_CPU_ARM_64
 	#define LBAL_NAME_TARGET_CPU u8"ARM64"
@@ -1350,66 +1294,6 @@
 	#define LBAL_NAME_TARGET_CPU u8"x86_64"
 #elif LBAL_TARGET_CPU_X86
 	#define LBAL_NAME_TARGET_CPU u8"i386"
-#else
-	#error "LBAL_NAME_TARGET_CPU must be defined"
-#endif
-
-
-/*------------------------------------------------------------------------------
-	Set up the rest of the vector conditionals
-*/
-
-#ifndef LBAL_TARGET_VEC_SSE
-	#define LBAL_TARGET_VEC_SSE 0
-#endif
-
-#ifndef LBAL_TARGET_VEC_SSE2
-	#define LBAL_TARGET_VEC_SSE2 0
-#endif
-
-#ifndef LBAL_TARGET_VEC_SSE3
-	#define LBAL_TARGET_VEC_SSE3 0
-#endif
-
-#ifndef LBAL_TARGET_VEC_SSE41
-	#define LBAL_TARGET_VEC_SSE41 0
-#endif
-
-#ifndef LBAL_TARGET_VEC_SSE42
-	#define LBAL_TARGET_VEC_SSE42 0
-#endif
-
-#ifndef LBAL_TARGET_VEC_AVX
-	#define LBAL_TARGET_VEC_AVX 0
-#endif
-
-#ifndef LBAL_TARGET_VEC_AVX2
-	#define LBAL_TARGET_VEC_AVX2 0
-#endif
-
-
-/*------------------------------------------------------------------------------
-	Set up the rest of the RT conditionals
-*/
-
-#ifndef LBAL_TARGET_RT_LITTLE_ENDIAN
-	#define LBAL_TARGET_RT_LITTLE_ENDIAN 0
-#endif
-
-#ifndef LBAL_TARGET_RT_BIG_ENDIAN
-	#define LBAL_TARGET_RT_BIG_ENDIAN 0
-#endif
-
-#ifndef LBAL_TARGET_RT_32_BIT
-	#define LBAL_TARGET_RT_32_BIT 0
-#endif
-
-#ifndef LBAL_TARGET_RT_64_BIT
-	#define LBAL_TARGET_RT_64_BIT 0
-#endif
-
-#ifndef LBAL_TARGET_RT_MACHO
-	#define LBAL_TARGET_RT_MACHO 0
 #endif
 
 

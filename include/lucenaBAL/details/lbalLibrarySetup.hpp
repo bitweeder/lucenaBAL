@@ -75,9 +75,10 @@
 	#error "Don’t define LBAL_NAME_STANDARD_LIBRARY outside of this file."
 #endif	//	LBAL_NAME_STANDARD_LIBRARY
 
-#if defined (LBAL_TARGET_STANDARD_LIBRARY_LIBCPP) or \
-	defined (LBAL_TARGET_STANDARD_LIBRARY_MSVC) or \
-	defined (LBAL_TARGET_STANDARD_LIBRARY_STDLIBCPP)
+#if defined (LBAL_TARGET_STANDARD_LIBRARY_LIBCPP) \
+	|| defined (LBAL_TARGET_STANDARD_LIBRARY_MSVC) \
+	|| defined (LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP) \
+	|| defined (LBAL_TARGET_STANDARD_LIBRARY_STDLIBCPP)
 
 	#error "Don’t define LBAL_TARGET_STANDARD_LIBRARY_xxx outside of this file."
 #endif	//	LBAL_TARGET_STANDARD_LIBRARY check
@@ -187,7 +188,7 @@
 
 	//	Set up identifiers
 	#define LBAL_NAME_STANDARD_LIBRARY u8"GNU libstdc++ version " LBAL_Stringify_ (__GLIBCXX__)
-	#define LBAL_TARGET_STANDARD_LIBRARY_STDLIBCPP 1
+	#define LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP 1
 #elif defined (_MSC_VER)
 	//	__SEEME__ Not exactly an equivalent test, but I don’t know of a documented
 	//	way to reliably identify the MSVC Standard Library.
@@ -236,30 +237,4 @@
 	#define LBAL_TARGET_STANDARD_LIBRARY_MSVC 1
 #else
 	#define LBAL_NAME_STANDARD_LIBRARY u8"Unknown Standard Library implementation"
-#endif
-
-
-/*------------------------------------------------------------------------------
-	This -must- be defined by this point.
-*/
-
-#if !defined (LBAL_NAME_STANDARD_LIBRARY)
-	#error "LBAL_NAME_STANDARD_LIBRARY must be defined"
-#endif	//	LBAL_NAME_STANDARD_LIBRARY
-
-
-/*------------------------------------------------------------------------------
-	Set up the rest of the Standard Library conditionals
-*/
-
-#ifndef LBAL_TARGET_STANDARD_LIBRARY_LIBCPP
-	#define LBAL_TARGET_STANDARD_LIBRARY_LIBCPP 0
-#endif
-
-#ifndef LBAL_TARGET_STANDARD_LIBRARY_MSVC
-	#define LBAL_TARGET_STANDARD_LIBRARY_MSVC 0
-#endif
-
-#ifndef LBAL_TARGET_STANDARD_LIBRARY_STDLIBCPP
-	#define LBAL_TARGET_STANDARD_LIBRARY_STDLIBCPP 0
 #endif
