@@ -74,12 +74,13 @@
 
 	- `<lucenaBAL/lbalConfig.hpp>`, which is used to configure the library as
 	described in [Configuration](@ref lbal_config)
-
-	- `<lucenaBAL/lbalFeatureSetup.hpp>`, which describes most
-	[platform](@ref lbal_platform) and [compiler](@ref lbal_compiler) features,
-	[build-time descriptors](@ref lbal_build_env), and the
-	[linker decorators](@ref lbal_decorators)
-
+	- `<lucenaBAL/lbalFeatureSetup.hpp>`, which describes:
+		- detectors for [platform](@ref lbal_platform),
+		[compiler](@ref lbal_compiler), and [library](@ref lbal_library)
+		features
+		- [build-time descriptors](@ref lbal_build_env)
+		- [built-in functions](@ref lbal_builtins)
+		- [linker decorators](@ref lbal_decorators)
 	- `<lucenaBAL/lbalVersion.hpp>`, which sets up
 	[Standard Library feature detection](@ref lbal_library) macros.
 	These supplement whatever may have been set up by
@@ -126,6 +127,7 @@
 		@defgroup lbal_compiler Compiler Features
 		@defgroup lbal_library Standard Library Features
 	@}
+	@defgroup lbal_builtins Compiler Intrinsics & Built-in Functions
 	@defgroup lbal_decorators Linker Decorators
 */
 

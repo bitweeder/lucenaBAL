@@ -182,8 +182,8 @@
 	#error "Don’t define LBAL_FUNC_xxx outside of this file."
 #endif	//	LBAL_FUNC_xxx check
 
-#if defined (LBAL_BUILTIN_likely) || \
-	defined (LBAL_BUILTIN_unlikely)
+#if defined (LBAL_HINT_likely) || \
+	defined (LBAL_HINT_unlikely)
 
 	#error "Don’t define LBAL_BUILTIN_xxx outside of this file."
 #endif	//	LBAL_BUILTIN_xxx check
@@ -442,8 +442,8 @@
 
 
 	//	intrinsic functions
-	#define LBAL_BUILTIN_likely(LBAL_expr_) __builtin_expect (LBAL_expr_, true)
-	#define LBAL_BUILTIN_unlikely(LBAL_expr_) __builtin_expect (LBAL_expr_, false)
+	#define LBAL_HINT_likely(LBAL_expr_) __builtin_expect (LBAL_expr_, true)
+	#define LBAL_HINT_unlikely(LBAL_expr_) __builtin_expect (LBAL_expr_, false)
 
 
 	//	Symbol visibility macros
@@ -710,8 +710,8 @@
 
 
 	//	intrinsic functions
-	#define LBAL_BUILTIN_likely(LBAL_expr_)  __builtin_expect (LBAL_expr_, true)
-	#define LBAL_BUILTIN_unlikely(LBAL_expr_) __builtin_expect (LBAL_expr_, false)
+	#define LBAL_HINT_likely(LBAL_expr_)  __builtin_expect (LBAL_expr_, true)
+	#define LBAL_HINT_unlikely(LBAL_expr_) __builtin_expect (LBAL_expr_, false)
 
 
 	//	Symbol visibility macros
@@ -974,8 +974,8 @@
 
 
 	//	intrinsic functions
-	#define LBAL_BUILTIN_likely(LBAL_expr_) __builtin_expect (LBAL_expr_, true)
-	#define LBAL_BUILTIN_unlikely(LBAL_expr_) __builtin_expect (LBAL_expr_, false)
+	#define LBAL_HINT_likely(LBAL_expr_) __builtin_expect (LBAL_expr_, true)
+	#define LBAL_HINT_unlikely(LBAL_expr_) __builtin_expect (LBAL_expr_, false)
 
 
 	//	Symbol visibility macros
@@ -1298,78 +1298,6 @@
 
 
 /*------------------------------------------------------------------------------
-	Set up TYPE values if they weren’t previously defined.
-*/
-
-#ifndef LBAL_TYPE_LONG_DOUBLE_GT_DOUBLE
-	#define LBAL_TYPE_LONG_DOUBLE_GT_DOUBLE 0
-#endif
-
-#ifndef LBAL_TYPE_DOUBLE_GT_FLOAT
-	#define LBAL_TYPE_DOUBLE_GT_FLOAT 0
-#endif
-
-#ifndef LBAL_TYPE_HAS_INT64
-	#define LBAL_TYPE_HAS_INT64 0
-#endif
-
-#ifndef LBAL_TYPE_HAS_INT128
-	#define LBAL_TYPE_HAS_INT128 0
-#endif
-
-#ifndef LBAL_TYPE_EXACT_WIDTH_INTEGERS
-	#define LBAL_TYPE_EXACT_WIDTH_INTEGERS 0
-#endif
-
-#ifndef LBAL_TYPE_WCHAR_T_IS_16_BITS
-	#define LBAL_TYPE_WCHAR_T_IS_16_BITS 0
-#endif
-
-
-/*------------------------------------------------------------------------------
-	Set up Feature conditionals if they weren’t previously defined.
-*/
-
-#ifndef LBAL_FEATURE_CONSTEXPR_INTRINSICS
-	#define LBAL_FEATURE_CONSTEXPR_INTRINSICS 0
-#endif
-
-/*------------------------------------------------------------------------------
-	Set up C++98 values if they weren’t previously defined.
-*/
-
-#ifndef LBAL_CPP98_EXCEPTIONS
-	#define LBAL_CPP98_EXCEPTIONS 0
-#endif
-
-#ifndef LBAL_CPP98_RTTI
-	#define LBAL_CPP98_RTTI 0
-#endif
-
-
-/*------------------------------------------------------------------------------
-	Set up C++11 values if they weren’t previously defined.
-*/
-
-#ifndef LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION
-	#define LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION 0
-#endif
-
-#ifndef LBAL_CPP11_THREADSAFE_STATIC_INIT
-	#define LBAL_CPP11_THREADSAFE_STATIC_INIT 0
-#endif
-
-
-/*------------------------------------------------------------------------------
-	Set up C++14 values if they weren’t previously defined.
-*/
-
-#ifndef LBAL_CPP14_SIZED_DEALLOCATION
-	#define LBAL_CPP14_SIZED_DEALLOCATION 0
-#endif
-
-
-/*------------------------------------------------------------------------------
 	Set up C++17 values if they weren’t previously defined.
 */
 
@@ -1511,17 +1439,4 @@
 
 #ifndef LBAL_FUNC_CALLBACK_STD
 	#define LBAL_FUNC_CALLBACK_STD(LBAL_func_name_) *LBAL_func_name_
-#endif
-
-
-/*------------------------------------------------------------------------------
-	Set up any unitialized intrinsic functions
-*/
-
-#ifndef LBAL_BUILTIN_likely
-	#define LBAL_BUILTIN_likely(LBAL_expr_) LBAL_expr_
-#endif
-
-#ifndef LBAL_BUILTIN_unlikely
-	#define LBAL_BUILTIN_unlikely(LBAL_expr_) LBAL_expr_
 #endif

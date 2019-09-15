@@ -83,25 +83,6 @@
 */
 
 /**
-	@addtogroup lbal_compiler
-
-	@brief Provides feature detection describing the capabilities of the
-	compiler
-
-	@details These are a mix of binary-choice availability flags and versioned
-	values describing levels of support. Where possible, these mimic the
-	equivalent [SD-6 macros](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations),
-	both in their naming and in their range of values.
-
-	Generally, we don’t bother testing for things that are guaranteed
-	by our minimum-supported compilers. For example, all supported compilers
-	have C99-style `int`s, so we don’t test for the presence of support. This
-	may change in the future if a compiler we’d like to support violates this
-	standard. Additionally, we may add tests for previously-assumed features if
-	we lower the bar on “minimum-supported compilers”.
-*/
-
-/**
 	@addtogroup lbal_build_env
 
 	@brief Describes aspects of the build-time environment relevant to library
@@ -174,9 +155,7 @@
 	#error "LBAL_NAME_STANDARD_LIBRARY must be defined"
 #endif
 
-/**
-	@}
-*/
+///	@}	LBAL_NAME
 
 /**	@name LBAL_TARGET_COMPILER
 
@@ -227,9 +206,7 @@
 	#define LBAL_TARGET_COMPILER_MSVC 0
 #endif
 
-/**
-	@}
-*/
+///	@}	LBAL_TARGET_COMPILER
 
 /**
 	@name LBAL_TARGET_STANDARD_LIBRARY
@@ -281,12 +258,10 @@
 #endif
 ///@endcond
 
-/**
-	@}
-*/
+///	@}	LBAL_TARGET_STANDARD_LIBRARY
 
 /**
-	@name LBAL_TARGET_FAMILY
+	@name LBAL_TARGET_CPU_FAMILY
 
 	@brief Specify roughly which microprocessor family code is being generated
 	for.
@@ -317,9 +292,7 @@
 	#define LBAL_TARGET_CPU_FAMILY_X86 0
 #endif
 
-/**
-	@}
- */
+///	@}	LBAL_TARGET_CPU_FAMILY
 
 /**
 	@name LBAL_TARGET_CPU
@@ -384,9 +357,7 @@
 	#define LBAL_TARGET_CPU_IA64 0
 #endif
 
-/**
-	@}
- */
+///	@}	LBAL_TARGET_CPU
 
 /**
 	@name LBAL_TARGET_VEC
@@ -467,9 +438,7 @@
 	#define LBAL_TARGET_VEC_AVX2 0
 #endif
 
-/**
-	@}
-*/
+///	@}	LBAL_TARGET_VEC
 
 /**
 	@name LBAL_TARGET_OS
@@ -538,9 +507,7 @@
 	#define LBAL_TARGET_OS_WIN 0
 #endif
 
-/**
-	@}
-*/
+///	@}	LBAL_TARGET_OS
 
 /**
 	@name LBAL_TARGET_RT_[EXECUTABLE_FORMAT]
@@ -598,9 +565,7 @@
 	#define LBAL_TARGET_RT_WASM 0
 #endif
 
-/**
-	@}
-*/
+///	@}	LBAL_TARGET_RT_[EXECUTABLE_FORMAT]
 
 /**
 	@name LBAL_TARGET_RT_[ENDIANESS]
@@ -631,9 +596,7 @@
 	#define LBAL_TARGET_RT_BIG_ENDIAN 0
 #endif
 
-/**
-	@}
-*/
+///	@}	LBAL_TARGET_RT_[ENDIANESS]
 
 /**
 	@name LBAL_TARGET_RT_[ADDRESSING]
@@ -643,6 +606,8 @@
 
 	@details This identifies whether the binary is being generated for 32-bit
 	or 64-bit execution.
+
+	@{
 */
 
 /**
@@ -661,9 +626,7 @@
 	#define LBAL_TARGET_RT_64_BIT 0
 #endif
 
-/**
-	@}
-*/
+///	@}	LBAL_TARGET_RT_[ADDRESSING]
 
 /**
 	@name LBAL_TARGET_API
@@ -742,192 +705,319 @@
 	#define LBAL_TARGET_API_X11 0
 #endif
 
+///	@}	LBAL_TARGET_API
+
+///	@}	lbal_build_env
+
 /**
-	@}
+	@addtogroup lbal_platform
+
+	@brief Provides feature detection describing the capabilities of platform
+
+	@details These are all simple availability flags, and will be set to `1`
+	if a feature is available and `0` otherwise.
+
+	Mostly, the platform features are actually compiler features whose
+	availability is intentionally dependent on the target platform.
+
+	@remarks There are compiler features whose availability is dependent on the
+	target platform, _but not by design_. These are documented under
+	[compiler feature detection](@ref lbal_compiler).
+
+	@{
 */
 
 /**
-	@}
-*/
-
-/**
-	LBAL_PRAGMA
-	These conditionals specify whether the compiler supports particular
-	#pragma’s. Arguably, these are gratuitous since compilers should ignore
-	unrecongnized #pragmas, but besides preventing noisy warnings, these could
-	be useful to indicate, for example, the NON-availability of some requisite
-	feature, such as tight struct packing.
-
-	__SEEME__ Previously, this section contained #pragmas related to alignment
-	within structs. They’ve been mooted thanks to standardized ways of handling
-	this and widespread support. This section is being kept in as a placeholder
-	should we add more #pragma detection in the future.
-
-
-	LBAL_TYPE
+	@name LBAL_TYPE
 	These identify characteristics of certain POD types for a given compiler;
 	preprocessor definitions are used since sizeof can’t be used by the
 	preprocessor (reliably). These can be defined since we have special
 	knowledge of the compile/build flags that wouldn’t necessarily be
 	available to conforming portable code.
 
-		LBAL_TYPE_HAS_INT64
-			native 64-bit ints - including usigned ints - as int64_t and
-			uint64_t (and possibly also long long and unsigned long long,
-			depending)
+	@{
+*/
 
-		LBAL_TYPE_HAS_INT128
-			native 128-bit ints - including usigned ints - as __int128_t and
-			__uint128_t
+/**
+	@def LBAL_TYPE_HAS_INT64
+	native 64-bit ints - including usigned ints - as int64_t and
+	uint64_t (and possibly also long long and unsigned long long,
+	depending)
+*/
+#ifndef LBAL_TYPE_HAS_INT64
+	#define LBAL_TYPE_HAS_INT64 0
+#endif
 
-		LBAL_TYPE_EXACT_WIDTH_INTEGERS
-			availability of C99 exact width int types
+/**
+	@def LBAL_TYPE_HAS_INT128
+	native 128-bit ints - including usigned ints - as __int128_t and
+	__uint128_t
+*/
+#ifndef LBAL_TYPE_HAS_INT128
+	#define LBAL_TYPE_HAS_INT128 0
+#endif
 
-		LBAL_TYPE_DOUBLE_GT_FLOAT
-			double is distinct from float
+/**
+	@def LBAL_TYPE_EXACT_WIDTH_INTEGERS
+	availability of C99 exact width int types
+*/
+#ifndef LBAL_TYPE_EXACT_WIDTH_INTEGERS
+	#define LBAL_TYPE_EXACT_WIDTH_INTEGERS 0
+#endif
 
-		LBAL_TYPE_LONG_DOUBLE_GT_DOUBLE
-			long double is distinct from double
+/**
+	@def LBAL_TYPE_DOUBLE_GT_FLOAT
+	double is distinct from float
+*/
+#ifndef LBAL_TYPE_DOUBLE_GT_FLOAT
+	#define LBAL_TYPE_DOUBLE_GT_FLOAT 0
+#endif
 
-		LBAL_TYPE_WCHAR_T_IS_16_BITS
-			if this is 0, wchar_t is assumed to be a 32-bit integer type
+/**
+	@def LBAL_TYPE_LONG_DOUBLE_GT_DOUBLE
+	long double is distinct from double
+*/
+#ifndef LBAL_TYPE_LONG_DOUBLE_GT_DOUBLE
+	#define LBAL_TYPE_LONG_DOUBLE_GT_DOUBLE 0
+#endif
 
+/**
+	@def LBAL_TYPE_WCHAR_T_IS_16_BITS
+	if this is 0, wchar_t is assumed to be a 32-bit integer type
+*/
+#ifndef LBAL_TYPE_WCHAR_T_IS_16_BITS
+	#define LBAL_TYPE_WCHAR_T_IS_16_BITS 0
+#endif
 
-	LBAL_FEATURE
+///	@}	LBAL_TYPE
+
+/**
+	@name LBAL_FEATURE
 	Some compilers and platforms do things in a peculiar way that we may need
 	to work around or otherwise deal with. Those features are noted here.
 
-		LBAL_FEATURE_UTF16_FILE_SYSTEM
-			It is assumed that the file system uses UTF-8 unless this
-			feature conditional is set. Really only necessary for Windows.
+	@{
+*/
 
-			__FIXME__ We can probably retire this after updating the code to
-			always use the relevant std::filesystem path types instead of
-			doing our own conversions.
+/**
+	@def LBAL_FEATURE_UTF16_FILE_SYSTEM
 
-		LBAL_FEATURE_CONSTEXPR_INTRINSICS
-			Indicate whether the current compilers intrinsics are constant
-			expressions in the C++ sense. In the absence of a means to identify
-			whether a given function is constexpr at compile-time, we rely on
-			tools like this to aid us in determining, expression-by-expression,
-			whether a given function is -probably- able to be declared
-			constexpr.
+	@brief File system requires UTF-16 encoding.
 
-			__SEEME__ This is probably insufficiently granular, but it’s academic
-			for now: none of the supportedcompilers advertise constexpr
-			intrinsics, and to the extent that they have any, it’s pure
-			happenstance and dangerous to rely on.
+	@details It is assumed that the file system uses UTF-8 encoding unless this
+	feature conditional is set. Really
+
+	@remarks __APIME__ Only necessary for Windows.
+*/
+#ifndef LBAL_FEATURE_UTF16_FILE_SYSTEM
+	#define LBAL_FEATURE_UTF16_FILE_SYSTEM 0
+#endif
+
+/**
+	@def LBAL_FEATURE_CONSTEXPR_INTRINSICS
+
+	@brief Indicate whether the current compiler’s intrinsics are constant
+	expressions in the C++ sense.
+
+	@details In the absence of a means to identify whether a given function is
+	constexpr at compile-time, we rely on tools like this to aid us in
+	determining, expression-by-expression, whether a given function is
+	_probably_ able to be declared constexpr.
+
+	@remarks __SEEME__ This is most likely insufficiently granular, but it’s
+	academic for now: none of the supported compilers advertise constexpr
+	intrinsics, and to the extent that they have any, it’s pure happenstance
+	and dangerous to rely on.
+*/
+#ifndef LBAL_FEATURE_CONSTEXPR_INTRINSICS
+	#define LBAL_FEATURE_CONSTEXPR_INTRINSICS 0
+#endif
 
 
-	LBAL_CPPxx
-	LBAL_Cxx
-	Language feature availability flags to indicate whether a given C++ feature
-	is supported by the current compiler. Each one is set to a non-zero value
-	if available and 0 otherwise; every macro is always set to some value after
-	this header has been preprocessed.
+///	@}	LBAL_FEATURE
 
-	Note that these flags are neither exhaustive nor bounded:
+///	@}	lbal_platform
 
-		* Features that are available in all supported compilers do not have
-		flags. Currently, features that could conceivably be manually disabled
-		in a given compiler (e.g., exception handling) are not tracked, though
-		they could be, if necessary.
+/**
+	@addtogroup lbal_compiler
 
-		* Features that have become universally supported since the inception
-		of their feature flag will eventually have their flag removed. This
-		library is not intended to be backwards-compatible for all time, only
-		to smooth out cross-platform interoperability between current compiler
-		versions. This is unlikely to change, but sane user policies regarding
-		freezes for libraries and supported compilers for project milestones -
-		or even lifetimes - should mitigate this.
+	@brief Language feature availability flags to indicate whether a given C++
+	feature is supported by the current compiler.
 
-		* Features we (the developers) have not had cause to use or care about
-		are often not represented right away. Eventually, all language features
-		accepted into the Standard are likely to appear here, assuming
-		universal support doesn’t come so quickly that a feature flag becomes
-		mooted, as per the above criteria.
+	@details These are set to a non-zero value if available and 0 otherwise;
+	every token is always set to _some_ value. Where possible, these mimic the
+	equivalent [SD-6 macros](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations),
+	both in their naming and in their range of values, so a value will be:
 
-		* Features from proposals to the Standard may have flags here; in some
-		cases, this may occur for proposed features that have not been accepted
-		into the standard, even as part of a Technical Specification. This
-		typically happens with de facto standards (e.g., variants on symbol
-		visibility handling) when it relates to language features. This sort of
-		thing is much more common for proposed library features (e.g., <span>
-		support was made available long before it was formally voted in).
+	- `0`, to indicate no availability, or
+	- the SD-6 value equivalent to the available feature support, or
+	- `1`, if there is no equivalent SD-6 macro
 
-	Note that the macro names mimic those of the equivalent SD-6 macros, where
-	available; similarly, the macro values will either be:
+	Note that these tokens are neither exhaustive nor bounded:
 
-		- 0, to indicate no availability, or
-		- the SD-6 value equivalent to the available feature support, or
-		- 1, if there is no equivalent SD-6 macro
+	- Features that are available in all supported compilers do not have
+	flags. Currently, features that could conceivably be manually disabled
+	in a given compiler (e.g., exception handling) are not tracked, though
+	they could be, if necessary.
 
-	__SEEME__ Note that this leaves an ambiguous case where a feature may have been
-	updated, e.g., as a result of a Defect Report, but a new SD-6 value has not
-	been assigned; this can be further complicated if the DR resolution is not
-	finalized, meaning that the available feature is in an intermediate state.
-	Currently, we have no policy for dealing with this situation, as it has not
-	arisen yet in practice. Most likely it would be addressed by assigning an
-	arbitrary value (e.g., “last known good value +1”). This comes with its own
-	problems, namely that there is no formal policy regarding bumping SD-6
-	macro values vs. creating new macros, for example in the case where
-	backwards compatibility is affected by a breaking change, which would
-	complicate a simple greater-than test against a macro value.
+	- Features that have become universally supported since the inception
+	of their feature flag will eventually have their flag removed. This
+	library is not intended to be backwards-compatible for all time, only
+	to smooth out cross-platform interoperability between current compiler
+	versions. This is unlikely to change, but sane user policies regarding
+	freezes for libraries and supported compilers for project milestones -
+	or even lifetimes - should mitigate this.
 
-	__APIME__ Previous iterations of this header also attempted to determine
-	whether various C99 and C11 features were available. This turned out to be
-	impractical and a bit pointless. As a result, such features are only
-	tracked - if they are tracked at all - in the context of their
+	- Features we (the developers) have not had cause to use or care about
+	are often not represented right away. Eventually, all language features
+	accepted into the Standard will appear here, assuming universal support
+	doesn’t come so quickly that a feature flag becomes mooted, as per the
+	above criteria.
+
+	- Features from proposals to the Standard may have flags here; in some
+	cases, this may occur for proposed features that have not been accepted
+	into the standard, e.g., as part of a Technical Specification. This
+	typically happens with de facto standards (e.g., variants on symbol
+	visibility handling) when it relates to language features. This sort of
+	thing is much more common for proposed library features (e.g., `<span>`
+	support was made available long before it was formally voted in).
+
+	@remarks __SEEME__ Note that there are ambiguous cases where a feature
+	may have been updated, e.g., as a result of a Defect Report (DR), but a new
+	SD-6 value has not been assigned; this can be further complicated if the DR
+	resolution is not finalized, meaning that the available feature is in an
+	intermediate state. Currently, we have no policy for dealing with this
+	situation, as it has not arisen yet in practice. Most likely it would be
+	addressed by assigning an arbitrary value (e.g., “last known good value
+	+1”). This comes with its own problems, namely that there is no formal
+	policy regarding bumping SD-6 macro values vs. creating new macros, for
+	example in the case where backwards compatibility is affected by a breaking
+	change, which would complicate a simple greater-than test against a macro
+	value.
+
+	@remarks __APIME__ Previous iterations of this header also attempted to
+	determine whether various C99 and C11 features were available. This turned
+	out to be impractical and a bit pointless. As a result, such features are
+	only tracked - if they are tracked at all - in the context of their
 	applicability to a given C++ Standard, e.g., support for the C99
 	preprocessor as required by C++11.
 
-	C++98
+	@{
+*/
+
+/**
+	@name LBAL_CPP98
 	These are here only because compilers can be made to disable specific
 	features for various reasons and we want to have a universal way of
 	determining whether that’s happened.
 
-		LBAL_CPP98_EXCEPTIONS
-			There -was- an SD-6 macro for this, but it’s been removed for
-			standardization. Set to 1 if exceptions are enabled, 0 otherwise.
+	@{
+*/
 
-		LBAL_CPP98_RTTI
-			There -was- an SD-6 macro for this, but it’s been removed for
-			standardization. Set to 1 if RTTI is enabled, 0 otherwise.
+/**
+	@def LBAL_CPP98_EXCEPTIONS
+	@brief Language-level support for C++ Exceptions
+	@details There _was_ an SD-6 macro for this, but it’s been removed for
+	standardization. Set to `1` if exceptions are enabled, `0` otherwise.
+*/
+#ifndef LBAL_CPP98_EXCEPTIONS
+	#define LBAL_CPP98_EXCEPTIONS 0
+#endif
 
-	C++11
+/**
+	@def LBAL_CPP98_RTTI
+	@brief Language-level support for run-time type identification (RTTI)
+	@details There _was_ an SD-6 macro for this, but it’s been removed for
+	standardization. Set to `1` if RTTI is enabled, `0` otherwise.
+*/
+#ifndef LBAL_CPP98_RTTI
+	#define LBAL_CPP98_RTTI 0
+#endif
+
+///	@}	LBAL_CPP98
+
+/**
+	@name LBAL_CPP11
 	Note that all supported compilers support all required features of C++11.
 
-		LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2670.htm>
-			There is currently no SD-6 macro for this.
+	@{
+*/
 
-		LBAL_CPP11_THREADSAFE_STATIC_INIT
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2660.htm>
-		__cpp_threadsafe_static_init
-			Some compilers can disable this feature if asked; will be set to 0
-			if that has happened.
+/**
+	@def LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION
+	@brief Support for optional C++ garbage collection.
+	@details There is currently no SD-6 macro for this.
 
-	C++14
+	http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2670.htm
+*/
+#ifndef LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION
+	#define LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION 0
+#endif
+
+/**
+	@def LBAL_CPP11_THREADSAFE_STATIC_INIT
+	@brief Support for thread-safe static initialization.
+	@details Some compilers can disable this feature if asked; will be set to
+	`0` if that has happened.
+
+	Equivalent SD-6 macro: `__cpp_threadsafe_static_init`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2660.htm>
+*/
+#ifndef LBAL_CPP11_THREADSAFE_STATIC_INIT
+	#define LBAL_CPP11_THREADSAFE_STATIC_INIT 0
+#endif
+
+///	@}	LBAL_CPP11
+
+/**
+	@name LBAL_CPP14
 	All supported compilers support all features of C++14, but some of them may
 	require that certain features be explicitly enabled.
 
-		LBAL_CPP14_SIZED_DEALLOCATION
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3778.html>
-		__cpp_sized_deallocation
-			Some compilers disable this by default since it’s an ABI-breaking
-			change; clang, in particular, does this.
+	@{
+*/
 
-	C++17
+/**
+	@def LBAL_CPP14_SIZED_DEALLOCATION
+	Some compilers disable this by default since it’s an ABI-breaking
+	change; clang, in particular, does this.
+
+	Equivalent SD-6 macro: `__cpp_sized_deallocation`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3778.html>
+*/
+#ifndef LBAL_CPP14_SIZED_DEALLOCATION
+	#define LBAL_CPP14_SIZED_DEALLOCATION 0
+#endif
+
+///	@}	LBAL_CPP14
+
+/**
+	@name LBAL_CPP17
 	All supported compilers support all features of C++17, but some of them may
 	require that certain features be explicitly enabled.
 
-		LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0522r0.html>
-		__cpp_template_template_args
-			The proposal this is from is intended to resolve a Defect Report,
-			but unfortunately introduces a defect of its own. Some compilers
-			are disabling this until a revised patch is in.
+	@{
+*/
 
+/**
+	@def LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS
+	The proposal this is from is intended to resolve a Defect Report,
+	but unfortunately introduces a defect of its own. Some compilers
+	are disabling this until a revised patch is in.
+
+	Equivalent SD-6 macro: `__cpp_template_template_args`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0522r0.html>
+*/
+#ifndef LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS
+	#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS 0
+#endif
+
+///	@}	LBAL_CPP17
+
+/**
 	C++2a
 	These are often difficult or impossible to emulate correctly, so the norm
 	is to not bother. However, when it -has- been done, we note it, as well as
@@ -1067,7 +1157,35 @@
 		flag will be retired. Note that if support requires having a particular
 		compiler switch set to get compatibility, setting the switch will
 		likely be mandated.
+*/
 
+///	@}	lbal_compiler
+
+/**
+	@addtogroup lbal_library
+
+	@brief Provides feature detection describing the capabilities of the
+	Standard Library implementation
+
+	@details These are a mix of binary-choice availability flags and versioned
+	values describing levels of support. Where possible, these mimic the
+	equivalent [SD-6 macros](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations),
+	both in their naming and in their range of values.
+
+	Generally, we don’t bother testing for things that are guaranteed
+	by our minimum-supported C++ dialect. For example, all C++17 library
+	implementations have support for `std::make_unique`, so we don’t have a
+	feature token to test for it. By contrast, at least one major platform
+	has conditional support for `std::any` when building with C++17, so there
+	is an explicit test for that feature.
+
+	@remarks __APIME__ In the future, we may add tests for previously-assumed
+	features if we lower the bar on the “minimum-supported C++ dialect”.
+
+	@{
+*/
+
+/**
 	LBAL_LIBCPPxx_xxx
 	LBAL_LIBCPPxx_xxx_EXP
 	These relate to library features. They’re mostly set in lbalVersion.hpp, but
@@ -1110,7 +1228,7 @@
 		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0067r5.html>
 		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0682r1.html>
 		__cpp_lib_to_chars
-			No wrapper is provided, though a <charconv> wrapper would be a
+			No wrapper is provided, though a `<charconv>` wrapper would be a
 			reasonable thing to add. Note that this got weird since the
 			functions got moved to their own header and their signatures were
 			altered, post-Standardization, all as part of a Defect Report
@@ -1360,8 +1478,97 @@
 		__cpp_lib_observer_ptr
 		__cpp_lib_experimental_observer_ptr
 			A reference implementation is available.
+*/
 
+///	@}	lbal_library
 
+/**
+	@addtogroup lbal_builtins
+
+	@brief Provides generalized access to compiler intrinsics and built-in
+	functions
+
+	@details These are wrappers for intrinsic functions that may not be
+	available on every platform. Where a given function is not available, it
+	may be emulated, or simply replaced with a no-op.
+
+	@{
+*/
+
+/**
+	@name LBAL_HINT
+
+	@brief In-line hints to the compiler to guide code optimization
+
+	@details These provide compiler hints used to wrap code statements
+	and provide guidance to the compiler regarding intended usage or planned
+	consumption patterns. None of these is guaranteed to have any effect; in
+	the absence of effect, the statement will simply compile normally.
+
+	@remarks __FIXME__ This needs a usage example.
+
+	@{
+*/
+
+/**
+	@def LBAL_HINT_likely(LBAL_expr_)
+
+	@brief Branch prediction hinting that something is most likely true
+
+	@details `LBAL_expr_` must resolve to a boolean.
+
+	This is roughly equivalent to the C++20 `[[likely]]` attribute, and may
+	resolve to it, if it is available.
+*/
+#ifndef LBAL_HINT_likely
+	#define LBAL_HINT_likely(LBAL_expr_) LBAL_expr_
+#endif
+
+/**
+	@def LBAL_HINT_unlikely(LBAL_expr_)
+
+	@brief Branch prediction hinting that something is most likely false
+
+	@details `LBAL_expr_` must resolve to a boolean.
+
+	This is roughly equivalent to the C++20 `[[unlikely]]` attribute, and may
+	resolve to it, if it is available.
+*/
+#ifndef LBAL_HINT_unlikely
+	#define LBAL_HINT_unlikely(LBAL_expr_) LBAL_expr_
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ These functions have been renamed. The old names are
+	//	deprecated and will be removed in a future release.
+	#ifndef LBAL_BUILTIN_likely
+		#define LBAL_BUILTIN_likely(LBAL_expr_) LBAL_HINT_likely(LBAL_expr_)
+	#endif
+
+	#ifndef LBAL_BUILTIN_unlikely
+		#define LBAL_BUILTIN_unlikely(LBAL_expr_) LBAL_HINT_unlikely(LBAL_expr_)
+	#endif
+///@endcond
+
+///	@}	LBAL_HINT
+
+///	@}	lbal_builtins
+
+/**
+	@addtogroup lbal_decorators
+
+	@brief Provides decorators that may be added to declarations of
+	various kinds
+
+	@details These are a collection of compiler- and linker-agnostic
+	modifiers that may be used to indicate symbol visibility, calling
+	conventions, and usage hints. On platforms where a given decorator has
+	no equivalent or has no meaning, it resolves to nothing.
+
+	@{
+*/
+
+/**
 	LBAL_VIS_xxx
 	These describe different levels of symbol visibility as it pertains to the
 	ABI, allowing explicit control over what gets exported - and subsequently
@@ -1654,19 +1861,6 @@
 
 		LBAL_FUNC_CALLBACK_STD(LBAL_func_name_)
 			Std-style function pointer
-
-
-	LBAL_BUILTIN_xxx
-	These are wrappers for intrinsic functions that may not be available on
-	every platform. Where a given function is not available, it may be
-	emulated, or simply replaced with a no-op.
-
-		LBAL_BUILTIN_likely(LBAL_expr_)
-			branch prediction hinting that something is most likely true;
-			LBAL_expr_ must resolve to a boolean
-
-		LBAL_BUILTIN_unlikely(LBAL_expr_)
-			branch prediction hinting that something is most likely false;
-			LBAL_expr_ must resolve to a boolean
-
 */
+
+///	@}	lbal_decorators

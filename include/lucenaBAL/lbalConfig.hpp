@@ -69,7 +69,7 @@
 // __SEEME__ It would be helpful to show the current version numbers in the
 //	docs, but since they’re coming from a CMake-generated file, they don’t
 //	appear to be accessible to Doxygen during preprocessing.
-#include <details/lbalGenerated.hpp>
+#include <lucenaBAL/details/lbalGenerated.hpp>
 
 #ifndef LBAL_version_major
 	#define LBAL_version_major 0
@@ -111,7 +111,7 @@
 	#define LBAL_abi_version 0
 #endif
 
-///@}
+///	@}	Version Info
 
 /**
 	@name Utilities
@@ -175,7 +175,7 @@
 #define LBAL_Stringify_(LBAL_param_) \
 	LBAL_Stringify1_(LBAL_param_)
 
-///@}
+///	@}	Utilities
 
 
 /**
@@ -401,7 +401,7 @@ LBAL_end_v_namespace
 
 ///@endcond
 
-///@}
+///	@}	Namespaces
 
 
 ///@cond LBAL_INTERNAL
@@ -422,4 +422,4 @@ LBAL_end_v_namespace
 
 ///@endcond
 
-///@}
+///	@}	lbal_config
