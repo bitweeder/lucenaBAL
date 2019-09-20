@@ -66,6 +66,7 @@
 #include <lucenaBAL/details/lbalPlatformSetup.hpp>
 #include <lucenaBAL/details/lbalCompilerSetup.hpp>
 #include <lucenaBAL/details/lbalLibrarySetup.hpp>
+	//	The order in which these are initially included is important.
 
 
 /**
@@ -946,7 +947,7 @@
 /**
 	@def LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION
 	@brief Support for optional C++ garbage collection.
-	@details There is currently no SD-6 macro for this.
+	@details Equivalent SD-6 macro: none
 
 	http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2670.htm
 */
@@ -1018,146 +1019,410 @@
 ///	@}	LBAL_CPP17
 
 /**
-	C++2a
-	These are often difficult or impossible to emulate correctly, so the norm
-	is to not bother. However, when it -has- been done, we note it, as well as
-	how to make use of the emulated feature.
+	@name LBAL_CPP2A
 
-	__SEEME__ Somewhat awkwardly, a lot of proposed new language and library
-	features and fixes don’t include SD-6 macros (yet?); this makes identifying
-	availability more challenging than it needs to be. Note that a proposal to
-	standardize SD-6 macros was accepted for C++2a, but the current SD-6 itself
-	is pretty out-of-date, and it’s unclear whether there will be a fix-up
-	prior to FDIS. As a result, most of these are either placeholders awaiting
-	testing or depend on compiler version-differentiated activation.
+	@brief Identify language features specific to the C++2a draft standard
 
-		LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0409r2.html>
-			There is currently no SD-6 macro for this.
+	@details Support across compilers for C++2a features is unsurprisingly
+	inconsistent, and is one of the fundamental reasons why lucenaBAL exists.
+	These will be updated regularly as the Standard develops.
 
-		LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS
-		<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0840r2.html>
-		__has_cpp_attribute(no_unique_address)
+	@remarks __SEEME__ A proposal to standardize SD-6 macros was accepted for
+	C++2a, and is updated regularly to track new features, but it tends to lag
+	the adoption rate. Additionally, a lot of proposed new language and library
+	features—and fixes—don’t suggest corresponding SD-6 macros, which can make
+	identifying availability more challenging than it needs to be. Taken
+	together, many of these are either placeholders awaiting testing or depend
+	on compiler version-differentiated activation.
 
-		LBAL_CPP2A_ATTRIBUTE_LIKELY
-		LBAL_CPP2A_ATTRIBUTE_UNLIKELY
-		LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html>
-		__has_cpp_attribute(likely)
-		__has_cpp_attribute(unlikely)
-			We track the availability of each attribute separately, as well as
-			provide an aggregate to test for compliance. The aggregate’s value
-			will be 0 if either attribute is unavailable, or 1 otherwise.
+	@remarks __APIME__ These will eventually all be renamed, most likely to
+	use the `LBAL_CPP20` prefix, once the Draft Standard finalizes. Once that
+	happens, the original names will persist for a while as aliases for the new
+	ones.
 
-		LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS
-		<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0732r2.pdf>
-		__cpp_nontype_template_parameter_class
+	@{
+*/
 
-		LBAL_CPP2A_CONCEPTS
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0734r0.pdf>
-		__cpp_concepts
+/**
+	@def LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS
 
-		LBAL_CPP2A_CONDITIONAL_EXPLICIT
-		<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0892r2.html>
-		__cpp_conditional_explicit
+	Equivalent SD-6 macro: none
 
-		LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0704r1.html>
-			There is currently no SD-6 macro for this.
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0409r2.html>
+*/
+#ifndef LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS
+	#define LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 0
+#endif
 
-		LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION
-		<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1064r0.html>
-			There is currently no SD-6 macro for this.
+/**
+	@def LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS
 
-		LBAL_CPP2A_COROUTINES
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0912r1.html>
-		__cpp_coroutines
-			Note that this is just language support for the <coroutine> header.
+	Equivalent SD-6 macro: `__has_cpp_attribute(no_unique_address)`
 
-		LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0624r2.pdf>
-			There is currently no SD-6 macro for this.
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0840r2.html>
+*/
+#ifndef LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS
+	#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS 0
+#endif
 
-		LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0683r1.html>
-			There is currently no SD-6 macro for this.
+/**
+	@def LBAL_CPP2A_ATTRIBUTE_LIKELY
 
-		LBAL_CPP2A_DESIGNATED_INITIALIZERS
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0329r4.pdf>
-			There is currently no SD-6 macro for this.
+	Equivalent SD-6 macro: `__has_cpp_attribute(likely)`
 
-		LBAL_CPP2A_DESTROYING_DELETE
-		<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0722r3.html>
-		__cpp_impl_destroying_delete
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html>
+*/
+#ifndef LBAL_CPP2A_ATTRIBUTE_LIKELY
+	#define LBAL_CPP2A_ATTRIBUTE_LIKELY 0
+#endif
 
-		LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0614r1.html>
-			There is currently no SD-6 macro for this.
+/**
+	@def LBAL_CPP2A_ATTRIBUTE_UNLIKELY
 
-		LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0702r1.html>
-			There is currently no SD-6 macro for this.
+	Equivalent SD-6 macro: `__has_cpp_attribute(unlikely)`
 
-		LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS
-		<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0941r2.html>
-			There is currently no SD-6 macro for this (ironically). It appears
-			this is only here to get Microsoft to support SD-6, as the other
-			major compilers de facto meet the requirement.
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html>
+*/
+#ifndef LBAL_CPP2A_ATTRIBUTE_UNLIKELY
+	#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY 0
+#endif
 
-		LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE
-		<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0780r2.html>
-			There is currently no SD-6 macro for this.
+/**
+	@def LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY
 
-		LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0515r0.pdf>
-		__cpp_impl_three_way_comparison
+	We track the availability of each attribute separately, as well as
+	provide this aggregate to test for compliance. The aggregate’s value
+	will be 0 if either attribute is unavailable, or 1 otherwise.
 
-		LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0428r2.pdf>
-			There is currently no SD-6 macro for this.
+	Equivalent SD-6 macro: none
 
-		LBAL_CPP2A_TYPENAME_OPTIONAL
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0634r2.html>
-			There is currently no SD-6 macro for this.
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html>
+*/
+#ifndef LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY
+	#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY 0
+#endif
 
-		LBAL_CPP2A_VA_OPT
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0306r4.html>
-			There is currently no SD-6 macro for this.
+/**
+	@def LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS
 
-	On Hold
-	These are features that got yoinked for various reasons and are currently
-	back in the oven, but expected to pop in C++23.
-		LBAL_CPP2A_ATTRIBUTE_ASSERT
-		LBAL_CPP2A_ATTRIBUTE_ENSURES
-		LBAL_CPP2A_ATTRIBUTE_EXPECTS
-		LBAL_CPP2A_CONTRACTS
-		__has_cpp_attribute(assert)
-		__has_cpp_attribute(ensures)
-		__has_cpp_attribute(expects)
-		<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html>
-			This is actually a bundle of attributes using a new syntax; the
-			syntax has no SD-6 macro, so we rely on the presence of the
-			attributes to determine support. We track the availability of each
-			attribute separately, as well as provide an aggregate to test for
-			compliance. The aggregate’s value will be 0 if any attribute is
-			unavailable, or 1 otherwise.
+	Equivalent SD-6 macro: `__cpp_nontype_template_parameter_class`
 
-	Technical Specifications and Proposals
-	Most of these will eventually migrate to one of the above sections, at
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0732r2.pdf>
+*/
+#ifndef LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS
+	#define LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS 0
+#endif
+
+/**
+	@def LBAL_CPP2A_CONCEPTS
+
+	Equivalent SD-6 macro: `__cpp_concepts`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0734r0.pdf>
+*/
+#ifndef LBAL_CPP2A_CONCEPTS
+	#define LBAL_CPP2A_CONCEPTS 0
+#endif
+
+/**
+	@def LBAL_CPP2A_CONDITIONAL_EXPLICIT
+
+	Equivalent SD-6 macro: `__cpp_conditional_explicit`
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0892r2.html>
+*/
+#ifndef LBAL_CPP2A_CONDITIONAL_EXPLICIT
+	#define LBAL_CPP2A_CONDITIONAL_EXPLICIT 0
+#endif
+
+/**
+	@def LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0704r1.html>
+*/
+#ifndef LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS
+	#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 0
+#endif
+
+/**
+	@def LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION
+
+	Equivalent SD-6 macro: none
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1064r0.html>
+*/
+#ifndef LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION
+	#define LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION 0
+#endif
+
+/**
+	@def LBAL_CPP2A_COROUTINES
+	Note that this is just language support for the `<coroutine>` header.
+
+	Equivalent SD-6 macro: `__cpp_coroutines`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0912r1.html>
+*/
+#ifndef LBAL_CPP2A_COROUTINES
+	#define LBAL_CPP2A_COROUTINES 0
+#endif
+
+/**
+	@def LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0624r2.pdf>
+*/
+#ifndef LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS
+	#define LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS 0
+#endif
+
+/**
+	@def LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0683r1.html>
+*/
+#ifndef LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS
+	#define LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 0
+#endif
+
+/**
+	@def LBAL_CPP2A_DESIGNATED_INITIALIZERS
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0329r4.pdf>
+*/
+#ifndef LBAL_CPP2A_DESIGNATED_INITIALIZERS
+	#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 0
+#endif
+
+/**
+	@def LBAL_CPP2A_DESTROYING_DELETE
+
+	Equivalent SD-6 macro: `__cpp_impl_destroying_delete`
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0722r3.html>
+*/
+#ifndef LBAL_CPP2A_DESTROYING_DELETE
+	#define LBAL_CPP2A_DESTROYING_DELETE 0
+#endif
+
+/**
+	@def LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0614r1.html>
+*/
+#ifndef LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR
+	#define LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 0
+#endif
+
+/**
+	@def LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0702r1.html>
+*/
+#ifndef LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION
+	#define LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION	0
+#endif
+
+/**
+	@def LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS
+
+	It appears this is only here to get Microsoft to support SD-6, as the other
+	major compilers de facto meet the requirement.
+
+	There is currently no SD-6 macro for this (ironically).
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0941r2.html>
+*/
+#ifndef LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS
+	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 0
+#endif
+
+/**
+	@def LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE
+
+	Equivalent SD-6 macro: none
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0780r2.html>
+*/
+#ifndef LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE
+	#define LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE 0
+#endif
+
+/**
+	@def LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR
+
+	Equivalent SD-6 macro: `__cpp_impl_three_way_comparison`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0515r0.pdf>
+*/
+#ifndef LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR
+	#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR 0
+#endif
+
+/**
+	@def LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0428r2.pdf>
+*/
+#ifndef LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS
+	#define LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS 0
+#endif
+
+/**
+	@def LBAL_CPP2A_TYPENAME_OPTIONAL
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0634r2.html>
+*/
+#ifndef LBAL_CPP2A_TYPENAME_OPTIONAL
+	#define LBAL_CPP2A_TYPENAME_OPTIONAL 0
+#endif
+
+/**
+	@def LBAL_CPP2A_VA_OPT
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0306r4.html>
+*/
+#ifndef LBAL_CPP2A_VA_OPT
+	#define LBAL_CPP2A_VA_OPT 0
+#endif
+
+///	@}	LBAL_CPP2A
+
+/**
+	@name Technical Specifications and Proposals
+	Most of these will eventually migrate to one of the other sections, at
 	which time the associated macro will be renamed (and possibly aliased).
 
-	LBAL_C99
+	@{
+*/
+
+/**
+	@brief Contracts: Assert Attribute
+
+	@details This is one of a bundle of attributes using a new syntax. It takes
+	the place of preprocessor-style asserts and serves the same purpose.
+
+	Equivalent SD-6 macro: `__has_cpp_attribute(assert)`
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html>
+*/
+#ifndef LBAL_CPPTS_ATTRIBUTE_ASSERT
+	#define LBAL_CPPTS_ATTRIBUTE_ASSERT 0
+#endif
+
+/**
+	@brief Contracts: Postcondition Attribute
+
+	@details This is one of a bundle of attributes using a new syntax. It
+	identifies function postconditions amd is intended to allow at least
+	partial enforcement by a static analyzer.
+
+	Equivalent SD-6 macro: `__has_cpp_attribute(assert)`
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html>
+*/
+#ifndef LBAL_CPPTS_ATTRIBUTE_ENSURES
+	#define LBAL_CPPTS_ATTRIBUTE_ENSURES 0
+#endif
+
+/**
+	@brief Contracts: Precondition Attribute
+
+	@details This is one of a bundle of attributes using a new syntax. It
+	identifies function preconditions amd is intended to allow at least partial
+	enforcement by a static analyzer.
+
+	Equivalent SD-6 macro: `__has_cpp_attribute(expects)`
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html>
+*/
+#ifndef LBAL_CPPTS_ATTRIBUTE_EXPECTS
+	#define LBAL_CPPTS_ATTRIBUTE_EXPECTS 0
+#endif
+
+/**
+	@brief Contracts
+
+	@details This is actually a bundle of attributes using a new syntax; the
+	syntax itself has no SD-6 macro, so we rely on the presence of the
+	attributes to determine support. We track the availability of each
+	attribute separately, as well as provide an aggregate to test for
+	compliance. The aggregate’s value will be `0` if any attribute is
+	unavailable, or `1` otherwise.
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html>
+
+	@remarks These were yoinked from C++2A prior to national balloting for
+	various reasons and are currently back in the oven, but expected to pop in
+	the C++23 Draft Standard.
+*/
+#ifndef LBAL_CPPTS_CONTRACTS
+	#define LBAL_CPPTS_CONTRACTS 0
+#endif
+
+///@cond LBAL_INTERNAL
+//	__APIME__ These tokens were all renamed after being stripped from the
+//	Draft Standard. They have not yet been formally resubmitted for the next
+//	cycle.
+#ifndef LBAL_CPP2A_ATTRIBUTE_ASSERT
+	#define LBAL_CPP2A_ATTRIBUTE_ASSERT LBAL_CPPTS_ATTRIBUTE_ASSERT
+#endif
+
+#ifndef LBAL_CPP2A_ATTRIBUTE_ENSURES
+	#define LBAL_CPP2A_ATTRIBUTE_ENSURES LBAL_CPPTS_ATTRIBUTE_ENSURES
+#endif
+
+#ifndef LBAL_CPP2A_ATTRIBUTE_EXPECTS
+	#define LBAL_CPP2A_ATTRIBUTE_EXPECTS LBAL_CPPTS_ATTRIBUTE_EXPECTS
+#endif
+
+#ifndef LBAL_CPP2A_CONTRACTS
+	#define LBAL_CPP2A_CONTRACTS LBAL_CPPTS_CONTRACTS
+#endif
+///@endcond
+
+///	@}	Technical Specifications and Proposals
+
+/**
+	@name LBAL_C99
 	Feature availability macros to indicate whether a given C99 feature is
 	supported by the current compiler. Each one is set to 1 if available and 0
 	otherwise.
 
-		LBAL_C99_PREPROCESSOR
-		__SEEME__ Only MSVS is known to have problems with this, and it appears
-		progress is finally being made to fully address it, at which point this
-		flag will be retired. Note that if support requires having a particular
-		compiler switch set to get compatibility, setting the switch will
-		likely be mandated.
+	@{
 */
+
+/**
+	@def LBAL_C99_PREPROCESSOR
+	__SEEME__ Only MSVS is known to have problems with this, and it appears
+	progress is finally being made to fully address it, at which point this
+	flag will be retired. Note that if support requires having a particular
+	compiler switch set to get compatibility, setting the switch will
+	likely be mandated.
+*/
+#ifndef LBAL_C99_PREPROCESSOR
+	#define LBAL_C99_PREPROCESSOR 0
+#endif
+
+///	@}	LBAL_C99
 
 ///	@}	lbal_compiler
 
@@ -1167,9 +1432,11 @@
 	@brief Provides feature detection describing the capabilities of the
 	Standard Library implementation
 
-	@details These are a mix of binary-choice availability flags and versioned
-	values describing levels of support. Where possible, these mimic the
-	equivalent [SD-6 macros](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations),
+	@details These tokens relate to library features. They’re mostly set in
+	`<lucenaBAL/lbalVersion.hpp>`, but they’re documented here since they may
+	be overridden depending on the build environment. These are a mix of binary
+	availability flags and versioned values describing levels of support.
+	Where possible, these mimic the equivalent [SD-6 macros](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations),
 	both in their naming and in their range of values.
 
 	Generally, we don’t bother testing for things that are guaranteed
@@ -1179,6 +1446,15 @@
 	has conditional support for `std::any` when building with C++17, so there
 	is an explicit test for that feature.
 
+	@remarks __SEEME__ Note that some of these _also_ require language support.
+	We try to note such cases when they arise.
+
+	@remarks __APIME__ There is some ambiguity in whether we track the
+	experimental version of a feature. Generally, we don’t bother if:
+	- no major compiler ever shipped an experimental version
+	- the experimental version is/was completely broken
+	- we’re transitioning to a new baseline and looking to eliminate cruft
+
 	@remarks __APIME__ In the future, we may add tests for previously-assumed
 	features if we lower the bar on the “minimum-supported C++ dialect”.
 
@@ -1186,299 +1462,599 @@
 */
 
 /**
-	LBAL_LIBCPPxx_xxx
-	LBAL_LIBCPPxx_xxx_EXP
-	These relate to library features. They’re mostly set in lbalVersion.hpp, but
-	they’re documented here since they may be overridden depending on the build
-	environment. Note that features that are unambiguously available (e.g.,
-	almost the entirety of the C++11 STL) don’t have macros. Generally, a
-	Library feature detection macro is only set to 0 here if we know that a
-	feature is broken or unavailable, and that it would otherwise be falsely
-	recognized as available. A macro is only set to a non-zero value if we
-	know that a feature -should- be available, but normal feature detection
-	would fail to assign the correct SD-6 macro value; note that in this case,
-	the macro may be reset to 0 later if header detection fails. See the notes
-	above for LBAL_CPPxx as well as in lbalVersion.hpp for additional
-	information.
+	@name LBAL_LIBCPP17
+	A large number of C++17 Standard Library features are not available in
+	the implementations bundled with otherwise-conforming C++17 compilers.
+	Additionally, sometimes support is simply broken or has surprising
+	limitations, presenting further challenges. Here we track and document all
+	such situations we’re aware of, and reflect them in the token values.
 
-	Note that some of these -also- require language support, or have some other
-	dependencies. We try to note such cases when the dependencies exist outside
-	of the current Standard baseline, e.g., a C++2a library feature that
-	depends on C++2a language support, when the baseline is C++17.
-
-	There is some ambiguity in whether we track the experimental version of a
-	feature. Generally, we don’t bother if:
-
-		- no major compiler ever shipped an experimental version
-		- the experimental version is/was completely broken
-		- we’re transitioning to a new baseline and looking to eliminate cruft
-
-	__SEEME__ Note that regardless of how these macros are set, a feature may be
-	available, anyway, if there is a reference implementation for it; see the
-	lbalConfig.hpp header for details of how this works, and see the relevant
-	Wrapper header, if there is one.
-
-	C++17
-		LBAL_LIBCPP17_ANY
-		__cpp_lib_any
-			Only needed because of older Apple platforms.  Note that we neither
-			track nor use experimental versions of this.
-
-		LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0067r5.html>
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0682r1.html>
-		__cpp_lib_to_chars
-			No wrapper is provided, though a `<charconv>` wrapper would be a
-			reasonable thing to add. Note that this got weird since the
-			functions got moved to their own header and their signatures were
-			altered, post-Standardization, all as part of a Defect Report
-			resolution.
-
-		LBAL_LIBCPP17_EXECUTION
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0024r2.html>
-		__cpp_lib_execution
-			No wrapper is provided; the functionality would be good to have,
-			but challenging to implement effectively. Note that by itself, this
-			macro does not measure compliance with the referenced Working Group
-			paper; use LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS. Note
-			that we neither track nor use experimental versions of this.
-
-		LBAL_LIBCPP17_FILESYSTEM
-		LBAL_LIBCPP17_FILESYSTEM_EXP
-		__cpp_lib_filesystem
-		__cpp_lib_experimental_filesystem
-			Only missing on Apple platforms. Unfortunately, we fall back to
-			boost for a reference implementation, and the boost version differs
-			substantially from the Standard. Also, note that the experimental
-			version differs in many ways from the final version, but it’s all
-			that is offered until gcc 8 and clang 7.
-
-		LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0154r1.html>
-		__cpp_lib_thread_hardware_interference_size
-			This is set in this header; no wrapper is provided, though the
-			functionality would be a reasonable thing to add. Note that we
-			neither track nor use experimental versions of this.
-
-		LBAL_LIBCPP17_LAUNDER
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0137r1.html>
-		__cpp_lib_launder
-			AKA, “Replacement of class objects containing reference members.”
-			No wrapper is provided, though the functionality would be a
-			reasonable thing to add. Note that we neither track nor use
-			experimental versions of this.
-
-		LBAL_LIBCPP17_OPTIONAL
-		__cpp_lib_optional
-			Only needed because of older Apple platforms.  Note that we neither
-			track nor use experimental versions of this.
-
-		LBAL_LIBCPP17_PARALLEL_ALGORITHM
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0024r2.html>
-		__cpp_lib_parallel_algorithm
-			This is set in this header. No wrapper is provided; the
-			functionality would be good to have, but challenging and messy to
-			implement effectively. Note that by itself, this macro does not
-			measure compliance with the Working Group paper; for that, use
-			LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS. Note that we
-			neither track nor use experimental versions of this.
-
-		LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS
-		<http://wg21.link/p0083r3>
-		__cpp_lib_node_extract
-			This is set in this header; no wrapper is provided, as we’re
-			just testing for the presense of member functions in pre-existing
-			standard headers. Note that we neither track nor use experimental
-			versions of this.
-
-		LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0024r2.html>
-			Note that this macro tracks compliance with the Standard as it
-			relates to implementing the referenced Working Group paper; there
-			is no correspoding SD-6 macro, or rather, there are -two- relevant
-			macros which each track the different features required for
-			compliance. We actually track both of those, as well as this,
-			separately. As such, this macro is an aggregate: if both
-			LBAL_LIBCPP17_EXECUTION and LBAL_LIBCPP17_PARALLEL_ALGORITHM indicate
-			compliance, this gets set to 1; otherwise, it’s set to 0. Note that
-			we neither track nor use experimental versions of this, partly
-			because the Draft versions tracked a different set of features, in
-			different places, which were refactored/replaced.
-
-		LBAL_LIBCPP17_VARIANT
-		__cpp_lib_variant
-			Only needed because of older Apple platforms. Note that we neither
-			track nor use experimental versions of this.
-
-	C++2a
-	These are all taken from features that have been incorporated into the
-	draft Standard currently called C++2a and likely to become C++20.
-
-		LBAL_LIBCPP2A_BIT_CAST
-		<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0476r2.html>
-		__cpp_lib_bit_cast
-			A reference implementation is available, and is mostly compatible
-			(lack of constepxr memcpy or equivalent makes full compliance
-			challenging).
-
-		LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0355r7.html>
-			This is set in this header; no wrapper is provided, though the
-			functionality would be nice to add if we didn’t have to write the
-			reference implementation ourselves.
-
-		LBAL_LIBCPP2A_CONCEPT_LIBRARY
-		LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP
-		<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0898r3.pdf>
-		__cpp_lib_concepts
-		__cpp_lib_experimental_concepts
-			No wrapper is provided, though the functionality would be a
-			reasonable thing to add.
-
-		LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0202r3.html>
-			This is set in this header; no wrapper is provided, as we would
-			have to reimplement both headers and work around the potential
-			lack of cstring-equivalent compiler intrinsics.
-
-		LBAL_LIBCPP2A_COROUTINES
-		LBAL_LIBCPP2A_COROUTINES_EXP
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4736.pdf>
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4760.pdf>
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0912r2.html>
-		__cpp_coroutines (__SEEME__ proxy)
-			This does not currently have its own SD-6 macro. No wrapper is
-			provided. Note that <coroutine> requires language support.
-			__SEEME__ Confusingly, n4736 was voted into the Standard, but n4760 is
-			the fixed version of it.
-
-		LBAL_LIBCPP2A_DESTROYING_DELETE
-		<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0722r3.html>
-		__cpp_lib_destroying_delete
-
-		LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0674r1.html>
-			This is set in this header; no wrapper is provided, though the
-			functionality would be a reasonable thing to add.
-
-		LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0020r6.html>
-			This is set in this header; no wrapper is provided, though the
-			functionality would be a reasonable thing to add.
-
-		LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0646r1.pdf>
-		__cpp_lib_list_remove_return_type
-		__cpp_lib_experimental_list_remove_return_type
-			No wrapper is provided, as we would have to fully reimplement
-			<list> and <forward_list> just to tweak a few member functions.
-
-		LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0415r1.html>
-		__cpp_lib_constexpr_complex
-		__cpp_lib_experimental_constexpr_complex
-			No wrapper is provided, as we would have to reimplement <complex>.
-
-		LBAL_LIBCPP2A_SPAN
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0122r7.pdf>
-			There is no SD-6 macro, yet. A reference implementation is
-			provided and accessible through lbalSpanWrapper.hpp.
-
-		LBAL_LIBCPP2A_STD_ATOMIC_REF
-		<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0019r8.html>
-		__cpp_lib_atomic_ref
-			No wrapper is provided, as a correct reference implementation will
-			require significant expertise in the problem domain.
-
-		LBAL_LIBCPP2A_STD_ENDIAN
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0463r1.html>
-			This is set in this header; no wrapper is provided, though the
-			functionality would be a reasonable thing to add; however a general
-			implementation may be impossible without compiler/language support
-			(because middle-endian, amirite?).
-
-		LBAL_LIBCPP2A_STD_REMOVE_CVREF
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0550r2.pdf>
-			This is set in this header; a reference implementation is provided
-			and accessible through lbalTypeTraitsWrapper.hpp.
-
-		LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0457r2.html>
-			This is set in this header. No wrapper is provided, as we would
-			have to reimplement two headers; these should have been free
-			functions anyway, rationale in the proposal notwithstanding.
-
-		LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0053r7.pdf>
-		__cpp_lib_syncstream
-			No wrapper is provided.
-
-		LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0515r3.pdf>
-		__cpp_lib_three_way_comparison
-			This is set in this header; no wrapper will be provided, as
-			<compare> is interdependent with the operator <=> language feature.
-
-		LBAL_LIBCPP2A_TYPE_IDENTITY
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0887r1.pdf>
-			This is set in this header; no wrapper is provided, though an
-			implementation would be trivial (cf., std::remove_cvref).
-
-		LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0653r2.html>
-			This is set in this header; no wrapper is provided, though the
-			functionality would be a reasonable thing to add.
-
-		LBAL_LIBCPP2A_VERSION
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0754r2.pdf>
-			This is effectively provided by lbalVersion.hpp, which works in
-			conjunction with this header to identify all of the available
-			Standard Library functionality. Note that unlike <version>, the
-			wrapper actually tracks “correct” implementations only (so, for
-			example, Xcode’s false positives for <any> and friends won’t be
-			reported as support for the library feature); this behavior will be
-			carried forward, and so, unlike other wrappers, it is recommended
-			to -always- include lbalVersion.hpp, even when including <version>
-			directly, and rely on the LBAL_LIBCPP_xxx macros where they are
-			available. See lbalVersion.hpp for details.
-
-	C++ Technical Specifications
-	These are all taken from Technical Specifications that have not (yet?) been
-	Standardized. Generally, they are either very far along and likely to clear
-	the bar, or very useful and simple enough to implement trivially.
-	Generally, these will eventually be aliased (and then moved) into
-	LBAL_LIBCPP2A_xxx, LBAL_LIBCPP20_xxx, LBAL_LIBCPP23_xxx, and the like.
-
-	__SEEME__ The TSs can be highly mutable, and support should be considered very
-	experimental. No effort at all will be expended to maintain backwards-
-	compatibility with a TS once a feature has been voted in.
-
-		LBAL_LIBCPPTS_NETWORKING
-		LBAL_LIBCPPTS_NETWORKING_EXP
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4734.pdf>
-		__cpp_lib_net
-		__cpp_lib_experimental_net
-			Unfortunately, we use boost for a reference implementation, so
-			compatibility with the Standard is not guaranteed. Note that the
-			wrapper for this feature is lbalNetworkingWrapper.hpp.
-
-		LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE
-		LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4734.pdf>
-		__cpp_lib_net_extensible
-		__cpp_lib_experimental_net_extensible
-			Unfortunately, we use boost for a reference implementation, so
-			compatibility with the Standard is not guaranteed. Note that the
-			wrapper for this feature is lbalNetworkingWrapper.hpp.
-
-		LBAL_LIBCPPTS_OBSERVER_PTR
-		LBAL_LIBCPPTS_OBSERVER_PTR_EXP
-		<http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n4282.pdf>
-		<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4758.html>
-		__cpp_lib_observer_ptr
-		__cpp_lib_experimental_observer_ptr
-			A reference implementation is available.
+	@{
 */
+
+/**
+	@def LBAL_LIBCPP17_ANY
+
+	Equivalent SD-6 macro: `__cpp_lib_any`
+
+	@remarks __APIME__ Only tracked because of incomplete implementations on
+	older Apple platforms.
+
+	@remarks __APIME__ We neither track nor use experimental versions of this.
+*/
+#ifndef LBAL_LIBCPP17_ANY
+	#define LBAL_LIBCPP17_ANY 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS
+
+	Equivalent SD-6 macro: `__cpp_lib_to_chars`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0067r5.html>
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0682r1.html>
+
+	@remarks __SEEME__ This got weird since the functions got moved to their
+	own header and their signatures were altered, post-Standardization, all as
+	part of a Defect Report resolution.
+*/
+#ifndef LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS
+	#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_EXECUTION
+	By itself, this token does not measure compliance with the referenced
+	Working Group paper; use LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS.
+
+	Equivalent SD-6 macro: `__cpp_lib_execution`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0024r2.html>
+
+	@remarks __APIME__ We neither track nor use experimental versions of this.
+*/
+#ifndef LBAL_LIBCPP17_EXECUTION
+	#define LBAL_LIBCPP17_EXECUTION 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_FILESYSTEM
+
+	Equivalent SD-6 macro: `__cpp_lib_filesystem`
+
+	@remarks __SEEME__ Full implementation missing on Apple platforms prior to
+	macOS 10.15.
+*/
+#ifndef LBAL_LIBCPP17_FILESYSTEM
+	#define LBAL_LIBCPP17_FILESYSTEM 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_FILESYSTEM_EXP
+
+	Equivalent SD-6 macro: `__cpp_lib_experimental_filesystem`
+
+	@remarks __SEEME__ The experimental version differs in many ways from the
+	final version, but it’s all that is offered until gcc 8 and clang 7.
+*/
+#ifndef LBAL_LIBCPP17_FILESYSTEM_EXP
+	#define LBAL_LIBCPP17_FILESYSTEM_EXP 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
+	Provides relevant cache line sizes for construction and destruction.
+
+	Equivalent SD-6 macro: `__cpp_lib_thread_hardware_interference_size`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0154r1.html>
+
+	@remarks __APIME__ We neither track nor use experimental versions of this.
+*/
+#ifndef LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
+	#define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_LAUNDER
+	Replacement of class objects containing reference members.
+
+	Equivalent SD-6 macro: `__cpp_lib_launder`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0137r1.html>
+
+	@remarks __APIME__ We neither track nor use experimental versions of this.
+*/
+#ifndef LBAL_LIBCPP17_LAUNDER
+	#define LBAL_LIBCPP17_LAUNDER 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_OPTIONAL
+
+	Equivalent SD-6 macro: `__cpp_lib_optional`
+
+	@remarks __APIME__ Only tracked because of incomplete implementations on
+	older Apple platforms.
+
+	@remarks __APIME__ We neither track nor use experimental versions of this.
+*/
+#ifndef LBAL_LIBCPP17_OPTIONAL
+	#define LBAL_LIBCPP17_OPTIONAL 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_PARALLEL_ALGORITHM
+
+	Equivalent SD-6 macro: `__cpp_lib_parallel_algorithm`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0024r2.html>
+
+		This is set in this header. No wrapper is provided; the
+		functionality would be good to have, but challenging and messy to
+		implement effectively. Note that by itself, this macro does not
+		measure compliance with the Working Group paper; for that, use
+		LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS. Note that we
+		neither track nor use experimental versions of this.
+*/
+#ifndef LBAL_LIBCPP17_PARALLEL_ALGORITHM
+	#define LBAL_LIBCPP17_PARALLEL_ALGORITHM 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS
+
+	Equivalent SD-6 macro: `__cpp_lib_node_extract`
+
+	<http://wg21.link/p0083r3>
+	
+	@remarks __APIME__ We neither track nor use experimental versions of this.
+*/
+#ifndef LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS
+	#define LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS 0
+#endif
+
+/**
+	LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
+ 	This token tracks compliance with the Standard as it  relates to
+ 	implementing the referenced Working Group paper; there is no correspoding
+ 	SD-6 macro, or rather, there are -two- relevant macros which each track the
+ 	different features required for compliance. We actually track both of
+ 	those, as well as this meta-feature, separately. As such, this token
+ 	represents an aggregate condition: if both `LBAL_LIBCPP17_EXECUTION` and
+ 	`LBAL_LIBCPP17_PARALLEL_ALGORITHM` indicate compliance, this gets set to
+ 	`1`; otherwise, it’s set to `0`.
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0024r2.html>
+
+	@remarks __APIME__ We neither track nor use experimental versions of this,
+	partly because the Draft versions tracked a different set of features, in
+	different places, which were refactored/replaced
+*/
+#ifndef LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
+	#define LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_VARIANT
+
+	Equivalent SD-6 macro: `__cpp_lib_variant`
+
+	@remarks __APIME__ Only tracked because of incomplete implementations on
+	older Apple platforms.
+
+	@remarks __APIME__ We neither track nor use experimental versions of this.
+*/
+#ifndef LBAL_LIBCPP17_VARIANT
+	#define LBAL_LIBCPP17_VARIANT 0
+#endif
+
+///	@}	LBAL_LIBCPP17
+
+/**
+	@name LBAL_LIBCPP2A
+	@brief These are all taken from features that have been incorporated into
+	the draft Standard currently called C++2a and likely to become C++20.
+
+	@{
+*/
+
+/**
+	@def LBAL_LIBCPP2A_BIT_CAST
+
+	Equivalent SD-6 macro: `__cpp_lib_bit_cast`
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0476r2.html>
+*/
+#ifndef LBAL_LIBCPP2A_BIT_CAST
+	#define LBAL_LIBCPP2A_BIT_CAST 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0355r7.html>
+*/
+#ifndef LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE
+	#define LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_CONCEPT_LIBRARY
+
+	Equivalent SD-6 macro: `__cpp_lib_concepts`
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0898r3.pdf>
+*/
+#ifndef LBAL_LIBCPP2A_CONCEPT_LIBRARY
+	#define LBAL_LIBCPP2A_CONCEPT_LIBRARY 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP
+
+	Equivalent SD-6 macro: `__cpp_lib_experimental_concepts`
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0898r3.pdf>
+*/
+#ifndef LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP
+	#define LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0202r3.html>
+*/
+#ifndef LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY
+	#define LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_COROUTINES
+
+	Equivalent SD-6 macro: `__cpp_coroutines`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4736.pdf>
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4760.pdf>
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0912r2.html>
+
+	@remarks Note that `<coroutine>` requires language support.
+
+	@remarks This does not currently have its own SD-6 macro. We use the
+	value of the language feature macro as a proxy for library support.
+
+	@remarks __SEEME__ Confusingly, [n4736](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4736.pdf)
+	was voted into the Standard, but [n4760](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4760.pdf)
+	is the fixed version of it.
+*/
+#ifndef LBAL_LIBCPP2A_COROUTINES
+	#define LBAL_LIBCPP2A_COROUTINES 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_COROUTINES_EXP
+
+	Equivalent SD-6 macro: `__cpp_coroutines`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4736.pdf>
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4760.pdf>
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0912r2.html>
+
+	@remarks Note that `<coroutine>` requires language support.
+
+	@remarks This does not currently have its own SD-6 macro. We use the
+	value of the language feature macro as a proxy for library support.
+
+	@remarks __SEEME__ Confusingly, [n4736](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4736.pdf)
+	was voted into the Standard, but [n4760](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4760.pdf)
+	is the fixed version of it.
+*/
+#ifndef LBAL_LIBCPP2A_COROUTINES_EXP
+	#define LBAL_LIBCPP2A_COROUTINES_EXP 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_DESTROYING_DELETE
+
+	Equivalent SD-6 macro: `__cpp_lib_destroying_delete`
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0722r3.html>
+*/
+#ifndef LBAL_LIBCPP2A_DESTROYING_DELETE
+	#define LBAL_LIBCPP2A_DESTROYING_DELETE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0674r1.html>
+*/
+#ifndef LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS
+	#define LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS 0
+#endif
+
+
+/**
+	@def LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0020r6.html>
+*/
+#ifndef LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC
+	#define LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
+	This represents changes to some member functions in `<list>` and
+	`<forward_list>`.
+
+	Equivalent SD-6 macro: `__cpp_lib_list_remove_return_type`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0646r1.pdf>
+*/
+#ifndef LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
+	#define LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE_EXP
+	This represents changes to some member functions in `<list>` and
+	`<forward_list>`.
+
+	Equivalent SD-6 macro: `__cpp_lib_experimental_list_remove_return_type`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0646r1.pdf>
+*/
+#ifndef LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE_EXP
+	#define LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE_EXP 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX
+ 	This represents changes to some function signatures in `<complex>`.
+
+	Equivalent SD-6 macro: `__cpp_lib_constexpr_complex`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0415r1.html>
+*/
+#ifndef LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX
+	#define LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX_EXP
+ 	This represents changes to some function signatures in `<complex>`.
+
+	Equivalent SD-6 macro: `__cpp_lib_experimental_constexpr_complex`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0415r1.html>
+*/
+#ifndef LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX_EXP
+	#define LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX_EXP 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_SPAN
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0122r7.pdf>
+*/
+#ifndef LBAL_LIBCPP2A_SPAN
+	#define LBAL_LIBCPP2A_SPAN 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_STD_ATOMIC_REF
+
+	Equivalent SD-6 macro: `__cpp_lib_atomic_ref`
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0019r8.html>
+*/
+#ifndef LBAL_LIBCPP2A_STD_ATOMIC_REF
+	#define LBAL_LIBCPP2A_STD_ATOMIC_REF 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_STD_ENDIAN
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0463r1.html>
+*/
+#ifndef LBAL_LIBCPP2A_STD_ENDIAN
+	#define LBAL_LIBCPP2A_STD_ENDIAN 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_STD_REMOVE_CVREF
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0550r2.pdf>
+*/
+#ifndef LBAL_LIBCPP2A_STD_REMOVE_CVREF
+	#define LBAL_LIBCPP2A_STD_REMOVE_CVREF 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0457r2.html>
+*/
+#ifndef LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING
+	#define LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
+
+	Equivalent SD-6 macro: `__cpp_lib_syncstream`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0053r7.pdf>
+*/
+#ifndef LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
+	#define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
+
+	Equivalent SD-6 macro: `__cpp_lib_three_way_comparison`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0515r3.pdf>
+
+	@remarks `<compare>` is interdependent with the `operator <=>` language
+	feature.
+*/
+#ifndef LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
+	#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_TYPE_IDENTITY
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0887r1.pdf>
+*/
+#ifndef LBAL_LIBCPP2A_TYPE_IDENTITY
+	#define LBAL_LIBCPP2A_TYPE_IDENTITY 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER
+
+	Equivalent SD-6 macro: none
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0653r2.html>
+*/
+#ifndef LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER
+	#define LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_VERSION
+
+	Equivalent SD-6 macro: none
+
+	This is effectively provided by `<lucenaBAL/lbalVersion.hpp>`, which works
+	in conjunction with `<version>`—if present— to identify all of the
+	available Standard Library features. Note that unlike `<version>`,
+	`<lucenaBAL/lbalVersion.hpp>` actually tracks “correct” implementations
+	only. So, for example, Xcode’s false positives for `<any>` and friends
+	won’t be reported as support for the library feature. This behavior will be
+	carried forward, and so it is recommended to _always_ include
+	`<lucenaBAL/lbalVersion.hpp>`, even when including `<version>` directly,
+	and rely on the `LBAL_LIBCPP` tokens where they are available. See
+	`<lucenaBAL/lbalVersion.hpp>` for details.
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0754r2.pdf>
+*/
+#ifndef LBAL_LIBCPP2A_VERSION
+	#define LBAL_LIBCPP2A_VERSION 0
+#endif
+
+///	@}	LBAL_LIBCPP2A
+
+/**
+	@name LBAL_LIBCPPTS
+
+	@brief C++ Technical Specifications that have not (yet?) been Standardized.
+
+	@details These are typically very far along and likely to clear
+	the bar. Generally, these will eventually be aliased—and then moved—into
+	LBAL_LIBCPP20, LBAL_LIBCPP23, etc.
+
+	@remarks __SEEME__ The TSs can be highly mutable, and support should be
+	considered very experimental. No effort at all will be expended to maintain
+	backwards- compatibility with a TS once a feature has been voted in.
+
+	@{
+*/
+
+/**
+	@def LBAL_LIBCPPTS_NETWORKING
+
+	Equivalent SD-6 macro: `__cpp_lib_net`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4734.pdf>
+*/
+#ifndef LBAL_LIBCPPTS_NETWORKING
+	#define LBAL_LIBCPPTS_NETWORKING 0
+#endif
+
+/**
+	@def LBAL_LIBCPPTS_NETWORKING_EXP
+
+	Equivalent SD-6 macro: `__cpp_lib_experimental_net`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4734.pdf>
+*/
+#ifndef LBAL_LIBCPPTS_NETWORKING_EXP
+	#define LBAL_LIBCPPTS_NETWORKING_EXP 0
+#endif
+
+/**
+	@def LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE
+
+	Equivalent SD-6 macro: `__cpp_lib_net_extensible`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4734.pdf>
+*/
+#ifndef LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE
+	#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE 0
+#endif
+
+/**
+	@def LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP
+
+	Equivalent SD-6 macro: `__cpp_lib_experimental_net_extensible`
+
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4734.pdf>
+*/
+#ifndef LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP
+	#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP 0
+#endif
+
+/**
+	@def LBAL_LIBCPPTS_OBSERVER_PTR
+
+	Equivalent SD-6 macro: `__cpp_lib_observer_ptr`
+
+	<http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n4282.pdf>
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4758.html>
+*/
+#ifndef LBAL_LIBCPPTS_OBSERVER_PTR
+	#define LBAL_LIBCPPTS_OBSERVER_PTR 0
+#endif
+
+/**
+	@def LBAL_LIBCPPTS_OBSERVER_PTR_EXP
+
+	Equivalent SD-6 macro: `__cpp_lib_experimental_observer_ptr`
+
+	<http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n4282.pdf>
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4758.html>
+*/
+#ifndef LBAL_LIBCPPTS_OBSERVER_PTR_EXP
+	#define LBAL_LIBCPPTS_OBSERVER_PTR_EXP 0
+#endif
+
+///	@}	LBAL_LIBCPP2A
 
 ///	@}	lbal_library
 
