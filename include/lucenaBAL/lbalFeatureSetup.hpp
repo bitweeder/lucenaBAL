@@ -2145,21 +2145,23 @@
 */
 
 /**
-	LBAL_VIS_xxx
-	These describe different levels of symbol visibility as it pertains to the
-	ABI, allowing explicit control over what gets exported - and subsequently
-	imported - by the linker. This task is somewhat complicated by different
-	approaches on each platform towards what constitutes the contents of a
-	library, e.g., whether inline functions are header-only constructs or
+	@name LBAL_VIS
+
+	@brief Decorators to control symbol visibility in the ABI
+
+	@details These allow explicit control over what gets exported - and
+	subsequently imported - by the linker. This task is somewhat complicated by
+	different approaches on each platform toward what constitutes the contents
+	of a library, e.g., whether inline functions are header-only constructs or
 	whether they contribute object code to the library itself. We’ve noted
 	usage issues to be aware of, as well as some relevant historical oddities.
 	Note that some of these macros should be used conditionally; they should
 	not be used to decorate symbols directly, but should instead be used to
 	define decorators specific to a given project. Such decorators’ values
 	should be dependent upon whether the project is being built or used; when
-	building, set the decorator to the _EXPORT version of a given macro, but
-	when using the build product, set it to the _IMPORT version. Macros that do
-	not have multiple versions are not context-dependent and can be used
+	building, set the decorator to the `EXPORT` variant of a given macro, but
+	when using the build product, set it to the `IMPORT` variant. Macros that
+	do not have multiple versions are not context-dependent and can be used
 	directly - or used to define a library-specific macro unconditionally.
 
 	If there are multiple declarations of a given symbol, all declarations
@@ -2174,269 +2176,528 @@
 	Usage example:
 
 		#if MY_LIB_CONFIG_buiding
-			#define MY_LIB_VIS_CLASS						LBAL_VIS_CLASS_EXPORT
-			#define MY_LIB_VIS_EXTERN_CLASS_TEMPLATE		LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT
-			#define MY_LIB_VIS_CLASS_TEMPLATE_INSTANTIATION	LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_EXPORT
-			#define MY_LIB_VIS_FUNC							LBAL_VIS_FUNC_EXPORT
-			#define MY_LIB_VIS_OVERLOADABLE_FUNC			LBAL_VIS_OVERLOADABLE_FUNC_EXPORT
-			#define MY_LIB_VIS_EXCEPTION					LBAL_VIS_EXCEPTION_EXPORT
-			#define MY_LIB_VIS_EXTERN						LBAL_VIS_EXTERN_EXPORT
-		#else	//	We’re just consuming the API, not building the binary
-			#define MY_LIB_VIS_CLASS						LBAL_VIS_CLASS_IMPORT
-			#define MY_LIB_VIS_EXTERN_CLASS_TEMPLATE		LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT
-			#define MY_LIB_VIS_CLASS_TEMPLATE_INSTANTIATION	LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_IMPORT
-			#define MY_LIB_VIS_FUNC							LBAL_VIS_FUNC_IMPORT
-			#define MY_LIB_VIS_OVERLOADABLE_FUNC			LBAL_VIS_OVERLOADABLE_FUNC_IMPORT
-			#define MY_LIB_VIS_EXCEPTION					LBAL_VIS_EXCEPTION_IMPORT
-			#define MY_LIB_VIS_EXTERN						LBAL_VIS_EXTERN_IMPORT
-		#endif	//	MY_LIB_CONFIG_buiding
 
-	In this example, MY_LIB_CONFIG_buiding is only defined when building the
+		#define MY_LIB_VIS_CLASS                        LBAL_VIS_CLASS_EXPORT
+		#define MY_LIB_VIS_EXTERN_CLASS_TEMPLATE        LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT
+		#define MY_LIB_VIS_CLASS_TEMPLATE_INSTANTIATION LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_EXPORT
+		#define MY_LIB_VIS_FUNC                         LBAL_VIS_FUNC_EXPORT
+		#define MY_LIB_VIS_OVERLOADABLE_FUNC            LBAL_VIS_OVERLOADABLE_FUNC_EXPORT
+		#define MY_LIB_VIS_EXCEPTION                    LBAL_VIS_EXCEPTION_EXPORT
+		#define MY_LIB_VIS_EXTERN                       LBAL_VIS_EXTERN_EXPORT
+
+		#else
+
+		#define MY_LIB_VIS_CLASS                        LBAL_VIS_CLASS_IMPORT
+		#define MY_LIB_VIS_EXTERN_CLASS_TEMPLATE        LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT
+		#define MY_LIB_VIS_CLASS_TEMPLATE_INSTANTIATION LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_IMPORT
+		#define MY_LIB_VIS_FUNC	                        LBAL_VIS_FUNC_IMPORT
+		#define MY_LIB_VIS_OVERLOADABLE_FUNC            LBAL_VIS_OVERLOADABLE_FUNC_IMPORT
+		#define MY_LIB_VIS_EXCEPTION                    LBAL_VIS_EXCEPTION_IMPORT
+		#define MY_LIB_VIS_EXTERN                       LBAL_VIS_EXTERN_IMPORT
+
+		#endif
+
+	In this example, `MY_LIB_CONFIG_buiding` is only defined when building the
 	binary, and left undefined otherwise. Symbols should be decorated with
-	the appropriate MY_LIB_VIS_XXX classifier, and the compiler will do the
-	right thing. Note that it’s only necessary to define macros for decorators
-	that have IMPORT/EXPORT variants; for others (e.g., LBAL_VIS_ENUM) the
+	the appropriate `MY_LIB_VIS classifier`, and the compiler will do the right
+	thing. Note that it’s only necessary to define macros for decorators that
+	have `IMPORT`/`EXPORT` variants; for others (e.g., `LBAL_VIS_ENUM`) the
 	unaliased macro can be used - or those may be aliased uniformly aliased as
 	well, for API consistency.
 
-	__SEEME__ These have been changed to more closely approximate libc++’s usage,
-	mostly because it’s thoughfully designed for use with modules and the
-	emerging C++ ABI proposals. Note, however, that many of these designations
-	are currently only meaningful as annotations, in particular when running
-	compilers that aren’t clang; we’ve tried to note those cases. Additionally,
-	some compilers impose unexpected limitations, e.g., MSVC will not allow
-	member functions to have different explicitly declared visibility than that
-	of the class if the class itself was given an explicit visibility
-	decorator.
+	@remarks __SEEME__ These have been changed to more closely approximate
+	libc++’s usage, mostly because it’s thoughfully designed for use with
+	modules and the emerging C++ ABI proposals. Note, however, that many of
+	these designations are currently only meaningful as annotations, in
+	particular when running compilers that aren’t clang; we’ve tried to note
+	those cases. Additionally, some compilers impose unexpected limitations,
+	e.g., MSVC will not allow member functions to have different explicitly
+	declared visibility than that of the class if the class itself was given an
+	explicit visibilitydecorator.
 
-	__SEEME__ Without support from a static analyzer, there’s no way to know if a
-	decorator has been misused, e.g., applying LBAL_VIS_FUNC_EXPORT to a class.
-	Such misuses may not be immediately obvious with a given implementation;
-	additionally, misuses that are not problematic now may become problematic
-	in the future when compilers gain new capabilities. For this reason, it’s
-	strongly advised to test code periodically with a good static analyzer - as
-	if you needed another reason.
+	@remarks __SEEME__ Without support from a static analyzer, there’s no way
+	to know if a decorator has been misused, e.g., applying
+	`LBAL_VIS_FUNC_EXPORT` to a class. Such misuses may not be immediately
+	obvious with a given implementation; additionally, misuses that are not
+	problematic now may become problematic in the future when compilers gain
+	new capabilities. For this reason, it’s strongly advised to test code
+	periodically with a good static analyzer—as if you needed another reason.
 
-		LBAL_VIS_HIDDEN
-			Do not export the symbol. If symbols are hidden by default, this
-			does not need to be explicitly applied, but will not cause problems
-			if it is.
+	@{
+*/
 
-		LBAL_VIS_ENUM
-			Apply this to [class] enum declarations to mark the symbols for
-			the type’s typeinfo as visible.
+/**
+	@def LBAL_VIS_HIDDEN
 
-			__SEEME__ gcc makes enum typeinfo visible by default, and then throws
-			up warnings if a visiility attribute conflicts with this; for this
-			reason, this macro is a NOP under gcc.
+	@brief General-purpose visibility decorator for hiding symbols
 
-		LBAL_VIS_CLASS_EXPORT
-		LBAL_VIS_CLASS_IMPORT
-			Apply these to class, struct, and union declarations to mark the
-			symbols for the type’s typeinfo, vtable, and members as visible. Do
-			not use this with the various flavors of class template, and do not
-			use it if a class contains member template classes; instead, use
-			LBAL_VIS_CLASS_TEMPLATE_xxx.
+	@details Indicates that the decorated symbol is not exported. If symbols
+	are hidden by default, this does not need to be explicitly applied, but
+	will not cause problems if it is.
+*/
+#ifndef LBAL_VIS_HIDDEN
+	#define LBAL_VIS_HIDDEN
+#endif
 
-		LBAL_VIS_CLASS_TEMPLATE
-			Apply this to class template declarations to mark the symbols for
-			the type’s typeinfo and vtable as visible; members are unaffected.
-			Do not use this with classes that are not templates; instead, use
-			LBAL_VIS_CLASS_EXPORT_xxx.
+/**
+	@def LBAL_VIS_ENUM
 
-			__SEEME__ This only works as described under clang. Under gcc, there
-			is currently no __type_visibility__ attribute, so we fall back to
-			using __visibility__, which means members inherit the class
-			visibility. For this reason, class template members should have
-			explicit decorators, in particular if visibility is supposed to
-			differ from that of the class itself. MSVC has a similar issue,
-			except that since class templates can’t have visibility decorators,
-			the macro is a NOP; once again, members require explicit visibility
-			decorators, but now they’re required for every member with
-			visibility different from the translation unit default. Failing to
-			adhere to this policy may result in exposing too many symbols or
-			not enough symbols, depending on the compiler and the compiler
-			options.
+	@brief Enum symbol visibility decorator
 
-		LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT
-		LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT
-			Apply these to all extern class template declarations to mark the
-			symbols for the type’s typeinfo, vtable, and member functions as
-			visible. Do not use this with regular class template declarations;
-			use LBAL_VIS_CLASS_TEMPLATE for those. This is intended specifically
-			to override a LBAL_VIS_CLASS_TEMPLATE decorator on the primary
-			template and explicitly export the member functions of its explicit
-			instantiations. Note that there is a complementary decorator,
-			LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_xxx, which must be used on the
-			actual template instantiations.
+	@details Apply this to [class] enum declarations to mark the symbols for
+	the type’s typeinfo as visible.
 
-		LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_EXPORT
-		LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_IMPORT
-			Apply these to all explicit instantiations of class templates to
-			mark the symbols for the type’s typeinfo, vtable, and member
-			functions as visible. While LBAL_VIS_EXTERN_CLASS_TEMPLATE_xxx is
-			intended for use in headers, this complementary decorator is
-			primarily used in source files; LBAL_VIS_EXTERN_CLASS_TEMPLATE_xxx
-			can be seen as providing export support while this provides import
-			support.
+	@remarks __SEEME__ gcc makes enum typeinfo visible by default, and then
+	throws up warnings if a visibility attribute conflicts with this; for this
+	reason, this macro is a no-op under gcc.
+*/
+#ifndef LBAL_VIS_ENUM
+	#define LBAL_VIS_ENUM
+#endif
 
-		LBAL_VIS_MEMBER_CLASS_TEMPLATE
-			Apply this to all member class templates of all:
-				- classes decorated with LBAL_VIS_CLASS_xxx
-				- class templates decorated with
-					LBAL_VIS_EXTERN_CLASS_TEMPLATE_xxx
+/**
+	@def LBAL_VIS_CLASS_EXPORT
 
-			This will hide symbols generated by implicit instantiations of the
-			member class template, preventing spurious symbol exports should
-			such instantiations occur in some other library which links to this
-			one. Explicit instantiations should be handled normally via
-			LBAL_VIS_EXTERN_CLASS_TEMPLATE_xxx.
+	@brief Class symbol visibility decorator for use at build-time
 
-		LBAL_VIS_MEMBER_FUNCTION_TEMPLATE
-			Apply this to member function templates of:
-				- classes decorated with LBAL_VIS_CLASS_xxx
-				- class templates decorated with
-					LBAL_VIS_EXTERN_CLASS_TEMPLATE_xxx
+	@details Apply this to class, struct, and union declarations to mark the
+	symbols for the type’s typeinfo, vtable, and members as visible. Do not use
+	this with the various flavors of class template, and do not use it if a
+	class contains member template classes; instead, use
+	`LBAL_VIS_CLASS_TEMPLATE_EXPORT`.
+*/
+#ifndef LBAL_VIS_CLASS_EXPORT
+	#define LBAL_VIS_CLASS_EXPORT
+#endif
 
-			This will hide symbols generated by implicit instantiations of the
-			member function template, preventing spurious symbol exports should
-			such instantiations occur in some other library which links to this
-			one. Note that if a function template is already decorated with
-			LBAL_VIS_INLINE_FUNC or LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC, this
-			decorator should not be applied. Similarly, explicit instantiations
-			should be decorated normally with either LBAL_VIS_INLINE_FUNC or
-			LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC, as appropriate.
+/**
+	@def LBAL_VIS_CLASS_IMPORT
 
-		LBAL_VIS_FUNC_EXPORT
-		LBAL_VIS_FUNC_IMPORT
-			Apply these to declarations of visible functions that are defined
-			in the library binary, i.e., not inline functions, function
-			templates, or (usually) class template member functions.
+	@brief Class symbol visibility decorator for use at link-time
 
-		LBAL_VIS_INLINE_FUNC
-			Do not export the symbol, and guarantee that it will not be subject
-			to incorrect de-duping when two incompatible functions with the
-			same symbol are linked into the same binary, e.g., in a situation
-			where two different versions of the same library end up linked into
-			one app. This can occur with inline functions when the linker
-			writes a fallback copy to a library and the fallback is used
-			instead of generating new object code from the header. This
-			decorator can be used with all inline functions, except inline
-			member functions of extern templates.
+	@details Apply this to class, struct, and union declarations to mark the
+	symbols for the type’s typeinfo, vtable, and members as visible. Do not use
+	this with the various flavors of class template, and do not use it if a
+	class contains member template classes; instead, use
+	`LBAL_VIS_CLASS_TEMPLATE_IMPORT`.
+*/
+#ifndef LBAL_VIS_CLASS_IMPORT
+	#define LBAL_VIS_CLASS_IMPORT
+#endif
 
-			__SEEME__ “inline” in this context means, literally, “defined in the
-			header”, and not necessarily just “functions explicitly declared
-			inline”. libc++ names their equivalent macro _LIBCPP_HIDE_FROM_ABI,
-			describing what it does, insted of how it’s used. In this case,
-			though, the “how it’s used” may be confusing because of the
-			“INLINE” part of the name, which may cause users to apply it to
-			narrowly. On the other hand, “HIDE_FROM_ABI” is basically what
-			LBAL_VIS_HIDDEN does, so going the other way would also be
-			confusing. We’re currently going this route and relying on
-			documentation for clarity.
+/**
+	@def LBAL_VIS_CLASS_TEMPLATE
 
-			__SEEME__ Because of the brittle usage requirements,
-			LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC may just end up
-			getting removed, with LBAL_VIS_INLINE_FUNC inheriting its
-			implementation.
+	@brief Class template symbol visibility decorator
 
-		LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC
-			This functions identically to LBAL_VIS_INLINE_FUNC except that it’s
-			for member functions of extern templates that have been declared
-			“inline” but are defined out-of-line. This unfortunately specific
-			decorator is needed because of differences in how different
-			compilers handle visibility in this situation.
+	@details Apply this to class template declarations to mark the symbols for
+	the type’s typeinfo and vtable as visible; members are unaffected. Do not
+	use this with classes that are not templates; instead, use the appropriate
+	`LBAL_VIS_CLASS_EXPORT`/`LBAL_VIS_CLASS_IMPORT` decorator.
 
-			__SEEME__ Note that we could eliminate this macro entirely by folding
-			its extra handling into LBAL_VIS_INLINE_FUNC, but this would be at
-			the cost of some symbol table bloat on certain compilers. This
-			means that a given project could choose to alias their own general-
-			purpose inline visibility decorator macro to this and just use it
-			for all inline function decorations.
+	@remarks __SEEME__ This only works as described under clang. Under gcc,
+	there is currently no `__type_visibility__` attribute, so we fall back to
+	using `__visibility__`, which means members inherit the class visibility.
+	For this reason, class template members should have explicit decorators, in
+	particular if visibility is supposed to differ from that of the class
+	itself. MSVC has a similar issue, except that since class templates can’t
+	have visibility decorators, the macro is a no-op; once again, members
+	require explicit visibility decorators, but now they’re required for every
+	member with visibility different from the translation unit default. Failing
+	to adhere to this policy may result in exposing too many symbols or not
+	enough symbols, depending on the compiler and the compiler options.
+*/
+#ifndef LBAL_VIS_CLASS_TEMPLATE
+	#define LBAL_VIS_CLASS_TEMPLATE
+#endif
 
-		LBAL_VIS_OVERLOADABLE_FUNC_EXPORT
-		LBAL_VIS_OVERLOADABLE_FUNC_IMPORT
-			Apply these to declarations of visible free functions that are
-			defined in the library binary but that allow user-supplied
-			overloads.
+/**
+	@def LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT
 
-			__SEEME__ Pragmatically, this sort of customization point is a bad
-			idea. That aside, in practice, this separate designation for
-			LBAL_VIS_FUNC_xxx is only needed by Windows due to how DLLs are
-			handled, namely, a function marked with dllimport cannot be
-			overloaded locally.
+	@brief Extern class template symbol visibility decorator for use at
+	build-time
 
-			__FIXME__ Our method for handling this derives from how libc++ does it:
-			they simply don’t decorate the function declaration for import. The
-			method has not been tested, and I haven’t seen examples in the
-			wild of other people using it.
+	@details Apply this to all extern class template declarations to mark the
+	symbols for the type’s typeinfo, vtable, and member functions as visible.
+	Do not use this with regular class template declarations; use
+	`LBAL_VIS_CLASS_TEMPLATE` for those. This is intended specifically to
+	override a `LBAL_VIS_CLASS_TEMPLATE` decorator on the primary template and
+	explicitly export the member functions of its explicit instantiations. Note
+	that there is a complementary decorator pair,
+	`LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_EXPORT`\
+	`LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_IMPORT`, which must be used on the
+	actual template instantiations.
+*/
+#ifndef LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT
+	#define LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT
+#endif
 
-		LBAL_VIS_EXTERN_EXPORT
-		LBAL_VIS_EXTERN_IMPORT
-			Apply these to symbols marked “extern” that are required to be
-			visible. Objects that are not explicitly extern do not need this.
-			Note that this does not take the place of the “extern” decorator,
-			but rather supplements it.
+/**
+	@def LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT
 
-		LBAL_VIS_EXCEPTION_EXPORT
-		LBAL_VIS_EXCEPTION_IMPORT
-			Apply these to exception declarations to mark the symbols for the
-			type’s typeinfo, vtable, and members as visible. In practice, this
-			behaves identically to LBAL_VIS_CLASS_xxx, but different annotations
-			may apply for static analysis purposes.
+	@brief Extern class template symbol visibility decorator for use at
+	link-time
 
+	@details Apply this to all extern class template declarations to mark the
+	symbols for the type’s typeinfo, vtable, and member functions as visible.
+	Do not use this with regular class template declarations; use
+	`LBAL_VIS_CLASS_TEMPLATE` for those. This is intended specifically to
+	override a `LBAL_VIS_CLASS_TEMPLATE` decorator on the primary template and
+	explicitly export the member functions of its explicit instantiations. Note
+	that there is a complementary decorator pair,
+	`LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_EXPORT`\
+	`LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_IMPORT`, which must be used on the
+	actual template instantiations.
+*/
+#ifndef LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT
+	#define LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT
+#endif
 
-	LBAL_CLASS_xxx
-	These macros describe class decorators whose details are implementation-
-	specific.
+/**
+	@def LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_EXPORT
 
-		LBAL_CLASS_FORCE_EBCO
-			Force the use of the Empty Base (Class) Optimization. The
-			decorator should precede the class name in its declaration.
-			Note that the decorator is used specifically to indicate that
-			the bases of a given class are empty, not that a given class is
-			an Empty Base Class; this means it must be applied by the end
-			user in a large number of practical use cases. Also note that
-			the decorator must be applied in the most direct descendant to
-			have effect. For example:
+	@brief Class template instantiation symbol visibility decorator for use at
+	build-time
 
-				struct Empty1 { };
-				struct Empty2 { };
-				struct Derived1 : Empty1, Empty2 { };
-				struct LBAL_CLASS_FORCE_EBCO Derived2 : Derived 1 { };
+	@details Apply this to all explicit instantiations of class templates to
+	mark the symbols for the type’s typeinfo, vtable, and member functions as
+	visible. While `LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT` is intended for use
+	in headers, this complementary decorator is primarily used in source files.
+	The former can be seen as a decorator for the general definition of a given
+	template, while this is for specific instances of it.
+*/
+#ifndef LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_EXPORT
+	#define LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_EXPORT
+#endif
 
-			In this example, neither Derived1 -nor- Derived2 will
-			necessarily benefit from the EBCO; we can’t guarantee the
-			behavior. However, if Derived1 -also- has the
-			LBAL_CLASS_FORCE_EBCO applied, then any compiler that supports
-			the EBCO will apply it to both Derived1 -and- Derived2.
+/**
+	@def LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_IMPORT
 
-			__SEEME__ This is really only necessary when using multiple
-			inheritance and targeting MSVS; at least VS2015 Update 3 is
-			required (note that Update 2, which actually introduced the
-			feature, had a bug which caused it to violate the Standard).
+	@brief Class template instantiation symbol visibility decorator for use at
+	link-time
 
-			__APIME__ How aggravating is it that you can’t decorate the empty
-			base class itself instead of having to force a weird
-			requirement on derived classes? Sadly, we’re at the mercy of
-			the built-in compiler decorators, here.
+	@details Apply this to all explicit instantiations of class templates to
+	mark the symbols for the type’s typeinfo, vtable, and member functions as
+	visible. While `LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT` is intended for use
+	in headers, this complementary decorator is primarily used in source files.
+	The former can be seen as a decorator for the general definition of a given
+	template, while this is for specific instances of it.
+*/
+#ifndef LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_IMPORT
+	#define LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_IMPORT
+#endif
 
+/**
+	@def LBAL_VIS_MEMBER_CLASS_TEMPLATE
 
-	LBAL_FUNC_xxx
+	@brief Member class template symbol visibility decorator
+
+	@details Apply this to all member class templates of all:
+	- classes decorated with `LBAL_VIS_CLASS_EXPORT`/`LBAL_VIS_CLASS_IMPORT`
+	- class templates decorated with `LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT`/
+	`LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT`
+
+	This will hide symbols generated by implicit instantiations of the
+	member class template, preventing spurious symbol exports should
+	such instantiations occur in some other library which links to this
+	one. Explicit instantiations should be handled normally via
+	`LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT`/
+	`LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT`.
+*/
+#ifndef LBAL_VIS_MEMBER_CLASS_TEMPLATE
+	#define LBAL_VIS_MEMBER_CLASS_TEMPLATE
+#endif
+
+/**
+	@def LBAL_VIS_MEMBER_FUNCTION_TEMPLATE
+
+	@brief Member function template symbol visibility decorator
+
+	@details Apply this to member function templates of:
+	- classes decorated with `LBAL_VIS_CLASS_EXPORT`/`LBAL_VIS_CLASS_IMPORT`
+	- class templates decorated with `LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT`/
+	`LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT`
+
+	This will hide symbols generated by implicit instantiations of the
+	member function template, preventing spurious symbol exports should
+	such instantiations occur in some other library which links to this
+	one. Note that if a function template is already decorated with
+	`LBAL_VIS_INLINE_FUNC` or `LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC`, this
+	decorator should not be applied. Similarly, explicit instantiations
+	should be decorated normally with either `LBAL_VIS_INLINE_FUNC` or
+	`LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC`, as appropriate.
+*/
+#ifndef LBAL_VIS_MEMBER_FUNCTION_TEMPLATE
+	#define LBAL_VIS_MEMBER_FUNCTION_TEMPLATE
+#endif
+
+/**
+	@def LBAL_VIS_FUNC_EXPORT
+
+	@brief Function symbol visibility decorator for use at build-time
+
+	@details Apply this to declarations of visible functions that are defined
+	in the library binary, i.e., not inline functions, function templates, or
+	(usually) class template member functions.
+*/
+#ifndef LBAL_VIS_FUNC_EXPORT
+	#define LBAL_VIS_FUNC_EXPORT
+#endif
+
+/**
+	@def LBAL_VIS_FUNC_IMPORT
+
+	@brief Function symbol visibility decorator for use at link-time
+
+	@details Apply this to declarations of visible functions that are defined
+	in the library binary, i.e., not inline functions, function templates, or
+	(usually) class template member functions.
+*/
+#ifndef LBAL_VIS_FUNC_IMPORT
+	#define LBAL_VIS_FUNC_IMPORT
+#endif
+
+/**
+	@def LBAL_VIS_INLINE_FUNC
+	Do not export the symbol, and guarantee that it will not be subject to
+	incorrect de-duping when two incompatible functions with the same symbol
+	are linked into the same binary, e.g., in a situation where two different
+	versions of the same library end up linked into one app. This can occur
+	with inline functions when the linker writes a fallback copy to a library
+	and the fallback is used instead of generating new object code from the
+	header. This decorator can be used with all inline functions, except inline
+	member functions of extern templates.
+
+	@remarks __SEEME__ “inline” in this context means, literally, “defined in
+	the header”, and not necessarily just “functions explicitly declared
+	`inline`”. libc++ names their equivalent macro `_LIBCPP_HIDE_FROM_ABI`,
+	describing what it does, insted of how it’s used. In this case, though, the
+	“how it’s used” may be confusing because of the `INLINE` part of the name,
+	which may cause users to apply it too narrowly. On the other hand,
+	`HIDE_FROM_ABI` is basically what `LBAL_VIS_HIDDEN` does, so going the
+	other way would also be confusing. We’re currently going this route and
+	relying on documentation to provide clarity.
+
+	@remarks __APIME__ Because of the brittle usage requirements,
+	`LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC` may just end up getting removed,
+	with `LBAL_VIS_INLINE_FUNC` inheriting its implementation.
+*/
+#ifndef LBAL_VIS_INLINE_FUNC
+	#define LBAL_VIS_INLINE_FUNC
+#endif
+
+/**
+	@def LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC
+	This behaves identically to `LBAL_VIS_INLINE_FUNC` except that it’s for
+	member functions of extern templates that have been declared `inline` but
+	are defined out-of-line. This unfortunately specific decorator is needed
+	because of differences in how different compilers handle visibility in this
+	situation.
+
+	@remarks __SEEME__ Note that we could eliminate this macro entirely by
+	folding its extra handling into `LBAL_VIS_INLINE_FUNC`, but this would be
+	at the cost of some symbol table bloat on certain compilers. This means
+	that a given project could choose to alias their own general-purpose inline
+	visibility decorator macro to this and just use it for all inline function
+	decorations.
+*/
+#ifndef LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC
+	#define LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC
+#endif
+
+/**
+	@def LBAL_VIS_OVERLOADABLE_FUNC_EXPORT
+
+	@brief Overloadable function symbol visibility decorator for use at
+	build-time
+
+	@details Apply this to declarations of visible free functions that are
+	defined in the library binary but that allow user-supplied overloads.
+
+	@remarks __SEEME__ Pragmatically, this sort of customization point is a bad
+	idea. That aside, in practice, this separate designation for
+	`LBAL_VIS_FUNC_EXPORT` is only needed by Windows due to how DLLs are
+	handled: namely, a function marked with `dllimport` cannot be overloaded
+	locally.
+
+	@remarks __FIXME__ Our method for handling this derives from how libc++
+	does it: they simply don’t decorate the function declaration for import.
+	The method has not been tested, and I haven’t seen examples in the wild of
+	other people using it.
+*/
+#ifndef LBAL_VIS_OVERLOADABLE_FUNC_EXPORT
+	#define LBAL_VIS_OVERLOADABLE_FUNC_EXPORT
+#endif
+
+/**
+	@def LBAL_VIS_OVERLOADABLE_FUNC_IMPORT
+
+	@brief Overloadable function symbol visibility decorator for use at
+	link-time
+
+	@details Apply this to declarations of visible free functions that are
+	defined in the library binary but that allow user-supplied overloads.
+
+	@remarks __SEEME__ Pragmatically, this sort of customization point is a bad
+	idea. That aside, in practice, this separate designation for
+	`LBAL_VIS_FUNC_IMPORT` is only needed by Windows due to how DLLs are
+	handled: namely, a function marked with `dllimport` cannot be overloaded
+	locally.
+
+	@remarks __FIXME__ Our method for handling this derives from how libc++
+	does it: they simply don’t decorate the function declaration for import.
+	The method has not been tested, and I haven’t seen examples in the wild of
+	other people using it.
+*/
+#ifndef LBAL_VIS_OVERLOADABLE_FUNC_IMPORT
+	#define LBAL_VIS_OVERLOADABLE_FUNC_IMPORT
+#endif
+
+/**
+	@def LBAL_VIS_EXTERN_EXPORT
+
+	@brief General-purpose extern symbol visibility decorator for use at
+	build-time
+
+	@details Apply this to symbols marked `extern` that are required to be
+	visible. Objects that are not explicitly `extern` do not need this. Note
+	that this does not take the place of the `extern` decorator, but rather
+	supplements it.
+*/
+#ifndef LBAL_VIS_EXTERN_EXPORT
+	#define LBAL_VIS_EXTERN_EXPORT
+#endif
+
+/**
+	@def LBAL_VIS_EXTERN_IMPORT
+
+	@brief General-purpose extern symbol visibility decorator for use at
+	link-time
+
+	@details Apply this to symbols marked `extern` that are required to be
+	visible. Objects that are not explicitly `extern` do not need this. Note
+	that this does not take the place of the `extern` decorator, but rather
+	supplements it.
+*/
+#ifndef LBAL_VIS_EXTERN_IMPORT
+	#define LBAL_VIS_EXTERN_IMPORT
+#endif
+
+/**
+	@def LBAL_VIS_EXCEPTION_EXPORT
+
+	@brief Exception class symbol visibility decorator for use at build-time
+
+	@details Apply this to exception declarations to mark the symbols for the
+	type’s typeinfo, vtable, and members as visible. In practice, this behaves
+	identically to `LBAL_VIS_CLASS_EXPORT`, but different annotations may apply
+	for static analysis purposes.
+*/
+#ifndef LBAL_VIS_EXCEPTION_EXPORT
+	#define LBAL_VIS_EXCEPTION_EXPORT
+#endif
+
+/**
+	@def LBAL_VIS_EXCEPTION_IMPORT
+
+	@brief Exception class symbol visibility decorator for use at link-time
+
+	@details Apply this to exception declarations to mark the symbols for the
+	type’s typeinfo, vtable, and members as visible. In practice, this behaves
+	identically to `LBAL_VIS_CLASS_IMPORT`, but different annotations may apply
+	for static analysis purposes.
+*/
+#ifndef LBAL_VIS_EXCEPTION_IMPORT
+	#define LBAL_VIS_EXCEPTION_IMPORT
+#endif
+
+///	@}	LBAL_VIS
+
+/**
+	@name LBAL_CLASS
+	These tokens describe class decorators whose details are
+	implementation-specific.
+
+	@{
+*/
+
+/**
+	@def LBAL_CLASS_FORCE_EBCO
+	Force the use of the Empty Base [Class] Optimization (EBCO). The decorator
+	should precede the class name in its declaration. Note that this is used
+	specifically to indicate that the bases of a given class are empty, not
+	that a given class is an Empty Base Class; this means it must be applied by
+	the end user in a large number of practical use cases. Also note that the
+	decorator must be applied in the most direct descendant to have effect. For
+	example:
+
+		struct Empty1 { };
+		struct Empty2 { };
+		struct Derived1 : Empty1, Empty2 { };
+		struct LBAL_CLASS_FORCE_EBCO Derived2 : Derived 1 { };
+
+	In this example, neither `Derived1` _nor_ `Derived2` will necessarily
+	benefit from the EBCO; we can’t guarantee the behavior. However, if
+	`Derived1` _also_ has the `LBAL_CLASS_FORCE_EBCO` decorator applied, then
+	any compiler that supports the EBCO will apply it to both `Derived1` _and_
+	`Derived2`.
+
+	@remarks __SEEME__ This is really only necessary when using multiple
+	inheritance and targeting MSVS; at least VS2015 Update 3 is required (note
+	that Update 2, which actually introduced the feature, had a bug which
+	caused it to violate the Standard).
+
+	@remarks __APIME__ How aggravating is it that you can’t decorate the empty
+	base class itself instead of having to force a weird requirement onto
+	derived classes? Sadly, we’re at the mercy of the built-in compiler
+	decorators, here.
+*/
+#ifndef LBAL_CLASS_FORCE_EBCO
+	#define LBAL_CLASS_FORCE_EBCO
+#endif
+
+///	@}	LBAL_CLASS
+
+/**
+	@name LBAL_FUNC
 	These macros describe function calling conventions whose details are
 	implementation-specific.
 
-		LBAL_FUNC_CALL_C(LBAL_func_name_)
-			C calling convention; default
-
-		LBAL_FUNC_CALL_STD(LBAL_func_name_)
-			Std calling convention
-
-		LBAL_FUNC_CALLBACK_C(LBAL_func_name_)
-			C-style function pointer
-
-		LBAL_FUNC_CALLBACK_STD(LBAL_func_name_)
-			Std-style function pointer
+	@{
 */
+
+/**
+	@def LBAL_FUNC_CALL_C(LBAL_func_name_)
+	C calling convention; default
+*/
+#ifndef LBAL_FUNC_CALL_C
+	#define LBAL_FUNC_CALL_C(LBAL_func_name_)
+#endif
+
+/**
+	@def LBAL_FUNC_CALL_STD(LBAL_func_name_)
+	Std calling convention
+*/
+#ifndef LBAL_FUNC_CALL_STD
+	#define LBAL_FUNC_CALL_STD(LBAL_func_name_)
+#endif
+
+/**
+	@def LBAL_FUNC_CALLBACK_C(LBAL_func_name_)
+	C-style function pointer
+*/
+#ifndef LBAL_FUNC_CALLBACK_C
+	#define LBAL_FUNC_CALLBACK_C(LBAL_func_name_)
+#endif
+
+/**
+	@def LBAL_FUNC_CALLBACK_STD(LBAL_func_name_)
+	Std-style function pointer
+*/
+#ifndef LBAL_FUNC_CALLBACK_STD
+	#define LBAL_FUNC_CALLBACK_STD(LBAL_func_name_)
+#endif
+
+///	@}	LBAL_FUNC
 
 ///	@}	lbal_decorators
