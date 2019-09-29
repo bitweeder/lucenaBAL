@@ -79,18 +79,18 @@
 	#error "Don’t define LBAL_TARGET_CPU_xxx outside of this file."
 #endif	//	LBAL_TARGET_CPU check
 
-#if defined (LBAL_TARGET_CPU_FAMILY_X86) or \
+#if defined (LBAL_TARGET_CPU_FAMILY_X86) || \
 	defined (LBAL_TARGET_CPU_FAMILY_ARM)
 
 	#error "Don’t define LBAL_TARGET_CPU_xxx_FAMILY outside of this file."
 #endif	//	LBAL_TARGET_CPU_FAMILY check
 
-#if defined (LBAL_TARGET_VEC_SSE) or \
-	defined (LBAL_TARGET_VEC_SSE2) or \
-	defined (LBAL_TARGET_VEC_SSE3) or \
-	defined (LBAL_TARGET_VEC_SSE41) or \
-	defined (LBAL_TARGET_VEC_SSE42) or \
-	defined (LBAL_TARGET_VEC_AVX) or \
+#if defined (LBAL_TARGET_VEC_SSE) || \
+	defined (LBAL_TARGET_VEC_SSE2) || \
+	defined (LBAL_TARGET_VEC_SSE3) || \
+	defined (LBAL_TARGET_VEC_SSE41) || \
+	defined (LBAL_TARGET_VEC_SSE42) || \
+	defined (LBAL_TARGET_VEC_AVX) || \
 	defined (LBAL_TARGET_VEC_AVX2)
 
 	#error "Don’t define LBAL_TARGET_VEC_xxx outside of this file."
