@@ -74,17 +74,18 @@ target_include_directories (
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
 )
 
-target_compile_features (
-	lbalTest
-    PRIVATE
-        cxx_std_17
-)
+# target_compile_features (
+# 	lbalTest
+#     PRIVATE
+#         cxx_std_17
+# )
 
 # __FIXME__ Needs refinement. Or elimination.
 target_compile_options (
   lbalTest
   PRIVATE
   	$<$<CXX_COMPILER_ID:MSVC>:/std:c++17>
+  	$<$<CXX_COMPILER_ID:MSVC>:/Zc:__cplusplus>
 	$<$<CXX_COMPILER_ID:MSVC>:/W4>
 	$<$<CXX_COMPILER_ID:MSVC>:/WX>
 	$<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-Wall>

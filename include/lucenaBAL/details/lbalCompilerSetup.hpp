@@ -51,145 +51,6 @@
 
 
 /*------------------------------------------------------------------------------
-	Definition Tests
-
-	Note that none of the LBAL_XXX macros are set to 0 until after the compiler
-	tests, so it’s sufficient to simply test them for existence. Just to be
-	sure, though, we make sure someone didn’t define one of these behind our
-	backs.
-*/
-
-#if defined (LBAL_NAME_COMPILER)
-	#error "Don’t define LBAL_NAME_COMPILER outside of this file."
-#endif	//	LBAL_NAME_COMPILER
-
-#if defined (LBAL_TARGET_COMPILER_CLANG) || \
-	defined (LBAL_TARGET_COMPILER_GCC) || \
-	defined (LBAL_TARGET_COMPILER_MSVC)
-
-	#error "Don’t define LBAL_TARGET_COMPILER_xxx outside of this file."
-#endif	//	LBAL_TARGET_COMPILER check
-
-#if defined (LBAL_TARGET_CPU_X86) || \
-	defined (LBAL_TARGET_CPU_X86_64) || \
-	defined (LBAL_TARGET_CPU_IA64) || \
-	defined (LBAL_TARGET_CPU_ARM) || \
-	defined (LBAL_TARGET_CPU_ARM_64)
-
-	#error "Don’t define LBAL_TARGET_CPU_xxx outside of this file."
-#endif	//	LBAL_TARGET_CPU check
-
-#if defined (LBAL_TARGET_CPU_FAMILY_X86) || \
-	defined (LBAL_TARGET_CPU_FAMILY_ARM)
-
-	#error "Don’t define LBAL_TARGET_CPU_xxx_FAMILY outside of this file."
-#endif	//	LBAL_TARGET_CPU_FAMILY check
-
-#if defined (LBAL_TARGET_VEC_SSE) || \
-	defined (LBAL_TARGET_VEC_SSE2) || \
-	defined (LBAL_TARGET_VEC_SSE3) || \
-	defined (LBAL_TARGET_VEC_SSE41) || \
-	defined (LBAL_TARGET_VEC_SSE42) || \
-	defined (LBAL_TARGET_VEC_AVX) || \
-	defined (LBAL_TARGET_VEC_AVX2)
-
-	#error "Don’t define LBAL_TARGET_VEC_xxx outside of this file."
-#endif	//	LBAL_TARGET_VEC check
-
-#if defined (LBAL_TARGET_RT_LITTLE_ENDIAN) || \
-	defined (LBAL_TARGET_RT_BIG_ENDIAN) || \
-	defined (LBAL_TARGET_RT_32_BIT) || \
-	defined (LBAL_TARGET_RT_64_BIT) || \
-	defined (LBAL_TARGET_RT_COFF) || \
-	defined (LBAL_TARGET_RT_ELF) || \
-	defined (LBAL_TARGET_RT_MACHO) || \
-	defined (LBAL_TARGET_RT_WASM)
-
-	#error "Don’t define LBAL_TARGET_RT_xxx outside of this file."
-#endif	//	LBAL_TARGET_RT check
-
-#if defined (LBAL_TYPE_HAS_INT64) || \
-	defined (LBAL_TYPE_HAS_INT128) || \
-	defined (LBAL_TYPE_EXACT_WIDTH_INTEGERS) || \
-	defined (LBAL_TYPE_DOUBLE_GT_FLOAT) || \
-	defined (LBAL_TYPE_LONG_DOUBLE_GT_DOUBLE) || \
-	defined (LBAL_TYPE_WCHAR_T_IS_16_BITS)
-
-	#error "Don’t define LBAL_TYPE_xxx outside of this file."
-#endif	//	LBAL_TYPE check
-
-#if defined (LBAL_CPP98_EXCEPTIONS) || \
-	defined (LBAL_CPP98_RTTI)
-
-	#error "Don’t define LBAL_CPP98_xxx outside of this file."
-#endif	//	LBAL_CPP98 check
-
-#if defined (LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION) || \
-	defined (LBAL_CPP11_THREADSAFE_STATIC_INIT)
-
-	#error "Don’t define LBAL_CPP11_xxx outside of this file."
-#endif	//	LBAL_CPP11 check
-
-#if defined (LBAL_CPP14_SIZED_DEALLOCATION)
-	#error "Don’t define LBAL_CPP14_xxx outside of this file."
-#endif	//	LBAL_CPP14 check
-
-#if defined (LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS)
-	#error "Don’t define LBAL_CPP17_xxx outside of this file."
-#endif	//	LBAL_CPP17 check
-
-#if defined (LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS) || \
-	defined (LBAL_CPP2A_ATTRIBUTE_LIKELY) || \
-	defined (LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS) || \
-	defined (LBAL_CPP2A_ATTRIBUTE_UNLIKELY) || \
-	defined (LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY) || \
-	defined (LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS) || \
-	defined (LBAL_CPP2A_CONCEPTS) || \
-	defined (LBAL_CPP2A_CONDITIONAL_EXPLICIT) || \
-	defined (LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS) || \
-	defined (LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION) || \
-	defined (LBAL_CPP2A_CONTRACTS) || \
-	defined (LBAL_CPP2A_COROUTINES) || \
-	defined (LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS) || \
-	defined (LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS) || \
-	defined (LBAL_CPP2A_DESIGNATED_INITIALIZERS) || \
-	defined (LBAL_CPP2A_DESTROYING_DELETE) || \
-	defined (LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR) || \
-	defined (LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION) || \
-	defined (LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS) || \
-	defined (LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE) || \
-	defined (LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR) || \
-	defined (LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS) || \
-	defined (LBAL_CPP2A_TYPENAME_OPTIONAL) || \
-	defined (LBAL_CPP2A_VA_OPT)
-
-	#error "Don’t define LBAL_CPP2A_xxx outside of this file."
-#endif	//	LBAL_CPP2A check
-
-#if defined (LBAL_C99_PREPROCESSOR)
-	#error "Don’t define LBAL_C99_xxx outside of this file."
-#endif	//	LBAL_C99 check
-
-#if defined (LBAL_CLASS_FORCE_EBCO)
-	#error "Don’t define LBAL_CLASS_xxx outside of this file."
-#endif	//	LBAL_CLASS_xxx check
-
-#if defined (LBAL_FUNC_CALL_C) || \
-	defined (LBAL_FUNC_CALL_STD) || \
-	defined (LBAL_FUNC_CALLBACK_C) || \
-	defined (LBAL_FUNC_CALLBACK_STD)
-
-	#error "Don’t define LBAL_FUNC_xxx outside of this file."
-#endif	//	LBAL_FUNC_xxx check
-
-#if defined (LBAL_HINT_likely) || \
-	defined (LBAL_HINT_unlikely)
-
-	#error "Don’t define LBAL_BUILTIN_xxx outside of this file."
-#endif	//	LBAL_BUILTIN_xxx check
-
-
-/*------------------------------------------------------------------------------
 	Compiler Macros
 
 	__SEEME__ Arguably, it would be more desirable to give each compiler its own
@@ -1121,8 +982,8 @@
 
 		//	__SEEME__ There appear to be no intrinsics for detecting AVX-512
 		//	support in MSVC, yet, though support may be undocumented or
-		//	under-reported. It‘s currently moot, though, as we don’t support
-		//	this instrcution set family at this time.
+		//	under-reported. It’s currently moot, though, as we don’t support
+		//	this instruction set family at this time.
 	#endif
 
 
@@ -1294,34 +1155,4 @@
 	#define LBAL_NAME_TARGET_CPU u8"x86_64"
 #elif LBAL_TARGET_CPU_X86
 	#define LBAL_NAME_TARGET_CPU u8"i386"
-#endif
-
-
-/*------------------------------------------------------------------------------
-	Set up any unitialized class decorators
-*/
-
-#ifndef LBAL_CLASS_FORCE_EBCO
-	#define LBAL_CLASS_FORCE_EBCO
-#endif
-
-
-/*------------------------------------------------------------------------------
-	Set up any unitialized function calling conventions
-*/
-
-#ifndef LBAL_FUNC_CALL_C
-	#define LBAL_FUNC_CALL_C(LBAL_func_name_) LBAL_func_name_
-#endif
-
-#ifndef LBAL_FUNC_CALL_STD
-	#define LBAL_FUNC_CALL_STD(LBAL_func_name_) LBAL_func_name_
-#endif
-
-#ifndef LBAL_FUNC_CALLBACK_C
-	#define LBAL_FUNC_CALLBACK_C(LBAL_func_name_) *LBAL_func_name_
-#endif
-
-#ifndef LBAL_FUNC_CALLBACK_STD
-	#define LBAL_FUNC_CALLBACK_STD(LBAL_func_name_) *LBAL_func_name_
 #endif

@@ -17,27 +17,6 @@
 
 
 /*------------------------------------------------------------------------------
-	Definition Tests
-
-	__SEEME__ This section is fairly limited since LBAL_LIBCPP tokens _can_ be
-	legitimately set elsewhere, typically because of platform or compiler
-	limitations.
-*/
-
-#if defined (LBAL_NAME_STANDARD_LIBRARY)
-	#error "Don’t define LBAL_NAME_STANDARD_LIBRARY outside of this file."
-#endif	//	LBAL_NAME_STANDARD_LIBRARY
-
-#if defined (LBAL_TARGET_STANDARD_LIBRARY_LIBCPP) \
-	|| defined (LBAL_TARGET_STANDARD_LIBRARY_MSVC) \
-	|| defined (LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP) \
-	|| defined (LBAL_TARGET_STANDARD_LIBRARY_STDLIBCPP)
-
-	#error "Don’t define LBAL_TARGET_STANDARD_LIBRARY_xxx outside of this file."
-#endif	//	LBAL_TARGET_STANDARD_LIBRARY check
-
-
-/*------------------------------------------------------------------------------
 	Header Inclusion
 
 	Load in any dependencies we’ll need to perform our library tests.

@@ -49,38 +49,6 @@
 
 
 /*------------------------------------------------------------------------------
-	Definition Tests
-
-	Note that none of the LBAL_XXX macros are set to 0 until after the compiler
-	tests, so it’s sufficient to simply test them for existence. Just to be
-	sure, though, we make sure someone didn’t define one of these behind our
-	backs, with the following exceptions:
-
-		- LBAL_TARGET_OS_xxx should be set by the build system or in some
-			similar fashion, as otherwise there may be no way to differentiate
-			between certain platforms.
-
-		- LBAL_TARGET_API_xxx can be set by the build system or in some
-			similar fashion to avoid ambiguities (e.g., determine whether we’re
-			targeting Carbon or Cocoa APIs deuner older MacOS X’s). It’s not
-			generally necessary to do this any more.
-*/
-
-#if !defined (LBAL_TARGET_OS_X11) && \
-	!defined (LBAL_TARGET_OS_MACOS) && \
-	!defined (LBAL_TARGET_OS_WIN) && \
-	!defined (LBAL_TARGET_OS_IOS) && \
-	!defined (LBAL_TARGET_OS_IOS_SIM)
-
-	#error "A LBAL_TARGET_OS_xxx must be defined outside of this file."
-#endif	//	LBAL_TARGET_OS check
-
-#if defined (LBAL_FEATURE_UTF16_FILE_SYSTEM)
-	#error "Don’t define LBAL_FEATURE_UTF16_FILE_SYSTEM outside of this file."
-#endif	//	LBAL_FEATURE_UTF16_FILE_SYSTEM
-
-
-/*------------------------------------------------------------------------------
 	Platform Macros
 
 	__SEEME__ Arguably, it would be more desirable to give each platform its own
