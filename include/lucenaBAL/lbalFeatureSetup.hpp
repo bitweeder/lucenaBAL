@@ -63,6 +63,7 @@
 //	lbal
 #include <lucenaBAL/lbalConfig.hpp>
 
+#include <lucenaBAL/details/lbalDefinitionTests.hpp>
 #include <lucenaBAL/details/lbalPlatformSetup.hpp>
 #include <lucenaBAL/details/lbalCompilerSetup.hpp>
 #include <lucenaBAL/details/lbalLibrarySetup.hpp>
@@ -501,11 +502,11 @@
 #endif
 
 /**
-	@def LBAL_TARGET_OS_WIN
+	@def LBAL_TARGET_OS_WINAPI
 	Microsoft’s Windows
 */
-#ifndef LBAL_TARGET_OS_WIN
-	#define LBAL_TARGET_OS_WIN 0
+#ifndef LBAL_TARGET_OS_WINAPI
+	#define LBAL_TARGET_OS_WINAPI 0
 #endif
 
 ///	@}	LBAL_TARGET_OS
