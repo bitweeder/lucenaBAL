@@ -278,7 +278,7 @@
 	//		- __cpp_nontype_template_parameter_auto is undefined; testing
 	//			suggests the feature is implemented; no tracking
 	//
-	//	As for other potential issues, __cpp_threadsafe_static_init -can- be
+	//	As for other potential issues, __cpp_threadsafe_static_init _can_ be
 	//	set to 0 depending on compiler arguments, but defaults to being on.
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid a
@@ -291,8 +291,13 @@
 
 	//	C++2a features
 
-	//	__SEEME__ This may not be fully compliant, as the proposal values may
-	//	not be what actually gets returned by various macros. Untested.
+	//	__SEEME__ <https://en.cppreference.com/w/cpp/compiler_support> reports
+	//	that this is non-compliant, but that’s not exactly correct. Rather,
+	//	Apple selectively disables detection for features it doesn’t want to
+	//	advertise support for, typically because they would break ABI and/or
+	//	they’ve had the implementation stripped out. Additionally, Apple lags a
+	//	bit in updating the token values to reflect updates; it’s not always
+	//	clear if this is an oversight or if an update has been held back.
 	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 
 	//	__SEEME__ None of these have SD-6 macros, so we rely on a compiler
@@ -303,6 +308,10 @@
 		#define LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 1L
 		#define LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION 1L
 		#define LBAL_CPP2A_VA_OPT 1L
+	#endif
+
+	#if (__clang_major__ >= 11) && (__cplusplus > 201703L)
+		#define LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 1L
 	#endif
 
 	#if __cpp_concepts
@@ -319,6 +328,14 @@
 
 	#if __cpp_impl_destroying_delete
 		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
+	#endif
+
+	#if __cpp_impl_three_way_comparison
+		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
+
+		#if (__cpp_impl_three_way_comparison > = 201907L)
+			#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
+		#endif
 	#endif
 
 	#if __cpp_nontype_template_parameter_class
@@ -528,7 +545,8 @@
 	#endif	//	__STDC_VERSION__
 
 
-	//	Test for C++98 features.
+	//	C++98 features
+
 	//	These can be conditionally disabled.
 	#if __cpp_exceptions
 		#define LBAL_CPP98_EXCEPTIONS __cpp_exceptions
@@ -542,7 +560,9 @@
 		#define LBAL_CPP98_RTTI 199711L
 	#endif
 
-	//	Test for C++11 features.
+
+	//	C++11 features
+
 	#if __cpp_alias_templates
 		#define LBAL_CPP11_ALIAS_TEMPLATES __cpp_alias_templates
 	#elif (__cplusplus >= 201103L)
@@ -567,7 +587,9 @@
 		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
 	#endif
 
-	//	Test for C++14 features.
+
+	//	C++14 features
+
 	#if __cpp_aggregate_nsdmi
 		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
 	#elif (__cplusplus >= 201103L)
@@ -580,7 +602,9 @@
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 	#endif
 
-	//	Test for C++17 features.
+
+	//	C++17 features
+
 	//	As of clang 8, this is disabled by default in order to avoid a defect
 	//	introduced by the associated proposal (which was intended to resolve
 	//	another defect).
@@ -588,9 +612,9 @@
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS __cpp_template_template_args
 	#endif
 
-	//	Test for C++2a features.
-	//	__SEEME__ This may not be fully compliant, as the proposal values may
-	//	not be what actually gets returned by vrious macros. Untested.
+
+	//	C++2a features
+
 	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 
 	//	__SEEME__ None of these have SD-6 macros, so we rely on a compiler
@@ -600,15 +624,18 @@
 		#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 1L
 		#define LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 1L
 		#define LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION	1L
-		#define LBAL_CPP2A_VA_OPT 1L
 	#endif
 
 	#if (__clang_major__ >= 8) && (__cplusplus > 201703L)
 		#define LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS 1L
+		#define LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 1L
 	#endif
 
 	#if (__clang_major__ >= 9) && (__cplusplus > 201703L)
 		#define LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION 1L
+		#define LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE 1L
+		#define LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS 1L
+		#define LBAL_CPP2A_VA_OPT 1L
 	#endif
 
 	#if (__clang_major__ >= 10) && (__cplusplus > 201703L)
@@ -629,6 +656,14 @@
 
 	#if __cpp_impl_destroying_delete
 		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
+	#endif
+
+	#if __cpp_impl_three_way_comparison
+		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
+
+		#if (__cpp_impl_three_way_comparison > = 201907L)
+			#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
+		#endif
 	#endif
 
 	#if __cpp_nontype_template_parameter_class
@@ -834,7 +869,8 @@
 	#define LBAL_C99_PREPROCESSOR 1
 
 
-	//	Test for C++98 features.
+	//	C++98 features
+
 	//	It’s unclear whether we can count on `__cpp_exceptions` being unset if
 	//	this is explicitly disabled, so we rely on the token that _is_
 	//	guaranteed to have that behavior.
@@ -853,7 +889,9 @@
 		#define LBAL_CPP98_RTTI 199711L
 	#endif
 
-	//	Test for C++11 features.
+
+	//	C++11 features
+
 	#if __cpp_alias_templates
 		#define LBAL_CPP11_ALIAS_TEMPLATES __cpp_alias_templates
 	#elif (__cplusplus >= 201103L)
@@ -878,7 +916,9 @@
 		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
 	#endif
 
-	//	Test for C++14 features.
+
+	//	C++14 features
+
 	#if __cpp_aggregate_nsdmi
 		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
 	#elif (__cplusplus >= 201103L)
@@ -891,14 +931,16 @@
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 	#endif
 
-	//	Test for C++17 features.
+
+	//	C++17 features
+
 	#if __cpp_template_template_args
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS __cpp_template_template_args
 	#endif
 
-	//	Test for C++2a features.
-	//	__SEEME__ This may not be fully compliant, as the proposal values may not
-	//	be what actually gets returned by vrious macros. Untested.
+
+	//	C++2a features
+
 	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 
 	//	__SEEME__ None of these have SD-6 macros, so we rely on a compiler
@@ -911,15 +953,20 @@
 		#define LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION	1L
 		#define LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS 1L
 
-		#define LBAL_CPP2A_VA_OPT 1L
-			//	__SEEME__ This is arguably only a partial implementation since it
-			//	fails for at least one corner case.
+		//	__FIXME__ gcc hasn’t yet shipped a fully functioning version of
+		//	this feature. In particular, the latest one from gcc 8 fails when
+		//	it encounters `#__VA_OPT__`. We treat this as unavailable, but it’s
+		//	actually a good candidate for a new “partial implementation” value,
+		//	or a special token (`LBAL_OOPS_xxx`?).
+//		#define LBAL_CPP2A_VA_OPT 1L
 	#endif
 
 	#if (__GNUC__ >= 9) && (__cplusplus > 201703L)
 		#define LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION 1L
 		#define LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS	1L
 		#define LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 1L
+		#define LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE 1L
+		#define LBAL_CPP2A_TYPENAME_OPTIONAL 1L
 	#endif
 
 	#if __cpp_concepts
@@ -936,6 +983,14 @@
 
 	#if __cpp_impl_destroying_delete
 		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
+	#endif
+
+	#if __cpp_impl_three_way_comparison
+		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
+
+		#if (__cpp_impl_three_way_comparison > = 201907L)
+			#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
+		#endif
 	#endif
 
 	#if __cpp_nontype_template_parameter_class
@@ -1148,16 +1203,16 @@
 	#endif
 
 
-	//	__SEEME__ Re: SD-6 macros: support started getting rolled out as of
-	//	MSVC 2019 16.0, but testing with that series didnt start until 16.3. As
-	//	a result, it’s unclear exactly when the various macros started going
-	//	live. For that reason, prior to 16.3, we rely on version checks, but
-	//	after that, we use the SD-6 macros first. It’s possible some supported
-	//	features will fallthrough the cracks with some versions, but it’s
-	//	unlikely; all the same, this will be updated as new information becomes
-	//	available.
+	//	__SEEME__ Re: SD-6 macros: full support started getting rolled out as
+	//	of MSVC 2019 16.0, but testing with that series didn’t start until
+	//	16.3. As a result, it’s unclear exactly when the various macros started
+	//	going live. For that reason, prior to 16.3, we rely on version checks,
+	//	but after that, we use the SD-6 macros first. It’s possible some
+	//	supported features will fallthrough the cracks with some versions, but
+	//	it’s unlikely; all the same, this will be updated as new information
+	//	becomes available.
 
-	//	C++98 features.
+	//	C++98 features
 	//	These can be conditionally disabled.
 
 	//	We can’t rely on `__cpp_exceptions` being set properly in older MSVCs,
@@ -1174,7 +1229,8 @@
 	#endif
 
 
-	//	C++11 features.
+	//	C++11 features
+
 	//	__SEEME__ The `_MSVC_LANG` checks here are theoretical. `_MSVC_LANG`
 	//	has never had a value lower than `201402L`, equivalent to C++14. We
 	//	don’t bother getting too precise here, though, since we don‘t
@@ -1253,6 +1309,14 @@
 		#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 1L
 	#endif
 
+	#if (_MSC_VER >= 1914) && (_MSVC_LANG > 201703L)
+		#define LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION 1L
+	#endif
+
+	#if (_MSC_VER >= 1920) && (_MSVC_LANG > 201703L)
+		#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
+	#endif
+
 	#if (_MSC_VER >= 1921) && (_MSVC_LANG > 201703L)
 		#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 1L
 	#endif
@@ -1260,6 +1324,8 @@
 	#if (_MSC_VER >= 1922) && (_MSVC_LANG > 201703L)
 		#define LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 1L
 		#define LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS 1L
+		#define LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE 1L
+		#define LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS 1L
 	#endif
 
 
@@ -1277,6 +1343,14 @@
 
 	#if __cpp_impl_destroying_delete
 		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
+	#endif
+
+	#if __cpp_impl_three_way_comparison
+		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
+
+		#if (__cpp_impl_three_way_comparison > = 201907L)
+			#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
+		#endif
 	#endif
 
 	#if __cpp_nontype_template_parameter_class

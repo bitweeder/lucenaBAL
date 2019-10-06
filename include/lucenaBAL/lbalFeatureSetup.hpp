@@ -931,7 +931,8 @@
 	@details This can be conditionally disabled at build-time, so we can’t rely
 	on a language version test to detect it.
 
-	Equivalent SD-6 macro: `__cpp_exceptions` (199711L)
+	Equivalent SD-6 macro: `__cpp_exceptions`
+	- 199711L
 */
 #ifndef LBAL_CPP98_EXCEPTIONS
 	#define LBAL_CPP98_EXCEPTIONS 0
@@ -943,7 +944,8 @@
 	@details This can be conditionally disabled at build-time, so we can’t rely
 	on a language version test to detect it.
 
-	Equivalent SD-6 macro: `__cpp_rtti`	(199711L)
+	Equivalent SD-6 macro: `__cpp_rtti`
+	- 199711L
 */
 #ifndef LBAL_CPP98_RTTI
 	#define LBAL_CPP98_RTTI 0
@@ -974,9 +976,8 @@
 /**
 	@def LBAL_CPP11_ALIAS_TEMPLATES
 	@brief Allow type aliases to be templated.
-	@details Equivalent SD-6 macro: `__cpp_alias_templates`	(200704L)
-
-	<https://wg21.link/N2258>
+	@details Equivalent SD-6 macro: `__cpp_alias_templates`
+	- [200704L](https://wg21.link/N2258) __PDF__
 */
 #ifndef LBAL_CPP11_ALIAS_TEMPLATES
 	#define LBAL_CPP11_ALIAS_TEMPLATES 0
@@ -985,9 +986,8 @@
 /**
 	@def LBAL_CPP11_ATTRIBUTES
 	@brief Formalize attributes as a language feature.
-	@details Equivalent SD-6 macro: `__cpp_attributes` (200809L)
-
-	<https://wg21.link/N2761>
+	@details Equivalent SD-6 macro: `__cpp_attributes`
+	- [200809L](https://wg21.link/N2761) __PDF__
 */
 #ifndef LBAL_CPP11_ATTRIBUTES
 	#define LBAL_CPP11_ATTRIBUTES 0
@@ -996,9 +996,8 @@
 /**
 	@def LBAL_CPP11_CONSTEXPR
 	@brief Specify generalized constant expressions.
-	@details Equivalent SD-6 macro: `__cpp_constexpr` (200704L)
-
-	<https://wg21.link/N2235>
+	@details Equivalent SD-6 macro: `__cpp_constexpr`
+	- [200704L](https://wg21.link/N2235) __PDF__
 
 	@remarks `__cpp_constexpr` has at least 4 values associated with, each
 	from a different proposal.
@@ -1011,8 +1010,7 @@
 	@def LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION
 	@brief Support for optional C++ garbage collection.
 	@details Equivalent SD-6 macro: none
-
-	http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2670.htm
+	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2670.htm)
 */
 #ifndef LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION
 	#define LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION 0
@@ -1024,9 +1022,8 @@
 	@details Some compilers can disable this feature if asked; the token will
 	be set to `0` if that has happened.
 
-	Equivalent SD-6 macro: `__cpp_threadsafe_static_init` (200806L)
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2660.htm>
+	Equivalent SD-6 macro: `__cpp_threadsafe_static_init`
+	- [200806L](<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2660.htm)
 */
 #ifndef LBAL_CPP11_THREADSAFE_STATIC_INIT
 	#define LBAL_CPP11_THREADSAFE_STATIC_INIT 0
@@ -1047,9 +1044,8 @@
 	@def LBAL_CPP14_AGGREGATE_NSDMI
 	@brief Relax the requirements on aggregates and specify aggregate member
 	initialization
-	@details Equivalent SD-6 macro: `__cpp_aggregate_nsdmi` (201304L)
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3653.html>
+	@details Equivalent SD-6 macro: `__cpp_aggregate_nsdmi`
+	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3653.html)
 */
 #ifndef LBAL_CPP14_AGGREGATE_NSDMI
 	#define LBAL_CPP14_AGGREGATE_NSDMI 0
@@ -1058,9 +1054,8 @@
 /**
 	@def LBAL_CPP14_SIZED_DEALLOCATION
 	@brief Make available a global `operator delete` that takes a size argument
-	@details Equivalent SD-6 macro: `__cpp_sized_deallocation` (201309L)
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3778.html>
+	@details Equivalent SD-6 macro: `__cpp_sized_deallocation`
+	- [201309L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3778.html)
 
 	@remarks Some compilers disable this by default since it’s an ABI-breaking
 	change; clang, in particular, does this.
@@ -1074,8 +1069,10 @@
 
 /**
 	@name LBAL_CPP17
-	All supported compilers support all features of C++17, but some of them may
-	require that certain features be explicitly enabled.
+	All supported compilers support all language features of C++17, but some of
+	them may require that
+	@ref LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS "template template arguments" be
+	explicitly enabled.
 
 	@{
 */
@@ -1086,9 +1083,8 @@
 	but unfortunately introduces a defect of its own. Some compilers
 	are disabling this until a revised patch is in.
 
-	Equivalent SD-6 macro: `__cpp_template_template_args` (201611L)
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0522r0.html>
+	Equivalent SD-6 macro: `__cpp_template_template_args`
+	- [201611L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0522r0.html)
 */
 #ifndef LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS
 	#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS 0
@@ -1125,8 +1121,7 @@
 	@def LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS
 
 	Equivalent SD-6 macro: none
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0409r2.html>
+	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0409r2.html)
 */
 #ifndef LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS
 	#define LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 0
@@ -1135,9 +1130,8 @@
 /**
 	@def LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS
 
-	Equivalent SD-6 macro: `__has_cpp_attribute(no_unique_address)` (201803L)
-
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0840r2.html>
+	Equivalent SD-6 macro: `__has_cpp_attribute(no_unique_address)`
+	- [201803L](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0840r2.html)
 */
 #ifndef LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS
 	#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS 0
@@ -1146,9 +1140,8 @@
 /**
 	@def LBAL_CPP2A_ATTRIBUTE_LIKELY
 
-	Equivalent SD-6 macro: `__has_cpp_attribute(likely)` (201803L)
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html>
+	Equivalent SD-6 test: `__has_cpp_attribute(likely)`
+	- [201803L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html)
 */
 #ifndef LBAL_CPP2A_ATTRIBUTE_LIKELY
 	#define LBAL_CPP2A_ATTRIBUTE_LIKELY 0
@@ -1157,9 +1150,8 @@
 /**
 	@def LBAL_CPP2A_ATTRIBUTE_UNLIKELY
 
-	Equivalent SD-6 macro: `__has_cpp_attribute(unlikely)` (201803L)
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html>
+	Equivalent SD-6 test: `__has_cpp_attribute(unlikely)`
+	- [201803L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html)
 */
 #ifndef LBAL_CPP2A_ATTRIBUTE_UNLIKELY
 	#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY 0
@@ -1173,8 +1165,7 @@
 	will be 0 if either attribute is unavailable, or 1 otherwise.
 
 	Equivalent SD-6 macro: none
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html>
+	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html)
 */
 #ifndef LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY
 	#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY 0
@@ -1183,9 +1174,8 @@
 /**
 	@def LBAL_CPP2A_CONCEPTS
 
-	Equivalent (SD-6) macro: `__cpp_concepts` (201806)
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0734r0.pdf>
+	Equivalent (SD-6) macro: `__cpp_concepts`
+	- [201806L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0734r0.pdf) __PDF__
 
 	@remarks __SEEME__ The current SD-6 revision does not actually define this
 	token, though the proposal that was voted into the Standard _does_. We
@@ -1202,9 +1192,8 @@
 	Aka, `explicit (bool)`; allows simplification of templated constructors
 	that have the potential to incorrectly convert their arguments.
 
-	Equivalent SD-6 macro: `__cpp_conditional_explicit` (201806L)
-
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0892r2.html>
+	Equivalent SD-6 macro: `__cpp_conditional_explicit`
+	- [201806L](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0892r2.html)
 */
 #ifndef LBAL_CPP2A_CONDITIONAL_EXPLICIT
 	#define LBAL_CPP2A_CONDITIONAL_EXPLICIT 0
@@ -1214,8 +1203,7 @@
 	@def LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS
 
 	Equivalent SD-6 macro: none
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0704r1.html>
+	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0704r1.html)
 */
 #ifndef LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS
 	#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 0
@@ -1225,8 +1213,7 @@
 	@def LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION
 
 	Equivalent SD-6 macro: none
-
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1064r0.html>
+	- [default](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1064r0.html)
 */
 #ifndef LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION
 	#define LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION 0
@@ -1236,9 +1223,8 @@
 	@def LBAL_CPP2A_COROUTINES
 	Note that this is just language support for the `<coroutine>` header.
 
-	Equivalent SD-6 macro: `__cpp_coroutines` (201902L)
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0912r1.html>
+	Equivalent SD-6 macro: `__cpp_coroutines`
+	- [201902L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0912r1.html)
 */
 #ifndef LBAL_CPP2A_COROUTINES
 	#define LBAL_CPP2A_COROUTINES 0
@@ -1248,8 +1234,7 @@
 	@def LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS
 
 	Equivalent SD-6 macro: none
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0624r2.pdf>
+	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0624r2.pdf) __PDF__
 */
 #ifndef LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS
 	#define LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS 0
@@ -1259,8 +1244,7 @@
 	@def LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS
 
 	Equivalent SD-6 macro: none
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0683r1.html>
+	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0683r1.html)
 */
 #ifndef LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS
 	#define LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 0
@@ -1270,8 +1254,7 @@
 	@def LBAL_CPP2A_DESIGNATED_INITIALIZERS
 
 	Equivalent SD-6 macro: none
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0329r4.pdf>
+	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0329r4.pdf) __PDF__
 */
 #ifndef LBAL_CPP2A_DESIGNATED_INITIALIZERS
 	#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 0
@@ -1280,9 +1263,8 @@
 /**
 	@def LBAL_CPP2A_DESTROYING_DELETE
 
-	Equivalent SD-6 macro: `__cpp_impl_destroying_delete` (201806L)
-
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0722r3.html>
+	Equivalent SD-6 macro: `__cpp_impl_destroying_delete`
+	- [201806L](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0722r3.html)
 */
 #ifndef LBAL_CPP2A_DESTROYING_DELETE
 	#define LBAL_CPP2A_DESTROYING_DELETE 0
@@ -1292,8 +1274,7 @@
 	@def LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR
 
 	Equivalent SD-6 macro: none
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0614r1.html>
+	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0614r1.html)
 */
 #ifndef LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR
 	#define LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 0
@@ -1303,8 +1284,7 @@
 	@def LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION
 
 	Equivalent SD-6 macro: none
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0702r1.html>
+	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0702r1.html)
 */
 #ifndef LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION
 	#define LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION	0
@@ -1317,8 +1297,7 @@
 	major compilers de facto meet the requirement.
 
 	There is currently no SD-6 macro for this (ironically).
-
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0941r2.html>
+	- [default](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0941r2.html)
 */
 #ifndef LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS
 	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 0
@@ -1327,9 +1306,8 @@
 /**
 	@def LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS
 
-	Equivalent SD-6 macro: `__cpp_nontype_template_parameter_class` (201806L)
-
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0732r2.pdf>
+	Equivalent SD-6 macro: `__cpp_nontype_template_parameter_class`
+	- [201806L](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0732r2.pdf) __PDF__
 */
 #ifndef LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS
 	#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS 0
@@ -1346,8 +1324,7 @@
 	@def LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE
 
 	Equivalent SD-6 macro: none
-
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0780r2.html>
+	- [default](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0780r2.html)
 */
 #ifndef LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE
 	#define LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE 0
@@ -1355,21 +1332,41 @@
 
 /**
 	@def LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR
-
-	Equivalent SD-6 macro: `__cpp_impl_three_way_comparison`
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0515r0.pdf>
+	@brief This is the original three-way comparison operator
+	@details Equivalent SD-6 macro: `__cpp_impl_three_way_comparison`. This
+	token corresponds to the `201711L` variant, but it will have a value of
+	`201907L` if that variant is available.
+	- [201711L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0515r3.pdf) __PDF__
+	- [201711L](https://wg21.link/p0768r1) __PDF__
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1185r2.html)
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1186r3.html)
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1630r1.html)
 */
 #ifndef LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR
 	#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR 0
 #endif
 
 /**
+	@def LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP
+	@brief This is the updated three-way comparison operator
+	@details Equivalent SD-6 macro: `__cpp_impl_three_way_comparison`. This
+	token corresponds to the `201907L` variant; it will only be set to a
+	non-`0` value if that variant is available.
+	- [201711L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0515r3.pdf) __PDF__
+	- [201711L](https://wg21.link/p0768r1) __PDF__
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1185r2.html)
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1186r3.html)
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1630r1.html)
+*/
+#ifndef LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP
+	#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP 0
+#endif
+
+/**
 	@def LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS
 
 	Equivalent SD-6 macro: none
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0428r2.pdf>
+	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0428r2.pdf) __PDF__
 */
 #ifndef LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS
 	#define LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS 0
@@ -1379,8 +1376,7 @@
 	@def LBAL_CPP2A_TYPENAME_OPTIONAL
 
 	Equivalent SD-6 macro: none
-
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0634r2.html>
+	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0634r2.html)
 */
 #ifndef LBAL_CPP2A_TYPENAME_OPTIONAL
 	#define LBAL_CPP2A_TYPENAME_OPTIONAL 0
@@ -1388,10 +1384,17 @@
 
 /**
 	@def LBAL_CPP2A_VA_OPT
+	@brief Provide a smarter predefined macro equivalent to __VA__ARGS__
+	@details This behaves similarly to Microsoft’s old “broken” C preprocessor
+	implementation in regards to variadic macro handling, in that [0..n]
+	arguments are allowed rather than [1..n], with any extraneous comma being
+	dropped.
 
 	Equivalent SD-6 macro: none
+	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0306r4.html)
+	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p1042r1.html)
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0306r4.html>
+	@remarks Ironically, MSVC has no implementation of this.
 */
 #ifndef LBAL_CPP2A_VA_OPT
 	#define LBAL_CPP2A_VA_OPT 0
@@ -1413,9 +1416,12 @@
 	@details This is one of a bundle of attributes using a new syntax. It takes
 	the place of preprocessor-style asserts and serves the same purpose.
 
-	Equivalent SD-6 macro: `__has_cpp_attribute(assert)`
+	Equivalent SD-6 test: `__has_cpp_attribute(assert)`
+	- [unassigned](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html)
 
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html>
+	@remarks These were yoinked from C++2A prior to national balloting for
+	various reasons and are currently back in the oven, but expected to pop in
+	the C++23 Draft Standard.
 */
 #ifndef LBAL_CPPTS_ATTRIBUTE_ASSERT
 	#define LBAL_CPPTS_ATTRIBUTE_ASSERT 0
@@ -1428,9 +1434,12 @@
 	identifies function postconditions amd is intended to allow at least
 	partial enforcement by a static analyzer.
 
-	Equivalent SD-6 macro: `__has_cpp_attribute(assert)`
+	Equivalent SD-6 test: `__has_cpp_attribute(assert)`
+	- [unassigned](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html)
 
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html>
+	@remarks These were yoinked from C++2A prior to national balloting for
+	various reasons and are currently back in the oven, but expected to pop in
+	the C++23 Draft Standard.
 */
 #ifndef LBAL_CPPTS_ATTRIBUTE_ENSURES
 	#define LBAL_CPPTS_ATTRIBUTE_ENSURES 0
@@ -1443,9 +1452,12 @@
 	identifies function preconditions amd is intended to allow at least partial
 	enforcement by a static analyzer.
 
-	Equivalent SD-6 macro: `__has_cpp_attribute(expects)`
+	Equivalent SD-6 test: `__has_cpp_attribute(expects)`
+	- [unassigned](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html)
 
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html>
+	@remarks These were yoinked from C++2A prior to national balloting for
+	various reasons and are currently back in the oven, but expected to pop in
+	the C++23 Draft Standard.
 */
 #ifndef LBAL_CPPTS_ATTRIBUTE_EXPECTS
 	#define LBAL_CPPTS_ATTRIBUTE_EXPECTS 0
@@ -1461,7 +1473,8 @@
 	compliance. The aggregate’s value will be `0` if any attribute is
 	unavailable, or `1` otherwise.
 
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html>
+	Equivalent SD-6 macro: none
+	- [default](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html)
 
 	@remarks These were yoinked from C++2A prior to national balloting for
 	various reasons and are currently back in the oven, but expected to pop in
