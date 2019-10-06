@@ -75,10 +75,11 @@
 	#else
 		//	Tested with a minimum of Xcode 10.0; the bundled compiler and
 		//	Standard Library are roughly compatible with clang 6 and libc++,
-		//	while adding some Apple-proprietary stuff.
-		//	__SEEME__ We’re actually compatible with LLVM 9.4+, mostly, but we
-		//	don’t test with it any more since various non-compiler defects with
-		//	regard to C++17 make it an annoyance to support.
+		//	while adding some Apple-proprietary stuff. The most recently tested
+		//	version is from Xcode 11.0.
+
+		//	__SEEME__ We’re should actually be compatible with LLVM 9.4+, but
+		//	we don’t test with it any more.
 	#endif
 
 	#if __cplusplus < 201703L
@@ -205,41 +206,68 @@
 	#define LBAL_TYPE_EXACT_WIDTH_INTEGERS 1
 
 
-	//	__SEEME__ Apparently, __STDC_VERSION__ only gets set if we’re using the C
-	//	compiler, so this test doesn’t work. Since we’re requiring C++17 or
-	//	greater, we assume the following C99 features are available.
+	//	__SEEME__ Apparently, __STDC_VERSION__ only gets set if we’re using the
+	//	C compiler, so a test doesn’t work. Since we’re requiring C++17 or
+	//	greater, we assume the following is available since it was a
+	//	requirement of C++11.
 	#define LBAL_C99_PREPROCESSOR 1
 
 
 	//	Test for C++98 features.
 	//	These can be conditionally disabled.
-	//	__SEEME__ Note that we can’t rely on the SD-6 macros for these since
-	//	they’ve been removed for standardization.
-	#if __has_feature(cxx_exceptions)
+	#if __cpp_exceptions
+		#define LBAL_CPP98_EXCEPTIONS __cpp_exceptions
+	#elif __has_feature(cxx_exceptions)
 		#define LBAL_CPP98_EXCEPTIONS 199711L
 	#endif
 
-	#if __has_feature(cxx_rtti)
+	#if __cpp_rtti
+		#define LBAL_CPP98_RTTI __cpp_rtti
+	#elif __has_feature(cxx_rtti)
 		#define LBAL_CPP98_RTTI 199711L
 	#endif
 
 	//	Test for C++11 features.
-	//	These can be conditionally disabled.
+	#if __cpp_alias_templates
+		#define LBAL_CPP11_ALIAS_TEMPLATES __cpp_alias_templates
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_ALIAS_TEMPLATES 200704L
+	#endif
+
+	#if __cpp_attributes
+		#define LBAL_CPP11_ATTRIBUTES __cpp_attributes
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_ATTRIBUTES 200809L
+	#endif
+
+	#if __cpp_constexpr
+		#define LBAL_CPP11_CONSTEXPR __cpp_constexpr
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_CONSTEXPR 200704L
+	#endif
+
+	//	__SEEME__ There is no `__cplusplus` check since this can be
+	//	conditionally disabled.
 	#if __cpp_threadsafe_static_init
 		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
 	#endif
 
 	//	Test for C++14 features.
+	#if __cpp_aggregate_nsdmi
+		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP14_AGGREGATE_NSDMI 201304L
+	#endif
+
 	//	As of vanilla clang 8, this is disabled by default in order to avoid
-	//	ABI-breaking changes. It’s unclear what sign from heaven will finally
-	//	drive the maintainers to enable it.
+	//	ABI-breaking changes. It’s unclear when it will be enabled by default.
 	#if __cpp_sized_deallocation
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 	#endif
 
 	//	Test for C++17 features.
-	//	__SEEME__ Apple continues to lag vanilla clang by over a year in odd ways.
-	//	As of Apple LLVM 10.0, their clang compiler advertises full C++17
+	//	__SEEME__ Apple continues to lag vanilla clang by over a year in odd
+	//	ways. As of Apple LLVM 10.0, their clang compiler advertises full C++17
 	//	compliance, but a number of feature test macros fail (and then there’s
 	//	the real Standard Library deficiencies...):
 	//
@@ -260,18 +288,16 @@
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS __cpp_template_template_args
 	#endif
 
-	//	Test for C++2a features.
-	//	__SEEME__ There is partial support for this going back years, but it’s not
-	//	fully in-line with the accepted proposal. No ETA for compliance.
-//	#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 1L
 
-	//	__SEEME__ This may not be fully compliant, as the proposal values may not
-	//	be what actually gets returned by various macros. Untested.
+	//	C++2a features
+
+	//	__SEEME__ This may not be fully compliant, as the proposal values may
+	//	not be what actually gets returned by various macros. Untested.
 	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 
-	//	__FIXME__ Speculative; Xcode 10 seems to be tracking vanilla clang 6, but
-	//	these are untested.
-	#if (__clang_major__ >= 10)
+	//	__SEEME__ None of these have SD-6 macros, so we rely on a compiler
+	//	version check and a language test.
+	#if (__clang_major__ >= 10) && (__cplusplus > 201703L)
 		#define LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 1L
 		#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 1L
 		#define LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 1L
@@ -283,23 +309,29 @@
 		#define LBAL_CPP2A_CONCEPTS __cpp_concepts
 	#endif
 
-	#if __cpp_coroutines
-		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
-	#endif
-
 	#if __cpp_conditional_explicit
 		#define LBAL_CPP2A_CONDITIONAL_EXPLICIT __cpp_conditional_explicit
 	#endif
 
-	#if __cpp_nontype_template_parameter_class
-		#define LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS __cpp_nontype_template_parameter_class
+	#if __cpp_coroutines
+		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
 	#endif
 
-	#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute (likely)
-	#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute (unlikely)
-	#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY (LBAL_CPP2A_ATTRIBUTE_LIKELY && LBAL_CPP2A_ATTRIBUTE_UNLIKELY)
+	#if __cpp_impl_destroying_delete
+		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
+	#endif
 
-	#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute (no_unique_address)
+	#if __cpp_nontype_template_parameter_class
+		#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS __cpp_nontype_template_parameter_class
+	#endif
+
+	#ifdef __has_cpp_attribute
+		#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
+		#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
+		#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY (LBAL_CPP2A_ATTRIBUTE_LIKELY && LBAL_CPP2A_ATTRIBUTE_UNLIKELY)
+
+		#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+	#endif	//	__has_cpp_attribute
 
 
 	//	intrinsic functions
@@ -498,26 +530,52 @@
 
 	//	Test for C++98 features.
 	//	These can be conditionally disabled.
-	//	__SEEME__ Note that we can’t rely on the SD-6 macros for these since
-	//	they’ve been removed for standardization.
-	#if __has_feature(cxx_exceptions)
+	#if __cpp_exceptions
+		#define LBAL_CPP98_EXCEPTIONS __cpp_exceptions
+	#elif __has_feature(cxx_exceptions)
 		#define LBAL_CPP98_EXCEPTIONS 199711L
 	#endif
 
-	#if __has_feature(cxx_rtti)
+	#if __cpp_rtti
+		#define LBAL_CPP98_RTTI __cpp_rtti
+	#elif __has_feature(cxx_rtti)
 		#define LBAL_CPP98_RTTI 199711L
 	#endif
 
 	//	Test for C++11 features.
-	//	These can be conditionally disabled.
+	#if __cpp_alias_templates
+		#define LBAL_CPP11_ALIAS_TEMPLATES __cpp_alias_templates
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_ALIAS_TEMPLATES 200704L
+	#endif
+
+	#if __cpp_attributes
+		#define LBAL_CPP11_ATTRIBUTES __cpp_attributes
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_ATTRIBUTES 200809L
+	#endif
+
+	#if __cpp_constexpr
+		#define LBAL_CPP11_CONSTEXPR __cpp_constexpr
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_CONSTEXPR 200704L
+	#endif
+
+	//	__SEEME__ There is no `__cplusplus` check since this can be
+	//	conditionally disabled.
 	#if __cpp_threadsafe_static_init
 		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
 	#endif
 
 	//	Test for C++14 features.
-	//	As of clang 8, this is disabled by default in order to avoid ABI-
-	//	breaking changes. It’s unclear what sign from heaven will finally
-	//	drive the maintainers to enable it.
+	#if __cpp_aggregate_nsdmi
+		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP14_AGGREGATE_NSDMI 201304L
+	#endif
+
+	//	As of vanilla clang 8, this is disabled by default in order to avoid
+	//	ABI-breaking changes. It’s unclear when it will be enabled by default.
 	#if __cpp_sized_deallocation
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 	#endif
@@ -531,15 +589,13 @@
 	#endif
 
 	//	Test for C++2a features.
-	//	__SEEME__ There is partial support for this going back years, but it’s not
-	//	fully in-line with the accepted proposal. No ETA for compliance.
-//	#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 1L
-
-	//	__SEEME__ This may not be fully compliant, as the proposal values may not
-	//	be what actually gets returned by vrious macros. Untested.
+	//	__SEEME__ This may not be fully compliant, as the proposal values may
+	//	not be what actually gets returned by vrious macros. Untested.
 	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 
-	#if (__clang_major__ >= 6)
+	//	__SEEME__ None of these have SD-6 macros, so we rely on a compiler
+	//	version check and a language test.
+	#if (__clang_major__ >= 6) && (__cplusplus > 201703L)
 		#define LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 1L
 		#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 1L
 		#define LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 1L
@@ -547,27 +603,45 @@
 		#define LBAL_CPP2A_VA_OPT 1L
 	#endif
 
-	#if __cpp_concepts
-		#define LBAL_CPP2A_CONCEPTS __cpp_concepts
+	#if (__clang_major__ >= 8) && (__cplusplus > 201703L)
+		#define LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS 1L
 	#endif
 
-	#if __cpp_coroutines
-		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
+	#if (__clang_major__ >= 9) && (__cplusplus > 201703L)
+		#define LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION 1L
+	#endif
+
+	#if (__clang_major__ >= 10) && (__cplusplus > 201703L)
+		#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 1L
+	#endif
+
+	#if __cpp_concepts
+		#define LBAL_CPP2A_CONCEPTS __cpp_concepts
 	#endif
 
 	#if __cpp_conditional_explicit
 		#define LBAL_CPP2A_CONDITIONAL_EXPLICIT __cpp_conditional_explicit
 	#endif
 
-	#if __cpp_nontype_template_parameter_class
-		#define LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS __cpp_nontype_template_parameter_class
+	#if __cpp_coroutines
+		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
 	#endif
 
-	#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute (likely)
-	#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute (unlikely)
-	#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY (LBAL_CPP2A_ATTRIBUTE_LIKELY && LBAL_CPP2A_ATTRIBUTE_UNLIKELY)
+	#if __cpp_impl_destroying_delete
+		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
+	#endif
 
-	#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute (no_unique_address)
+	#if __cpp_nontype_template_parameter_class
+		#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS __cpp_nontype_template_parameter_class
+	#endif
+
+	#ifdef __has_cpp_attribute
+		#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
+		#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
+		#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY (LBAL_CPP2A_ATTRIBUTE_LIKELY && LBAL_CPP2A_ATTRIBUTE_UNLIKELY)
+
+		#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+	#endif 	//	__has_cpp_attribute
 
 
 	//	intrinsic functions
@@ -761,24 +835,58 @@
 
 
 	//	Test for C++98 features.
-	//	These can be conditionally disabled.
-	//	__SEEME__ Note that we can’t rely on the SD-6 macros for these since
-	//	they’ve been removed for standardization.
+	//	It’s unclear whether we can count on `__cpp_exceptions` being unset if
+	//	this is explicitly disabled, so we rely on the token that _is_
+	//	guaranteed to have that behavior.
+	//	__FIXME__ This will probably need to be conditionally handled in a
+	//	later version of gcc.
 	#if __EXCEPTIONS
 		#define LBAL_CPP98_EXCEPTIONS 199711L
 	#endif
 
+	//	It’s unclear whether we can count on `__cpp_rtti` being unset if this
+	//	is explicitly disabled, so we rely on the token that _is_ guaranteed to
+	//	have that behavior.
+	//	__FIXME__ This will probably need to be conditionally handled in a
+	//	later version of gcc.
 	#if __GXX_RTTI
 		#define LBAL_CPP98_RTTI 199711L
 	#endif
 
 	//	Test for C++11 features.
-	//	These can be conditionally disabled.
+	#if __cpp_alias_templates
+		#define LBAL_CPP11_ALIAS_TEMPLATES __cpp_alias_templates
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_ALIAS_TEMPLATES 200704L
+	#endif
+
+	#if __cpp_attributes
+		#define LBAL_CPP11_ATTRIBUTES __cpp_attributes
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_ATTRIBUTES 200809L
+	#endif
+
+	#if __cpp_constexpr
+		#define LBAL_CPP11_CONSTEXPR __cpp_constexpr
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_CONSTEXPR 200704L
+	#endif
+
+	//	__SEEME__ There is no `__cplusplus` check since this can be
+	//	conditionally disabled.
 	#if __cpp_threadsafe_static_init
 		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
 	#endif
 
 	//	Test for C++14 features.
+	#if __cpp_aggregate_nsdmi
+		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP14_AGGREGATE_NSDMI 201304L
+	#endif
+
+	//	__SEEME__ There is no `__cplusplus` check since this can be
+	//	conditionally disabled.
 	#if __cpp_sized_deallocation
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 	#endif
@@ -793,7 +901,9 @@
 	//	be what actually gets returned by vrious macros. Untested.
 	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 
-	#if (__GNUC__ >= 8)
+	//	__SEEME__ None of these have SD-6 macros, so we rely on a compiler
+	//	version check and a language test.
+	#if (__GNUC__ >= 8) && (__cplusplus > 201703L)
 		#define LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 1L
 		#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 1L
 		#define LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 1L
@@ -806,7 +916,8 @@
 			//	fails for at least one corner case.
 	#endif
 
-	#if (__GNUC__ >= 9)
+	#if (__GNUC__ >= 9) && (__cplusplus > 201703L)
+		#define LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION 1L
 		#define LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS	1L
 		#define LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 1L
 	#endif
@@ -815,23 +926,29 @@
 		#define LBAL_CPP2A_CONCEPTS __cpp_concepts
 	#endif
 
-	#if __cpp_coroutines
-		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
-	#endif
-
 	#if __cpp_conditional_explicit
 		#define LBAL_CPP2A_CONDITIONAL_EXPLICIT __cpp_conditional_explicit
 	#endif
 
-	#if __cpp_nontype_template_parameter_class
-		#define LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS __cpp_nontype_template_parameter_class
+	#if __cpp_coroutines
+		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
 	#endif
 
-	#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute (likely)
-	#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute (unlikely)
-	#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY (LBAL_CPP2A_ATTRIBUTE_LIKELY && LBAL_CPP2A_ATTRIBUTE_UNLIKELY)
+	#if __cpp_impl_destroying_delete
+		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
+	#endif
 
-	#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute (no_unique_address)
+	#if __cpp_nontype_template_parameter_class
+		#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS __cpp_nontype_template_parameter_class
+	#endif
+
+	#ifdef __has_cpp_attribute
+		#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
+		#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
+		#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY (LBAL_CPP2A_ATTRIBUTE_LIKELY && LBAL_CPP2A_ATTRIBUTE_UNLIKELY)
+
+		#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+	#endif	//	__has_cpp_attribute
 
 
 	//	intrinsic functions
@@ -914,11 +1031,19 @@
 	//	Visual C++ targeting Windows; _WIN32 is also defined for 64-bit
 	//	__SEEME__ This must always appear last, as other compilers have a tendency
 	//	to emulate MSVC by defining its macros.
+
+	//	__FIXME__ This is unnecessarily conservative. In practice, things are
+	//	unlikely to get squiffy until we go back before MSVS 2015 Update 3
+	//	(`_MSC_FULL_VER` at least `190024210`).
 	#if (_MSC_VER < 1914)
 		#error "Settings are only known to be valid for MSVS 2017 15.7+."
 	#endif
 
-	#if __cplusplus < 201703L
+	//	__SEEME__ MSVS stopped setting __cplusplus in the expected manner, but
+	//	replaced the utility of it with a proprietary macro, `_MSVC_LANG`. We
+	//	use it as an analog. Note that `_MSVC_LANG` is not available prior to
+	//	MSVS 2015 Update 3.
+	#if _MSVC_LANG < 201703L
 		#error "std=c++17 or higher is required"
 	#endif
 
@@ -1011,7 +1136,7 @@
 	//	has to be defined before any includes, even the ones that should
 	//	pose no problem. In practice, this definition is probably not coming
 	//	early enough, so there will still need to be another one, perhaps in a
-	//	project-level property sheet. Consider this documentation.
+	//	project-level property sheet. Consider this “documentation”.
 	#define _CRT_SECURE_NO_WARNINGS 1
 
 	//	Standardize on a gcc-ism.
@@ -1023,60 +1148,160 @@
 	#endif
 
 
-	//	Test for C++98 features.
+	//	__SEEME__ Re: SD-6 macros: support started getting rolled out as of
+	//	MSVC 2019 16.0, but testing with that series didnt start until 16.3. As
+	//	a result, it’s unclear exactly when the various macros started going
+	//	live. For that reason, prior to 16.3, we rely on version checks, but
+	//	after that, we use the SD-6 macros first. It’s possible some supported
+	//	features will fallthrough the cracks with some versions, but it’s
+	//	unlikely; all the same, this will be updated as new information becomes
+	//	available.
+
+	//	C++98 features.
 	//	These can be conditionally disabled.
+
+	//	We can’t rely on `__cpp_exceptions` being set properly in older MSVCs,
+	//	so we rely on a proprietary token, instead.
 	//	__SEEME__ _CPPUNWIND is not an exact analog, but seems to serve.
-	#if _CPPUNWIND
+	#if __cpp_exceptions || _CPPUNWIND
 		#define LBAL_CPP98_EXCEPTIONS 199711L
 	#endif
 
-	#if _CPPRTTI
+	//	We can’t rely on `__cpp_rtti` being set properly in older MSVCs, so we
+	//	rely on the proprietary token, instead.
+	#if __cpp_rtti || _CPPRTTI
 		#define LBAL_CPP98_RTTI 199711L
 	#endif
 
-	//	Test for C++11 features.
-	//	These can be conditionally disabled.
-	//	__SEEME__ There doesn’t seem to be a way to determine whether this has
-	//	been disabled (which can be done with “/Zc:threadSafeInit-”). We just
-	//	assume it hasn’t been disabled, which is not ideal.
-	#define LBAL_CPP11_THREADSAFE_STATIC_INIT 200806L
 
-	//	C++14 features
-	//	__FIXME__ C++2a These feature detection tests will become more manageable
-	//	once Microsoft starts integrating the now-mandated SD-6 macros, but
-	//	we’ll also have to fix some of this hard-coding.
-	//	VS 2017 15.0
-	#if (_MSC_VER >= 1900)
-		//	__SEEME__ There doesn’t seem to be a way to determine whether this has
-		//	been disabled (which can be done with “/Zc:sizedDealloc-”). We just
-		//	assume it hasn’t been disabled, which is not ideal.
-		#define LBAL_CPP14_SIZED_DEALLOCATION 201309L
+	//	C++11 features.
+	//	__SEEME__ The `_MSVC_LANG` checks here are theoretical. `_MSVC_LANG`
+	//	has never had a value lower than `201402L`, equivalent to C++14. We
+	//	don’t bother getting too precise here, though, since we don‘t
+	//	officially support a C++ Standard older than C++17.
+
+	#if __cpp_alias_templates
+		#define LBAL_CPP11_ALIAS_TEMPLATES __cpp_alias_templates
+	#elif (_MSVC_LANG >= 201103L) && (_MSC_VER >= 1800)
+		#define LBAL_CPP11_ALIAS_TEMPLATES 200704L
 	#endif
 
+	#if __cpp_attributes
+		#define LBAL_CPP11_ATTRIBUTES __cpp_attributes
+	#elif (_MSVC_LANG >= 201103L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP11_ATTRIBUTES 200809L
+	#endif
+
+	//	__SEEME__ Available in `_MSC_VER``1900` for partial, unsure of full
+	#if __cpp_constexpr
+		#define LBAL_CPP11_CONSTEXPR __cpp_constexpr
+	#elif (_MSVC_LANG >= 201103L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP11_CONSTEXPR 200704L
+	#endif
+
+	//	Available in `_MSC_VER`: `1900`
+	//	This can be conditionally disabled.
+	//	__SEEME__ In the absence of `__cpp_threadsafe_static_init` - i.e., in
+	//	MSVS 2017 or earlier - there isn’t a way to determine whether this has
+	//	been disabled, which can be done with `/Zc:threadSafeInit-`. We’ll just
+	//	assume it _has_ been disabled, which is not ideal, but unavoidable
+	//	without incorporating a test app into the build process.
+	#if __cpp_threadsafe_static_init
+		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
+	#endif
+
+
+	//	C++14 features
+	//	__SEEME__ The `_MSVC_LANG` checks here are gratuitous. `_MSVC_LANG`
+	//	has never had a value lower than `201402L`, equivalent to C++14. We
+	//	don’t bother getting too precise here, though, since we don‘t
+	//	officially support a C++ Standard older than C++17.
+
+	//	This can be conditionally disabled.
+	//	__SEEME__ In the absence of `__cpp_sized_deallocation` - i.e., in
+	//	MSVS 2017 or earlier - there isn’t a way to determine whether this has
+	//	been disabled, which can be done with `/Zc:sizedDealloc-`. We’ll just
+	//	assume it _has_ been disabled, which is not ideal, but unavoidable
+	//	without incorporating a test app into the build process.
+	#if __cpp_sized_deallocation
+		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
+	#endif
+
+	#if __cpp_aggregate_nsdmi
+		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
+	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP14_AGGREGATE_NSDMI 201304L
+	#endif
+
+
 	//	C++17 features
-	//	VS 2017 15.5
-	#if (_MSC_VER >= 1912)
-		//	__SEEME__ This is implemented, but it’s unclear if the DR that affected
-		//	the proposal has been addressed.
+
+	//	__SEEME__ This is implemented, but it’s unclear if/when the DR that
+	//	affected the proposal was addressed.
+	#if __cpp_template_template_args
+		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS __cpp_template_template_args
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1912)
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS 201611L
 	#endif
 
+
 	//	C++2a features
-	//	VS 2017 15.7
-	#if (_MSC_VER >= 1914)
-		//	__SEEME__ As of this time, MSVC has implemented none of the C++2a
-		//	language features, though 1915 is laying the groundwork for a
-		//	number of them.
+
+	//	__SEEME__ None of these have SD-6 macros, so we rely on a compiler
+	//	version check and a language test.
+	#if (_MSC_VER >= 1900) && (_MSVC_LANG > 201703L)
+		#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 1L
 	#endif
 
+	#if (_MSC_VER >= 1921) && (_MSVC_LANG > 201703L)
+		#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 1L
+	#endif
+
+	#if (_MSC_VER >= 1922) && (_MSVC_LANG > 201703L)
+		#define LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 1L
+		#define LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS 1L
+	#endif
+
+
+	#if __cpp_concepts
+		#define LBAL_CPP2A_CONCEPTS __cpp_concepts
+	#endif
+
+	#if __cpp_conditional_explicit
+		#define LBAL_CPP2A_CONDITIONAL_EXPLICIT __cpp_conditional_explicit
+	#endif
+
+	#if __cpp_coroutines
+		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
+	#endif
+
+	#if __cpp_impl_destroying_delete
+		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
+	#endif
+
+	#if __cpp_nontype_template_parameter_class
+		#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS __cpp_nontype_template_parameter_class
+	#endif
+
+	#ifdef __has_cpp_attribute
+		#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
+		#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
+		#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY (LBAL_CPP2A_ATTRIBUTE_LIKELY && LBAL_CPP2A_ATTRIBUTE_UNLIKELY)
+
+		#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+	#endif	//	__has_cpp_attribute
+
 	//	C99 features
-	#if (_MSC_VER >= 1914)
-		//	__SEEME__ Support for a conforming C preprocessor is in the works;
-		//	as of VS 2017 5.8 a previewable C99-conformant preprocessor is
-		//	available for testing; a fully C++2a-compliant one will be made
-		//	available to /permissive- mode soon. The current support may be
-		//	sufficient for our needs, but testing needs to be done.
-//		#define LBAL_C99_PREPROCESSOR 1
+
+	//	__SEEME__ The key missing component for C99 compliance was correct
+	//	variadic macro handling. This is in place as of MSVS 2019 16.0, and
+	//	may have been available sooner with the use of the `/permissive-`
+	//	switch. Note that as of at least MSVS 2019 16.3, the preprocessor
+	//	is actually almost completely compliant with the C11 standard.
+	//	__SEEME__ It’s unclear if there is a method for controlling
+	//	preprocessor compliance.
+	#if (_MSC_VER >= 1920)
+		#define LBAL_C99_PREPROCESSOR 1
 	#endif
 
 

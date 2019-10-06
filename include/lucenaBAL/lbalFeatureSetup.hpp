@@ -846,7 +846,7 @@
 	@brief Language feature availability flags to indicate whether a given C++
 	feature is supported by the current compiler.
 
-	@details These are set to a non-zero value if available and 0 otherwise;
+	@details These are set to a non-zero value if available and `0` otherwise;
 	every token is always set to _some_ value. Where possible, these mimic the
 	equivalent [SD-6 macros](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations),
 	both in their naming and in their range of values, so a value will be:
@@ -857,52 +857,61 @@
 
 	Note that these tokens are neither exhaustive nor bounded:
 
-	- Features that are available in all supported compilers do not have
-	flags. Currently, features that could conceivably be manually disabled
-	in a given compiler (e.g., exception handling) are not tracked, though
-	they could be, if necessary.
-
-	- Features that have become universally supported since the inception
-	of their feature flag will eventually have their flag removed. This
-	library is not intended to be backwards-compatible for all time, only
-	to smooth out cross-platform interoperability between current compiler
-	versions. This is unlikely to change, but sane user policies regarding
-	freezes for libraries and supported compilers for project milestones -
-	or even lifetimes - should mitigate this.
+	- Features which are available in all supported compilers are not required
+	to have associated tokens. However, features that could conceivably be
+	manually disabled in a given compiler—e.g., exception handling—always
+	have tokens; whether the token is set to a non-`0` value depends on the
+	feature’s availability at build time.
 
 	- Features we (the developers) have not had cause to use or care about
 	are often not represented right away. Eventually, all language features
-	accepted into the Standard will appear here, assuming universal support
-	doesn’t come so quickly that a feature flag becomes mooted, as per the
-	above criteria.
+	accepted into the Standard will appear here.
 
 	- Features from proposals to the Standard may have flags here; in some
 	cases, this may occur for proposed features that have not been accepted
-	into the standard, e.g., as part of a Technical Specification. This
+	into the Standard, e.g., as part of a Technical Specification. This
 	typically happens with de facto standards (e.g., variants on symbol
 	visibility handling) when it relates to language features. This sort of
-	thing is much more common for proposed library features (e.g., `<span>`
-	support was made available long before it was formally voted in).
+	thing is much more common for proposed library features (e.g.,
+	`likely`/`unlikely` support was made available long before it was formally
+	voted in).
 
-	@remarks __SEEME__ Note that there are ambiguous cases where a feature
-	may have been updated, e.g., as a result of a Defect Report (DR), but a new
+	@remarks __APIME__ Some SD-6 tokens have their values bumped by newer
+	iterations of the Document. Generally, we will issue new unique tokens here
+	when this happens, _but the values of all such tokens will reflect that of
+	the equivalent supported SD-6 token value_. For example, if SD-6 token
+	`__cpp_meow` has 4 different values associated with it from 4 proposals
+	against 4 successive Standards, we will define 4 unique tokens, one for
+	each proposal. If the current build environment only supports the first 3
+	of the 4 proposals, 3 of our tokens will be set to the most recent
+	suppoeted proposal’s vslue for `__cpp_meow`, while the 4th of our tokens,
+	representing the most recent—and unsupported—proposal, will be set to `0`.
+
+	@remarks __SEEME__ Note that there are ambiguous cases where a feature may
+	have been updated, e.g., as a result of a Defect Report (DR), but a new
 	SD-6 value has not been assigned; this can be further complicated if the DR
 	resolution is not finalized, meaning that the available feature is in an
 	intermediate state. Currently, we have no policy for dealing with this
-	situation, as it has not arisen yet in practice. Most likely it would be
-	addressed by assigning an arbitrary value (e.g., “last known good value
-	+1”). This comes with its own problems, namely that there is no formal
-	policy regarding bumping SD-6 macro values vs. creating new macros, for
-	example in the case where backwards compatibility is affected by a breaking
-	change, which would complicate a simple greater-than test against a macro
-	value.
+	situation, as it has not arisen yet in practice.
 
 	@remarks __APIME__ Previous iterations of this header also attempted to
 	determine whether various C99 and C11 features were available. This turned
 	out to be impractical and a bit pointless. As a result, such features are
 	only tracked - if they are tracked at all - in the context of their
 	applicability to a given C++ Standard, e.g., support for the C99
-	preprocessor as required by C++11.
+	preprocessor as required by C++11, and the C11 preprocessor as required by
+	C++2a.
+
+	@remarks __SEEME__ Some compilers, notably older MSVC versions, make select
+	language features from the Draft Standard available as extensions without
+	providing an opt-out, or in some cases, a way to cleanly detect them. Since
+	this state of affairs mostly cleared up in the C++14 era, and we only
+	officially support C++17 and later dialects, we don’t go out of our way to
+	expose such features. We do, however, note such occurrences, and may change
+	this policy in the future.
+
+	@remarks The SD-6 tokens and their values referenced here are current as of
+	the 2019-10-02 revision.
 
 	@{
 */
@@ -919,8 +928,10 @@
 /**
 	@def LBAL_CPP98_EXCEPTIONS
 	@brief Language-level support for C++ Exceptions
-	@details There _was_ an SD-6 macro for this, but it’s been removed for
-	standardization. Set to `1` if exceptions are enabled, `0` otherwise.
+	@details This can be conditionally disabled at build-time, so we can’t rely
+	on a language version test to detect it.
+
+	Equivalent SD-6 macro: `__cpp_exceptions` (199711L)
 */
 #ifndef LBAL_CPP98_EXCEPTIONS
 	#define LBAL_CPP98_EXCEPTIONS 0
@@ -929,8 +940,10 @@
 /**
 	@def LBAL_CPP98_RTTI
 	@brief Language-level support for run-time type identification (RTTI)
-	@details There _was_ an SD-6 macro for this, but it’s been removed for
-	standardization. Set to `1` if RTTI is enabled, `0` otherwise.
+	@details This can be conditionally disabled at build-time, so we can’t rely
+	on a language version test to detect it.
+
+	Equivalent SD-6 macro: `__cpp_rtti`	(199711L)
 */
 #ifndef LBAL_CPP98_RTTI
 	#define LBAL_CPP98_RTTI 0
@@ -940,10 +953,59 @@
 
 /**
 	@name LBAL_CPP11
-	Note that all supported compilers support all required features of C++11.
+	All supported compilers support all required features of C++11. However,
+	@ref LBAL_CPP11_THREADSAFE_STATIC_INIT "thread-safe static initialization"
+	can be explicitly disabled in some implementations, and
+	@ref LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION "garbage collection" is an
+	optional feature in C++. The rest of these are supplied to allow testing
+	for specific features when using older language dialects, unsupported
+	compilers, or when general language version detection is unavailable.
+
+	@remarks This is not an exhaustive list of C++11 language features. Rather,
+	it is currently mostly a collection of those with SD-6 macros. The feature
+	checks themselves are not necessarily tested on the minimal-supported
+	compiler versions, as we will often rely on external reporting or make
+	assumptions based on what `__cplusplus` returns, which is not the case for
+	more recent features.
 
 	@{
 */
+
+/**
+	@def LBAL_CPP11_ALIAS_TEMPLATES
+	@brief Allow type aliases to be templated.
+	@details Equivalent SD-6 macro: `__cpp_alias_templates`	(200704L)
+
+	<https://wg21.link/N2258>
+*/
+#ifndef LBAL_CPP11_ALIAS_TEMPLATES
+	#define LBAL_CPP11_ALIAS_TEMPLATES 0
+#endif
+
+/**
+	@def LBAL_CPP11_ATTRIBUTES
+	@brief Formalize attributes as a language feature.
+	@details Equivalent SD-6 macro: `__cpp_attributes` (200809L)
+
+	<https://wg21.link/N2761>
+*/
+#ifndef LBAL_CPP11_ATTRIBUTES
+	#define LBAL_CPP11_ATTRIBUTES 0
+#endif
+
+/**
+	@def LBAL_CPP11_CONSTEXPR
+	@brief Specify generalized constant expressions.
+	@details Equivalent SD-6 macro: `__cpp_constexpr` (200704L)
+
+	<https://wg21.link/N2235>
+
+	@remarks `__cpp_constexpr` has at least 4 values associated with, each
+	from a different proposal.
+*/
+#ifndef LBAL_CPP11_CONSTEXPR
+	#define LBAL_CPP11_CONSTEXPR 0
+#endif
 
 /**
 	@def LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION
@@ -959,10 +1021,10 @@
 /**
 	@def LBAL_CPP11_THREADSAFE_STATIC_INIT
 	@brief Support for thread-safe static initialization.
-	@details Some compilers can disable this feature if asked; will be set to
-	`0` if that has happened.
+	@details Some compilers can disable this feature if asked; the token will
+	be set to `0` if that has happened.
 
-	Equivalent SD-6 macro: `__cpp_threadsafe_static_init`
+	Equivalent SD-6 macro: `__cpp_threadsafe_static_init` (200806L)
 
 	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2660.htm>
 */
@@ -975,19 +1037,34 @@
 /**
 	@name LBAL_CPP14
 	All supported compilers support all features of C++14, but some of them may
-	require that certain features be explicitly enabled.
+	require that @ref LBAL_CPP14_SIZED_DEALLOCATION "sized deallocation" be
+	explicitly enabled.
 
 	@{
 */
 
 /**
-	@def LBAL_CPP14_SIZED_DEALLOCATION
-	Some compilers disable this by default since it’s an ABI-breaking
-	change; clang, in particular, does this.
+	@def LBAL_CPP14_AGGREGATE_NSDMI
+	@brief Relax the requirements on aggregates and specify aggregate member
+	initialization
+	@details Equivalent SD-6 macro: `__cpp_aggregate_nsdmi` (201304L)
 
-	Equivalent SD-6 macro: `__cpp_sized_deallocation`
+	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3653.html>
+*/
+#ifndef LBAL_CPP14_AGGREGATE_NSDMI
+	#define LBAL_CPP14_AGGREGATE_NSDMI 0
+#endif
+
+/**
+	@def LBAL_CPP14_SIZED_DEALLOCATION
+	@brief Make available a global `operator delete` that takes a size argument
+	@details Equivalent SD-6 macro: `__cpp_sized_deallocation` (201309L)
 
 	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3778.html>
+
+	@remarks Some compilers disable this by default since it’s an ABI-breaking
+	change; clang, in particular, does this.
+
 */
 #ifndef LBAL_CPP14_SIZED_DEALLOCATION
 	#define LBAL_CPP14_SIZED_DEALLOCATION 0
@@ -1009,7 +1086,7 @@
 	but unfortunately introduces a defect of its own. Some compilers
 	are disabling this until a revised patch is in.
 
-	Equivalent SD-6 macro: `__cpp_template_template_args`
+	Equivalent SD-6 macro: `__cpp_template_template_args` (201611L)
 
 	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0522r0.html>
 */
@@ -1058,7 +1135,7 @@
 /**
 	@def LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS
 
-	Equivalent SD-6 macro: `__has_cpp_attribute(no_unique_address)`
+	Equivalent SD-6 macro: `__has_cpp_attribute(no_unique_address)` (201803L)
 
 	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0840r2.html>
 */
@@ -1069,7 +1146,7 @@
 /**
 	@def LBAL_CPP2A_ATTRIBUTE_LIKELY
 
-	Equivalent SD-6 macro: `__has_cpp_attribute(likely)`
+	Equivalent SD-6 macro: `__has_cpp_attribute(likely)` (201803L)
 
 	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html>
 */
@@ -1080,7 +1157,7 @@
 /**
 	@def LBAL_CPP2A_ATTRIBUTE_UNLIKELY
 
-	Equivalent SD-6 macro: `__has_cpp_attribute(unlikely)`
+	Equivalent SD-6 macro: `__has_cpp_attribute(unlikely)` (201803L)
 
 	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html>
 */
@@ -1104,22 +1181,17 @@
 #endif
 
 /**
-	@def LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS
-
-	Equivalent SD-6 macro: `__cpp_nontype_template_parameter_class`
-
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0732r2.pdf>
-*/
-#ifndef LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS
-	#define LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS 0
-#endif
-
-/**
 	@def LBAL_CPP2A_CONCEPTS
 
-	Equivalent SD-6 macro: `__cpp_concepts`
+	Equivalent (SD-6) macro: `__cpp_concepts` (201806)
 
 	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0734r0.pdf>
+
+	@remarks __SEEME__ The current SD-6 revision does not actually define this
+	token, though the proposal that was voted into the Standard _does_. We
+	assume it’s an oversight; there are several known ones, and it’s one of the
+	motivators for the coming SD-6 review. The only available Concepts
+	implementations do honor the token, so we rely on it for detection.
 */
 #ifndef LBAL_CPP2A_CONCEPTS
 	#define LBAL_CPP2A_CONCEPTS 0
@@ -1127,8 +1199,10 @@
 
 /**
 	@def LBAL_CPP2A_CONDITIONAL_EXPLICIT
+	Aka, `explicit (bool)`; allows simplification of templated constructors
+	that have the potential to incorrectly convert their arguments.
 
-	Equivalent SD-6 macro: `__cpp_conditional_explicit`
+	Equivalent SD-6 macro: `__cpp_conditional_explicit` (201806L)
 
 	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0892r2.html>
 */
@@ -1162,7 +1236,7 @@
 	@def LBAL_CPP2A_COROUTINES
 	Note that this is just language support for the `<coroutine>` header.
 
-	Equivalent SD-6 macro: `__cpp_coroutines`
+	Equivalent SD-6 macro: `__cpp_coroutines` (201902L)
 
 	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0912r1.html>
 */
@@ -1206,7 +1280,7 @@
 /**
 	@def LBAL_CPP2A_DESTROYING_DELETE
 
-	Equivalent SD-6 macro: `__cpp_impl_destroying_delete`
+	Equivalent SD-6 macro: `__cpp_impl_destroying_delete` (201806L)
 
 	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0722r3.html>
 */
@@ -1249,6 +1323,24 @@
 #ifndef LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS
 	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 0
 #endif
+
+/**
+	@def LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS
+
+	Equivalent SD-6 macro: `__cpp_nontype_template_parameter_class` (201806L)
+
+	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0732r2.pdf>
+*/
+#ifndef LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS
+	#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS 0
+#endif
+
+///@cond LBAL_INTERNAL
+//	__APIME__ The SD-6 macro for this changed, so we renamed the token.
+#ifndef LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS
+	#define LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS
+#endif
+///@endcond
 
 /**
 	@def LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE
