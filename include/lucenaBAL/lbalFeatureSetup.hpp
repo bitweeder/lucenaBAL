@@ -996,8 +996,13 @@
 /**
 	@def LBAL_CPP11_CONSTEXPR
 	@brief Specify generalized constant expressions.
-	@details Equivalent SD-6 macro: `__cpp_constexpr`
+	@details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+	to the `200704L` variant, but it will have the value of the latest
+	supported variant, or `0` if this variant is not supported.
 	- [200704L](https://wg21.link/N2235) __PDF__
+	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html)
+	- [201603L](https://wg21.link/p0170r1) __PDF__
+	- [201907L](https://wg21.link/p1331r2) __PDF__
 
 	@remarks `__cpp_constexpr` has at least 4 values associated with, each
 	from a different proposal.
@@ -1052,6 +1057,35 @@
 #endif
 
 /**
+	@def LBAL_CPP14_BINARY_LITERALS
+	@brief Add binary literal support.
+	@details Equivalent SD-6 macro: `__cpp_binary_literals`
+	- [201304L](https://wg21.link/N3472) __PDF__
+*/
+#ifndef LBAL_CPP14_BINARY_LITERALS
+	#define LBAL_CPP14_BINARY_LITERALS 0
+#endif
+
+/**
+	@def LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS
+	@brief Relax constraints on `constexpr` functions, `constexpr` member
+	functions and implicit `const`
+	@details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+	to the `201304L` variant, but it will have the value of the latest
+	supported variant, or `0` if this variant is not supported.
+	- [200704L](https://wg21.link/N2235) __PDF__
+	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html)
+	- [201603L](https://wg21.link/p0170r1) __PDF__
+	- [201907L](https://wg21.link/p1331r2) __PDF__
+
+	@remarks `__cpp_constexpr` has at least 4 values associated with, each
+	from a different proposal.
+*/
+#ifndef LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS
+	#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 0
+#endif
+
+/**
 	@def LBAL_CPP14_SIZED_DEALLOCATION
 	@brief Make available a global `operator delete` that takes a size argument
 	@details Equivalent SD-6 macro: `__cpp_sized_deallocation`
@@ -1076,6 +1110,24 @@
 
 	@{
 */
+
+/**
+	@def LBAL_CPP17_CONSTEXPR_LAMBDA
+	@brief Allow lambdas to be constexpr explicitly or implicitly
+	@details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+	to the `201603L` variant, but it will have the value of the latest
+	supported variant, or `0` if this variant is not supported.
+	- [200704L](https://wg21.link/N2235) __PDF__
+	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html)
+	- [201603L](https://wg21.link/p0170r1) __PDF__
+	- [201907L](https://wg21.link/p1331r2) __PDF__
+
+	@remarks `__cpp_constexpr` has at least 4 values associated with, each
+	from a different proposal.
+*/
+#ifndef LBAL_CPP17_CONSTEXPR_LAMBDA
+	#define LBAL_CPP17_CONSTEXPR_LAMBDA 0
+#endif
 
 /**
 	@def LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS
@@ -1207,6 +1259,24 @@
 */
 #ifndef LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS
 	#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 0
+#endif
+
+/**
+	@def LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION
+	@brief Address an inconsistency in the lambda specification
+	@details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+	to the `201907L` variant, but it will have the value of the latest
+	supported variant, or `0` if this variant is not supported.
+	- [200704L](https://wg21.link/N2235) __PDF__
+	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html)
+	- [201603L](https://wg21.link/p0170r1) __PDF__
+	- [201907L](https://wg21.link/p1331r2) __PDF__
+
+	@remarks `__cpp_constexpr` has at least 4 values associated with, each
+	from a different proposal.
+*/
+#ifndef LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION
+	#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION 0
 #endif
 
 /**

@@ -227,7 +227,9 @@
 		#define LBAL_CPP98_RTTI 199711L
 	#endif
 
+
 	//	Test for C++11 features.
+
 	#if __cpp_alias_templates
 		#define LBAL_CPP11_ALIAS_TEMPLATES __cpp_alias_templates
 	#elif (__cplusplus >= 201103L)
@@ -252,11 +254,25 @@
 		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
 	#endif
 
-	//	Test for C++14 features.
+
+	//	C++14 features
+
 	#if __cpp_aggregate_nsdmi
 		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
-	#elif (__cplusplus >= 201103L)
+	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_AGGREGATE_NSDMI 201304L
+	#endif
+
+	#if __cpp_binary_literals
+		#define LBAL_CPP14_BINARY_LITERALS __cpp_binary_literals
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_BINARY_LITERALS 201304L
+	#endif
+
+	#if (__cpp_constexpr >= 201304L)
+		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS __cpp_constexpr
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 201304L
 	#endif
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid
@@ -265,7 +281,8 @@
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 	#endif
 
-	//	Test for C++17 features.
+
+	//	C++17 features
 	//	__SEEME__ Apple continues to lag vanilla clang by over a year in odd
 	//	ways. As of Apple LLVM 10.0, their clang compiler advertises full C++17
 	//	compliance, but a number of feature test macros fail (and then there’s
@@ -280,6 +297,12 @@
 	//
 	//	As for other potential issues, __cpp_threadsafe_static_init _can_ be
 	//	set to 0 depending on compiler arguments, but defaults to being on.
+
+	#if (__cpp_constexpr >= 201603L)
+		#define LBAL_CPP17_CONSTEXPR_LAMBDA __cpp_constexpr
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_CONSTEXPR_LAMBDA 201603L
+	#endif
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid a
 	//	defect introduced by the associated proposal (which was intended to
@@ -320,6 +343,10 @@
 
 	#if __cpp_conditional_explicit
 		#define LBAL_CPP2A_CONDITIONAL_EXPLICIT __cpp_conditional_explicit
+	#endif
+
+	#if (__cpp_constexpr >= 201907L)
+		#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION __cpp_constexpr
 	#endif
 
 	#if __cpp_coroutines
@@ -592,8 +619,20 @@
 
 	#if __cpp_aggregate_nsdmi
 		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
-	#elif (__cplusplus >= 201103L)
+	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_AGGREGATE_NSDMI 201304L
+	#endif
+
+	#if __cpp_binary_literals
+		#define LBAL_CPP14_BINARY_LITERALS __cpp_binary_literals
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_BINARY_LITERALS 201304L
+	#endif
+
+	#if (__cpp_constexpr >= 201304L)
+		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS __cpp_constexpr
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 200704L
 	#endif
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid
@@ -604,6 +643,12 @@
 
 
 	//	C++17 features
+
+	#if (__cpp_constexpr >= 201603L)
+		#define LBAL_CPP17_CONSTEXPR_LAMBDA __cpp_constexpr
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_CONSTEXPR_LAMBDA 201603L
+	#endif
 
 	//	As of clang 8, this is disabled by default in order to avoid a defect
 	//	introduced by the associated proposal (which was intended to resolve
@@ -648,6 +693,10 @@
 
 	#if __cpp_conditional_explicit
 		#define LBAL_CPP2A_CONDITIONAL_EXPLICIT __cpp_conditional_explicit
+	#endif
+
+	#if (__cpp_constexpr >= 201907L)
+		#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION __cpp_constexpr
 	#endif
 
 	#if __cpp_coroutines
@@ -921,8 +970,20 @@
 
 	#if __cpp_aggregate_nsdmi
 		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
-	#elif (__cplusplus >= 201103L)
+	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_AGGREGATE_NSDMI 201304L
+	#endif
+
+	#if __cpp_binary_literals
+		#define LBAL_CPP14_BINARY_LITERALS __cpp_binary_literals
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_BINARY_LITERALS 201304L
+	#endif
+
+	#if (__cpp_constexpr >= 201304L)
+		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS __cpp_constexpr
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 201304L
 	#endif
 
 	//	__SEEME__ There is no `__cplusplus` check since this can be
@@ -933,6 +994,12 @@
 
 
 	//	C++17 features
+
+	#if (__cpp_constexpr >= 201603L)
+		#define LBAL_CPP17_CONSTEXPR_LAMBDA __cpp_constexpr
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_CONSTEXPR_LAMBDA 201603L
+	#endif
 
 	#if __cpp_template_template_args
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS __cpp_template_template_args
@@ -975,6 +1042,10 @@
 
 	#if __cpp_conditional_explicit
 		#define LBAL_CPP2A_CONDITIONAL_EXPLICIT __cpp_conditional_explicit
+	#endif
+
+	#if (__cpp_constexpr >= 201907L)
+		#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION __cpp_constexpr
 	#endif
 
 	#if __cpp_coroutines
@@ -1273,6 +1344,24 @@
 	//	don’t bother getting too precise here, though, since we don‘t
 	//	officially support a C++ Standard older than C++17.
 
+	#if __cpp_aggregate_nsdmi
+		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
+	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP14_AGGREGATE_NSDMI 201304L
+	#endif
+
+	#if __cpp_binary_literals
+		#define LBAL_CPP14_BINARY_LITERALS __cpp_binary_literals
+	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP14_BINARY_LITERALS 201304L
+	#endif
+
+	#if (__cpp_constexpr >= 201304L)
+		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS __cpp_constexpr
+	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1910)
+		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 201304L
+	#endif
+
 	//	This can be conditionally disabled.
 	//	__SEEME__ In the absence of `__cpp_sized_deallocation` - i.e., in
 	//	MSVS 2017 or earlier - there isn’t a way to determine whether this has
@@ -1283,14 +1372,14 @@
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 	#endif
 
-	#if __cpp_aggregate_nsdmi
-		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
-	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
-		#define LBAL_CPP14_AGGREGATE_NSDMI 201304L
-	#endif
-
 
 	//	C++17 features
+
+	#if (__cpp_constexpr >= 201603L)
+		#define LBAL_CPP17_CONSTEXPR_LAMBDA __cpp_constexpr
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1911)
+		#define LBAL_CPP17_CONSTEXPR_LAMBDA 201603L
+	#endif
 
 	//	__SEEME__ This is implemented, but it’s unclear if/when the DR that
 	//	affected the proposal was addressed.
@@ -1335,6 +1424,10 @@
 
 	#if __cpp_conditional_explicit
 		#define LBAL_CPP2A_CONDITIONAL_EXPLICIT __cpp_conditional_explicit
+	#endif
+
+	#if (__cpp_constexpr >= 201907L)
+		#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION __cpp_constexpr
 	#endif
 
 	#if __cpp_coroutines
