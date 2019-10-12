@@ -1112,6 +1112,36 @@
 */
 
 /**
+	@def LBAL_CPP17_AGGREGATE_BASES
+	@brief Relax the restrictions on aggregate initialization.
+	@details Equivalent SD-6 macro: `__cpp_aggregate_bases`
+	- [201603L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0017r1.html)
+*/
+#ifndef LBAL_CPP17_AGGREGATE_BASES
+	#define LBAL_CPP17_AGGREGATE_BASES 0
+#endif
+
+/**
+	@def LBAL_CPP17_ALIGNED_NEW
+	@brief Specify handling of dynamic memory allocation for over-aligned data.
+	@details Equivalent SD-6 macro: `__cpp_aligned_new`
+	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0035r4.html)
+*/
+#ifndef LBAL_CPP17_ALIGNED_NEW
+	#define LBAL_CPP17_ALIGNED_NEW 0
+#endif
+
+/**
+	@def LBAL_CPP17_CAPTURE_STAR_THIS
+	@brief Allow lambda capture of `*this` by value as `as [=,*this]`.
+	@details Equivalent SD-6 macro: `__cpp_capture_star_this`
+	- [201603](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0018r3.html)
+*/
+#ifndef LBAL_CPP17_CAPTURE_STAR_THIS
+	#define LBAL_CPP17_CAPTURE_STAR_THIS 0
+#endif
+
+/**
 	@def LBAL_CPP17_CONSTEXPR_LAMBDA
 	@brief Allow lambdas to be constexpr explicitly or implicitly
 	@details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
@@ -1170,6 +1200,19 @@
 */
 
 /**
+	@def LBAL_CPP2A_AGGREGATE_PAREN_INIT
+	@brief Allow aggregate initialization from parentheses as well as braces.
+	@details Equivalent SD-6 macro: `__cpp_aggregate_paren_init`
+	- [201902L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p0960r3.html)
+
+	@remarks Note that paren initialization allows narrowing conversions, as
+	usual.
+*/
+#ifndef LBAL_CPP2A_AGGREGATE_PAREN_INIT
+	#define LBAL_CPP2A_AGGREGATE_PAREN_INIT 0
+#endif
+
+/**
 	@def LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS
 
 	Equivalent SD-6 macro: none
@@ -1224,6 +1267,16 @@
 #endif
 
 /**
+	@def LBAL_CPP2A_CHAR8_T
+	@brief Add `char8_t` as a UTF-8 equivalent for `char16_t` and `char32_t`.
+	@details Equivalent SD-6 macro: `__cpp_char8_t`
+	- [201811L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0482r6.html)
+*/
+#ifndef LBAL_CPP2A_CHAR8_T
+	#define LBAL_CPP2A_CHAR8_T 0
+#endif
+
+/**
 	@def LBAL_CPP2A_CONCEPTS
 
 	Equivalent (SD-6) macro: `__cpp_concepts`
@@ -1259,6 +1312,19 @@
 */
 #ifndef LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS
 	#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 0
+#endif
+
+/**
+	@def LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC
+	@brief Language support for variable-sized containers suitable for use in
+	constexpr computations.
+	@details Equivalent SD-6 macro: `__cpp_constexpr_dynamic_alloc`
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p0784r7.html)
+
+	@remarks AKA, “More constexpr containers”.
+*/
+#ifndef LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC
+	#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC 0
 #endif
 
 /**

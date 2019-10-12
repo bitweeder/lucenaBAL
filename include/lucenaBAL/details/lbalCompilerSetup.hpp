@@ -298,6 +298,24 @@
 	//	As for other potential issues, __cpp_threadsafe_static_init _can_ be
 	//	set to 0 depending on compiler arguments, but defaults to being on.
 
+	#if __cpp_aggregate_bases
+		#define LBAL_CPP17_AGGREGATE_BASES __cpp_aggregate_bases
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_AGGREGATE_BASES 201603L
+	#endif
+
+	#if __cpp_aligned_new
+		#define LBAL_CPP17_ALIGNED_NEW __cpp_aligned_new
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_ALIGNED_NEW 201606L
+	#endif
+
+	#if __cpp_capture_star_this
+		#define LBAL_CPP17_CAPTURE_STAR_THIS __cpp_capture_star_this
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_CAPTURE_STAR_THIS 201603
+	#endif
+
 	#if (__cpp_constexpr >= 201603L)
 		#define LBAL_CPP17_CONSTEXPR_LAMBDA __cpp_constexpr
 	#elif (__cplusplus >= 201703L)
@@ -337,6 +355,14 @@
 		#define LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 1L
 	#endif
 
+	#if __cpp_aggregate_paren_init
+		#define LBAL_CPP2A_AGGREGATE_PAREN_INIT __cpp_aggregate_paren_init
+	#endif
+
+	#if __cpp_char8_t
+		#define LBAL_CPP2A_CHAR8_T __cpp_char8_t
+	#endif
+
 	#if __cpp_concepts
 		#define LBAL_CPP2A_CONCEPTS __cpp_concepts
 	#endif
@@ -347,6 +373,10 @@
 
 	#if (__cpp_constexpr >= 201907L)
 		#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION __cpp_constexpr
+	#endif
+
+	#if __cpp_constexpr_dynamic_alloc
+		#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC __cpp_constexpr_dynamic_alloc
 	#endif
 
 	#if __cpp_coroutines
@@ -644,6 +674,24 @@
 
 	//	C++17 features
 
+	#if __cpp_aggregate_bases
+		#define LBAL_CPP17_AGGREGATE_BASES __cpp_aggregate_bases
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_AGGREGATE_BASES 201603L
+	#endif
+
+	#if __cpp_aligned_new
+		#define LBAL_CPP17_ALIGNED_NEW __cpp_aligned_new
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_ALIGNED_NEW 201606L
+	#endif
+
+	#if __cpp_capture_star_this
+		#define LBAL_CPP17_CAPTURE_STAR_THIS __cpp_capture_star_this
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_CAPTURE_STAR_THIS 201603
+	#endif
+
 	#if (__cpp_constexpr >= 201603L)
 		#define LBAL_CPP17_CONSTEXPR_LAMBDA __cpp_constexpr
 	#elif (__cplusplus >= 201703L)
@@ -687,6 +735,14 @@
 		#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 1L
 	#endif
 
+	#if __cpp_aggregate_paren_init
+		#define LBAL_CPP2A_AGGREGATE_PAREN_INIT __cpp_aggregate_paren_init
+	#endif
+
+	#if __cpp_char8_t
+		#define LBAL_CPP2A_CHAR8_T __cpp_char8_t
+	#endif
+
 	#if __cpp_concepts
 		#define LBAL_CPP2A_CONCEPTS __cpp_concepts
 	#endif
@@ -697,6 +753,10 @@
 
 	#if (__cpp_constexpr >= 201907L)
 		#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION __cpp_constexpr
+	#endif
+
+	#if __cpp_constexpr_dynamic_alloc
+		#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC __cpp_constexpr_dynamic_alloc
 	#endif
 
 	#if __cpp_coroutines
@@ -995,10 +1055,20 @@
 
 	//	C++17 features
 
+	#if __cpp_aggregate_bases
+		#define LBAL_CPP17_AGGREGATE_BASES __cpp_aggregate_bases
+	#endif
+
+	#if __cpp_aligned_new
+		#define LBAL_CPP17_ALIGNED_NEW __cpp_aligned_new
+	#endif
+
+	#if __cpp_capture_star_this
+		#define LBAL_CPP17_CAPTURE_STAR_THIS __cpp_capture_star_this
+	#endif
+
 	#if (__cpp_constexpr >= 201603L)
 		#define LBAL_CPP17_CONSTEXPR_LAMBDA __cpp_constexpr
-	#elif (__cplusplus >= 201703L)
-		#define LBAL_CPP17_CONSTEXPR_LAMBDA 201603L
 	#endif
 
 	#if __cpp_template_template_args
@@ -1007,6 +1077,7 @@
 
 
 	//	C++2a features
+	//	__SEEME__ These tests assume a minimum of gcc 7.3
 
 	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 
@@ -1036,6 +1107,14 @@
 		#define LBAL_CPP2A_TYPENAME_OPTIONAL 1L
 	#endif
 
+	#if __cpp_aggregate_paren_init
+		#define LBAL_CPP2A_AGGREGATE_PAREN_INIT __cpp_aggregate_paren_init
+	#endif
+
+	#if __cpp_char8_t
+		#define LBAL_CPP2A_CHAR8_T __cpp_char8_t
+	#endif
+
 	#if __cpp_concepts
 		#define LBAL_CPP2A_CONCEPTS __cpp_concepts
 	#endif
@@ -1046,6 +1125,10 @@
 
 	#if (__cpp_constexpr >= 201907L)
 		#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION __cpp_constexpr
+	#endif
+
+	#if __cpp_constexpr_dynamic_alloc
+		#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC __cpp_constexpr_dynamic_alloc
 	#endif
 
 	#if __cpp_coroutines
@@ -1375,6 +1458,24 @@
 
 	//	C++17 features
 
+	#if __cpp_aggregate_bases
+		#define LBAL_CPP17_AGGREGATE_BASES __cpp_aggregate_bases
+	#elif (_MSVC_LANG >= 201703L) &&  (_MSC_VER >= 1914)
+		#define LBAL_CPP17_AGGREGATE_BASES 201603L
+	#endif
+
+	#if __cpp_aligned_new
+		#define LBAL_CPP17_ALIGNED_NEW __cpp_aligned_new
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1912)
+		#define LBAL_CPP17_ALIGNED_NEW 201606L
+	#endif
+
+	#if __cpp_capture_star_this
+		#define LBAL_CPP17_CAPTURE_STAR_THIS __cpp_capture_star_this
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1911)
+		#define LBAL_CPP17_CAPTURE_STAR_THIS 201603
+	#endif
+
 	#if (__cpp_constexpr >= 201603L)
 		#define LBAL_CPP17_CONSTEXPR_LAMBDA __cpp_constexpr
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1911)
@@ -1418,6 +1519,14 @@
 	#endif
 
 
+	#if __cpp_aggregate_paren_init
+		#define LBAL_CPP2A_AGGREGATE_PAREN_INIT __cpp_aggregate_paren_init
+	#endif
+
+	#if __cpp_char8_t
+		#define LBAL_CPP2A_CHAR8_T __cpp_char8_t
+	#endif
+
 	#if __cpp_concepts
 		#define LBAL_CPP2A_CONCEPTS __cpp_concepts
 	#endif
@@ -1428,6 +1537,10 @@
 
 	#if (__cpp_constexpr >= 201907L)
 		#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION __cpp_constexpr
+	#endif
+
+	#if __cpp_constexpr_dynamic_alloc
+		#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC __cpp_constexpr_dynamic_alloc
 	#endif
 
 	#if __cpp_coroutines
