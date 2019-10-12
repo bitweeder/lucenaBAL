@@ -248,6 +248,12 @@
 		#define LBAL_CPP11_CONSTEXPR 200704L
 	#endif
 
+	#if __cpp_decltype
+		#define LBAL_CPP11_DECLTYPE __cpp_decltype
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_DECLTYPE 200707L
+	#endif
+
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
 	#if __cpp_threadsafe_static_init
@@ -273,6 +279,12 @@
 		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS __cpp_constexpr
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 201304L
+	#endif
+
+	#if (__cpp_decltype_auto)
+		#define LBAL_CPP14_DECLTYPE_AUTO __cpp_decltype_auto
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_DECLTYPE_AUTO 201304L
 	#endif
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid
@@ -320,6 +332,24 @@
 		#define LBAL_CPP17_CONSTEXPR_LAMBDA __cpp_constexpr
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_CONSTEXPR_LAMBDA 201603L
+	#endif
+
+	#if (__cpp_deduction_guides >= 201606L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES __cpp_deduction_guides
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES 201606L
+	#endif
+
+	#if (__cpp_deduction_guides >= 201611L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_NB __cpp_deduction_guides
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_NB 201611L
+	#endif
+
+	#if (__cpp_deduction_guides >= 201703L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_DR __cpp_deduction_guides
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_DR 201703L
 	#endif
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid a
@@ -379,8 +409,16 @@
 		#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC __cpp_constexpr_dynamic_alloc
 	#endif
 
+	#if __cpp_constinit
+		#define LBAL_CPP2A_CONSTINIT __cpp_constinit
+	#endif
+
 	#if __cpp_coroutines
 		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
+	#endif
+
+	#if (__cpp_deduction_guides >= 201907L)
+		#define LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES __cpp_deduction_guides
 	#endif
 
 	#if __cpp_impl_destroying_delete
@@ -638,6 +676,12 @@
 		#define LBAL_CPP11_CONSTEXPR 200704L
 	#endif
 
+	#if __cpp_decltype
+		#define LBAL_CPP11_DECLTYPE __cpp_decltype
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_DECLTYPE 200707L
+	#endif
+
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
 	#if __cpp_threadsafe_static_init
@@ -663,6 +707,12 @@
 		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS __cpp_constexpr
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 200704L
+	#endif
+
+	#if (__cpp_decltype_auto >= 201304L)
+		#define LBAL_CPP14_DECLTYPE_AUTO __cpp_decltype_auto
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_DECLTYPE_AUTO 201304L
 	#endif
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid
@@ -696,6 +746,24 @@
 		#define LBAL_CPP17_CONSTEXPR_LAMBDA __cpp_constexpr
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_CONSTEXPR_LAMBDA 201603L
+	#endif
+
+	#if (__cpp_deduction_guides >= 201606L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES __cpp_deduction_guides
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES 201606L
+	#endif
+
+	#if (__cpp_deduction_guides >= 201611L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_NB __cpp_deduction_guides
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_NB 201611L
+	#endif
+
+	#if (__cpp_deduction_guides >= 201703L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_DR __cpp_deduction_guides
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_DR 201703L
 	#endif
 
 	//	As of clang 8, this is disabled by default in order to avoid a defect
@@ -759,8 +827,16 @@
 		#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC __cpp_constexpr_dynamic_alloc
 	#endif
 
+	#if __cpp_constinit
+		#define LBAL_CPP2A_CONSTINIT __cpp_constinit
+	#endif
+
 	#if __cpp_coroutines
 		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
+	#endif
+
+	#if (__cpp_deduction_guides >= 201907L)
+		#define LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES __cpp_deduction_guides
 	#endif
 
 	#if __cpp_impl_destroying_delete
@@ -1019,6 +1095,12 @@
 		#define LBAL_CPP11_CONSTEXPR 200704L
 	#endif
 
+	#if __cpp_decltype
+		#define LBAL_CPP11_DECLTYPE __cpp_decltype
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_DECLTYPE 200707L
+	#endif
+
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
 	#if __cpp_threadsafe_static_init
@@ -1046,6 +1128,12 @@
 		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 201304L
 	#endif
 
+	#if (__cpp_decltype_auto)
+		#define LBAL_CPP14_DECLTYPE_AUTO __cpp_decltype_auto
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_DECLTYPE_AUTO 201304L
+	#endif
+
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
 	#if __cpp_sized_deallocation
@@ -1069,6 +1157,24 @@
 
 	#if (__cpp_constexpr >= 201603L)
 		#define LBAL_CPP17_CONSTEXPR_LAMBDA __cpp_constexpr
+	#endif
+
+	#if (__cpp_deduction_guides >= 201606L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES __cpp_deduction_guides
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES 201606L
+	#endif
+
+	#if (__cpp_deduction_guides >= 201611L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_NB __cpp_deduction_guides
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_NB 201611L
+	#endif
+
+	#if (__cpp_deduction_guides >= 201703L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_DR __cpp_deduction_guides
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_DR 201703L
 	#endif
 
 	#if __cpp_template_template_args
@@ -1131,8 +1237,16 @@
 		#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC __cpp_constexpr_dynamic_alloc
 	#endif
 
+	#if __cpp_constinit
+		#define LBAL_CPP2A_CONSTINIT __cpp_constinit
+	#endif
+
 	#if __cpp_coroutines
 		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
+	#endif
+
+	#if (__cpp_deduction_guides >= 201907L)
+		#define LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES __cpp_deduction_guides
 	#endif
 
 	#if __cpp_impl_destroying_delete
@@ -1409,6 +1523,12 @@
 		#define LBAL_CPP11_CONSTEXPR 200704L
 	#endif
 
+	#if __cpp_decltype
+		#define LBAL_CPP11_DECLTYPE __cpp_decltype
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_DECLTYPE 200707L
+	#endif
+
 	//	Available in `_MSC_VER`: `1900`
 	//	This can be conditionally disabled.
 	//	__SEEME__ In the absence of `__cpp_threadsafe_static_init` - i.e., in
@@ -1443,6 +1563,12 @@
 		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS __cpp_constexpr
 	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1910)
 		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 201304L
+	#endif
+
+	#if (__cpp_decltype_auto)
+		#define LBAL_CPP14_DECLTYPE_AUTO __cpp_decltype_auto
+	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP14_DECLTYPE_AUTO 201304L
 	#endif
 
 	//	This can be conditionally disabled.
@@ -1480,6 +1606,24 @@
 		#define LBAL_CPP17_CONSTEXPR_LAMBDA __cpp_constexpr
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1911)
 		#define LBAL_CPP17_CONSTEXPR_LAMBDA 201603L
+	#endif
+
+	#if (__cpp_deduction_guides >= 201606L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES __cpp_deduction_guides
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1914)
+		#define LBAL_CPP17_DEDUCTION_GUIDES 201606L
+	#endif
+
+	#if (__cpp_deduction_guides >= 201611L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_NB __cpp_deduction_guides
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1914)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_NB 201611L
+	#endif
+
+	#if (__cpp_deduction_guides >= 201703L)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_DR __cpp_deduction_guides
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1914)
+		#define LBAL_CPP17_DEDUCTION_GUIDES_DR 201703L
 	#endif
 
 	//	__SEEME__ This is implemented, but it’s unclear if/when the DR that
@@ -1543,8 +1687,16 @@
 		#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC __cpp_constexpr_dynamic_alloc
 	#endif
 
+	#if __cpp_constinit
+		#define LBAL_CPP2A_CONSTINIT __cpp_constinit
+	#endif
+
 	#if __cpp_coroutines
 		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
+	#endif
+
+	#if (__cpp_deduction_guides >= 201907L)
+		#define LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES __cpp_deduction_guides
 	#endif
 
 	#if __cpp_impl_destroying_delete

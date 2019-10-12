@@ -995,7 +995,7 @@
 
 /**
 	@def LBAL_CPP11_CONSTEXPR
-	@brief Specify generalized constant expressions.
+	@brief Specify generalized constant expressions
 	@details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
 	to the `200704L` variant, but it will have the value of the latest
 	supported variant, or `0` if this variant is not supported.
@@ -1009,6 +1009,16 @@
 */
 #ifndef LBAL_CPP11_CONSTEXPR
 	#define LBAL_CPP11_CONSTEXPR 0
+#endif
+
+/**
+	@def LBAL_CPP11_DECLTYPE
+	@brief Query the type of an expression
+	@details Equivalent SD-6 macro: `__cpp_decltype`
+	- [200707L](https://wg21.link/N2343) __PDF__
+*/
+#ifndef LBAL_CPP11_DECLTYPE
+	#define LBAL_CPP11_DECLTYPE 0
 #endif
 
 /**
@@ -1086,10 +1096,20 @@
 #endif
 
 /**
+	@def LBAL_CPP14_DECLTYPE_AUTO
+	@brief Allow deduced return types and `decltype (auto)`
+	@details Equivalent SD-6 macro: `__cpp_decltype_auto`
+	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3638.html)
+*/
+#ifndef LBAL_CPP14_DECLTYPE_AUTO
+	#define LBAL_CPP14_DECLTYPE_AUTO 0
+#endif
+
+/**
 	@def LBAL_CPP14_SIZED_DEALLOCATION
 	@brief Make available a global `operator delete` that takes a size argument
 	@details Equivalent SD-6 macro: `__cpp_sized_deallocation`
-	- [201309L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3778.html)
+	- [201304](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3778.html)
 
 	@remarks Some compilers disable this by default since it’s an ABI-breaking
 	change; clang, in particular, does this.
@@ -1157,6 +1177,64 @@
 */
 #ifndef LBAL_CPP17_CONSTEXPR_LAMBDA
 	#define LBAL_CPP17_CONSTEXPR_LAMBDA 0
+#endif
+
+/**
+	@def LBAL_CPP17_DEDUCTION_GUIDES
+	@brief Template argument deduction for class templates
+	@details Equivalent SD-6 macro: `__cpp_deduction_guides`. This token
+	corresponds to the `201606L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0091r3.html)
+	- [201611L](https://wg21.link/P0512R0) __PDF__
+	- [201703L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0620r0.html)
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1814r0.html)
+	- [201907L](https://wg21.link/P1816R0) __PDF__
+
+	@remarks `__cpp_deduction_guides` has at least 4 values associated with it,
+	across at least 5 proposals.
+*/
+#ifndef LBAL_CPP17_DEDUCTION_GUIDES
+	#define LBAL_CPP17_DEDUCTION_GUIDES 0
+#endif
+
+/**
+	@def LBAL_CPP17_DEDUCTION_GUIDES_DR
+	@brief Address additional class template argument deduction issues
+	@details Equivalent SD-6 macro: `__cpp_deduction_guides`. This token
+	corresponds to the `201703L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0091r3.html)
+	- [201611L](https://wg21.link/P0512R0) __PDF__
+	- [201703L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0620r0.html)
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1814r0.html)
+	- [201907L](https://wg21.link/P1816R0) __PDF__
+
+	@remarks `__cpp_deduction_guides` has at least 4 values associated with it,
+	across at least 5 proposals.
+*/
+#ifndef LBAL_CPP17_DEDUCTION_GUIDES_DR
+	#define LBAL_CPP17_DEDUCTION_GUIDES_DR 0
+#endif
+
+/**
+	@def LBAL_CPP17_DEDUCTION_GUIDES_NB
+	@brief Address issues that came up during C++17 balloting regarding
+	class template argument deduction
+	@details Equivalent SD-6 macro: `__cpp_deduction_guides`. This token
+	corresponds to the `201611L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0091r3.html)
+	- [201611L](https://wg21.link/P0512R0) __PDF__
+	- [201703L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0620r0.html)
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1814r0.html)
+	- [201907L](https://wg21.link/P1816R0) __PDF__
+
+	@remarks `__cpp_deduction_guides` has at least 4 values associated with it,
+	across at least 5 proposals.
+*/
+#ifndef LBAL_CPP17_DEDUCTION_GUIDES_NB
+	#define LBAL_CPP17_DEDUCTION_GUIDES_NB 0
 #endif
 
 /**
@@ -1347,8 +1425,7 @@
 
 /**
 	@def LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION
-
-	Equivalent SD-6 macro: none
+	@details Equivalent SD-6 macro: none
 	- [default](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1064r0.html)
 */
 #ifndef LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION
@@ -1356,20 +1433,59 @@
 #endif
 
 /**
-	@def LBAL_CPP2A_COROUTINES
-	Note that this is just language support for the `<coroutine>` header.
+	@def LBAL_CPP2A_CONSTINIT
+	@brief Add the `constinit` keyword
+	@details This keyword provides a decorator that can be used to ensure that
+	initialization of a constant is actually occuring as expected, regardless
+	of any changing (i.e., dialect-specific) rules that might be in play.
 
-	Equivalent SD-6 macro: `__cpp_coroutines`
+	Equivalent SD-6 macro: __cpp_constinit
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1143r2.html)
+
+	@remarks This feature is broadly intended to be back-portable to older C++
+	dialects; in certain circumstances it’s conceivable that `__cpp_constinit`
+	will be set even if the dialect is older than C++2a.
+*/
+#ifndef LBAL_CPP2A_CONSTINIT
+	#define LBAL_CPP2A_CONSTINIT 0
+#endif
+
+/**
+	@def LBAL_CPP2A_COROUTINES
+	@brief Add necessary language support for the `<coroutine>` library feature
+	@details Equivalent SD-6 macro: `__cpp_coroutines`
 	- [201902L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0912r1.html)
+
+	@remarks Technically, the proposal this is from only directs that the
+	Coroutines TS be merged into the Standard. For reference the latest draft
+	is [n4775](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4775.pdf).
 */
 #ifndef LBAL_CPP2A_COROUTINES
 	#define LBAL_CPP2A_COROUTINES 0
 #endif
 
 /**
-	@def LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS
+	@def LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES
+	@brief Class template argument deduction for aggregates
+	@details Equivalent SD-6 macro: `__cpp_deduction_guides`. This token
+	corresponds to the `201907L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0091r3.html)
+	- [201611L](https://wg21.link/P0512R0) __PDF__
+	- [201703L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0620r0.html)
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1814r0.html)
+	- [201907L](https://wg21.link/P1816R0) __PDF__
 
-	Equivalent SD-6 macro: none
+	@remarks `__cpp_deduction_guides` has at least 4 values associated with it,
+	across at least 5 proposals.
+*/
+#ifndef LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES
+	#define LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES 0
+#endif
+
+/**
+	@def LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS
+	@details Equivalent SD-6 macro: none
 	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0624r2.pdf) __PDF__
 */
 #ifndef LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS
