@@ -865,7 +865,7 @@
 
 	- Features we (the developers) have not had cause to use or care about
 	are often not represented right away. Eventually, all language features
-	accepted into the Standard will appear here.
+	accepted into the Standard from C++2a onwards will appear here.
 
 	- Features from proposals to the Standard may have flags here; in some
 	cases, this may occur for proposed features that have not been accepted
@@ -892,7 +892,7 @@
 	against 4 successive Standards, we will define 4 unique tokens, one for
 	each proposal. If the current build environment only supports the first 3
 	of the 4 proposals, 3 of our tokens will be set to the most recent
-	suppoeted proposal’s vslue for `__cpp_meow`, while the 4th of our tokens,
+	suppoeted proposal’s value for `__cpp_meow`, while the 4th of our tokens,
 	representing the most recent—and unsupported—proposal, will be set to `0`.
 
 	@remarks __SEEME__ Note that there are ambiguous cases where a feature may
@@ -917,6 +917,10 @@
 	officially support C++17 and later dialects, we don’t go out of our way to
 	expose such features. We do, however, note such occurrences, and may change
 	this policy in the future.
+
+	@remarks __APIME__ Features prior to the C++2a Standard are represented by
+	tokens generally only if they have equivalent SD-6 tokens. Support can be
+	broadened if there is demand.
 
 	@remarks The SD-6 tokens and their values referenced here are current as of
 	the 2019-10-02 revision.
@@ -1086,6 +1090,78 @@
 #endif
 
 /**
+	@def LBAL_CPP11_NSDMI
+	@brief Support for non-static data member initializers.
+	@details Equivalent SD-6 macro: `__cpp_nsdmi`
+	- [200809L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2756.htm)
+*/
+#ifndef LBAL_CPP11_NSDMI
+	#define LBAL_CPP11_NSDMI 0
+#endif
+
+/**
+	@def LBAL_CPP11_RANGE_BASED_FOR
+	@brief Range-based for-loops
+	@details Equivalent SD-6 macro: `__cpp_range_based_for`. This token
+	corresponds to the `200907L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [200907L](https://wg21.link/N2930)
+	- [201603L](https://wg21.link/P0184R0)
+
+	@remarks `__cpp_range_based_for` has at least 2 values associated with it,
+	each from a different proposal.
+*/
+#ifndef LBAL_CPP11_RANGE_BASED_FOR
+	#define LBAL_CPP11_RANGE_BASED_FOR 0
+#endif
+
+/**
+	@def LBAL_CPP11_RAW_STRINGS
+	@brief Support for raw and Unicode string literals
+	@details Equivalent SD-6 macro: `__cpp_raw_strings`
+	- [200710L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2442.htm)
+*/
+#ifndef LBAL_CPP11_RAW_STRINGS
+	#define LBAL_CPP11_RAW_STRINGS 0
+#endif
+
+/**
+	@def LBAL_CPP11_REF_QUALIFIERS
+	@brief Extend move semantics to *this
+	@details Equivalent SD-6 macro: `__cpp_ref_qualifiers`
+	- [200710L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2439.htm)
+*/
+#ifndef LBAL_CPP11_REF_QUALIFIERS
+	#define LBAL_CPP11_REF_QUALIFIERS 0
+#endif
+
+/**
+	@def LBAL_CPP11_RVALUE_REFERENCES
+	@brief Add rvalue references
+	@details Equivalent SD-6 macro: `__cpp_rvalue_references`
+	- [200610L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2118.html)
+*/
+#ifndef LBAL_CPP11_RVALUE_REFERENCES
+	#define LBAL_CPP11_RVALUE_REFERENCES 0
+#endif
+
+/**
+	@def LBAL_CPP11_STATIC_ASSERT
+	@brief Add static assertions
+	@details Equivalent SD-6 macro: `__cpp_static_assert`. This token
+	   corresponds to the `200410L` variant, but it will have the value of the
+	   latest supported variant, or `0` if this variant is not supported.
+	- [200410L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2004/n1720.html)
+	- [201411L](https://wg21.link/N3928)
+
+	@remarks `__cpp_static_assert` has at least 2 values associated with it,
+	each from a different proposal.
+*/
+#ifndef LBAL_CPP11_STATIC_ASSERT
+	#define LBAL_CPP11_STATIC_ASSERT 0
+#endif
+
+/**
 	@def LBAL_CPP11_THREADSAFE_STATIC_INIT
 	@brief Support for thread-safe static initialization.
 	@details Some compilers can disable this feature if asked; the token will
@@ -1177,6 +1253,16 @@
 */
 #ifndef LBAL_CPP14_INIT_CAPTURES
 	#define LBAL_CPP14_INIT_CAPTURES 0
+#endif
+
+/**
+	@def LBAL_CPP14_RETURN_TYPE_DEDUCTION
+	@brief Support for return type deduction for normal functions
+	@details Equivalent SD-6 macro: `__cpp_return_type_deduction`
+	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3638.html)
+*/
+#ifndef LBAL_CPP14_RETURN_TYPE_DEDUCTION
+	#define LBAL_CPP14_RETURN_TYPE_DEDUCTION 0
 #endif
 
 /**
@@ -1451,6 +1537,38 @@
 #endif
 
 /**
+	@def LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED
+	@brief Generalize range-based for-loops
+	@details Equivalent SD-6 macro: `__cpp_range_based_for`. This token
+	corresponds to the `201603L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [200907L](https://wg21.link/N2930)
+	- [201603L](https://wg21.link/P0184R0)
+
+	@remarks `__cpp_range_based_for` has at least 2 values associated with it,
+	each from a different proposal.
+*/
+#ifndef LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED
+	#define LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED 0
+#endif
+
+/**
+	@def LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE
+	@brief Allow static assertions with no messages
+	@details Equivalent SD-6 macro: `__cpp_static_assert`. This token
+	   corresponds to the `201411L` variant, but it will have the value of the
+	   latest supported variant, or `0` if this variant is not supported.
+	- [200410L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2004/n1720.html)
+	- [201411L](https://wg21.link/N3928) __PDF__
+
+	@remarks `__cpp_static_assert` has at least 2 values associated with it,
+	each from a different proposal.
+*/
+#ifndef LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE
+	#define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE 0
+#endif
+
+/**
 	@def LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS
 	The proposal this is from is intended to resolve a Defect Report,
 	but unfortunately introduces a defect of its own. Some compilers
@@ -1473,6 +1591,10 @@
 	@details Support across compilers for C++2a features is unsurprisingly
 	inconsistent, and is one of the fundamental reasons why lucenaBAL exists.
 	These will be updated regularly as the Standard develops.
+
+	Note that a very large number of features do not have SD-6 macros, so we
+	often provide our own tokens. Should an official macro be created, we will
+	synchronize with it and deprecate the proprietary one.
 
 	@remarks __SEEME__ A proposal to standardize SD-6 macros was accepted for
 	C++2a, and is updated regularly to track new features, but it tends to lag

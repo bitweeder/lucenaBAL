@@ -278,6 +278,42 @@
 		#define LBAL_CPP11_LAMBDAS 200907L
 	#endif
 
+	#if (__cpp_nsdmi >= 200809L)
+		#define LBAL_CPP11_NSDMI __cpp_nsdmi
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_NSDMI 200809L
+	#endif
+
+	#if (__cpp_range_based_for >= 200907L)
+		#define LBAL_CPP11_RANGE_BASED_FOR __cpp_range_based_for
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_RANGE_BASED_FOR 200907L
+	#endif
+
+	#if (__cpp_raw_strings >= 200710L)
+		#define LBAL_CPP11_RAW_STRINGS __cpp_raw_strings
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_RAW_STRINGS 200710L
+	#endif
+
+	#if (__cpp_ref_qualifiers >= 200710L)
+		#define LBAL_CPP11_REF_QUALIFIERS __cpp_ref_qualifiers
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_REF_QUALIFIERS 200710L
+	#endif
+
+	#if (__cpp_rvalue_references >= 200610L)
+		#define LBAL_CPP11_RVALUE_REFERENCES __cpp_rvalue_references
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_RVALUE_REFERENCES 200610L
+	#endif
+
+	#if (__cpp_static_assert >= 200410L)
+		#define LBAL_CPP11_STATIC_ASSERT __cpp_static_assert
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_STATIC_ASSERT 200410L
+	#endif
+
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
 	#if (__cpp_threadsafe_static_init >= 200806L)
@@ -321,6 +357,12 @@
 		#define LBAL_CPP14_INIT_CAPTURES __cpp_init_captures
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_INIT_CAPTURES 201304L
+	#endif
+
+	#if (__cpp_return_type_deduction >= 201304L)
+		#define LBAL_CPP14_RETURN_TYPE_DEDUCTION __cpp_return_type_deduction
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_RETURN_TYPE_DEDUCTION 201304L
 	#endif
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid
@@ -458,6 +500,18 @@
 		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO __cpp_nontype_template_parameter_auto
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO 201606L
+	#endif
+
+	#if (__cpp_range_based_for >= 201603L)
+		#define LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED __cpp_range_based_for
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED 201603L
+	#endif
+
+	#if (__cpp_static_assert >= 201411L)
+		#define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE __cpp_static_assert
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE 201411L
 	#endif
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid a
@@ -824,6 +878,42 @@
 		#define LBAL_CPP11_LAMBDAS 200907L
 	#endif
 
+	#if (__cpp_nsdmi >= 200809L)
+		#define LBAL_CPP11_NSDMI __cpp_nsdmi
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_NSDMI 200809L
+	#endif
+
+	#if (__cpp_range_based_for >= 200907L)
+		#define LBAL_CPP11_RANGE_BASED_FOR __cpp_range_based_for
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_RANGE_BASED_FOR 200907L
+	#endif
+
+	#if (__cpp_raw_strings >= 200710L)
+		#define LBAL_CPP11_RAW_STRINGS __cpp_raw_strings
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_RAW_STRINGS 200710L
+	#endif
+
+	#if (__cpp_ref_qualifiers >= 200710L)
+		#define LBAL_CPP11_REF_QUALIFIERS __cpp_ref_qualifiers
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_REF_QUALIFIERS 200710L
+	#endif
+
+	#if (__cpp_rvalue_references >= 200610L)
+		#define LBAL_CPP11_RVALUE_REFERENCES __cpp_rvalue_references
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_RVALUE_REFERENCES 200610L
+	#endif
+
+	#if (__cpp_static_assert >= 200410L)
+		#define LBAL_CPP11_STATIC_ASSERT __cpp_static_assert
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_STATIC_ASSERT 200410L
+	#endif
+
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
 	#if (__cpp_threadsafe_static_init >= 200806L)
@@ -867,6 +957,12 @@
 		#define LBAL_CPP14_INIT_CAPTURES __cpp_init_captures
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_INIT_CAPTURES 201304L
+	#endif
+
+	#if (__cpp_return_type_deduction >= 201304L)
+		#define LBAL_CPP14_RETURN_TYPE_DEDUCTION __cpp_return_type_deduction
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_RETURN_TYPE_DEDUCTION 201304L
 	#endif
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid
@@ -990,6 +1086,18 @@
 		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO __cpp_nontype_template_parameter_auto
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO 201606L
+	#endif
+
+	#if (__cpp_range_based_for >= 201603L)
+		#define LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED __cpp_range_based_for
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED 201603L
+	#endif
+
+	#if (__cpp_static_assert >= 201411L)
+		#define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE __cpp_static_assert
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE 201411L
 	#endif
 
 	//	As of clang 8, this is disabled by default in order to avoid a defect
@@ -1372,6 +1480,42 @@
 		#define LBAL_CPP11_LAMBDAS 200907L
 	#endif
 
+	#if (__cpp_nsdmi >= 200809L)
+		#define LBAL_CPP11_NSDMI __cpp_nsdmi
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_NSDMI 200809L
+	#endif
+
+	#if (__cpp_range_based_for >= 200907L)
+		#define LBAL_CPP11_RANGE_BASED_FOR __cpp_range_based_for
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_RANGE_BASED_FOR 200907L
+	#endif
+
+	#if (__cpp_raw_strings >= 200710L)
+		#define LBAL_CPP11_RAW_STRINGS __cpp_raw_strings
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_RAW_STRINGS 200710L
+	#endif
+
+	#if (__cpp_ref_qualifiers >= 200710L)
+		#define LBAL_CPP11_REF_QUALIFIERS __cpp_ref_qualifiers
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_REF_QUALIFIERS 200710L
+	#endif
+
+	#if (__cpp_rvalue_references >= 200610L)
+		#define LBAL_CPP11_RVALUE_REFERENCES __cpp_rvalue_references
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_RVALUE_REFERENCES 200610L
+	#endif
+
+	#if (__cpp_static_assert >= 200410L)
+		#define LBAL_CPP11_STATIC_ASSERT __cpp_static_assert
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_STATIC_ASSERT 200410L
+	#endif
+
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
 	#if (__cpp_threadsafe_static_init >= 200806L)
@@ -1415,6 +1559,12 @@
 		#define LBAL_CPP14_INIT_CAPTURES __cpp_init_captures
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_INIT_CAPTURES 201304L
+	#endif
+
+	#if (__cpp_return_type_deduction >= 201304L)
+		#define LBAL_CPP14_RETURN_TYPE_DEDUCTION __cpp_return_type_deduction
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_RETURN_TYPE_DEDUCTION 201304L
 	#endif
 
 	//	__SEEME__ There is no `__cplusplus` check since this can be
@@ -1503,6 +1653,14 @@
 
 	#if (__cpp_nontype_template_parameter_auto >= 201606L)
 		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO __cpp_nontype_template_parameter_auto
+	#endif
+
+	#if (__cpp_range_based_for >= 201603L)
+		#define LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED __cpp_range_based_for
+	#endif
+
+	#if (__cpp_static_assert >= 201411L)
+		#define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE __cpp_static_assert
 	#endif
 
 	#if (__cpp_template_template_args >= 201611L)
@@ -1899,6 +2057,42 @@
 		#define LBAL_CPP11_LAMBDAS 200907L
 	#endif
 
+	#if (__cpp_nsdmi >= 200809L)
+		#define LBAL_CPP11_NSDMI __cpp_nsdmi
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_NSDMI 200809L
+	#endif
+
+	#if (__cpp_range_based_for >= 200907L)
+		#define LBAL_CPP11_RANGE_BASED_FOR __cpp_range_based_for
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_RANGE_BASED_FOR 200907L
+	#endif
+
+	#if (__cpp_raw_strings >= 200710L)
+		#define LBAL_CPP11_RAW_STRINGS __cpp_raw_strings
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_RAW_STRINGS 200710L
+	#endif
+
+	#if (__cpp_ref_qualifiers >= 200710L)
+		#define LBAL_CPP11_REF_QUALIFIERS __cpp_ref_qualifiers
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_REF_QUALIFIERS 200710L
+	#endif
+
+	#if (__cpp_rvalue_references >= 200610L)
+		#define LBAL_CPP11_RVALUE_REFERENCES __cpp_rvalue_references
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_RVALUE_REFERENCES 200610L
+	#endif
+
+	#if (__cpp_static_assert >= 200410L)
+		#define LBAL_CPP11_STATIC_ASSERT __cpp_static_assert
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_STATIC_ASSERT 200410L
+	#endif
+
 	//	Available in `_MSC_VER`: `1900`
 	//	This can be conditionally disabled.
 	//	__SEEME__ In the absence of `__cpp_threadsafe_static_init` - i.e., in
@@ -1951,6 +2145,12 @@
 		#define LBAL_CPP14_INIT_CAPTURES __cpp_init_captures
 	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
 		#define LBAL_CPP14_INIT_CAPTURES 201304L
+	#endif
+
+	#if (__cpp_return_type_deduction >= 201304L)
+		#define LBAL_CPP14_RETURN_TYPE_DEDUCTION __cpp_return_type_deduction
+	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP14_RETURN_TYPE_DEDUCTION 201304L
 	#endif
 
 	//	This can be conditionally disabled.
@@ -2078,6 +2278,18 @@
 		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO __cpp_nontype_template_parameter_auto
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1914)
 		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO 201606L
+	#endif
+
+	#if (__cpp_range_based_for >= 201603L)
+		#define LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED __cpp_range_based_for
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1910)
+		#define LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED 201603L
+	#endif
+
+	#if (__cpp_static_assert >= 201411L)
+		#define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE __cpp_static_assert
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1910)
+		#define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE 201411L
 	#endif
 
 	//	__SEEME__ This is implemented, but it’s unclear if/when the DR that

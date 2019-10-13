@@ -125,6 +125,12 @@
 	defined (LBAL_CPP11_INHERITING_CONSTRUCTORS) || \
 	defined (LBAL_CPP11_INITIALIZER_LISTS) || \
 	defined (LBAL_CPP11_LAMBDAS) || \
+	defined (LBAL_CPP11_NSDMI) || \
+	defined (LBAL_CPP11_RANGE_BASED_FOR) || \
+	defined (LBAL_CPP11_RAW_STRINGS) || \
+	defined (LBAL_CPP11_REF_QUALIFIERS) || \
+	defined (LBAL_CPP11_RVALUE_REFERENCES) || \
+	defined (LBAL_CPP11_STATIC_ASSERT) || \
 	defined (LBAL_CPP11_THREADSAFE_STATIC_INIT)
 
 #error "Don’t define LBAL_CPP11_xxx externally."
@@ -136,6 +142,7 @@
 	defined (LBAL_CPP14_DECLTYPE_AUTO) || \
 	defined (LBAL_CPP14_GENERIC_LAMBDAS) || \
 	defined (LBAL_CPP14_INIT_CAPTURES) || \
+	defined (LBAL_CPP14_RETURN_TYPE_DEDUCTION) || \
 	defined (LBAL_CPP14_SIZED_DEALLOCATION)
 #error "Don’t define LBAL_CPP14_xxx externally."
 #endif	//	LBAL_CPP14 check
@@ -158,6 +165,8 @@
 	defined (LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE) || \
 	defined (LBAL_CPP17_NONTYPE_TEMPLATE_ARGS) || \
 	defined (LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO) || \
+	defined (LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED) || \
+	defined (LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE) || \
 	defined (LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS)
 #error "Don’t define LBAL_CPP17_xxx externally."
 #endif	//	LBAL_CPP17 check
