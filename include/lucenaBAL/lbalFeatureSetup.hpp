@@ -1150,10 +1150,20 @@
 #endif
 
 /**
+	@def LBAL_CPP14_INIT_CAPTURES
+	@brief Generalized Lambda-capture changes
+	@details Equivalent SD-6 macro: `__cpp_init_captures`
+	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3648.html)
+*/
+#ifndef LBAL_CPP14_INIT_CAPTURES
+	#define LBAL_CPP14_INIT_CAPTURES 0
+#endif
+
+/**
 	@def LBAL_CPP14_SIZED_DEALLOCATION
 	@brief Make available a global `operator delete` that takes a size argument
 	@details Equivalent SD-6 macro: `__cpp_sized_deallocation`
-	- [201304](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3778.html)
+	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3778.html)
 
 	@remarks Some compilers disable this by default since it’s an ABI-breaking
 	change; clang, in particular, does this.
@@ -1199,7 +1209,7 @@
 	@def LBAL_CPP17_CAPTURE_STAR_THIS
 	@brief Allow lambda capture of `*this` by value as `as [=,*this]`.
 	@details Equivalent SD-6 macro: `__cpp_capture_star_this`
-	- [201603](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0018r3.html)
+	- [201603L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0018r3.html)
 */
 #ifndef LBAL_CPP17_CAPTURE_STAR_THIS
 	#define LBAL_CPP17_CAPTURE_STAR_THIS 0
@@ -1434,16 +1444,6 @@
 #endif
 
 /**
-	@def LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS
-
-	Equivalent SD-6 macro: `__has_cpp_attribute(no_unique_address)`
-	- [201803L](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0840r2.html)
-*/
-#ifndef LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS
-	#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS 0
-#endif
-
-/**
 	@def LBAL_CPP2A_ATTRIBUTE_LIKELY
 
 	Equivalent SD-6 test: `__has_cpp_attribute(likely)`
@@ -1465,16 +1465,30 @@
 
 /**
 	@def LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY
-
-	We track the availability of each attribute separately, as well as
+	@brief Aggregate tracking the availability of `likely` and `unlikely`
+	attributes
+	@details We track the availability of each attribute separately, as well as
 	provide this aggregate to test for compliance. The aggregate’s value
-	will be 0 if either attribute is unavailable, or 1 otherwise.
+	will be `0` if either attribute is unavailable, or `1` otherwise.
 
 	Equivalent SD-6 macro: none
 	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html)
 */
+//	__SEEME__ To be defined correctly, this must be evaluated after the
+//	component tokens have been defined.
 #ifndef LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY
-	#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY 0
+	#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY \
+		((LBAL_CPP2A_ATTRIBUTE_LIKELY != 0) && (LBAL_CPP2A_ATTRIBUTE_UNLIKELY != 0))
+#endif
+
+/**
+	@def LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS
+
+	Equivalent SD-6 macro: `__has_cpp_attribute(no_unique_address)`
+	- [201803L](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0840r2.html)
+*/
+#ifndef LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS
+	#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS 0
 #endif
 
 /**

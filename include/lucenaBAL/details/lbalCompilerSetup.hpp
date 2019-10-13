@@ -215,13 +215,13 @@
 
 	//	Test for C++98 features.
 	//	These can be conditionally disabled.
-	#if __cpp_exceptions
+	#if (__cpp_exceptions >= 199711L)
 		#define LBAL_CPP98_EXCEPTIONS __cpp_exceptions
 	#elif __has_feature(cxx_exceptions)
 		#define LBAL_CPP98_EXCEPTIONS 199711L
 	#endif
 
-	#if __cpp_rtti
+	#if (__cpp_rtti >= 199711L)
 		#define LBAL_CPP98_RTTI __cpp_rtti
 	#elif __has_feature(cxx_rtti)
 		#define LBAL_CPP98_RTTI 199711L
@@ -230,31 +230,31 @@
 
 	//	Test for C++11 features.
 
-	#if __cpp_alias_templates
+	#if (__cpp_alias_templates >= 200704L)
 		#define LBAL_CPP11_ALIAS_TEMPLATES __cpp_alias_templates
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_ALIAS_TEMPLATES 200704L
 	#endif
 
-	#if __cpp_attributes
+	#if (__cpp_attributes >= 200809L)
 		#define LBAL_CPP11_ATTRIBUTES __cpp_attributes
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_ATTRIBUTES 200809L
 	#endif
 
-	#if __cpp_constexpr
+	#if (__cpp_constexpr >= 200704L)
 		#define LBAL_CPP11_CONSTEXPR __cpp_constexpr
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_CONSTEXPR 200704L
 	#endif
 
-	#if __cpp_decltype
+	#if (__cpp_decltype >= 200707L)
 		#define LBAL_CPP11_DECLTYPE __cpp_decltype
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_DECLTYPE 200707L
 	#endif
 
-	#if __cpp_delegating_constructors
+	#if (__cpp_delegating_constructors >= 200604L)
 		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS __cpp_delegating_constructors
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS 200604L
@@ -268,20 +268,20 @@
 
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
-	#if __cpp_threadsafe_static_init
+	#if (__cpp_threadsafe_static_init >= 200806L)
 		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
 	#endif
 
 
 	//	C++14 features
 
-	#if __cpp_aggregate_nsdmi
+	#if (__cpp_aggregate_nsdmi >= 201304L)
 		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_AGGREGATE_NSDMI 201304L
 	#endif
 
-	#if __cpp_binary_literals
+	#if (__cpp_binary_literals >= 201304L)
 		#define LBAL_CPP14_BINARY_LITERALS __cpp_binary_literals
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_BINARY_LITERALS 201304L
@@ -293,7 +293,7 @@
 		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 201304L
 	#endif
 
-	#if (__cpp_decltype_auto)
+	#if (__cpp_decltype_auto >= 201304L)
 		#define LBAL_CPP14_DECLTYPE_AUTO __cpp_decltype_auto
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_DECLTYPE_AUTO 201304L
@@ -305,9 +305,15 @@
 		#define LBAL_CPP14_GENERIC_LAMBDAS 201304L
 	#endif
 
+	#if (__cpp_init_captures >= 201304L)
+		#define LBAL_CPP14_INIT_CAPTURES __cpp_init_captures
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_INIT_CAPTURES 201304L
+	#endif
+
 	//	As of vanilla clang 8, this is disabled by default in order to avoid
 	//	ABI-breaking changes. It’s unclear when it will be enabled by default.
-	#if __cpp_sized_deallocation
+	#if (__cpp_sized_deallocation >= 201304L)
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 	#endif
 
@@ -328,22 +334,22 @@
 	//	As for other potential issues, __cpp_threadsafe_static_init _can_ be
 	//	set to 0 depending on compiler arguments, but defaults to being on.
 
-	#if __cpp_aggregate_bases
+	#if (__cpp_aggregate_bases >= 201603L)
 		#define LBAL_CPP17_AGGREGATE_BASES __cpp_aggregate_bases
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_AGGREGATE_BASES 201603L
 	#endif
 
-	#if __cpp_aligned_new
+	#if (__cpp_aligned_new >= 201606L)
 		#define LBAL_CPP17_ALIGNED_NEW __cpp_aligned_new
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_ALIGNED_NEW 201606L
 	#endif
 
-	#if __cpp_capture_star_this
+	#if (__cpp_capture_star_this >= 201603L)
 		#define LBAL_CPP17_CAPTURE_STAR_THIS __cpp_capture_star_this
 	#elif (__cplusplus >= 201703L)
-		#define LBAL_CPP17_CAPTURE_STAR_THIS 201603
+		#define LBAL_CPP17_CAPTURE_STAR_THIS 201603L
 	#endif
 
 	#if (__cpp_constexpr >= 201603L)
@@ -370,7 +376,7 @@
 		#define LBAL_CPP17_DEDUCTION_GUIDES_DR 201703L
 	#endif
 
-	#if __cpp_enumerator_attributes
+	#if (__cpp_enumerator_attributes >+ 201411L)
 		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES __cpp_enumerator_attributes
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES 201411L
@@ -388,19 +394,19 @@
 		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED 201603L
 	#endif
 
-	#if __cpp_guaranteed_copy_elision
+	#if (__cpp_guaranteed_copy_elision >= 201606L)
 		#define LBAL_CPP17_GUARANTEED_COPY_ELISION __cpp_guaranteed_copy_elision
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_GUARANTEED_COPY_ELISION 201606L
 	#endif
 
-	#if __cpp_hex_float
+	#if (__cpp_hex_float >= 201603L)
 		#define LBAL_CPP17_HEX_FLOAT __cpp_hex_float
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_HEX_FLOAT 201603L
 	#endif
 
-	#if __cpp_if_constexpr
+	#if (__cpp_if_constexpr >= 201606L)
 		#define LBAL_CPP17_IF_CONSTEXPR __cpp_if_constexpr
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_IF_CONSTEXPR 201606L
@@ -415,7 +421,7 @@
 	//	As of vanilla clang 8, this is disabled by default in order to avoid a
 	//	defect introduced by the associated proposal (which was intended to
 	//	resolve another defect).
-	#if __cpp_template_template_args
+	#if (__cpp_template_template_args >= 201611L)
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS __cpp_template_template_args
 	#endif
 
@@ -445,19 +451,19 @@
 		#define LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 1L
 	#endif
 
-	#if __cpp_aggregate_paren_init
+	#if (__cpp_aggregate_paren_init >= 201902L)
 		#define LBAL_CPP2A_AGGREGATE_PAREN_INIT __cpp_aggregate_paren_init
 	#endif
 
-	#if __cpp_char8_t
+	#if (__cpp_char8_t >= 201811L)
 		#define LBAL_CPP2A_CHAR8_T __cpp_char8_t
 	#endif
 
-	#if __cpp_concepts
+	#if (__cpp_concepts >= 201806L)
 		#define LBAL_CPP2A_CONCEPTS __cpp_concepts
 	#endif
 
-	#if __cpp_conditional_explicit
+	#if (__cpp_conditional_explicit >= 201806L)
 		#define LBAL_CPP2A_CONDITIONAL_EXPLICIT __cpp_conditional_explicit
 	#endif
 
@@ -465,15 +471,15 @@
 		#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION __cpp_constexpr
 	#endif
 
-	#if __cpp_constexpr_dynamic_alloc
+	#if (__cpp_constexpr_dynamic_alloc >= 201907L)
 		#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC __cpp_constexpr_dynamic_alloc
 	#endif
 
-	#if __cpp_constinit
+	#if (__cpp_constinit >= 201907L)
 		#define LBAL_CPP2A_CONSTINIT __cpp_constinit
 	#endif
 
-	#if __cpp_coroutines
+	#if (__cpp_coroutines >= 201902L)
 		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
 	#endif
 
@@ -481,28 +487,34 @@
 		#define LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES __cpp_deduction_guides
 	#endif
 
-	#if __cpp_impl_destroying_delete
+	#if (__cpp_impl_destroying_delete >= 201806L)
 		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
 	#endif
 
-	#if __cpp_impl_three_way_comparison
-		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
-
-		#if (__cpp_impl_three_way_comparison > = 201907L)
-			#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
-		#endif
-	#endif
-
-	#if __cpp_nontype_template_parameter_class
+	#if (__cpp_nontype_template_parameter_class >= 201806L)
 		#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS __cpp_nontype_template_parameter_class
 	#endif
 
-	#ifdef __has_cpp_attribute
-		#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
-		#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
-		#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY (LBAL_CPP2A_ATTRIBUTE_LIKELY && LBAL_CPP2A_ATTRIBUTE_UNLIKELY)
+	#if (__cpp_impl_three_way_comparison >= 201711L)
+		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
+	#endif
 
-		#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+	#if (__cpp_impl_three_way_comparison > = 201907L)
+		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
+	#endif
+
+	#ifdef __has_cpp_attribute
+		#if (__has_cpp_attribute(likely) >= 201803L)
+			#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
+		#endif
+
+		#if (__has_cpp_attribute(unlikely) >= 201803L)
+			#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
+		#endif
+
+		#if (__has_cpp_attribute(no_unique_address) >= 201803L)
+			#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+		#endif
 	#endif	//	__has_cpp_attribute
 
 
@@ -703,13 +715,13 @@
 	//	C++98 features
 
 	//	These can be conditionally disabled.
-	#if __cpp_exceptions
+	#if (__cpp_exceptions >= 199711L)
 		#define LBAL_CPP98_EXCEPTIONS __cpp_exceptions
 	#elif __has_feature(cxx_exceptions)
 		#define LBAL_CPP98_EXCEPTIONS 199711L
 	#endif
 
-	#if __cpp_rtti
+	#if (__cpp_rtti >= 199711L)
 		#define LBAL_CPP98_RTTI __cpp_rtti
 	#elif __has_feature(cxx_rtti)
 		#define LBAL_CPP98_RTTI 199711L
@@ -718,31 +730,31 @@
 
 	//	C++11 features
 
-	#if __cpp_alias_templates
+	#if (__cpp_alias_templates >= 200704L)
 		#define LBAL_CPP11_ALIAS_TEMPLATES __cpp_alias_templates
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_ALIAS_TEMPLATES 200704L
 	#endif
 
-	#if __cpp_attributes
+	#if (__cpp_attributes >= 200809L)
 		#define LBAL_CPP11_ATTRIBUTES __cpp_attributes
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_ATTRIBUTES 200809L
 	#endif
 
-	#if __cpp_constexpr
+	#if (__cpp_constexpr >= 200704L)
 		#define LBAL_CPP11_CONSTEXPR __cpp_constexpr
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_CONSTEXPR 200704L
 	#endif
 
-	#if __cpp_decltype
+	#if (__cpp_decltype >= 200707L)
 		#define LBAL_CPP11_DECLTYPE __cpp_decltype
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_DECLTYPE 200707L
 	#endif
 
-	#if __cpp_delegating_constructors
+	#if (__cpp_delegating_constructors >= 200604L)
 		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS __cpp_delegating_constructors
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS 200604L
@@ -756,20 +768,20 @@
 
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
-	#if __cpp_threadsafe_static_init
+	#if (__cpp_threadsafe_static_init >= 200806L)
 		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
 	#endif
 
 
 	//	C++14 features
 
-	#if __cpp_aggregate_nsdmi
+	#if (__cpp_aggregate_nsdmi >= 201304L)
 		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_AGGREGATE_NSDMI 201304L
 	#endif
 
-	#if __cpp_binary_literals
+	#if (__cpp_binary_literals >= 201304L)
 		#define LBAL_CPP14_BINARY_LITERALS __cpp_binary_literals
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_BINARY_LITERALS 201304L
@@ -778,7 +790,7 @@
 	#if (__cpp_constexpr >= 201304L)
 		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS __cpp_constexpr
 	#elif (__cplusplus >= 201402L)
-		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 200704L
+		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 201304L
 	#endif
 
 	#if (__cpp_decltype_auto >= 201304L)
@@ -793,28 +805,34 @@
 		#define LBAL_CPP14_GENERIC_LAMBDAS 201304L
 	#endif
 
+	#if (__cpp_init_captures >= 201304L)
+		#define LBAL_CPP14_INIT_CAPTURES __cpp_init_captures
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_INIT_CAPTURES 201304L
+	#endif
+
 	//	As of vanilla clang 8, this is disabled by default in order to avoid
 	//	ABI-breaking changes. It’s unclear when it will be enabled by default.
-	#if __cpp_sized_deallocation
+	#if (__cpp_sized_deallocation >= 201304L)
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 	#endif
 
 
 	//	C++17 features
 
-	#if __cpp_aggregate_bases
+	#if (__cpp_aggregate_bases >= 201603L)
 		#define LBAL_CPP17_AGGREGATE_BASES __cpp_aggregate_bases
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_AGGREGATE_BASES 201603L
 	#endif
 
-	#if __cpp_aligned_new
+	#if (__cpp_aligned_new >= 201606L)
 		#define LBAL_CPP17_ALIGNED_NEW __cpp_aligned_new
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_ALIGNED_NEW 201606L
 	#endif
 
-	#if __cpp_capture_star_this
+	#if (__cpp_capture_star_this >= 201603)
 		#define LBAL_CPP17_CAPTURE_STAR_THIS __cpp_capture_star_this
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_CAPTURE_STAR_THIS 201603
@@ -844,7 +862,7 @@
 		#define LBAL_CPP17_DEDUCTION_GUIDES_DR 201703L
 	#endif
 
-	#if __cpp_enumerator_attributes
+	#if (__cpp_enumerator_attributes >= 201411L)
 		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES __cpp_enumerator_attributes
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES 201411L
@@ -862,19 +880,19 @@
 		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED 201603L
 	#endif
 
-	#if __cpp_guaranteed_copy_elision
+	#if (__cpp_guaranteed_copy_elision >= 201606L)
 		#define LBAL_CPP17_GUARANTEED_COPY_ELISION __cpp_guaranteed_copy_elision
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_GUARANTEED_COPY_ELISION 201606L
 	#endif
 
-	#if __cpp_hex_float
+	#if (__cpp_hex_float >= 201603L)
 		#define LBAL_CPP17_HEX_FLOAT __cpp_hex_float
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_HEX_FLOAT 201603L
 	#endif
 
-	#if __cpp_if_constexpr
+	#if (__cpp_if_constexpr >= 201606L)
 		#define LBAL_CPP17_IF_CONSTEXPR __cpp_if_constexpr
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_IF_CONSTEXPR 201606L
@@ -889,7 +907,7 @@
 	//	As of clang 8, this is disabled by default in order to avoid a defect
 	//	introduced by the associated proposal (which was intended to resolve
 	//	another defect).
-	#if __cpp_template_template_args
+	#if (__cpp_template_template_args >= 201611L)
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS __cpp_template_template_args
 	#endif
 
@@ -923,19 +941,19 @@
 		#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 1L
 	#endif
 
-	#if __cpp_aggregate_paren_init
+	#if (__cpp_aggregate_paren_init >= 201902L)
 		#define LBAL_CPP2A_AGGREGATE_PAREN_INIT __cpp_aggregate_paren_init
 	#endif
 
-	#if __cpp_char8_t
+	#if (__cpp_char8_t >= 201811L)
 		#define LBAL_CPP2A_CHAR8_T __cpp_char8_t
 	#endif
 
-	#if __cpp_concepts
+	#if (__cpp_concepts >= 201806L)
 		#define LBAL_CPP2A_CONCEPTS __cpp_concepts
 	#endif
 
-	#if __cpp_conditional_explicit
+	#if (__cpp_conditional_explicit >= 201806L)
 		#define LBAL_CPP2A_CONDITIONAL_EXPLICIT __cpp_conditional_explicit
 	#endif
 
@@ -943,15 +961,15 @@
 		#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION __cpp_constexpr
 	#endif
 
-	#if __cpp_constexpr_dynamic_alloc
+	#if (__cpp_constexpr_dynamic_alloc >= 201907L)
 		#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC __cpp_constexpr_dynamic_alloc
 	#endif
 
-	#if __cpp_constinit
+	#if (__cpp_constinit >= 201907L)
 		#define LBAL_CPP2A_CONSTINIT __cpp_constinit
 	#endif
 
-	#if __cpp_coroutines
+	#if (__cpp_coroutines >= 201902L)
 		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
 	#endif
 
@@ -959,29 +977,35 @@
 		#define LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES __cpp_deduction_guides
 	#endif
 
-	#if __cpp_impl_destroying_delete
+	#if (__cpp_impl_destroying_delete >= 201806L)
 		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
 	#endif
 
-	#if __cpp_impl_three_way_comparison
-		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
-
-		#if (__cpp_impl_three_way_comparison > = 201907L)
-			#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
-		#endif
-	#endif
-
-	#if __cpp_nontype_template_parameter_class
+	#if (__cpp_nontype_template_parameter_class >= 201806L)
 		#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS __cpp_nontype_template_parameter_class
 	#endif
 
-	#ifdef __has_cpp_attribute
-		#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
-		#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
-		#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY (LBAL_CPP2A_ATTRIBUTE_LIKELY && LBAL_CPP2A_ATTRIBUTE_UNLIKELY)
+	#if (__cpp_impl_three_way_comparison >= 201711L)
+		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
+	#endif
 
-		#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
-	#endif 	//	__has_cpp_attribute
+	#if (__cpp_impl_three_way_comparison > = 201907L)
+		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
+	#endif
+
+	#ifdef __has_cpp_attribute
+		#if (__has_cpp_attribute(likely) >= 201803L)
+			#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
+		#endif
+
+		#if (__has_cpp_attribute(unlikely) >= 201803L)
+			#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
+		#endif
+
+		#if (__has_cpp_attribute(no_unique_address) >= 201803L)
+			#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+		#endif
+	#endif	//	__has_cpp_attribute
 
 
 	//	intrinsic functions
@@ -1072,8 +1096,11 @@
 			//	For reference, 6.3 supports all C++11 and C++14 features except
 			//	garbage collection. gcc 7 is required for many C++17 language
 			//	features; note, though, that it does not support
-			//	std::filesystem or the Parallelism TS, which are targeted for
-			//	gcc 8.
+			//	std::filesystem or the Parallelism TS.
+			//
+			//	Any support we offer for gcc versions older than 7.3 is
+			//	incidental and untested, though it could be made official with
+			//	some validation.
 	#endif
 
 	#if __cplusplus < 201703L
@@ -1179,49 +1206,57 @@
 	//	It’s unclear whether we can count on `__cpp_exceptions` being unset if
 	//	this is explicitly disabled, so we rely on the token that _is_
 	//	guaranteed to have that behavior.
-	//	__FIXME__ This will probably need to be conditionally handled in a
-	//	later version of gcc.
+	//	__SEEME__ This will probably need to be conditionally handled in a
+	//	later version of gcc if they deprecate `__EXCEPTIONS`.
 	#if __EXCEPTIONS
-		#define LBAL_CPP98_EXCEPTIONS 199711L
+		#if (__cpp_exceptions >= 199711L)
+			#define LBAL_CPP98_EXCEPTIONS __cpp_exceptions
+		#else
+			#define LBAL_CPP98_EXCEPTIONS 199711L
+		#endif
 	#endif
 
 	//	It’s unclear whether we can count on `__cpp_rtti` being unset if this
 	//	is explicitly disabled, so we rely on the token that _is_ guaranteed to
 	//	have that behavior.
-	//	__FIXME__ This will probably need to be conditionally handled in a
-	//	later version of gcc.
+	//	__SEEME__ This will probably need to be conditionally handled in a
+	//	later version of gcc if they deprecate `__GXX_RTTI`.
 	#if __GXX_RTTI
-		#define LBAL_CPP98_RTTI 199711L
+		#if (__cpp_rtti >= 199711L)
+			#define LBAL_CPP98_RTTI __cpp_rtti
+		#else
+			#define LBAL_CPP98_RTTI 199711L
+		#endif
 	#endif
 
 
 	//	C++11 features
 
-	#if __cpp_alias_templates
+	#if (__cpp_alias_templates >= 200704L)
 		#define LBAL_CPP11_ALIAS_TEMPLATES __cpp_alias_templates
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_ALIAS_TEMPLATES 200704L
 	#endif
 
-	#if __cpp_attributes
+	#if (__cpp_attributes >= 200809L)
 		#define LBAL_CPP11_ATTRIBUTES __cpp_attributes
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_ATTRIBUTES 200809L
 	#endif
 
-	#if __cpp_constexpr
+	#if (__cpp_constexpr >= 200704L)
 		#define LBAL_CPP11_CONSTEXPR __cpp_constexpr
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_CONSTEXPR 200704L
 	#endif
 
-	#if __cpp_decltype
+	#if (__cpp_decltype >= 200707L)
 		#define LBAL_CPP11_DECLTYPE __cpp_decltype
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_DECLTYPE 200707L
 	#endif
 
-	#if __cpp_delegating_constructors
+	#if (__cpp_delegating_constructors >= 200604L)
 		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS __cpp_delegating_constructors
 	#elif (__cplusplus >= 201103L)
 		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS 200604L
@@ -1235,20 +1270,20 @@
 
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
-	#if __cpp_threadsafe_static_init
+	#if (__cpp_threadsafe_static_init >= 200806L)
 		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
 	#endif
 
 
 	//	C++14 features
 
-	#if __cpp_aggregate_nsdmi
+	#if (__cpp_aggregate_nsdmi >= 201304L)
 		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_AGGREGATE_NSDMI 201304L
 	#endif
 
-	#if __cpp_binary_literals
+	#if (__cpp_binary_literals >= 201304L)
 		#define LBAL_CPP14_BINARY_LITERALS __cpp_binary_literals
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_BINARY_LITERALS 201304L
@@ -1260,7 +1295,7 @@
 		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 201304L
 	#endif
 
-	#if (__cpp_decltype_auto)
+	#if (__cpp_decltype_auto >= 201304L)
 		#define LBAL_CPP14_DECLTYPE_AUTO __cpp_decltype_auto
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_DECLTYPE_AUTO 201304L
@@ -1272,24 +1307,33 @@
 		#define LBAL_CPP14_GENERIC_LAMBDAS 201304L
 	#endif
 
+	#if (__cpp_init_captures >= 201304L)
+		#define LBAL_CPP14_INIT_CAPTURES __cpp_init_captures
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_INIT_CAPTURES 201304L
+	#endif
+
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
-	#if __cpp_sized_deallocation
+	#if (__cpp_sized_deallocation >= 201304L)
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 	#endif
 
 
 	//	C++17 features
+	//	__SEEME__ We rely on strict SD-6 macro availability testing for C++17
+	//	features; macros should be defined for any gcc version which supports
+	//	C++17 in any form.
 
-	#if __cpp_aggregate_bases
+	#if (__cpp_aggregate_bases >= 201603L)
 		#define LBAL_CPP17_AGGREGATE_BASES __cpp_aggregate_bases
 	#endif
 
-	#if __cpp_aligned_new
+	#if (__cpp_aligned_new >= 201606L)
 		#define LBAL_CPP17_ALIGNED_NEW __cpp_aligned_new
 	#endif
 
-	#if __cpp_capture_star_this
+	#if (__cpp_capture_star_this >= [201603L)
 		#define LBAL_CPP17_CAPTURE_STAR_THIS __cpp_capture_star_this
 	#endif
 
@@ -1299,65 +1343,45 @@
 
 	#if (__cpp_deduction_guides >= 201606L)
 		#define LBAL_CPP17_DEDUCTION_GUIDES __cpp_deduction_guides
-	#elif (__cplusplus >= 201703L)
-		#define LBAL_CPP17_DEDUCTION_GUIDES 201606L
 	#endif
 
 	#if (__cpp_deduction_guides >= 201611L)
 		#define LBAL_CPP17_DEDUCTION_GUIDES_NB __cpp_deduction_guides
-	#elif (__cplusplus >= 201703L)
-		#define LBAL_CPP17_DEDUCTION_GUIDES_NB 201611L
 	#endif
 
 	#if (__cpp_deduction_guides >= 201703L)
 		#define LBAL_CPP17_DEDUCTION_GUIDES_DR __cpp_deduction_guides
-	#elif (__cplusplus >= 201703L)
-		#define LBAL_CPP17_DEDUCTION_GUIDES_DR 201703L
 	#endif
 
-	#if __cpp_enumerator_attributes
+	#if (__cpp_enumerator_attributes >= 201411L)
 		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES __cpp_enumerator_attributes
-	#elif (__cplusplus >= 201703L)
-		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES 201411L
 	#endif
 
 	#if (__cpp_fold_expressions >= 201411L)
 		#define LBAL_CPP17_FOLD_EXPRESSIONS __cpp_fold_expressions
-	#elif (__cplusplus >= 201703L)
-		#define LBAL_CPP17_FOLD_EXPRESSIONS 201411L
 	#endif
 
 	#if (__cpp_fold_expressions >= 201603L)
 		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED __cpp_fold_expressions
-	#elif (__cplusplus >= 201703L)
-		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED 201603L
 	#endif
 
-	#if __cpp_guaranteed_copy_elision
+	#if (__cpp_guaranteed_copy_elision >= 201606L)
 		#define LBAL_CPP17_GUARANTEED_COPY_ELISION __cpp_guaranteed_copy_elision
-	#elif (__cplusplus >= 201703L)
-		#define LBAL_CPP17_GUARANTEED_COPY_ELISION 201606L
 	#endif
 
-	#if __cpp_hex_float
+	#if (__cpp_hex_float >= 201603L)
 		#define LBAL_CPP17_HEX_FLOAT __cpp_hex_float
-	#elif (__cplusplus >= 201703L)
-		#define LBAL_CPP17_HEX_FLOAT 201603L
 	#endif
 
-	#if __cpp_if_constexpr
+	#if (__cpp_if_constexpr >= 201606L)
 		#define LBAL_CPP17_IF_CONSTEXPR __cpp_if_constexpr
-	#elif (__cplusplus >= 201703L)
-		#define LBAL_CPP17_IF_CONSTEXPR 201606L
 	#endif
 
 	#if (__cpp_inheriting_constructors >= 201511L)
 		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED __cpp_inheriting_constructors
-	#elif (__cplusplus >= 201703L)
-		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED 201511L
 	#endif
 
-	#if __cpp_template_template_args
+	#if (__cpp_template_template_args >= 201611L)
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS __cpp_template_template_args
 	#endif
 
@@ -1393,19 +1417,19 @@
 		#define LBAL_CPP2A_TYPENAME_OPTIONAL 1L
 	#endif
 
-	#if __cpp_aggregate_paren_init
+	#if (__cpp_aggregate_paren_init >= 201902L)
 		#define LBAL_CPP2A_AGGREGATE_PAREN_INIT __cpp_aggregate_paren_init
 	#endif
 
-	#if __cpp_char8_t
+	#if (__cpp_char8_t >= 201811L)
 		#define LBAL_CPP2A_CHAR8_T __cpp_char8_t
 	#endif
 
-	#if __cpp_concepts
+	#if (__cpp_concepts >= 201806L)
 		#define LBAL_CPP2A_CONCEPTS __cpp_concepts
 	#endif
 
-	#if __cpp_conditional_explicit
+	#if (__cpp_conditional_explicit >= 201806L)
 		#define LBAL_CPP2A_CONDITIONAL_EXPLICIT __cpp_conditional_explicit
 	#endif
 
@@ -1413,15 +1437,15 @@
 		#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION __cpp_constexpr
 	#endif
 
-	#if __cpp_constexpr_dynamic_alloc
+	#if (__cpp_constexpr_dynamic_alloc >= 201907L)
 		#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC __cpp_constexpr_dynamic_alloc
 	#endif
 
-	#if __cpp_constinit
+	#if (__cpp_constinit >= 201907L)
 		#define LBAL_CPP2A_CONSTINIT __cpp_constinit
 	#endif
 
-	#if __cpp_coroutines
+	#if (__cpp_coroutines >= 201902L)
 		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
 	#endif
 
@@ -1429,28 +1453,34 @@
 		#define LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES __cpp_deduction_guides
 	#endif
 
-	#if __cpp_impl_destroying_delete
+	#if (__cpp_impl_destroying_delete >= 201806L)
 		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
 	#endif
 
-	#if __cpp_impl_three_way_comparison
-		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
-
-		#if (__cpp_impl_three_way_comparison > = 201907L)
-			#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
-		#endif
-	#endif
-
-	#if __cpp_nontype_template_parameter_class
+	#if (__cpp_nontype_template_parameter_class >= 201806L)
 		#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS __cpp_nontype_template_parameter_class
 	#endif
 
-	#ifdef __has_cpp_attribute
-		#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
-		#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
-		#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY (LBAL_CPP2A_ATTRIBUTE_LIKELY && LBAL_CPP2A_ATTRIBUTE_UNLIKELY)
+	#if (__cpp_impl_three_way_comparison >= 201711L)
+		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
+	#endif
 
-		#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+	#if (__cpp_impl_three_way_comparison > = 201907L)
+		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
+	#endif
+
+	#ifdef __has_cpp_attribute
+		#if (__has_cpp_attribute(likely) >= 201803L)
+			#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
+		#endif
+
+		#if (__has_cpp_attribute(unlikely) >= 201803L)
+			#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
+		#endif
+
+		#if (__has_cpp_attribute(no_unique_address) >= 201803L)
+			#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+		#endif
 	#endif	//	__has_cpp_attribute
 
 
@@ -1664,16 +1694,24 @@
 	//	These can be conditionally disabled.
 
 	//	We can’t rely on `__cpp_exceptions` being set properly in older MSVCs,
-	//	so we rely on a proprietary token, instead.
+	//	so we also test for a proprietary token, as well.
 	//	__SEEME__ _CPPUNWIND is not an exact analog, but seems to serve.
 	#if __cpp_exceptions || _CPPUNWIND
-		#define LBAL_CPP98_EXCEPTIONS 199711L
+		#if __cpp_exceptions
+			#define LBAL_CPP98_EXCEPTIONS __cpp_exceptions
+		#else
+			#define LBAL_CPP98_EXCEPTIONS 199711L
+		#endif
 	#endif
 
 	//	We can’t rely on `__cpp_rtti` being set properly in older MSVCs, so we
-	//	rely on the proprietary token, instead.
+	//	also test for a proprietary token, as well.
 	#if __cpp_rtti || _CPPRTTI
-		#define LBAL_CPP98_RTTI 199711L
+		#if __cpp_rtti
+			#define LBAL_CPP98_RTTI __cpp_rtti
+		#else
+			#define LBAL_CPP98_RTTI 199711L
+		#endif
 	#endif
 
 
@@ -1684,32 +1722,32 @@
 	//	don’t bother getting too precise here, though, since we don‘t
 	//	officially support a C++ Standard older than C++17.
 
-	#if __cpp_alias_templates
+	#if (__cpp_alias_templates >= 200704L)
 		#define LBAL_CPP11_ALIAS_TEMPLATES __cpp_alias_templates
 	#elif (_MSVC_LANG >= 201103L) && (_MSC_VER >= 1800)
 		#define LBAL_CPP11_ALIAS_TEMPLATES 200704L
 	#endif
 
-	#if __cpp_attributes
+	#if (__cpp_attributes >= 200809L)
 		#define LBAL_CPP11_ATTRIBUTES __cpp_attributes
 	#elif (_MSVC_LANG >= 201103L) && (_MSC_VER >= 1900)
 		#define LBAL_CPP11_ATTRIBUTES 200809L
 	#endif
 
 	//	__SEEME__ Available in `_MSC_VER``1900` for partial, unsure of full
-	#if __cpp_constexpr
+	#if (__cpp_constexpr >= 200704L)
 		#define LBAL_CPP11_CONSTEXPR __cpp_constexpr
 	#elif (_MSVC_LANG >= 201103L) && (_MSC_VER >= 1900)
 		#define LBAL_CPP11_CONSTEXPR 200704L
 	#endif
 
-	#if __cpp_decltype
+	#if (__cpp_decltype >= 200707L)
 		#define LBAL_CPP11_DECLTYPE __cpp_decltype
 	#elif (_MSVC_LANG >= 201103L)
 		#define LBAL_CPP11_DECLTYPE 200707L
 	#endif
 
-	#if __cpp_delegating_constructors
+	#if (__cpp_delegating_constructors >= 200604L)
 		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS __cpp_delegating_constructors
 	#elif (_MSVC_LANG >= 201103L)
 		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS 200604L
@@ -1728,7 +1766,7 @@
 	//	been disabled, which can be done with `/Zc:threadSafeInit-`. We’ll just
 	//	assume it _has_ been disabled, which is not ideal, but unavoidable
 	//	without incorporating a test app into the build process.
-	#if __cpp_threadsafe_static_init
+	#if (__cpp_threadsafe_static_init >= 200806L)
 		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
 	#endif
 
@@ -1739,13 +1777,13 @@
 	//	don’t bother getting too precise here, though, since we don‘t
 	//	officially support a C++ Standard older than C++17.
 
-	#if __cpp_aggregate_nsdmi
+	#if (__cpp_aggregate_nsdmi >= 201304L)
 		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
 	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
 		#define LBAL_CPP14_AGGREGATE_NSDMI 201304L
 	#endif
 
-	#if __cpp_binary_literals
+	#if (__cpp_binary_literals >= 201304L)
 		#define LBAL_CPP14_BINARY_LITERALS __cpp_binary_literals
 	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
 		#define LBAL_CPP14_BINARY_LITERALS 201304L
@@ -1757,7 +1795,7 @@
 		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 201304L
 	#endif
 
-	#if (__cpp_decltype_auto)
+	#if (__cpp_decltype_auto >= 201304L)
 		#define LBAL_CPP14_DECLTYPE_AUTO __cpp_decltype_auto
 	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
 		#define LBAL_CPP14_DECLTYPE_AUTO 201304L
@@ -1769,32 +1807,38 @@
 		#define LBAL_CPP14_GENERIC_LAMBDAS 201304L
 	#endif
 
+	#if (__cpp_init_captures >= 201304L)
+		#define LBAL_CPP14_INIT_CAPTURES __cpp_init_captures
+	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP14_INIT_CAPTURES 201304L
+	#endif
+
 	//	This can be conditionally disabled.
 	//	__SEEME__ In the absence of `__cpp_sized_deallocation` - i.e., in
 	//	MSVS 2017 or earlier - there isn’t a way to determine whether this has
 	//	been disabled, which can be done with `/Zc:sizedDealloc-`. We’ll just
 	//	assume it _has_ been disabled, which is not ideal, but unavoidable
 	//	without incorporating a test app into the build process.
-	#if __cpp_sized_deallocation
+	#if (__cpp_sized_deallocation >= 201304L)
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 	#endif
 
 
 	//	C++17 features
 
-	#if __cpp_aggregate_bases
+	#if (__cpp_aggregate_bases >= 201603L)
 		#define LBAL_CPP17_AGGREGATE_BASES __cpp_aggregate_bases
 	#elif (_MSVC_LANG >= 201703L) &&  (_MSC_VER >= 1914)
 		#define LBAL_CPP17_AGGREGATE_BASES 201603L
 	#endif
 
-	#if __cpp_aligned_new
+	#if (__cpp_aligned_new >= 201606L)
 		#define LBAL_CPP17_ALIGNED_NEW __cpp_aligned_new
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1912)
 		#define LBAL_CPP17_ALIGNED_NEW 201606L
 	#endif
 
-	#if __cpp_capture_star_this
+	#if (__cpp_capture_star_this >= 201603)
 		#define LBAL_CPP17_CAPTURE_STAR_THIS __cpp_capture_star_this
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1911)
 		#define LBAL_CPP17_CAPTURE_STAR_THIS 201603
@@ -1824,7 +1868,7 @@
 		#define LBAL_CPP17_DEDUCTION_GUIDES_DR 201703L
 	#endif
 
-	#if __cpp_enumerator_attributes
+	#if (__cpp_enumerator_attributes >= 201411L)
 		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES __cpp_enumerator_attributes
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1900)
 		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES 201411L
@@ -1842,19 +1886,19 @@
 		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED 201603L
 	#endif
 
-	#if __cpp_guaranteed_copy_elision
+	#if (__cpp_guaranteed_copy_elision >= 201606L)
 		#define LBAL_CPP17_GUARANTEED_COPY_ELISION __cpp_guaranteed_copy_elision
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1913)
 		#define LBAL_CPP17_GUARANTEED_COPY_ELISION 201606L
 	#endif
 
-	#if __cpp_hex_float
+	#if (__cpp_hex_float >= 201603L)
 		#define LBAL_CPP17_HEX_FLOAT __cpp_hex_float
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1911)
 		#define LBAL_CPP17_HEX_FLOAT 201603L
 	#endif
 
-	#if __cpp_if_constexpr
+	#if (__cpp_if_constexpr >= 201606L)
 		#define LBAL_CPP17_IF_CONSTEXPR __cpp_if_constexpr
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1911)
 		#define LBAL_CPP17_IF_CONSTEXPR 201606L
@@ -1868,7 +1912,7 @@
 
 	//	__SEEME__ This is implemented, but it’s unclear if/when the DR that
 	//	affected the proposal was addressed.
-	#if __cpp_template_template_args
+	#if (__cpp_template_template_args >= 201611L)
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS __cpp_template_template_args
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1912)
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS 201611L
@@ -1902,20 +1946,19 @@
 		#define LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS 1L
 	#endif
 
-
-	#if __cpp_aggregate_paren_init
+	#if (__cpp_aggregate_paren_init >= 201902L)
 		#define LBAL_CPP2A_AGGREGATE_PAREN_INIT __cpp_aggregate_paren_init
 	#endif
 
-	#if __cpp_char8_t
+	#if (__cpp_char8_t >= 201811L)
 		#define LBAL_CPP2A_CHAR8_T __cpp_char8_t
 	#endif
 
-	#if __cpp_concepts
+	#if (__cpp_concepts >= 201806L)
 		#define LBAL_CPP2A_CONCEPTS __cpp_concepts
 	#endif
 
-	#if __cpp_conditional_explicit
+	#if (__cpp_conditional_explicit >= 201806L)
 		#define LBAL_CPP2A_CONDITIONAL_EXPLICIT __cpp_conditional_explicit
 	#endif
 
@@ -1923,15 +1966,15 @@
 		#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION __cpp_constexpr
 	#endif
 
-	#if __cpp_constexpr_dynamic_alloc
+	#if (__cpp_constexpr_dynamic_alloc >= 201907L)
 		#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC __cpp_constexpr_dynamic_alloc
 	#endif
 
-	#if __cpp_constinit
+	#if (__cpp_constinit >= 201907L)
 		#define LBAL_CPP2A_CONSTINIT __cpp_constinit
 	#endif
 
-	#if __cpp_coroutines
+	#if (__cpp_coroutines >= 201902L)
 		#define LBAL_CPP2A_COROUTINES __cpp_coroutines
 	#endif
 
@@ -1939,28 +1982,34 @@
 		#define LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES __cpp_deduction_guides
 	#endif
 
-	#if __cpp_impl_destroying_delete
+	#if (__cpp_impl_destroying_delete >= 201806L)
 		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
 	#endif
 
-	#if __cpp_impl_three_way_comparison
-		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
-
-		#if (__cpp_impl_three_way_comparison > = 201907L)
-			#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
-		#endif
-	#endif
-
-	#if __cpp_nontype_template_parameter_class
+	#if (__cpp_nontype_template_parameter_class >= 201806L)
 		#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS __cpp_nontype_template_parameter_class
 	#endif
 
-	#ifdef __has_cpp_attribute
-		#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
-		#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
-		#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY (LBAL_CPP2A_ATTRIBUTE_LIKELY && LBAL_CPP2A_ATTRIBUTE_UNLIKELY)
+	#if (__cpp_impl_three_way_comparison >= 201711L)
+		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
+	#endif
 
-		#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+	#if (__cpp_impl_three_way_comparison > = 201907L)
+		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
+	#endif
+
+	#ifdef __has_cpp_attribute
+		#if (__has_cpp_attribute(likely) >= 201803L)
+			#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
+		#endif
+
+		#if (__has_cpp_attribute(unlikely) >= 201803L)
+			#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
+		#endif
+
+		#if (__has_cpp_attribute(no_unique_address) >= 201803L)
+			#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+		#endif
 	#endif	//	__has_cpp_attribute
 
 	//	C99 features
