@@ -499,7 +499,7 @@
 		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
 	#endif
 
-	#if (__cpp_impl_three_way_comparison > = 201907L)
+	#if (__cpp_impl_three_way_comparison >= 201907L)
 		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
 	#endif
 
@@ -989,7 +989,7 @@
 		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
 	#endif
 
-	#if (__cpp_impl_three_way_comparison > = 201907L)
+	#if (__cpp_impl_three_way_comparison >= 201907L)
 		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
 	#endif
 
@@ -1465,7 +1465,7 @@
 		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
 	#endif
 
-	#if (__cpp_impl_three_way_comparison > = 201907L)
+	#if (__cpp_impl_three_way_comparison >= 201907L)
 		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
 	#endif
 
@@ -1994,7 +1994,7 @@
 		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR __cpp_impl_three_way_comparison
 	#endif
 
-	#if (__cpp_impl_three_way_comparison > = 201907L)
+	#if (__cpp_impl_three_way_comparison >= 201907L)
 		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
 	#endif
 
