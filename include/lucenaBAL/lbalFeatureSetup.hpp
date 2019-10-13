@@ -876,6 +876,14 @@
 	`likely`/`unlikely` support was made available long before it was formally
 	voted in).
 
+	Finally, the descriptions of the various language and library features
+	listed here tend to be terse or oblique. This is because this documentation
+	is not intended to be a C++ reference there are much better references out
+	there. Rather, it is hoped that enough context is given to remind you of
+	what a given feature does, and then any additional notes are intended only
+	to describe gotchas and implementation oddities specific to the feature
+	detection problem domain.
+
 	@remarks __APIME__ Some SD-6 tokens have their values bumped by newer
 	iterations of the Document. Generally, we will issue new unique tokens here
 	when this happens, _but the values of all such tokens will reflect that of
@@ -1004,7 +1012,7 @@
 	- [201603L](https://wg21.link/p0170r1) __PDF__
 	- [201907L](https://wg21.link/p1331r2) __PDF__
 
-	@remarks `__cpp_constexpr` has at least 4 values associated with, each
+	@remarks `__cpp_constexpr` has at least 4 values associated with it, each
 	from a different proposal.
 */
 #ifndef LBAL_CPP11_CONSTEXPR
@@ -1019,6 +1027,32 @@
 */
 #ifndef LBAL_CPP11_DECLTYPE
 	#define LBAL_CPP11_DECLTYPE 0
+#endif
+
+/**
+	@def LBAL_CPP11_DELEGATING_CONSTRUCTORS
+	@brief Delegating constructors
+	@details Equivalent SD-6 macro: `__cpp_delegating_constructors`
+	- [200604L](https://wg21.link/N1986) __PDF__
+*/
+#ifndef LBAL_CPP11_DELEGATING_CONSTRUCTORS
+	#define LBAL_CPP11_DELEGATING_CONSTRUCTORS 0
+#endif
+
+/**
+	@def LBAL_CPP11_INHERITING_CONSTRUCTORS
+	@brief Inheriting Constructors
+	@details Equivalent SD-6 macro: `__cpp_inheriting_constructors`. This token
+	corresponds to the `200802L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [200802L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2540.htm) __PDF__
+	- [201511L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0136r1.html) __PDF__
+
+	@remarks `__cpp_inheriting_constructors` has at least 2 values associated
+	with it, each from a different proposal.
+*/
+#ifndef LBAL_CPP11_INHERITING_CONSTRUCTORS
+	#define LBAL_CPP11_INHERITING_CONSTRUCTORS 0
 #endif
 
 /**
@@ -1088,7 +1122,7 @@
 	- [201603L](https://wg21.link/p0170r1) __PDF__
 	- [201907L](https://wg21.link/p1331r2) __PDF__
 
-	@remarks `__cpp_constexpr` has at least 4 values associated with, each
+	@remarks `__cpp_constexpr` has at least 4 values associated with it, each
 	from a different proposal.
 */
 #ifndef LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS
@@ -1103,6 +1137,16 @@
 */
 #ifndef LBAL_CPP14_DECLTYPE_AUTO
 	#define LBAL_CPP14_DECLTYPE_AUTO 0
+#endif
+
+/**
+	@def LBAL_CPP14_GENERIC_LAMBDAS
+	@brief Generic (Polymorphic) Lambda Expressions
+	@details Equivalent SD-6 macro: `__cpp_generic_lambdas`
+	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3649.html)
+*/
+#ifndef LBAL_CPP14_GENERIC_LAMBDAS
+	#define LBAL_CPP14_GENERIC_LAMBDAS 0
 #endif
 
 /**
@@ -1172,7 +1216,7 @@
 	- [201603L](https://wg21.link/p0170r1) __PDF__
 	- [201907L](https://wg21.link/p1331r2) __PDF__
 
-	@remarks `__cpp_constexpr` has at least 4 values associated with, each
+	@remarks `__cpp_constexpr` has at least 4 values associated with it, each
 	from a different proposal.
 */
 #ifndef LBAL_CPP17_CONSTEXPR_LAMBDA
@@ -1235,6 +1279,95 @@
 */
 #ifndef LBAL_CPP17_DEDUCTION_GUIDES_NB
 	#define LBAL_CPP17_DEDUCTION_GUIDES_NB 0
+#endif
+
+/**
+	@def LBAL_CPP17_ENUMERATOR_ATTRIBUTES
+	@brief Attributes for namespaces and enumerators
+	@details Equivalent SD-6 macro: `__cpp_enumerator_attributes`
+	- [201411L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4266.html)
+*/
+#ifndef LBAL_CPP17_ENUMERATOR_ATTRIBUTES
+	#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES 0
+#endif
+
+/**
+	@def LBAL_CPP17_FOLD_EXPRESSIONS
+	@brief Allow folding a template parameter pack over a binary operator
+	@details Equivalent SD-6 macro: `__cpp_fold_expressions`. This token
+	corresponds to the `201411L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [201411L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4295.html)
+	- [201603L](https://wg21.link/P0036R0) __PDF__
+
+	@remarks `__cpp_fold_expressions` has at least 2 values associated with it,
+	across at least 2 proposals.
+*/
+#ifndef LBAL_CPP17_FOLD_EXPRESSIONS
+	#define LBAL_CPP17_FOLD_EXPRESSIONS 0
+#endif
+
+/**
+	@def LBAL_CPP17_FOLD_EXPRESSIONS_REVISED
+	@brief Add support for unary folds and empty parameter packs to fold
+	expressions
+	@details Equivalent SD-6 macro: `__cpp_fold_expressions`. This token
+	corresponds to the `201603L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [201411L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4295.html)
+	- [201603L](https://wg21.link/P0036R0) __PDF__
+
+	@remarks `__cpp_fold_expressions` has at least 2 values associated with it,
+	across at least 2 proposals.
+*/
+#ifndef LBAL_CPP17_FOLD_EXPRESSIONS_REVISED
+	#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED 0
+#endif
+
+/**
+	@def LBAL_CPP17_GUARANTEED_COPY_ELISION
+	@brief Guarantee copy and move elision in well-defined situations
+	@details Equivalent SD-6 macro: `__cpp_guaranteed_copy_elision`
+	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0135r1.html)
+*/
+#ifndef LBAL_CPP17_GUARANTEED_COPY_ELISION
+	#define LBAL_CPP17_GUARANTEED_COPY_ELISION 0
+#endif
+
+/**
+	@def LBAL_CPP17_HEX_FLOAT
+	@brief Specify Hexadecimal float literals
+	@details Equivalent SD-6 macro: `__cpp_hex_float`
+	- [201603L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0245r1.html)
+*/
+#ifndef LBAL_CPP17_HEX_FLOAT
+	#define LBAL_CPP17_HEX_FLOAT 0
+#endif
+
+/**
+	@def LBAL_CPP17_IF_CONSTEXPR
+	@brief Allow constant expressions as if statements
+	@details Equivalent SD-6 macro: `__cpp_if_constexpr`
+	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0292r2.html)
+*/
+#ifndef LBAL_CPP17_IF_CONSTEXPR
+	#define LBAL_CPP17_IF_CONSTEXPR 0
+#endif
+
+/**
+	@def LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED
+	@brief Address core issues raised by Inheriting Constructors
+	@details Equivalent SD-6 macro: `__cpp_inheriting_constructors`. This token
+	corresponds to the `201511L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [200802L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2540.htm) __PDF__
+	- [201511L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0136r1.html) __PDF__
+
+	@remarks `__cpp_inheriting_constructors` has at least 2 values associated
+	with it, each from a different proposal.
+*/
+#ifndef LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED
+	#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED 0
 #endif
 
 /**
@@ -1416,7 +1549,7 @@
 	- [201603L](https://wg21.link/p0170r1) __PDF__
 	- [201907L](https://wg21.link/p1331r2) __PDF__
 
-	@remarks `__cpp_constexpr` has at least 4 values associated with, each
+	@remarks `__cpp_constexpr` has at least 4 values associated with it, each
 	from a different proposal.
 */
 #ifndef LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION
@@ -1514,8 +1647,8 @@
 
 /**
 	@def LBAL_CPP2A_DESTROYING_DELETE
-
-	Equivalent SD-6 macro: `__cpp_impl_destroying_delete`
+	@brief Efficient sized delete for variable sized classes
+	@details Equivalent SD-6 macro: `__cpp_impl_destroying_delete`
 	- [201806L](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0722r3.html)
 */
 #ifndef LBAL_CPP2A_DESTROYING_DELETE
@@ -1557,8 +1690,8 @@
 
 /**
 	@def LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS
-
-	Equivalent SD-6 macro: `__cpp_nontype_template_parameter_class`
+	@brief Class Types in Non-Type Template Parameters
+	@details Equivalent SD-6 macro: `__cpp_nontype_template_parameter_class`
 	- [201806L](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0732r2.pdf) __PDF__
 */
 #ifndef LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS

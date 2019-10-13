@@ -254,6 +254,18 @@
 		#define LBAL_CPP11_DECLTYPE 200707L
 	#endif
 
+	#if __cpp_delegating_constructors
+		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS __cpp_delegating_constructors
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS 200604L
+	#endif
+
+	#if (__cpp_inheriting_constructors >= 200802L)
+		#define LBAL_CPP11_INHERITING_CONSTRUCTORS __cpp_inheriting_constructors
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_INHERITING_CONSTRUCTORS 200802L
+	#endif
+
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
 	#if __cpp_threadsafe_static_init
@@ -285,6 +297,12 @@
 		#define LBAL_CPP14_DECLTYPE_AUTO __cpp_decltype_auto
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_DECLTYPE_AUTO 201304L
+	#endif
+
+	#if (__cpp_generic_lambdas >= 201304L)
+		#define LBAL_CPP14_GENERIC_LAMBDAS __cpp_generic_lambdas
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_GENERIC_LAMBDAS 201304L
 	#endif
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid
@@ -350,6 +368,48 @@
 		#define LBAL_CPP17_DEDUCTION_GUIDES_DR __cpp_deduction_guides
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_DEDUCTION_GUIDES_DR 201703L
+	#endif
+
+	#if __cpp_enumerator_attributes
+		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES __cpp_enumerator_attributes
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES 201411L
+	#endif
+
+	#if (__cpp_fold_expressions >= 201411L)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS __cpp_fold_expressions
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS 201411L
+	#endif
+
+	#if (__cpp_fold_expressions >= 201603L)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED __cpp_fold_expressions
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED 201603L
+	#endif
+
+	#if __cpp_guaranteed_copy_elision
+		#define LBAL_CPP17_GUARANTEED_COPY_ELISION __cpp_guaranteed_copy_elision
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_GUARANTEED_COPY_ELISION 201606L
+	#endif
+
+	#if __cpp_hex_float
+		#define LBAL_CPP17_HEX_FLOAT __cpp_hex_float
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_HEX_FLOAT 201603L
+	#endif
+
+	#if __cpp_if_constexpr
+		#define LBAL_CPP17_IF_CONSTEXPR __cpp_if_constexpr
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_IF_CONSTEXPR 201606L
+	#endif
+
+	#if (__cpp_inheriting_constructors >= 201511L)
+		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED __cpp_inheriting_constructors
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED 201511L
 	#endif
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid a
@@ -682,6 +742,18 @@
 		#define LBAL_CPP11_DECLTYPE 200707L
 	#endif
 
+	#if __cpp_delegating_constructors
+		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS __cpp_delegating_constructors
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS 200604L
+	#endif
+
+	#if (__cpp_inheriting_constructors >= 200802L)
+		#define LBAL_CPP11_INHERITING_CONSTRUCTORS __cpp_inheriting_constructors
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_INHERITING_CONSTRUCTORS 200802L
+	#endif
+
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
 	#if __cpp_threadsafe_static_init
@@ -713,6 +785,12 @@
 		#define LBAL_CPP14_DECLTYPE_AUTO __cpp_decltype_auto
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_DECLTYPE_AUTO 201304L
+	#endif
+
+	#if (__cpp_generic_lambdas >= 201304L)
+		#define LBAL_CPP14_GENERIC_LAMBDAS __cpp_generic_lambdas
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_GENERIC_LAMBDAS 201304L
 	#endif
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid
@@ -764,6 +842,48 @@
 		#define LBAL_CPP17_DEDUCTION_GUIDES_DR __cpp_deduction_guides
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_DEDUCTION_GUIDES_DR 201703L
+	#endif
+
+	#if __cpp_enumerator_attributes
+		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES __cpp_enumerator_attributes
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES 201411L
+	#endif
+
+	#if (__cpp_fold_expressions >= 201411L)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS __cpp_fold_expressions
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS 201411L
+	#endif
+
+	#if (__cpp_fold_expressions >= 201603L)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED __cpp_fold_expressions
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED 201603L
+	#endif
+
+	#if __cpp_guaranteed_copy_elision
+		#define LBAL_CPP17_GUARANTEED_COPY_ELISION __cpp_guaranteed_copy_elision
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_GUARANTEED_COPY_ELISION 201606L
+	#endif
+
+	#if __cpp_hex_float
+		#define LBAL_CPP17_HEX_FLOAT __cpp_hex_float
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_HEX_FLOAT 201603L
+	#endif
+
+	#if __cpp_if_constexpr
+		#define LBAL_CPP17_IF_CONSTEXPR __cpp_if_constexpr
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_IF_CONSTEXPR 201606L
+	#endif
+
+	#if (__cpp_inheriting_constructors >= 201511L)
+		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED __cpp_inheriting_constructors
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED 201511L
 	#endif
 
 	//	As of clang 8, this is disabled by default in order to avoid a defect
@@ -1101,6 +1221,18 @@
 		#define LBAL_CPP11_DECLTYPE 200707L
 	#endif
 
+	#if __cpp_delegating_constructors
+		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS __cpp_delegating_constructors
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS 200604L
+	#endif
+
+	#if (__cpp_inheriting_constructors >= 200802L)
+		#define LBAL_CPP11_INHERITING_CONSTRUCTORS __cpp_inheriting_constructors
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_INHERITING_CONSTRUCTORS 200802L
+	#endif
+
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
 	#if __cpp_threadsafe_static_init
@@ -1132,6 +1264,12 @@
 		#define LBAL_CPP14_DECLTYPE_AUTO __cpp_decltype_auto
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_DECLTYPE_AUTO 201304L
+	#endif
+
+	#if (__cpp_generic_lambdas >= 201304L)
+		#define LBAL_CPP14_GENERIC_LAMBDAS __cpp_generic_lambdas
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_GENERIC_LAMBDAS 201304L
 	#endif
 
 	//	__SEEME__ There is no `__cplusplus` check since this can be
@@ -1175,6 +1313,48 @@
 		#define LBAL_CPP17_DEDUCTION_GUIDES_DR __cpp_deduction_guides
 	#elif (__cplusplus >= 201703L)
 		#define LBAL_CPP17_DEDUCTION_GUIDES_DR 201703L
+	#endif
+
+	#if __cpp_enumerator_attributes
+		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES __cpp_enumerator_attributes
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES 201411L
+	#endif
+
+	#if (__cpp_fold_expressions >= 201411L)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS __cpp_fold_expressions
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS 201411L
+	#endif
+
+	#if (__cpp_fold_expressions >= 201603L)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED __cpp_fold_expressions
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED 201603L
+	#endif
+
+	#if __cpp_guaranteed_copy_elision
+		#define LBAL_CPP17_GUARANTEED_COPY_ELISION __cpp_guaranteed_copy_elision
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_GUARANTEED_COPY_ELISION 201606L
+	#endif
+
+	#if __cpp_hex_float
+		#define LBAL_CPP17_HEX_FLOAT __cpp_hex_float
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_HEX_FLOAT 201603L
+	#endif
+
+	#if __cpp_if_constexpr
+		#define LBAL_CPP17_IF_CONSTEXPR __cpp_if_constexpr
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_IF_CONSTEXPR 201606L
+	#endif
+
+	#if (__cpp_inheriting_constructors >= 201511L)
+		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED __cpp_inheriting_constructors
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED 201511L
 	#endif
 
 	#if __cpp_template_template_args
@@ -1529,6 +1709,18 @@
 		#define LBAL_CPP11_DECLTYPE 200707L
 	#endif
 
+	#if __cpp_delegating_constructors
+		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS __cpp_delegating_constructors
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS 200604L
+	#endif
+
+	#if (__cpp_inheriting_constructors >= 200802L)
+		#define LBAL_CPP11_INHERITING_CONSTRUCTORS __cpp_inheriting_constructors
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_INHERITING_CONSTRUCTORS 200802L
+	#endif
+
 	//	Available in `_MSC_VER`: `1900`
 	//	This can be conditionally disabled.
 	//	__SEEME__ In the absence of `__cpp_threadsafe_static_init` - i.e., in
@@ -1569,6 +1761,12 @@
 		#define LBAL_CPP14_DECLTYPE_AUTO __cpp_decltype_auto
 	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
 		#define LBAL_CPP14_DECLTYPE_AUTO 201304L
+	#endif
+
+	#if (__cpp_generic_lambdas >= 201304L)
+		#define LBAL_CPP14_GENERIC_LAMBDAS __cpp_generic_lambdas
+	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP14_GENERIC_LAMBDAS 201304L
 	#endif
 
 	//	This can be conditionally disabled.
@@ -1624,6 +1822,48 @@
 		#define LBAL_CPP17_DEDUCTION_GUIDES_DR __cpp_deduction_guides
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1914)
 		#define LBAL_CPP17_DEDUCTION_GUIDES_DR 201703L
+	#endif
+
+	#if __cpp_enumerator_attributes
+		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES __cpp_enumerator_attributes
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES 201411L
+	#endif
+
+	#if (__cpp_fold_expressions >= 201411L)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS __cpp_fold_expressions
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1912)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS 201411L
+	#endif
+
+	#if (__cpp_fold_expressions >= 201603L)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED __cpp_fold_expressions
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1912)
+		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED 201603L
+	#endif
+
+	#if __cpp_guaranteed_copy_elision
+		#define LBAL_CPP17_GUARANTEED_COPY_ELISION __cpp_guaranteed_copy_elision
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1913)
+		#define LBAL_CPP17_GUARANTEED_COPY_ELISION 201606L
+	#endif
+
+	#if __cpp_hex_float
+		#define LBAL_CPP17_HEX_FLOAT __cpp_hex_float
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1911)
+		#define LBAL_CPP17_HEX_FLOAT 201603L
+	#endif
+
+	#if __cpp_if_constexpr
+		#define LBAL_CPP17_IF_CONSTEXPR __cpp_if_constexpr
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1911)
+		#define LBAL_CPP17_IF_CONSTEXPR 201606L
+	#endif
+
+	#if (__cpp_inheriting_constructors >= 201511L)
+		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED __cpp_inheriting_constructors
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1914)
+		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED 201511L
 	#endif
 
 	//	__SEEME__ This is implemented, but it’s unclear if/when the DR that
