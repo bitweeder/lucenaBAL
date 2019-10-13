@@ -1045,14 +1045,34 @@
 	@details Equivalent SD-6 macro: `__cpp_inheriting_constructors`. This token
 	corresponds to the `200802L` variant, but it will have the value of the
 	latest supported variant, or `0` if this variant is not supported.
-	- [200802L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2540.htm) __PDF__
-	- [201511L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0136r1.html) __PDF__
+	- [200802L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2540.htm)
+	- [201511L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0136r1.html)
 
 	@remarks `__cpp_inheriting_constructors` has at least 2 values associated
 	with it, each from a different proposal.
 */
 #ifndef LBAL_CPP11_INHERITING_CONSTRUCTORS
 	#define LBAL_CPP11_INHERITING_CONSTRUCTORS 0
+#endif
+
+/**
+	@def LBAL_CPP11_INITIALIZER_LISTS
+	@brief Initializer lists
+	@details Equivalent SD-6 macro: `__cpp_initializer_lists`
+	- [200806L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2672.htm)
+*/
+#ifndef LBAL_CPP11_INITIALIZER_LISTS
+	#define LBAL_CPP11_INITIALIZER_LISTS 0
+#endif
+
+/**
+	@def LBAL_CPP11_LAMBDAS
+	@brief Support for Lambda functions
+	@details Equivalent SD-6 macro: `__cpp_lambdas`
+	- [200907L](https://wg21.link/N2927) __PDF__
+*/
+#ifndef LBAL_CPP11_LAMBDAS
+	#define LBAL_CPP11_LAMBDAS 0
 #endif
 
 /**
@@ -1293,7 +1313,7 @@
 
 /**
 	@def LBAL_CPP17_ENUMERATOR_ATTRIBUTES
-	@brief Attributes for namespaces and enumerators
+	@brief Attributes for enumerators
 	@details Equivalent SD-6 macro: `__cpp_enumerator_attributes`
 	- [201411L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4266.html)
 */
@@ -1370,14 +1390,64 @@
 	@details Equivalent SD-6 macro: `__cpp_inheriting_constructors`. This token
 	corresponds to the `201511L` variant, but it will have the value of the
 	latest supported variant, or `0` if this variant is not supported.
-	- [200802L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2540.htm) __PDF__
-	- [201511L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0136r1.html) __PDF__
+	- [200802L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2540.htm)
+	- [201511L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0136r1.html)
 
 	@remarks `__cpp_inheriting_constructors` has at least 2 values associated
 	with it, each from a different proposal.
 */
 #ifndef LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED
 	#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED 0
+#endif
+
+/**
+	@def LBAL_CPP17_INLINE_VARIABLES
+	@brief `inline` variables
+	@details Equivalent SD-6 macro: `__cpp_inline_variables`
+	- [201606L](https://wg21.link/P0386R2) __PDF__
+*/
+#ifndef LBAL_CPP17_INLINE_VARIABLES
+	#define LBAL_CPP17_INLINE_VARIABLES 0
+#endif
+
+/**
+	@def LBAL_CPP17_NAMESPACE_ATTRIBUTES
+	@brief Attributes for namespaces
+	@details Equivalent SD-6 macro: `__cpp_namespace_attributes`
+	- [201411L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4266.html)
+*/
+#ifndef LBAL_CPP17_NAMESPACE_ATTRIBUTES
+	#define LBAL_CPP17_NAMESPACE_ATTRIBUTES 0
+#endif
+
+/**
+	@def LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE
+	@brief Make exception specifications be part of the type system
+	@details Equivalent SD-6 macro: `__cpp_noexcept_function_type`
+	- [201510L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0012r1.html)
+*/
+#ifndef LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE
+	#define LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE 0
+#endif
+
+/**
+	@def LBAL_CPP17_NONTYPE_TEMPLATE_ARGS
+	@brief Allow constant evaluation for all non-type template arguments
+	@details Equivalent SD-6 macro: `__cpp_nontype_template_args`
+	- [201411L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4268.html)
+*/
+#ifndef LBAL_CPP17_NONTYPE_TEMPLATE_ARGS
+	#define LBAL_CPP17_NONTYPE_TEMPLATE_ARGS 0
+#endif
+
+/**
+	@def LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO
+	@brief Allow declaring non-type template arguments with auto
+	@details Equivalent SD-6 macro: `__cpp_nontype_template_parameter_auto`
+	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0127r2.html)
+*/
+#ifndef LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO
+	#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO 0
 #endif
 
 /**
@@ -1691,15 +1761,26 @@
 
 /**
 	@def LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS
-
-	It appears this is only here to get Microsoft to support SD-6, as the other
-	major compilers de facto meet the requirement.
-
-	There is currently no SD-6 macro for this (ironically).
+	@brief Integrate universal feature test macros into the Standard
+	@details Equivalent SD-6 macro: none (ironically)
 	- [default](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0941r2.html)
+
+	@remarks It appears this is only here to get Microsoft to support SD-6, as
+	the other major compilers de facto meet the requirement.
 */
 #ifndef LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS
 	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 0
+#endif
+
+/**
+	@def LBAL_CPP2A_MODULES
+	@brief Incorporate modules
+	@details Equivalent SD-6 macro: `__cpp_modules`
+	- [201907L](https://wg21.link/P1103R3) __PDF__
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1811r0.html)
+*/
+#ifndef LBAL_CPP2A_MODULES
+	#define LBAL_CPP2A_MODULES 0
 #endif
 
 /**

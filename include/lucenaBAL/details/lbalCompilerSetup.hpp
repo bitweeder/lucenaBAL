@@ -266,6 +266,18 @@
 		#define LBAL_CPP11_INHERITING_CONSTRUCTORS 200802L
 	#endif
 
+	#if (__cpp_initializer_lists >= 200806L)
+		#define LBAL_CPP11_INITIALIZER_LISTS __cpp_initializer_lists
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_INITIALIZER_LISTS 200806L
+	#endif
+
+	#if (__cpp_lambdas >= 200907L)
+		#define LBAL_CPP11_LAMBDAS __cpp_lambdas
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_LAMBDAS 200907L
+	#endif
+
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
 	#if (__cpp_threadsafe_static_init >= 200806L)
@@ -418,6 +430,36 @@
 		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED 201511L
 	#endif
 
+	#if (__cpp_inline_variables >= 201606L)
+		#define LBAL_CPP17_INLINE_VARIABLES __cpp_inline_variables
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_INLINE_VARIABLES 201606L
+	#endif
+
+	#if (__cpp_namespace_attributes >= 201411L)
+		#define LBAL_CPP17_NAMESPACE_ATTRIBUTES __cpp_namespace_attributes
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_NAMESPACE_ATTRIBUTES 201411L
+	#endif
+
+	#if (__cpp_noexcept_function_type >= 201510L)
+		#define LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE __cpp_noexcept_function_type
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE 201510L
+	#endif
+
+	#if (__cpp_nontype_template_args >= 201411L)
+		#define LBAL_CPP17_NONTYPE_TEMPLATE_ARGS __cpp_nontype_template_args
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_NONTYPE_TEMPLATE_ARGS 201411L
+	#endif
+
+	#if (__cpp_nontype_template_parameter_auto >= 201606L)
+		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO __cpp_nontype_template_parameter_auto
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO 201606L
+	#endif
+
 	//	As of vanilla clang 8, this is disabled by default in order to avoid a
 	//	defect introduced by the associated proposal (which was intended to
 	//	resolve another defect).
@@ -489,6 +531,10 @@
 
 	#if (__cpp_impl_destroying_delete >= 201806L)
 		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
+	#endif
+
+	#if (__cpp_modules >= 201907L)
+		#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS __cpp_modules
 	#endif
 
 	#if (__cpp_nontype_template_parameter_class >= 201806L)
@@ -766,6 +812,18 @@
 		#define LBAL_CPP11_INHERITING_CONSTRUCTORS 200802L
 	#endif
 
+	#if (__cpp_initializer_lists >= 200806L)
+		#define LBAL_CPP11_INITIALIZER_LISTS __cpp_initializer_lists
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_INITIALIZER_LISTS 200806L
+	#endif
+
+	#if (__cpp_lambdas >= 200907L)
+		#define LBAL_CPP11_LAMBDAS __cpp_lambdas
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_LAMBDAS 200907L
+	#endif
+
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
 	#if (__cpp_threadsafe_static_init >= 200806L)
@@ -904,6 +962,36 @@
 		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED 201511L
 	#endif
 
+	#if (__cpp_inline_variables >= 201606L)
+		#define LBAL_CPP17_INLINE_VARIABLES __cpp_inline_variables
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_INLINE_VARIABLES 201606L
+	#endif
+
+	#if (__cpp_namespace_attributes >= 201411L)
+		#define LBAL_CPP17_NAMESPACE_ATTRIBUTES __cpp_namespace_attributes
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_NAMESPACE_ATTRIBUTES 201411L
+	#endif
+
+	#if (__cpp_noexcept_function_type >= 201510L)
+		#define LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE __cpp_noexcept_function_type
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE 201510L
+	#endif
+
+	#if (__cpp_nontype_template_args >= 201411L)
+		#define LBAL_CPP17_NONTYPE_TEMPLATE_ARGS __cpp_nontype_template_args
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_NONTYPE_TEMPLATE_ARGS 201411L
+	#endif
+
+	#if (__cpp_nontype_template_parameter_auto >= 201606L)
+		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO __cpp_nontype_template_parameter_auto
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO 201606L
+	#endif
+
 	//	As of clang 8, this is disabled by default in order to avoid a defect
 	//	introduced by the associated proposal (which was intended to resolve
 	//	another defect).
@@ -979,6 +1067,10 @@
 
 	#if (__cpp_impl_destroying_delete >= 201806L)
 		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
+	#endif
+
+	#if (__cpp_modules >= 201907L)
+		#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS __cpp_modules
 	#endif
 
 	#if (__cpp_nontype_template_parameter_class >= 201806L)
@@ -1268,6 +1360,18 @@
 		#define LBAL_CPP11_INHERITING_CONSTRUCTORS 200802L
 	#endif
 
+	#if (__cpp_initializer_lists >= 200806L)
+		#define LBAL_CPP11_INITIALIZER_LISTS __cpp_initializer_lists
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_INITIALIZER_LISTS 200806L
+	#endif
+
+	#if (__cpp_lambdas >= 200907L)
+		#define LBAL_CPP11_LAMBDAS __cpp_lambdas
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_LAMBDAS 200907L
+	#endif
+
 	//	__SEEME__ There is no `__cplusplus` check since this can be
 	//	conditionally disabled.
 	#if (__cpp_threadsafe_static_init >= 200806L)
@@ -1381,6 +1485,26 @@
 		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED __cpp_inheriting_constructors
 	#endif
 
+	#if (__cpp_inline_variables >= 201606L)
+		#define LBAL_CPP17_INLINE_VARIABLES __cpp_inline_variables
+	#endif
+
+	#if (__cpp_namespace_attributes >= 201411L)
+		#define LBAL_CPP17_NAMESPACE_ATTRIBUTES __cpp_namespace_attributes
+	#endif
+
+	#if (__cpp_noexcept_function_type >= 201510L)
+		#define LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE __cpp_noexcept_function_type
+	#endif
+
+	#if (__cpp_nontype_template_args >= 201411L)
+		#define LBAL_CPP17_NONTYPE_TEMPLATE_ARGS __cpp_nontype_template_args
+	#endif
+
+	#if (__cpp_nontype_template_parameter_auto >= 201606L)
+		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO __cpp_nontype_template_parameter_auto
+	#endif
+
 	#if (__cpp_template_template_args >= 201611L)
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS __cpp_template_template_args
 	#endif
@@ -1455,6 +1579,10 @@
 
 	#if (__cpp_impl_destroying_delete >= 201806L)
 		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
+	#endif
+
+	#if (__cpp_modules >= 201907L)
+		#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS __cpp_modules
 	#endif
 
 	#if (__cpp_nontype_template_parameter_class >= 201806L)
@@ -1759,6 +1887,18 @@
 		#define LBAL_CPP11_INHERITING_CONSTRUCTORS 200802L
 	#endif
 
+	#if (__cpp_initializer_lists >= 200806L)
+		#define LBAL_CPP11_INITIALIZER_LISTS __cpp_initializer_lists
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_INITIALIZER_LISTS 200806L
+	#endif
+
+	#if (__cpp_lambdas >= 200907L)
+		#define LBAL_CPP11_LAMBDAS __cpp_lambdas
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_LAMBDAS 200907L
+	#endif
+
 	//	Available in `_MSC_VER`: `1900`
 	//	This can be conditionally disabled.
 	//	__SEEME__ In the absence of `__cpp_threadsafe_static_init` - i.e., in
@@ -1910,6 +2050,36 @@
 		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED 201511L
 	#endif
 
+	#if (__cpp_inline_variables >= 201606L)
+		#define LBAL_CPP17_INLINE_VARIABLES __cpp_inline_variables
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1912)
+		#define LBAL_CPP17_INLINE_VARIABLES 201606L
+	#endif
+
+	#if (__cpp_namespace_attributes >= 201411L)
+		#define LBAL_CPP17_NAMESPACE_ATTRIBUTES __cpp_namespace_attributes
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP17_NAMESPACE_ATTRIBUTES 201411L
+	#endif
+
+	#if (__cpp_noexcept_function_type >= 201510L)
+		#define LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE __cpp_noexcept_function_type
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1912)
+		#define LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE 201510L
+	#endif
+
+	#if (__cpp_nontype_template_args >= 201411L)
+		#define LBAL_CPP17_NONTYPE_TEMPLATE_ARGS __cpp_nontype_template_args
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1912)
+		#define LBAL_CPP17_NONTYPE_TEMPLATE_ARGS 201411L
+	#endif
+
+	#if (__cpp_nontype_template_parameter_auto >= 201606L)
+		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO __cpp_nontype_template_parameter_auto
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1914)
+		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO 201606L
+	#endif
+
 	//	__SEEME__ This is implemented, but it’s unclear if/when the DR that
 	//	affected the proposal was addressed.
 	#if (__cpp_template_template_args >= 201611L)
@@ -1984,6 +2154,10 @@
 
 	#if (__cpp_impl_destroying_delete >= 201806L)
 		#define LBAL_CPP2A_DESTROYING_DELETE __cpp_impl_destroying_delete
+	#endif
+
+	#if (__cpp_modules >= 201907L)
+		#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS __cpp_modules
 	#endif
 
 	#if (__cpp_nontype_template_parameter_class >= 201806L)
