@@ -996,6 +996,26 @@
 #endif
 
 /**
+	@def LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY
+	@brief Optimization hint when compiling with certain memory models
+	@details Equivalent SD-6 test: `__has_cpp_attribute(carries_dependency)`
+	- [200809L](https://wg21.link/N2761) __PDF__
+*/
+#ifndef LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY
+	#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY 0
+#endif
+
+/**
+	@def LBAL_CPP11_ATTRIBUTE_NORETURN
+	@brief Indicate that a function does not return
+	@details Equivalent SD-6 test: `__has_cpp_attribute(noreturn)`
+	- [200809L](https://wg21.link/N2761) __PDF__
+*/
+#ifndef LBAL_CPP11_ATTRIBUTE_NORETURN
+	#define LBAL_CPP11_ATTRIBUTE_NORETURN 0
+#endif
+
+/**
 	@def LBAL_CPP11_ATTRIBUTES
 	@brief Formalize attributes as a language feature.
 	@details Equivalent SD-6 macro: `__cpp_attributes`
@@ -1237,6 +1257,16 @@
 #endif
 
 /**
+	@def LBAL_CPP14_ATTRIBUTE_DEPRECATED
+	@brief Support for marking symbols as deprecated
+	@details Equivalent SD-6 test: `__has_cpp_attribute(deprecated)`
+	- [201309L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3760.html)
+*/
+#ifndef LBAL_CPP14_ATTRIBUTE_DEPRECATED
+	#define LBAL_CPP14_ATTRIBUTE_DEPRECATED 0
+#endif
+
+/**
 	@def LBAL_CPP14_BINARY_LITERALS
 	@brief Add binary literal support.
 	@details Equivalent SD-6 macro: `__cpp_binary_literals`
@@ -1359,6 +1389,44 @@
 */
 #ifndef LBAL_CPP17_ALIGNED_NEW
 	#define LBAL_CPP17_ALIGNED_NEW 0
+#endif
+
+/**
+	@def LBAL_CPP17_ATTRIBUTE_FALLTHROUGH
+	@brief Indicate that a case within a switch statements falls through
+	@details Equivalent SD-6 test: `__has_cpp_attribute(fallthrough)`
+	- [201603L](https://wg21.link/P0188R1) __PDF__
+*/
+#ifndef LBAL_CPP17_ATTRIBUTE_FALLTHROUGH
+	#define LBAL_CPP17_ATTRIBUTE_FALLTHROUGH 0
+#endif
+
+/**
+	@def LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED
+	@brief Indicate that a name or entity is possibly intentionally unused
+	@details Equivalent SD-6 test: `__has_cpp_attribute(maybe_unused)`
+	- [201603L](https://wg21.link/P0212R1) __PDF__
+*/
+#ifndef LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED
+	#define LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED 0
+#endif
+
+/**
+	@def LBAL_CPP17_ATTRIBUTE_NODISCARD
+	@brief Indicate that a function return, class, or enum should not be
+	ignored
+	@details Equivalent SD-6 test: `__has_cpp_attribute(nodiscard)`. This token
+	corresponds to the `201603L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [201603L](https://wg21.link/P0189R1) __PDF__
+	- [201907L](https://wg21.link/P1301R4) __PDF__
+	- [201907L](https://wg21.link/P1771R1) __PDF__
+
+	@remarks The `nodiscard` attribute has at least 2 values associated with
+	it, from a number of different proposals.
+*/
+#ifndef LBAL_CPP17_ATTRIBUTE_NODISCARD
+	#define LBAL_CPP17_ATTRIBUTE_NODISCARD 0
 #endif
 
 /**
@@ -1715,6 +1783,24 @@
 */
 #ifndef LBAL_CPP2A_ATTRIBUTE_LIKELY
 	#define LBAL_CPP2A_ATTRIBUTE_LIKELY 0
+#endif
+
+/**
+	@def LBAL_CPP2A_ATTRIBUTE_NODISCARD_EXPANDED
+	@brief Add explanatory text to the `nodiscard` attribute and allow it on
+	constructors
+	@details Equivalent SD-6 test: `__has_cpp_attribute(nodiscard)`. This token
+	corresponds to the `201907L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [201603L](https://wg21.link/P0189R1) __PDF__
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1301r4.html)
+	- [201907L](https://wg21.link/P1771R1) __PDF__
+
+	@remarks The `nodiscard` attribute has at least 2 values associated with
+	it, from a number of different proposals.
+*/
+#ifndef LBAL_CPP2A_ATTRIBUTE_NODISCARD_EXPANDED
+	#define LBAL_CPP2A_ATTRIBUTE_NODISCARD_EXPANDED 0
 #endif
 
 /**

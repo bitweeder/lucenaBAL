@@ -344,6 +344,18 @@
 		#define LBAL_CPP11_VARIADIC_TEMPLATES 200704L
 	#endif
 
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(carries_dependency) >= 200809L)
+		#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY __has_cpp_attribute(carries_dependency)
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY 200809L
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(noreturn) >= 200809L)
+		#define LBAL_CPP11_ATTRIBUTE_NORETURN __has_cpp_attribute(noreturn)
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_ATTRIBUTE_NORETURN 200809L
+	#endif
+
 
 	//	C++14 features
 
@@ -399,6 +411,12 @@
 		#define LBAL_CPP14_VARIABLE_TEMPLATES __cpp_variable_templates
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_VARIABLE_TEMPLATES 201304L
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(deprecated) >= 201309L)
+		#define LBAL_CPP14_ATTRIBUTE_DEPRECATED __has_cpp_attribute(deprecated)
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_ATTRIBUTE_DEPRECATED 201309L
 	#endif
 
 
@@ -563,6 +581,24 @@
 		#define LBAL_CPP17_VARIADIC_USING 201611L
 	#endif
 
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(fallthrough) >= 201603L)
+		#define LBAL_CPP17_ATTRIBUTE_FALLTHROUGH __has_cpp_attribute(fallthrough)
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_ATTRIBUTE_FALLTHROUGH 201603L
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(maybe_unused) >= 201603L)
+		#define LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED __has_cpp_attribute(maybe_unused)
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED 201603L
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(nodiscard) >= 201603L)
+		#define LBAL_CPP17_ATTRIBUTE_NODISCARD __has_cpp_attribute(nodiscard)
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_ATTRIBUTE_NODISCARD 201603L
+	#endif
+
 
 	//	C++2a features
 
@@ -649,19 +685,21 @@
 		#define LBAL_CPP2A_USING_ENUM __cpp_using_enum
 	#endif
 
-	#ifdef __has_cpp_attribute
-		#if (__has_cpp_attribute(likely) >= 201803L)
-			#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
-		#endif
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(likely) >= 201803L)
+		#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
+	#endif
 
-		#if (__has_cpp_attribute(unlikely) >= 201803L)
-			#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
-		#endif
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(nodiscard) >= 201907L)
+		#define LBAL_CPP2A_ATTRIBUTE_NODISCARD_EXPANDED __has_cpp_attribute(nodiscard)
+	#endif
 
-		#if (__has_cpp_attribute(no_unique_address) >= 201803L)
-			#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
-		#endif
-	#endif	//	__has_cpp_attribute
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(no_unique_address) >= 201803L)
+		#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(unlikely) >= 201803L)
+		#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
+	#endif
 
 
 	//	intrinsic functions
@@ -990,6 +1028,18 @@
 		#define LBAL_CPP11_VARIADIC_TEMPLATES 200704L
 	#endif
 
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(carries_dependency) >= 200809L)
+		#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY __has_cpp_attribute(carries_dependency)
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY 200809L
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(noreturn) >= 200809L)
+		#define LBAL_CPP11_ATTRIBUTE_NORETURN __has_cpp_attribute(noreturn)
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_ATTRIBUTE_NORETURN 200809L
+	#endif
+
 
 	//	C++14 features
 
@@ -1045,6 +1095,12 @@
 		#define LBAL_CPP14_VARIABLE_TEMPLATES __cpp_variable_templates
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_VARIABLE_TEMPLATES 201304L
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(deprecated) >= 201309L)
+		#define LBAL_CPP14_ATTRIBUTE_DEPRECATED __has_cpp_attribute(deprecated)
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_ATTRIBUTE_DEPRECATED 201309L
 	#endif
 
 
@@ -1195,6 +1251,24 @@
 		#define LBAL_CPP17_VARIADIC_USING 201611L
 	#endif
 
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(fallthrough) >= 201603L)
+		#define LBAL_CPP17_ATTRIBUTE_FALLTHROUGH __has_cpp_attribute(fallthrough)
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_ATTRIBUTE_FALLTHROUGH 201603L
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(maybe_unused) >= 201603L)
+		#define LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED __has_cpp_attribute(maybe_unused)
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED 201603L
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(nodiscard) >= 201603L)
+		#define LBAL_CPP17_ATTRIBUTE_NODISCARD __has_cpp_attribute(nodiscard)
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_ATTRIBUTE_NODISCARD 201603L
+	#endif
+
 
 	//	C++2a features
 
@@ -1285,19 +1359,21 @@
 		#define LBAL_CPP2A_USING_ENUM __cpp_using_enum
 	#endif
 
-	#ifdef __has_cpp_attribute
-		#if (__has_cpp_attribute(likely) >= 201803L)
-			#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
-		#endif
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(likely) >= 201803L)
+		#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
+	#endif
 
-		#if (__has_cpp_attribute(unlikely) >= 201803L)
-			#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
-		#endif
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(nodiscard) >= 201907L)
+		#define LBAL_CPP2A_ATTRIBUTE_NODISCARD_EXPANDED __has_cpp_attribute(nodiscard)
+	#endif
 
-		#if (__has_cpp_attribute(no_unique_address) >= 201803L)
-			#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
-		#endif
-	#endif	//	__has_cpp_attribute
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(no_unique_address) >= 201803L)
+		#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(unlikely) >= 201803L)
+		#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
+	#endif
 
 
 	//	intrinsic functions
@@ -1638,6 +1714,18 @@
 		#define LBAL_CPP11_VARIADIC_TEMPLATES 200704L
 	#endif
 
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(carries_dependency) >= 200809L)
+		#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY __has_cpp_attribute(carries_dependency)
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY 200809L
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(noreturn) >= 200809L)
+		#define LBAL_CPP11_ATTRIBUTE_NORETURN __has_cpp_attribute(noreturn)
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_ATTRIBUTE_NORETURN 200809L
+	#endif
+
 
 	//	C++14 features
 
@@ -1693,6 +1781,12 @@
 		#define LBAL_CPP14_VARIABLE_TEMPLATES __cpp_variable_templates
 	#elif (__cplusplus >= 201402L)
 		#define LBAL_CPP14_VARIABLE_TEMPLATES 201304L
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(deprecated) >= 201309L)
+		#define LBAL_CPP14_ATTRIBUTE_DEPRECATED __has_cpp_attribute(deprecated)
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_ATTRIBUTE_DEPRECATED 201309L
 	#endif
 
 
@@ -1797,6 +1891,18 @@
 		#define LBAL_CPP17_VARIADIC_USING __cpp_variadic_using
 	#endif
 
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(fallthrough) >= 201603L)
+		#define LBAL_CPP17_ATTRIBUTE_FALLTHROUGH __has_cpp_attribute(fallthrough)
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(maybe_unused) >= 201603L)
+		#define LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED __has_cpp_attribute(maybe_unused)
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(nodiscard) >= 201603L)
+		#define LBAL_CPP17_ATTRIBUTE_NODISCARD __has_cpp_attribute(nodiscard)
+	#endif
+
 
 	//	C++2a features
 	//	__SEEME__ These tests assume a minimum of gcc 7.3
@@ -1889,19 +1995,21 @@
 		#define LBAL_CPP2A_USING_ENUM __cpp_using_enum
 	#endif
 
-	#ifdef __has_cpp_attribute
-		#if (__has_cpp_attribute(likely) >= 201803L)
-			#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
-		#endif
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(likely) >= 201803L)
+		#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
+	#endif
 
-		#if (__has_cpp_attribute(unlikely) >= 201803L)
-			#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
-		#endif
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(nodiscard) >= 201907L)
+		#define LBAL_CPP2A_ATTRIBUTE_NODISCARD_EXPANDED __has_cpp_attribute(nodiscard)
+	#endif
 
-		#if (__has_cpp_attribute(no_unique_address) >= 201803L)
-			#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
-		#endif
-	#endif	//	__has_cpp_attribute
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(no_unique_address) >= 201803L)
+		#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(unlikely) >= 201803L)
+		#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
+	#endif
 
 
 	//	intrinsic functions
@@ -2262,6 +2370,18 @@
 		#define LBAL_CPP11_VARIADIC_TEMPLATES 200704L
 	#endif
 
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(carries_dependency) >= 200809L)
+		#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY __has_cpp_attribute(carries_dependency)
+	#elif (_MSVC_LANG >= 201103L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY 200809L
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(noreturn) >= 200809L)
+		#define LBAL_CPP11_ATTRIBUTE_NORETURN __has_cpp_attribute(noreturn)
+	#elif (_MSVC_LANG >= 201103L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP11_ATTRIBUTE_NORETURN 200809L
+	#endif
+
 
 	//	C++14 features
 	//	__SEEME__ The `_MSVC_LANG` checks here are gratuitous. `_MSVC_LANG`
@@ -2325,6 +2445,12 @@
 		#define LBAL_CPP14_VARIABLE_TEMPLATES __cpp_variable_templates
 	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
 		#define LBAL_CPP14_VARIABLE_TEMPLATES 201304L
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(deprecated) >= 201309L)
+		#define LBAL_CPP14_ATTRIBUTE_DEPRECATED __has_cpp_attribute(deprecated)
+	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP14_ATTRIBUTE_DEPRECATED 201309L
 	#endif
 
 
@@ -2476,6 +2602,24 @@
 		#define LBAL_CPP17_VARIADIC_USING 201611L
 	#endif
 
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(fallthrough) >= 201603L)
+		#define LBAL_CPP17_ATTRIBUTE_FALLTHROUGH __has_cpp_attribute(fallthrough)
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1910)
+		#define LBAL_CPP17_ATTRIBUTE_FALLTHROUGH 201603L
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(maybe_unused) >= 201603L)
+		#define LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED __has_cpp_attribute(maybe_unused)
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1911)
+		#define LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED 201603L
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(nodiscard) >= 201603L)
+		#define LBAL_CPP17_ATTRIBUTE_NODISCARD __has_cpp_attribute(nodiscard)
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1911)
+		#define LBAL_CPP17_ATTRIBUTE_NODISCARD 201603L
+	#endif
+
 
 	//	C++2a features
 
@@ -2564,19 +2708,22 @@
 		#define LBAL_CPP2A_USING_ENUM __cpp_using_enum
 	#endif
 
-	#ifdef __has_cpp_attribute
-		#if (__has_cpp_attribute(likely) >= 201803L)
-			#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
-		#endif
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(likely) >= 201803L)
+		#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
+	#endif
 
-		#if (__has_cpp_attribute(unlikely) >= 201803L)
-			#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
-		#endif
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(nodiscard) >= 201907L)
+		#define LBAL_CPP2A_ATTRIBUTE_NODISCARD_EXPANDED __has_cpp_attribute(nodiscard)
+	#endif
 
-		#if (__has_cpp_attribute(no_unique_address) >= 201803L)
-			#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
-		#endif
-	#endif	//	__has_cpp_attribute
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(no_unique_address) >= 201803L)
+		#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+	#endif
+
+	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(unlikely) >= 201803L)
+		#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
+	#endif
+
 
 	//	C99 features
 
