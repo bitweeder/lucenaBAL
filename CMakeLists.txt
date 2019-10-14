@@ -88,7 +88,7 @@ configure_file (
 include (CTest)
 include (CMakeDependentOption)
 
-option (LBAL_BUILD_DOCS "Build documentation" ON)
+option (LBAL_BUILD_DOCS "Build documentation" OFF)
 
 # CMAKE_SYSTEM_NAME is expected to be set correctly somewhere, e.g., as a
 # command line option is cross-compiling. Note that as of CMake 3.14, the
