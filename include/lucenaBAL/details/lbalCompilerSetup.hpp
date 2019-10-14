@@ -320,6 +320,30 @@
 		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
 	#endif
 
+	#if (__cpp_unicode_characters >= 200704L)
+		#define LBAL_CPP11_UNICODE_CHARACTERS __cpp_unicode_characters
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_UNICODE_CHARACTERS 200704L
+	#endif
+
+	#if (__cpp_unicode_literals >= 200710L)
+		#define LBAL_CPP11_UNICODE_LITERALS __cpp_unicode_literals
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_UNICODE_LITERALS 200710L
+	#endif
+
+	#if (__cpp_user_defined_literals >= 200809L)
+		#define LBAL_CPP11_USER_DEFINED_LITERALS __cpp_user_defined_literals
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_USER_DEFINED_LITERALS 200809L
+	#endif
+
+	#if (__cpp_variadic_templates >= 200704L)
+		#define LBAL_CPP11_VARIADIC_TEMPLATES __cpp_variadic_templates
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_VARIADIC_TEMPLATES 200704L
+	#endif
+
 
 	//	C++14 features
 
@@ -369,6 +393,12 @@
 	//	ABI-breaking changes. It’s unclear when it will be enabled by default.
 	#if (__cpp_sized_deallocation >= 201304L)
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
+	#endif
+
+	#if (__cpp_variable_templates >= 201304L)
+		#define LBAL_CPP14_VARIABLE_TEMPLATES __cpp_variable_templates
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_VARIABLE_TEMPLATES 201304L
 	#endif
 
 
@@ -514,11 +544,23 @@
 		#define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE 201411L
 	#endif
 
+	#if (__cpp_structured_bindings >= 201606L)
+		#define LBAL_CPP17_STRUCTURED_BINDINGS __cpp_structured_bindings
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_STRUCTURED_BINDINGS 201606L
+	#endif
+
 	//	As of vanilla clang 8, this is disabled by default in order to avoid a
 	//	defect introduced by the associated proposal (which was intended to
 	//	resolve another defect).
 	#if (__cpp_template_template_args >= 201611L)
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS __cpp_template_template_args
+	#endif
+
+	#if (__cpp_variadic_using >= 201611L)
+		#define LBAL_CPP17_VARIADIC_USING __cpp_variadic_using
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_VARIADIC_USING 201611L
 	#endif
 
 
@@ -601,6 +643,10 @@
 
 	#if (__cpp_impl_three_way_comparison >= 201907L)
 		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
+	#endif
+
+	#if (__cpp_using_enum >= 201907L)
+		#define LBAL_CPP2A_USING_ENUM __cpp_using_enum
 	#endif
 
 	#ifdef __has_cpp_attribute
@@ -920,6 +966,30 @@
 		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
 	#endif
 
+	#if (__cpp_unicode_characters >= 200704L)
+		#define LBAL_CPP11_UNICODE_CHARACTERS __cpp_unicode_characters
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_UNICODE_CHARACTERS 200704L
+	#endif
+
+	#if (__cpp_unicode_literals >= 200710L)
+		#define LBAL_CPP11_UNICODE_LITERALS __cpp_unicode_literals
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_UNICODE_LITERALS 200710L
+	#endif
+
+	#if (__cpp_user_defined_literals >= 200809L)
+		#define LBAL_CPP11_USER_DEFINED_LITERALS __cpp_user_defined_literals
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_USER_DEFINED_LITERALS 200809L
+	#endif
+
+	#if (__cpp_variadic_templates >= 200704L)
+		#define LBAL_CPP11_VARIADIC_TEMPLATES __cpp_variadic_templates
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_VARIADIC_TEMPLATES 200704L
+	#endif
+
 
 	//	C++14 features
 
@@ -969,6 +1039,12 @@
 	//	ABI-breaking changes. It’s unclear when it will be enabled by default.
 	#if (__cpp_sized_deallocation >= 201304L)
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
+	#endif
+
+	#if (__cpp_variable_templates >= 201304L)
+		#define LBAL_CPP14_VARIABLE_TEMPLATES __cpp_variable_templates
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_VARIABLE_TEMPLATES 201304L
 	#endif
 
 
@@ -1100,11 +1176,23 @@
 		#define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE 201411L
 	#endif
 
+	#if (__cpp_structured_bindings >= 201606L)
+		#define LBAL_CPP17_STRUCTURED_BINDINGS __cpp_structured_bindings
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_STRUCTURED_BINDINGS 201606L
+	#endif
+
 	//	As of clang 8, this is disabled by default in order to avoid a defect
 	//	introduced by the associated proposal (which was intended to resolve
 	//	another defect).
 	#if (__cpp_template_template_args >= 201611L)
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS __cpp_template_template_args
+	#endif
+
+	#if (__cpp_variadic_using >= 201611L)
+		#define LBAL_CPP17_VARIADIC_USING __cpp_variadic_using
+	#elif (__cplusplus >= 201703L)
+		#define LBAL_CPP17_VARIADIC_USING 201611L
 	#endif
 
 
@@ -1191,6 +1279,10 @@
 
 	#if (__cpp_impl_three_way_comparison >= 201907L)
 		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
+	#endif
+
+	#if (__cpp_using_enum >= 201907L)
+		#define LBAL_CPP2A_USING_ENUM __cpp_using_enum
 	#endif
 
 	#ifdef __has_cpp_attribute
@@ -1522,6 +1614,30 @@
 		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
 	#endif
 
+	#if (__cpp_unicode_characters >= 200704L)
+		#define LBAL_CPP11_UNICODE_CHARACTERS __cpp_unicode_characters
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_UNICODE_CHARACTERS 200704L
+	#endif
+
+	#if (__cpp_unicode_literals >= 200710L)
+		#define LBAL_CPP11_UNICODE_LITERALS __cpp_unicode_literals
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_UNICODE_LITERALS 200710L
+	#endif
+
+	#if (__cpp_user_defined_literals >= 200809L)
+		#define LBAL_CPP11_USER_DEFINED_LITERALS __cpp_user_defined_literals
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_USER_DEFINED_LITERALS 200809L
+	#endif
+
+	#if (__cpp_variadic_templates >= 200704L)
+		#define LBAL_CPP11_VARIADIC_TEMPLATES __cpp_variadic_templates
+	#elif (__cplusplus >= 201103L)
+		#define LBAL_CPP11_VARIADIC_TEMPLATES 200704L
+	#endif
+
 
 	//	C++14 features
 
@@ -1571,6 +1687,12 @@
 	//	conditionally disabled.
 	#if (__cpp_sized_deallocation >= 201304L)
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
+	#endif
+
+	#if (__cpp_variable_templates >= 201304L)
+		#define LBAL_CPP14_VARIABLE_TEMPLATES __cpp_variable_templates
+	#elif (__cplusplus >= 201402L)
+		#define LBAL_CPP14_VARIABLE_TEMPLATES 201304L
 	#endif
 
 
@@ -1663,8 +1785,16 @@
 		#define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE __cpp_static_assert
 	#endif
 
+	#if (__cpp_structured_bindings >= 201606L)
+		#define LBAL_CPP17_STRUCTURED_BINDINGS __cpp_structured_bindings
+	#endif
+
 	#if (__cpp_template_template_args >= 201611L)
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS __cpp_template_template_args
+	#endif
+
+	#if (__cpp_variadic_using >= 201611L)
+		#define LBAL_CPP17_VARIADIC_USING __cpp_variadic_using
 	#endif
 
 
@@ -1753,6 +1883,10 @@
 
 	#if (__cpp_impl_three_way_comparison >= 201907L)
 		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
+	#endif
+
+	#if (__cpp_using_enum >= 201907L)
+		#define LBAL_CPP2A_USING_ENUM __cpp_using_enum
 	#endif
 
 	#ifdef __has_cpp_attribute
@@ -2104,6 +2238,30 @@
 		#define LBAL_CPP11_THREADSAFE_STATIC_INIT __cpp_threadsafe_static_init
 	#endif
 
+	#if (__cpp_unicode_characters >= 200704L)
+		#define LBAL_CPP11_UNICODE_CHARACTERS __cpp_unicode_characters
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_UNICODE_CHARACTERS 200704L
+	#endif
+
+	#if (__cpp_unicode_literals >= 200710L)
+		#define LBAL_CPP11_UNICODE_LITERALS __cpp_unicode_literals
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_UNICODE_LITERALS 200710L
+	#endif
+
+	#if (__cpp_user_defined_literals >= 200809L)
+		#define LBAL_CPP11_USER_DEFINED_LITERALS __cpp_user_defined_literals
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_USER_DEFINED_LITERALS 200809L
+	#endif
+
+	#if (__cpp_variadic_templates >= 200704L)
+		#define LBAL_CPP11_VARIADIC_TEMPLATES __cpp_variadic_templates
+	#elif (_MSVC_LANG >= 201103L)
+		#define LBAL_CPP11_VARIADIC_TEMPLATES 200704L
+	#endif
+
 
 	//	C++14 features
 	//	__SEEME__ The `_MSVC_LANG` checks here are gratuitous. `_MSVC_LANG`
@@ -2161,6 +2319,12 @@
 	//	without incorporating a test app into the build process.
 	#if (__cpp_sized_deallocation >= 201304L)
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
+	#endif
+
+	#if (__cpp_variable_templates >= 201304L)
+		#define LBAL_CPP14_VARIABLE_TEMPLATES __cpp_variable_templates
+	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
+		#define LBAL_CPP14_VARIABLE_TEMPLATES 201304L
 	#endif
 
 
@@ -2292,12 +2456,24 @@
 		#define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE 201411L
 	#endif
 
+	#if (__cpp_structured_bindings >= 201606L)
+		#define LBAL_CPP17_STRUCTURED_BINDINGS __cpp_structured_bindings
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1911)
+		#define LBAL_CPP17_STRUCTURED_BINDINGS 201606L
+	#endif
+
 	//	__SEEME__ This is implemented, but it’s unclear if/when the DR that
 	//	affected the proposal was addressed.
 	#if (__cpp_template_template_args >= 201611L)
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS __cpp_template_template_args
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1912)
 		#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS 201611L
+	#endif
+
+	#if (__cpp_variadic_using >= 201611L)
+		#define LBAL_CPP17_VARIADIC_USING __cpp_variadic_using
+	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1914)
+		#define LBAL_CPP17_VARIADIC_USING 201611L
 	#endif
 
 
@@ -2382,6 +2558,10 @@
 
 	#if (__cpp_impl_three_way_comparison >= 201907L)
 		#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP __cpp_impl_three_way_comparison
+	#endif
+
+	#if (__cpp_using_enum >= 201907L)
+		#define LBAL_CPP2A_USING_ENUM __cpp_using_enum
 	#endif
 
 	#ifdef __has_cpp_attribute

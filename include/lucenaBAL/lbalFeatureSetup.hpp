@@ -1117,7 +1117,7 @@
 
 /**
 	@def LBAL_CPP11_RAW_STRINGS
-	@brief Support for raw and Unicode string literals
+	@brief Support for raw string literals
 	@details Equivalent SD-6 macro: `__cpp_raw_strings`
 	- [200710L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2442.htm)
 */
@@ -1172,6 +1172,46 @@
 */
 #ifndef LBAL_CPP11_THREADSAFE_STATIC_INIT
 	#define LBAL_CPP11_THREADSAFE_STATIC_INIT 0
+#endif
+
+/**
+	@def LBAL_CPP11_UNICODE_CHARACTERS
+	@brief Add `char16_t` and `char32_t` with requisite Unicode encoding
+	@details Equivalent SD-6 macro: `__cpp_unicode_characters`
+	- [200704L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2249.html)
+*/
+#ifndef LBAL_CPP11_UNICODE_CHARACTERS
+	#define LBAL_CPP11_UNICODE_CHARACTERS 0
+#endif
+
+/**
+	@def LBAL_CPP11_UNICODE_LITERALS
+	@brief Support for Unicode string literals
+	@details Equivalent SD-6 macro: `__cpp_unicode_literals`
+	- [200710L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2442.htm)
+*/
+#ifndef LBAL_CPP11_UNICODE_LITERALS
+	#define LBAL_CPP11_UNICODE_LITERALS 0
+#endif
+
+/**
+	@def LBAL_CPP11_USER_DEFINED_LITERALS
+	@brief Support for user-defined literals
+	@details Equivalent SD-6 macro: `__cpp_user_defined_literals`
+	- [200809L](https://wg21.link/N2765) __PDF__
+*/
+#ifndef LBAL_CPP11_USER_DEFINED_LITERALS
+	#define LBAL_CPP11_USER_DEFINED_LITERALS 0
+#endif
+
+/**
+	@def LBAL_CPP11_VARIADIC_TEMPLATES
+	@brief Support for templates with variable numbers of arguments
+	@details Equivalent SD-6 macro: `__cpp_variadic_templates`
+	- [200704L](https://wg21.link/N2242) __PDF__
+*/
+#ifndef LBAL_CPP11_VARIADIC_TEMPLATES
+	#define LBAL_CPP11_VARIADIC_TEMPLATES 0
 #endif
 
 ///	@}	LBAL_CPP11
@@ -1277,6 +1317,16 @@
 */
 #ifndef LBAL_CPP14_SIZED_DEALLOCATION
 	#define LBAL_CPP14_SIZED_DEALLOCATION 0
+#endif
+
+/**
+	@def LBAL_CPP14_VARIABLE_TEMPLATES
+	@brief Support for variable templates
+	@details Equivalent SD-6 macro: `__cpp_variable_templates`
+	- [201304L](https://wg21.link/N3651) __PDF__
+*/
+#ifndef LBAL_CPP14_VARIABLE_TEMPLATES
+	#define LBAL_CPP14_VARIABLE_TEMPLATES 0
 #endif
 
 ///	@}	LBAL_CPP14
@@ -1556,8 +1606,8 @@
 	@def LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE
 	@brief Allow static assertions with no messages
 	@details Equivalent SD-6 macro: `__cpp_static_assert`. This token
-	   corresponds to the `201411L` variant, but it will have the value of the
-	   latest supported variant, or `0` if this variant is not supported.
+	corresponds to the `201411L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
 	- [200410L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2004/n1720.html)
 	- [201411L](https://wg21.link/N3928) __PDF__
 
@@ -1569,16 +1619,38 @@
 #endif
 
 /**
+	@def LBAL_CPP17_STRUCTURED_BINDINGS
+	@brief Add support for multiple function return values and more
+	@details Equivalent SD-6 macro: `__cpp_structured_bindings`
+	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0217r3.html)
+*/
+#ifndef LBAL_CPP17_STRUCTURED_BINDINGS
+	#define LBAL_CPP17_STRUCTURED_BINDINGS 0
+#endif
+
+/**
 	@def LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS
-	The proposal this is from is intended to resolve a Defect Report,
+	@brief Resolve a defect in the matching of template arguments with template
+	parameters
+	@details Equivalent SD-6 macro: `__cpp_template_template_args`
+	- [201611L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0522r0.html)
+
+	@remarks The proposal this is from is intended to resolve a Defect Report,
 	but unfortunately introduces a defect of its own. Some compilers
 	are disabling this until a revised patch is in.
-
-	Equivalent SD-6 macro: `__cpp_template_template_args`
-	- [201611L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0522r0.html)
 */
 #ifndef LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS
 	#define LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS 0
+#endif
+
+/**
+	@def LBAL_CPP17_VARIADIC_USING
+	@brief Add support for pack expansions in using-declarations
+	@details Equivalent SD-6 macro: `__cpp_variadic_using`
+	- [201611L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0195r2.html)
+*/
+#ifndef LBAL_CPP17_VARIADIC_USING
+	#define LBAL_CPP17_VARIADIC_USING 0
 #endif
 
 ///	@}	LBAL_CPP17
@@ -1982,6 +2054,16 @@
 */
 #ifndef LBAL_CPP2A_TYPENAME_OPTIONAL
 	#define LBAL_CPP2A_TYPENAME_OPTIONAL 0
+#endif
+
+/**
+	@def LBAL_CPP2A_USING_ENUM
+	@brief Specify using aliases for enums
+	@details Equivalent SD-6 macro: `__cpp_using_enum`
+	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1099r5.html)
+*/
+#ifndef LBAL_CPP2A_USING_ENUM
+	#define LBAL_CPP2A_USING_ENUM 0
 #endif
 
 /**
