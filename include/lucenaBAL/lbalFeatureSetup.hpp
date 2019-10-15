@@ -184,7 +184,8 @@
 /**
 	@def LBAL_TARGET_COMPILER_CLANG
 	@brief The compiler being used is llvm/clang.
-	@details More information is available from [the llvm project](https://clang.llvm.org/).
+	@details More information is available from
+	[the llvm project](https://clang.llvm.org/).
 */
 #ifndef LBAL_TARGET_COMPILER_CLANG
 	#define LBAL_TARGET_COMPILER_CLANG 0
@@ -193,7 +194,8 @@
 /**
 	@def LBAL_TARGET_COMPILER_GCC
 	@brief The compiler being used is gcc.
-	@details More information is available from [the gcc project](https://gcc.gnu.org/).
+	@details More information is available from
+	[the gcc project](https://gcc.gnu.org/).
 */
 #ifndef LBAL_TARGET_COMPILER_GCC
 	#define LBAL_TARGET_COMPILER_GCC 0
@@ -202,7 +204,8 @@
 /**
 	@def LBAL_TARGET_COMPILER_MSVC
 	@brief The compiler being used is MSVC.
-	@details More information is available from [Microsoft](https://visualstudio.microsoft.com/).
+	@details More information is available from
+	[Microsoft](https://visualstudio.microsoft.com/).
 */
 #ifndef LBAL_TARGET_COMPILER_MSVC
 	#define LBAL_TARGET_COMPILER_MSVC 0
@@ -228,7 +231,8 @@
 /**
 	@def LBAL_TARGET_STANDARD_LIBRARY_LIBCPP
 	@brief C++ Standard Library implementation is libc++
-	@details Information available from [the llvm project](https://libcxx.llvm.org/).
+	@details Information available from
+	[the llvm project](https://libcxx.llvm.org/).
 */
 #ifndef LBAL_TARGET_STANDARD_LIBRARY_LIBCPP
 	#define LBAL_TARGET_STANDARD_LIBRARY_LIBCPP 0
@@ -237,7 +241,8 @@
 /**
 	@def LBAL_TARGET_STANDARD_LIBRARY_MSVC
 	@brief C++ Standard Library implementation is Microsoft’s.
-	@details Information available from [Microsoft](https://docs.microsoft.com/en-us/cpp/standard-library/cpp-standard-library-overview).
+	@details Information available from
+	[Microsoft](https://docs.microsoft.com/en-us/cpp/standard-library/cpp-standard-library-overview).
 */
 #ifndef LBAL_TARGET_STANDARD_LIBRARY_MSVC
 	#define LBAL_TARGET_STANDARD_LIBRARY_MSVC 0
@@ -246,7 +251,8 @@
 /**
 	@def LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP
 	@brief C++ Standard Library implementation is libstdc++
-	@details Information available from [the gcc project](https://gcc.gnu.org/onlinedocs/libstdc++/).
+	@details Information available from
+	[the gcc project](https://gcc.gnu.org/onlinedocs/libstdc++/).
 */
 #ifndef LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP
 	#define LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP 0
@@ -848,8 +854,8 @@
 
 	@details These are set to a non-zero value if available and `0` otherwise;
 	every token is always set to _some_ value. Where possible, these mimic the
-	equivalent [SD-6 macros](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations),
-	both in their naming and in their range of values, so a value will be:
+	equivalent [SD-6 macros](https://wg21.link/sd6), both in their naming and
+	in their range of values, so a value will be:
 
 	- `0`, to indicate no availability, or
 	- the SD-6 value equivalent to the available feature support, or
@@ -1032,7 +1038,7 @@
 	to the `200704L` variant, but it will have the value of the latest
 	supported variant, or `0` if this variant is not supported.
 	- [200704L](https://wg21.link/N2235) __PDF__
-	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html)
+	- [201304L](https://wg21.link/n3652)
 	- [201603L](https://wg21.link/p0170r1) __PDF__
 	- [201907L](https://wg21.link/p1331r2) __PDF__
 
@@ -1069,8 +1075,8 @@
 	@details Equivalent SD-6 macro: `__cpp_inheriting_constructors`. This token
 	corresponds to the `200802L` variant, but it will have the value of the
 	latest supported variant, or `0` if this variant is not supported.
-	- [200802L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2540.htm)
-	- [201511L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0136r1.html)
+	- [200802L](https://wg21.link/n2540)
+	- [201511L](https://wg21.link/p0136r1)
 
 	@remarks `__cpp_inheriting_constructors` has at least 2 values associated
 	with it, each from a different proposal.
@@ -1083,7 +1089,7 @@
 	@def LBAL_CPP11_INITIALIZER_LISTS
 	@brief Initializer lists
 	@details Equivalent SD-6 macro: `__cpp_initializer_lists`
-	- [200806L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2672.htm)
+	- [200806L](https://wg21.link/n2672)
 */
 #ifndef LBAL_CPP11_INITIALIZER_LISTS
 	#define LBAL_CPP11_INITIALIZER_LISTS 0
@@ -1103,7 +1109,7 @@
 	@def LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION
 	@brief Support for optional C++ garbage collection.
 	@details Equivalent SD-6 macro: none
-	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2670.htm)
+	- [default](https://wg21.link/n2670)
 */
 #ifndef LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION
 	#define LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION 0
@@ -1113,7 +1119,7 @@
 	@def LBAL_CPP11_NSDMI
 	@brief Support for non-static data member initializers.
 	@details Equivalent SD-6 macro: `__cpp_nsdmi`
-	- [200809L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2756.htm)
+	- [200809L](https://wg21.link/n2756)
 */
 #ifndef LBAL_CPP11_NSDMI
 	#define LBAL_CPP11_NSDMI 0
@@ -1139,7 +1145,7 @@
 	@def LBAL_CPP11_RAW_STRINGS
 	@brief Support for raw string literals
 	@details Equivalent SD-6 macro: `__cpp_raw_strings`
-	- [200710L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2442.htm)
+	- [200710L](https://wg21.link/n2442)
 */
 #ifndef LBAL_CPP11_RAW_STRINGS
 	#define LBAL_CPP11_RAW_STRINGS 0
@@ -1149,7 +1155,7 @@
 	@def LBAL_CPP11_REF_QUALIFIERS
 	@brief Extend move semantics to *this
 	@details Equivalent SD-6 macro: `__cpp_ref_qualifiers`
-	- [200710L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2439.htm)
+	- [200710L](https://wg21.link/n2439)
 */
 #ifndef LBAL_CPP11_REF_QUALIFIERS
 	#define LBAL_CPP11_REF_QUALIFIERS 0
@@ -1159,7 +1165,7 @@
 	@def LBAL_CPP11_RVALUE_REFERENCES
 	@brief Add rvalue references
 	@details Equivalent SD-6 macro: `__cpp_rvalue_references`
-	- [200610L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2006/n2118.html)
+	- [200610L](https://wg21.link/n2118)
 */
 #ifndef LBAL_CPP11_RVALUE_REFERENCES
 	#define LBAL_CPP11_RVALUE_REFERENCES 0
@@ -1171,7 +1177,7 @@
 	@details Equivalent SD-6 macro: `__cpp_static_assert`. This token
 	   corresponds to the `200410L` variant, but it will have the value of the
 	   latest supported variant, or `0` if this variant is not supported.
-	- [200410L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2004/n1720.html)
+	- [200410L](https://wg21.link/n1720)
 	- [201411L](https://wg21.link/N3928)
 
 	@remarks `__cpp_static_assert` has at least 2 values associated with it,
@@ -1188,7 +1194,7 @@
 	be set to `0` if that has happened.
 
 	Equivalent SD-6 macro: `__cpp_threadsafe_static_init`
-	- [200806L](<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2660.htm)
+	- [200806L](https://wg21.link/n2660)
 */
 #ifndef LBAL_CPP11_THREADSAFE_STATIC_INIT
 	#define LBAL_CPP11_THREADSAFE_STATIC_INIT 0
@@ -1198,7 +1204,7 @@
 	@def LBAL_CPP11_UNICODE_CHARACTERS
 	@brief Add `char16_t` and `char32_t` with requisite Unicode encoding
 	@details Equivalent SD-6 macro: `__cpp_unicode_characters`
-	- [200704L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2249.html)
+	- [200704L](https://wg21.link/n2249)
 */
 #ifndef LBAL_CPP11_UNICODE_CHARACTERS
 	#define LBAL_CPP11_UNICODE_CHARACTERS 0
@@ -1208,7 +1214,7 @@
 	@def LBAL_CPP11_UNICODE_LITERALS
 	@brief Support for Unicode string literals
 	@details Equivalent SD-6 macro: `__cpp_unicode_literals`
-	- [200710L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2442.htm)
+	- [200710L](https://wg21.link/n2442)
 */
 #ifndef LBAL_CPP11_UNICODE_LITERALS
 	#define LBAL_CPP11_UNICODE_LITERALS 0
@@ -1250,7 +1256,7 @@
 	@brief Relax the requirements on aggregates and specify aggregate member
 	initialization
 	@details Equivalent SD-6 macro: `__cpp_aggregate_nsdmi`
-	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3653.html)
+	- [201304L](https://wg21.link/n3653)
 */
 #ifndef LBAL_CPP14_AGGREGATE_NSDMI
 	#define LBAL_CPP14_AGGREGATE_NSDMI 0
@@ -1260,7 +1266,7 @@
 	@def LBAL_CPP14_ATTRIBUTE_DEPRECATED
 	@brief Support for marking symbols as deprecated
 	@details Equivalent SD-6 test: `__has_cpp_attribute(deprecated)`
-	- [201309L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3760.html)
+	- [201309L](https://wg21.link/n3760)
 */
 #ifndef LBAL_CPP14_ATTRIBUTE_DEPRECATED
 	#define LBAL_CPP14_ATTRIBUTE_DEPRECATED 0
@@ -1284,7 +1290,7 @@
 	to the `201304L` variant, but it will have the value of the latest
 	supported variant, or `0` if this variant is not supported.
 	- [200704L](https://wg21.link/N2235) __PDF__
-	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html)
+	- [201304L](https://wg21.link/n3652)
 	- [201603L](https://wg21.link/p0170r1) __PDF__
 	- [201907L](https://wg21.link/p1331r2) __PDF__
 
@@ -1299,7 +1305,7 @@
 	@def LBAL_CPP14_DECLTYPE_AUTO
 	@brief Allow deduced return types and `decltype (auto)`
 	@details Equivalent SD-6 macro: `__cpp_decltype_auto`
-	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3638.html)
+	- [201304L](https://wg21.link/n3638)
 */
 #ifndef LBAL_CPP14_DECLTYPE_AUTO
 	#define LBAL_CPP14_DECLTYPE_AUTO 0
@@ -1309,7 +1315,7 @@
 	@def LBAL_CPP14_GENERIC_LAMBDAS
 	@brief Generic (Polymorphic) Lambda Expressions
 	@details Equivalent SD-6 macro: `__cpp_generic_lambdas`
-	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3649.html)
+	- [201304L](https://wg21.link/n3649)
 */
 #ifndef LBAL_CPP14_GENERIC_LAMBDAS
 	#define LBAL_CPP14_GENERIC_LAMBDAS 0
@@ -1319,7 +1325,7 @@
 	@def LBAL_CPP14_INIT_CAPTURES
 	@brief Generalized Lambda-capture changes
 	@details Equivalent SD-6 macro: `__cpp_init_captures`
-	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3648.html)
+	- [201304L](https://wg21.link/n3648)
 */
 #ifndef LBAL_CPP14_INIT_CAPTURES
 	#define LBAL_CPP14_INIT_CAPTURES 0
@@ -1329,7 +1335,7 @@
 	@def LBAL_CPP14_RETURN_TYPE_DEDUCTION
 	@brief Support for return type deduction for normal functions
 	@details Equivalent SD-6 macro: `__cpp_return_type_deduction`
-	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3638.html)
+	- [201304L](https://wg21.link/n3638)
 */
 #ifndef LBAL_CPP14_RETURN_TYPE_DEDUCTION
 	#define LBAL_CPP14_RETURN_TYPE_DEDUCTION 0
@@ -1339,7 +1345,7 @@
 	@def LBAL_CPP14_SIZED_DEALLOCATION
 	@brief Make available a global `operator delete` that takes a size argument
 	@details Equivalent SD-6 macro: `__cpp_sized_deallocation`
-	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3778.html)
+	- [201304L](https://wg21.link/n3778)
 
 	@remarks Some compilers disable this by default since it’s an ABI-breaking
 	change; clang, in particular, does this.
@@ -1375,7 +1381,7 @@
 	@def LBAL_CPP17_AGGREGATE_BASES
 	@brief Relax the restrictions on aggregate initialization.
 	@details Equivalent SD-6 macro: `__cpp_aggregate_bases`
-	- [201603L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0017r1.html)
+	- [201603L](https://wg21.link/p0017r1)
 */
 #ifndef LBAL_CPP17_AGGREGATE_BASES
 	#define LBAL_CPP17_AGGREGATE_BASES 0
@@ -1385,7 +1391,7 @@
 	@def LBAL_CPP17_ALIGNED_NEW
 	@brief Specify handling of dynamic memory allocation for over-aligned data.
 	@details Equivalent SD-6 macro: `__cpp_aligned_new`
-	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0035r4.html)
+	- [201606L](https://wg21.link/p0035r4)
 */
 #ifndef LBAL_CPP17_ALIGNED_NEW
 	#define LBAL_CPP17_ALIGNED_NEW 0
@@ -1433,7 +1439,7 @@
 	@def LBAL_CPP17_CAPTURE_STAR_THIS
 	@brief Allow lambda capture of `*this` by value as `as [=,*this]`.
 	@details Equivalent SD-6 macro: `__cpp_capture_star_this`
-	- [201603L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0018r3.html)
+	- [201603L](https://wg21.link/p0018r3)
 */
 #ifndef LBAL_CPP17_CAPTURE_STAR_THIS
 	#define LBAL_CPP17_CAPTURE_STAR_THIS 0
@@ -1446,7 +1452,7 @@
 	to the `201603L` variant, but it will have the value of the latest
 	supported variant, or `0` if this variant is not supported.
 	- [200704L](https://wg21.link/N2235) __PDF__
-	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html)
+	- [201304L](https://wg21.link/n3652)
 	- [201603L](https://wg21.link/p0170r1) __PDF__
 	- [201907L](https://wg21.link/p1331r2) __PDF__
 
@@ -1463,10 +1469,10 @@
 	@details Equivalent SD-6 macro: `__cpp_deduction_guides`. This token
 	corresponds to the `201606L` variant, but it will have the value of the
 	latest supported variant, or `0` if this variant is not supported.
-	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0091r3.html)
+	- [201606L](https://wg21.link/p0091r3)
 	- [201611L](https://wg21.link/P0512R0) __PDF__
-	- [201703L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0620r0.html)
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1814r0.html)
+	- [201703L](https://wg21.link/p0620r0)
+	- [201907L](https://wg21.link/p1814r0)
 	- [201907L](https://wg21.link/P1816R0) __PDF__
 
 	@remarks `__cpp_deduction_guides` has at least 4 values associated with it,
@@ -1482,10 +1488,10 @@
 	@details Equivalent SD-6 macro: `__cpp_deduction_guides`. This token
 	corresponds to the `201703L` variant, but it will have the value of the
 	latest supported variant, or `0` if this variant is not supported.
-	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0091r3.html)
+	- [201606L](https://wg21.link/p0091r3)
 	- [201611L](https://wg21.link/P0512R0) __PDF__
-	- [201703L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0620r0.html)
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1814r0.html)
+	- [201703L](https://wg21.link/p0620r0)
+	- [201907L](https://wg21.link/p1814r0)
 	- [201907L](https://wg21.link/P1816R0) __PDF__
 
 	@remarks `__cpp_deduction_guides` has at least 4 values associated with it,
@@ -1502,10 +1508,10 @@
 	@details Equivalent SD-6 macro: `__cpp_deduction_guides`. This token
 	corresponds to the `201611L` variant, but it will have the value of the
 	latest supported variant, or `0` if this variant is not supported.
-	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0091r3.html)
+	- [201606L](https://wg21.link/p0091r3)
 	- [201611L](https://wg21.link/P0512R0) __PDF__
-	- [201703L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0620r0.html)
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1814r0.html)
+	- [201703L](https://wg21.link/p0620r0)
+	- [201907L](https://wg21.link/p1814r0)
 	- [201907L](https://wg21.link/P1816R0) __PDF__
 
 	@remarks `__cpp_deduction_guides` has at least 4 values associated with it,
@@ -1519,7 +1525,7 @@
 	@def LBAL_CPP17_ENUMERATOR_ATTRIBUTES
 	@brief Attributes for enumerators
 	@details Equivalent SD-6 macro: `__cpp_enumerator_attributes`
-	- [201411L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4266.html)
+	- [201411L](https://wg21.link/n4266)
 */
 #ifndef LBAL_CPP17_ENUMERATOR_ATTRIBUTES
 	#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES 0
@@ -1531,7 +1537,7 @@
 	@details Equivalent SD-6 macro: `__cpp_fold_expressions`. This token
 	corresponds to the `201411L` variant, but it will have the value of the
 	latest supported variant, or `0` if this variant is not supported.
-	- [201411L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4295.html)
+	- [201411L](https://wg21.link/n4295)
 	- [201603L](https://wg21.link/P0036R0) __PDF__
 
 	@remarks `__cpp_fold_expressions` has at least 2 values associated with it,
@@ -1548,7 +1554,7 @@
 	@details Equivalent SD-6 macro: `__cpp_fold_expressions`. This token
 	corresponds to the `201603L` variant, but it will have the value of the
 	latest supported variant, or `0` if this variant is not supported.
-	- [201411L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4295.html)
+	- [201411L](https://wg21.link/n4295)
 	- [201603L](https://wg21.link/P0036R0) __PDF__
 
 	@remarks `__cpp_fold_expressions` has at least 2 values associated with it,
@@ -1562,7 +1568,7 @@
 	@def LBAL_CPP17_GUARANTEED_COPY_ELISION
 	@brief Guarantee copy and move elision in well-defined situations
 	@details Equivalent SD-6 macro: `__cpp_guaranteed_copy_elision`
-	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0135r1.html)
+	- [201606L](https://wg21.link/p0135r1)
 */
 #ifndef LBAL_CPP17_GUARANTEED_COPY_ELISION
 	#define LBAL_CPP17_GUARANTEED_COPY_ELISION 0
@@ -1572,7 +1578,7 @@
 	@def LBAL_CPP17_HEX_FLOAT
 	@brief Specify Hexadecimal float literals
 	@details Equivalent SD-6 macro: `__cpp_hex_float`
-	- [201603L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0245r1.html)
+	- [201603L](https://wg21.link/p0245r1)
 */
 #ifndef LBAL_CPP17_HEX_FLOAT
 	#define LBAL_CPP17_HEX_FLOAT 0
@@ -1582,7 +1588,7 @@
 	@def LBAL_CPP17_IF_CONSTEXPR
 	@brief Allow constant expressions as if statements
 	@details Equivalent SD-6 macro: `__cpp_if_constexpr`
-	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0292r2.html)
+	- [201606L](https://wg21.link/p0292r2)
 */
 #ifndef LBAL_CPP17_IF_CONSTEXPR
 	#define LBAL_CPP17_IF_CONSTEXPR 0
@@ -1594,8 +1600,8 @@
 	@details Equivalent SD-6 macro: `__cpp_inheriting_constructors`. This token
 	corresponds to the `201511L` variant, but it will have the value of the
 	latest supported variant, or `0` if this variant is not supported.
-	- [200802L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2008/n2540.htm)
-	- [201511L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0136r1.html)
+	- [200802L](https://wg21.link/n2540)
+	- [201511L](https://wg21.link/p0136r1)
 
 	@remarks `__cpp_inheriting_constructors` has at least 2 values associated
 	with it, each from a different proposal.
@@ -1618,7 +1624,7 @@
 	@def LBAL_CPP17_NAMESPACE_ATTRIBUTES
 	@brief Attributes for namespaces
 	@details Equivalent SD-6 macro: `__cpp_namespace_attributes`
-	- [201411L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4266.html)
+	- [201411L](https://wg21.link/n4266)
 */
 #ifndef LBAL_CPP17_NAMESPACE_ATTRIBUTES
 	#define LBAL_CPP17_NAMESPACE_ATTRIBUTES 0
@@ -1628,7 +1634,7 @@
 	@def LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE
 	@brief Make exception specifications be part of the type system
 	@details Equivalent SD-6 macro: `__cpp_noexcept_function_type`
-	- [201510L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2015/p0012r1.html)
+	- [201510L](https://wg21.link/p0012r1)
 */
 #ifndef LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE
 	#define LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE 0
@@ -1638,7 +1644,7 @@
 	@def LBAL_CPP17_NONTYPE_TEMPLATE_ARGS
 	@brief Allow constant evaluation for all non-type template arguments
 	@details Equivalent SD-6 macro: `__cpp_nontype_template_args`
-	- [201411L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2014/n4268.html)
+	- [201411L](https://wg21.link/n4268)
 */
 #ifndef LBAL_CPP17_NONTYPE_TEMPLATE_ARGS
 	#define LBAL_CPP17_NONTYPE_TEMPLATE_ARGS 0
@@ -1648,7 +1654,7 @@
 	@def LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO
 	@brief Allow declaring non-type template arguments with auto
 	@details Equivalent SD-6 macro: `__cpp_nontype_template_parameter_auto`
-	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0127r2.html)
+	- [201606L](https://wg21.link/p0127r2)
 */
 #ifndef LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO
 	#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO 0
@@ -1676,7 +1682,7 @@
 	@details Equivalent SD-6 macro: `__cpp_static_assert`. This token
 	corresponds to the `201411L` variant, but it will have the value of the
 	latest supported variant, or `0` if this variant is not supported.
-	- [200410L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2004/n1720.html)
+	- [200410L](https://wg21.link/n1720)
 	- [201411L](https://wg21.link/N3928) __PDF__
 
 	@remarks `__cpp_static_assert` has at least 2 values associated with it,
@@ -1690,7 +1696,7 @@
 	@def LBAL_CPP17_STRUCTURED_BINDINGS
 	@brief Add support for multiple function return values and more
 	@details Equivalent SD-6 macro: `__cpp_structured_bindings`
-	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0217r3.html)
+	- [201606L](https://wg21.link/p0217r3)
 */
 #ifndef LBAL_CPP17_STRUCTURED_BINDINGS
 	#define LBAL_CPP17_STRUCTURED_BINDINGS 0
@@ -1701,7 +1707,7 @@
 	@brief Resolve a defect in the matching of template arguments with template
 	parameters
 	@details Equivalent SD-6 macro: `__cpp_template_template_args`
-	- [201611L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0522r0.html)
+	- [201611L](https://wg21.link/p0522r0)
 
 	@remarks The proposal this is from is intended to resolve a Defect Report,
 	but unfortunately introduces a defect of its own. Some compilers
@@ -1715,7 +1721,7 @@
 	@def LBAL_CPP17_VARIADIC_USING
 	@brief Add support for pack expansions in using-declarations
 	@details Equivalent SD-6 macro: `__cpp_variadic_using`
-	- [201611L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0195r2.html)
+	- [201611L](https://wg21.link/p0195r2)
 */
 #ifndef LBAL_CPP17_VARIADIC_USING
 	#define LBAL_CPP17_VARIADIC_USING 0
@@ -1756,7 +1762,7 @@
 	@def LBAL_CPP2A_AGGREGATE_PAREN_INIT
 	@brief Allow aggregate initialization from parentheses as well as braces.
 	@details Equivalent SD-6 macro: `__cpp_aggregate_paren_init`
-	- [201902L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p0960r3.html)
+	- [201902L](https://wg21.link/p0960r3)
 
 	@remarks Note that paren initialization allows narrowing conversions, as
 	usual.
@@ -1769,7 +1775,7 @@
 	@def LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS
 
 	Equivalent SD-6 macro: none
-	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0409r2.html)
+	- [default](https://wg21.link/p0409r2)
 */
 #ifndef LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS
 	#define LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 0
@@ -1779,7 +1785,7 @@
 	@def LBAL_CPP2A_ATTRIBUTE_LIKELY
 
 	Equivalent SD-6 test: `__has_cpp_attribute(likely)`
-	- [201803L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html)
+	- [201803L](https://wg21.link/p0479r5)
 */
 #ifndef LBAL_CPP2A_ATTRIBUTE_LIKELY
 	#define LBAL_CPP2A_ATTRIBUTE_LIKELY 0
@@ -1793,7 +1799,7 @@
 	corresponds to the `201907L` variant, but it will have the value of the
 	latest supported variant, or `0` if this variant is not supported.
 	- [201603L](https://wg21.link/P0189R1) __PDF__
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1301r4.html)
+	- [201907L](https://wg21.link/p1301r4)
 	- [201907L](https://wg21.link/P1771R1) __PDF__
 
 	@remarks The `nodiscard` attribute has at least 2 values associated with
@@ -1807,7 +1813,7 @@
 	@def LBAL_CPP2A_ATTRIBUTE_UNLIKELY
 
 	Equivalent SD-6 test: `__has_cpp_attribute(unlikely)`
-	- [201803L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html)
+	- [201803L](https://wg21.link/p0479r5)
 */
 #ifndef LBAL_CPP2A_ATTRIBUTE_UNLIKELY
 	#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY 0
@@ -1822,7 +1828,7 @@
 	will be `0` if either attribute is unavailable, or `1` otherwise.
 
 	Equivalent SD-6 macro: none
-	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0479r5.html)
+	- [default](https://wg21.link/p0479r5)
 */
 //	__SEEME__ To be defined correctly, this must be evaluated after the
 //	component tokens have been defined.
@@ -1835,7 +1841,7 @@
 	@def LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS
 
 	Equivalent SD-6 macro: `__has_cpp_attribute(no_unique_address)`
-	- [201803L](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0840r2.html)
+	- [201803L](https://wg21.link/p0840r2)
 */
 #ifndef LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS
 	#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS 0
@@ -1845,7 +1851,7 @@
 	@def LBAL_CPP2A_CHAR8_T
 	@brief Add `char8_t` as a UTF-8 equivalent for `char16_t` and `char32_t`.
 	@details Equivalent SD-6 macro: `__cpp_char8_t`
-	- [201811L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0482r6.html)
+	- [201811L](https://wg21.link/p0482r6)
 */
 #ifndef LBAL_CPP2A_CHAR8_T
 	#define LBAL_CPP2A_CHAR8_T 0
@@ -1855,7 +1861,7 @@
 	@def LBAL_CPP2A_CONCEPTS
 
 	Equivalent (SD-6) macro: `__cpp_concepts`
-	- [201806L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0734r0.pdf) __PDF__
+	- [201806L](https://wg21.link/p0734r0) __PDF__
 
 	@remarks __SEEME__ The current SD-6 revision does not actually define this
 	token, though the proposal that was voted into the Standard _does_. We
@@ -1873,7 +1879,7 @@
 	that have the potential to incorrectly convert their arguments.
 
 	Equivalent SD-6 macro: `__cpp_conditional_explicit`
-	- [201806L](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0892r2.html)
+	- [201806L](https://wg21.link/p0892r2)
 */
 #ifndef LBAL_CPP2A_CONDITIONAL_EXPLICIT
 	#define LBAL_CPP2A_CONDITIONAL_EXPLICIT 0
@@ -1883,7 +1889,7 @@
 	@def LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS
 
 	Equivalent SD-6 macro: none
-	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0704r1.html)
+	- [default](https://wg21.link/p0704r1)
 */
 #ifndef LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS
 	#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 0
@@ -1894,7 +1900,7 @@
 	@brief Language support for variable-sized containers suitable for use in
 	constexpr computations.
 	@details Equivalent SD-6 macro: `__cpp_constexpr_dynamic_alloc`
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p0784r7.html)
+	- [201907L](https://wg21.link/p0784r7)
 
 	@remarks AKA, “More constexpr containers”.
 */
@@ -1909,7 +1915,7 @@
 	to the `201907L` variant, but it will have the value of the latest
 	supported variant, or `0` if this variant is not supported.
 	- [200704L](https://wg21.link/N2235) __PDF__
-	- [201304L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2013/n3652.html)
+	- [201304L](https://wg21.link/n3652)
 	- [201603L](https://wg21.link/p0170r1) __PDF__
 	- [201907L](https://wg21.link/p1331r2) __PDF__
 
@@ -1923,7 +1929,7 @@
 /**
 	@def LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION
 	@details Equivalent SD-6 macro: none
-	- [default](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p1064r0.html)
+	- [default](https://wg21.link/p1064r0)
 */
 #ifndef LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION
 	#define LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION 0
@@ -1937,7 +1943,7 @@
 	of any changing (i.e., dialect-specific) rules that might be in play.
 
 	Equivalent SD-6 macro: __cpp_constinit
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1143r2.html)
+	- [201907L](https://wg21.link/p1143r2)
 
 	@remarks This feature is broadly intended to be back-portable to older C++
 	dialects; in certain circumstances it’s conceivable that `__cpp_constinit`
@@ -1951,11 +1957,11 @@
 	@def LBAL_CPP2A_COROUTINES
 	@brief Add necessary language support for the `<coroutine>` library feature
 	@details Equivalent SD-6 macro: `__cpp_coroutines`
-	- [201902L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0912r1.html)
+	- [201902L](https://wg21.link/p0912r1)
 
 	@remarks Technically, the proposal this is from only directs that the
 	Coroutines TS be merged into the Standard. For reference the latest draft
-	is [n4775](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4775.pdf).
+	is [n4775](https://wg21.link/n4775) __PDF__.
 */
 #ifndef LBAL_CPP2A_COROUTINES
 	#define LBAL_CPP2A_COROUTINES 0
@@ -1967,10 +1973,10 @@
 	@details Equivalent SD-6 macro: `__cpp_deduction_guides`. This token
 	corresponds to the `201907L` variant, but it will have the value of the
 	latest supported variant, or `0` if this variant is not supported.
-	- [201606L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0091r3.html)
+	- [201606L](https://wg21.link/p0091r3)
 	- [201611L](https://wg21.link/P0512R0) __PDF__
-	- [201703L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0620r0.html)
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1814r0.html)
+	- [201703L](https://wg21.link/p0620r0)
+	- [201907L](https://wg21.link/p1814r0)
 	- [201907L](https://wg21.link/P1816R0) __PDF__
 
 	@remarks `__cpp_deduction_guides` has at least 4 values associated with it,
@@ -1983,7 +1989,7 @@
 /**
 	@def LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS
 	@details Equivalent SD-6 macro: none
-	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0624r2.pdf) __PDF__
+	- [default](https://wg21.link/p0624r2) __PDF__
 */
 #ifndef LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS
 	#define LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS 0
@@ -1993,7 +1999,7 @@
 	@def LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS
 
 	Equivalent SD-6 macro: none
-	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0683r1.html)
+	- [default](https://wg21.link/p0683r1)
 */
 #ifndef LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS
 	#define LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 0
@@ -2003,7 +2009,7 @@
 	@def LBAL_CPP2A_DESIGNATED_INITIALIZERS
 
 	Equivalent SD-6 macro: none
-	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0329r4.pdf) __PDF__
+	- [default](https://wg21.link/p0329r4) __PDF__
 */
 #ifndef LBAL_CPP2A_DESIGNATED_INITIALIZERS
 	#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 0
@@ -2013,7 +2019,7 @@
 	@def LBAL_CPP2A_DESTROYING_DELETE
 	@brief Efficient sized delete for variable sized classes
 	@details Equivalent SD-6 macro: `__cpp_impl_destroying_delete`
-	- [201806L](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0722r3.html)
+	- [201806L](https://wg21.link/p0722r3)
 */
 #ifndef LBAL_CPP2A_DESTROYING_DELETE
 	#define LBAL_CPP2A_DESTROYING_DELETE 0
@@ -2023,7 +2029,7 @@
 	@def LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR
 
 	Equivalent SD-6 macro: none
-	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0614r1.html)
+	- [default](https://wg21.link/p0614r1)
 */
 #ifndef LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR
 	#define LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 0
@@ -2033,7 +2039,7 @@
 	@def LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION
 
 	Equivalent SD-6 macro: none
-	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0702r1.html)
+	- [default](https://wg21.link/p0702r1)
 */
 #ifndef LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION
 	#define LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION	0
@@ -2043,7 +2049,7 @@
 	@def LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS
 	@brief Integrate universal feature test macros into the Standard
 	@details Equivalent SD-6 macro: none (ironically)
-	- [default](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0941r2.html)
+	- [default](https://wg21.link/p0941r2)
 
 	@remarks It appears this is only here to get Microsoft to support SD-6, as
 	the other major compilers de facto meet the requirement.
@@ -2057,7 +2063,7 @@
 	@brief Incorporate modules
 	@details Equivalent SD-6 macro: `__cpp_modules`
 	- [201907L](https://wg21.link/P1103R3) __PDF__
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1811r0.html)
+	- [201907L](https://wg21.link/p1811r0)
 */
 #ifndef LBAL_CPP2A_MODULES
 	#define LBAL_CPP2A_MODULES 0
@@ -2067,7 +2073,7 @@
 	@def LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS
 	@brief Class Types in Non-Type Template Parameters
 	@details Equivalent SD-6 macro: `__cpp_nontype_template_parameter_class`
-	- [201806L](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0732r2.pdf) __PDF__
+	- [201806L](https://wg21.link/p0732r2) __PDF__
 */
 #ifndef LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS
 	#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS 0
@@ -2084,7 +2090,7 @@
 	@def LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE
 
 	Equivalent SD-6 macro: none
-	- [default](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0780r2.html)
+	- [default](https://wg21.link/p0780r2)
 */
 #ifndef LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE
 	#define LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE 0
@@ -2096,11 +2102,11 @@
 	@details Equivalent SD-6 macro: `__cpp_impl_three_way_comparison`. This
 	token corresponds to the `201711L` variant, but it will have a value of
 	`201907L` if that variant is available.
-	- [201711L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0515r3.pdf) __PDF__
+	- [201711L](https://wg21.link/p0515r3) __PDF__
 	- [201711L](https://wg21.link/p0768r1) __PDF__
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1185r2.html)
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1186r3.html)
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1630r1.html)
+	- [201907L](https://wg21.link/p1185r2)
+	- [201907L](https://wg21.link/p1186r3)
+	- [201907L](https://wg21.link/p1630r1)
 */
 #ifndef LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR
 	#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR 0
@@ -2112,11 +2118,11 @@
 	@details Equivalent SD-6 macro: `__cpp_impl_three_way_comparison`. This
 	token corresponds to the `201907L` variant; it will only be set to a
 	non-`0` value if that variant is available.
-	- [201711L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0515r3.pdf) __PDF__
+	- [201711L](https://wg21.link/p0515r3) __PDF__
 	- [201711L](https://wg21.link/p0768r1) __PDF__
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1185r2.html)
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1186r3.html)
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1630r1.html)
+	- [201907L](https://wg21.link/p1185r2)
+	- [201907L](https://wg21.link/p1186r3)
+	- [201907L](https://wg21.link/p1630r1)
 */
 #ifndef LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP
 	#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP 0
@@ -2126,7 +2132,7 @@
 	@def LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS
 
 	Equivalent SD-6 macro: none
-	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0428r2.pdf) __PDF__
+	- [default](https://wg21.link/p0428r2) __PDF__
 */
 #ifndef LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS
 	#define LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS 0
@@ -2136,7 +2142,7 @@
 	@def LBAL_CPP2A_TYPENAME_OPTIONAL
 
 	Equivalent SD-6 macro: none
-	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0634r2.html)
+	- [default](https://wg21.link/p0634r2)
 */
 #ifndef LBAL_CPP2A_TYPENAME_OPTIONAL
 	#define LBAL_CPP2A_TYPENAME_OPTIONAL 0
@@ -2146,7 +2152,7 @@
 	@def LBAL_CPP2A_USING_ENUM
 	@brief Specify using aliases for enums
 	@details Equivalent SD-6 macro: `__cpp_using_enum`
-	- [201907L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2019/p1099r5.html)
+	- [201907L](https://wg21.link/p1099r5)
 */
 #ifndef LBAL_CPP2A_USING_ENUM
 	#define LBAL_CPP2A_USING_ENUM 0
@@ -2161,8 +2167,8 @@
 	dropped.
 
 	Equivalent SD-6 macro: none
-	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0306r4.html)
-	- [default](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p1042r1.html)
+	- [default](https://wg21.link/p0306r4)
+	- [default](https://wg21.link/p1042r1)
 
 	@remarks Ironically, MSVC has no implementation of this.
 */
@@ -2187,7 +2193,7 @@
 	the place of preprocessor-style asserts and serves the same purpose.
 
 	Equivalent SD-6 test: `__has_cpp_attribute(assert)`
-	- [unassigned](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html)
+	- [unassigned](https://wg21.link/p0542r5)
 
 	@remarks These were yoinked from C++2A prior to national balloting for
 	various reasons and are currently back in the oven, but expected to pop in
@@ -2205,7 +2211,7 @@
 	partial enforcement by a static analyzer.
 
 	Equivalent SD-6 test: `__has_cpp_attribute(assert)`
-	- [unassigned](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html)
+	- [unassigned](https://wg21.link/p0542r5)
 
 	@remarks These were yoinked from C++2A prior to national balloting for
 	various reasons and are currently back in the oven, but expected to pop in
@@ -2223,7 +2229,7 @@
 	enforcement by a static analyzer.
 
 	Equivalent SD-6 test: `__has_cpp_attribute(expects)`
-	- [unassigned](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html)
+	- [unassigned](https://wg21.link/p0542r5)
 
 	@remarks These were yoinked from C++2A prior to national balloting for
 	various reasons and are currently back in the oven, but expected to pop in
@@ -2244,7 +2250,7 @@
 	unavailable, or `1` otherwise.
 
 	Equivalent SD-6 macro: none
-	- [default](http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0542r5.html)
+	- [default](https://wg21.link/p0542r5)
 
 	@remarks These were yoinked from C++2A prior to national balloting for
 	various reasons and are currently back in the oven, but expected to pop in
@@ -2312,8 +2318,9 @@
 	`<lucenaBAL/lbalVersion.hpp>`, but they’re documented here since they may
 	be overridden depending on the build environment. These are a mix of binary
 	availability flags and versioned values describing levels of support.
-	Where possible, these mimic the equivalent [SD-6 macros](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations),
-	both in their naming and in their range of values.
+	Where possible, these mimic the equivalent
+	[SD-6 macros](https://wg21.link/sd6), both in their naming and in their
+	range of values.
 
 	Generally, we don’t bother testing for things that are guaranteed
 	by our minimum-supported C++ dialect. For example, all C++17 library
@@ -2367,8 +2374,8 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_to_chars`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0067r5.html>
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0682r1.html>
+	https://wg21.link/p0067r5
+	https://wg21.link/p0682r1
 
 	@remarks __SEEME__ This got weird since the functions got moved to their
 	own header and their signatures were altered, post-Standardization, all as
@@ -2385,7 +2392,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_execution`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0024r2.html>
+	https://wg21.link/p0024r2
 
 	@remarks __APIME__ We neither track nor use experimental versions of this.
 */
@@ -2423,7 +2430,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_thread_hardware_interference_size`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0154r1.html>
+	https://wg21.link/p0154r1
 
 	@remarks __APIME__ We neither track nor use experimental versions of this.
 */
@@ -2437,7 +2444,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_launder`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0137r1.html>
+	https://wg21.link/p0137r1
 
 	@remarks __APIME__ We neither track nor use experimental versions of this.
 */
@@ -2464,7 +2471,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_parallel_algorithm`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0024r2.html>
+	https://wg21.link/p0024r2
 
 		This is set in this header. No wrapper is provided; the
 		functionality would be good to have, but challenging and messy to
@@ -2482,7 +2489,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_node_extract`
 
-	<http://wg21.link/p0083r3>
+	http://wg21.link/p0083r3
 	
 	@remarks __APIME__ We neither track nor use experimental versions of this.
 */
@@ -2503,7 +2510,7 @@
 
 	Equivalent SD-6 macro: none
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0024r2.html>
+	https://wg21.link/p0024r2
 
 	@remarks __APIME__ We neither track nor use experimental versions of this,
 	partly because the Draft versions tracked a different set of features, in
@@ -2542,7 +2549,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_bit_cast`
 
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0476r2.html>
+	https://wg21.link/p0476r2
 */
 #ifndef LBAL_LIBCPP2A_BIT_CAST
 	#define LBAL_LIBCPP2A_BIT_CAST 0
@@ -2553,7 +2560,7 @@
 
 	Equivalent SD-6 macro: none
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0355r7.html>
+	https://wg21.link/p0355r7
 */
 #ifndef LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE
 	#define LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE 0
@@ -2564,7 +2571,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_concepts`
 
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0898r3.pdf>
+	https://wg21.link/p0898r3 __PDF__
 */
 #ifndef LBAL_LIBCPP2A_CONCEPT_LIBRARY
 	#define LBAL_LIBCPP2A_CONCEPT_LIBRARY 0
@@ -2575,7 +2582,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_experimental_concepts`
 
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0898r3.pdf>
+	https://wg21.link/p0898r3 __PDF__
 */
 #ifndef LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP
 	#define LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP 0
@@ -2586,7 +2593,7 @@
 
 	Equivalent SD-6 macro: none
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0202r3.html>
+	https://wg21.link/p0202r3
 */
 #ifndef LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY
 	#define LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY 0
@@ -2597,17 +2604,17 @@
 
 	Equivalent SD-6 macro: `__cpp_coroutines`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4736.pdf>
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4760.pdf>
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0912r2.html>
+	https://wg21.link/n4736 __PDF__
+	https://wg21.link/n4760 __PDF__
+	https://wg21.link/p0912r2
 
 	@remarks Note that `<coroutine>` requires language support.
 
 	@remarks This does not currently have its own SD-6 macro. We use the
 	value of the language feature macro as a proxy for library support.
 
-	@remarks __SEEME__ Confusingly, [n4736](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4736.pdf)
-	was voted into the Standard, but [n4760](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4760.pdf)
+	@remarks __SEEME__ Confusingly, [n4736](https://wg21.link/n4736) __PDF__
+	was voted into the Standard, but [n4760](https://wg21.link/n4760) __PDF__
 	is the fixed version of it.
 */
 #ifndef LBAL_LIBCPP2A_COROUTINES
@@ -2619,17 +2626,17 @@
 
 	Equivalent SD-6 macro: `__cpp_coroutines`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4736.pdf>
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4760.pdf>
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0912r2.html>
+	https://wg21.link/n4736 __PDF__
+	https://wg21.link/n4760 __PDF__
+	https://wg21.link/p0912r2
 
 	@remarks Note that `<coroutine>` requires language support.
 
 	@remarks This does not currently have its own SD-6 macro. We use the
 	value of the language feature macro as a proxy for library support.
 
-	@remarks __SEEME__ Confusingly, [n4736](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4736.pdf)
-	was voted into the Standard, but [n4760](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4760.pdf)
+	@remarks __SEEME__ Confusingly, [n4736](https://wg21.link/n4736) __PDF__
+	was voted into the Standard, but [n4760](https://wg21.link/n4760) __PDF__
 	is the fixed version of it.
 */
 #ifndef LBAL_LIBCPP2A_COROUTINES_EXP
@@ -2641,7 +2648,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_destroying_delete`
 
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0722r3.html>
+	https://wg21.link/p0722r3
 */
 #ifndef LBAL_LIBCPP2A_DESTROYING_DELETE
 	#define LBAL_LIBCPP2A_DESTROYING_DELETE 0
@@ -2652,7 +2659,7 @@
 
 	Equivalent SD-6 macro: none
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0674r1.html>
+	https://wg21.link/p0674r1
 */
 #ifndef LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS
 	#define LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS 0
@@ -2664,7 +2671,7 @@
 
 	Equivalent SD-6 macro: none
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0020r6.html>
+	https://wg21.link/p0020r6
 */
 #ifndef LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC
 	#define LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC 0
@@ -2677,7 +2684,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_list_remove_return_type`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0646r1.pdf>
+	https://wg21.link/p0646r1 __PDF__
 */
 #ifndef LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
 	#define LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE 0
@@ -2690,7 +2697,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_experimental_list_remove_return_type`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0646r1.pdf>
+	https://wg21.link/p0646r1 __PDF__
 */
 #ifndef LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE_EXP
 	#define LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE_EXP 0
@@ -2702,7 +2709,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_constexpr_complex`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0415r1.html>
+	https://wg21.link/p0415r1
 */
 #ifndef LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX
 	#define LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX 0
@@ -2714,7 +2721,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_experimental_constexpr_complex`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0415r1.html>
+	https://wg21.link/p0415r1
 */
 #ifndef LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX_EXP
 	#define LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX_EXP 0
@@ -2725,7 +2732,7 @@
 
 	Equivalent SD-6 macro: none
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0122r7.pdf>
+	https://wg21.link/p0122r7 __PDF__
 */
 #ifndef LBAL_LIBCPP2A_SPAN
 	#define LBAL_LIBCPP2A_SPAN 0
@@ -2736,7 +2743,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_atomic_ref`
 
-	<http://open-std.org/JTC1/SC22/WG21/docs/papers/2018/p0019r8.html>
+	https://wg21.link/p0019r8
 */
 #ifndef LBAL_LIBCPP2A_STD_ATOMIC_REF
 	#define LBAL_LIBCPP2A_STD_ATOMIC_REF 0
@@ -2747,7 +2754,7 @@
 
 	Equivalent SD-6 macro: none
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0463r1.html>
+	https://wg21.link/p0463r1
 */
 #ifndef LBAL_LIBCPP2A_STD_ENDIAN
 	#define LBAL_LIBCPP2A_STD_ENDIAN 0
@@ -2758,7 +2765,7 @@
 
 	Equivalent SD-6 macro: none
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0550r2.pdf>
+	https://wg21.link/p0550r2 __PDF__
 */
 #ifndef LBAL_LIBCPP2A_STD_REMOVE_CVREF
 	#define LBAL_LIBCPP2A_STD_REMOVE_CVREF 0
@@ -2769,7 +2776,7 @@
 
 	Equivalent SD-6 macro: none
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0457r2.html>
+	https://wg21.link/p0457r2
 */
 #ifndef LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING
 	#define LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING 0
@@ -2780,7 +2787,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_syncstream`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0053r7.pdf>
+	https://wg21.link/p0053r7 __PDF__
 */
 #ifndef LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
 	#define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM 0
@@ -2791,7 +2798,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_three_way_comparison`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0515r3.pdf>
+	https://wg21.link/p0515r3 __PDF__
 
 	@remarks `<compare>` is interdependent with the `operator <=>` language
 	feature.
@@ -2805,7 +2812,7 @@
 
 	Equivalent SD-6 macro: none
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0887r1.pdf>
+	https://wg21.link/p0887r1 __PDF__
 */
 #ifndef LBAL_LIBCPP2A_TYPE_IDENTITY
 	#define LBAL_LIBCPP2A_TYPE_IDENTITY 0
@@ -2816,7 +2823,7 @@
 
 	Equivalent SD-6 macro: none
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2017/p0653r2.html>
+	https://wg21.link/p0653r2
 */
 #ifndef LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER
 	#define LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER 0
@@ -2838,7 +2845,7 @@
 	and rely on the `LBAL_LIBCPP` tokens where they are available. See
 	`<lucenaBAL/lbalVersion.hpp>` for details.
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/p0754r2.pdf>
+	https://wg21.link/p0754r2 __PDF__
 */
 #ifndef LBAL_LIBCPP2A_VERSION
 	#define LBAL_LIBCPP2A_VERSION 0
@@ -2867,7 +2874,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_net`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4734.pdf>
+	https://wg21.link/n4734 __PDF__
 */
 #ifndef LBAL_LIBCPPTS_NETWORKING
 	#define LBAL_LIBCPPTS_NETWORKING 0
@@ -2878,7 +2885,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_experimental_net`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4734.pdf>
+	https://wg21.link/n4734 __PDF__
 */
 #ifndef LBAL_LIBCPPTS_NETWORKING_EXP
 	#define LBAL_LIBCPPTS_NETWORKING_EXP 0
@@ -2889,7 +2896,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_net_extensible`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4734.pdf>
+	https://wg21.link/n4734 __PDF__
 */
 #ifndef LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE
 	#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE 0
@@ -2900,7 +2907,7 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_experimental_net_extensible`
 
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4734.pdf>
+	https://wg21.link/n4734 __PDF__
 */
 #ifndef LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP
 	#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP 0
@@ -2911,8 +2918,8 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_observer_ptr`
 
-	<http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n4282.pdf>
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4758.html>
+	https://wg21.link/n4282 __PDF__
+	https://wg21.link/n4758
 */
 #ifndef LBAL_LIBCPPTS_OBSERVER_PTR
 	#define LBAL_LIBCPPTS_OBSERVER_PTR 0
@@ -2923,8 +2930,8 @@
 
 	Equivalent SD-6 macro: `__cpp_lib_experimental_observer_ptr`
 
-	<http://www.open-std.org/JTC1/SC22/WG21/docs/papers/2014/n4282.pdf>
-	<http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4758.html>
+	https://wg21.link/n4282 __PDF__
+	https://wg21.link/n4758
 */
 #ifndef LBAL_LIBCPPTS_OBSERVER_PTR_EXP
 	#define LBAL_LIBCPPTS_OBSERVER_PTR_EXP 0
