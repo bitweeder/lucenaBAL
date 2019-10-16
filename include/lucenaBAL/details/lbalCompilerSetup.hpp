@@ -2370,14 +2370,20 @@
 		#define LBAL_CPP11_VARIADIC_TEMPLATES 200704L
 	#endif
 
+	//	__SEEME__ MSVC Follows the letter of the proposal and disallows 
+	//	the use of __has_cpp_attribute in contexts other than preprocessor
+	//	conditionals.
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(carries_dependency) >= 200809L)
-		#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY __has_cpp_attribute(carries_dependency)
+		#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY 200809L
 	#elif (_MSVC_LANG >= 201103L) && (_MSC_VER >= 1900)
 		#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY 200809L
 	#endif
 
+	//	__SEEME__ MSVC Follows the letter of the proposal and disallows 
+	//	the use of __has_cpp_attribute in contexts other than preprocessor
+	//	conditionals.
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(noreturn) >= 200809L)
-		#define LBAL_CPP11_ATTRIBUTE_NORETURN __has_cpp_attribute(noreturn)
+		#define LBAL_CPP11_ATTRIBUTE_NORETURN 200809L
 	#elif (_MSVC_LANG >= 201103L) && (_MSC_VER >= 1900)
 		#define LBAL_CPP11_ATTRIBUTE_NORETURN 200809L
 	#endif
@@ -2447,8 +2453,11 @@
 		#define LBAL_CPP14_VARIABLE_TEMPLATES 201304L
 	#endif
 
+	//	__SEEME__ MSVC Follows the letter of the proposal and disallows 
+	//	the use of __has_cpp_attribute in contexts other than preprocessor
+	//	conditionals.
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(deprecated) >= 201309L)
-		#define LBAL_CPP14_ATTRIBUTE_DEPRECATED __has_cpp_attribute(deprecated)
+		#define LBAL_CPP14_ATTRIBUTE_DEPRECATED 201309L
 	#elif (_MSVC_LANG >= 201402L) && (_MSC_VER >= 1900)
 		#define LBAL_CPP14_ATTRIBUTE_DEPRECATED 201309L
 	#endif
@@ -2602,20 +2611,29 @@
 		#define LBAL_CPP17_VARIADIC_USING 201611L
 	#endif
 
+	//	__SEEME__ MSVC Follows the letter of the proposal and disallows 
+	//	the use of __has_cpp_attribute in contexts other than preprocessor
+	//	conditionals.
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(fallthrough) >= 201603L)
-		#define LBAL_CPP17_ATTRIBUTE_FALLTHROUGH __has_cpp_attribute(fallthrough)
+		#define LBAL_CPP17_ATTRIBUTE_FALLTHROUGH 201603L
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1910)
 		#define LBAL_CPP17_ATTRIBUTE_FALLTHROUGH 201603L
 	#endif
 
+	//	__SEEME__ MSVC Follows the letter of the proposal and disallows 
+	//	the use of __has_cpp_attribute in contexts other than preprocessor
+	//	conditionals.
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(maybe_unused) >= 201603L)
-		#define LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED __has_cpp_attribute(maybe_unused)
+		#define LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED 201603L
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1911)
 		#define LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED 201603L
 	#endif
 
+	//	__SEEME__ MSVC Follows the letter of the proposal and disallows 
+	//	the use of __has_cpp_attribute in contexts other than preprocessor
+	//	conditionals.
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(nodiscard) >= 201603L)
-		#define LBAL_CPP17_ATTRIBUTE_NODISCARD __has_cpp_attribute(nodiscard)
+		#define LBAL_CPP17_ATTRIBUTE_NODISCARD 201603L
 	#elif (_MSVC_LANG >= 201703L) && (_MSC_VER >= 1911)
 		#define LBAL_CPP17_ATTRIBUTE_NODISCARD 201603L
 	#endif
@@ -2708,20 +2726,32 @@
 		#define LBAL_CPP2A_USING_ENUM __cpp_using_enum
 	#endif
 
+	//	__SEEME__ MSVC Follows the letter of the proposal and disallows 
+	//	the use of __has_cpp_attribute in contexts other than preprocessor
+	//	conditionals.
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(likely) >= 201803L)
-		#define LBAL_CPP2A_ATTRIBUTE_LIKELY __has_cpp_attribute(likely)
+		#define LBAL_CPP2A_ATTRIBUTE_LIKELY 201803L
 	#endif
 
+	//	__SEEME__ MSVC Follows the letter of the proposal and disallows 
+	//	the use of __has_cpp_attribute in contexts other than preprocessor
+	//	conditionals.
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(nodiscard) >= 201907L)
-		#define LBAL_CPP2A_ATTRIBUTE_NODISCARD_EXPANDED __has_cpp_attribute(nodiscard)
+		#define LBAL_CPP2A_ATTRIBUTE_NODISCARD_EXPANDED 201907L
 	#endif
 
+	//	__SEEME__ MSVC Follows the letter of the proposal and disallows 
+	//	the use of __has_cpp_attribute in contexts other than preprocessor
+	//	conditionals.
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(no_unique_address) >= 201803L)
-		#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS __has_cpp_attribute(no_unique_address)
+		#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS 201803L
 	#endif
 
+	//	__SEEME__ MSVC Follows the letter of the proposal and disallows 
+	//	the use of __has_cpp_attribute in contexts other than preprocessor
+	//	conditionals.
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(unlikely) >= 201803L)
-		#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY __has_cpp_attribute(unlikely)
+		#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY 201803L
 	#endif
 
 
