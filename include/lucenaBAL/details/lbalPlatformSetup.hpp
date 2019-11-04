@@ -17,9 +17,9 @@
 
 
 //	std
+//	__SEEME__ We always guard inclusion of system headers when using MSVS due
+//	its noisiness at high warning levels.
 #if defined (_MSC_VER) && defined (_WIN32)
-	//	We guard inclusion of system headers when using MSVS due to its
-	//	noisiness at high warning levels.
 	#pragma warning (push, 0)
 #endif
 

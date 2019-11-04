@@ -43,7 +43,7 @@
 */
 
 //	This duplicates the test peformed to include this file in the first place.
-#elif defined (__GNUC__)
+#if defined (__GNUC__)
 	//	Note that gcc guarantees that all system-specific predefined macros in
 	//	the reserved namespace (i.e., __xxx__) will never resolve to 0 if they
 	//	are actually defined.

@@ -16,11 +16,12 @@
 	@brief Include this instead of `<version>` or `<experimental/version>`.
 
 	@details This proxy header will select the correct header based on
-	availability. The real `<version>` defines [SD-6 macros](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations),
-	of the form `__cpp_lib_xxx`; we don’t do that here. Instead, we include
-	`<version>`, if it’s available, and then define our own macros that extend
-	the SD-6 offering. See the [Standard Library feature detection documentation](@ref lbal_platform)
-	for more information regarding these macros, their names, and their values.
+	availability. The real `<version>` defines
+	[SD-6 macros](https://wg21.link/sd6), of the form `__cpp_lib_xxx`; we don’t
+	do that here. Instead, we include `<version>`, if it’s available, and then
+	define our own macros that extend the SD-6 offering. See the
+	[Standard Library feature detection documentation](@ref lbal_platform) for
+	more information regarding these macros, their names, and their values.
 	Note that if `__cpp_lib_xxx` (or `__cpp_lib_experimental_xxx`) is set to 0—
 	even if the corresponding header, if any, is found—we will ignore it and
 	set the corresponding `LBAL_CPPxx_xxx` (or `LBAL_LIBCPPxx_xxx_EXP`) macro
@@ -59,7 +60,7 @@
 	but our engineers forgot to remove the affected headers from our
 	development tools releases for several years.”
 
-	__FIXME__ Add `__cplusplus` guards to header inclusion, as simple
+	@remarks __FIXME__ Add `__cplusplus` guards to header inclusion, as simple
 	availability may be an insufficient test if an older std variant is being
 	used.
 */

@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“PlatformWinAPI.hpp”
+	“StandardLibraryLibCpp.hpp”
 	Copyright © 2019 Lucena
 	All Rights Reserved
 
@@ -39,53 +39,40 @@
 
 
 /*------------------------------------------------------------------------------
-	WinAPI Platforms
+	libc++ Standard Library
 */
 
 //	This duplicates the test peformed to include this file in the first place.
-#if LBAL_TARGET_OS_WINAPI
-	//	We make no assumptions about the addressing model based on processor,
-	//	instead relying on intrinsics.
-	#if defined (_WIN64)
-		#define LBAL_TARGET_RT_64_BIT 1
-
-		#ifndef LBAL_TARGET_API_WIN64
-			#define LBAL_TARGET_API_WIN64 1
+#if defined (_LIBCPP_VERSION) && !defined (__apple_build_version__)
+	#if (_LIBCPP_VERSION >= 6000)
+		#if !__cpp_lib_launder
+			#define LBAL_LIBCPP17_LAUNDER 201606L
 		#endif
 
-		#define LBAL_TYPE_DOUBLE_GT_FLOAT 1
-		#define LBAL_TYPE_LONG_DOUBLE_GT_DOUBLE 1
-	#elif defined (_WIN32)
-		#define LBAL_TARGET_RT_32_BIT 1
+		#define LBAL_LIBCPP2A_STD_REMOVE_CVREF 1L
+		#define LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING 1L
+		#define LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER 1L
+	#endif
 
-		#ifndef LBAL_TARGET_API_WIN32
-			#define LBAL_TARGET_API_WIN32 1
-		#endif
+	#if (_LIBCPP_VERSION >= 7000)
+		#define LBAL_LIBCPP2A_STD_ENDIAN 1L
 
-		//	unverified
-		#define LBAL_TYPE_DOUBLE_GT_FLOAT 1
-		#define LBAL_TYPE_LONG_DOUBLE_GT_DOUBLE 1
-	#else
-		#error "Unsupported addressing model"
+		//	__SEEME__ In-progress
+//		#define LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY 1L
+//		#define LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX 1L
+
+		//	__SEEME__ This appears to be in, though we await confirmation.
+		#define LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE 1L
+	#endif
+
+	#if (_LIBCPP_VERSION >= 8000)
+		#define LBAL_LIBCPP2A_TYPE_IDENTITY 1L
 	#endif
 
 
-	#define LBAL_FEATURE_UTF16_FILE_SYSTEM 1
-
-
-	//	WinAPI configuration; these are set up to avoid stomping on any
-	//	prefix header-originated definitions that might be in use.
-	#ifndef WIN32_LEAN_AND_MEAN
-		#define WIN32_LEAN_AND_MEAN
-			//	__FIXME__ Maybe not super-smart to set this up globally
-	#endif
-
-	#ifndef NOMINMAX
-		#define NOMINMAX
-	#endif
-
-
-	#define LBAL_NAME_TARGET_OS u8"Windows"
+	//	Set up identifiers
+	#define LBAL_NAME_STANDARD_LIBRARY u8"libc++ version " LBAL_Stringify_ (_LIBCPP_VERSION)
+	#define LBAL_TARGET_STANDARD_LIBRARY_LIBCPP 1
 #else
-	#error "lbalPlatformWinAPI.hpp was directly included by a non-WinAPI platform"
+	#error "lbalStandardLibraryLibCpp.hpp was directly included with the incorrect Standard Library implementation"
 #endif
