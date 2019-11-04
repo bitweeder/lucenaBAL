@@ -23,66 +23,73 @@
 */
 
 //	std
+//	__SEEME__ We always guard inclusion of system headers when using MSVS due
+//	its noisiness at high warning levels.
 #if defined (_MSC_VER) && defined (_WIN32)
-	/*
-		We guard inclusion of system headers when using MSVS due to its
-		noisiness at high warning levels.
-	*/
 	#pragma warning (push, 0)
 #endif
 
-//	First, set up any SD-6 macros, if available.
-//	__SEEME__ The use of <version> to contain SD-6 macros has not really been
-//	formalized, yet, only its use as a replacement for <ciso646> abuse, as well
-//	as a way to version the Standard Library implementation version. We’re
-//	working under the asumption that this usage will be de facto, if not
-//	formally approved.
+/*
+	First, make sure any SD-6 macros that are available are defined. This is
+	done carefully in stages in order to avoid loading unnecessary headers
+	while also avoiding compilation errors if we try to load a header that does
+	not exist. Where we lack confidence in availability, we act conservatively.
+
+	__SEEME__ It’s possible that an implementation of a pre-C++20 Standard will
+	define these macros in the relevant headers themselves, which would be
+	arguably self-defeating. We don’t bother dealing with that particular
+	pathology directly, instead we just assign default macro values based on
+	whatever we can glean without loading every imaginable header.
+*/
 #if !defined (LBAL_LIBCPP2A_VERSION)
-	#if __has_include (<version>)
-		//	Note that we (probably) need to include <version> before
-		//	__cpp_lib_version will have a value - if it is to have a value
-		//	assigned at all. This is the very circular dependency <version> is
-		//	intended to address, but first we need to prime it...
-		#include <version>
-
-		#if __cpp_lib_version || !defined (__cpp_lib_version)
-			#if __cpp_lib_version
-				#define LBAL_LIBCPP2A_VERSION __cpp_lib_version
-			#else
-				//	__SEEME__ Value not yet assigned.
-				#define LBAL_LIBCPP2A_VERSION 1L
-			#endif
-
-			#ifndef LBAL_CONFIG_std_version_supported
-				#define LBAL_CONFIG_std_version_supported 1
-			#endif
+	#if defined (__has_include)
+		#if __has_include (<version>)
+			#define LBAL_LIBCPP2A_VERSION 1L
 		#else
 			#define LBAL_LIBCPP2A_VERSION 0L
 		#endif
 	#else
-		#define LBAL_LIBCPP2A_VERSION 0L
+		/*
+			In this case, we don’t have `__has_include`, and can’t safely
+			determine whether `<version>` exists. We leave
+			`LBAL_LIBCPP2A_VERSION` undefined for now, and come back to it
+			after acquiring sufficient metadata to make a better guess.
+		*/
 	#endif
 #elif LBAL_LIBCPP2A_VERSION
-	#if !__has_include (<version>)
-		#undef LBAL_LIBCPP2A_VERSION
-		#define LBAL_LIBCPP2A_VERSION 0L
-		#warning "<version> not found"
+	#ifdef (__has_include)
+		#if !__has_include (<version>)
+			/*
+				The client claims `<version>` exists, but it doesn’t. We
+				override.
+			*/
+			#undef LBAL_LIBCPP2A_VERSION
+			#define LBAL_LIBCPP2A_VERSION 0L
+			#warning "<version> not found; resetting LBAL_LIBCPP2A_VERSION"
+		#endif
+	#else
+		/*
+			We don’t block on this, as the header may have been back-ported,
+			even if the means to test for the header is not available, and the
+			client somehow accommodated this.
+		*/
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP2A_VERSION; attempting to include <version>"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP2A_VERSION
 
-#if !LBAL_LIBCPP2A_VERSION
+#if LBAL_LIBCPP2A_VERSION
+	#include <version>
+#else
 	/*
 		In C++, this is a do-nothing header we include just for the side
-		effects: the Standard Library implementation will be configured
-		and many assorted compiler-dependent feature detection macros will
-		be defined.
+		effects: by convention, the Standard Library implementation will be
+		configured and many assorted compiler-dependent feature detection
+		macros will be defined.
 	*/
 	#include <ciso646>
 #endif
-
-#ifndef LBAL_CONFIG_std_version_supported
-	#define LBAL_CONFIG_std_version_supported 0
-#endif	//	LBAL_CONFIG_std_version_supported
 
 #if defined (_MSC_VER) && defined (_WIN32)
 	#pragma warning (pop)
@@ -110,147 +117,44 @@
 
 #if defined (_LIBCPP_VERSION)
 	#if defined (__apple_build_version__)
-		/*
-			__SEEME__ We use this as a proxy for detecting Apple’s hacked-up
-			version of libc++; there doesn’t appear to be a reliable way to
-			actually determine this.
-
-			__SEEME__ Speculating about future availability in Apple’s libc++ is
-			fraught, as features fail to be adopted from vanilla clang for any
-			number of reasons (e.g., std::any, std::filesystem), and oddities
-			persist for years (e.g., std::is_callable vs std::is_invocable). We
-			assume nothing, and wait.
-		*/
-		#if (_LIBCPP_VERSION >= 6000)
-//			#if !__cpp_lib_launder
-//				#define LBAL_LIBCPP17_LAUNDER 201606L
-//			#endif
-//
-//			#define LBAL_LIBCPP2A_STD_REMOVE_CVREF 1L
-//			#define LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING 1L
-//			#define LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER 1L
-		#endif
-
-		#if (_LIBCPP_VERSION >= 7000)
-//			#define LBAL_LIBCPP2A_STD_ENDIAN 1L
-		#endif
+		#include <lucenaBAL/details/libraries/lbalStandardLibraryAppleLibCpp.hpp>
 	#else
-		#if (_LIBCPP_VERSION >= 6000)
-			#if !__cpp_lib_launder
-				#define LBAL_LIBCPP17_LAUNDER 201606L
-			#endif
-
-			#define LBAL_LIBCPP2A_STD_REMOVE_CVREF 1L
-			#define LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING 1L
-			#define LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER 1L
-		#endif
-
-		#if (_LIBCPP_VERSION >= 7000)
-			#define LBAL_LIBCPP2A_STD_ENDIAN 1L
-
-			//	__SEEME__ In-progress
-//			#define LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY 1L
-//			#define LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX 1L
-
-			//	__SEEME__ This appears to be in, though we await confirmation.
-			#define LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE 1L
-		#endif
-
-		#if (_LIBCPP_VERSION >= 8000)
-			#define LBAL_LIBCPP2A_TYPE_IDENTITY 1L
-		#endif
+		#include <lucenaBAL/details/libraries/lbalStandardLibraryLibCpp.hpp>
 	#endif
-
-
-	//	Set up identifiers
-	#define LBAL_NAME_STANDARD_LIBRARY u8"libc++ version " LBAL_Stringify_ (_LIBCPP_VERSION)
-	#define LBAL_TARGET_STANDARD_LIBRARY_LIBCPP 1
 #elif defined (__GLIBCXX__)
 	//	__SEEME__ Note that older iterations of libstdc++ used __GLIBCPP__
-
-	#if (__GNUC__ >= 7)
-		#if __cpp_lib_launder
-			#define LBAL_LIBCPP17_LAUNDER __cpp_lib_launder
-		#else
-			#define LBAL_LIBCPP17_LAUNDER 201606L
-		#endif
-
-		#if __cpp_lib_node_extract
-			#define LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS __cpp_lib_node_extract
-		#else
-			#define LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS 201606L
-		#endif
-	#endif
-
-	#if (__GNUC__ >= 8)
-		//	__SEEME__ Only ints are supported; floats are forthcoming.
-//		#if __cpp_lib_to_chars
-//			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS __cpp_lib_to_chars
-//		#else
-//			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 201611L
-//		#endif
-		#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS	 0L
-
-		#define LBAL_LIBCPP2A_STD_ENDIAN 1L
-		#define LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER 1L
-	#endif
-
-	#if (__GNUC__ >= 9)
-		#define LBAL_LIBCPP2A_STD_REMOVE_CVREF 1L
-	#endif
-
-
-	//	Set up identifiers
-	#define LBAL_NAME_STANDARD_LIBRARY u8"GNU libstdc++ version " LBAL_Stringify_ (__GLIBCXX__)
-	#define LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP 1
+	#include <lucenaBAL/details/libraries/lbalStandardLibraryLibStdCpp.hpp>
 #elif defined (_MSC_VER)
-	//	__SEEME__ Not exactly an equivalent test, but I don’t know of a documented
-	//	way to reliably identify the MSVC Standard Library.
-
-	#if (_MSC_VER >= 1911)
-		#if __cpp_lib_thread_hardware_interference_size
-			#define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE __cpp_lib_thread_hardware_interference_size
-		#else
-			#define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE 201703L
-		#endif
-	#endif
-
-	#if (_MSC_VER >= 1912)
-		#if __cpp_lib_node_extract
-			#define LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS __cpp_lib_node_extract
-		#else
-			#define LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS 201606L
-		#endif
-	#endif
-
-	#if (_MSC_VER >= 1914)
-		#if __cpp_lib_launder
-			#define LBAL_LIBCPP17_LAUNDER __cpp_lib_launder
-		#else
-			#define LBAL_LIBCPP17_LAUNDER 201606L
-		#endif
-
-		#if __cpp_lib_parallel_algorithm
-			#define LBAL_LIBCPP17_PARALLEL_ALGORITHM __cpp_lib_parallel_algorithm
-		#else
-			#define LBAL_LIBCPP17_PARALLEL_ALGORITHM 201603L
-		#endif
-
-		//	__SEEME__ There is partial support for this, but only for ints; floats
-		//	are being actively worked on.
-//		#if __cpp_lib_to_chars
-//			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS __cpp_lib_to_chars
-//		#else
-//			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 201611L
-//		#endif
-		#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 0L
-	#endif
-
-	//	Set up identifiers
-	#define LBAL_NAME_STANDARD_LIBRARY u8"MSVC Standard Library version" LBAL_Stringify_ (_MSC_VER)
-	#define LBAL_TARGET_STANDARD_LIBRARY_MSVC 1
+	/*
+		__SEEME__ Not exactly an equivalent test, but I don’t know of a way to
+		reliably identify the MSVC Standard Library: we simply check to see if
+		we’re running MSVC and and whether no other Standard Library detection
+		test has passed.
+	*/
+	#include <lucenaBAL/details/libraries/lbalStandardLibraryMSVC.hpp>
 #else
+	/*
+		__APIME__ We work under the happy assumption that we can rely
+		exclusively on generic tests for feature detection; this is almost
+		certainly doomed to failure.
+	*/
 	#define LBAL_NAME_STANDARD_LIBRARY u8"Unknown Standard Library implementation"
+
+	#if LBAL_CONFIG_enable_pedantic_warnings
+		#warning "Unable to identify the Standard Library implementation is use; attempting to go fully generic"
+	#endif	//	LBAL_CONFIG_enable_pedantic_warnings
+#endif
+
+
+#if !LBAL_LIBCPP2A_VERSION
+	/*
+		If we get here, then we were not initially able to determine whether to
+		set `LBAL_LIBCPP2A_VERSION`, so we collected additional information and
+		gave ourselves more opportunities to make a determination, and were
+		still ultimately unable to determine whether `<version` is available.
+		We choose conservatively.
+	*/
+	#define LBAL_LIBCPP2A_VERSION 0L
 #endif
 
 
@@ -264,7 +168,7 @@
 
 //	A long-standing bug on older Apple platforms requires that we rely on
 //	overrides to tell us whether this is really available, there. Note that
-//	we neither track nor use experimental versions of this.
+//	we do not track experimental versions of this.
 #if !defined (LBAL_LIBCPP17_ANY)
 	#if __has_include (<any>) \
 			&& (__cpp_lib_any || !defined (__cpp_lib_any))

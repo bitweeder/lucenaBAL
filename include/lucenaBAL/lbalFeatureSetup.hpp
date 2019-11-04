@@ -229,6 +229,16 @@
 */
 
 /**
+	@def LBAL_TARGET_STANDARD_LIBRARY_APPLE_LIBCPP
+	@brief C++ Standard Library implementation is Apple’s libc++
+	@details Information available from
+	[the llvm project](https://libcxx.llvm.org/).
+*/
+#ifndef LBAL_TARGET_STANDARD_LIBRARY_APPLE_LIBCPP
+	#define LBAL_TARGET_STANDARD_LIBRARY_APPLE_LIBCPP 0
+#endif
+
+/**
 	@def LBAL_TARGET_STANDARD_LIBRARY_LIBCPP
 	@brief C++ Standard Library implementation is libc++
 	@details Information available from
@@ -2314,32 +2324,45 @@
 	@brief Provides feature detection describing the capabilities of the
 	Standard Library implementation
 
-	@details These tokens relate to library features. They’re mostly set in
-	`<lucenaBAL/lbalVersion.hpp>`, but they’re documented here since they may
-	be overridden depending on the build environment. These are a mix of binary
-	availability flags and versioned values describing levels of support.
-	Where possible, these mimic the equivalent
-	[SD-6 macros](https://wg21.link/sd6), both in their naming and in their
-	range of values.
+	@details These tokens relate to library features. They are a mix of binary
+	availability flags and versioned values describing levels of support. Where
+	possible, these mimic the equivalent [SD-6 macros](https://wg21.link/sd6),
+	both in their naming and in their ranges of values. A variety of detection
+	methods are used, but ultimately if availability of a given feature could
+	only be determined by doing something that might cause a compilation error,
+	we choose instead to assume the feature is not available. This behavior may
+	be overridden by the client by explicitly setting the relevant macro. For
+	example, if we’re unable to determine whether there is library support for
+	Complex literals, we’ll set `LBAL_LIBCPP14_COMPLEX_UDLS` to `0`; however,
+	if the client is aware of support, they can manually set it `1` prior to
+	our testing, and we will not override this setting unless we explicitly
+	determine that it is incorrect.
 
-	Generally, we don’t bother testing for things that are guaranteed
-	by our minimum-supported C++ dialect. For example, all C++17 library
-	implementations have support for `std::make_unique`, so we don’t have a
-	feature token to test for it. By contrast, at least one major platform
-	has conditional support for `std::any` when building with C++17, so there
-	is an explicit test for that feature.
+	@remarks __APIME__ As implied above, sometimes it is possible to definitely
+	determine that a feature is _not_ available, even if we cannot definitelty
+	determine whether it _is_ available. In both cases, we set the
+	corresponding token to `0`, but in the latter case the client may override
+	us, and in the former we’ll override the override.
 
 	@remarks __SEEME__ Note that some of these _also_ require language support.
 	We try to note such cases when they arise.
 
+	@remarks __SEEME__ It is possible for a feature to be “available” on the
+	basis of the presence of its header, SD-6 macro value, etc, but still have
+	its token overridden depending on the build environment. An example of this
+	is support for `std::filesystem` under macOS (and other Apple OSes): while
+	it is part of the C++17 Standard, and Xcode 11.0+ ships with the
+	`<filesystem>` header, the feature only works under macOS 10.15+, and as
+	such will only be made available if the build is targeting a minimum of
+	macOS 10.15. This is specifically _not_ a runtime check, but rather happens
+	at compile-time.
+
 	@remarks __APIME__ There is some ambiguity in whether we track the
 	experimental version of a feature. Generally, we don’t bother if:
 	- no major compiler ever shipped an experimental version
+	- no major compiler ever shipped an experimental version in a non-preview
+	release
 	- the experimental version is/was completely broken
-	- we’re transitioning to a new baseline and looking to eliminate cruft
-
-	@remarks __APIME__ In the future, we may add tests for previously-assumed
-	features if we lower the bar on the “minimum-supported C++ dialect”.
 
 	@{
 */
@@ -2350,20 +2373,18 @@
 	the implementations bundled with otherwise-conforming C++17 compilers.
 	Additionally, sometimes support is simply broken or has surprising
 	limitations, presenting further challenges. Here we track and document all
-	such situations we’re aware of, and reflect them in the token values.
+	such situations we’re aware of.
 
 	@{
 */
 
 /**
 	@def LBAL_LIBCPP17_ANY
+	@brief `<any>` components from Library Fundamentals V1 TS
+	@details Equivalent SD-6 macro: `__cpp_lib_any`
+	- [201603L](http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0220r1.html)
 
-	Equivalent SD-6 macro: `__cpp_lib_any`
-
-	@remarks __APIME__ Only tracked because of incomplete implementations on
-	older Apple platforms.
-
-	@remarks __APIME__ We neither track nor use experimental versions of this.
+	@remarks __APIME__ We do not track experimental versions of this.
 */
 #ifndef LBAL_LIBCPP17_ANY
 	#define LBAL_LIBCPP17_ANY 0

@@ -179,6 +179,34 @@
 
 
 /**
+	@name Settings
+
+	@brief Configure the library itself
+
+	@details At this time, none of these will change any resulting binaries, but
+	will instead provide different levels of feedback at build-time.
+
+	@{
+*/
+
+/**
+	@def LBAL_CONFIG_enable_pedantic_warnings
+
+	@brief Issue compile-time warnings whenever anything unusual happens
+
+	@details Generally, this should not be set to `0`, as “anything unusual” is
+	almost definitely going to be something undesirable. If the client is in
+	the rare situation of tripping these warnings and finding them spurious,
+	however, this setting offers a blunt instrument to silence them.
+*/
+#ifndef LBAL_CONFIG_enable_pedantic_warnings
+	#define LBAL_CONFIG_enable_pedantic_warnings 1
+#endif
+
+///	@}	Settings
+
+
+/**
 	@name Namespaces
 
 	@brief Sets up the namespaces used by lucenaBAL
