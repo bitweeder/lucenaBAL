@@ -107,12 +107,6 @@
 	knowledge of the library involved, usually requiring knowledge of the
 	capabilities of specific versions. We handle these first before attempting
 	the more generalized tests.
-
-	__SEEME__ Arguably, it would be more desirable to give each Standard
-	Library implementation its own #include file and include them here
-	conditionally rather than go the monolithic route. We trade off potential
-	unnecessary recompilation of unaffected projects for simplified maintenance
-	at this time.
 */
 
 #if defined (_LIBCPP_VERSION)
@@ -166,11 +160,9 @@
 	earlier.
 */
 
-//	A long-standing bug on older Apple platforms requires that we rely on
-//	overrides to tell us whether this is really available, there. Note that
-//	we do not track experimental versions of this.
+//	Note that we do not track experimental versions of this.
 #if !defined (LBAL_LIBCPP17_ANY)
-	#if __has_include (<any>) \
+	#if defined (__has_include) && __has_include (<any>) \
 			&& (__cpp_lib_any || !defined (__cpp_lib_any))
 		#if __cpp_lib_any
 			#define LBAL_LIBCPP17_ANY __cpp_lib_any
@@ -181,10 +173,16 @@
 		#define LBAL_LIBCPP17_ANY 0L
 	#endif
 #elif LBAL_LIBCPP17_ANY
-	#if !__has_include (<any>)
-		#undef LBAL_LIBCPP17_ANY
-		#define LBAL_LIBCPP17_ANY 0L
-		#warning "<any> not found"
+	#if defined (__has_include)
+		#if !__has_include (<any>)
+			#undef LBAL_LIBCPP17_ANY
+			#define LBAL_LIBCPP17_ANY 0L
+			#warning "<any> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP17_ANY"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP17_ANY
 
@@ -193,7 +191,7 @@
 //	ended up getting its own header. Happily, this doesn’t end up impeding our
 //	ability to detect the feature.
 #if !defined (LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS)
-	#if __has_include (<charconv>) \
+	#if defined (__has_include) && __has_include (<charconv>) \
 			&& (__cpp_lib_to_chars || !defined (__cpp_lib_to_chars))
 		#if __cpp_lib_to_chars
 			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS __cpp_lib_to_chars
@@ -204,20 +202,25 @@
 		#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 0L
 	#endif
 #elif LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS
-	#if !__has_include (<charconv>)
-		#undef LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS
-		#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 0L
-		#warning "<charconv> not found"
+	#if defined (__has_include)
+		#if !__has_include (<charconv>)
+			#undef LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS
+			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 0L
+			#warning "<charconv> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS
 
 
 //	Use LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS to detect full
 //	compliance with the feature; this only detects whether a key header is
-//	implemented. Note that we neither track nor use experimental versions of
-//	this.
+//	implemented. Note that we do not track experimental versions of this.
 #if !defined (LBAL_LIBCPP17_EXECUTION)
-	#if __has_include (<execution>) \
+	#if defined (__has_include) && __has_include (<execution>) \
 			&& (__cpp_lib_execution || !defined (__cpp_lib_execution))
 		#if __cpp_lib_execution
 			#define LBAL_LIBCPP17_EXECUTION __cpp_lib_execution
@@ -228,18 +231,23 @@
 		#define LBAL_LIBCPP17_EXECUTION 0L
 	#endif
 #elif LBAL_LIBCPP17_EXECUTION
-	#if !__has_include (<execution>)
-		#undef LBAL_LIBCPP17_EXECUTION
-		#define LBAL_LIBCPP17_EXECUTION 0L
-		#warning "<execution> not found"
+	#if defined (__has_include)
+		#if !__has_include (<execution>)
+			#undef LBAL_LIBCPP17_EXECUTION
+			#define LBAL_LIBCPP17_EXECUTION 0L
+			#warning "<execution> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP17_EXECUTION"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP17_EXECUTION
 
 
-//	Only missing on Apple platforms; given the significant number of missed
-//	opportunities to address this, it may never arrive.
 #if !defined (LBAL_LIBCPP17_FILESYSTEM)
-	#if __has_include (<filesystem>) && !LBAL_LIBCPP17_FILESYSTEM_EXP \
+	#if defined (__has_include) && __has_include (<filesystem>) \
+			&& !LBAL_LIBCPP17_FILESYSTEM_EXP \
 			&& (__cpp_lib_filesystem || !defined (__cpp_lib_filesystem))
 		#if __cpp_lib_filesystem
 			#define LBAL_LIBCPP17_FILESYSTEM __cpp_lib_filesystem
@@ -254,19 +262,23 @@
 		#define LBAL_LIBCPP17_FILESYSTEM 0L
 	#endif
 #elif LBAL_LIBCPP17_FILESYSTEM
-	#if !__has_include (<filesystem>)
-		#undef LBAL_LIBCPP17_FILESYSTEM
-		#define LBAL_LIBCPP17_FILESYSTEM 0L
-		#warning "<filesystem> not found"
+	#if defined (__has_include)
+		#if !__has_include (<filesystem>)
+			#undef LBAL_LIBCPP17_FILESYSTEM
+			#define LBAL_LIBCPP17_FILESYSTEM 0L
+			#warning "<filesystem> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP17_FILESYSTEM"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
-#else
-	#if !defined (LBAL_LIBCPP17_FILESYSTEM_EXP)
-		#define LBAL_LIBCPP17_FILESYSTEM_EXP 0L
-	#endif
+#elif !defined (LBAL_LIBCPP17_FILESYSTEM_EXP)
+	#define LBAL_LIBCPP17_FILESYSTEM_EXP 0L
 #endif	//	LBAL_LIBCPP17_FILESYSTEM
 
 #if !defined (LBAL_LIBCPP17_FILESYSTEM_EXP)
-	#if __has_include (<experimental/filesystem>) \
+	#if defined (__has_include) && __has_include (<experimental/filesystem>) \
 			&& (__cpp_lib_experimental_filesystem || !defined (__cpp_lib_experimental_filesystem))
 		#if __cpp_lib_experimental_filesystem
 			#define LBAL_LIBCPP17_FILESYSTEM_EXP __cpp_lib_experimental_filesystem
@@ -281,18 +293,24 @@
 		#undef LBAL_LIBCPP17_FILESYSTEM_EXP
 		#define LBAL_LIBCPP17_FILESYSTEM_EXP 0L
 		#warning "LBAL_LIBCPP17_FILESYSTEM && LBAL_LIBCPP17_FILESYSTEM_EXP"
-	#elif !__has_include (<experimental/filesystem>)
-		#undef LBAL_LIBCPP17_FILESYSTEM_EXP
-		#define LBAL_LIBCPP17_FILESYSTEM_EXP 0L
-		#warning "<experimental/filesystem> not found"
+	#elif defined (__has_include)
+		#if !__has_include (<experimental/filesystem>)
+			#undef LBAL_LIBCPP17_FILESYSTEM_EXP
+			#define LBAL_LIBCPP17_FILESYSTEM_EXP 0L
+			#warning "<experimental/filesystem> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP17_FILESYSTEM_EXP"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP17_FILESYSTEM_EXP
 
 
 //	This functionality lives in <new>, so we have to rely on either the SD-6
 //	macro or an override to detect it; if no explicit override is set and
-//	the SD-6 macro is unavailable, we default to 0. Note that we neither track
-//	nor use experimental versions of this.
+//	the SD-6 macro is unavailable, we default to 0. Note that we do not track
+//	experimental versions of this.
 #if !defined (LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE)
 	#if __cpp_lib_thread_hardware_interference_size
 		#define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE __cpp_lib_thread_hardware_interference_size
@@ -304,8 +322,8 @@
 
 //	This functionality lives in <new>, so we have to rely on either the SD-6
 //	macro or an override to detect it; if no explicit override is set and
-//	the SD-6 macro is unavailable, we default to 0. Note that we neither track
-//	nor use experimental versions of this.
+//	the SD-6 macro is unavailable, we default to 0. Note that we do not track
+//	experimental versions of this.
 #if !defined (LBAL_LIBCPP17_LAUNDER)
 	#if __cpp_lib_launder
 		#define LBAL_LIBCPP17_LAUNDER __cpp_lib_launder
@@ -315,11 +333,9 @@
 #endif	//	LBAL_LIBCPP17_LAUNDER
 
 
-//	A long-standing bug on older Apple platforms requires that we rely on
-//	overrides to tell us whether this is really available, there. Note that
-//	we neither track nor use experimental versions of this.
+//	Note that we do not track experimental versions of this.
 #if !defined (LBAL_LIBCPP17_OPTIONAL)
-	#if __has_include (<optional>) \
+	#if defined (__has_include) && __has_include (<optional>) \
 			&& (__cpp_lib_optional || !defined (__cpp_lib_optional))
 		#if __cpp_lib_optional
 			#define LBAL_LIBCPP17_OPTIONAL __cpp_lib_optional
@@ -330,10 +346,16 @@
 		#define LBAL_LIBCPP17_OPTIONAL 0L
 	#endif
 #elif LBAL_LIBCPP17_OPTIONAL
-	#if !__has_include (<optional>)
-		#undef LBAL_LIBCPP17_OPTIONAL
-		#define LBAL_LIBCPP17_OPTIONAL 0L
-		#warning "<optional> not found"
+	#if defined (__has_include)
+		#if !__has_include (<optional>)
+			#undef LBAL_LIBCPP17_OPTIONAL
+			#define LBAL_LIBCPP17_OPTIONAL 0L
+			#warning "<optional> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP17_OPTIONAL"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP17_OPTIONAL
 
@@ -343,7 +365,7 @@
 //	algorithms have been implemented. Note that as this functionality lives in
 //	multiple pre-existing std headers, so we have to rely on either the SD-6
 //	macro or an override to detect it; without these, we default to 0. Note
-//	that we neither track nor use experimental versions of this.
+//	that we do not track experimental versions of this.
 #if !defined (LBAL_LIBCPP17_PARALLEL_ALGORITHM)
 	#if __cpp_lib_parallel_algorithm
 		#define LBAL_LIBCPP17_PARALLEL_ALGORITHM __cpp_lib_parallel_algorithm
@@ -355,8 +377,8 @@
 
 //	This functionality lives in multiple pre-existing std headers, so we have
 //	to rely on either the SD-6 macro or an override to detect it; without
-//	these, we default to 0. Note that we neither track nor use experimental
-//	versions of this.
+//	these, we default to 0. Note that we do not track experimental versions of
+//	this.
 #if !defined (LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS)
 	#if __cpp_lib_node_extract
 		#define LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS __cpp_lib_node_extract
@@ -368,7 +390,7 @@
 
 //	This is an aggregate that tracks two different SD-6 macros for the purpose
 //	of establishing Standard compliance. There is no single corresponding SD-6
-//	macro. Note that we neither track nor use experimental versions of this.
+//	macro. Note that we do not track experimental versions of this.
 #if !defined (LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS)
 	#if LBAL_LIBCPP17_EXECUTION && LBAL_LIBCPP17_PARALLEL_ALGORITHM
 		#define LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS 1L
@@ -378,11 +400,9 @@
 #endif	//	LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
 
 
-//	A long-standing bug on older Apple platforms requires that we rely on
-//	overrides to tell us whether this is really available, there. Note that
-//	we neither track nor use experimental versions of this.
+//	Note that we do not track experimental versions of this.
 #if !defined (LBAL_LIBCPP17_VARIANT)
-	#if __has_include (<variant>) \
+	#if defined (__has_include) && __has_include (<variant>) \
 			&& (__cpp_lib_variant || !defined (__cpp_lib_variant))
 		#if __cpp_lib_variant
 			#define LBAL_LIBCPP17_VARIANT __cpp_lib_variant
@@ -393,10 +413,16 @@
 		#define LBAL_LIBCPP17_VARIANT 0L
 	#endif
 #elif LBAL_LIBCPP17_VARIANT
-	#if !__has_include (<variant>)
-		#undef LBAL_LIBCPP17_VARIANT
-		#define LBAL_LIBCPP17_VARIANT 0L
-		#warning "<variant> not found"
+	#if defined (__has_include)
+		#if !__has_include (<variant>)
+			#undef LBAL_LIBCPP17_VARIANT
+			#define LBAL_LIBCPP17_VARIANT 0L
+			#warning "<variant> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP17_VARIANT"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP17_VARIANT
 
@@ -405,16 +431,23 @@
 //	override to detect it; if no explicit override is set and the SD-6 macro is
 //	unavailable, we default to 0.
 #if !defined (LBAL_LIBCPP2A_BIT_CAST)
-	#if __has_include (<bit>) && __cpp_lib_bit_cast
+	#if defined (__has_include) && __has_include (<bit>) \
+			&& __cpp_lib_bit_cast
 		#define LBAL_LIBCPP2A_BIT_CAST __cpp_lib_bit_cast
 	#else
 		#define LBAL_LIBCPP2A_BIT_CAST 0L
 	#endif
 #elif LBAL_LIBCPP2A_BIT_CAST
-	#if !__has_include (<bit>)
-		#undef LBAL_LIBCPP2A_BIT_CAST
-		#define LBAL_LIBCPP2A_BIT_CAST 0L
-		#warning "<bit> not found"
+	#if defined (__has_include)
+		#if !__has_include (<bit>)
+			#undef LBAL_LIBCPP2A_BIT_CAST
+			#define LBAL_LIBCPP2A_BIT_CAST 0L
+			#warning "<bit> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP2A_BIT_CAST"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP2A_BIT_CAST
 
@@ -430,7 +463,8 @@
 //	Note that this for the Concepts support library; the language feature is
 //	handled separately.
 #if !defined (LBAL_LIBCPP2A_CONCEPT_LIBRARY)
-	#if __has_include (<concepts>) && !LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP \
+	#if defined (__has_include) && __has_include (<concepts>) \
+			&& !LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP \
 			&& (__cpp_lib_concepts || !defined (__cpp_lib_concepts))
 		#if __cpp_lib_concepts
 			#define LBAL_LIBCPP2A_CONCEPT_LIBRARY __cpp_lib_concepts
@@ -445,19 +479,23 @@
 		#define LBAL_LIBCPP2A_CONCEPT_LIBRARY 0L
 	#endif
 #elif LBAL_LIBCPP2A_CONCEPT_LIBRARY
-	#if !__has_include (<concepts>)
-		#undef LBAL_LIBCPP2A_CONCEPT_LIBRARY
-		#define LBAL_LIBCPP2A_CONCEPT_LIBRARY 0L
-		#warning "<concepts> not found"
+	#if defined (__has_include)
+		#if !__has_include (<concepts>)
+			#undef LBAL_LIBCPP2A_CONCEPT_LIBRARY
+			#define LBAL_LIBCPP2A_CONCEPT_LIBRARY 0L
+			#warning "<concepts> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP2A_CONCEPT_LIBRARY"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
-#else
-	#if !defined (LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP)
-		#define LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP 0L
-	#endif
+#elif !defined (LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP)
+	#define LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP 0L
 #endif	//	LBAL_LIBCPP2A_CONCEPT_LIBRARY
 
 #if !defined (LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP)
-	#if __has_include (<experimental/concepts>) \
+	#if defined (__has_include) && __has_include (<experimental/concepts>) \
 			&& (__cpp_lib_experimental_concepts || !defined (__cpp_lib_experimental_concepts))
 		#if __cpp_lib_experimental_concepts
 			#define LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP __cpp_lib_experimental_concepts
@@ -472,10 +510,16 @@
 		#undef LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP
 		#define LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP 0L
 		#warning "LBAL_LIBCPP2A_CONCEPT_LIBRARY && LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP"
-	#elif !__has_include (<experimental/concepts>)
-		#undef LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP
-		#define LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP 0L
-		#warning "<experimental/concepts> not found"
+	#elif defined (__has_include)
+		#if !__has_include (<experimental/concepts>)
+			#undef LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP
+			#define LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP 0L
+			#warning "<experimental/concepts> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP
 
@@ -494,12 +538,13 @@
 
 //	__SEEME__ This was originally a TS (with competing versions), and so has
 //	experimental implementations we track.
-//	__SEEME__ Note that there is no separate SD-6 macro for the library header vs.
-//	the language feature, so we just use language feature macro; this will
+//	__SEEME__ Note that there is no separate SD-6 macro for the library header
+//	vs. the language feature, so we just use language feature macro; this will
 //	almost definitely change to __cpp_lib_coroutine in the future, but until it
 //	does, we’re following the approved proposal.
 #if !defined (LBAL_LIBCPP2A_COROUTINES)
-	#if __has_include (<coroutine>) && !LBAL_LIBCPP2A_COROUTINES_EXP \
+	#if defined (__has_include) && __has_include (<coroutine>) \
+			&& !LBAL_LIBCPP2A_COROUTINES_EXP \
 			&& (__cpp_coroutines || !defined (__cpp_coroutines))
 		#if __cpp_coroutines
 			#define LBAL_LIBCPP2A_COROUTINES __cpp_coroutines
@@ -514,10 +559,16 @@
 		#define LBAL_LIBCPP2A_COROUTINES 0L
 	#endif
 #elif LBAL_LIBCPP2A_COROUTINES
-	#if !__has_include (<coroutine>)
-		#undef LBAL_LIBCPP2A_COROUTINES
-		#define LBAL_LIBCPP2A_COROUTINES 0L
-		#warning "<coroutine> not found"
+	#if defined (__has_include)
+		#if !__has_include (<coroutine>)
+			#undef LBAL_LIBCPP2A_COROUTINES
+			#define LBAL_LIBCPP2A_COROUTINES 0L
+			#warning "<coroutine> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP2A_COROUTINES"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #else
 	#if !defined (LBAL_LIBCPP2A_COROUTINES_EXP)
@@ -526,7 +577,7 @@
 #endif	//	LBAL_LIBCPP2A_COROUTINES
 
 #if !defined (LBAL_LIBCPP2A_COROUTINES_EXP)
-	#if __has_include (<experimental/coroutine>) \
+	#if defined (__has_include) && __has_include (<experimental/coroutine>) \
 			&& (__cpp_coroutines || !defined (__cpp_coroutines))
 		#if __cpp_coroutines
 			#define LBAL_LIBCPP2A_COROUTINES_EXP __cpp_coroutines
@@ -541,18 +592,25 @@
 		#undef LBAL_LIBCPP2A_COROUTINES_EXP
 		#define LBAL_LIBCPP2A_COROUTINES_EXP 0L
 		#warning "LBAL_LIBCPP2A_COROUTINES && LBAL_LIBCPP2A_COROUTINES_EXP"
-	#elif !__has_include (<experimental/coroutine>)
-		#undef LBAL_LIBCPP2A_COROUTINES_EXP
-		#define LBAL_LIBCPP2A_COROUTINES_EXP 0L
-		#warning "<experimental/coroutine> not found"
+	#elif defined (__has_include)
+		#if !__has_include (<experimental/coroutine>)
+			#undef LBAL_LIBCPP2A_COROUTINES_EXP
+			#define LBAL_LIBCPP2A_COROUTINES_EXP 0L
+			#warning "<experimental/coroutine> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP2A_COROUTINES_EXP"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP2A_COROUTINES_EXP
 
 
 //	This functionality lives in <new>, so we have to rely on either the SD-6
 //	macro or an override to detect it; if no explicit override is set and
-//	the SD-6 macro is unavailable, we default to 0. Note that we neither track
-//	nor use experimental versions of this.
+//	the SD-6 macro is unavailable, we default to 0. Note that we do not track
+//	experimental versions of this.
+
 #if !defined (LBAL_LIBCPP2A_DESTROYING_DELETE)
 	#if __cpp_lib_destroying_delete
 		#define LBAL_LIBCPP2A_DESTROYING_DELETE __cpp_lib_destroying_delete
@@ -604,17 +662,23 @@
 
 //	There is no SD-6 macro, yet.
 #if !defined (LBAL_LIBCPP2A_SPAN)
-	#if __has_include (<span>)
+	#if defined (__has_include) && __has_include (<span>)
 		//	__SEEME__ Value not yet assigned.
 		#define LBAL_LIBCPP2A_SPAN 1L
 	#else
 		#define LBAL_LIBCPP2A_SPAN 0L
 	#endif
 #elif LBAL_LIBCPP2A_SPAN
-	#if !__has_include (<span>)
-		#undef LBAL_LIBCPP2A_SPAN
-		#define LBAL_LIBCPP2A_SPAN 0L
-		#warning "<span> not found"
+	#if defined (__has_include)
+		#if !__has_include (<span>)
+			#undef LBAL_LIBCPP2A_SPAN
+			#define LBAL_LIBCPP2A_SPAN 0L
+			#warning "<span> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP2A_SPAN"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP2A_SPAN
 
@@ -656,7 +720,7 @@
 
 
 #if !defined (LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM)
-	#if __has_include (<syncstream>) \
+	#if defined (__has_include) && __has_include (<syncstream>) \
 			&& (__cpp_lib_syncstream || !defined (__cpp_lib_syncstream))
 		#if __cpp_lib_syncstream
 			#define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM __cpp_lib_syncstream
@@ -668,16 +732,22 @@
 		#define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM 0L
 	#endif
 #elif LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
-	#if !__has_include (<syncstream>)
-		#undef LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
-		#define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM 0L
-		#warning "<syncstream> not found"
+	#if defined (__has_include)
+		#if !__has_include (<syncstream>)
+			#undef LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
+			#define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM 0L
+			#warning "<syncstream> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
 
 
 #if !defined (LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE)
-	#if __has_include (<compare>) \
+	#if defined (__has_include) && __has_include (<compare>) \
 			&& (__cpp_lib_three_way_comparison || !defined (__cpp_lib_three_way_comparison))
 		#if __cpp_lib_three_way_comparison
 			#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE __cpp_lib_three_way_comparison
@@ -689,10 +759,16 @@
 		#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE 0L
 	#endif
 #elif LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
-	#if !__has_include (<compare>)
-		#undef LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
-		#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE 0L
-		#warning "<compare> not found"
+	#if defined (__has_include)
+		#if !__has_include (<compare>)
+			#undef LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
+			#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE 0L
+			#warning "<compare> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
 
@@ -716,7 +792,8 @@
 //	Networking functionality spans an array of new headers; we only check for
 //	the presence of the convenience header, <net>.
 #if !defined (LBAL_LIBCPPTS_NETWORKING)
-	#if __has_include (<net>) && !LBAL_LIBCPPTS_NETWORKING_EXP \
+	#if defined (__has_include) && __has_include (<net>) \
+			&& !LBAL_LIBCPPTS_NETWORKING_EXP \
 			&& (__cpp_lib_net || !defined (__cpp_lib_net))
 		#if __cpp_lib_net
 			#define LBAL_LIBCPPTS_NETWORKING __cpp_lib_net
@@ -733,10 +810,16 @@
 		#define LBAL_LIBCPPTS_NETWORKING 0L
 	#endif
 #elif LBAL_LIBCPPTS_NETWORKING
-	#if !__has_include (<net>)
-		#undef LBAL_LIBCPPTS_NETWORKING
-		#define LBAL_LIBCPPTS_NETWORKING 0L
-		#warning "<net> not found"
+	#if defined (__has_include)
+		#if !__has_include (<net>)
+			#undef LBAL_LIBCPPTS_NETWORKING
+			#define LBAL_LIBCPPTS_NETWORKING 0L
+			#warning "<net> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPPTS_NETWORKING"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #else
 	#if !defined (LBAL_LIBCPPTS_NETWORKING_EXP)
@@ -745,7 +828,7 @@
 #endif	//	LBAL_LIBCPPTS_NETWORKING
 
 #if !defined (LBAL_LIBCPPTS_NETWORKING_EXP)
-	#if __has_include (<experimental/net>) \
+	#if defined (__has_include) && __has_include (<experimental/net>) \
 			&& (__cpp_lib_experimental_net || !defined (__cpp_lib_experimental_net))
 		#if __cpp_lib_experimental_net
 			#define LBAL_LIBCPPTS_NETWORKING_EXP __cpp_lib_experimental_net
@@ -760,19 +843,26 @@
 		#undef LBAL_LIBCPPTS_NETWORKING_EXP
 		#define LBAL_LIBCPPTS_NETWORKING_EXP 0L
 		#warning "LBAL_LIBCPPTS_NETWORKING && LBAL_LIBCPPTS_NETWORKING_EXP"
-	#elif !__has_include (<experimental/net>)
-		#undef LBAL_LIBCPPTS_NETWORKING_EXP
-		#define LBAL_LIBCPPTS_NETWORKING_EXP 0L
-		#warning "<experimental/net> not found"
+	#elif defined (__has_include)
+		#if !__has_include (<experimental/net>)
+			#undef LBAL_LIBCPPTS_NETWORKING_EXP
+			#define LBAL_LIBCPPTS_NETWORKING_EXP 0L
+			#warning "<experimental/net> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPPTS_NETWORKING_EXP"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPPTS_NETWORKING_EXP
 
 
 //	Networking functionality spans an array of new headers; we only check for
 //	the presence of the convenience header, <net>.
-//	__FIXME__ this may be incorrect for the networking extensions; check the TS.
+//	__FIXME__ this may be incorrect for networking extensions; check the TS.
 #if !defined (LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE)
-	#if __has_include (<net>) && !LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP \
+	#if defined (__has_include) && __has_include (<net>) \
+			&& !LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP \
 			&& (__cpp_lib_net_extensible || !defined (__cpp_lib_net_extensible))
 		#if __cpp_lib_net_extensible
 			#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE __cpp_lib_net_extensible
@@ -789,10 +879,16 @@
 		#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE 0L
 	#endif
 #elif LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE
-	#if !__has_include (<net>)
-		#undef LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE
-		#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE 0L
-		#warning "<net> not found"
+	#if defined (__has_include)
+		#if !__has_include (<net>)
+			#undef LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE
+			#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE 0L
+			#warning "<net> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #else
 	#if !defined (LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP)
@@ -801,7 +897,7 @@
 #endif	//	LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE
 
 #if !defined (LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP)
-	#if __has_include (<experimental/net>) \
+	#if defined (__has_include) && __has_include (<experimental/net>) \
 			&& (__cpp_lib_experimental_net_extensible || !defined (__cpp_lib_experimental_net_extensible))
 		#if __cpp_lib_experimental_net_extensible
 			#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP __cpp_lib_experimental_net_extensible
@@ -816,21 +912,30 @@
 		#undef LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP
 		#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP 0L
 		#warning "LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE && LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP"
-	#elif !__has_include (<experimental/net>)
-		#undef LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP
-		#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP 0L
-		#warning "<experimental/net> not found"
+	#elif defined (__has_include)
+		#if !__has_include (<experimental/net>)
+			#undef LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP
+			#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP 0L
+			#warning "<experimental/net> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP
 
 
-//	This functionality lives in <memory>, and requires either the SD-6 macro
-//	or an override to detect it; if no explicit override is set and the SD-6
-//	macro is unavailable, we default to 0.
-//	__SEEME__ It might make sense to check for the existence of an experimental
-//	version of <memory> when using __cpp_lib_experimental_observer_ptr. For
-//	now, we don’t over-think it since there are no examples in the wild to
-//	consider.
+/*
+	This functionality lives in <memory>, and requires either the SD-6 macro
+	or an override to detect it; if no explicit override is set and the SD-6
+	macro is unavailable, we default to 0.
+
+	__SEEME__ It might make sense to check for the existence of an experimental
+	version of <memory> when using __cpp_lib_experimental_observer_ptr. For
+	now, we don’t over-think it since there are no examples in the wild to
+	consider.
+*/
 #if !defined (LBAL_LIBCPPTS_OBSERVER_PTR)
 	#if !LBAL_LIBCPPTS_OBSERVER_PTR_EXP && __cpp_lib_observer_ptr
 		#define LBAL_LIBCPPTS_OBSERVER_PTR __cpp_lib_observer_ptr
