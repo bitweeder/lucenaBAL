@@ -33,7 +33,12 @@ cmake_minimum_required (VERSION 3.15)
 
 
 # Forbid poisoning the source tree, ’cuz we’re authoritarian that way. Note,
-# though, that CMake will have already left a few droppings at this point.
+# though, that CMake will have already left a few droppings at this point, so
+# maintaining a clean source directory in the face of a determined user is
+# probably s hopeless endeavor.
+#
+# __SEEME__ Consider adding some entries to `.gitignore` to avoid polluting
+# future commits.
 if ("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
     message (FATAL_ERROR "FATAL: In-source builds are not allowed. "
         "You must create a separate directory for build files.")
@@ -44,7 +49,7 @@ endif()
 set (PROJECT_VERSION_MAJOR 2)
 set (PROJECT_VERSION_MINOR 0)
 set (PROJECT_VERSION_PATCH 0)
-set (PROJECT_VERSION_TWEAK 13)
+set (PROJECT_VERSION_TWEAK 14)
 
 set (LBAL_ABI_VERSION 2)
 
@@ -90,7 +95,7 @@ include (CMakeDependentOption)
 
 option (LBAL_BUILD_DOCS "Build documentation" OFF)
 
-# CMAKE_SYSTEM_NAME is expected to be set correctly somewhere, e.g., as a
+# `CMAKE_SYSTEM_NAME` is expected to be set correctly somewhere, e.g., as a
 # command line option is cross-compiling. Note that as of CMake 3.14, the
 # various Apple OS’s an be targeted individually, so the full list of
 # recognized and supported names is {"Darwin", "iOS", "tvOS", "watchOS",
@@ -106,15 +111,35 @@ option (LBAL_BUILD_DOCS "Build documentation" OFF)
 set (CMAKE_CXX_VISIBILITY_PRESET hidden)
 set (CMAKE_VISIBILITY_INLINES_HIDDEN 1)
 
-# Listing out individual features is a bit silly as it creates too much
-# coupling, and attempting to get by with proxies is brittle. Note that
-# CXX_STANDARD appears to be completely useless for its intended purpose
-# since it’s viewed as an unenforced suggestion; we set it anyway. Also,
-# note that this is probably unreliable under MSVC, but we can just invoke
-# “/permissive-” explicitly there.
-set (CMAKE_CXX_STANDARD 17)
-set (CMAKE_CXX_STANDARD_REQUIRED ON)
-set (CMAKE_CXX_EXTENSIONS OFF)
+# Request the latest available C++ Standard. CMake doesn’t offer a “latest”
+# option, so we manually specify the latest Standard understood by our minimum
+# required CMake version. Setting `CMAKE_CXX_STANDARD_REQUIRED` to `OFF` allows
+# us to fall back gracefully, while `CMAKE_CXX_EXTENSIONS OFF` prevents us from
+# unintentionally relying on compiler-specific behaviors. The latter may be
+# undesirable from a user perspective, but it can be overridden.
+#
+# __SEEME__ Setting the target Standard directly is discouraged by CMake, which
+# prefers listing out individual language features required by the code. This
+# is a bit silly as it creates too much coupling. Attempting to get by with
+# proxies, e.g., picking one or two representative features of a desired
+# Standard, is brittle. Unfortunately, a feature laundry list is what CMake
+# expects in order to provide the best, most predictable compilation outcomes.
+# Additionally, `CXX_STANDARD` appears to be completely useless for its
+# intended purpose since it’s viewed as an unenforced suggestion, e.g., under
+# MSVC, requiring us to invoke explicit workarounds that don’t have a fully
+# equivalent effect. All that said, we, we set the global values here, anyway,
+# as a clear declaration of intent.
+if(NOT "${CMAKE_CXX_STANDARD}")
+	set(CMAKE_CXX_STANDARD 20)
+endif()
+
+if(NOT "${CMAKE_CXX_STANDARD_REQUIRED}")
+	set (CMAKE_CXX_STANDARD_REQUIRED OFF)
+endif()
+
+if(NOT "${CMAKE_CXX_EXTENSIONS}")
+	set(CMAKE_CXX_EXTENSIONS OFF)
+endif()
 
 
 #[[#############################################################################
