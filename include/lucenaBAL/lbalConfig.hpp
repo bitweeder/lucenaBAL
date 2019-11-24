@@ -179,6 +179,49 @@
 
 
 /**
+	@name Environment
+
+	@brief Identify characteristics of the build evironment
+
+	@details These provide data identifying top-level characteristics of the
+	build environment that are used elsewhere in the library, but that may also
+	have value to clients. More specialized information is collected and
+	exposed elsewhere.
+
+	@{
+*/
+
+/**
+	@def LBAL_CONFIG_cpp_version
+
+	@brief Identify the Standard C++ dialect being used
+
+	@details In a Standard-conforming world, `__cplusplus` would be all you
+	need to do this. Unfortunately, we are not in a Standard-conforming world.
+
+	It is strongly recommended to not rely on this value for feature testing,
+	but rather use the appropriate token as defined in
+	`lucenaBAL/lbalFeatureSetup.hpp`.
+
+	@remarks __SEEME__ Microsoft Visual Studio stopped setting __cplusplus in
+	the expected manner, but replaced the utility of it with a proprietary
+	macro, `_MSVC_LANG`. We use it as an analog. Note that `_MSVC_LANG` is not
+	available prior to MSVS 2015 Update 3.
+*/
+#ifndef LBAL_CONFIG_cpp_version
+	#ifdef _MSVC_LANG
+		#define LBAL_CONFIG_cpp_version _MSVC_LANG
+	#else
+		#define LBAL_CONFIG_cpp_version __cplusplus
+	#endif
+#else
+	#error "Do not define LBAL_CONFIG_cpp_version outside of this header"
+#endif
+
+///	@}	Environment
+
+
+/**
 	@name Settings
 
 	@brief Configure the library itself
