@@ -748,7 +748,7 @@
 /**
 	@name LBAL_TYPE
 	These identify characteristics of certain POD types for a given compiler;
-	preprocessor definitions are used since sizeof can’t be used by the
+	preprocessor definitions are used since `sizeof` can’t be used by the
 	preprocessor (reliably). These can be defined since we have special
 	knowledge of the compile/build flags that wouldn’t necessarily be
 	available to conforming portable code.
@@ -758,8 +758,8 @@
 
 /**
 	@def LBAL_TYPE_HAS_INT64
-	native 64-bit ints - including usigned ints - as int64_t and
-	uint64_t (and possibly also long long and unsigned long long,
+	native 64-bit `int`s - including `usigned int`s - as `int64_t` and
+	`uint64_t` (and possibly also `long long` and `unsigned long long`,
 	depending)
 */
 #ifndef LBAL_TYPE_HAS_INT64
@@ -768,8 +768,8 @@
 
 /**
 	@def LBAL_TYPE_HAS_INT128
-	native 128-bit ints - including usigned ints - as __int128_t and
-	__uint128_t
+	native 128-bit `ints` - including `usigned int`s - as `__int128_t` and
+	`__uint128_t`
 */
 #ifndef LBAL_TYPE_HAS_INT128
 	#define LBAL_TYPE_HAS_INT128 0
@@ -777,7 +777,7 @@
 
 /**
 	@def LBAL_TYPE_EXACT_WIDTH_INTEGERS
-	availability of C99 exact width int types
+	availability of C99 exact width `int` types
 */
 #ifndef LBAL_TYPE_EXACT_WIDTH_INTEGERS
 	#define LBAL_TYPE_EXACT_WIDTH_INTEGERS 0
@@ -785,7 +785,7 @@
 
 /**
 	@def LBAL_TYPE_DOUBLE_GT_FLOAT
-	double is distinct from float
+	`double` is distinct from `float`
 */
 #ifndef LBAL_TYPE_DOUBLE_GT_FLOAT
 	#define LBAL_TYPE_DOUBLE_GT_FLOAT 0
@@ -793,7 +793,7 @@
 
 /**
 	@def LBAL_TYPE_LONG_DOUBLE_GT_DOUBLE
-	long double is distinct from double
+	`long double` is distinct from `double`
 */
 #ifndef LBAL_TYPE_LONG_DOUBLE_GT_DOUBLE
 	#define LBAL_TYPE_LONG_DOUBLE_GT_DOUBLE 0
@@ -801,7 +801,7 @@
 
 /**
 	@def LBAL_TYPE_WCHAR_T_IS_16_BITS
-	if this is 0, wchar_t is assumed to be a 32-bit integer type
+	if this is `0`, `wchar_t` is assumed to be a 32-bit integer type
 */
 #ifndef LBAL_TYPE_WCHAR_T_IS_16_BITS
 	#define LBAL_TYPE_WCHAR_T_IS_16_BITS 0
@@ -823,9 +823,9 @@
 	@brief File system requires UTF-16 encoding.
 
 	@details It is assumed that the file system uses UTF-8 encoding unless this
-	feature conditional is set. Really
+	feature conditional is set.
 
-	@remarks __APIME__ Only necessary for Windows.
+	@remarks __APIME__ Really only necessary for Windows.
 */
 #ifndef LBAL_FEATURE_UTF16_FILE_SYSTEM
 	#define LBAL_FEATURE_UTF16_FILE_SYSTEM 0
@@ -2494,12 +2494,12 @@
 
 	https://wg21.link/p0024r2
 
-		This is set in this header. No wrapper is provided; the
-		functionality would be good to have, but challenging and messy to
-		implement effectively. Note that by itself, this macro does not
-		measure compliance with the Working Group paper; for that, use
-		LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS. Note that we
-		neither track nor use experimental versions of this.
+	This is set in this header. No wrapper is provided; the
+	functionality would be good to have, but challenging and messy to
+	implement effectively. Note that by itself, this macro does not
+	measure compliance with the Working Group paper; for that, use
+	LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS. Note that we
+	neither track nor use experimental versions of this.
 */
 #ifndef LBAL_LIBCPP17_PARALLEL_ALGORITHM
 	#define LBAL_LIBCPP17_PARALLEL_ALGORITHM 0
