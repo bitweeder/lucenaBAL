@@ -2398,7 +2398,7 @@
 	https://wg21.link/p0067r5
 	https://wg21.link/p0682r1
 
-	@remarks __SEEME__ This got weird since the functions got moved to their
+	@remarks __SEEME__ This got weird since the functions were moved to their
 	own header and their signatures were altered, post-Standardization, all as
 	part of a Defect Report resolution.
 */

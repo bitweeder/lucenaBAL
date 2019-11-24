@@ -22,12 +22,11 @@
 	Load in any dependencies we’ll need to perform our library tests.
 */
 
-//	std
-//	__SEEME__ We always guard inclusion of system headers when using MSVS due
-//	its noisiness at high warning levels.
-#if defined (_MSC_VER) && defined (_WIN32)
-	#pragma warning (push, 0)
-#endif
+//	__SEEME__ We load this first, for once, since some of its macros are needed
+//	for the following evaluation. This will have no impact on how any
+//	subsequently-included std headers are evaluated.
+#include <lucenaBAL/lbalConfig.hpp>
+
 
 /*
 	First, make sure any SD-6 macros that are available are defined. This is
@@ -90,14 +89,6 @@
 	*/
 	#include <ciso646>
 #endif
-
-#if defined (_MSC_VER) && defined (_WIN32)
-	#pragma warning (pop)
-#endif
-
-
-//	lbal
-#include <lucenaBAL/lbalConfig.hpp>
 
 
 /*------------------------------------------------------------------------------

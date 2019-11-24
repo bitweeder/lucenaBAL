@@ -59,10 +59,6 @@
 	changes to our C++ Standard Library runtime ABI between major OS releases,
 	but our engineers forgot to remove the affected headers from our
 	development tools releases for several years.”
-
-	@remarks __FIXME__ Add `__cplusplus` guards to header inclusion, as simple
-	availability may be an insufficient test if an older std variant is being
-	used.
 */
 
 
@@ -72,7 +68,6 @@
 //	lbal
 #include <lucenaBAL/lbalConfig.hpp>
 #include <lucenaBAL/lbalFeatureSetup.hpp>
-
-
-
-
+	//	Note that we need to do the full Feature setup here instead of just
+	//	Library setup since some of our library feature availability may be
+	//	dependent on Platform tests, among other things.

@@ -32,10 +32,10 @@
 	Apple libc++ Standard Library
 */
 
-//	This duplicates the test peformed to include this file in the first place.
+//	This duplicates the test performed to include this file in the first place.
 #if defined (_LIBCPP_VERSION) && defined (__apple_build_version__)
 	/*
-		__SEEME__ We use __apple_build_version__ as a proxy for detecting
+		__SEEME__ We use `__apple_build_version__` as a proxy for detecting
 		Apple’s hacked-up version of libc++; there doesn’t appear to be a
 		reliable way to actually determine this.
 
