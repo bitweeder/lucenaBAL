@@ -192,7 +192,7 @@
 */
 
 /**
-	@def LBAL_CONFIG_cpp_version
+	@def LBAL_cpp_version
 
 	@brief Identify the Standard C++ dialect being used
 
@@ -207,14 +207,14 @@
 	macro, `_MSVC_LANG`. We use it as an analog. Note that `_MSVC_LANG` is not
 	available prior to MSVS 2015 Update 3.
 */
-#ifndef LBAL_CONFIG_cpp_version
+#ifndef LBAL_cpp_version
 	#ifdef _MSVC_LANG
-		#define LBAL_CONFIG_cpp_version _MSVC_LANG
+		#define LBAL_cpp_version _MSVC_LANG
 	#else
-		#define LBAL_CONFIG_cpp_version __cplusplus
+		#define LBAL_cpp_version __cplusplus
 	#endif
 #else
-	#error "Do not define LBAL_CONFIG_cpp_version outside of this header"
+	#error "Do not define LBAL_cpp_version outside of this header"
 #endif
 
 ///	@}	Environment
