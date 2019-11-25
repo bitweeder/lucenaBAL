@@ -27,8 +27,8 @@
 #]]
 
 # This minimum is for
-#   - correct cross-compilation for all Apple OS’s (3.14)
-#   - correct Xcode project generation (3.15)
+#	- correct cross-compilation for all Apple OS’s (3.14)
+#	- correct Xcode project generation (3.15)
 cmake_minimum_required (VERSION 3.15)
 
 
@@ -93,11 +93,24 @@ configure_file (
 include (CTest)
 include (CMakeDependentOption)
 
-option (LBAL_BUILD_DOCS "Build documentation" OFF)
+option (
+	LBAL_BUILD_DOCS
+	"Build documentation"
+	OFF)
+
+option (
+	LBAL_CONFIG_DISABLE_PEDANTIC_WARNINGS
+	"Control whether to generate warnings from the Library when anything unusual happens"
+	OFF)
+
+if (LBAL_CONFIG_DISABLE_PEDANTIC_WARNINGS)
+	# By default, `LBAL_CONFIG_enable_pedantic_warnings` is set to `1`.
+	add_compile_definitions(LBAL_CONFIG_enable_pedantic_warnings=0)
+endif()
 
 # `CMAKE_SYSTEM_NAME` is expected to be set correctly somewhere, e.g., as a
-# command line option is cross-compiling. Note that as of CMake 3.14, the
-# various Apple OS’s an be targeted individually, so the full list of
+# command line option when cross-compiling. Note that as of CMake 3.14, the
+# various Apple OS’s can be targeted individually, so the full list of
 # recognized and supported names is {"Darwin", "iOS", "tvOS", "watchOS",
 # "Windows", "Linux", "FreeBSD", "NetBSD", "OpenBSD"}.
 
@@ -190,7 +203,7 @@ target_compile_definitions (
 # __FIXME__ Simulator targets for Apple OS’s are effectively unavailable, as
 # they will not be configured properly. Even with proper configuration,
 # it will be necessary to manually specify Xcode generator arguments to CMake
-# on the command line, or rely on making correct choices Xcode itself if not
+# on the command line, or rely on making correct choices in Xcode itself if not
 # building from the command line.
 if ("${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
 	target_compile_definitions (

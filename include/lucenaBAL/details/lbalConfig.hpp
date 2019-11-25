@@ -17,11 +17,12 @@
 
 	@details The contents of this file should not be changed unless all
 	binaries that depend on it in the scope of a given project are rebuilt at
-	the same time. In particular, a client that modifies this file risks
-	crashing dependent code that is not using the same settings.
+	the same time. In particular, a client that modifies this file or overrides
+	the values assigned to its tokens risks crashing dependent code that is not
+	using the same settings.
 
 	Settings available to client code that can be set independently of the
-	global settings are also documented here, as well as certain situational
+	global settings may also be documented here, as well as certain situational
 	settings. Such settings should typically be set in the client code’s own
 	headers.
 */
@@ -225,8 +226,16 @@
 
 	@brief Configure the library itself
 
-	@details At this time, none of these will change any resulting binaries, but
-	will instead provide different levels of feedback at build-time.
+	@details These can be set by simply passing macro definitions on the
+	command-line to the compiler or build system.
+
+	@remarks At this time, none of these will change any resulting binaries,
+	but will instead provide different levels of feedback at build-time.
+
+	@remarks Due to certain limitations of CMake, when using that build system,
+	it is necessary to use proxies specific to CMake in the form of `options`
+	in order to pass macro definitions on to the compiler. See `CMakeLists.txt`
+	for details, in the “option setup” section.
 
 	@{
 */
@@ -234,12 +243,16 @@
 /**
 	@def LBAL_CONFIG_enable_pedantic_warnings
 
-	@brief Issue compile-time warnings whenever anything unusual happens
+	@brief Client setting to control certain compile-time warnings
 
-	@details Generally, this should not be set to `0`, as “anything unusual” is
-	almost definitely going to be something undesirable. If the client is in
-	the rare situation of tripping these warnings and finding them spurious,
-	however, this setting offers a blunt instrument to silence them.
+	@details Generally, this should be set to `1`, as the associated warnings
+	trigger whenever anything unusual happens, and “anything unusual” is almost
+	definitely going to be something undesirable. If the client is in the rare
+	situation of tripping these warnings and finding them spurious, however,
+	this setting offers a blunt instrument to silence them.
+
+	@remarks This can be set per-tranlation unit, globally, or any combination
+	in-between.
 */
 #ifndef LBAL_CONFIG_enable_pedantic_warnings
 	#define LBAL_CONFIG_enable_pedantic_warnings 1

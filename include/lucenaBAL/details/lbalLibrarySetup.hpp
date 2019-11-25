@@ -25,7 +25,7 @@
 //	__SEEME__ We load this first, for once, since some of its macros are needed
 //	for the following evaluation. This will have no impact on how any
 //	subsequently-included std headers are evaluated.
-#include <lucenaBAL/lbalConfig.hpp>
+#include <lucenaBAL/details/lbalConfig.hpp>
 
 
 /*
