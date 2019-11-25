@@ -13,13 +13,14 @@
 /**
 	@file lucenaBAL/lucenaBAL.hpp
 
-	@brief Metaheader providing full access to the entire library
+	@brief Metaheader including the entire lucenaBAL header-only library
 
-	@details This master header file includes all of the Lucena Build
-	Abstraction Library public interface headers. It is compatible with usage
-	as a prefix header, and it is also safe for use in precompiled headers.
-	Library clients should simply include this header rather than the
-	component headers.
+	@details This master header provides access to the entire Lucena Build
+	Abstraction Library, handling feature detection and macro configuration for
+	the current compiler, the current Standard Library implementation, and any
+	platform details that impact the build environment. It is compatible with
+	usage as a prefix header, and it is also safe for use in precompiled
+	headers.
 */
 
 
@@ -54,42 +55,20 @@
 
 	All that’s needed to make use of lucenaBAL is to issue
 	`#include <lucenaBAL/lucenaBAL.hpp>` in each participating file. As a
-	header-only library with no dependencies beyond a nominal inclusion of
-	`<ciso646>` from the C++ Standard Library, there’s nothing else to link or
-	install. Additionally, there’s not much to configure, though you can see
-	[Configuration](@ref lbal_config) for options.
+	header-only library with no dependencies beyond including `<ciso646>`—and
+	`<version>`, if available—from the C++ Standard Library, there’s nothing
+	else to link or install. Additionally, there’s not much to configure,
+	though you can see [Configuration](@ref lbal_config) for options.
 
 	The library itself comprises a large collection of preprocessor macros,
 	grouped loosely into [build-time descriptors](@ref lbal_build_env),
 	[feature identifiers](@ref lbal_features), and
-	[linker decorators](@ref lbal_decorators). See the relevant sections for
-	more information.
-
-
-	@section lbal_structure Header Organization
-
-	lucenaBAL comprises a small number of public headers and some number of
-	private headers. Generally, only the public `<lucenaBAL/lucenaBAL.hpp>`
-	header needs to be directly referenced. Additionally, there are:
-
-	- `<lucenaBAL/lbalConfig.hpp>`, which is used to configure the library as
-	described in [Configuration](@ref lbal_config)
-	- `<lucenaBAL/lbalFeatureSetup.hpp>`, which describes:
-		- detectors for [platform](@ref lbal_platform),
-		[compiler](@ref lbal_compiler), and [library](@ref lbal_library)
-		features
-		- [build-time descriptors](@ref lbal_build_env)
-		- [built-in functions](@ref lbal_builtins)
-		- [linker decorators](@ref lbal_decorators)
-	- `<lucenaBAL/lbalVersion.hpp>`, which sets up
-	[Standard Library feature detection](@ref lbal_library) macros.
-	These supplement whatever may have been set up by
-	`<lucenaBAL/lbalFeatureSetup.hpp>`; the two sets are not fully orthogonal,
-	as the build environment may influence the availability of certain Standard
-	Library features.
-
-	The private headers are included by these as necessary, and should never be
-	invoked directly.
+	[linker decorators](@ref lbal_decorators). Names are generally modeled on
+	their equivalent [SD-6 macros](https://wg21.link/sd6)m if any, with the
+	addition of a short C++ Standard version tag e.g., `LBAL_LIBCPP17_OPTIONAL`
+	vs `__cpp_lib_optional`. the LBAL tags should be used preferentially as
+	they capture more information than the SD-6 tags. See the relevant sections
+	for more information.
 
 
 	@section lbal_notes Header Notes
@@ -132,5 +111,4 @@
 */
 
 #include <lucenaBAL/lbalConfig.hpp>
-#include <lucenaBAL/lbalFeatureSetup.hpp>
-#include <lucenaBAL/lbalVersion.hpp>
+#include <lucenaBAL/details/lbalFeatureSetup.hpp>

@@ -200,8 +200,7 @@
 	need to do this. Unfortunately, we are not in a Standard-conforming world.
 
 	It is strongly recommended to not rely on this value for feature testing,
-	but rather use the appropriate token as defined in
-	`lucenaBAL/lbalFeatureSetup.hpp`.
+	but rather use the appropriate feature token.
 
 	@remarks __SEEME__ Microsoft Visual Studio stopped setting __cplusplus in
 	the expected manner, but replaced the utility of it with a proprietary

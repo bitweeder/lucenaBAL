@@ -10,25 +10,6 @@
 
 ------------------------------------------------------------------------------*/
 
-/**
-	@file lucenaBAL/lbalFeatureSetup.hpp
-
-	@brief Metaheader which bundles headers containing the bulk of the library
-
-	@details This master header file handles feature detection and macro
-	configuration for the compiler, the Standard Library implementation, and
-	platform details that impact the build environment. Users should include
-	`<lucenaBAL/lucenaBAL.hpp>`, which includes this, in favor of attempting to
-	cherry-pick headers.
-
-	The goal of this header is to safeguard a functionality baseline for the
-	build environment in terms of compiler and Standard Library features. We
-	currently require C++17 compiler support—or at least close emulation
-	thereof. Note that the detail headers may evolve in compatibility-breaking
-	ways in the future as we track compliance with newer language features,
-	but such changes should be documented and restricted to point releases.
-*/
-
 #pragma once
 
 
@@ -45,8 +26,6 @@
 		//	of <ciso646> abuse, providing the same functionality as well as
 		//	(eventually) acting as a clearinghouse for SD-6 macros related to
 		//	library features.
-		//	__SEEME__ This must not be lbalVersion.hpp, as that header depends on
-		//	this one.
 #else
 	#include <ciso646>
 		//	In C++, this is a do-nothing header we include just for the side
@@ -2333,10 +2312,34 @@
 	we choose instead to assume the feature is not available. This behavior may
 	be overridden by the client by explicitly setting the relevant macro. For
 	example, if we’re unable to determine whether there is library support for
-	Complex literals, we’ll set `LBAL_LIBCPP14_COMPLEX_UDLS` to `0`; however,
+	`Complex` literals, we’ll set `LBAL_LIBCPP14_COMPLEX_UDLS` to `0`; however,
 	if the client is aware of support, they can manually set it `1` prior to
 	our testing, and we will not override this setting unless we explicitly
 	determine that it is incorrect.
+
+	Certain `LBAL_LIBCPP*_*` macros have corresponding `LBAL_LIBCPP*_*_EXP`
+	macros; these latter macros are only set to a non-zero value if an
+	experimental header is being used, which typically happens as a result of a
+	given feature being part of a [Technical Specification](https://en.cppreference.com/w/cpp/experimental)
+	that has not yet been incorporated into the Standard. Note that
+	`LBAL_LIBCPP*_*` and `LBAL_LIBCPP*_*_EXP` are mutually exclusive:
+
+	- If a Standard Library implementation ships with both regular and
+	experimental versions of a given header, the experimental version will be
+	ignored.
+	- If both `LBAL_LIBCPP*_*` and `LBAL_LIBCPP*_*_EXP` are user-defined to
+	non-zero values, and the Standard header exists, `LBAL_LIBCPP*_*_EXP`
+	will be set to `0` and a warning will be generated.
+	- If `LBAL_LIBCPP*_*` has been user-set to `0` and `LBAL_LIBCPP*_*_EXP`
+	left undefined, `LBAL_LIBCPP*_*_EXP` will also be set to `0`, even if the
+	experimental feature in question is available; this is done to prevent
+	surprises in the event that a feature was explicitly disabled, and then
+	later an experimental version of the same feature is made available. The
+	reverse, case, though, is not true; if left undefined, `LBAL_LIBCPP*_*`
+	will always be assigned a value based on actual feature detection.
+
+	Finally, note that if either macro is user-set to `0`, its value will not
+	be changed, regardless of circumstances.
 
 	@remarks __APIME__ As implied above, sometimes it is possible to definitely
 	determine that a feature is _not_ available, even if we cannot definitelty
@@ -2357,7 +2360,7 @@
 	macOS 10.15. This is specifically _not_ a runtime check, but rather happens
 	at compile-time.
 
-	@remarks __APIME__ There is some ambiguity in whether we track the
+	@remarks __APIME__ There is some ambiguity regarding when we track the
 	experimental version of a feature. Generally, we don’t bother if:
 	- no major compiler ever shipped an experimental version
 	- no major compiler ever shipped an experimental version in a non-preview
@@ -2377,6 +2380,16 @@
 
 	@{
 */
+
+/**
+	@def LBAL_LIBCPP17_ADRESSOF_CONSTEXPR
+	@brief `std::addressof` should be `constexpr`, as per defect report
+	@details Equivalent SD-6 macro: `__cpp_lib_addressof_constexpr`
+	- [201603L](https://wg21.link/LWG2296)
+*/
+#ifndef LBAL_LIBCPP17_ADRESSOF_CONSTEXPR
+	#define LBAL_LIBCPP17_ADRESSOF_CONSTEXPR 0
+#endif
 
 /**
 	@def LBAL_LIBCPP17_ANY
@@ -2498,8 +2511,9 @@
 	functionality would be good to have, but challenging and messy to
 	implement effectively. Note that by itself, this macro does not
 	measure compliance with the Working Group paper; for that, use
-	LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS. Note that we
-	neither track nor use experimental versions of this.
+	LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS.
+
+	@remarks __APIME__ We neither track nor use experimental versions of this.
 */
 #ifndef LBAL_LIBCPP17_PARALLEL_ALGORITHM
 	#define LBAL_LIBCPP17_PARALLEL_ALGORITHM 0
@@ -2855,16 +2869,15 @@
 
 	Equivalent SD-6 macro: none
 
-	This is effectively provided by `<lucenaBAL/lbalVersion.hpp>`, which works
-	in conjunction with `<version>`—if present— to identify all of the
-	available Standard Library features. Note that unlike `<version>`,
-	`<lucenaBAL/lbalVersion.hpp>` actually tracks “correct” implementations
-	only. So, for example, Xcode’s false positives for `<any>` and friends
-	won’t be reported as support for the library feature. This behavior will be
-	carried forward, and so it is recommended to _always_ include
-	`<lucenaBAL/lbalVersion.hpp>`, even when including `<version>` directly,
-	and rely on the `LBAL_LIBCPP` tokens where they are available. See
-	`<lucenaBAL/lbalVersion.hpp>` for details.
+	This identifies whether `<version>` is present and include-able given the
+	current C++ Standard dialect in use (some implementations may choose to
+	back-port <version> to earlier releases).
+
+	Note that unlike `<version>`, lucenaBAL tracks “correct”, functioning
+	implementations only. So, for example, Xcode’s false positives for `<any>`
+	and friends won’t be reported as support for the library feature. For this
+	reason, it is recommended to _always_ favor the lucenaBAL reporting of a
+	given feature’s availability, even when `<version>` is available.
 
 	https://wg21.link/p0754r2 __PDF__
 */

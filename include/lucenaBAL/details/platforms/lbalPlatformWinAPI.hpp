@@ -8,7 +8,7 @@
 	This file is distributed under the University of Illinois Open Source
 	License. See license/License.txt for details.
 
-	See lbalFeatureSetup.hpp for descriptions of the various macros and flags.
+	See `lbalFeatureSetup.hpp` for descriptions of the various tokens.
 
 ------------------------------------------------------------------------------*/
 

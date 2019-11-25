@@ -53,7 +53,7 @@ Under Windows:
     > cmake --build . --config Release
     > cmake --build . --target install
 
-This will generate headers, test binaries, and docs in the build directory, then copy the headers  to `/usr/local/include/lucenaBAL` (or the equivalent specified directory) and copy any support files to `/usr/local/share/lucebaBAL` (or the equivalent specified directory). Tests and docs will remain in the build directory. Since lucenaBAL is a header-only library, it is not necessary to link it; simply `#include <lucenaBAL/lucenaBAL.hpp>`. Usage information is available in the documentation and in the headers, primarily in `<lucenaBAL/lbalFeatureSetup.hpp>`. Note that the docs are generated from the headers.
+This will generate headers, test binaries, and docs in the build directory, then copy the headers  to `/usr/local/include/lucenaBAL` (or the equivalent specified directory) and copy any support files to `/usr/local/share/lucebaBAL` (or the equivalent specified directory). Tests and docs will remain in the build directory. Since lucenaBAL is a header-only library, it is not necessary to link it; simply `#include <lucenaBAL/lucenaBAL.hpp>`. Usage information is available in the documentation and in the headers themselves. Note that the docs are generated from the headers, primarily  `<lucenaBAL/details/lbalFeatureSetup.hpp>`.
 
 ## Prerequisites
 
