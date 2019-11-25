@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“lblTestConfig.hpp”
+	“lbalTestConfig.hpp”
 	Copyright © 2015-2019 Lucena
 	All Rights Reserved
 
@@ -15,7 +15,7 @@
 
 
 //	lbal
-#include <lucenaBAL/lbalConfig.hpp>
+#include <lucenaBAL/details/lbalConfig.hpp>
 	//	This file MUST be included first.
 
 

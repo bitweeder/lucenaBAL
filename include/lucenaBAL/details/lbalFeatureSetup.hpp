@@ -40,7 +40,7 @@
 
 
 //	lbal
-#include <lucenaBAL/lbalConfig.hpp>
+#include <lucenaBAL/details/lbalConfig.hpp>
 
 #include <lucenaBAL/details/lbalDefinitionTests.hpp>
 #include <lucenaBAL/details/lbalPlatformSetup.hpp>
