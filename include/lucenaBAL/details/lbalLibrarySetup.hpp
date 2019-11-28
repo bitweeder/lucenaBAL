@@ -16,88 +16,29 @@
 #pragma once
 
 
-/*------------------------------------------------------------------------------
-	Header Inclusion
-
-	Load in any dependencies we’ll need to perform our library tests.
-*/
-
-//	__SEEME__ We load this first, for once, since some of its macros are needed
-//	for the following evaluation. This will have no impact on how any
-//	subsequently-included std headers are evaluated.
-#include <lucenaBAL/details/lbalConfig.hpp>
-
-
-/*
-	First, make sure any SD-6 macros that are available are defined. This is
-	done carefully in stages in order to avoid loading unnecessary headers
-	while also avoiding compilation errors if we try to load a header that does
-	not exist. Where we lack confidence in availability, we act conservatively.
-
-	__SEEME__ It’s possible that an implementation of a pre-C++20 Standard will
-	define these macros in the relevant headers themselves, which would be
-	arguably self-defeating. We don’t bother dealing with that particular
-	pathology directly, instead we just assign default macro values based on
-	whatever we can glean without loading every imaginable header.
-*/
-#if !defined (LBAL_LIBCPP2A_VERSION)
-	#if defined (__has_include)
-		#if __has_include (<version>)
-			#define LBAL_LIBCPP2A_VERSION 1L
-		#else
-			#define LBAL_LIBCPP2A_VERSION 0L
-		#endif
-	#else
-		/*
-			In this case, we don’t have `__has_include`, and can’t safely
-			determine whether `<version>` exists. We leave
-			`LBAL_LIBCPP2A_VERSION` undefined for now, and come back to it
-			after acquiring sufficient metadata to make a better guess.
-		*/
-	#endif
-#elif LBAL_LIBCPP2A_VERSION
-	#ifdef (__has_include)
-		#if !__has_include (<version>)
-			/*
-				The client claims `<version>` exists, but it doesn’t. We
-				override.
-			*/
-			#undef LBAL_LIBCPP2A_VERSION
-			#define LBAL_LIBCPP2A_VERSION 0L
-			#warning "<version> not found; resetting LBAL_LIBCPP2A_VERSION"
-		#endif
-	#else
-		/*
-			We don’t block on this, as the header may have been back-ported,
-			even if the means to test for the header is not available, and the
-			client somehow accommodated this.
-		*/
-		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate user-set LBAL_LIBCPP2A_VERSION; attempting to include <version>"
-		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
-	#endif
-#endif	//	LBAL_LIBCPP2A_VERSION
-
-#if LBAL_LIBCPP2A_VERSION
-	#include <version>
-#else
+//	std
+#include <ciso646>
 	/*
 		In C++, this is a do-nothing header we include just for the side
 		effects: by convention, the Standard Library implementation will be
-		configured and many assorted compiler-dependent feature detection
-		macros will be defined.
+		configured. We need this for the library implementation detection
+		below. Note that in the C++20 world, we would use <version> for this
+		purpose.
 	*/
-	#include <ciso646>
-#endif
+
+
+//	lbal
+#include <lucenaBAL/details/lbalConfig.hpp>
 
 
 /*------------------------------------------------------------------------------
-	Library Version Checks
+	SD-6 Macro Initialization
 
-	These are tokens that can’t be adequately defined without some extrinsic
+	Make sure any SD-6 macros that are available are defined. Note that there
+	are tokens that can’t be adequately defined without some extrinsic
 	knowledge of the library involved, usually requiring knowledge of the
-	capabilities of specific versions. We handle these first before attempting
-	the more generalized tests.
+	capabilities of its specific version. The implementation-specific headers
+	take care of all of this initialization.
 */
 
 #if defined (_LIBCPP_VERSION)
@@ -131,25 +72,27 @@
 #endif
 
 
-#if !LBAL_LIBCPP2A_VERSION
-	/*
-		If we get here, then we were not initially able to determine whether to
-		set `LBAL_LIBCPP2A_VERSION`, so we collected additional information and
-		gave ourselves more opportunities to make a determination, and were
-		still ultimately unable to determine whether `<version` is available.
-		We choose conservatively.
-	*/
-	#define LBAL_LIBCPP2A_VERSION 0L
-#endif
-
-
 /*------------------------------------------------------------------------------
 	Definition Tests
 
 	These are intended to be platform-agnostic. Platform-aware and
 	compiler-aware checks should have been handled in the previous section or
-	earlier.
+	earlier, which will effectively override any assignments we would otherwise
+	have made here.
+
+	__SEEME__ It’s possible that an implementation of a pre-C++20 Standard will
+	define these macros in the relevant headers themselves, which would be
+	arguably self-defeating. We don’t bother dealing with that particular
+	pathology directly, instead we just assign default macro values based on
+	whatever we can glean without loading every imaginable header.
 */
+
+#if !defined (LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR)
+	#if __cpp_lib_addressof_constexpr && (LBAL_cpp_version >= 201703L)
+		#define LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR __cpp_lib_addressof_constexpr
+	#endif
+#endif	//	LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR
+
 
 //	Note that we do not track experimental versions of this.
 #if !defined (LBAL_LIBCPP17_ANY)

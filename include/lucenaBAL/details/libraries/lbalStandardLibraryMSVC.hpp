@@ -16,26 +16,9 @@
 #pragma once
 
 
-//	std
-//	__SEEME__ We always guard inclusion of system headers when using MSVS due
-//	its noisiness at high warning levels.
-#if defined (_MSC_VER) && defined (_WIN32)
-	#pragma warning (push, 0)
-#endif
-
-#include <ciso646>
-	//	In C++, this is a do-nothing header we include just for the side
-	//	effects: the Standard Library implementation will be configured
-	//	and many assorted compiler-dependent feature detection macros will
-	//	be defined.
-
-#if defined (_MSC_VER) && defined (_WIN32)
-	#pragma warning (pop)
-#endif
-
-
 //	lbal
 #include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/details/lbalVersionSetup.hpp>
 
 
 /*------------------------------------------------------------------------------
@@ -50,6 +33,25 @@
 		we’re running MSVC and and whether no other Standard Library detection
 		test has passed.
 	*/
+
+	#if !LBAL_LIBCPP2A_VERSION
+		/*
+			If we get here, then we were not initially able to determine
+			whether to set `LBAL_LIBCPP2A_VERSION`. We know that the Standard
+			Library bundled with MSVS 2019 16.2 or later always has an
+			implementation of `<version>`, so we include it. Practically
+			speaking, though, this step should never happen since we should
+			have been able to detect its availability using other means at an
+			earlier stage.
+		*/
+		#if (_MSC_VER >= 1922)
+			#define LBAL_LIBCPP2A_VERSION 1L
+
+			#include <version>
+		#else
+			#define LBAL_LIBCPP2A_VERSION 0L
+		#endif
+	#endif
 
 	#if (_MSC_VER >= 1911)
 		#if __cpp_lib_thread_hardware_interference_size

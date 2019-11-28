@@ -16,26 +16,9 @@
 #pragma once
 
 
-//	std
-//	__SEEME__ We always guard inclusion of system headers when using MSVS due
-//	its noisiness at high warning levels.
-#if defined (_MSC_VER) && defined (_WIN32)
-	#pragma warning (push, 0)
-#endif
-
-#include <ciso646>
-	//	In C++, this is a do-nothing header we include just for the side
-	//	effects: the Standard Library implementation will be configured
-	//	and many assorted compiler-dependent feature detection macros will
-	//	be defined.
-
-#if defined (_MSC_VER) && defined (_WIN32)
-	#pragma warning (pop)
-#endif
-
-
 //	lbal
 #include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/details/lbalVersionSetup.hpp>
 
 
 /*------------------------------------------------------------------------------
@@ -44,6 +27,23 @@
 
 //	This duplicates the test peformed to include this file in the first place.
 #if defined (_LIBCPP_VERSION) && !defined (__apple_build_version__)
+	#if !LBAL_LIBCPP2A_VERSION
+		/*
+			If we get here, then we were not initially able to determine
+			whether to set `LBAL_LIBCPP2A_VERSION`. We know that libc++ 7 or
+			later always has an implementation of `<version>`, so we include
+			it. Note that _LIBCPP_VERSION will have been initialized correctly
+			by the earlier inclusion of `lbalVersionSetup.hpp`.
+		*/
+		#if (_LIBCPP_VERSION >= 7000)
+			#define LBAL_LIBCPP2A_VERSION 1L
+
+			#include <version>
+		#else
+			#define LBAL_LIBCPP2A_VERSION 0L
+		#endif
+	#endif
+
 	#if (_LIBCPP_VERSION >= 6000)
 		#if !__cpp_lib_launder
 			#define LBAL_LIBCPP17_LAUNDER 201606L
@@ -71,7 +71,9 @@
 
 
 	//	Set up identifiers
-	#define LBAL_NAME_STANDARD_LIBRARY u8"libc++ version " LBAL_Stringify_ (_LIBCPP_VERSION)
+	#define LBAL_NAME_STANDARD_LIBRARY \
+		u8"libc++ version " LBAL_Stringify_ (_LIBCPP_VERSION)
+
 	#define LBAL_TARGET_STANDARD_LIBRARY_LIBCPP 1
 #else
 	#error "lbalStandardLibraryLibCpp.hpp was directly included with the incorrect Standard Library implementation"

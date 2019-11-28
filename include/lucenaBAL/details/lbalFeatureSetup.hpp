@@ -13,32 +13,6 @@
 #pragma once
 
 
-//	std
-#if defined (_MSC_VER) && defined (_WIN32)
-	//	We guard inclusion of system headers when using MSVS due to its
-	//	noisiness at high warning levels.
-	#pragma warning (push, 0)
-#endif
-
-#if __has_include (<version>)
-	#include <version>
-		//	Once this header is universally available, it will take the place
-		//	of <ciso646> abuse, providing the same functionality as well as
-		//	(eventually) acting as a clearinghouse for SD-6 macros related to
-		//	library features.
-#else
-	#include <ciso646>
-		//	In C++, this is a do-nothing header we include just for the side
-		//	effects: the Standard Library implementation will be configured
-		//	and many assorted compiler-dependent feature detection macros will
-		//	be defined.
-#endif
-
-#if defined (_MSC_VER) && defined (_WIN32)
-	#pragma warning (pop)
-#endif
-
-
 //	lbal
 #include <lucenaBAL/details/lbalConfig.hpp>
 
@@ -2382,13 +2356,13 @@
 */
 
 /**
-	@def LBAL_LIBCPP17_ADRESSOF_CONSTEXPR
+	@def LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR
 	@brief `std::addressof` should be `constexpr`, as per defect report
 	@details Equivalent SD-6 macro: `__cpp_lib_addressof_constexpr`
 	- [201603L](https://wg21.link/LWG2296)
 */
-#ifndef LBAL_LIBCPP17_ADRESSOF_CONSTEXPR
-	#define LBAL_LIBCPP17_ADRESSOF_CONSTEXPR 0
+#ifndef LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR
+	#define LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR 0
 #endif
 
 /**
