@@ -18,7 +18,8 @@ Imagine that you are working on a project that would benefit from using the C++1
     #endif
     
     /**
-        Sort the supplied vector in place and return a reference to it, using a parallelized sort if available.
+        Sort the supplied vector in place and return a reference to it,
+        using a parallelized sort if available.
     */
     inline std::vector<int> & sort_vector (std::vector<int> & io_vector)
     {
@@ -57,7 +58,7 @@ This will generate headers, test binaries, and docs in the build directory, then
 
 ## Prerequisites
 
-lucenaBAL currently requires a C++17 compiler. It has been tested with gcc 7 thru 9, Microsoft Visual Studio 15.7 thru 16.3, Xcode 9 thru 11, and llvm/clang 6 thru 9. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
+lucenaBAL requires a C++11 or better compiler. It has been tested with gcc 6 thru 9+, Microsoft Visual Studio 2015 Update 3 thru MSVS 2019 16.3+, Xcode 9 thru 11+, and llvm/clang 6 thru 9+. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
 
 ## Building, Installing, and Testing
 

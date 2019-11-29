@@ -11,7 +11,7 @@
 ------------------------------------------------------------------------------*/
 
 /**
-	@file lucenaBAL/lbalConfig.hpp
+	@file lucenaBAL/details/lbalConfig.hpp
 
 	@brief Documents the internal options used in a given build of lucenaBAL.
 

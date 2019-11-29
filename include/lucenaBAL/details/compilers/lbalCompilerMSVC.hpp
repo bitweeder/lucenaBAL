@@ -29,12 +29,12 @@
 	//	__FIXME__ This is unnecessarily conservative. In practice, things are
 	//	unlikely to get squiffy until we go back before MSVS 2015 Update 3
 	//	(`_MSC_FULL_VER` at least `190024210`).
-	#if (_MSC_VER < 1914)
-		#error "Settings are only known to be valid for MSVS 2017 15.7+."
+	#if (_MSC_FULL_VER < 190024210)
+		#error "Settings are only known to be valid for MSVS 2015 Update 3+."
 	#endif
 
-	#if LBAL_cpp_version < 201703L
-		#error "std=c++17 or higher is required"
+	#if LBAL_cpp_version < 201103L
+		#error "std=c++11 or higher is required"
 	#endif
 
 

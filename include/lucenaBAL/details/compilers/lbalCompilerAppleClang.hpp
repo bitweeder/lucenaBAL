@@ -30,6 +30,7 @@
 	//	and __clang_patchlevel__ macros, so they are no longer in line with
 	//	other clang distributions. We can test whether we’re in Apple clang by
 	//	looking for __APPLE_CC__, __apple_build_version__, or some other macro.
+	//
 	//	__SEEME__ Apple LLVM 9.1 is the first release that actually advertises
 	//	C++17 support (as per __cplusplus); previously, it only had C++14 with
 	//	almost all C++17 extensions. Note that libc++ is still broken due to
@@ -40,14 +41,21 @@
 		//	Tested with a minimum of Xcode 10.0; the bundled compiler and
 		//	Standard Library are roughly compatible with clang 6 and libc++,
 		//	while adding some Apple-proprietary stuff. The most recently tested
-		//	version is from Xcode 11.0.
+		//	version is from Xcode 11.2.1.
 
-		//	__SEEME__ We’re should actually be compatible with LLVM 9.4+, but
-		//	we don’t test with it any more.
+		//	__SEEME__ Technically, we should be able to function perfectly well
+		//	with older versions of Apple LLVM, but Apple deprecates anything
+		//	more than about 3 years old, so it would be somewhat masochistic to
+		//	fight it and understake all that testing ourselves. Note that
+		//	iterations of the current lucenaBAL design were previously tested
+		//	with versions as far back as  LLVM 9.4+, and the largely-compatible
+		//	older design was tested with much older versions going all the way
+		//	back to the Apple gcc days. However, support for CFM, Carbon, etc,
+		//	all got dropped long ago, so this is academic.
 	#endif
 
-	#if LBAL_cpp_version < 201703L
-		#error "std=c++17 or higher is required"
+	#if LBAL_cpp_version < 201103L
+		#error "std=c++11 or higher is required"
 	#endif
 
 	//	Identify processor and characteristics.
@@ -171,7 +179,7 @@
 
 
 	//	__SEEME__ Apparently, __STDC_VERSION__ only gets set if we’re using the
-	//	C compiler, so a test doesn’t work. Since we’re requiring C++17 or
+	//	C compiler, so a test doesn’t work. Since we’re requiring C++11 or
 	//	greater, we assume the following is available since it was a
 	//	requirement of C++11.
 	#define LBAL_C99_PREPROCESSOR 1

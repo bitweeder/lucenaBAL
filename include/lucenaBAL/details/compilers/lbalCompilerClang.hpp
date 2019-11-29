@@ -26,7 +26,7 @@
 	__FIXME__ Support could be added for c2/clang, possibly in its own file.
 */
 
-//	This duplicates the test peformed to include this file in the first place.
+//	This duplicates the test performed to include this file in the first place.
 #if defined (__clang__) && defined (__llvm__)
 	#if (__clang_major__ < 6)
 		#error "Settings are only valid for clang 6.0+"
@@ -35,8 +35,8 @@
 		//	Apple LLVM section.
 	#endif
 
-	#if LBAL_cpp_version < 201703L
-		#error "std=c++17 or higher is required"
+	#if LBAL_cpp_version < 201103L
+		#error "std=c++11 or higher is required"
 	#endif
 
 	//	Identify processor and characteristics.

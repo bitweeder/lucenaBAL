@@ -29,23 +29,20 @@
 	//	Note that gcc guarantees that all system-specific predefined macros in
 	//	the reserved namespace (i.e., __xxx__) will never resolve to 0 if they
 	//	are actually defined.
+	//
 	//	__SEEME__ This must appear after clang, as the llvm derivatives have a
 	//	tendency to define gcc’s macros; Apple LLVM, in particular, likes to
 	//	pretend to be a crufty, ancient version of gcc.
-	#if (__GNUC__ < 7) || ((__GNUC__ == 7) && (__GNUC_MINOR__ < 3))
+	#if (__GNUC__ < 6) || ((__GNUC__ == 6) && (__GNUC_MINOR__ < 3))
 		#error "Settings are only known to be valid for gcc 7.3+."
 			//	For reference, 6.3 supports all C++11 and C++14 features except
 			//	garbage collection. gcc 7 is required for many C++17 language
 			//	features; note, though, that it does not support
 			//	std::filesystem or the Parallelism TS.
-			//
-			//	Any support we offer for gcc versions older than 7.3 is
-			//	incidental and untested, though it could be made official with
-			//	some validation.
 	#endif
 
-	#if LBAL_cpp_version < 201703L
-		#error "std=c++17 or higher is required"
+	#if LBAL_cpp_version < 201103L
+		#error "std=c++11 or higher is required"
 	#endif
 
 
