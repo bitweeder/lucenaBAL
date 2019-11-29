@@ -16,24 +16,6 @@
 #pragma once
 
 
-//	std
-//	__SEEME__ We always guard inclusion of system headers when using MSVS due
-//	its noisiness at high warning levels.
-#if defined (_MSC_VER) && defined (_WIN32)
-	#pragma warning (push, 0)
-#endif
-
-#include <ciso646>
-	//	In C++, this is a do-nothing header we include just for the side
-	//	effects: the Standard Library implementation will be configured
-	//	and many assorted compiler-dependent feature detection macros will
-	//	be defined.
-
-#if defined (_MSC_VER) && defined (_WIN32)
-	#pragma warning (pop)
-#endif
-
-
 //	lbal
 #include <lucenaBAL/details/lbalConfig.hpp>
 

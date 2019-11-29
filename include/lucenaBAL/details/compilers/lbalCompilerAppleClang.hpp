@@ -16,14 +16,6 @@
 #pragma once
 
 
-//	std
-#include <ciso646>
-	//	In C++, this is a do-nothing header we include just for the side
-	//	effects: the Standard Library implementation will be configured
-	//	and many assorted compiler-dependent feature detection macros will
-	//	be defined.
-
-
 //	lbal
 #include <lucenaBAL/details/lbalConfig.hpp>
 

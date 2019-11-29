@@ -18,10 +18,13 @@
 
 //	std
 #include <ciso646>
-	//	In C++, this is a do-nothing header we include just for the side
-	//	effects: the Standard Library implementation will be configured
-	//	and many assorted compiler-dependent feature detection macros will
-	//	be defined.
+	/*
+		In C++, this is a do-nothing header we include just for the side
+		effects: by convention, the Standard Library implementation will be
+		configured. We need this for the library implementation detection
+		below. Note that in the C++20 world, we would use <version> for this
+		purpose.
+	*/
 
 
 //	lbal
