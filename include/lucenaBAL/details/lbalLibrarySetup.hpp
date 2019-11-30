@@ -85,11 +85,6 @@
 	arguably self-defeating. We don’t bother dealing with that particular
 	pathology directly; instead we just assign default macro values based on
 	whatever we can glean without loading every imaginable header.
-
-	__SEEME__ Some implementations may choose to make a library feature
-	available to an earlier C++ release than the the first officislly supported
-	one. It can be difficult to intuit on which occasions this was done by
-	mistake.
 */
 
 #if !defined (LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR)

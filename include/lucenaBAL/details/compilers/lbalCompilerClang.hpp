@@ -18,6 +18,7 @@
 
 //	lbal
 #include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/details/lbalKnownVersions.hpp>
 
 
 /*------------------------------------------------------------------------------
@@ -35,7 +36,7 @@
 		//	Apple LLVM section.
 	#endif
 
-	#if LBAL_cpp_version < 201103L
+	#if LBAL_cpp_version < LBAL_CPP11_VERSION
 		#error "std=c++11 or higher is required"
 	#endif
 
@@ -161,88 +162,90 @@
 
 
 	//	C++11 features
+	//	We check for “C++11 or greater” (as opposed to “greater than C++98”)
+	//	since our earliest supported dialect is C++11.
 
 	#if (__cpp_alias_templates >= 200704L)
 		#define LBAL_CPP11_ALIAS_TEMPLATES __cpp_alias_templates
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_ALIAS_TEMPLATES 200704L
 	#endif
 
 	#if (__cpp_attributes >= 200809L)
 		#define LBAL_CPP11_ATTRIBUTES __cpp_attributes
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_ATTRIBUTES 200809L
 	#endif
 
 	#if (__cpp_constexpr >= 200704L)
 		#define LBAL_CPP11_CONSTEXPR __cpp_constexpr
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_CONSTEXPR 200704L
 	#endif
 
 	#if (__cpp_decltype >= 200707L)
 		#define LBAL_CPP11_DECLTYPE __cpp_decltype
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_DECLTYPE 200707L
 	#endif
 
 	#if (__cpp_delegating_constructors >= 200604L)
 		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS __cpp_delegating_constructors
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_DELEGATING_CONSTRUCTORS 200604L
 	#endif
 
 	#if (__cpp_inheriting_constructors >= 200802L)
 		#define LBAL_CPP11_INHERITING_CONSTRUCTORS __cpp_inheriting_constructors
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_INHERITING_CONSTRUCTORS 200802L
 	#endif
 
 	#if (__cpp_initializer_lists >= 200806L)
 		#define LBAL_CPP11_INITIALIZER_LISTS __cpp_initializer_lists
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_INITIALIZER_LISTS 200806L
 	#endif
 
 	#if (__cpp_lambdas >= 200907L)
 		#define LBAL_CPP11_LAMBDAS __cpp_lambdas
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_LAMBDAS 200907L
 	#endif
 
 	#if (__cpp_nsdmi >= 200809L)
 		#define LBAL_CPP11_NSDMI __cpp_nsdmi
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_NSDMI 200809L
 	#endif
 
 	#if (__cpp_range_based_for >= 200907L)
 		#define LBAL_CPP11_RANGE_BASED_FOR __cpp_range_based_for
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_RANGE_BASED_FOR 200907L
 	#endif
 
 	#if (__cpp_raw_strings >= 200710L)
 		#define LBAL_CPP11_RAW_STRINGS __cpp_raw_strings
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_RAW_STRINGS 200710L
 	#endif
 
 	#if (__cpp_ref_qualifiers >= 200710L)
 		#define LBAL_CPP11_REF_QUALIFIERS __cpp_ref_qualifiers
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_REF_QUALIFIERS 200710L
 	#endif
 
 	#if (__cpp_rvalue_references >= 200610L)
 		#define LBAL_CPP11_RVALUE_REFERENCES __cpp_rvalue_references
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_RVALUE_REFERENCES 200610L
 	#endif
 
 	#if (__cpp_static_assert >= 200410L)
 		#define LBAL_CPP11_STATIC_ASSERT __cpp_static_assert
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_STATIC_ASSERT 200410L
 	#endif
 
@@ -254,83 +257,71 @@
 
 	#if (__cpp_unicode_characters >= 200704L)
 		#define LBAL_CPP11_UNICODE_CHARACTERS __cpp_unicode_characters
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_UNICODE_CHARACTERS 200704L
 	#endif
 
 	#if (__cpp_unicode_literals >= 200710L)
 		#define LBAL_CPP11_UNICODE_LITERALS __cpp_unicode_literals
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_UNICODE_LITERALS 200710L
 	#endif
 
 	#if (__cpp_user_defined_literals >= 200809L)
 		#define LBAL_CPP11_USER_DEFINED_LITERALS __cpp_user_defined_literals
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_USER_DEFINED_LITERALS 200809L
 	#endif
 
 	#if (__cpp_variadic_templates >= 200704L)
 		#define LBAL_CPP11_VARIADIC_TEMPLATES __cpp_variadic_templates
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_VARIADIC_TEMPLATES 200704L
 	#endif
 
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(carries_dependency) >= 200809L)
 		#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY __has_cpp_attribute(carries_dependency)
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY 200809L
 	#endif
 
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(noreturn) >= 200809L)
 		#define LBAL_CPP11_ATTRIBUTE_NORETURN __has_cpp_attribute(noreturn)
-	#elif (LBAL_cpp_version >= 201103L)
+	#elif (LBAL_cpp_version >= LBAL_CPP11_VERSION)
 		#define LBAL_CPP11_ATTRIBUTE_NORETURN 200809L
 	#endif
 
 
 	//	C++14 features
+	//	clang has support SD-6 macros since 3.4; since we reqire 6+, we take
+	//	advantage of that knowledge to just use SD-6 macro values..
 
 	#if (__cpp_aggregate_nsdmi >= 201304L)
 		#define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
-	#elif (LBAL_cpp_version >= 201402L)
-		#define LBAL_CPP14_AGGREGATE_NSDMI 201304L
 	#endif
 
 	#if (__cpp_binary_literals >= 201304L)
 		#define LBAL_CPP14_BINARY_LITERALS __cpp_binary_literals
-	#elif (LBAL_cpp_version >= 201402L)
-		#define LBAL_CPP14_BINARY_LITERALS 201304L
 	#endif
 
 	#if (__cpp_constexpr >= 201304L)
 		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS __cpp_constexpr
-	#elif (LBAL_cpp_version >= 201402L)
-		#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 201304L
 	#endif
 
 	#if (__cpp_decltype_auto >= 201304L)
 		#define LBAL_CPP14_DECLTYPE_AUTO __cpp_decltype_auto
-	#elif (LBAL_cpp_version >= 201402L)
-		#define LBAL_CPP14_DECLTYPE_AUTO 201304L
 	#endif
 
 	#if (__cpp_generic_lambdas >= 201304L)
 		#define LBAL_CPP14_GENERIC_LAMBDAS __cpp_generic_lambdas
-	#elif (LBAL_cpp_version >= 201402L)
-		#define LBAL_CPP14_GENERIC_LAMBDAS 201304L
 	#endif
 
 	#if (__cpp_init_captures >= 201304L)
 		#define LBAL_CPP14_INIT_CAPTURES __cpp_init_captures
-	#elif (LBAL_cpp_version >= 201402L)
-		#define LBAL_CPP14_INIT_CAPTURES 201304L
 	#endif
 
 	#if (__cpp_return_type_deduction >= 201304L)
 		#define LBAL_CPP14_RETURN_TYPE_DEDUCTION __cpp_return_type_deduction
-	#elif (LBAL_cpp_version >= 201402L)
-		#define LBAL_CPP14_RETURN_TYPE_DEDUCTION 201304L
 	#endif
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid
@@ -341,14 +332,11 @@
 
 	#if (__cpp_variable_templates >= 201304L)
 		#define LBAL_CPP14_VARIABLE_TEMPLATES __cpp_variable_templates
-	#elif (LBAL_cpp_version >= 201402L)
-		#define LBAL_CPP14_VARIABLE_TEMPLATES 201304L
+
 	#endif
 
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(deprecated) >= 201309L)
 		#define LBAL_CPP14_ATTRIBUTE_DEPRECATED __has_cpp_attribute(deprecated)
-	#elif (LBAL_cpp_version >= 201402L)
-		#define LBAL_CPP14_ATTRIBUTE_DEPRECATED 201309L
 	#endif
 
 
@@ -356,134 +344,90 @@
 
 	#if (__cpp_aggregate_bases >= 201603L)
 		#define LBAL_CPP17_AGGREGATE_BASES __cpp_aggregate_bases
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_AGGREGATE_BASES 201603L
 	#endif
 
 	#if (__cpp_aligned_new >= 201606L)
 		#define LBAL_CPP17_ALIGNED_NEW __cpp_aligned_new
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_ALIGNED_NEW 201606L
 	#endif
 
 	#if (__cpp_capture_star_this >= 201603)
 		#define LBAL_CPP17_CAPTURE_STAR_THIS __cpp_capture_star_this
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_CAPTURE_STAR_THIS 201603
 	#endif
 
 	#if (__cpp_constexpr >= 201603L)
 		#define LBAL_CPP17_CONSTEXPR_LAMBDA __cpp_constexpr
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_CONSTEXPR_LAMBDA 201603L
 	#endif
 
 	#if (__cpp_deduction_guides >= 201606L)
 		#define LBAL_CPP17_DEDUCTION_GUIDES __cpp_deduction_guides
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_DEDUCTION_GUIDES 201606L
 	#endif
 
 	#if (__cpp_deduction_guides >= 201611L)
 		#define LBAL_CPP17_DEDUCTION_GUIDES_NB __cpp_deduction_guides
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_DEDUCTION_GUIDES_NB 201611L
 	#endif
 
 	#if (__cpp_deduction_guides >= 201703L)
 		#define LBAL_CPP17_DEDUCTION_GUIDES_DR __cpp_deduction_guides
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_DEDUCTION_GUIDES_DR 201703L
 	#endif
 
 	#if (__cpp_enumerator_attributes >= 201411L)
 		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES __cpp_enumerator_attributes
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_ENUMERATOR_ATTRIBUTES 201411L
 	#endif
 
 	#if (__cpp_fold_expressions >= 201411L)
 		#define LBAL_CPP17_FOLD_EXPRESSIONS __cpp_fold_expressions
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_FOLD_EXPRESSIONS 201411L
 	#endif
 
 	#if (__cpp_fold_expressions >= 201603L)
 		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED __cpp_fold_expressions
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_FOLD_EXPRESSIONS_REVISED 201603L
 	#endif
 
 	#if (__cpp_guaranteed_copy_elision >= 201606L)
 		#define LBAL_CPP17_GUARANTEED_COPY_ELISION __cpp_guaranteed_copy_elision
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_GUARANTEED_COPY_ELISION 201606L
 	#endif
 
 	#if (__cpp_hex_float >= 201603L)
 		#define LBAL_CPP17_HEX_FLOAT __cpp_hex_float
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_HEX_FLOAT 201603L
 	#endif
 
 	#if (__cpp_if_constexpr >= 201606L)
 		#define LBAL_CPP17_IF_CONSTEXPR __cpp_if_constexpr
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_IF_CONSTEXPR 201606L
 	#endif
 
 	#if (__cpp_inheriting_constructors >= 201511L)
 		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED __cpp_inheriting_constructors
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED 201511L
 	#endif
 
 	#if (__cpp_inline_variables >= 201606L)
 		#define LBAL_CPP17_INLINE_VARIABLES __cpp_inline_variables
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_INLINE_VARIABLES 201606L
 	#endif
 
 	#if (__cpp_namespace_attributes >= 201411L)
 		#define LBAL_CPP17_NAMESPACE_ATTRIBUTES __cpp_namespace_attributes
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_NAMESPACE_ATTRIBUTES 201411L
 	#endif
 
 	#if (__cpp_noexcept_function_type >= 201510L)
 		#define LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE __cpp_noexcept_function_type
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_NOEXCEPT_FUNCTION_TYPE 201510L
 	#endif
 
 	#if (__cpp_nontype_template_args >= 201411L)
 		#define LBAL_CPP17_NONTYPE_TEMPLATE_ARGS __cpp_nontype_template_args
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_NONTYPE_TEMPLATE_ARGS 201411L
 	#endif
 
 	#if (__cpp_nontype_template_parameter_auto >= 201606L)
 		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO __cpp_nontype_template_parameter_auto
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_NONTYPE_TEMPLATE_PARAMETER_AUTO 201606L
 	#endif
 
 	#if (__cpp_range_based_for >= 201603L)
 		#define LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED __cpp_range_based_for
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED 201603L
 	#endif
 
 	#if (__cpp_static_assert >= 201411L)
 		#define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE __cpp_static_assert
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE 201411L
 	#endif
 
 	#if (__cpp_structured_bindings >= 201606L)
 		#define LBAL_CPP17_STRUCTURED_BINDINGS __cpp_structured_bindings
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_STRUCTURED_BINDINGS 201606L
 	#endif
 
 	//	As of clang 8, this is disabled by default in order to avoid a defect
@@ -495,26 +439,18 @@
 
 	#if (__cpp_variadic_using >= 201611L)
 		#define LBAL_CPP17_VARIADIC_USING __cpp_variadic_using
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_VARIADIC_USING 201611L
 	#endif
 
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(fallthrough) >= 201603L)
 		#define LBAL_CPP17_ATTRIBUTE_FALLTHROUGH __has_cpp_attribute(fallthrough)
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_ATTRIBUTE_FALLTHROUGH 201603L
 	#endif
 
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(maybe_unused) >= 201603L)
 		#define LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED __has_cpp_attribute(maybe_unused)
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED 201603L
 	#endif
 
 	#if defined(__has_cpp_attribute) && (__has_cpp_attribute(nodiscard) >= 201603L)
 		#define LBAL_CPP17_ATTRIBUTE_NODISCARD __has_cpp_attribute(nodiscard)
-	#elif (LBAL_cpp_version >= 201703L)
-		#define LBAL_CPP17_ATTRIBUTE_NODISCARD 201603L
 	#endif
 
 
@@ -524,26 +460,26 @@
 
 	//	__SEEME__ None of these have SD-6 macros, so we rely on a compiler
 	//	version check and a language test.
-	#if (__clang_major__ >= 6) && (LBAL_cpp_version > 201703L)
+	#if (__clang_major__ >= 6) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
 		#define LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 1L
 		#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 1L
 		#define LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 1L
 		#define LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION	1L
 	#endif
 
-	#if (__clang_major__ >= 8) && (LBAL_cpp_version > 201703L)
+	#if (__clang_major__ >= 8) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
 		#define LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS 1L
 		#define LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 1L
 	#endif
 
-	#if (__clang_major__ >= 9) && (LBAL_cpp_version > 201703L)
+	#if (__clang_major__ >= 9) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
 		#define LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION 1L
 		#define LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE 1L
 		#define LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS 1L
 		#define LBAL_CPP2A_VA_OPT 1L
 	#endif
 
-	#if (__clang_major__ >= 10) && (LBAL_cpp_version > 201703L)
+	#if (__clang_major__ >= 10) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
 		#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 1L
 	#endif
 

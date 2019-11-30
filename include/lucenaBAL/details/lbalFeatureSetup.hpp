@@ -879,13 +879,19 @@
 	preprocessor as required by C++11, and the C11 preprocessor as required by
 	C++2a.
 
-	@remarks __SEEME__ Some compilers, notably older MSVC versions, make select
-	language features from the Draft Standard available as extensions without
-	providing an opt-out, or in some cases, a way to cleanly detect them. Since
-	this state of affairs mostly cleared up in the C++14 era, and we only
-	officially support C++17 and later dialects, we don’t go out of our way to
-	expose such features. We do, however, note such occurrences, and may change
-	this policy in the future.
+	@remarks __SEEME__ Some implementations may choose to make a feature
+	available to an earlier C++ release than the the first officially supported
+	one. This can be done, for example, to make features available from a Draft
+	Standard. Generally, we don’t second-guess the implementation if they set
+	an SD-6 macro a particular—unless we have good reason to know it was set
+	incorrectly. More challenging is dealing with implementations that _don’t_
+	have SD-6 macros. Our approach in this case is to identify a feature as
+	available if the implementation is known to support it _and_ the Language
+	version in use is greater than the last unsupported version; this latter
+	condition catches the frequent convention of compilers identifying a future
+	unreleased dialect as the last Standard (e.g., 201103L) plus one (e.g.,
+	201104L), until the Standard is official and the the version changes (e.g.,
+	to 201402L).
 
 	@remarks __APIME__ Features prior to the C++2a Standard are represented by
 	tokens generally only if they have equivalent SD-6 tokens. Support can be
@@ -2340,6 +2346,20 @@
 	- no major compiler ever shipped an experimental version in a non-preview
 	release
 	- the experimental version is/was completely broken
+
+	@remarks __SEEME__ Some implementations may choose to make a feature
+	available to an earlier C++ release than the the first officially supported
+	one. This can be done, for example, to make features available from a Draft
+	Standard. Generally, we don’t second-guess the implementation if they set
+	an SD-6 macro a particular—unless we have good reason to know it was set
+	incorrectly. More challenging is dealing with implementations that _don’t_
+	have SD-6 macros. Our approach in this case is to identify a feature as
+	available if the implementation is known to support it _and_ the Language
+	version in use is greater than the last unsupported version; this latter
+	condition catches the frequent convention of compilers identifying a future
+	unreleased dialect as the last Standard (e.g., 201103L) plus one (e.g.,
+	201104L), until the Standard is official and the the version changes (e.g.,
+	to 201402L).
 
 	@{
 */
