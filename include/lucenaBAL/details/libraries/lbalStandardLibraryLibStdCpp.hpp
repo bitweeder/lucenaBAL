@@ -24,13 +24,13 @@
 /*------------------------------------------------------------------------------
 	libstdc++ Standard Library
 
-	__SEEME__ One of the great aggravations of libstdc++ is that there is no
-	simple way to figure out what version of the library you are using.
-	`__GLIBCXX__` is a release date, which can be interleaved across versions
-	of the library depending on whether there are minor releases and bug fixes.
-	We are forced to use `__GNUC__` as a proxy, which is not totally
-	unreasonable, as long as the user hasn’t done something pathological like
-	using an old libstdc++ implementation with a new compiler.
+	__SEEME__ One source of aggravation in libstdc++ is that there is no simple
+	way to figure out what version of the library you are using. `__GLIBCXX__`
+	is a release date, which can be interleaved across versions of the library
+	depending on whether there are minor releases and bug fixes. We are forced
+	to use `__GNUC__` as a proxy, which is not totally unreasonable, as long as
+	the user hasn’t done something pathological like using an old libstdc++
+	implementation with a new compiler.
 */
 
 //	This duplicates the test peformed to include this file in the first place.
@@ -55,7 +55,7 @@
 		#endif
 	#endif
 
-	#if (__GNUC__ >= 7)
+	#if (__GNUC__ >= 7) && (LBAL_cpp_version > LBAL_CPP14_VERSION)
 		#if __cpp_lib_launder
 			#define LBAL_LIBCPP17_LAUNDER __cpp_lib_launder
 		#else
@@ -69,14 +69,11 @@
 		#endif
 	#endif
 
-	#if (__GNUC__ >= 8)
+	#if (__GNUC__ >= 8) && (LBAL_cpp_version > LBAL_CPP14_VERSION)
 		//	__SEEME__ Only ints are supported; floats are forthcoming.
-//		#if __cpp_lib_to_chars
-//			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS __cpp_lib_to_chars
-//		#else
-//			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 201611L
-//		#endif
-		#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS	 0L
+		#if __cpp_lib_to_chars
+			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER __cpp_lib_to_chars
+		#endif
 
 		#define LBAL_LIBCPP2A_STD_ENDIAN 1L
 		#define LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER 1L
@@ -84,6 +81,11 @@
 
 	#if (__GNUC__ >= 9)
 		#define LBAL_LIBCPP2A_STD_REMOVE_CVREF 1L
+	#endif
+
+	#if LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER && \
+			LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP
+		#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS	 __cpp_lib_to_chars
 	#endif
 
 

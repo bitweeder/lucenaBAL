@@ -34,6 +34,10 @@
 			later always has an implementation of `<version>`, so we include
 			it. Note that _LIBCPP_VERSION will have been initialized correctly
 			by the earlier inclusion of `lbalVersionSetup.hpp`.
+
+			__SEEME__ libc++ 7 only included a token `<version>`; the first
+			meaningful iteration appeared in libc++ 8, but it was out of sync
+			with the SD-6 doc at the time (e.g., `std::endian`).
 		*/
 		#if (_LIBCPP_VERSION >= 7000)
 			#define LBAL_LIBCPP2A_VERSION 1L

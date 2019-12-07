@@ -48,6 +48,13 @@
 			libc++ 7 or later always has an implementation of `<version>`, so
 			we include it. Note that _LIBCPP_VERSION will have been initialized
 			correctly by the earlier inclusion of `lbalVersionSetup.hpp`.
+
+			__SEEME__ Apple LLVM inherited a token `<version>` from libc++ 7;
+			the first meaningful iteration appeared in libc++ 8, which ships—
+			somewhat intact—with Xcode 11. That iteration was out of sync with
+			the SD-6 doc, however, and has gotten even more out-of-sync. One of
+			the upshots is that we can’t fully trust the `<version>` bundled
+			with any shipping Xcode.
 		*/
 		#if (_LIBCPP_VERSION >= 7000)
 			#define LBAL_LIBCPP2A_VERSION 1L

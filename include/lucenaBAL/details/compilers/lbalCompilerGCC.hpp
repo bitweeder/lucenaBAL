@@ -51,9 +51,10 @@
 	#if (LBAL_GCC_VERSION < 60300))
 		#error "Settings are only known to be valid for gcc 6.3+."
 			//	For reference, 6.3 supports all C++11 and C++14 features except
-			//	garbage collection. gcc 7 is required for many C++17 language
+			//	garbage collection, while the 4.8 series is the earliest with
+			//	full C++11 support. gcc 7 is required for many C++17 language
 			//	features; note, though, that it does not support
-			//	std::filesystem or the Parallelism TS.
+			//	`std::filesystem` or the Parallelism TS.
 	#endif
 
 	#if LBAL_cpp_version < LBAL_CPP11_VERSION

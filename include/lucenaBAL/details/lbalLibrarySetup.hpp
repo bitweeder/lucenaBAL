@@ -75,10 +75,9 @@
 /*------------------------------------------------------------------------------
 	Definition Tests
 
-	These are intended to be platform-agnostic. Platform-aware and
-	compiler-aware checks should have been handled in the previous section or
-	earlier, which will effectively override any assignments we would otherwise
-	have made here.
+	These are platform-agnostic. Platform-aware and compiler-aware checks
+	should have been handled in the previous section or earlier, which will
+	effectively override any assignments we would otherwise have made here.
 
 	__SEEME__ It’s possible that an implementation of a pre-C++20 Standard will
 	define these macros in the relevant headers themselves, which would be
@@ -87,8 +86,10 @@
 	whatever we can glean without loading every imaginable header.
 */
 
+//	There isn’t a new header for this, so we rely strictly on the SD-6 macro
+//	here, and expect the implementation-specific files to pick up the slack.
 #if !defined (LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR)
-	#if __cpp_lib_addressof_constexpr && (LBAL_cpp_version >= 201703L)
+	#if __cpp_lib_addressof_constexpr
 		#define LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR __cpp_lib_addressof_constexpr
 	#endif
 #endif	//	LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR
@@ -100,17 +101,14 @@
 			&& (__cpp_lib_any || !defined (__cpp_lib_any))
 		#if __cpp_lib_any
 			#define LBAL_LIBCPP17_ANY __cpp_lib_any
-		#else
+		#elif (LBAL_cpp_version > LBAL_CPP14_VERSION)
 			#define LBAL_LIBCPP17_ANY 201606L
 		#endif
-	#else
-		#define LBAL_LIBCPP17_ANY 0L
 	#endif
 #elif LBAL_LIBCPP17_ANY
 	#if defined (__has_include)
 		#if !__has_include (<any>)
 			#undef LBAL_LIBCPP17_ANY
-			#define LBAL_LIBCPP17_ANY 0L
 			#warning "<any> not found"
 		#endif
 	#else
@@ -120,26 +118,34 @@
 	#endif
 #endif	//	LBAL_LIBCPP17_ANY
 
+#if !defined (LBAL_LIBCPP17_ANY)
+	#define LBAL_LIBCPP17_ANY 0L
+#endif
+
 
 //	This functionality was originally going to be stuffed into <utility>, but
 //	ended up getting its own header. Happily, this doesn’t end up impeding our
-//	ability to detect the feature.
+//	ability to detect the feature, except that the detection lies: no library
+//	currently offers a fully-conforming implementation, and the ones that offer
+//	partial implementations all set their SD-6 macros as if they were fully
+//	compliant. We’ve split this into two tokens to independently track integer
+//	and floating point conversions.
+//
+//	With this in mind, this detection method is simplistic, and really relies
+//	upon the implementation-specific versions for correctness.
 #if !defined (LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS)
 	#if defined (__has_include) && __has_include (<charconv>) \
 			&& (__cpp_lib_to_chars || !defined (__cpp_lib_to_chars))
 		#if __cpp_lib_to_chars
 			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS __cpp_lib_to_chars
-		#else
+		#elif (LBAL_cpp_version > LBAL_CPP14_VERSION)
 			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 201611L
 		#endif
-	#else
-		#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 0L
 	#endif
 #elif LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS
 	#if defined (__has_include)
 		#if !__has_include (<charconv>)
 			#undef LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS
-			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 0L
 			#warning "<charconv> not found"
 		#endif
 	#else
@@ -148,6 +154,62 @@
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS
+
+#if !defined (LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP)
+	#if defined (__has_include) && __has_include (<charconv>) \
+			&& (__cpp_lib_to_chars || !defined (__cpp_lib_to_chars))
+		#if __cpp_lib_to_chars
+			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP __cpp_lib_to_chars
+		#elif (LBAL_cpp_version > LBAL_CPP14_VERSION)
+			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP 201611L
+		#endif
+	#endif
+#elif LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP
+	#if defined (__has_include)
+		#if !__has_include (<charconv>)
+			#undef LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP
+			#warning "<charconv> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
+	#endif
+#endif	//	LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP
+
+#if !defined (LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER)
+	#if defined (__has_include) && __has_include (<charconv>) \
+			&& (__cpp_lib_to_chars || !defined (__cpp_lib_to_chars))
+		#if __cpp_lib_to_chars
+			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER __cpp_lib_to_chars
+		#elif (LBAL_cpp_version > LBAL_CPP14_VERSION)
+			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER 201611L
+		#endif
+	#endif
+#elif LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER
+	#if defined (__has_include)
+		#if !__has_include (<charconv>)
+			#undef LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER
+			#warning "<charconv> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
+	#endif
+#endif	//	LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER
+
+#if !defined (LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS)
+	#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 0L
+#endif
+
+#if !defined (LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP)
+	#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP 0L
+#endif
+
+#if !defined (LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER)
+	#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER 0L
+#endif
 
 
 //	Use LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS to detect full
