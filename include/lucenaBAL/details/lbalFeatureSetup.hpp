@@ -2397,6 +2397,30 @@
 	#define LBAL_LIBCPP14_COMPLEX_UDLS 0
 #endif
 
+/**
+	@def LBAL_LIBCPP14_EXCHANGE_FUNCTION
+	@brief Add `std::exchange` utility function
+	@details Equivalent SD-6 macro: `__cpp_lib_exchange_function`
+	- [201304L](https://wg21.link/N3668)
+
+	@sa `<utility>`
+*/
+#ifndef LBAL_LIBCPP14_EXCHANGE_FUNCTION
+	#define LBAL_LIBCPP14_EXCHANGE_FUNCTION 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP
+	@brief Add heterogeneous comparison lookup to associative containers
+	@details Equivalent SD-6 macro: `__cpp_lib_generic_associative_lookup`
+	- [201304L](https://wg21.link/N3657)
+
+	@sa `<map>` `<set>`
+*/
+#ifndef LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP
+	#define LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP 0
+#endif
+
 ///	@}	LBAL_LIBCPP14
 
 /**
@@ -2645,14 +2669,20 @@
 
 /**
 	@def LBAL_LIBCPP17_EXECUTION
+	@brief Add Library components of the Parallelism TS
+	@details Equivalent SD-6 macro: `__cpp_lib_execution`
+	- [201603L](https://wg21.link/P0024R2)
+	- [201902L](https://wg21.link/P1001R2)
+
+	This token corresponds to the `201603L` variant; it will only be set to a
+	non-`0` value if that variant is available.
+
 	By itself, this token does not measure compliance with the referenced
 	Working Group paper; use LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS.
 
-	Equivalent SD-6 macro: `__cpp_lib_execution`
-
-	https://wg21.link/p0024r2
-
 	@remarks __APIME__ We do not track experimental versions of this.
+
+	@sa `<execution>`
 */
 #ifndef LBAL_LIBCPP17_EXECUTION
 	#define LBAL_LIBCPP17_EXECUTION 0
@@ -2660,20 +2690,73 @@
 
 /**
 	@def LBAL_LIBCPP17_FILESYSTEM
+	@brief Adopt File System TS
+	@details Equivalent SD-6 macro: `__cpp_lib_filesystem`
+	- [201603L](https://wg21.link/P0218R1)
+	- [201606L](https://wg21.link/P0219R1)
+	- [201606L](https://wg21.link/P0392R0)
+	- [201703L](https://wg21.link/P0317R1)
 
-	Equivalent SD-6 macro: `__cpp_lib_filesystem`
+	This token corresponds to the `201603L` variant; it will only be set to a
+	non-`0` value if that variant is available.
 
 	@remarks __SEEME__ Full implementation missing on Apple platforms prior to
 	macOS 10.15.
+
+	@sa `<filesystem>`
 */
 #ifndef LBAL_LIBCPP17_FILESYSTEM
 	#define LBAL_LIBCPP17_FILESYSTEM 0
 #endif
 
 /**
-	@def LBAL_LIBCPP17_FILESYSTEM_EXP
+	@def LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED
+	@brief Add relative path and `std::string_view` support to `<filesystem>`
+	@details Equivalent SD-6 macro: `__cpp_lib_filesystem`
+	- [201603L](https://wg21.link/P0218R1)
+	- [201606L](https://wg21.link/P0219R1)
+	- [201606L](https://wg21.link/P0392R0)
+	- [201703L](https://wg21.link/P0317R1)
 
-	Equivalent SD-6 macro: `__cpp_lib_experimental_filesystem`
+	This token corresponds to the `201606L` variants (both P0219R1 and P0392R0
+	were adopted at the same time). It will only be set to a non-`0` value if
+	these variants are available.
+
+	@remarks __SEEME__ Full implementation missing on Apple platforms prior to
+	macOS 10.15.
+
+	@sa `<filesystem>`
+*/
+#ifndef LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED
+	#define LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING
+	@brief Add directory entry caching to `<filesystem>`
+	@details Equivalent SD-6 macro: `__cpp_lib_filesystem`
+	- [201603L](https://wg21.link/P0218R1)
+	- [201606L](https://wg21.link/P0219R1)
+	- [201606L](https://wg21.link/P0392R0)
+	- [201703L](https://wg21.link/P0317R1)
+
+	This token corresponds to the `201703L` variant; it will only be set to a
+	non-`0` value if that variant is available.
+
+	@remarks __SEEME__ Full implementation missing on Apple platforms prior to
+	macOS 10.15.
+
+	@sa `<filesystem>`
+*/
+#ifndef LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING
+	#define LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_FILESYSTEM_EXP
+	@brief Experimental implementation of the Filesystem TS
+	@details Equivalent SD-6 macro: `__cpp_lib_experimental_filesystem`
+	- [201603L](https://wg21.link/P0218R1)
 
 	@remarks __SEEME__ The experimental version differs in many ways from the
 	final version, but it’s all that is offered until gcc 8 and clang 7.
@@ -2683,17 +2766,57 @@
 #endif
 
 /**
+	@def LBAL_LIBCPP17_GCD_LCM
+	@brief Add `std::gcd` and `std::lcm`
+	@details Equivalent SD-6 macro: `__cpp_lib_gcd_lcm`
+	- [201606L](https://wg21.link/P0295R0)
+
+	@sa `<numeric>`
+*/
+#ifndef LBAL_LIBCPP17_GCD_LCM
+	#define LBAL_LIBCPP17_GCD_LCM 0
+#endif
+
+/**
 	@def LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
-	Provides relevant cache line sizes for construction and destruction.
+	@brief Provide relevant cache line sizes for construction and destruction.
+	@details Equivalent SD-6 macro: `__cpp_lib_hardware_interference_size`
+	- [201703L](https://wg21.link/P0154R1)
 
-	Equivalent SD-6 macro: `__cpp_lib_thread_hardware_interference_size`
-
-	https://wg21.link/p0154r1
-
-	@remarks __APIME__ We do not track experimental versions of this.
+	@sa `<new>`
 */
 #ifndef LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
 	#define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS
+	@brief Add `std::has_unique_object_representations`
+	@details Equivalent SD-6 macro: `__cpp_lib_has_unique_object_representations`
+	- [201606L](https://wg21.link/P0258R2)
+
+	This obliquely-named trait indicates whether a given type can be trivially
+	hashed (e.g., it has no padding bits that would require special handling).
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS
+	#define LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_HYPOT
+	@brief Introduce a 3-argument overload to `std::hypot`
+	@details Equivalent SD-6 macro: `__cpp_lib_hypot`
+	- [201603L](https://wg21.link/P0030R1)
+
+	This standardizes finding 3-dimensional distance as well as 2-dimensional
+	distance.
+
+	@sa `<cmath>`
+*/
+#ifndef LBAL_LIBCPP17_HYPOT
+	#define LBAL_LIBCPP17_HYPOT 0
 #endif
 
 /**
@@ -2961,6 +3084,14 @@
 #ifndef LBAL_LIBCPP2A_ATOMIC_REF
 	#define LBAL_LIBCPP2A_ATOMIC_REF 0
 #endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_STD_ATOMIC_REF
+		#define LBAL_LIBCPP2A_STD_ATOMIC_REF LBAL_LIBCPP2A_ATOMIC_REF
+	#endif
+///@endcond
 
 /**
 	@def LBAL_LIBCPP2A_ATOMIC_WAIT
@@ -3312,9 +3443,7 @@
 	@brief Add `std::endian` enum
 	@details Equivalent SD-6 macro: `__cpp_lib_endian`
 	- [201907L](https://wg21.link/P0463R1)
-	- [201907L](https://wg21.link/	This token corresponds to the P0463R1 variant; it will only be set to a
-	non-`0` value if that variant is available.
-)
+	- [201907L](https://wg21.link/P1612R1) __PDF__
 
 	This token corresponds to the P0463R1 variant; it will only be set to a
 	non-`0` value if that variant is available.
@@ -3325,12 +3454,20 @@
 	#define LBAL_LIBCPP2A_ENDIAN 0
 #endif
 
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_STD_ENDIAN
+		#define LBAL_LIBCPP2A_STD_ENDIAN LBAL_LIBCPP2A_ENDIAN
+	#endif
+///@endcond
+
 /**
 	@def LBAL_LIBCPP2A_ENDIAN_BIT
 	@brief Relocate `std::endian` to `<bit>`
 	@details Equivalent SD-6 macro: `__cpp_lib_endian`
 	- [201907L](https://wg21.link/P0463R1)
-	- [201907L](https://wg21.link/P1612R1)
+	- [201907L](https://wg21.link/P1612R1) __PDF__
 
 	This token corresponds to the P1612R1 variant; it will only be set to a
 	non-`0` value if that variant is available.
@@ -3342,26 +3479,112 @@
 #endif
 
 /**
+	@def LBAL_LIBCPP2A_ERASE_IF
+	@brief Adopt consistent container erasure
+	@details Equivalent SD-6 macro: `__cpp_lib_erase_if`
+	- [201811L](https://wg21.link/P1209R0)
+
+	@sa `<deque>` `<forward_list>` `<list>` `<map>` `<set>` `<string>`
+	`<unordered_map>` `<unordered_set>` `<vector>`
+*/
+#ifndef LBAL_LIBCPP2A_ERASE_IF
+	#define LBAL_LIBCPP2A_ERASE_IF 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_EXECUTION_VECTORIZATION
+	@brief Add target vectorization policies from the Parallelism V2 TS
+	@details Equivalent SD-6 macro: `__cpp_lib_execution`
+	- [201603L](https://wg21.link/P0024R2)
+	- [201902L](https://wg21.link/P1001R2)
+
+	This token corresponds to the `201902L` variant; it will only be set to a
+	non-`0` value if that variant is available.
+
+	By itself, this token does not measure compliance with the referenced
+	Working Group paper; use LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS.
+
+	@remarks __APIME__ We do not track experimental versions of this.
+
+	@sa `<execution>`
+*/
+#ifndef LBAL_LIBCPP2A_EXECUTION_VECTORIZATION
+	#define LBAL_LIBCPP2A_EXECUTION_VECTORIZATION 0
+#endif
+
+/**
 	@def LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS
+	@brief Extend `std::make_shared` to support C-style arrays
+	@details Equivalent SD-6 macro: none
+	- [default](https://wg21.link/p0674r1)
 
-	Equivalent SD-6 macro: none
+	@remarks Expect this symbol to become deprecated and replaced with an
+	SD-6-friendly one once there is an SD-6 macro.
 
-	https://wg21.link/p0674r1
+	@sa `<memory>`
 */
 #ifndef LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS
 	#define LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS 0
 #endif
 
-
 /**
 	@def LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC
+	@brief Extend `<atomic>` support to floating point types
+	@details Equivalent SD-6 macro: none
+	- [default](https://wg21.link/p0020r6)
 
-	Equivalent SD-6 macro: none
+	@remarks Expect this symbol to become deprecated and replaced with an
+	SD-6-friendly one once there is an SD-6 macro.
 
-	https://wg21.link/p0020r6
+	@sa `<atomic>`
 */
 #ifndef LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC
 	#define LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_FORMAT
+	@brief Add text formatting functionality to properly replace `printf`
+	@details Equivalent SD-6 macro: `__cpp_lib_format`
+	- [201907L](https://wg21.link/P0645R10)
+	- [201907L](https://wg21.link/P1361R2)
+	- [201907L](https://wg21.link/P1652R1)
+
+	@sa `<format>`
+*/
+#ifndef LBAL_LIBCPP2A_FORMAT
+	#define LBAL_LIBCPP2A_FORMAT 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP
+	@brief The feature was removed prior to Standardization
+	@details Equivalent SD-6 macro: `__cpp_lib_generic_unordered_hash_lookup`
+	- [201902L](https://wg21.link/P0920R2)
+	- [deleted](https://wg21.link/P1661R1)
+
+	This is an unusual example of a feature that was voted into the Standard
+	and then promptly voted out.
+
+	@remarks `LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP` will always evaluate
+	to `0`; it is only here by way of documentation.
+
+	@sa `<unordered_map>` `<unordered_set>`
+*/
+#ifndef LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP
+	#define LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP
+	@brief Heterogeneous lookup for unordered containers
+	@details Equivalent SD-6 macro: `__cpp_lib_generic_unordered_lookup`
+	- [201811L](https://wg21.link/P0919R3)
+
+	@sa `<unordered_map>` `<unordered_set>`
+*/
+#ifndef LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP
+	#define LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP 0
 #endif
 
 /**
@@ -3423,28 +3646,6 @@
 */
 #ifndef LBAL_LIBCPP2A_SPAN
 	#define LBAL_LIBCPP2A_SPAN 0
-#endif
-
-/**
-	@def LBAL_LIBCPP2A_STD_ATOMIC_REF
-
-	Equivalent SD-6 macro: `__cpp_lib_atomic_ref`
-
-	https://wg21.link/p0019r8
-*/
-#ifndef LBAL_LIBCPP2A_STD_ATOMIC_REF
-	#define LBAL_LIBCPP2A_STD_ATOMIC_REF 0
-#endif
-
-/**
-	@def LBAL_LIBCPP2A_STD_ENDIAN
-
-	Equivalent SD-6 macro: none
-
-	https://wg21.link/p0463r1
-*/
-#ifndef LBAL_LIBCPP2A_STD_ENDIAN
-	#define LBAL_LIBCPP2A_STD_ENDIAN 0
 #endif
 
 /**
