@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“PlatformApple.hpp”
+	“lbalPlatformApple.hpp”
 	Copyright © 2019 Lucena
 	All Rights Reserved
 

@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“Config.hpp”
+	“lbalConfig.hpp”
 	Copyright © 2015-2019 Lucena
 	All Rights Reserved
 

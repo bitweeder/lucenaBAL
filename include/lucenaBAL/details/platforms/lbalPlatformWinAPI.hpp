@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“PlatformWinAPI.hpp”
+	“lbalPlatformWinAPI.hpp”
 	Copyright © 2019 Lucena
 	All Rights Reserved
 

@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“FeatureSetup.hpp”
+	“lbalFeatureSetup.hpp”
 	Copyright © 2018-2019 Lucena
 	All Rights Reserved
 
@@ -114,39 +114,74 @@
 
 /**	@name LBAL_TARGET_COMPILER
 
-	@brief Report 1 or 0 depending on which mutually exclusive macro matches
-	the compiler used to build the code.
+	@brief Report 1 or 0 depending on which macros match the compiler used to
+	build the code.
 
-	@details This takes the place of direct querying, as some compilers are in
-	the habit of self-identifying as something else. These are not generally
-	useful, as there’s typically another, better mechanism for solving whatever
-	this is meant to solve, but they’re here for when nothing else will do.
-	Note that if you also need version information, you’ll have to resort to
-	direct querying, though it may still sensible to filter first on these for
-	the aforementioned reason.
+	@details These identifers take the place of direct querying, as some
+	compilers are in the habit of self-identifying as something else, and it
+	can be challenging to suss out their actual identities. These are not
+	generally useful, as there’s typically another, better mechanism for
+	addressing whatever issue these can resolve, but they’re here for when
+	nothing else will do. Note that if you also need version information,
+	you’ll have to resort to direct querying, though it may still sensible to
+	filter first on these for the aforementioned reason.
 
-	__SEEME__ These are blunt instruments. In particular, there‘s no
+	Generally, a given compiler will match at least two tokens: one identifying
+	the rough compiler “family” to which it belongs, and one that identifies it
+	more uniquely.
+
+	__SEEME__ These are blunt instruments. In particular, there may be no
 	differentiation between frontened (e.g., c1xx or clang) and backend
 	(e.g., c2 or llvm). In practice, this mattered more when c2/clang was a
-	thing, but is moot now. We’ll consider revisiting if the extra granularity
-	turns out to be useful
+	thing, but seems less important now. We’ll consider revisiting if the extra
+	granularity turns out to be useful.
 
 	@{
 */
 
 /**
 	@def LBAL_TARGET_COMPILER_CLANG
-	@brief The compiler being used is llvm/clang.
-	@details More information is available from
+	@brief The compiler being used is an llvm/clang derivative.
+	@details This probably won’t match c2/clang, but no testing has been done
+	to see what that setup may be emulating. More information is available from
 	[the llvm project](https://clang.llvm.org/).
+
+	@remarks __SEEME__ It would be trivial to split this identifier into one
+	for clang and one for llvm, but it’s unclear how useful this would be.
 */
 #ifndef LBAL_TARGET_COMPILER_CLANG
 	#define LBAL_TARGET_COMPILER_CLANG 0
 #endif
 
 /**
+	@def LBAL_TARGET_COMPILER_VANILLA_CLANG
+	@brief The compiler being used is pure llvm/clang.
+	@details More information is available from
+	[the llvm project](https://clang.llvm.org/).
+
+	@remarks __SEEME__ This is a more loose definition than it sounds like, as
+	we’ll classify any clang as “vanilla clang” if some other check hasn’t
+	previously claimed it, so order of evaluation matters, as does how thorough
+	the previous checks were.
+*/
+#ifndef LBAL_TARGET_COMPILER_VANILLA_CLANG
+	#define LBAL_TARGET_COMPILER_VANILLA_CLANG 0
+#endif
+
+/**
+	@def LBAL_TARGET_COMPILER_APPLE_CLANG
+	@brief The compiler being used is the llvm/clang variant shipped with
+	Apple’s Xcode.
+	@details More information is available from
+	[the llvm project](https://clang.llvm.org/).
+*/
+#ifndef LBAL_TARGET_COMPILER_APPLE_CLANG
+	#define LBAL_TARGET_COMPILER_APPLE_CLANG 0
+#endif
+
+/**
 	@def LBAL_TARGET_COMPILER_GCC
-	@brief The compiler being used is gcc.
+	@brief The compiler being used is a gcc derivative.
 	@details More information is available from
 	[the gcc project](https://gcc.gnu.org/).
 */
@@ -155,13 +190,43 @@
 #endif
 
 /**
+	@def LBAL_TARGET_COMPILER_VANILLA_GCC
+	@brief The compiler being used is pure gcc.
+	@details More information is available from
+	[the llvm project](https://clang.llvm.org/).
+
+	@remarks __SEEME__ This is a more loose definition than it sounds like, as
+	we’ll classify any gcc as “vanilla gcc” if some other check hasn’t
+	previously claimed it, so order of evaluation matters, as does how thorough
+	the previous checks were.
+*/
+#ifndef LBAL_TARGET_COMPILER_VANILLA_GCC
+	#define LBAL_TARGET_COMPILER_VANILLA_GCC 0
+#endif
+
+/**
 	@def LBAL_TARGET_COMPILER_MSVC
-	@brief The compiler being used is MSVC.
+	@brief The compiler being used is an MSVC derivative.
 	@details More information is available from
 	[Microsoft](https://visualstudio.microsoft.com/).
 */
 #ifndef LBAL_TARGET_COMPILER_MSVC
 	#define LBAL_TARGET_COMPILER_MSVC 0
+#endif
+
+/**
+	@def LBAL_TARGET_COMPILER_VANILLA_MSVC
+	@brief The compiler being used is pure MSVC.
+	@details More information is available from
+	[Microsoft](https://visualstudio.microsoft.com/).
+
+	@remarks __SEEME__ This is a more loose definition than it sounds like, as
+	we’ll classify any MSVC as “vanilla MSVC” if some other check hasn’t
+	previously claimed it, so order of evaluation matters, as does how thorough
+	the previous checks were.
+*/
+#ifndef LBAL_TARGET_COMPILER_VANILLA_MSVC
+	#define LBAL_TARGET_COMPILER_VANILLA_MSVC 0
 #endif
 
 ///	@}	LBAL_TARGET_COMPILER
@@ -1009,10 +1074,15 @@
 	- [200704L](https://wg21.link/N2235) __PDF__
 	- [201304L](https://wg21.link/n3652)
 	- [201603L](https://wg21.link/p0170r1) __PDF__
+	- [201806L](https://wg21.link/P1064R0)
+	- [201811L](https://wg21.link/P1002R1)
+	- [201811L](https://wg21.link/P1327R1)
+	- [201811L](https://wg21.link/P1330R0)
 	- [201907L](https://wg21.link/p1331r2) __PDF__
+	- [201907L](https://wg21.link/P1668R1)
 
-	@remarks `__cpp_constexpr` has at least 4 values associated with it, each
-	from a different proposal.
+	@remarks `__cpp_constexpr` has many values associated with it, taken from a
+	number of different proposals.
 */
 #ifndef LBAL_CPP11_CONSTEXPR
 	#define LBAL_CPP11_CONSTEXPR 0
@@ -1261,10 +1331,15 @@
 	- [200704L](https://wg21.link/N2235) __PDF__
 	- [201304L](https://wg21.link/n3652)
 	- [201603L](https://wg21.link/p0170r1) __PDF__
+	- [201806L](https://wg21.link/P1064R0)
+	- [201811L](https://wg21.link/P1002R1)
+	- [201811L](https://wg21.link/P1327R1)
+	- [201811L](https://wg21.link/P1330R0)
 	- [201907L](https://wg21.link/p1331r2) __PDF__
+	- [201907L](https://wg21.link/P1668R1)
 
-	@remarks `__cpp_constexpr` has at least 4 values associated with it, each
-	from a different proposal.
+	@remarks `__cpp_constexpr` has many values associated with it, taken from a
+	number of different proposals.
 */
 #ifndef LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS
 	#define LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS 0
@@ -1283,8 +1358,11 @@
 /**
 	@def LBAL_CPP14_GENERIC_LAMBDAS
 	@brief Generic (Polymorphic) Lambda Expressions
-	@details Equivalent SD-6 macro: `__cpp_generic_lambdas`
+	@details Equivalent SD-6 macro: `__cpp_generic_lambdas`. This token
+	corresponds to the `201304L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
 	- [201304L](https://wg21.link/n3649)
+	- [201707L](https://wg21.link/P0428R2)
 */
 #ifndef LBAL_CPP14_GENERIC_LAMBDAS
 	#define LBAL_CPP14_GENERIC_LAMBDAS 0
@@ -1293,8 +1371,11 @@
 /**
 	@def LBAL_CPP14_INIT_CAPTURES
 	@brief Generalized Lambda-capture changes
-	@details Equivalent SD-6 macro: `__cpp_init_captures`
+	@details Equivalent SD-6 macro: `__cpp_init_captures`. This token
+	corresponds to the `201304L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
 	- [201304L](https://wg21.link/n3648)
+	- [201803L](https://wg21.link/P0780R2)
 */
 #ifndef LBAL_CPP14_INIT_CAPTURES
 	#define LBAL_CPP14_INIT_CAPTURES 0
@@ -1423,10 +1504,15 @@
 	- [200704L](https://wg21.link/N2235) __PDF__
 	- [201304L](https://wg21.link/n3652)
 	- [201603L](https://wg21.link/p0170r1) __PDF__
+	- [201806L](https://wg21.link/P1064R0)
+	- [201811L](https://wg21.link/P1002R1)
+	- [201811L](https://wg21.link/P1327R1)
+	- [201811L](https://wg21.link/P1330R0)
 	- [201907L](https://wg21.link/p1331r2) __PDF__
+	- [201907L](https://wg21.link/P1668R1)
 
-	@remarks `__cpp_constexpr` has at least 4 values associated with it, each
-	from a different proposal.
+	@remarks `__cpp_constexpr` has many values associated with it, taken from a
+	number of different proposals.
 */
 #ifndef LBAL_CPP17_CONSTEXPR_LAMBDA
 	#define LBAL_CPP17_CONSTEXPR_LAMBDA 0
@@ -1828,18 +1914,68 @@
 
 /**
 	@def LBAL_CPP2A_CONCEPTS
+	@brief Incorporate the Concepts TS into the Standard
+	@details Equivalent (SD-6) macro: `__cpp_concepts`. This token corresponds
+	to the `201707L` variant, but it will have the value of the latest
+	supported variant, or `0` if this variant is not supported.
+	- [201707L](https://wg21.link/p0734r0) __PDF__
+	- [201811L](https://wg21.link/P1084R2) __PDF__
+	- [201907L](https://wg21.link/P1452R2)
 
-	Equivalent (SD-6) macro: `__cpp_concepts`
-	- [201806L](https://wg21.link/p0734r0) __PDF__
+	@remarks `__cpp_concepts` has at least 3 values associated with it, each
+	from a different proposal.
 
-	@remarks __SEEME__ The current SD-6 revision does not actually define this
-	token, though the proposal that was voted into the Standard _does_. We
-	assume it’s an oversight; there are several known ones, and it’s one of the
-	motivators for the coming SD-6 review. The only available Concepts
-	implementations do honor the token, so we rely on it for detection.
+	@remarks __SEEME__ Earlier versions of lucenaBAL used a placeholder value
+	for this token. We’ve since updated to the official values from SD-6. No
+	migration mechanism is in place since no impacted implementations were in
+	the wild at the time.
 */
 #ifndef LBAL_CPP2A_CONCEPTS
 	#define LBAL_CPP2A_CONCEPTS 0
+#endif
+
+/**
+	@def LBAL_CPP2A_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS
+	@brief Refine definition of return-type-requirements
+	@details Equivalent (SD-6) macro: `__cpp_concepts`. This token corresponds
+	to the `201811L` variant, but it will have the value of the latest
+	supported variant, or `0` if this variant is not supported.
+	- [201707L](https://wg21.link/p0734r0) __PDF__
+	- [201811L](https://wg21.link/P1084R2) __PDF__
+	- [201907L](https://wg21.link/P1452R2)
+
+	@remarks `__cpp_concepts` has at least 3 values associated with it, each
+	from a different proposal.
+
+	@remarks __SEEME__ Earlier versions of lucenaBAL used a placeholder value
+	for this token. We’ve since updated to the official values from SD-6. No
+	migration mechanism is in place since no impacted implementations were in
+	the wild at the time.
+*/
+#ifndef LBAL_CPP2A_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS
+	#define LBAL_CPP2A_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS 0
+#endif
+
+/**
+	@def LBAL_CPP2A_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS
+	@brief Refine definition of return-type-requirements
+	@details Equivalent (SD-6) macro: `__cpp_concepts`. This token corresponds
+	to the `201907L` variant, but it will have the value of the latest
+	supported variant, or `0` if this variant is not supported.
+	- [201707L](https://wg21.link/p0734r0) __PDF__
+	- [201811L](https://wg21.link/P1084R2) __PDF__
+	- [201907L](https://wg21.link/P1452R2)
+
+	@remarks `__cpp_concepts` has at least 3 values associated with it, each
+	from a different proposal.
+
+	@remarks __SEEME__ Earlier versions of lucenaBAL used a placeholder value
+	for this token. We’ve since updated to the official values from SD-6. No
+	migration mechanism is in place since no impacted implementations were in
+	the wild at the time.
+*/
+#ifndef LBAL_CPP2A_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS
+	#define LBAL_CPP2A_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS 0
 #endif
 
 /**
@@ -1865,6 +2001,16 @@
 #endif
 
 /**
+	@def LBAL_CPP2A_CONSTEVAL
+	@brief Immediate functions
+	@details Equivalent SD-6 macro: `__cpp_consteval`
+	- [201811L](https://wg21.link/P1073R3)
+*/
+#ifndef LBAL_CPP2A_CONSTEVAL
+	#define LBAL_CPP2A_CONSTEVAL 0
+#endif
+
+/**
 	@def LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC
 	@brief Language support for variable-sized containers suitable for use in
 	constexpr computations.
@@ -1878,27 +2024,166 @@
 #endif
 
 /**
-	@def LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION
-	@brief Address an inconsistency in the lambda specification
+	@def LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM
+	@brief Allow `dynamic_cast`, polymorphic `typeid` in `constexpr` functions
 	@details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
-	to the `201907L` variant, but it will have the value of the latest
-	supported variant, or `0` if this variant is not supported.
+	to the [201811L](https://wg21.link/P1002R1) variant, but it will have the
+	value of the latest supported variant, or `0` if this variant is not
+	supported.
 	- [200704L](https://wg21.link/N2235) __PDF__
 	- [201304L](https://wg21.link/n3652)
 	- [201603L](https://wg21.link/p0170r1) __PDF__
+	- [201806L](https://wg21.link/P1064R0)
+	- [201811L](https://wg21.link/P1002R1)
+	- [201811L](https://wg21.link/P1327R1)
+	- [201811L](https://wg21.link/P1330R0)
 	- [201907L](https://wg21.link/p1331r2) __PDF__
+	- [201907L](https://wg21.link/P1668R1)
 
-	@remarks `__cpp_constexpr` has at least 4 values associated with it, each
-	from a different proposal.
+	@remarks `__cpp_constexpr` has many values associated with it, taken from a
+	number of different proposals.
+	@remarks This and the `LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM` and
+	`LBAL_CPP2A_CONSTEXPR_UNION_ALTERATION` variants are aliases for each
+	other.
+*/
+#ifndef LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM
+	#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM 0
+#endif
+
+/**
+	@def LBAL_CPP2A_CONSTEXPR_IN_DECLTYPE
+	@brief Address Core Issue regarding when `constexpr` functions are defined
+	@details Equivalent SD-6 macro: `__cpp_constexpr_in_decltype`. This has the
+	effect of allowing constant expressions in `decltype` declarations.
+	- [201711L](https://wg21.link/P0859R0)
+*/
+#ifndef LBAL_CPP2A_CONSTEXPR_IN_DECLTYPE
+	#define LBAL_CPP2A_CONSTEXPR_IN_DECLTYPE 0
+#endif
+
+/**
+	@def LBAL_CPP2A_CONSTEXPR_INTRINSICS
+	@brief Permit unevaluated inline assembly in `constexpr` functions
+	@details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+	to the [201907L](https://wg21.link/P1668R1) variant, but it will have the
+	value of the latest supported variant, or `0` if this variant is not
+	supported.
+	- [200704L](https://wg21.link/N2235) __PDF__
+	- [201304L](https://wg21.link/n3652)
+	- [201603L](https://wg21.link/p0170r1) __PDF__
+	- [201806L](https://wg21.link/P1064R0)
+	- [201811L](https://wg21.link/P1002R1)
+	- [201811L](https://wg21.link/P1327R1)
+	- [201811L](https://wg21.link/P1330R0)
+	- [201907L](https://wg21.link/p1331r2) __PDF__
+	- [201907L](https://wg21.link/P1668R1)
+
+	@remarks `__cpp_constexpr` has many values associated with it, taken from a
+	number of different proposals.
+	@remarks This and the `LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION`
+	variant are aliases for each other.
+*/
+#ifndef LBAL_CPP2A_CONSTEXPR_INTRINSICS
+	#define LBAL_CPP2A_CONSTEXPR_INTRINSICS 0
+#endif
+
+/**
+	@def LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION
+	@brief Address an inconsistency in the lambda specification
+	@details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+	to the [201907L](https://wg21.link/p1331r2) variant, but it will have the
+	value of the latest supported variant, or `0` if this variant is not
+	supported.
+	- [200704L](https://wg21.link/N2235) __PDF__
+	- [201304L](https://wg21.link/n3652)
+	- [201603L](https://wg21.link/p0170r1) __PDF__
+	- [201806L](https://wg21.link/P1064R0)
+	- [201811L](https://wg21.link/P1002R1)
+	- [201811L](https://wg21.link/P1327R1)
+	- [201811L](https://wg21.link/P1330R0)
+	- [201907L](https://wg21.link/p1331r2) __PDF__
+	- [201907L](https://wg21.link/P1668R1)
+
+	@remarks `__cpp_constexpr` has many values associated with it, taken from a
+	number of different proposals.
+	@remarks This and the `LBAL_CPP2A_CONSTEXPR_INTRINSICS` variant are aliases
+	for each other.
 */
 #ifndef LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION
 	#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION 0
 #endif
 
 /**
+	@def LBAL_CPP2A_CONSTEXPR_TRY_CATCH
+	@brief Permit unevaluated inline assembly in constexpr functions
+	@details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+	to the [201811L](https://wg21.link/P1002R1) variant, but it will have the
+	value of the latest supported variant, or `0` if this variant is not
+	supported.
+	- [200704L](https://wg21.link/N2235) __PDF__
+	- [201304L](https://wg21.link/n3652)
+	- [201603L](https://wg21.link/p0170r1) __PDF__
+	- [201806L](https://wg21.link/P1064R0)
+	- [201811L](https://wg21.link/P1002R1)
+	- [201811L](https://wg21.link/P1327R1)
+	- [201811L](https://wg21.link/P1330R0)
+	- [201907L](https://wg21.link/p1331r2) __PDF__
+	- [201907L](https://wg21.link/P1668R1)
+
+	@remarks `__cpp_constexpr` has many values associated with it, taken from a
+	number of different proposals.
+	@remarks This and the `LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM` and
+	`LBAL_CPP2A_CONSTEXPR_UNION_ALTERATION` variants are aliases for each
+	other.
+*/
+#ifndef LBAL_CPP2A_CONSTEXPR_TRY_CATCH
+	#define LBAL_CPP2A_CONSTEXPR_TRY_CATCH 0
+#endif
+
+/**
+	@def LBAL_CPP2A_CONSTEXPR_UNION_ALTERATION
+	@brief Allow changing the active member of a `union` in constexpr functions
+	@details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+	to the [201811L](https://wg21.link/P1330R0) variant, but it will have the
+	value of the latest supported variant, or `0` if this variant is not
+	supported.
+	- [200704L](https://wg21.link/N2235) __PDF__
+	- [201304L](https://wg21.link/n3652)
+	- [201603L](https://wg21.link/p0170r1) __PDF__
+	- [201806L](https://wg21.link/P1064R0)
+	- [201811L](https://wg21.link/P1002R1)
+	- [201811L](https://wg21.link/P1327R1)
+	- [201811L](https://wg21.link/P1330R0)
+	- [201907L](https://wg21.link/p1331r2) __PDF__
+	- [201907L](https://wg21.link/P1668R1)
+
+	@remarks `__cpp_constexpr` has many values associated with it, taken from a
+	number of different proposals.
+	@remarks This and the `LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM` and
+	`LBAL_CPP2A_CONSTEXPR_TRY_CATCH` variants are aliases for each other.
+*/
+#ifndef LBAL_CPP2A_CONSTEXPR_UNION_ALTERATION
+	#define LBAL_CPP2A_CONSTEXPR_UNION_ALTERATION 0
+#endif
+
+/**
 	@def LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION
-	@details Equivalent SD-6 macro: none
-	- [default](https://wg21.link/p1064r0)
+	@brief Allow virtual function calls in constexpr functions
+	@details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+	to the `201806L` variant, but it will have the value of the latest
+	supported variant, or `0` if this variant is not supported.
+	- [200704L](https://wg21.link/N2235) __PDF__
+	- [201304L](https://wg21.link/n3652)
+	- [201603L](https://wg21.link/p0170r1) __PDF__
+	- [201806L](https://wg21.link/P1064R0)
+	- [201811L](https://wg21.link/P1002R1)
+	- [201811L](https://wg21.link/P1327R1)
+	- [201811L](https://wg21.link/P1330R0)
+	- [201907L](https://wg21.link/p1331r2) __PDF__
+	- [201907L](https://wg21.link/P1668R1)
+
+	@remarks `__cpp_constexpr` has many values associated with it, taken from a
+	number of different proposals.
 */
 #ifndef LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION
 	#define LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION 0
@@ -1977,8 +2262,8 @@
 /**
 	@def LBAL_CPP2A_DESIGNATED_INITIALIZERS
 
-	Equivalent SD-6 macro: none
-	- [default](https://wg21.link/p0329r4) __PDF__
+	Equivalent SD-6 macro: `__cpp_designated_initializers`
+	- [201707L](https://wg21.link/P0329R4) __PDF__
 */
 #ifndef LBAL_CPP2A_DESIGNATED_INITIALIZERS
 	#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 0
@@ -1993,6 +2278,50 @@
 #ifndef LBAL_CPP2A_DESTROYING_DELETE
 	#define LBAL_CPP2A_DESTROYING_DELETE 0
 #endif
+
+/**
+	@def LBAL_CPP2A_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST
+	@brief Generic (Polymorphic) Lambda Expressions
+	@details Equivalent SD-6 macro: `__cpp_generic_lambdas`. This token
+	corresponds to the `201707L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [201304L](https://wg21.link/n3649)
+	- [201707L](https://wg21.link/P0428R2)
+*/
+#ifndef LBAL_CPP2A_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST
+	#define LBAL_CPP2A_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST 0
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed now that the official SD-6
+	//	token has been named. The old name is deprecated.
+	#ifndef LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS
+		#define LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS \
+				LBAL_CPP2A_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST
+	#endif
+///@endcond
+
+/**
+	@def LBAL_CPP2A_INIT_CAPTURES_PACK_EXPANSION
+	@brief Allow pack-expansion in lambda init-capture
+	@details Equivalent SD-6 macro: `__cpp_init_captures`. This token
+	corresponds to the `201803L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [201304L](https://wg21.link/n3648)
+	- [201803L](https://wg21.link/P0780R2)
+*/
+#ifndef LBAL_CPP2A_INIT_CAPTURES_PACK_EXPANSION
+	#define LBAL_CPP2A_INIT_CAPTURES_PACK_EXPANSION 0
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed now that the official SD-6
+	//	token has been named. The old name is deprecated.
+	#ifndef LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE
+		#define LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE \
+				LBAL_CPP2A_INIT_CAPTURES_PACK_EXPANSION
+	#endif
+///@endcond
 
 /**
 	@def LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR
@@ -2056,16 +2385,6 @@
 ///@endcond
 
 /**
-	@def LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE
-
-	Equivalent SD-6 macro: none
-	- [default](https://wg21.link/p0780r2)
-*/
-#ifndef LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE
-	#define LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE 0
-#endif
-
-/**
 	@def LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR
 	@brief This is the original three-way comparison operator
 	@details Equivalent SD-6 macro: `__cpp_impl_three_way_comparison`. This
@@ -2095,16 +2414,6 @@
 */
 #ifndef LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP
 	#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP 0
-#endif
-
-/**
-	@def LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS
-
-	Equivalent SD-6 macro: none
-	- [default](https://wg21.link/p0428r2) __PDF__
-*/
-#ifndef LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS
-	#define LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS 0
 #endif
 
 /**

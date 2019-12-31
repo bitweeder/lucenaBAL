@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“PlatformPOSIX.hpp”
+	“lbalPlatformPOSIX.hpp”
 	Copyright © 2019 Lucena
 	All Rights Reserved
 

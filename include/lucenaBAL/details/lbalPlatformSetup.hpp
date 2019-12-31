@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“PlatformSetup.hpp”
+	“lbalPlatformSetup.hpp”
 	Copyright © 2018-2019 Lucena
 	All Rights Reserved
 

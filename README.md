@@ -58,7 +58,7 @@ This will generate headers, test binaries, and docs in the build directory, then
 
 ## Prerequisites
 
-lucenaBAL requires a C++11 or better compiler. It has been tested with gcc 6 thru 9+, Microsoft Visual Studio 2015 Update 3 thru MSVS 2019 16.3+, Xcode 9 thru 11+, and llvm/clang 6 thru 9+. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
+lucenaBAL requires a C++11 or better compiler. It has been tested with gcc 6 thru 9+, Microsoft Visual Studio 2015 Update 3 thru MSVS 2019 16.3+, Xcode 9 thru 11+, and llvm/clang 6 thru 10+. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
 
 ## Building, Installing, and Testing
 
@@ -98,11 +98,11 @@ _Roughly in order of precedence_
 
 ## Support
 
-lucenaBAL aggressively tracks the latest tools and standards, and back-porting new features to old versions or attempting to support old tools and standards in new releases is unlikely to happen. The cold reality is that we do not have the bandwidth to pay the interest on anyone else’s technical debt. If an older release does what you need, use it. If you find a bug in any release, we greatly appreciate patches, though we strongly encourage you to at least file a bug report. Feature requests will be considered, but requests to increase our maintenance surface are unlikely to pass muster.
+lucenaBAL aggressively tracks the latest tools and standards, but maintaining support for older tools in new releases is unlikely to happen. The cold reality is that we do not have the bandwidth to pay the interest on anyone else’s technical debt. If an older release does what you need, use it. If you find a bug in any release, we greatly appreciate patches, though we strongly encourage you to at least [open an issue](https://github.com/bitweeder/lucenaBAL/issues) even if you can’t [submit a pull request](https://github.com/bitweeder/lucenaBAL/pulls). Feature requests will be considered, but requests to increase our maintenance surface are unlikely to be carried out.
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on the process for submitting pull requests to us.
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) for details on the process for [submitting pull requests](https://github.com/bitweeder/lucenaBAL/pulls) to us.
 
 Please note that this project is released with a Contributor Code of Conduct, documented in [CODE_OF_CONDUCT.md](./CODE_OF_CONDUCT.md) By participating in this project you agree to abide by its terms.
 

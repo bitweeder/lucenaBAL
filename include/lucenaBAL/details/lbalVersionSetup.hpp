@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“VersionSetup.hpp”
+	“lbalVersionSetup.hpp”
 	Copyright © 2019 Lucena
 	All Rights Reserved
 

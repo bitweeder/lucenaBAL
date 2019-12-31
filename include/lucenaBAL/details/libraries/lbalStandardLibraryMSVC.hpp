@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“StandardLibraryMSVC.hpp”
+	“lbalStandardLibraryMSVC.hpp”
 	Copyright © 2019 Lucena
 	All Rights Reserved
 

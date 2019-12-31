@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“KnownVersions.hpp”
+	“lbalKnownVersions.hpp”
 	Copyright © 2019 Lucena
 	All Rights Reserved
 

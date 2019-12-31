@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“StandardLibraryLibStdCpp.hpp”
+	“lbalStandardLibraryLibStdCpp.hpp”
 	Copyright © 2019 Lucena
 	All Rights Reserved
 
