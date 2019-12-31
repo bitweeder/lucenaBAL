@@ -167,10 +167,10 @@
 	//	been disabled, which can be done with `/Zc:sizedDealloc-`. We’ll just
 	//	assume it _has_ been disabled, which is not ideal, but unavoidable
 	//	without incorporating a test app into the build process.
-	#if (__cpp_sized_deallocation >= 201304L)
+	#if (__cpp_sized_deallocation >= 201309L)
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 	#else
-		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
+		#define LBAL_CPP14_SIZED_DEALLOCATION 0
 	#endif
 
 

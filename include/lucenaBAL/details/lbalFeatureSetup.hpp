@@ -1395,7 +1395,7 @@
 	@def LBAL_CPP14_SIZED_DEALLOCATION
 	@brief Make available a global `operator delete` that takes a size argument
 	@details Equivalent SD-6 macro: `__cpp_sized_deallocation`
-	- [201304L](https://wg21.link/n3778)
+	- [201309L](https://wg21.link/n3778)
 
 	@remarks Some compilers disable this by default since it’s an ABI-breaking
 	change; clang, in particular, does this.
@@ -1698,8 +1698,11 @@
 /**
 	@def LBAL_CPP17_NONTYPE_TEMPLATE_ARGS
 	@brief Allow constant evaluation for all non-type template arguments
-	@details Equivalent SD-6 macro: `__cpp_nontype_template_args`
+	@details Equivalent SD-6 macro: `__cpp_nontype_template_args`. This token
+	corresponds to the `201411L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
 	- [201411L](https://wg21.link/n4268)
+	- [201911L](https://wg21.link/P1907R1)
 */
 #ifndef LBAL_CPP17_NONTYPE_TEMPLATE_ARGS
 	#define LBAL_CPP17_NONTYPE_TEMPLATE_ARGS 0
@@ -2368,10 +2371,29 @@
 #endif
 
 /**
+	@def LBAL_CPP2A_NONTYPE_TEMPLATE_ARGS_FIXES
+	@brief Address inconsistencies in handling of non-type template arguments
+	@details Equivalent SD-6 macro: `__cpp_nontype_template_args`. This token
+	corresponds to the `201911L` variant, but it will have the value of the
+	latest supported variant, or `0` if this variant is not supported.
+	- [201411L](https://wg21.link/n4268)
+	- [201911L](https://wg21.link/P1907R1)
+*/
+#ifndef LBAL_CPP2A_NONTYPE_TEMPLATE_ARGS_FIXES
+	#define LBAL_CPP2A_NONTYPE_TEMPLATE_ARGS_FIXES 0
+#endif
+
+/**
 	@def LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS
 	@brief Class Types in Non-Type Template Parameters
 	@details Equivalent SD-6 macro: `__cpp_nontype_template_parameter_class`
 	- [201806L](https://wg21.link/p0732r2) __PDF__
+
+	@remarks __SEEME__ There’s a slightly confusing note in the SD-6 document
+	as of December 2019 which indicates a potential issue with this token. One
+	interpretation is that an earlier version of the doc had incorrectly
+	associated an unrelated proposal as an iteration on this feature; this is
+	the interpretation we’re following.
 */
 #ifndef LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS
 	#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS 0
@@ -2392,12 +2414,28 @@
 	`201907L` if that variant is available.
 	- [201711L](https://wg21.link/p0515r3) __PDF__
 	- [201711L](https://wg21.link/p0768r1) __PDF__
-	- [201907L](https://wg21.link/p1185r2)
+	- [201902L](https://wg21.link/p1185r2)
 	- [201907L](https://wg21.link/p1186r3)
 	- [201907L](https://wg21.link/p1630r1)
 */
 #ifndef LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR
 	#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR 0
+#endif
+
+/**
+	@def LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX
+	@brief This is the original three-way comparison operator
+	@details Equivalent SD-6 macro: `__cpp_impl_three_way_comparison`. This
+	token corresponds to the `201902L` variant, but it will have a value of
+	`201907L` if that variant is available.
+	- [201711L](https://wg21.link/p0515r3) __PDF__
+	- [201711L](https://wg21.link/p0768r1) __PDF__
+	- [201902L](https://wg21.link/p1185r2)
+	- [201907L](https://wg21.link/p1186r3)
+	- [201907L](https://wg21.link/p1630r1)
+*/
+#ifndef LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX
+	#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX 0
 #endif
 
 /**
@@ -2408,7 +2446,7 @@
 	non-`0` value if that variant is available.
 	- [201711L](https://wg21.link/p0515r3) __PDF__
 	- [201711L](https://wg21.link/p0768r1) __PDF__
-	- [201907L](https://wg21.link/p1185r2)
+	- [201902L](https://wg21.link/p1185r2)
 	- [201907L](https://wg21.link/p1186r3)
 	- [201907L](https://wg21.link/p1630r1)
 */

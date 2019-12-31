@@ -269,7 +269,7 @@
 #endif
 
 #if !defined(LBAL_CPP14_SIZED_DEALLOCATION) \
-		&& (__cpp_sized_deallocation >= 201304L)
+		&& (__cpp_sized_deallocation >= 201309L)
 	#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 #endif
 
@@ -510,9 +510,14 @@
 	#define LBAL_CPP2A_INIT_CAPTURES_PACK_EXPANSION __cpp_init_captures
 #endif
 
-#if !defined(LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS) \
+#if !defined(LBAL_CPP2A_MODULES) \
 		&& (__cpp_modules >= 201907L)
-	#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS __cpp_modules
+	#define LBAL_CPP2A_MODULES __cpp_modules
+#endif
+
+#if !defined(LBAL_CPP2A_NONTYPE_TEMPLATE_ARGS_FIXES) \
+		&& (__cpp_nontype_template_args >= 201911L)
+	#define LBAL_CPP2A_NONTYPE_TEMPLATE_ARGS_FIXES __cpp_nontype_template_args
 #endif
 
 #if !defined(LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS) \
@@ -524,6 +529,12 @@
 #if !defined(LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR) \
 		&& (__cpp_impl_three_way_comparison >= 201711L)
 	#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR \
+			__cpp_impl_three_way_comparison
+#endif
+
+#if !defined(LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX) \
+		&& (__cpp_impl_three_way_comparison >= 201902L)
+	#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX \
 			__cpp_impl_three_way_comparison
 #endif
 

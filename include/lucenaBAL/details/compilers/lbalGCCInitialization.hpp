@@ -169,7 +169,7 @@
 
 	//	__SEEME__ There is no `LBAL_cpp_version` check since this can be
 	//	conditionally disabled.
-	#if (__cpp_sized_deallocation >= 201304L)
+	#if (__cpp_sized_deallocation >= 201309L)
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 	#else
 		#define LBAL_CPP14_SIZED_DEALLOCATION 0

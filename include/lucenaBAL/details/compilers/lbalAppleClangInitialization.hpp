@@ -184,7 +184,7 @@
 	//
 	//	__SEEME__ This explicit test is here for documentation, but could
 	//	actually be dropped as the common test will serve just as well.
-	#if (__cpp_sized_deallocation >= 201304L)
+	#if (__cpp_sized_deallocation >= 201309L)
 		#define LBAL_CPP14_SIZED_DEALLOCATION __cpp_sized_deallocation
 	#else
 		#define LBAL_CPP14_SIZED_DEALLOCATION 0
