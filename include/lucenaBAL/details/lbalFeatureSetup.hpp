@@ -2768,6 +2768,199 @@
 	#define LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP 0
 #endif
 
+/**
+	@def LBAL_LIBCPP14_INTEGER_SEQUENCE
+	@brief Add template-based integer sequences
+	@details Equivalent SD-6 macro: `__cpp_lib_integer_sequence`
+	- [201304L](https://wg21.link/N3658)
+
+	@sa `<utility>`
+*/
+#ifndef LBAL_LIBCPP14_INTEGER_SEQUENCE
+	#define LBAL_LIBCPP14_INTEGER_SEQUENCE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE
+	@brief Add `constexpr` operator-() to `std::integral_constant`
+	@details Equivalent SD-6 macro: `__cpp_lib_integral_constant_callable`
+	- [201304L](https://wg21.link/N3545) __PDF__
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE
+	#define LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_IS_FINAL
+	@brief Detect finalized classes
+	@details Equivalent SD-6 macro: `__cpp_lib_integral_constant_callable`
+	- [201402L](https://wg21.link/LWG2112)
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP14_IS_FINAL
+	#define LBAL_LIBCPP14_IS_FINAL 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_IS_NULL_POINTER
+	@brief Detect null pointers
+	@details Equivalent SD-6 macro: `__cpp_lib_is_null_pointer`
+	- [201309L](https://wg21.link/LWG2247)
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP14_IS_NULL_POINTER
+	#define LBAL_LIBCPP14_IS_NULL_POINTER 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR
+	@brief `std::make_reverse_iterator`
+	@details Equivalent SD-6 macro: `__cpp_lib_make_reverse_iterator`
+	- [201402L](https://wg21.link/LWG2285)
+
+	@sa `<iterator>`
+*/
+#ifndef LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR
+	#define LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_MAKE_UNIQUE
+	@brief `std::make_unique`
+	@details Equivalent SD-6 macro: `__cpp_lib_make_unique`
+	- [201304L](https://wg21.link/N3656)
+
+	@sa `<memory>`
+*/
+#ifndef LBAL_LIBCPP14_MAKE_UNIQUE
+	#define LBAL_LIBCPP14_MAKE_UNIQUE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_NULL_ITERATORS
+	@brief Allow value-initialized forward iterators to be compared
+	@details Equivalent SD-6 macro: `__cpp_lib_null_iterators`
+	- [201304L](https://wg21.link/N3644) __PDF__
+
+	@sa `<iterator>`
+*/
+#ifndef LBAL_LIBCPP14_NULL_ITERATORS
+	#define LBAL_LIBCPP14_NULL_ITERATORS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_QUOTED_STRING_IO
+	@brief Add quoted-string sream i/o manipulator
+	@details Equivalent SD-6 macro: `__cpp_lib_quoted_string_io`
+	- [201304L](https://wg21.link/N3654)
+
+	@sa `<iomanip>`
+*/
+#ifndef LBAL_LIBCPP14_QUOTED_STRING_IO
+	#define LBAL_LIBCPP14_QUOTED_STRING_IO 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_RESULT_OF_SFINAE
+	@brief Make `std::result_of` SFINAE-friendly
+	@details Equivalent SD-6 macro: `__cpp_lib_result_of_sfinae`
+	- [201210L](https://wg21.link/N3462)
+
+	@sa `<functional>` `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP14_RESULT_OF_SFINAE
+	#define LBAL_LIBCPP14_RESULT_OF_SFINAE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS
+	@brief Make non-modifying sequence operations more robust
+	@details Equivalent SD-6 macro: `__cpp_lib_robust_nonmodifying_seq_ops`
+	- [201304L](https://wg21.link/N3671)
+
+	@sa `<algorithm>`
+*/
+#ifndef LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS
+	#define LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_SHARED_TIMED_MUTEX
+	@brief Rename `std::shared_mutex` to `std::shared_timed_mutex`
+	@details Equivalent SD-6 macro: `__cpp_lib_shared_timed_mutex`
+	- [201402L](https://wg21.link/N3891)
+
+	@sa `<shared_mutex>`
+*/
+#ifndef LBAL_LIBCPP14_SHARED_TIMED_MUTEX
+	#define LBAL_LIBCPP14_SHARED_TIMED_MUTEX 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_STRING_UDLS
+	@brief Predefine UDLs for strings
+	@details Equivalent SD-6 macro: `__cpp_lib_string_udls`
+	- [201304L](https://wg21.link/N3642) __PDF__
+
+	@sa `<string>`
+*/
+#ifndef LBAL_LIBCPP14_STRING_UDLS
+	#define LBAL_LIBCPP14_STRING_UDLS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES
+	@brief Provide type aliases for transformation traits
+	@details Equivalent SD-6 macro: `__cpp_lib_transformation_trait_aliases`
+	- [201304L](https://wg21.link/N3655) __PDF__
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES
+	#define LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_TRANSPARENT_OPERATORS
+	@brief Allow heterogeneous arguments to operator functors and template
+	their function call operators
+	@details Equivalent SD-6 macro: `__cpp_lib_transparent_operators`
+	- [201210L](https://wg21.link/N3421)
+
+	@sa `<functional>` `<memory>`
+*/
+#ifndef LBAL_LIBCPP14_TRANSPARENT_OPERATORS
+	#define LBAL_LIBCPP14_TRANSPARENT_OPERATORS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_TUPLE_ELEMENT_T
+	@brief Add `std::tuple element t` type alias
+	@details Equivalent SD-6 macro: `__cpp_lib_tuple_element_t`
+	- [201402L](https://wg21.link/N3887) __PDF__
+
+	@sa `<tuple>`
+*/
+#ifndef LBAL_LIBCPP14_TUPLE_ELEMENT_T
+	#define LBAL_LIBCPP14_TUPLE_ELEMENT_T 0
+#endif
+
+/**
+	@def LBAL_LIBCPP14_TUPLES_BY_TYPE
+	@brief Allow addressing `std::tuple`s by type
+	@details Equivalent SD-6 macro: `__cpp_lib_tuples_by_type`
+	- [201304L](https://wg21.link/N3670) __PDF__
+
+	@sa `<tuple>` `<utility>`
+*/
+#ifndef LBAL_LIBCPP14_TUPLES_BY_TYPE
+	#define LBAL_LIBCPP14_TUPLES_BY_TYPE 0
+#endif
+
 ///	@}	LBAL_LIBCPP14
 
 /**
@@ -2860,13 +3053,14 @@
 	@brief Add `constexpr` modifiers to `std::reverse_iterator`,
 	`std::move_iterator`, `<array>` and Range Access types
 
-	@details Equivalent SD-6 macro: `__cpp_lib_array_constexpr`.
-
+	@details Equivalent SD-6 macro: `__cpp_lib_array_constexpr`. This token
+	corresponds to the `201603L` variant; it will only be set to a non-`0`
+	value if that variant is available.
 	- [201603L](https://wg21.link/P0031R0)
 	- [201803L](https://wg21.link/P0858R0)
-
-	This token corresponds to the `201603L` variant; it will only be set to a
-	non-`0` value if that variant is available.
+	- [201803L](https://wg21.link/LWG3257)
+	- [201806L](https://wg21.link/P1023R0)
+	- [201811L](https://wg21.link/P1032R1)
 
 	@sa `<array>` `<iterator>`
 */
@@ -2937,13 +3131,13 @@
 /**
 	@def LBAL_LIBCPP17_CHRONO
 	@brief Rounding and `abs` fixes for `<chrono>`
-	@details Equivalent SD-6 macro: `__cpp_lib_chrono`
+	@details Equivalent SD-6 macro: `__cpp_lib_chrono`. This token corresponds
+	to the `201510L` variant; it will only be set to a non-`0` value if that
+	variant is available.
 	- [201510L](https://wg21.link/P0092R1)
 	- [201611L](https://wg21.link/P0505R0)
+	- [201803L](https://wg21.link/P0355R7)
 	- [201907L](https://wg21.link/P1466R3)
-
-	This token corresponds to the `201510L` variant; it will only be set to a
-	non-`0` value if that variant is available.
 
 	@sa `<chrono>`
 */
@@ -2954,13 +3148,13 @@
 /**
 	@def LBAL_LIBCPP17_CHRONO_CONSTEXPR
 	@brief Add `constexpr` to certain `<chrono>` functions
-	@details Equivalent SD-6 macro: `__cpp_lib_chrono`
+	@details Equivalent SD-6 macro: `__cpp_lib_chrono`. This token corresponds
+	to the `201611L` variant; it will only be set to a non-`0` value if that
+	variant is available.
 	- [201510L](https://wg21.link/P0092R1)
 	- [201611L](https://wg21.link/P0505R0)
+	- [201803L](https://wg21.link/P0355R7)
 	- [201907L](https://wg21.link/P1466R3)
-
-	This token corresponds to the `201611L` variant; it will only be set to a
-	non-`0` value if that variant is available.
 
 	@sa `<chrono>`
 */
@@ -2986,32 +3180,16 @@
 	@details Equivalent SD-6 macro: `__cpp_lib_enable_shared_from_this`
 	- [201603L](https://wg21.link/P0033R1)
 
-	@remarks __SEEME__ The official SD-6 doc contains an error wherein this
-	token is mistakenly tied to [P0074R0](https://wg21.link/P0074R0), a
-	different proposal dealing with `std::owner_less`. We reflect the correct
-	proposal here, but the date associated with this token may be incorrect.
+	@remarks __SEEME__ Prior to the December 2019 release, the official
+	SD-6 doc contains an error wherein this token is mistakenly tied to
+	[P0074R0](https://wg21.link/P0074R0), a different proposal dealing with
+	`std::owner_less`. We reflect the correct proposal here, but the date
+	associated with this token may be incorrect.
 
 	@sa `<memory>`
 */
 #ifndef LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS
 	#define LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS 0
-#endif
-
-/**
-	@def LBAL_LIBCPP17_ENABLE_OWNER_LESS_VOID
-	@brief Make `std::owner_less` more flexible
-	@details Equivalent SD-6 macro: none
-	- [default](https://wg21.link/P0074R0)
-
-	@remarks __SEEME__ The official SD-6 doc contains an error wherein this
-	paper and functionality are mistakenly tied to
-	`__cpp_lib_enable_shared_from_this`. As such, there is no official token
-	for this at this time.
-
-	@sa `<memory>`
-*/
-#ifndef LBAL_LIBCPP17_ENABLE_OWNER_LESS_VOID
-	#define LBAL_LIBCPP17_ENABLE_OWNER_LESS_VOID 0
 #endif
 
 /**
@@ -3037,15 +3215,16 @@
 
 /**
 	@def LBAL_LIBCPP17_FILESYSTEM
+
 	@brief Adopt File System TS
-	@details Equivalent SD-6 macro: `__cpp_lib_filesystem`
+
+	@details Equivalent SD-6 macro: `__cpp_lib_filesystem`. This token
+	corresponds to the `201603L` variant; it will only be set to a non-`0`
+	value if that variant is available.
 	- [201603L](https://wg21.link/P0218R1)
 	- [201606L](https://wg21.link/P0219R1)
 	- [201606L](https://wg21.link/P0392R0)
 	- [201703L](https://wg21.link/P0317R1)
-
-	This token corresponds to the `201603L` variant; it will only be set to a
-	non-`0` value if that variant is available.
 
 	@remarks __SEEME__ Full implementation missing on Apple platforms prior to
 	macOS 10.15.
@@ -3058,16 +3237,17 @@
 
 /**
 	@def LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED
+
 	@brief Add relative path and `std::string_view` support to `<filesystem>`
-	@details Equivalent SD-6 macro: `__cpp_lib_filesystem`
+
+	@details Equivalent SD-6 macro: `__cpp_lib_filesystem`. This token
+	corresponds to the `201606L` variants (both P0219R1 and P0392R0 were
+	adopted at the same time). It will only be set to a non-`0` value if these
+	variants are available.
 	- [201603L](https://wg21.link/P0218R1)
 	- [201606L](https://wg21.link/P0219R1)
 	- [201606L](https://wg21.link/P0392R0)
 	- [201703L](https://wg21.link/P0317R1)
-
-	This token corresponds to the `201606L` variants (both P0219R1 and P0392R0
-	were adopted at the same time). It will only be set to a non-`0` value if
-	these variants are available.
 
 	@remarks __SEEME__ Full implementation missing on Apple platforms prior to
 	macOS 10.15.
@@ -3080,15 +3260,16 @@
 
 /**
 	@def LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING
+
 	@brief Add directory entry caching to `<filesystem>`
-	@details Equivalent SD-6 macro: `__cpp_lib_filesystem`
+
+	@details Equivalent SD-6 macro: `__cpp_lib_filesystem`. This token
+	corresponds to the `201703L` variant; it will only be set to a non-`0`
+	value if that variant is available.
 	- [201603L](https://wg21.link/P0218R1)
 	- [201606L](https://wg21.link/P0219R1)
 	- [201606L](https://wg21.link/P0392R0)
 	- [201703L](https://wg21.link/P0317R1)
-
-	This token corresponds to the `201703L` variant; it will only be set to a
-	non-`0` value if that variant is available.
 
 	@remarks __SEEME__ Full implementation missing on Apple platforms prior to
 	macOS 10.15.
@@ -3167,39 +3348,256 @@
 #endif
 
 /**
+	@def LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS
+	@brief Introduce minimal incomplete type support for Standard containers
+	@details Equivalent SD-6 macro: `__cpp_lib_incomplete_container_elements`
+	- [201505L](https://wg21.link/N4510)
+
+	This standardizes finding 3-dimensional distance as well as 2-dimensional
+	distance.
+
+	@sa `<forward_list>` `<list>` `<vector>`
+*/
+#ifndef LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS
+	#define LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_INVOKE
+	@brief Add `std::invoke` function template
+	@details Equivalent SD-6 macro: `__cpp_lib_invoke`
+	- [201411L](https://wg21.link/N4169)
+
+	@sa `<functional>`
+*/
+#ifndef LBAL_LIBCPP17_INVOKE
+	#define LBAL_LIBCPP17_INVOKE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_IS_AGGREGATE
+	@brief Add `std::is_aggregate` type trait
+	@details Equivalent SD-6 macro: `__cpp_lib_is_aggregate`
+	- [201703L](https://wg21.link/LWG2911)
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP17_IS_AGGREGATE
+	#define LBAL_LIBCPP17_IS_AGGREGATE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_IS_INVOCABLE
+	@brief Add `std::is_invocable` type trait to replace `is_callable`
+	@details Equivalent SD-6 macro: `__cpp_lib_is_invocable`
+	- [201703L](https://wg21.link/P0604R0)
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP17_IS_INVOCABLE
+	#define LBAL_LIBCPP17_IS_INVOCABLE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_IS_SWAPPABLE
+	@brief Add `std::is_swappable` type trait family
+	@details Equivalent SD-6 macro: `__cpp_lib_is_swappable`
+	- [201603L](https://wg21.link/P0185R1)
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP17_IS_SWAPPABLE
+	#define LBAL_LIBCPP17_IS_SWAPPABLE 0
+#endif
+
+/**
 	@def LBAL_LIBCPP17_LAUNDER
-	Replacement of class objects containing reference members.
+	@brief Replacement of class objects containing reference members
+	@details Equivalent SD-6 macro: `__cpp_lib_launder`
+	- [201606L](https://wg21.link/p0137r1)
 
-	Equivalent SD-6 macro: `__cpp_lib_launder`
-
-	https://wg21.link/p0137r1
-
-	@remarks __APIME__ We do not track experimental versions of this.
+	@sa `<new>`
 */
 #ifndef LBAL_LIBCPP17_LAUNDER
 	#define LBAL_LIBCPP17_LAUNDER 0
 #endif
 
 /**
+	@def LBAL_LIBCPP17_LOGICAL_TRAITS
+	@brief Provide type traits for performing logical operations
+	@details Equivalent SD-6 macro: `__cpp_lib_logical_traits`
+	- [201510L](https://wg21.link/P0013R1)
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP17_LOGICAL_TRAITS
+	#define LBAL_LIBCPP17_LOGICAL_TRAITS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_MAKE_FROM_TUPLE
+	@brief Introduce `std::make_from_tuple` to unpack a tuple into arguments
+	@details Equivalent SD-6 macro: `__cpp_lib_make_from_tuple`
+	- [201606L](https://wg21.link/P0209R2) __PDF__
+
+	@sa `<tuple>`
+*/
+#ifndef LBAL_LIBCPP17_MAKE_FROM_TUPLE
+	#define LBAL_LIBCPP17_MAKE_FROM_TUPLE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_MAP_TRY_EMPLACE
+	@brief Improve insertion into `std::map`
+	@details Equivalent SD-6 macro: `__cpp_lib_map_try_emplace`
+	- [201411L](https://wg21.link/N4279)
+
+	@sa `<map>`
+*/
+#ifndef LBAL_LIBCPP17_MAP_TRY_EMPLACE
+	#define LBAL_LIBCPP17_MAP_TRY_EMPLACE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_MATH_SPECIAL_FUNCTIONS
+	@brief Incorporate math functions specified in IS 29124:2010
+	@details Equivalent SD-6 macro: `__cpp_lib_math_special_functions`
+	- [201603L](https://wg21.link/P0226R1) __PDF__
+
+	@sa `<cmath>`
+*/
+#ifndef LBAL_LIBCPP17_MATH_SPECIAL_FUNCTIONS
+	#define LBAL_LIBCPP17_MATH_SPECIAL_FUNCTIONS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_MEMORY_RESOURCE
+
+	@brief Incorporate memory management components from
+	Library Fundamentals V1 TS
+
+	@details Equivalent SD-6 macro: `__cpp_lib_memory_resource`
+	- [201603L](https://wg21.link/P0220R1)
+
+	@sa `<memory_resource>`
+*/
+#ifndef LBAL_LIBCPP17_MEMORY_RESOURCE
+	#define LBAL_LIBCPP17_MEMORY_RESOURCE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_NODE_EXTRACT
+	@brief Add splicing to associative containers
+	@details Equivalent SD-6 macro: `__cpp_lib_node_extract`
+	- [201606L](https://wg21.link/P0083R3) __PDF__
+
+	@sa `<map>` `<set>` `<unordered_map>` `<unordered_set>`
+*/
+#ifndef LBAL_LIBCPP17_NODE_EXTRACT
+	#define LBAL_LIBCPP17_NODE_EXTRACT 0
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP17_NODE_EXTRACT
+		#define LBAL_LIBCPP17_NODE_EXTRACT LBAL_LIBCPP17_NODE_EXTRACT
+	#endif
+///@endcond
+
+/**
+	@def LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
+
+	@brief Incorporate non-member functions into Standard container class
+	interfaces
+
+	@details Equivalent SD-6 macro: `__cpp_lib_nonmember_container_access`
+	- [201411L](https://wg21.link/N4280)
+
+	@sa `<array>` `<deque>` `<forward_list>` `<iterator>` `<list>` `<map>`
+	`<regex>` `<set>` `<string>` `<unordered_map>` `<unordered_set>` `<vector>`
+*/
+#ifndef LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
+	#define LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_NOT_FN
+	@brief Add `std::not_fn`
+	@details Equivalent SD-6 macro: `__cpp_lib_not_fn`
+	- [201603L](https://wg21.link/P0005R4) __PDF__
+
+	@sa `<functional>`
+*/
+#ifndef LBAL_LIBCPP17_NOT_FN
+	#define LBAL_LIBCPP17_NOT_FN 0
+#endif
+
+/**
 	@def LBAL_LIBCPP17_OPTIONAL
 
-	Equivalent SD-6 macro: `__cpp_lib_optional`
+	@brief Add `std::optional`
 
-	@remarks __APIME__ Only tracked because of incomplete implementations on
-	older Apple platforms.
+	@details Equivalent SD-6 macro: `__cpp_lib_optional`. This token
+	corresponds to the `201603L` variant; it will only be set to a non-`0`
+	value if that variant is available.
+	- [201603L](https://wg21.link/P0220R1)
+	- [201606L](https://wg21.link/P0032R3) __PDF__
+	- [201606L](https://wg21.link/P0307R2) __PDF__
 
-	@remarks __APIME__ We do not track experimental versions of this.
+	@sa `<optional>`
 */
 #ifndef LBAL_LIBCPP17_OPTIONAL
 	#define LBAL_LIBCPP17_OPTIONAL 0
 #endif
 
 /**
+	@def LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL
+
+	@brief Homogenize `std::optional` interface with `std::any` and
+	`std::variant`
+
+	@details Equivalent SD-6 macro: `__cpp_lib_optional`. This token
+	corresponds to the `201606L` [P0307R2](https://wg21.link/P0307R2) variant
+	([P0032R3](https://wg21.link/P0032R3) was approved at the same time). It
+	will only be set to a non-`0` value if that variant is available.
+	- [201603L](https://wg21.link/P0220R1)
+	- [201606L](https://wg21.link/P0032R3) __PDF__
+	- [201606L](https://wg21.link/P0307R2) __PDF__
+
+	@sa `<optional>`
+*/
+#ifndef LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL
+	#define LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_OPTIONAL_INTERFACE
+
+	@brief Homogenize `std::optional` interface with `std::any` and
+	`std::variant`
+
+	@details Equivalent SD-6 macro: `__cpp_lib_optional`. This token
+	corresponds to the `201606L` `P0032R3` variant (`P0307R2` was approved at
+	the same time). It will only be set to a non-`0` value if that variant is
+	available.
+	- [201603L](https://wg21.link/P0220R1)
+	- [201606L](https://wg21.link/P0032R3) __PDF__
+	- [201606L](https://wg21.link/P0307R2) __PDF__
+
+	@sa `<optional>`
+*/
+#ifndef LBAL_LIBCPP17_OPTIONAL_INTERFACE
+	#define LBAL_LIBCPP17_OPTIONAL_INTERFACE 0
+#endif
+
+/**
 	@def LBAL_LIBCPP17_PARALLEL_ALGORITHM
 
-	Equivalent SD-6 macro: `__cpp_lib_parallel_algorithm`
+	@brief Standardize the Parallelism TS
 
-	https://wg21.link/p0024r2
+	@details Equivalent SD-6 macro: `__cpp_lib_parallel_algorithm`
+	- [P0024R2](https://wg21.link/p0024r2) __PDF__
 
 	@remarks By itself, this macro does not measure compliance with the
 	Working Group paper; for that, use
@@ -3212,39 +3610,146 @@
 #endif
 
 /**
-	@def LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS
+	@def LBAL_LIBCPP17_RAW_MEMORY_ALGORITHMS
+	@brief Supply tools for raw memory management
+	@details Equivalent SD-6 macro: `__cpp_lib_raw_memory_algorithms`
+	- [201606L](https://wg21.link/P0040R3)
 
-	Equivalent SD-6 macro: `__cpp_lib_node_extract`
-
-	http://wg21.link/p0083r3
-	
-	@remarks __APIME__ We do not track experimental versions of this.
+	@sa `<memory>`
 */
-#ifndef LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS
-	#define LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS 0
+#ifndef LBAL_LIBCPP17_RAW_MEMORY_ALGORITHMS
+	#define LBAL_LIBCPP17_RAW_MEMORY_ALGORITHMS 0
 #endif
 
 /**
-	LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
- 	This token tracks compliance with the Standard as it relates to
+	@def LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
+
+	@brief Track full compliance with the Parallelism Standard
+
+ 	@details This token tracks compliance with the Standard as it relates to
  	implementing the referenced Working Group paper; there is no correspoding
- 	SD-6 macro, or rather, there are -two- relevant macros which each track the
+ 	SD-6 macro, or rather, there are _two_ relevant macros which each track the
  	different features required for compliance. We actually track both of
  	those, as well as this meta-feature, separately. As such, this token
  	represents an aggregate condition: if both `LBAL_LIBCPP17_EXECUTION` and
  	`LBAL_LIBCPP17_PARALLEL_ALGORITHM` indicate compliance, this gets set to
  	`1`; otherwise, it’s set to `0`.
-
-	Equivalent SD-6 macro: none
-
-	https://wg21.link/p0024r2
+	- [Parallelism TS](https://wg21.link/P0024R2)
 
 	@remarks __APIME__ We do not track experimental versions of this, partly
 	because the Draft versions tracked a different set of features, in
 	different places, which were refactored/replaced.
+
+	@remarks __SEEME__ We do not check compliance with iterations on the
+	constituent components (e.g., `LBAL_LIBCPP2A_EXECUTION_VECTORIZATION`),
+	only that we have met the base requirements for supporting Parallelism.
+	Extending tracking is one option; another is to eliminate this meta-token
+	to avoid over-complicating things.
 */
 #ifndef LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
 	#define LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_SAMPLE
+	@brief Adopt `std::sample` from the Library Fundamentals V1 TS
+	@details Equivalent SD-6 macro: `__cpp_lib_sample`
+	- [201603L](https://wg21.link/P0220R1)
+
+	@sa `<algorithm>`
+*/
+#ifndef LBAL_LIBCPP17_SAMPLE
+	#define LBAL_LIBCPP17_SAMPLE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_SCOPED_LOCK
+	@brief Add a variadic variant of `std::lock_guard` under a new name
+	@details Equivalent SD-6 macro: `__cpp_lib_scoped_lock`.
+	- [201703L](https://wg21.link/P0156R2)
+
+	@remarks It was determined that simply making `std::lock_guard` variadic
+	would break ABI, hence the name change.
+
+	@sa `<mutex>`
+*/
+#ifndef LBAL_LIBCPP17_SCOPED_LOCK
+	#define LBAL_LIBCPP17_SCOPED_LOCK 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_SHARED_MUTEX
+	@brief Officially change `std::shared_mutex` to an untimed mutex
+	@details Equivalent SD-6 macro: `__cpp_lib_shared_mutex`. This change was
+	corresponds to the addition of an explicit `std::shared_timed_mutex`.
+	- [201505L](https://wg21.link/N4508)
+
+	@sa `<shared_mutex>`
+*/
+#ifndef LBAL_LIBCPP17_SHARED_MUTEX
+	#define LBAL_LIBCPP17_SHARED_MUTEX 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_SHARED_PTR_ARRAYS
+	@brief Fix `std::shared_ptr` support for arrays
+	@details Equivalent SD-6 macro: `__cpp_lib_shared_ptr_arrays`
+	- [201611L](https://wg21.link/P0497R0)
+
+	@sa `<memory>`
+*/
+#ifndef LBAL_LIBCPP17_SHARED_PTR_ARRAYS
+	#define LBAL_LIBCPP17_SHARED_PTR_ARRAYS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_SHARED_PTR_WEAK_TYPE
+	@brief Add `shared_ptr::weak_type`
+	@details Equivalent SD-6 macro: `__cpp_lib_shared_ptr_weak_type`
+	- [201606L](https://wg21.link/P0163R0)
+
+	@sa `<memory>`
+*/
+#ifndef LBAL_LIBCPP17_SHARED_PTR_WEAK_TYPE
+	#define LBAL_LIBCPP17_SHARED_PTR_WEAK_TYPE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_STRING_VIEW
+
+	@brief Adopt `std::string_view` from the Library Fundamentals V1 TS
+
+	@details Equivalent SD-6 macro: `__cpp_lib_string_view`. This token
+	corresponds to the `201603L` variant; it will only be set to a non-`0`
+	value if that variant is available.
+	- [201603L](https://wg21.link/P0220R1)
+	- [201606L](https://wg21.link/P0254R2) __PDF__
+	- [201803L](https://wg21.link/P0858R0)
+	- [201803L](https://wg21.link/LWG3257)
+
+	@sa `<string>` `<string_view>`
+*/
+#ifndef LBAL_LIBCPP17_STRING_VIEW
+	#define LBAL_LIBCPP17_STRING_VIEW 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_STRING_VIEW_INTERFACE
+
+	@brief Address interface inversion between `<string>` and `<string_view>`
+
+	@details Equivalent SD-6 macro: `__cpp_lib_string_view`. This token
+	corresponds to the `201606L` variant; it will only be set to a non-`0`
+	value if that variant is available.
+	- [201603L](https://wg21.link/P0220R1)
+	- [201606L](https://wg21.link/P0254R2) __PDF__
+	- [201803L](https://wg21.link/P0858R0)
+	- [201803L](https://wg21.link/LWG3257)
+
+	@sa `<string>` `<string_view>`
+*/
+#ifndef LBAL_LIBCPP17_STRING_VIEW_INTERFACE
+	#define LBAL_LIBCPP17_STRING_VIEW_INTERFACE 0
 #endif
 
 /**
@@ -3354,17 +3859,92 @@
 ///@endcond
 
 /**
+	@def LBAL_LIBCPP17_TRANSPARENT_OPERATORS
+	@brief Make `std::owner_less` more flexible
+	@details Equivalent SD-6 macro: `__cpp_lib_transparent_operators`
+	- [201510L](https://wg21.link/P0074R0)
+
+	@remarks __SEEME__ The official SD-6 doc prior to December 2019 contains an
+	error wherein this proposal and functionality are mistakenly tied to
+	`__cpp_lib_enable_shared_from_this`.
+
+	@sa `<functional>` `<memory>`
+*/
+#ifndef LBAL_LIBCPP17_TRANSPARENT_OPERATORS
+	#define LBAL_LIBCPP17_TRANSPARENT_OPERATORS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES
+
+	@brief Adopt variable templates for type traits from the
+	Library Fundamentals V1 TS
+
+	@details Equivalent SD-6 macro: `__cpp_lib_type_trait_variable_templates`
+	- [201510L](https://wg21.link/P0006R0)
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES
+	#define LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_UNCAUGHT_EXCEPTIONS
+
+	@brief Add `std::uncaught_exceptions`
+
+	@details Equivalent SD-6 macro: `__cpp_lib_uncaught_exceptions`
+	- [201411L](https://wg21.link/N4259)
+
+	@sa `<exception>`
+*/
+#ifndef LBAL_LIBCPP17_UNCAUGHT_EXCEPTIONS
+	#define LBAL_LIBCPP17_UNCAUGHT_EXCEPTIONS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_UNORDERED_MAP_TRY_EMPLACE
+	@brief Improve insertion into `std::unordered_map`
+	@details Equivalent SD-6 macro: `__cpp_lib_unordered_map_try_emplace`
+	- [201411L](https://wg21.link/N4279)
+
+	@sa `<unordered_map>`
+*/
+#ifndef LBAL_LIBCPP17_UNORDERED_MAP_TRY_EMPLACE
+	#define LBAL_LIBCPP17_UNORDERED_MAP_TRY_EMPLACE 0
+#endif
+
+/**
 	@def LBAL_LIBCPP17_VARIANT
 
-	Equivalent SD-6 macro: `__cpp_lib_variant`
+	@brief Add `std::variant`
 
-	@remarks __APIME__ Only tracked because of incomplete implementations on
-	older Apple platforms.
+	@details Equivalent SD-6 macro: `__cpp_lib_variant`
+	- [201606L](https://wg21.link/P0088R3)
+	- [201606L](https://wg21.link/P0393R3) __PDF__
+	- [201606L](https://wg21.link/P0032R3) __PDF__
 
-	@remarks __APIME__ We do not track experimental versions of this.
+	@remarks We track all three proposals as one variant, as they were all
+	voted in at the same time, and no implementation we’re aware of implemented
+	them piecemeal.
+
+	@sa `<variant>`
 */
 #ifndef LBAL_LIBCPP17_VARIANT
 	#define LBAL_LIBCPP17_VARIANT 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_VOID_T
+	@brief Add `std::void_t` as a transformation type trait
+	@details Equivalent SD-6 macro: `__cpp_lib_void_t`
+	- [201411L](https://wg21.link/N3911)
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP17_VOID_T
+	#define LBAL_LIBCPP17_VOID_T 0
 #endif
 
 ///	@}	LBAL_LIBCPP17
@@ -3378,19 +3958,90 @@
 */
 
 /**
-	@def LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERS
+	@def LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR
+
 	@brief Define requirements for `constexpr` iterators
-	@details Equivalent SD-6 macro: `__cpp_lib_array_constexpr`
+
+	@details Equivalent SD-6 macro: `__cpp_lib_array_constexpr`. This token
+	corresponds to the `201803L` variants; it will only be set to a non-`0`
+	value if those variants are available.
 	- [201603L](https://wg21.link/P0031R0)
 	- [201803L](https://wg21.link/P0858R0)
+	- [201803L](https://wg21.link/LWG3257)
+	- [201806L](https://wg21.link/P1023R0)
+	- [201811L](https://wg21.link/P1032R1)
 
-	This token corresponds to the `201803L` variant; it will only be set to a
-	non-`0` value if that variant is available.
+	@remarks The issue raised in [LWG3257](https://wg21.link/LWG3257) was
+	simply that the SD-6 macro update voted in with
+	[201803L](https://wg21.link/P0858R0) had not been applied.
 
 	@sa `<array>` `<iterator>`
 */
-#ifndef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERS
-	#define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERS 0
+#ifndef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR
+	#define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR 0
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERS
+		#define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERS LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR
+	#endif
+///@endcond
+
+/**
+	@def LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS
+
+	@brief Provide `constexpr` comparison operators for `std::array`
+
+	@details Equivalent SD-6 macro: `__cpp_lib_array_constexpr`. This token
+	corresponds to the `201806L` variant; it will only be set to a non-`0`
+	value if that variant is available.
+	- [201603L](https://wg21.link/P0031R0)
+	- [201803L](https://wg21.link/P0858R0)
+	- [201803L](https://wg21.link/LWG3257)
+	- [201806L](https://wg21.link/P1023R0)
+	- [201811L](https://wg21.link/P1032R1)
+
+	@sa `<array>` `<iterator>`
+*/
+#ifndef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS
+	#define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES
+
+	@brief Provide `constexpr` `std::array` `swap` and `fill`
+
+	@details Equivalent SD-6 macro: `__cpp_lib_array_constexpr`. This token
+	corresponds to the `201806L` variant; it will only be set to a non-`0`
+	value if that variant is available.
+	- [201603L](https://wg21.link/P0031R0)
+	- [201803L](https://wg21.link/P0858R0)
+	- [201803L](https://wg21.link/LWG3257)
+	- [201806L](https://wg21.link/P1023R0)
+	- [201811L](https://wg21.link/P1032R1)
+
+	@sa `<array>` `<iterator>`
+*/
+#ifndef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES
+	#define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_ASSUME_ALIGNED
+
+	@brief Provide `std::assume_aligned` compiler hint utility function
+	Library
+
+	@details Equivalent SD-6 macro: `__cpp_lib_assume_aligned`
+	- [201811L](https://wg21.link/P1007R3)
+
+	@sa `<memory>`
+*/
+#ifndef LBAL_LIBCPP2A_ASSUME_ALIGNED
+	#define LBAL_LIBCPP2A_ASSUME_ALIGNED 0
 #endif
 
 /**
@@ -3407,6 +4058,26 @@
 #ifndef LBAL_LIBCPP2A_ATOMIC_FLAG_TEST
 	#define LBAL_LIBCPP2A_ATOMIC_FLAG_TEST 0
 #endif
+
+/**
+	@def LBAL_LIBCPP2A_ATOMIC_FLOAT
+	@brief Extend `<atomic>` support to floating point types
+	@details Equivalent SD-6 macro: `__cpp_lib_atomic_float`
+	- [default](https://wg21.link/P0020R6)
+
+	@sa `<atomic>`
+*/
+#ifndef LBAL_LIBCPP2A_ATOMIC_FLOAT
+	#define LBAL_LIBCPP2A_ATOMIC_FLOAT 0
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC
+		#define LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC LBAL_LIBCPP2A_ATOMIC_FLOAT
+	#endif
+///@endcond
 
 /**
 	@def LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES
@@ -3439,6 +4110,33 @@
 		#define LBAL_LIBCPP2A_STD_ATOMIC_REF LBAL_LIBCPP2A_ATOMIC_REF
 	#endif
 ///@endcond
+
+/**
+	@def LBAL_LIBCPP2A_ATOMIC_SHARED_PTR
+	@brief Fixes for atomic `std::shared_ptr` and `std::weak_ptr`
+	@details Equivalent SD-6 macro: `__cpp_lib_atomic_shared_ptr`
+	- [201711L](https://wg21.link/P0718R2)
+
+	@sa `<memory>`
+*/
+#ifndef LBAL_LIBCPP2A_ATOMIC_SHARED_PTR
+	#define LBAL_LIBCPP2A_ATOMIC_SHARED_PTR 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION
+
+	@brief Eliminate the surprising value-initialization behavior of
+	`std::atomic`
+
+	@details Equivalent SD-6 macro: `__cpp_lib_atomic_value_initialization`
+	- [201911L](https://wg21.link/P0883R2)
+
+	@sa `<atomic>` `<memory>`
+*/
+#ifndef LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION
+	#define LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION 0
+#endif
 
 /**
 	@def LBAL_LIBCPP2A_ATOMIC_WAIT
@@ -3533,18 +4231,6 @@
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE
-	@brief Add Calendar and Timezone support to `<chrono>`
-	@details Equivalent SD-6 macro: none
-	- [default](https://wg21.link/p0355r7)
-
-	@sa `<chrono>`
-*/
-#ifndef LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE
-	#define LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE 0
-#endif
-
-/**
 	@def LBAL_LIBCPP2A_CHAR8_T
 	@brief Define `char8_t` as the base type for UTF-8 encodings (Rev 6)
 	@details Equivalent SD-6 macro: `__cpp_lib_char8_t`
@@ -3579,15 +4265,41 @@
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_CHRONO_FIXES
-	@brief Miscellaneous minor fixes for `<chrono>`
-	@details Equivalent SD-6 macro: `__cpp_lib_chrono`
+	@def LBAL_LIBCPP2A_CHRONO_CALENDAR
+	@brief Add support for Calendars and Time Zones to `<chrono>`
+	@details Equivalent SD-6 macro: `__cpp_lib_chrono`. This token corresponds
+	to the `201803L` variant; it will only be set to a non-`0` value if that
+	variant is available.
 	- [201510L](https://wg21.link/P0092R1)
 	- [201611L](https://wg21.link/P0505R0)
+	- [201803L](https://wg21.link/P0355R7)
 	- [201907L](https://wg21.link/P1466R3)
 
-	This token corresponds to the `201907L` variant; it will only be set to a
-	non-`0` value if that variant is available.
+	@sa `<chrono>`
+*/
+#ifndef LBAL_LIBCPP2A_CHRONO_CALENDAR
+	#define LBAL_LIBCPP2A_CHRONO_CALENDAR 0
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE
+		#define LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE \
+				LBAL_LIBCPP2A_CHRONO_CALENDAR
+	#endif
+///@endcond
+
+/**
+	@def LBAL_LIBCPP2A_CHRONO_FIXES
+	@brief Miscellaneous minor fixes for `<chrono>`
+	@details Equivalent SD-6 macro: `__cpp_lib_chrono`. This token corresponds
+	to the `201907L` variant; it will only be set to a non-`0` value if that
+	variant is available.
+	- [201510L](https://wg21.link/P0092R1)
+	- [201611L](https://wg21.link/P0505R0)
+	- [201803L](https://wg21.link/P0355R7)
+	- [201907L](https://wg21.link/P1466R3)
 
 	@sa `<chrono>`
 */
@@ -3598,8 +4310,11 @@
 /**
 	@def LBAL_LIBCPP2A_CONCEPTS
 	@brief Standard Library Concepts
-	@details Equivalent SD-6 macro: `__cpp_lib_concepts`
+	@details Equivalent SD-6 macro: `__cpp_lib_concepts`. This token
+	corresponds to the `201806L` variant; it will only be set to a non-`0`
+	value if that variant is available.
 	- [201806L](https://wg21.link/P0898R3) __PDF__
+	- [201907L](https://wg21.link/P1754R1) __PDF__
 
 	@sa `<concepts>`
 */
@@ -3628,15 +4343,18 @@
 ///@endcond
 
 /**
-	@def LBAL_LIBCPP2A_CONSTEXPR
-	@brief Apply `constexpr` to trivial cases in the Standard Library
-	@details Equivalent SD-6 macro: `__cpp_lib_constexpr`
-	- [201811L](https://wg21.link/P1032R1)
+	@def LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE
+	@brief Rename C++ Concepts to use standard_case
+	@details Equivalent SD-6 macro: `__cpp_lib_concepts`. This token
+	corresponds to the `201907L` variant; it will only be set to a non-`0`
+	value if that variant is available.
+	- [201806L](https://wg21.link/P0898R3) __PDF__
+	- [201907L](https://wg21.link/P1754R1) __PDF__
 
-	This affects a large number of C++ and C headers.
+	@sa `<concepts>`
 */
-#ifndef LBAL_LIBCPP2A_CONSTEXPR
-	#define LBAL_LIBCPP2A_CONSTEXPR 0
+#ifndef LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE
+	#define LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE 0
 #endif
 
 /**
@@ -3645,6 +4363,7 @@
 	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_algorithms`
 	- [201703L](https://wg21.link/P0202R3)
 	- [201806L](https://wg21.link/P0879R0)
+	- [201806L](https://wg21.link/LWG3256)
 
 	This token corresponds to the `201703L` variant; it will only be set to a
 	non-`0` value if that variant is available.
@@ -3666,18 +4385,39 @@
 /**
 	@def LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP
 	@brief Add `constexpr` to `std::swap` and related functions
-	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_algorithms`
+	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_algorithms`. This
+	token corresponds to the `201806L` variant; it will only be set to a
+	non-`0` value if that variant is available.
 	- [201703L](https://wg21.link/P0202R3)
 	- [201806L](https://wg21.link/P0879R0)
-
-	This token corresponds to the `201806L` variant; it will only be set to a
-	non-`0` value if that variant is available.
+	- [201806L](https://wg21.link/LWG3256)
 
 	@sa `<algorithm>`
 */
 #ifndef LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP
 	#define LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP 0
 #endif
+
+/**
+	@def LBAL_LIBCPP2A_CONSTEXPR_COMPLEX
+	@brief Add more `constexpr` support to `<complex>`
+	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_complex`
+	- [201711L](https://wg21.link/P0415R1) __PDF__
+
+	@sa `<complex>`
+*/
+#ifndef LBAL_LIBCPP2A_CONSTEXPR_COMPLEX
+	#define LBAL_LIBCPP2A_CONSTEXPR_COMPLEX 0
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX
+		#define LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX \
+				LBAL_LIBCPP2A_CONSTEXPR_COMPLEX
+	#endif
+///@endcond
 
 /**
 	@def LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC
@@ -3692,15 +4432,79 @@
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_CONSTEXPR_INVOKE
-	@brief make `std::invoke` `constexpr`
-	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_invoke`
+	@def LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL
+	@brief Make more of `<functional>` `constexpr`
+	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_functional`. This
+	token corresponds to the `201811L` variant; it will only be set to a
+	non-`0` value if that variant is available.
+	- [201811L](https://wg21.link/P1032R1)
 	- [201907L](https://wg21.link/P1065R2)
 
 	@sa `<functional>`
 */
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_INVOKE
-	#define LBAL_LIBCPP2A_CONSTEXPR_INVOKE 0
+#ifndef LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL
+	#define LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL 0
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release. Note that the original token was
+	//	split over many other tokens, so selecting this particular one is
+	//	somewhat arbitrary.
+	#ifndef LBAL_LIBCPP2A_CONSTEXPR
+		#define LBAL_LIBCPP2A_CONSTEXPR LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL
+	#endif
+///@endcond
+
+/**
+	@def LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE
+	@brief Make `std::invoke` `constexpr`
+	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_functional`. This
+	token corresponds to the `201907L` variant; it will only be set to a
+	non-`0` value if that variant is available.
+	- [201811L](https://wg21.link/P1032R1)
+	- [201907L](https://wg21.link/P1065R2)
+
+	@sa `<functional>`
+*/
+#ifndef LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE
+	#define LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_CONSTEXPR_ITERATOR
+	@brief Make more of `<iterator>` `constexpr`
+	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_iterator`
+	- [201811L](https://wg21.link/P1032R1)
+
+	@sa `<iterator>`
+*/
+#ifndef LBAL_LIBCPP2A_CONSTEXPR_ITERATOR
+	#define LBAL_LIBCPP2A_CONSTEXPR_ITERATOR 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_CONSTEXPR_MEMORY
+	@brief Make `std::pointer_traits` `constexpr`
+	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_memory`
+	- [201811L](https://wg21.link/P1006R1)
+
+	@sa `<memory>`
+*/
+#ifndef LBAL_LIBCPP2A_CONSTEXPR_MEMORY
+	#define LBAL_LIBCPP2A_CONSTEXPR_MEMORY 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_CONSTEXPR_NUMERIC
+	@brief Make numeric algorithms `constexpr`
+	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_numeric`
+	- [201911L](https://wg21.link/P1645R1)
+
+	@sa `<numeric>`
+*/
+#ifndef LBAL_LIBCPP2A_CONSTEXPR_NUMERIC
+	#define LBAL_LIBCPP2A_CONSTEXPR_NUMERIC 0
 #endif
 
 /**
@@ -3713,6 +4517,42 @@
 */
 #ifndef LBAL_LIBCPP2A_CONSTEXPR_STRING
 	#define LBAL_LIBCPP2A_CONSTEXPR_STRING 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW
+	@brief Make more of `<string_view>` `constexpr`
+	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_string_view`
+	- [201811L](https://wg21.link/P1032R1)
+
+	@sa `<string_view>`
+*/
+#ifndef LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW
+	#define LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_CONSTEXPR_TUPLE
+	@brief Make more of `<tuple>` `constexpr`
+	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_tuple`
+	- [201811L](https://wg21.link/P1032R1)
+
+	@sa `<tuple>`
+*/
+#ifndef LBAL_LIBCPP2A_CONSTEXPR_TUPLE
+	#define LBAL_LIBCPP2A_CONSTEXPR_TUPLE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_CONSTEXPR_UTILITY
+	@brief Make more of `<tuple>` `constexpr`
+	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_utility`
+	- [201811L](https://wg21.link/P1032R1)
+
+	@sa `<utility>`
+*/
+#ifndef LBAL_LIBCPP2A_CONSTEXPR_UTILITY
+	#define LBAL_LIBCPP2A_CONSTEXPR_UTILITY 0
 #endif
 
 /**
@@ -3860,36 +4700,6 @@
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS
-	@brief Extend `std::make_shared` to support C-style arrays
-	@details Equivalent SD-6 macro: none
-	- [default](https://wg21.link/p0674r1)
-
-	@remarks Expect this symbol to become deprecated and replaced with an
-	SD-6-friendly one once there is an SD-6 macro.
-
-	@sa `<memory>`
-*/
-#ifndef LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS
-	#define LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS 0
-#endif
-
-/**
-	@def LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC
-	@brief Extend `<atomic>` support to floating point types
-	@details Equivalent SD-6 macro: none
-	- [default](https://wg21.link/p0020r6)
-
-	@remarks Expect this symbol to become deprecated and replaced with an
-	SD-6-friendly one once there is an SD-6 macro.
-
-	@sa `<atomic>`
-*/
-#ifndef LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC
-	#define LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC 0
-#endif
-
-/**
 	@def LBAL_LIBCPP2A_FORMAT
 	@brief Add text formatting functionality to properly replace `printf`
 	@details Equivalent SD-6 macro: `__cpp_lib_format`
@@ -3935,133 +4745,523 @@
 #endif
 
 /**
+	@def LBAL_LIBCPP2A_INT_POW2
+	@brief Integral power-of-2 operations
+	@details Equivalent SD-6 macro: `__cpp_lib_int_pow2`
+	- [201806L](https://wg21.link/P0556R3)
+
+	@sa `<bit>`
+*/
+#ifndef LBAL_LIBCPP2A_INT_POW2
+	#define LBAL_LIBCPP2A_INT_POW2 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_INTERPOLATE
+	@brief Add well-behaved interpoltaion for numbers and pointers
+	@details Equivalent SD-6 macro: `__cpp_lib_interpolate`
+	- [201902L](https://wg21.link/P0811R3)
+
+	@sa `<cmath>` `<numeric>`
+*/
+#ifndef LBAL_LIBCPP2A_INTERPOLATE
+	#define LBAL_LIBCPP2A_INTERPOLATE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED
+	@brief Add `std::is_constant_evaluated` type trait
+	@details Equivalent SD-6 macro: `__cpp_lib_is_constant_evaluated`
+	- [201811L](https://wg21.link/P0595R2)
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED
+	#define LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE
+	@brief Add `std::is_layout_compatible` type trait
+	@details Equivalent SD-6 macro: `__cpp_lib_is_layout_compatible`
+	- [201907L](https://wg21.link/P0466R5)
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE
+	#define LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE
+	@brief Add `std::is_pointer_interconvertible` type trait
+	@details Equivalent SD-6 macro: `__cpp_lib_is_pointer_interconvertible`
+	- [201907L](https://wg21.link/P0466R5)
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE
+	#define LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_JTHREAD
+	@brief Add a cooperatively interruptible joining thread
+	@details Equivalent SD-6 macro: `__cpp_lib_jthread`. This token corresponds
+	to the `201907L` variant; it will only be set to a non-`0` value if that
+	variant is available.
+	- [201907L](https://wg21.link/P0660R10)
+	- [201911L](https://wg21.link/P1869R1)
+
+	@sa `<stop_token>` `<thread>`
+*/
+#ifndef LBAL_LIBCPP2A_JTHREAD
+	#define LBAL_LIBCPP2A_JTHREAD 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_JTHREAD_CV
+	@brief Simplify condition variable API
+	@details Equivalent SD-6 macro: `__cpp_lib_jthread`. This token corresponds
+	to the `201911L` variant; it will only be set to a non-`0` value if that
+	variant is available.
+	- [201907L](https://wg21.link/P0660R10)
+	- [201911L](https://wg21.link/P1869R1)
+
+	@sa `<stop_token>` `<thread>`
+*/
+#ifndef LBAL_LIBCPP2A_JTHREAD_CV
+	#define LBAL_LIBCPP2A_JTHREAD_CV 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_LATCH
+	@brief Incorporate `std::latch` from the C++20 Synchronization Library
+	@details Equivalent SD-6 macro: `__cpp_lib_latch`
+	- [201907L](https://wg21.link/P1135R6)
+
+	@sa `<latch>`
+*/
+#ifndef LBAL_LIBCPP2A_LATCH
+	#define LBAL_LIBCPP2A_LATCH 0
+#endif
+
+/**
 	@def LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
-	This represents changes to some member functions in `<list>` and
-	`<forward_list>`.
+	@brief Improve the return value of erase-like algorithms
+	@details Equivalent SD-6 macro: `__cpp_lib_list_remove_return_type`
+	- [201806L](https://wg21.link/P0646R1) __PDF__
 
-	Equivalent SD-6 macro: `__cpp_lib_list_remove_return_type`
-
-	https://wg21.link/p0646r1 __PDF__
+	@sa `<forward_list>` `<list>`
 */
 #ifndef LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
 	#define LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE 0
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE_EXP
-	This represents changes to some member functions in `<list>` and
-	`<forward_list>`.
+	@def LBAL_LIBCPP2A_MATH_CONSTANTS
+	@brief Add common math constants to the C++ Standard
+	@details Equivalent SD-6 macro: `__cpp_lib_math_constants`
+	- [201907L](https://wg21.link/P0631R8) __PDF__
 
-	Equivalent SD-6 macro: `__cpp_lib_experimental_list_remove_return_type`
-
-	https://wg21.link/p0646r1 __PDF__
+	@sa `<numbers>`
 */
-#ifndef LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE_EXP
-	#define LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE_EXP 0
+#ifndef LBAL_LIBCPP2A_MATH_CONSTANTS
+	#define LBAL_LIBCPP2A_MATH_CONSTANTS 0
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX
- 	This represents changes to some function signatures in `<complex>`.
+	@def LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE
+	@brief Add `std::is_nothrow_convertible` type trait
+	@details Equivalent SD-6 macro: `__cpp_lib_nothrow_convertible`
+	- [201806L](https://wg21.link/P0758R1)
 
-	Equivalent SD-6 macro: `__cpp_lib_constexpr_complex`
+	@remarks __SEEME__ The token for this  is inconsitently named relative to
+	similar type traits, and may well change prior to Standardization.
 
-	https://wg21.link/p0415r1
+	@sa `<type_traits>`
 */
-#ifndef LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX
-	#define LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX 0
+#ifndef LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE
+	#define LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE 0
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX_EXP
- 	This represents changes to some function signatures in `<complex>`.
+	@def LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR
+	@brief Provide a default template argument for `std::polymorphic_allocator`
+	@details Equivalent SD-6 macro: `__cpp_lib_polymorphic_allocator`
+	- [201902L](https://wg21.link/P0339R6) __PDF__
 
-	Equivalent SD-6 macro: `__cpp_lib_experimental_constexpr_complex`
-
-	https://wg21.link/p0415r1
+	@sa `<memory>`
 */
-#ifndef LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX_EXP
-	#define LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX_EXP 0
+#ifndef LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR
+	#define LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_RANGES
+	@brief Incorporate ranges into the C++ Standard
+	@details Equivalent SD-6 macro: `__cpp_lib_ranges`. This token corresponds
+	to the `201811L` variant; it will only be set to a non-`0` value if that
+	variant is available.
+	- [201811L](https://wg21.link/P0896R4) __PDF__
+	- [201907L](https://wg21.link/P1035R7) __PDF__
+	- [201911L](https://wg21.link/P1716R3)
+
+	@sa `<algorithm>` `<functional>` `<iterator>` `<memory>` `<ranges>`
+*/
+#ifndef LBAL_LIBCPP2A_RANGES
+	#define LBAL_LIBCPP2A_RANGES 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
+	@brief Add input range adaptors
+	@details Equivalent SD-6 macro: `__cpp_lib_ranges`. This token corresponds
+	to the `201907L` variant; it will only be set to a non-`0` value if that
+	variant is available.
+	- [201811L](https://wg21.link/P0896R4) __PDF__
+	- [201907L](https://wg21.link/P1035R7) __PDF__
+	- [201911L](https://wg21.link/P1716R3)
+
+	@sa `<algorithm>` `<functional>` `<iterator>` `<memory>` `<ranges>`
+*/
+#ifndef LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
+	#define LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
+	@brief Loosen the constraints on range-based compare algorithms
+	@details Equivalent SD-6 macro: `__cpp_lib_ranges`. This token corresponds
+	to the `201911L` variant; it will only be set to a non-`0` value if that
+	variant is available.
+	- [201811L](https://wg21.link/P0896R4) __PDF__
+	- [201907L](https://wg21.link/P1035R7) __PDF__
+	- [201911L](https://wg21.link/P1716R3)
+
+	@sa `<algorithm>` `<functional>` `<iterator>` `<memory>` `<ranges>`
+*/
+#ifndef LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
+	#define LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_REMOVE_CVREF
+	@brief Add `std::remove_cvref` type trait
+	@details Equivalent SD-6 macro: `__cpp_lib_remove_cvref`
+	- [201711L](https://wg21.link/p0550r2) __PDF__
+
+	@sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP2A_REMOVE_CVREF
+	#define LBAL_LIBCPP2A_REMOVE_CVREF 0
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_STD_REMOVE_CVREF
+		#define LBAL_LIBCPP2A_STD_REMOVE_CVREF LBAL_LIBCPP2A_REMOVE_CVREF
+	#endif
+///@endcond
+
+/**
+	@def LBAL_LIBCPP2A_SEMAPHORE
+	@brief Incorporate `std::semaphore` from the C++20 Synchronization Library
+	@details Equivalent SD-6 macro: `__cpp_lib_semaphore`
+	- [201907L](https://wg21.link/P1135R6)
+
+	@sa `<semaphore>`
+*/
+#ifndef LBAL_LIBCPP2A_SEMAPHORE
+	#define LBAL_LIBCPP2A_SEMAPHORE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_SHARED_PTR_ARRAYS
+	@brief Extend `std::make_shared` to support C-style arrays
+	@details Equivalent SD-6 macro: `__cpp_lib_shared_ptr_arrays`
+	- [201707L](https://wg21.link/P0674R1)
+
+	@sa `<memory>`
+*/
+#ifndef LBAL_LIBCPP2A_SHARED_PTR_ARRAYS
+	#define LBAL_LIBCPP2A_SHARED_PTR_ARRAYS 0
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS
+		#define LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS \
+				LBAL_LIBCPP2A_SHARED_PTR_ARRAYS
+	#endif
+///@endcond
+
+/**
+	@def LBAL_LIBCPP2A_SHIFT
+	@brief Add `std::shift_left` and `std::shift_right`
+	@details Equivalent SD-6 macro: `__cpp_lib_shared_ptr_arrays`
+	- [201806L](https://wg21.link/P0769R2)
+
+	@sa `<algorithm>`
+*/
+#ifndef LBAL_LIBCPP2A_SHIFT
+	#define LBAL_LIBCPP2A_SHIFT 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT
+	@brief Support smart pointer creation with default initialization
+	@details Equivalent SD-6 macro: `__cpp_lib_smart_ptr_default_init`
+	- [201811L](https://wg21.link/P1020R1)
+
+	@sa `<memory>`
+*/
+#ifndef LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT
+	#define LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_SOURCE_LOCATION
+	@brief Adopt `std::source_location` from the Library Fundamentals V3 TS
+	@details Equivalent SD-6 macro: `__cpp_lib_source_location`
+	- [201907L](https://wg21.link/P1208R6)
+
+	@sa `<source_location>`
+*/
+#ifndef LBAL_LIBCPP2A_SOURCE_LOCATION
+	#define LBAL_LIBCPP2A_SOURCE_LOCATION 0
 #endif
 
 /**
 	@def LBAL_LIBCPP2A_SPAN
+	@brief Add `std::span`
+	@details Equivalent SD-6 macro: `__cpp_lib_span`. This token corresponds to
+	the `201803L` variant; it will only be set to a non-`0` value if that
+	variant is available.
+	- [201803L](https://wg21.link/P0122R7)
+	- [201803L](https://wg21.link/LWG3274)
+	- [201902L](https://wg21.link/P1024R3)
 
-	Equivalent SD-6 macro: none
+	@remarks The issue raised in [LWG3274](https://wg21.link/LWG3274) was
+	simply that [P0122R7](https://wg21.link/P0122R7) had been voted in without
+	specifying an SD-6 macro.
 
-	https://wg21.link/p0122r7 __PDF__
+	@sa `<span>`
 */
 #ifndef LBAL_LIBCPP2A_SPAN
 	#define LBAL_LIBCPP2A_SPAN 0
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_STD_REMOVE_CVREF
+	@def LBAL_LIBCPP2A_SPAN_USABILITY
+	@brief Enhance usability for `std::span`
+	@details Equivalent SD-6 macro: `__cpp_lib_span`. This token corresponds to
+	the `201902L` variant; it will only be set to a non-`0` value if that
+	variant is available.
+	- [201803L](https://wg21.link/P0122R7)
+	- [201803L](https://wg21.link/LWG3274)
+	- [201902L](https://wg21.link/P1024R3)
 
-	Equivalent SD-6 macro: none
-
-	https://wg21.link/p0550r2 __PDF__
+	@sa `<span>`
 */
-#ifndef LBAL_LIBCPP2A_STD_REMOVE_CVREF
-	#define LBAL_LIBCPP2A_STD_REMOVE_CVREF 0
+#ifndef LBAL_LIBCPP2A_SPAN_USABILITY
+	#define LBAL_LIBCPP2A_SPAN_USABILITY 0
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING
+	@def LBAL_LIBCPP2A_SSIZE
+	@brief Add `std::ssize` and fix `std::span`’s `size` return values
+	@details Equivalent SD-6 macro: `__cpp_lib_ssize`
+	- [201902L](https://wg21.link/P1227R2)
 
-	Equivalent SD-6 macro: none
+	@remarks It’s conceivable that the `<span>`-affecting portions of this will
+	be shifted to the `__cpp_lib_span` token.
 
-	https://wg21.link/p0457r2
+	@sa `<iterator>` `<span>`
 */
-#ifndef LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING
-	#define LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING 0
+#ifndef LBAL_LIBCPP2A_SSIZE
+	#define LBAL_LIBCPP2A_SSIZE 0
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
+	@def LBAL_LIBCPP2A_STARTS_ENDS_WITH
+	@brief Add string prefix- and suffix-checking
+	@details Equivalent SD-6 macro: `__cpp_lib_starts_ends_with`
+	- [201711L](https://wg21.link/P0457R2)
 
-	Equivalent SD-6 macro: `__cpp_lib_syncstream`
-
-	https://wg21.link/p0053r7 __PDF__
+	@sa `<string>` `<string_view>`
 */
-#ifndef LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
-	#define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM 0
+#ifndef LBAL_LIBCPP2A_STARTS_ENDS_WITH
+	#define LBAL_LIBCPP2A_STARTS_ENDS_WITH 0
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING
+		#define LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING \
+			LBAL_LIBCPP2A_STARTS_ENDS_WITH
+	#endif
+///@endcond
+
+/**
+	@def LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR
+
+	@brief Add support for `constexpr` iterators to `<string_view>`
+
+	@details Equivalent SD-6 macro: `__cpp_lib_string_view`. This token
+	corresponds to the `201803L` variant; it will only be set to a non-`0`
+	value if that variant is available.
+	- [201603L](https://wg21.link/P0220R1)
+	- [201606L](https://wg21.link/P0254R2) __PDF__
+	- [201803L](https://wg21.link/P0858R0)
+	- [201803L](https://wg21.link/LWG3257)
+
+	@remarks The issue raised in [LWG3257](https://wg21.link/LWG3257) was
+	simply that the SD-6 macro update voted in with
+	[201803L](https://wg21.link/P0858R0) had not been applied.
+
+	@sa `<string>` `<string_view>`
+*/
+#ifndef LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR
+	#define LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR 0
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
+	@def LBAL_LIBCPP2A_SYNCBUF
+	@brief Add synchronized buffered output streams
+	@details Equivalent SD-6 macro: `__cpp_lib_syncbuf`. This token
+	corresponds to the `201711L` variant; it will only be set to a non-`0`
+	value if that variant is available.
+	- [201711L](https://wg21.link/P0053R7) __PDF__
+	- [201803L](https://wg21.link/P0753R2) __PDF__
 
-	Equivalent SD-6 macro: `__cpp_lib_three_way_comparison`
-
-	https://wg21.link/p0515r3 __PDF__
-
-	@remarks `<compare>` is interdependent with the `operator <=>` language
-	feature.
+	@sa `<syncstream>`
 */
-#ifndef LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
-	#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE 0
+#ifndef LBAL_LIBCPP2A_SYNCBUF
+	#define LBAL_LIBCPP2A_SYNCBUF 0
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
+		#define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM \
+			LBAL_LIBCPP2A_SYNCBUF
+	#endif
+///@endcond
+
+/**
+	@def LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS
+	@brief Add manipulators for synchronized buffered output streams
+	@details Equivalent SD-6 macro: `__cpp_lib_syncbuf`. This token
+	corresponds to the `201803L` variant; it will only be set to a non-`0`
+	value if that variant is available.
+	- [201711L](https://wg21.link/P0053R7) __PDF__
+	- [201803L](https://wg21.link/P0753R2) __PDF__
+
+	@sa `<syncstream>`
+*/
+#ifndef LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS
+	#define LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_THREE_WAY_COMPARISON
+	@brief Add `<compare>` to the Standard Library
+	@details Equivalent SD-6 macro: `__cpp_lib_three_way_comparison`. This
+	token corresponds to the `201711L` variant; it will only be set to a
+	non-`0` value if that variant is available.
+	- [201711L](https://wg21.link/P0768R1)
+	- [201907L](https://wg21.link/P1614R2)
+
+	@sa `<compare>`
+*/
+#ifndef LBAL_LIBCPP2A_THREE_WAY_COMPARISON
+	#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON 0
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
+		#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE \
+			LBAL_LIBCPP2A_THREE_WAY_COMPARISON
+	#endif
+///@endcond
+
+/**
+	@def LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY
+	@brief Add three-way comparison support to the Standard Library
+	@details Equivalent SD-6 macro: `__cpp_lib_three_way_comparison`. This
+	token corresponds to the `201907L` variant; it will only be set to a
+	non-`0` value if that variant is available.
+	- [201711L](https://wg21.link/P0768R1)
+	- [201907L](https://wg21.link/P1614R2)
+
+	@sa `<compare>`
+*/
+#ifndef LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY
+	#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_TO_ADDRESS
+	@brief Provide a utility to convert a pointer to a raw pointer
+	@details Equivalent SD-6 macro: `__cpp_lib_to_address`
+	- [201711L](https://wg21.link/P0653R2) __PDF__
+
+	@sa `<memory>`
+*/
+#ifndef LBAL_LIBCPP2A_TO_ADDRESS
+	#define LBAL_LIBCPP2A_TO_ADDRESS 0
+#endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER
+		#define LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER \
+			LBAL_LIBCPP2A_TO_ADDRESS
+	#endif
+///@endcond
+
+/**
+	@def LBAL_LIBCPP2A_TO_ARRAY
+	@brief Adopt `std::to_array` from the Library Fundamentals TS
+	@details Equivalent SD-6 macro: `__cpp_lib_to_array`
+	- [201907L](https://wg21.link/P0325R4)
+
+	@sa `<array>`
+*/
+#ifndef LBAL_LIBCPP2A_TO_ARRAY
+	#define LBAL_LIBCPP2A_TO_ARRAY 0
 #endif
 
 /**
 	@def LBAL_LIBCPP2A_TYPE_IDENTITY
+	@brief Add the `std::identity` metafunction
+	@details Equivalent SD-6 macro: `__cpp_lib_type_identity`
+	- [201806L](https://wg21.link/P0887R1) __PDF__
 
-	Equivalent SD-6 macro: none
-
-	https://wg21.link/p0887r1 __PDF__
+	@sa `<type_traits>`
 */
 #ifndef LBAL_LIBCPP2A_TYPE_IDENTITY
 	#define LBAL_LIBCPP2A_TYPE_IDENTITY 0
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER
+	@def LBAL_LIBCPP2A_UNWRAP_REF
+	@brief Add `std::unwrap_reference` and `std::unwrap_ref_decay`
+	@details Equivalent SD-6 macro: `__cpp_lib_unwrap_ref`
+	- [201811L](https://wg21.link/P0318R1) __PDF__
 
-	Equivalent SD-6 macro: none
-
-	https://wg21.link/p0653r2
+	@sa `<type_traits>`
 */
-#ifndef LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER
-	#define LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER 0
+#ifndef LBAL_LIBCPP2A_UNWRAP_REF
+	#define LBAL_LIBCPP2A_UNWRAP_REF 0
 #endif
 
 /**

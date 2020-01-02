@@ -133,82 +133,82 @@
 //
 //	With this in mind, this detection method is simplistic, and really relies
 //	upon the implementation-specific versions for correctness.
-#if !defined (LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS)
+#if !defined (LBAL_LIBCPP17_TO_CHARS)
 	#if defined (__has_include) && __has_include (<charconv>) \
 			&& (__cpp_lib_to_chars || !defined (__cpp_lib_to_chars))
 		#if __cpp_lib_to_chars
-			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS __cpp_lib_to_chars
+			#define LBAL_LIBCPP17_TO_CHARS __cpp_lib_to_chars
 		#elif (LBAL_cpp_version > LBAL_CPP14_VERSION)
-			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 201611L
+			#define LBAL_LIBCPP17_TO_CHARS 201611L
 		#endif
 	#endif
-#elif LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS
+#elif LBAL_LIBCPP17_TO_CHARS
 	#if defined (__has_include)
 		#if !__has_include (<charconv>)
-			#undef LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS
+			#undef LBAL_LIBCPP17_TO_CHARS
 			#warning "<charconv> not found"
 		#endif
 	#else
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate user-set LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS"
+			#warning "Unable to validate user-set LBAL_LIBCPP17_TO_CHARS"
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
-#endif	//	LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS
+#endif	//	LBAL_LIBCPP17_TO_CHARS
 
-#if !defined (LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP)
+#if !defined (LBAL_LIBCPP17_TO_CHARS_FP)
 	#if defined (__has_include) && __has_include (<charconv>) \
 			&& (__cpp_lib_to_chars || !defined (__cpp_lib_to_chars))
 		#if __cpp_lib_to_chars
-			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP __cpp_lib_to_chars
+			#define LBAL_LIBCPP17_TO_CHARS_FP __cpp_lib_to_chars
 		#elif (LBAL_cpp_version > LBAL_CPP14_VERSION)
-			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP 201611L
+			#define LBAL_LIBCPP17_TO_CHARS_FP 201611L
 		#endif
 	#endif
-#elif LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP
+#elif LBAL_LIBCPP17_TO_CHARS_FP
 	#if defined (__has_include)
 		#if !__has_include (<charconv>)
-			#undef LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP
+			#undef LBAL_LIBCPP17_TO_CHARS_FP
 			#warning "<charconv> not found"
 		#endif
 	#else
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate user-set LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP"
+			#warning "Unable to validate user-set LBAL_LIBCPP17_TO_CHARS_FP"
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
-#endif	//	LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP
+#endif	//	LBAL_LIBCPP17_TO_CHARS_FP
 
-#if !defined (LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER)
+#if !defined (LBAL_LIBCPP17_TO_CHARS_INTEGER)
 	#if defined (__has_include) && __has_include (<charconv>) \
 			&& (__cpp_lib_to_chars || !defined (__cpp_lib_to_chars))
 		#if __cpp_lib_to_chars
-			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER __cpp_lib_to_chars
+			#define LBAL_LIBCPP17_TO_CHARS_INTEGER __cpp_lib_to_chars
 		#elif (LBAL_cpp_version > LBAL_CPP14_VERSION)
-			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER 201611L
+			#define LBAL_LIBCPP17_TO_CHARS_INTEGER 201611L
 		#endif
 	#endif
-#elif LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER
+#elif LBAL_LIBCPP17_TO_CHARS_INTEGER
 	#if defined (__has_include)
 		#if !__has_include (<charconv>)
-			#undef LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER
+			#undef LBAL_LIBCPP17_TO_CHARS_INTEGER
 			#warning "<charconv> not found"
 		#endif
 	#else
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate user-set LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER"
+			#warning "Unable to validate user-set LBAL_LIBCPP17_TO_CHARS_INTEGER"
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
-#endif	//	LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER
+#endif	//	LBAL_LIBCPP17_TO_CHARS_INTEGER
 
-#if !defined (LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS)
-	#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 0L
+#if !defined (LBAL_LIBCPP17_TO_CHARS)
+	#define LBAL_LIBCPP17_TO_CHARS 0L
 #endif
 
-#if !defined (LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP)
-	#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP 0L
+#if !defined (LBAL_LIBCPP17_TO_CHARS_FP)
+	#define LBAL_LIBCPP17_TO_CHARS_FP 0L
 #endif
 
-#if !defined (LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER)
-	#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER 0L
+#if !defined (LBAL_LIBCPP17_TO_CHARS_INTEGER)
+	#define LBAL_LIBCPP17_TO_CHARS_INTEGER 0L
 #endif
 
 
@@ -329,23 +329,58 @@
 #endif	//	LBAL_LIBCPP17_LAUNDER
 
 
+//	This functionality lives in multiple pre-existing std headers, so we have
+//	to rely on either the SD-6 macro or an override to detect it; without
+//	these, we default to 0. Note that we do not track experimental versions of
+//	this.
+#if !defined (LBAL_LIBCPP17_NODE_EXTRACT)
+	#if __cpp_lib_node_extract
+		#define LBAL_LIBCPP17_NODE_EXTRACT __cpp_lib_node_extract
+	#else
+		#define LBAL_LIBCPP17_NODE_EXTRACT 0L
+	#endif
+#endif	//	LBAL_LIBCPP17_NODE_EXTRACT
+
+
 //	Note that we do not track experimental versions of this.
-#if !defined (LBAL_LIBCPP17_OPTIONAL)
+#if !defined (LBAL_LIBCPP17_OPTIONAL) \
+		|| !defined (LBAL_LIBCPP17_OPTIONAL_INTERFACE) \
+		|| !defined (LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL)
 	#if defined (__has_include) && __has_include (<optional>) \
 			&& (__cpp_lib_optional || !defined (__cpp_lib_optional))
 		#if __cpp_lib_optional
-			#define LBAL_LIBCPP17_OPTIONAL __cpp_lib_optional
+			#if !defined (LBAL_LIBCPP17_OPTIONAL) \
+					&& (__cpp_lib_optional >= 201603L)
+				#define LBAL_LIBCPP17_OPTIONAL __cpp_lib_optional
+			#endif
+
+			#if !defined (LBAL_LIBCPP17_OPTIONAL_INTERFACE) \
+					&& (__cpp_lib_optional >= 201606L)
+				#define LBAL_LIBCPP17_OPTIONAL_INTERFACE __cpp_lib_optional
+			#endif
+
+			#if !defined (LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL) \
+					&& (__cpp_lib_optional >= 201606L)
+				#define LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL __cpp_lib_optional
+			#endif
 		#else
-			#define LBAL_LIBCPP17_OPTIONAL 201606L
+			#define LBAL_LIBCPP17_OPTIONAL 201603L
+			#define LBAL_LIBCPP17_OPTIONAL_INTERFACE 201606L
+			#define LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL 201606L
 		#endif
 	#else
 		#define LBAL_LIBCPP17_OPTIONAL 0L
 	#endif
-#elif LBAL_LIBCPP17_OPTIONAL
+#elif LBAL_LIBCPP17_OPTIONAL || LBAL_LIBCPP17_OPTIONAL_INTERFACE \
+		|| LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL
 	#if defined (__has_include)
 		#if !__has_include (<optional>)
 			#undef LBAL_LIBCPP17_OPTIONAL
+			#undef LBAL_LIBCPP17_OPTIONAL_INTERFACE
+			#undef LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL
 			#define LBAL_LIBCPP17_OPTIONAL 0L
+			#define LBAL_LIBCPP17_OPTIONAL_INTERFACE 0L
+			#define LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL 0L
 			#warning "<optional> not found"
 		#endif
 	#else
@@ -369,19 +404,6 @@
 		#define LBAL_LIBCPP17_PARALLEL_ALGORITHM 0L
 	#endif
 #endif	//	LBAL_LIBCPP17_PARALLEL_ALGORITHM
-
-
-//	This functionality lives in multiple pre-existing std headers, so we have
-//	to rely on either the SD-6 macro or an override to detect it; without
-//	these, we default to 0. Note that we do not track experimental versions of
-//	this.
-#if !defined (LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS)
-	#if __cpp_lib_node_extract
-		#define LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS __cpp_lib_node_extract
-	#else
-		#define LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS 0L
-	#endif
-#endif	//	LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS
 
 
 //	This is an aggregate that tracks two different SD-6 macros for the purpose
@@ -448,12 +470,10 @@
 #endif	//	LBAL_LIBCPP2A_BIT_CAST
 
 
-//	This functionality lives in <chrono>, but it currently has no SD-6 macro
-//	and requires an override to detect it; if no explicit override is set, we
-//	default to 0.
-#if !defined (LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE)
-	#define LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE 0L
-#endif	//	LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE
+//	__FIXME__
+#if !defined (LBAL_LIBCPP2A_CHRONO_CALENDAR)
+	#define LBAL_LIBCPP2A_CHRONO_CALENDAR 0L
+#endif	//	LBAL_LIBCPP2A_CHRONO_CALENDAR
 
 
 //	Note that this for the Concepts support library; the language feature is
@@ -520,16 +540,14 @@
 #endif	//	LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP
 
 
-//	This functionality lives in multiple pre-existing headers, and requires
-//	either the SD-6 macro or an override to detect it; if no explicit override
-//	is set and the SD-6 macro is unavailable, we default to 0.
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY)
+//	__FIXME__
+#if !defined (LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS)
 	#if __cpp_lib_constexpr_algorithms
-		#define LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY __cpp_lib_constexpr_algorithms
+		#define LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS __cpp_lib_constexpr_algorithms
 	#else
-		#define LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY 0L
+		#define LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS 0L
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY
+#endif	//	LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS
 
 
 //	__SEEME__ This was originally a TS (with competing versions), and so has
@@ -616,20 +634,16 @@
 #endif	//	LBAL_LIBCPP2A_DESTROYING_DELETE
 
 
-//	This functionality lives in <memory>, but it currently has no SD-6 macro
-//	and requires an override to detect it; if no explicit override is set, we
-//	default to 0.
-#if !defined (LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS)
-	#define LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS 0L
-#endif	//	LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS
+//	__FIXME__
+#if !defined (LBAL_LIBCPP2A_SHARED_PTR_ARRAYS)
+	#define LBAL_LIBCPP2A_SHARED_PTR_ARRAYS 0L
+#endif	//	LBAL_LIBCPP2A_SHARED_PTR_ARRAYS
 
 
-//	This functionality lives in <atomic>, but it currently has no SD-6 macro
-//	and requires an override to detect it; if no explicit override is set, we
-//	default to 0.
-#if !defined (LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC)
-	#define LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC 0L
-#endif	//	LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC
+//	__FIXME__
+#if !defined (LBAL_LIBCPP2A_ATOMIC_FLOAT)
+	#define LBAL_LIBCPP2A_ATOMIC_FLOAT 0L
+#endif	//	LBAL_LIBCPP2A_ATOMIC_FLOAT
 
 
 //	This functionality lives in multiple pre-existing headers, and requires
@@ -656,7 +670,7 @@
 #endif	//	LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX
 
 
-//	There is no SD-6 macro, yet.
+//	__FIXME__
 #if !defined (LBAL_LIBCPP2A_SPAN)
 	#if defined (__has_include) && __has_include (<span>)
 		//	__SEEME__ Value not yet assigned.
@@ -699,47 +713,42 @@
 #endif	//	LBAL_LIBCPP2A_STD_ENDIAN
 
 
-//	This functionality lives in <type_traits>, but it currently has no SD-6
-//	macro and requires an override to detect it; if no explicit override is
-//	set, we default to 0.
-#if !defined (LBAL_LIBCPP2A_STD_REMOVE_CVREF)
-	#define LBAL_LIBCPP2A_STD_REMOVE_CVREF 0L
-#endif	//	LBAL_LIBCPP2A_STD_REMOVE_CVREF
+//	__FIXME__
+#if !defined (LBAL_LIBCPP2A_REMOVE_CVREF)
+	#define LBAL_LIBCPP2A_REMOVE_CVREF 0L
+#endif	//	LBAL_LIBCPP2A_REMOVE_CVREF
 
 
-//	This functionality lives in <string> and <string_view>, but it currently
-//	has no SD-6 macro and requires an override to detect it; if no explicit
-//	override is set, we default to 0.
-#if !defined (LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING)
-	#define LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING 0L
-#endif	//	LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING
+//	__FIXME__
+#if !defined (LBAL_LIBCPP2A_STARTS_ENDS_WITH)
+	#define LBAL_LIBCPP2A_STARTS_ENDS_WITH 0L
+#endif	//	LBAL_LIBCPP2A_STARTS_ENDS_WITH
 
 
-#if !defined (LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM)
+#if !defined (LBAL_LIBCPP2A_SYNCBUF)
 	#if defined (__has_include) && __has_include (<syncstream>) \
-			&& (__cpp_lib_syncstream || !defined (__cpp_lib_syncstream))
-		#if __cpp_lib_syncstream
-			#define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM __cpp_lib_syncstream
+			&& (__cpp_lib_syncbuf || !defined (__cpp_lib_syncbuf))
+		#if __cpp_lib_syncbuf
+			#define LBAL_LIBCPP2A_SYNCBUF __cpp_lib_syncbuf
 		#else
-			//	__SEEME__ Value not yet assigned.
-			#define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM 1L
+			#define LBAL_LIBCPP2A_SYNCBUF 201711L
 		#endif
 	#else
-		#define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM 0L
+		#define LBAL_LIBCPP2A_SYNCBUF 0L
 	#endif
-#elif LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
+#elif LBAL_LIBCPP2A_SYNCBUF
 	#if defined (__has_include)
 		#if !__has_include (<syncstream>)
-			#undef LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
-			#define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM 0L
+			#undef LBAL_LIBCPP2A_SYNCBUF
+			#define LBAL_LIBCPP2A_SYNCBUF 0L
 			#warning "<syncstream> not found"
 		#endif
 	#else
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate user-set LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM"
+			#warning "Unable to validate user-set LBAL_LIBCPP2A_SYNCBUF"
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
-#endif	//	LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
+#endif	//	LBAL_LIBCPP2A_SYNCBUF
 
 
 #if !defined (LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE)
@@ -769,20 +778,16 @@
 #endif	//	LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
 
 
-//	This functionality lives in <type_traits>, but it currently has no SD-6
-//	macro and requires an override to detect it; if no explicit override is
-//	set, we default to 0.
+//	__FIXME__
 #if !defined (LBAL_LIBCPP2A_TYPE_IDENTITY)
 	#define LBAL_LIBCPP2A_TYPE_IDENTITY 0L
 #endif	//	LBAL_LIBCPP2A_TYPE_IDENTITY
 
 
-//	This functionality lives in <memory>, but it currently has no SD-6 macro
-//	and requires an override to detect it; if no explicit override is set, we
-//	default to 0.
-#if !defined (LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER)
-	#define LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER 0L
-#endif	//	LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER
+//	__FIXME__
+#if !defined (LBAL_LIBCPP2A_TO_ADDRESS)
+	#define LBAL_LIBCPP2A_TO_ADDRESS 0L
+#endif	//	LBAL_LIBCPP2A_TO_ADDRESS
 
 
 //	Networking functionality spans an array of new headers; we only check for

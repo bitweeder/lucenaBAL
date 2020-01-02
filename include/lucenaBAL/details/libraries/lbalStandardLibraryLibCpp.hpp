@@ -49,28 +49,37 @@
 	#endif
 
 	#if (_LIBCPP_VERSION >= 6000)
-		#if !__cpp_lib_launder
+		#if !defined(__cpp_lib_launder)
 			#define LBAL_LIBCPP17_LAUNDER 201606L
 		#endif
 
-		#define LBAL_LIBCPP2A_STD_REMOVE_CVREF 1L
-		#define LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING 1L
-		#define LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER 1L
+		#if !defined(__cpp_lib_remove_cvref)
+			#define LBAL_LIBCPP2A_REMOVE_CVREF 201711
+		#endif
+
+		#if !defined(__cpp_lib_starts_ends_with)
+			#define LBAL_LIBCPP2A_STARTS_ENDS_WITH 201711L
+		#endif
+
+		#if !defined(__cpp_lib_to_address)
+			#define LBAL_LIBCPP2A_TO_ADDRESS 201711L
+		#endif
 	#endif
 
 	#if (_LIBCPP_VERSION >= 7000)
-		#define LBAL_LIBCPP2A_STD_ENDIAN 1L
+		#if !defined(__cpp_lib_endian)
+			#define LBAL_LIBCPP2A_STD_ENDIAN 201907L
+		#endif
 
-		//	__SEEME__ In-progress
-//		#define LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY 1L
-//		#define LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX 1L
-
-		//	__SEEME__ This appears to be in, though we await confirmation.
-		#define LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE 1L
+		#if !defined(__cpp_lib_chrono)
+			#define LBAL_LIBCPP2A_CHRONO_CALENDAR 201803L
+		#endif
 	#endif
 
 	#if (_LIBCPP_VERSION >= 8000)
-		#define LBAL_LIBCPP2A_TYPE_IDENTITY 1L
+		#if !defined(__cpp_lib_type_identity)
+			#define LBAL_LIBCPP2A_TYPE_IDENTITY 201806L
+		#endif
 	#endif
 
 

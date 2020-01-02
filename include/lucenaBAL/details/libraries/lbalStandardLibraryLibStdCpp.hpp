@@ -63,29 +63,36 @@
 		#endif
 
 		#if __cpp_lib_node_extract
-			#define LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS __cpp_lib_node_extract
+			#define LBAL_LIBCPP17_NODE_EXTRACT __cpp_lib_node_extract
 		#else
-			#define LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS 201606L
+			#define LBAL_LIBCPP17_NODE_EXTRACT 201606L
 		#endif
 	#endif
 
 	#if (__GNUC__ >= 8) && (LBAL_cpp_version > LBAL_CPP14_VERSION)
 		//	__SEEME__ Only ints are supported; floats are forthcoming.
 		#if __cpp_lib_to_chars
-			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER __cpp_lib_to_chars
+			#define LBAL_LIBCPP17_TO_CHARS_INTEGER __cpp_lib_to_chars
 		#endif
 
-		#define LBAL_LIBCPP2A_STD_ENDIAN 1L
-		#define LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER 1L
+		#if !defined(__cpp_lib_endian)
+			#define LBAL_LIBCPP2A_STD_ENDIAN 201907L
+		#endif
+
+		#if !defined(__cpp_lib_to_address)
+			#define LBAL_LIBCPP2A_TO_ADDRESS 201711L
+		#endif
 	#endif
 
 	#if (__GNUC__ >= 9)
-		#define LBAL_LIBCPP2A_STD_REMOVE_CVREF 1L
+		#if !defined(__cpp_lib_remove_cvref)
+			#define LBAL_LIBCPP2A_REMOVE_CVREF 201711
+		#endif
 	#endif
 
-	#if LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER && \
-			LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP
-		#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS	 __cpp_lib_to_chars
+	#if LBAL_LIBCPP17_TO_CHARS_INTEGER && \
+			LBAL_LIBCPP17_TO_CHARS_FP
+		#define LBAL_LIBCPP17_TO_CHARS	 __cpp_lib_to_chars
 	#endif
 
 

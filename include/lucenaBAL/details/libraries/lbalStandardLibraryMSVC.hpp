@@ -63,9 +63,9 @@
 
 	#if (_MSC_VER >= 1912)
 		#if __cpp_lib_node_extract
-			#define LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS __cpp_lib_node_extract
+			#define LBAL_LIBCPP17_NODE_EXTRACT __cpp_lib_node_extract
 		#else
-			#define LBAL_LIBCPP17_SPLICING_MAPS_AND_SETS 201606L
+			#define LBAL_LIBCPP17_NODE_EXTRACT 201606L
 		#endif
 	#endif
 
@@ -85,11 +85,11 @@
 		//	__SEEME__ There is partial support for this, but only for ints; floats
 		//	are being actively worked on.
 //		#if __cpp_lib_to_chars
-//			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS __cpp_lib_to_chars
+//			#define LBAL_LIBCPP17_TO_CHARS __cpp_lib_to_chars
 //		#else
-//			#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 201611L
+//			#define LBAL_LIBCPP17_TO_CHARS 201611L
 //		#endif
-		#define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS 0L
+		#define LBAL_LIBCPP17_TO_CHARS 0L
 	#endif
 
 	//	Set up identifiers
