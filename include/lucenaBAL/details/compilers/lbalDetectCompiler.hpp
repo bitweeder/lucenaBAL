@@ -101,7 +101,7 @@
 		__GNUC_MINOR__ * 100 +\
 		__GNUC_PATCHLEVEL__ )
 
-	#if (LBAL_GCC_VERSION < 40801))
+	#if (LBAL_GCC_VERSION < 40801)
 		#error "gcc 4.8.1+ is required for C++11 support"
 			//	For reference, 6.3 supports all C++11 and C++14 features except
 			//	garbage collection, while the 4.8 series is the earliest with
