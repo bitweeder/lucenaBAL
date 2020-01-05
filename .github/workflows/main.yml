@@ -34,18 +34,18 @@ jobs:
           cxx: "clang++"
         - # Currently Ubuntu 18.04 LTS and gcc 7.4
           name: "Ubuntu-latest/gcc/libstdc++"
-          artifact: "linux64-gcc-libstdcpp.tar.xz",
-          os: ubuntu-latest,
+          artifact: "linux64-gcc-libstdcpp.tar.xz"
+          os: ubuntu-latest
           build_type: "Release"
           cc: "gcc"
           cxx: "g++"
         - # Currently Windows Server 2019 and MSVS 16.4.0
           name: "Windows-latest/MSVS/Microsoft"
-          artifact: "win64-msvc-microsoft.tar.xz",
-          os: windows-latest,
+          artifact: "win64-msvc-microsoft.tar.xz"
+          os: windows-latest
           build_type: "Release"
           cc: "cl"
-          cxx: "cl",
+          cxx: "cl"
 
           # It appears we need to invoke this directly.
           environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2019/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
@@ -371,18 +371,15 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - {
-            name: "macOS-latest/Xcode/libc++", artifact: "macOS-AppleClang-libcpp.tar.xz",
-            os: ubuntu-latest
-          }
-        - {
-            name: "Ubuntu-latest/gcc/libstdc++", artifact: "linux64-gcc-libstdcpp.tar.xz",
-            os: ubuntu-latest
-          }
-        - {
-            name: "Windows-latest/MSVS/Microsoft", artifact: "win64-msvc-microsoft.tar.xz",
-            os: ubuntu-latest
-          }
+        - name: "macOS-latest/Xcode/libc++"
+          artifact: "macOS-AppleClang-libcpp.tar.xz"
+          os: ubuntu-latest
+        - name: "Ubuntu-latest/gcc/libstdc++"
+          artifact: "linux64-gcc-libstdcpp.tar.xz"
+          os: ubuntu-latest
+        - name: "Windows-latest/MSVS/Microsoft"
+          artifact: "win64-msvc-microsoft.tar.xz"
+          os: ubuntu-latest
     needs: release
 
     steps:
