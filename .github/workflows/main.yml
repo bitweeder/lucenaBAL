@@ -149,13 +149,25 @@ jobs:
           TO_CMAKE_PATH
             "$ENV{GITHUB_WORKSPACE}/${cmake_base}/${cmake_rpath_to_cmake}" cmake_path)
 
+        message(
+          STATUS
+           "Using CMake at ${cmake_path}")
+
         file(
           TO_CMAKE_PATH
             "$ENV{GITHUB_WORKSPACE}/${cmake_base}/${cmake_rpath_to_ctest}" ctest_path)
 
+        message(
+          STATUS
+           "Using CTest at ${ctest_path}")
+
         file(
           TO_CMAKE_PATH
             "$ENV{GITHUB_WORKSPACE}/${ninja_rpath_to_ninja}" ninja_path)
+
+        message(
+          STATUS
+           "Using ninja at ${ninja_path}")
 
         if (NOT "${{ runner.os }}" STREQUAL "Windows")
           execute_process(
