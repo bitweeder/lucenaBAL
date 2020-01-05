@@ -18,8 +18,8 @@
 
 //	lbal
 #include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/details/lbalDetectCompiler.hpp>
 #include <lucenaBAL/details/lbalKnownVersions.hpp>
-#include <lucenaBAL/details/compilers/lbalDetectCompiler.hpp>
 
 
 /*------------------------------------------------------------------------------
