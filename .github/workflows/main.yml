@@ -123,12 +123,24 @@ jobs:
         execute_process(
           COMMAND
             ${CMAKE_COMMAND} -E tar xvf "${cmake_dst}"
+          RESULT_VARIABLE
+            result
         )
+
+        if (NOT result EQUAL 0)
+          message(FATAL_ERROR "Unarchiving CMake failed: ${result}")
+        endif()
 
         execute_process(
           COMMAND
             ${CMAKE_COMMAND} -E tar xvf "${ninja_dst}"
+          RESULT_VARIABLE
+            result
         )
+
+        if (NOT result EQUAL 0)
+          message(FATAL_ERROR "Unarchiving ninja failed: ${result}")
+        endif()
 
         # Save clean paths to the new binaries and make sure we can run them.
         # CMake binaries will be in nested subdirectories, while ninja will
@@ -147,10 +159,15 @@ jobs:
 
         if (NOT "${{ runner.os }}" STREQUAL "Windows")
           execute_process(
-            COMMAND chmod a+x "${cmake_path}"
-            COMMAND chmod a+x "${ctest_path}"
-            COMMAND chmod a+x "${ninja_path}"
+            COMMAND
+              chmod a+x "${cmake_path}" "${ctest_path}" "${ninja_path}"
+            RESULT_VARIABLE
+              result
           )
+
+          if (NOT result EQUAL 0)
+            message(FATAL_ERROR "chmod failed: ${result}")
+          endif()
         endif()
 
     - name: Configure
@@ -170,7 +187,13 @@ jobs:
               "${{ matrix.config.environment_script }}" && set
             OUTPUT_FILE
               environment_script_output.txt
+            RESULT_VARIABLE
+              result
           )
+
+          if (NOT result EQUAL 0)
+            message(FATAL_ERROR "Converting Windows env failed: ${result}")
+          endif()
 
           file(
             STRINGS
@@ -185,17 +208,19 @@ jobs:
         endif()
 
         execute_process(
-          COMMAND ${{ steps.update_build_tools.outputs.cmake_path }}
-            -S .
-            -B build
-            -D CMAKE_BUILD_TYPE=${{ matrix.config.build_type }}
-            -G Ninja
-            -D CMAKE_MAKE_PROGRAM=${{ steps.update_build_tools.outputs.ninja_path }}
-          RESULT_VARIABLE result
+          COMMAND
+            ${{ steps.update_build_tools.outputs.cmake_path }}
+              -S .
+              -B build
+              -D CMAKE_BUILD_TYPE=${{ matrix.config.build_type }}
+              -G Ninja
+              -D CMAKE_MAKE_PROGRAM=${{ steps.update_build_tools.outputs.ninja_path }}
+          RESULT_VARIABLE
+            result
         )
 
         if (NOT result EQUAL 0)
-          message(FATAL_ERROR "Bad exit status")
+          message(FATAL_ERROR "CMake configure failed: ${result}")
         endif()
 
 
@@ -220,11 +245,14 @@ jobs:
         endif()
 
         execute_process(
-          COMMAND ${{ steps.update_build_tools.outputs.cmake_path }} --build build
-          RESULT_VARIABLE result
+          COMMAND
+            ${{ steps.update_build_tools.outputs.cmake_path }} --build build
+          RESULT_VARIABLE
+            result
         )
+
         if (NOT result EQUAL 0)
-          message(FATAL_ERROR "Bad exit status")
+          message(FATAL_ERROR "Converting Windows env failed: ${result}")
         endif()
 
 
@@ -235,12 +263,15 @@ jobs:
         ProcessorCount(N)
 
         execute_process(
-          COMMAND ${{ steps.update_build_tools.outputs.ctest_path }} -j ${N}
-          WORKING_DIRECTORY build
-          RESULT_VARIABLE result
+          COMMAND
+            ${{ steps.update_build_tools.outputs.ctest_path }} -j ${N}
+          WORKING_DIRECTORY
+            build
+          RESULT_VARIABLE
+            result
         )
         if (NOT result EQUAL 0)
-          message(FATAL_ERROR "Running tests failed!")
+          message(FATAL_ERROR "Running tests failed: ${result}")
         endif()
 
 
