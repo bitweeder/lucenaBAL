@@ -2,7 +2,7 @@
 
     Lucena Build Abstraction Library
     “CMakeLists.txt”
-    Copyright © 2018-2019 Lucena
+    Copyright © 2018-2020 Lucena
     All Rights Reserved
 
     This file is distributed under the University of Illinois Open Source
@@ -191,7 +191,7 @@ target_compile_definitions (
 		LBAL_PACKAGING_PRODUCT_IDENTIFIER="${CMAKE_PROJECT_NAME}"
 		LBAL_PACKAGING_SIGNATURE="lbal"
 		LBAL_PACKAGING_COPYRIGHT_HOLDER="Lucena"
-		LBAL_PACKAGING_COPYRIGHT_DATE="2019"
+		LBAL_PACKAGING_COPYRIGHT_DATE="2019-2020"
 		LBAL_PACKAGING_PRODUCT_DOMAIN="com.lucena"
 		LBAL_PACKAGING_PREFIX="lbal"
 		LBAL_PACKAGING_DESCRIPTION="${CMAKE_PROJECT_DESCRIPTION}"

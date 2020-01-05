@@ -2,7 +2,7 @@
 
 	Lucena Build Abstraction Library
 	“lbalTest”
-	Copyright © 2015-2019 Lucena
+	Copyright © 2015-2020 Lucena
 	All Rights Reserved
 
 	This file is distributed under the University of Illinois Open Source

@@ -2,7 +2,7 @@
 
 	Lucena Build Abstraction Library
 	“lbalCompilerSetup.hpp”
-	Copyright © 2007-2019 Lucena
+	Copyright © 2007-2020 Lucena
 	All Rights Reserved
 
 	This file is distributed under the University of Illinois Open Source

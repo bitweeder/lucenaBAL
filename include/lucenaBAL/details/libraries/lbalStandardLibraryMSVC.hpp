@@ -2,7 +2,7 @@
 
 	Lucena Build Abstraction Library
 	“lbalStandardLibraryMSVC.hpp”
-	Copyright © 2019 Lucena
+	Copyright © 2019-2020 Lucena
 	All Rights Reserved
 
 	This file is distributed under the University of Illinois Open Source

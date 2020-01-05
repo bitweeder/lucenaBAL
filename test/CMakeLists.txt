@@ -2,7 +2,7 @@
 
     Lucena Build Abstraction Library
     “lbalTest/CMakeLists.txt”
-    Copyright © 2018-2019 Lucena
+    Copyright © 2018-2020 Lucena
     All Rights Reserved
 
     This file is distributed under the University of Illinois Open Source
