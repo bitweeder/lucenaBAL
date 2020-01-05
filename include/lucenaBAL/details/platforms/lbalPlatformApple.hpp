@@ -65,7 +65,7 @@
 
 		/*
 			__FIXME__ We should do some verification of this; there seems to be
-			enough drift in iOS (and friends) that it might fail some of the
+			enough drift in iOS the related OS’s that it might fail some of the
 			practical litmus tests for POSIX-compatibility.
 		*/
 		#define LBAL_TARGET_API_POSIX 1
