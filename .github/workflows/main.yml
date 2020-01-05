@@ -32,7 +32,7 @@ jobs:
           }
         - {
             # Currently Ubuntu 18.04 LTS and gcc 7.4
-            name: "macOS-latest/Xcode/libc++", artifact: "linux64-gcc-libstdcpp.tar.xz",
+            name: "Ubuntu-latest/gcc/libstdc++", artifact: "linux64-gcc-libstdcpp.tar.xz",
             os: ubuntu-latest,
             build_type: "Release", cc: "gcc", cxx: "g++"
           }
@@ -123,6 +123,9 @@ jobs:
         execute_process(
           COMMAND
             ${CMAKE_COMMAND} -E tar xvf "${cmake_dst}"
+        )
+
+        execute_process(
           COMMAND
             ${CMAKE_COMMAND} -E tar xvf "${ninja_dst}"
         )
@@ -190,6 +193,7 @@ jobs:
             -D CMAKE_MAKE_PROGRAM=${{ steps.update_build_tools.outputs.ninja_path }}
           RESULT_VARIABLE result
         )
+
         if (NOT result EQUAL 0)
           message(FATAL_ERROR "Bad exit status")
         endif()
@@ -294,7 +298,7 @@ jobs:
             os: ubuntu-latest
           }
         - {
-            name: "macOS-latest/Xcode/libc++", artifact: "linux64-gcc-libstdcpp.tar.xz",
+            name: "Ubuntu-latest/gcc/libstdc++", artifact: "linux64-gcc-libstdcpp.tar.xz",
             os: ubuntu-latest
           }
         - {
