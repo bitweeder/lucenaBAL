@@ -122,8 +122,10 @@ Some portions of the project are governed by other, compatible licenses, as desc
 
 ## Acknowledgments
 
-- [**Dominik Berner**](http://dominikberner.ch/)—_Without whom I’d probably still have CMake 3 as a To-Do item._
--  [**Sy Brand**](https://devblogs.microsoft.com/cppblog/author/sibrandmicrosoft-com/)—_Without whose blog post on_ [_Doxygen and Sphinx_](https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/) _I would probably still not be generating proper docs._
+- [**Barry Revzin**](https://github.com/BRevzin)—_For maintaining_ [_the SD-6: SG10 Feature Test Recommendations_](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations) _and answering my questions._
 - [**cppreference.com**](https://en.cppreference.com/w/)—_For collating a wonderful_ [_time-saving resource_](https://en.cppreference.com/w/cpp/compiler_support) _I used for cross-checking and filling in holes for untested compiler versions._
--  **Billie Thompson** of [PurpleBooth](https://github.com/PurpleBooth)—_Thanks for the_ [_Readme template_](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)_!_
+- [**Dominik Berner**](http://dominikberner.ch/)—_Without whom I’d probably still have CMake 3 as a To-Do item._
+- [**Sy Brand**](https://devblogs.microsoft.com/cppblog/author/sibrandmicrosoft-com/)—_Without whose blog post on_ [_Doxygen and Sphinx_](https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/) _I would probably still not be generating proper docs._
+- [**Cristian Adam**](https://cristianadam.eu/)—_For providing a_ [_pragmatic example_](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/) _of how to use GitHub actions for continuous integration._
+- [**Billie Thompson**](https://github.com/PurpleBooth)—_Thanks for the_ [_Readme template_](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)_!_
 - [**Coraline Ada Ehmke**](http://where.coraline.codes/  "Coraline Ada Ehmke")—_Creator of_ [_The Contributor Covenant_](https://www.contributor-covenant.org/)_, used here under the terms of the_ [_Creative Commons Attribution License_](https://github.com/ContributorCovenant/contributor_covenant/blob/master/LICENSE.md)
