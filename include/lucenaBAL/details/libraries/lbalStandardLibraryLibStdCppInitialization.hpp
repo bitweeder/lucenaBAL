@@ -58,7 +58,7 @@
 		//	__SEEME__ Only ints are supported; floats are forthcoming.
 		//	libstdc++ might be a little too optimistic about its level of
 		//	support.
-		#if !defined(LBAL_LIBCPP17_TO_CHARS_INTEGER) \
+		#if !defined(LBAL_LIBCPP17_TO_CHARS_INTEGER)
 			#if __has_include (<charconv>)
 				#if __cpp_lib_to_chars
 					#define LBAL_LIBCPP17_TO_CHARS_INTEGER __cpp_lib_to_chars
