@@ -16,23 +16,13 @@
 #pragma once
 
 
-//	std
-#include <ciso646>
-	/*
-		In C++, this is a do-nothing header we include just for the side
-		effects: by convention, the Standard Library implementation will be
-		configured. We need this for the library implementation detection
-		below. Note that in the C++20 world, we would use <version> for this
-		purpose.
-	*/
-
-
 //	lbal
 #include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/details/lbalDetectStandardLibrary.hpp>
 
 
 /*------------------------------------------------------------------------------
-	SD-6 Macro Initialization
+	Implementation-specific SD-6 Macro Initialization
 
 	Make sure any SD-6 macros that are available are defined. Note that there
 	are tokens that can’t be adequately defined without some extrinsic
@@ -41,34 +31,19 @@
 	take care of all of this initialization.
 */
 
-#if defined (_LIBCPP_VERSION)
-	#if defined (__apple_build_version__)
-		#include <lucenaBAL/details/libraries/lbalStandardLibraryAppleLibCpp.hpp>
-	#else
-		#include <lucenaBAL/details/libraries/lbalStandardLibraryLibCpp.hpp>
-	#endif
-#elif defined (__GLIBCXX__)
-	//	__SEEME__ Note that older iterations of libstdc++ used __GLIBCPP__
-	#include <lucenaBAL/details/libraries/lbalStandardLibraryLibStdCpp.hpp>
-#elif defined (_MSC_VER)
-	/*
-		__SEEME__ Not exactly an equivalent test, but I don’t know of a way to
-		reliably identify the MSVC Standard Library: we simply check to see if
-		we’re running MSVC and and whether no other Standard Library detection
-		test has passed.
-	*/
-	#include <lucenaBAL/details/libraries/lbalStandardLibraryMSVC.hpp>
+#if LBAL_TARGET_STANDARD_LIBRARY_APPLE_LIBCPP
+	#include <lucenaBAL/details/libraries/lbalStandardLibraryAppleLibCppInitialization.hpp>
+#elif LBAL_TARGET_STANDARD_LIBRARY_LIBCPP
+	#include <lucenaBAL/details/libraries/lbalStandardLibraryLibCppInitialization.hpp>
+#elif LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP
+	#include <lucenaBAL/details/libraries/lbalStandardLibraryLibStdInitializationCpp.hpp>
+#elif LBAL_TARGET_STANDARD_LIBRARY_MSVC
+	#include <lucenaBAL/details/libraries/lbalStandardLibraryMSVCInitialization.hpp>
 #else
-	/*
-		__APIME__ We work under the happy assumption that we can rely
-		exclusively on generic tests for feature detection; this is almost
-		certainly doomed to failure.
-	*/
-	#define LBAL_NAME_STANDARD_LIBRARY u8"Unknown Standard Library implementation"
-
-	#if LBAL_CONFIG_enable_pedantic_warnings
-		#warning "Unable to identify the Standard Library implementation is use; attempting to go fully generic"
-	#endif	//	LBAL_CONFIG_enable_pedantic_warnings
+	//	In the generic case, we simply attempt to load `<version>` if it can be
+	//	found, but otherewise make no special attempt to initialize the SD-6
+	//	macros, if they are available.
+	#include <lucenaBAL/details/lbalVersionSetup.hpp>
 #endif
 
 
@@ -118,18 +93,14 @@
 	#endif
 #endif	//	LBAL_LIBCPP17_ANY
 
-#if !defined (LBAL_LIBCPP17_ANY)
-	#define LBAL_LIBCPP17_ANY 0L
-#endif
-
 
 //	This functionality was originally going to be stuffed into <utility>, but
 //	ended up getting its own header. Happily, this doesn’t end up impeding our
-//	ability to detect the feature, except that the detection lies: no library
-//	currently offers a fully-conforming implementation, and the ones that offer
-//	partial implementations all set their SD-6 macros as if they were fully
-//	compliant. We’ve split this into two tokens to independently track integer
-//	and floating point conversions.
+//	ability to detect the feature, except that the detection lies: only MSVS
+//	currently offers a fully-conforming implementation, and the Libraries that
+//	offer partial implementations can set their SD-6 macros as if they were
+//	fully compliant. We’ve split this into two tokens to independently track
+//	integer and floating point conversions.
 //
 //	With this in mind, this detection method is simplistic, and really relies
 //	upon the implementation-specific versions for correctness.
@@ -199,18 +170,6 @@
 	#endif
 #endif	//	LBAL_LIBCPP17_TO_CHARS_INTEGER
 
-#if !defined (LBAL_LIBCPP17_TO_CHARS)
-	#define LBAL_LIBCPP17_TO_CHARS 0L
-#endif
-
-#if !defined (LBAL_LIBCPP17_TO_CHARS_FP)
-	#define LBAL_LIBCPP17_TO_CHARS_FP 0L
-#endif
-
-#if !defined (LBAL_LIBCPP17_TO_CHARS_INTEGER)
-	#define LBAL_LIBCPP17_TO_CHARS_INTEGER 0L
-#endif
-
 
 //	Use LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS to detect full
 //	compliance with the feature; this only detects whether a key header is
@@ -223,8 +182,6 @@
 		#else
 			#define LBAL_LIBCPP17_EXECUTION 201603L
 		#endif
-	#else
-		#define LBAL_LIBCPP17_EXECUTION 0L
 	#endif
 #elif LBAL_LIBCPP17_EXECUTION
 	#if defined (__has_include)
@@ -254,8 +211,6 @@
 		#ifndef LBAL_LIBCPP17_FILESYSTEM_EXP
 			#define LBAL_LIBCPP17_FILESYSTEM_EXP 0L
 		#endif
-	#else
-		#define LBAL_LIBCPP17_FILESYSTEM 0L
 	#endif
 #elif LBAL_LIBCPP17_FILESYSTEM
 	#if defined (__has_include)
@@ -281,8 +236,6 @@
 		#else
 			#define LBAL_LIBCPP17_FILESYSTEM_EXP 201406L
 		#endif
-	#else
-		#define LBAL_LIBCPP17_FILESYSTEM_EXP 0L
 	#endif
 #elif LBAL_LIBCPP17_FILESYSTEM_EXP
 	#if LBAL_LIBCPP17_FILESYSTEM
@@ -310,8 +263,6 @@
 #if !defined (LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE)
 	#if __cpp_lib_thread_hardware_interference_size
 		#define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE __cpp_lib_thread_hardware_interference_size
-	#else
-		#define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE 0L
 	#endif
 #endif	//	LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
 
@@ -323,8 +274,6 @@
 #if !defined (LBAL_LIBCPP17_LAUNDER)
 	#if __cpp_lib_launder
 		#define LBAL_LIBCPP17_LAUNDER __cpp_lib_launder
-	#else
-		#define LBAL_LIBCPP17_LAUNDER 0L
 	#endif
 #endif	//	LBAL_LIBCPP17_LAUNDER
 
@@ -336,8 +285,6 @@
 #if !defined (LBAL_LIBCPP17_NODE_EXTRACT)
 	#if __cpp_lib_node_extract
 		#define LBAL_LIBCPP17_NODE_EXTRACT __cpp_lib_node_extract
-	#else
-		#define LBAL_LIBCPP17_NODE_EXTRACT 0L
 	#endif
 #endif	//	LBAL_LIBCPP17_NODE_EXTRACT
 
@@ -368,8 +315,6 @@
 			#define LBAL_LIBCPP17_OPTIONAL_INTERFACE 201606L
 			#define LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL 201606L
 		#endif
-	#else
-		#define LBAL_LIBCPP17_OPTIONAL 0L
 	#endif
 #elif LBAL_LIBCPP17_OPTIONAL || LBAL_LIBCPP17_OPTIONAL_INTERFACE \
 		|| LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL
@@ -400,8 +345,6 @@
 #if !defined (LBAL_LIBCPP17_PARALLEL_ALGORITHM)
 	#if __cpp_lib_parallel_algorithm
 		#define LBAL_LIBCPP17_PARALLEL_ALGORITHM __cpp_lib_parallel_algorithm
-	#else
-		#define LBAL_LIBCPP17_PARALLEL_ALGORITHM 0L
 	#endif
 #endif	//	LBAL_LIBCPP17_PARALLEL_ALGORITHM
 
@@ -412,8 +355,6 @@
 #if !defined (LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS)
 	#if LBAL_LIBCPP17_EXECUTION && LBAL_LIBCPP17_PARALLEL_ALGORITHM
 		#define LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS 1L
-	#else
-		#define LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS 0L
 	#endif
 #endif	//	LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
 
@@ -427,8 +368,6 @@
 		#else
 			#define LBAL_LIBCPP17_VARIANT 201606L
 		#endif
-	#else
-		#define LBAL_LIBCPP17_VARIANT 0L
 	#endif
 #elif LBAL_LIBCPP17_VARIANT
 	#if defined (__has_include)
@@ -452,8 +391,6 @@
 	#if defined (__has_include) && __has_include (<bit>) \
 			&& __cpp_lib_bit_cast
 		#define LBAL_LIBCPP2A_BIT_CAST __cpp_lib_bit_cast
-	#else
-		#define LBAL_LIBCPP2A_BIT_CAST 0L
 	#endif
 #elif LBAL_LIBCPP2A_BIT_CAST
 	#if defined (__has_include)
@@ -470,9 +407,10 @@
 #endif	//	LBAL_LIBCPP2A_BIT_CAST
 
 
-//	__FIXME__
 #if !defined (LBAL_LIBCPP2A_CHRONO_CALENDAR)
-	#define LBAL_LIBCPP2A_CHRONO_CALENDAR 0L
+	#if __cpp_lib_chrono >= 201803L
+		#define LBAL_LIBCPP2A_CHRONO_CALENDAR __cpp_lib_launder
+	#endif
 #endif	//	LBAL_LIBCPP2A_CHRONO_CALENDAR
 
 
@@ -491,8 +429,6 @@
 		#ifndef LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP
 			#define LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP 0L
 		#endif
-	#else
-		#define LBAL_LIBCPP2A_CONCEPT_LIBRARY 0L
 	#endif
 #elif LBAL_LIBCPP2A_CONCEPT_LIBRARY
 	#if defined (__has_include)
@@ -518,8 +454,6 @@
 		#else
 			#define LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP 201507L
 		#endif
-	#else
-		#define LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP 0L
 	#endif
 #elif LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP
 	#if LBAL_LIBCPP2A_CONCEPT_LIBRARY
@@ -540,12 +474,9 @@
 #endif	//	LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP
 
 
-//	__FIXME__
 #if !defined (LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS)
 	#if __cpp_lib_constexpr_algorithms
 		#define LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS __cpp_lib_constexpr_algorithms
-	#else
-		#define LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS 0L
 	#endif
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS
 
@@ -569,8 +500,6 @@
 		#ifndef LBAL_LIBCPP2A_COROUTINES_EXP
 			#define LBAL_LIBCPP2A_COROUTINES_EXP 0L
 		#endif
-	#else
-		#define LBAL_LIBCPP2A_COROUTINES 0L
 	#endif
 #elif LBAL_LIBCPP2A_COROUTINES
 	#if defined (__has_include)
@@ -598,8 +527,6 @@
 		#else
 			#define LBAL_LIBCPP2A_COROUTINES_EXP 201803L
 		#endif
-	#else
-		#define LBAL_LIBCPP2A_COROUTINES_EXP 0L
 	#endif
 #elif LBAL_LIBCPP2A_COROUTINES_EXP
 	#if LBAL_LIBCPP2A_COROUTINES
@@ -624,25 +551,24 @@
 //	macro or an override to detect it; if no explicit override is set and
 //	the SD-6 macro is unavailable, we default to 0. Note that we do not track
 //	experimental versions of this.
-
 #if !defined (LBAL_LIBCPP2A_DESTROYING_DELETE)
 	#if __cpp_lib_destroying_delete
 		#define LBAL_LIBCPP2A_DESTROYING_DELETE __cpp_lib_destroying_delete
-	#else
-		#define LBAL_LIBCPP2A_DESTROYING_DELETE 0L
 	#endif
 #endif	//	LBAL_LIBCPP2A_DESTROYING_DELETE
 
 
-//	__FIXME__
 #if !defined (LBAL_LIBCPP2A_SHARED_PTR_ARRAYS)
-	#define LBAL_LIBCPP2A_SHARED_PTR_ARRAYS 0L
+	#if __cpp_lib_shared_ptr_arrays
+		#define LBAL_LIBCPP2A_SHARED_PTR_ARRAYS __cpp_lib_shared_ptr_arrays
+	#endif
 #endif	//	LBAL_LIBCPP2A_SHARED_PTR_ARRAYS
 
 
-//	__FIXME__
 #if !defined (LBAL_LIBCPP2A_ATOMIC_FLOAT)
-	#define LBAL_LIBCPP2A_ATOMIC_FLOAT 0L
+	#if __cpp_lib_atomic_float
+		#define LBAL_LIBCPP2A_ATOMIC_FLOAT __cpp_lib_atomic_float
+	#endif
 #endif	//	LBAL_LIBCPP2A_ATOMIC_FLOAT
 
 
@@ -652,8 +578,7 @@
 #if !defined (LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE)
 	#if __cpp_lib_list_remove_return_type
 		#define LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE __cpp_lib_list_remove_return_type
-	#else
-		#define LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE 0L
+
 	#endif
 #endif	//	LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
 
@@ -664,19 +589,49 @@
 #if !defined (LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX)
 	#if __cpp_lib_constexpr_complex
 		#define LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX __cpp_lib_constexpr_complex
-	#else
-		#define LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX 0L
 	#endif
 #endif	//	LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX
 
 
 //	__FIXME__
+//	This functionality lives in <bit>, but requires either the SD-6 macro or an
+//	override to detect it; if no explicit override is set and the SD-6 macro is
+//	unavailable, we default to 0.
+#if !defined (LBAL_LIBCPP2A_BIT_CAST)
+	#if defined (__has_include) && __has_include (<bit>) \
+			&& __cpp_lib_bit_cast
+		#define LBAL_LIBCPP2A_BIT_CAST __cpp_lib_bit_cast
+	#endif
+#elif LBAL_LIBCPP2A_BIT_CAST
+	#if defined (__has_include)
+		#if !__has_include (<bit>)
+			#undef LBAL_LIBCPP2A_BIT_CAST
+			#define LBAL_LIBCPP2A_BIT_CAST 0L
+			#warning "<bit> not found"
+		#endif
+	#else
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			#warning "Unable to validate user-set LBAL_LIBCPP2A_BIT_CAST"
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
+	#endif
+#endif	//	LBAL_LIBCPP2A_BIT_CAST
+
+
+#if !defined (LBAL_LIBCPP2A_CHRONO_CALENDAR)
+	#if __cpp_lib_chrono >= 201803L
+		#define LBAL_LIBCPP2A_CHRONO_CALENDAR __cpp_lib_launder
+	#endif
+#endif	//	LBAL_LIBCPP2A_CHRONO_CALENDAR
+
+
 #if !defined (LBAL_LIBCPP2A_SPAN)
 	#if defined (__has_include) && __has_include (<span>)
-		//	__SEEME__ Value not yet assigned.
-		#define LBAL_LIBCPP2A_SPAN 1L
-	#else
-		#define LBAL_LIBCPP2A_SPAN 0L
+		#if __cpp_lib_span
+			#define LBAL_LIBCPP2A_SPAN __cpp_lib_span
+		#elif (LBAL_cpp_version > LBAL_CPP17_VERSION)
+			//	__SEEME__ We only assume basic `std::span` suppport
+			#define LBAL_LIBCPP2A_SPAN 201803L
+		#endif
 	#endif
 #elif LBAL_LIBCPP2A_SPAN
 	#if defined (__has_include)
@@ -699,29 +654,28 @@
 #if !defined (LBAL_LIBCPP2A_STD_ATOMIC_REF)
 	#if __cpp_lib_atomic_ref
 		#define LBAL_LIBCPP2A_STD_ATOMIC_REF __cpp_lib_atomic_ref
-	#else
-		#define LBAL_LIBCPP2A_STD_ATOMIC_REF 0L
 	#endif
 #endif	//	LBAL_LIBCPP2A_STD_ATOMIC_REF
 
 
-//	This functionality lives in <type_traits>, but it currently has no SD-6
-//	macro and requires an override to detect it; if no explicit override is
-//	set, we default to 0.
-#if !defined (LBAL_LIBCPP2A_STD_ENDIAN)
-	#define LBAL_LIBCPP2A_STD_ENDIAN 0L
-#endif	//	LBAL_LIBCPP2A_STD_ENDIAN
+#if !defined (LBAL_LIBCPP2A_ENDIAN)
+	#if __cpp_lib_endian
+		#define LBAL_LIBCPP2A_ENDIAN __cpp_lib_endian
+	#endif
+#endif	//	LBAL_LIBCPP2A_ENDIAN
 
 
-//	__FIXME__
 #if !defined (LBAL_LIBCPP2A_REMOVE_CVREF)
-	#define LBAL_LIBCPP2A_REMOVE_CVREF 0L
+	#if __cpp_lib_remove_cvref
+		#define LBAL_LIBCPP2A_REMOVE_CVREF __cpp_lib_remove_cvref
+	#endif
 #endif	//	LBAL_LIBCPP2A_REMOVE_CVREF
 
 
-//	__FIXME__
 #if !defined (LBAL_LIBCPP2A_STARTS_ENDS_WITH)
-	#define LBAL_LIBCPP2A_STARTS_ENDS_WITH 0L
+	#if __cpp_lib_starts_ends_with
+		#define LBAL_LIBCPP2A_STARTS_ENDS_WITH __cpp_lib_starts_ends_with
+	#endif
 #endif	//	LBAL_LIBCPP2A_STARTS_ENDS_WITH
 
 
@@ -733,8 +687,6 @@
 		#else
 			#define LBAL_LIBCPP2A_SYNCBUF 201711L
 		#endif
-	#else
-		#define LBAL_LIBCPP2A_SYNCBUF 0L
 	#endif
 #elif LBAL_LIBCPP2A_SYNCBUF
 	#if defined (__has_include)
@@ -751,42 +703,43 @@
 #endif	//	LBAL_LIBCPP2A_SYNCBUF
 
 
-#if !defined (LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE)
+#if !defined (LBAL_LIBCPP2A_THREE_WAY_COMPARISON)
 	#if defined (__has_include) && __has_include (<compare>) \
 			&& (__cpp_lib_three_way_comparison || !defined (__cpp_lib_three_way_comparison))
 		#if __cpp_lib_three_way_comparison
-			#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE __cpp_lib_three_way_comparison
+			#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON __cpp_lib_three_way_comparison
 		#else
 			//	__SEEME__ Value not yet assigned.
-			#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE 201711L
+			#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON 201711L
 		#endif
-	#else
-		#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE 0L
+
 	#endif
-#elif LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
+#elif LBAL_LIBCPP2A_THREE_WAY_COMPARISON
 	#if defined (__has_include)
 		#if !__has_include (<compare>)
-			#undef LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
-			#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE 0L
+			#undef LBAL_LIBCPP2A_THREE_WAY_COMPARISON
+			#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON 0L
 			#warning "<compare> not found"
 		#endif
 	#else
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate user-set LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE"
+			#warning "Unable to validate user-set LBAL_LIBCPP2A_THREE_WAY_COMPARISON"
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
-#endif	//	LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
+#endif	//	LBAL_LIBCPP2A_THREE_WAY_COMPARISON
 
 
-//	__FIXME__
 #if !defined (LBAL_LIBCPP2A_TYPE_IDENTITY)
-	#define LBAL_LIBCPP2A_TYPE_IDENTITY 0L
+	#if __cpp_lib_type_identity
+		#define LBAL_LIBCPP2A_TYPE_IDENTITY __cpp_lib_type_identity
+	#endif
 #endif	//	LBAL_LIBCPP2A_TYPE_IDENTITY
 
 
-//	__FIXME__
 #if !defined (LBAL_LIBCPP2A_TO_ADDRESS)
-	#define LBAL_LIBCPP2A_TO_ADDRESS 0L
+	#if __cpp_lib_to_address
+		#define LBAL_LIBCPP2A_TO_ADDRESS __cpp_lib_to_address
+	#endif
 #endif	//	LBAL_LIBCPP2A_TO_ADDRESS
 
 
@@ -807,8 +760,6 @@
 		#ifndef LBAL_LIBCPPTS_NETWORKING_EXP
 			#define LBAL_LIBCPPTS_NETWORKING_EXP 0L
 		#endif
-	#else
-		#define LBAL_LIBCPPTS_NETWORKING 0L
 	#endif
 #elif LBAL_LIBCPPTS_NETWORKING
 	#if defined (__has_include)
@@ -836,8 +787,6 @@
 		#else
 			#define LBAL_LIBCPPTS_NETWORKING_EXP 201803L
 		#endif
-	#else
-		#define LBAL_LIBCPPTS_NETWORKING_EXP 0L
 	#endif
 #elif LBAL_LIBCPPTS_NETWORKING_EXP
 	#if LBAL_LIBCPPTS_NETWORKING
@@ -876,8 +825,6 @@
 		#ifndef LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP
 			#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP 0L
 		#endif
-	#else
-		#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE 0L
 	#endif
 #elif LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE
 	#if defined (__has_include)
@@ -905,8 +852,6 @@
 		#else
 			#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP 201803L
 		#endif
-	#else
-		#define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP 0L
 	#endif
 #elif LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP
 	#if LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE
@@ -944,8 +889,6 @@
 		#ifndef LBAL_LIBCPPTS_OBSERVER_PTR_EXP
 			#define LBAL_LIBCPPTS_OBSERVER_PTR_EXP 0L
 		#endif
-	#else
-		#define LBAL_LIBCPPTS_OBSERVER_PTR 0L
 	#endif
 #elif !LBAL_LIBCPPTS_OBSERVER_PTR
 	#if !defined (LBAL_LIBCPPTS_OBSERVER_PTR_EXP)
@@ -956,8 +899,6 @@
 #if !defined (LBAL_LIBCPPTS_OBSERVER_PTR_EXP)
 	#if __cpp_lib_experimental_observer_ptr
 		#define LBAL_LIBCPPTS_OBSERVER_PTR_EXP __cpp_lib_experimental_observer_ptr
-	#else
-		#define LBAL_LIBCPPTS_OBSERVER_PTR_EXP 0L
 	#endif
 #elif LBAL_LIBCPPTS_OBSERVER_PTR_EXP
 	#if LBAL_LIBCPPTS_OBSERVER_PTR
@@ -968,3 +909,18 @@
 #endif	//	LBAL_LIBCPPTS_OBSERVER_PTR_EXP
 
 
+/*------------------------------------------------------------------------------
+	Implementation-specific Post-initialization
+*/
+
+#if LBAL_TARGET_STANDARD_LIBRARY_APPLE_LIBCPP
+	#include <lucenaBAL/details/libraries/lbalStandardLibraryAppleLibCppPostInitialization.hpp>
+#elif LBAL_TARGET_STANDARD_LIBRARY_LIBCPP
+	#include <lucenaBAL/details/libraries/lbalStandardLibraryLibCppPostInitialization.hpp>
+#elif LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP
+	#include <lucenaBAL/details/libraries/lbalStandardLibraryLibStdPostInitializationCpp.hpp>
+#elif LBAL_TARGET_STANDARD_LIBRARY_MSVC
+	#include <lucenaBAL/details/libraries/lbalStandardLibraryMSVCPostInitialization.hpp>
+#else
+	//	In the generic case, we do nothing here.
+#endif

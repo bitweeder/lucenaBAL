@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“lbalStandardLibraryLibStdCpp.hpp”
+	“lbalStandardLibraryLibStdCppInitialization.hpp”
 	Copyright © 2019-2020 Lucena
 	All Rights Reserved
 
@@ -18,6 +18,8 @@
 
 //	lbal
 #include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/details/lbalDetectStandardLibrary.hpp>
+#include <lucenaBAL/details/lbalKnownVersions.hpp>
 #include <lucenaBAL/details/lbalVersionSetup.hpp>
 
 
@@ -33,10 +35,7 @@
 	implementation with a new compiler.
 */
 
-//	This duplicates the test peformed to include this file in the first place.
-#if defined (__GLIBCXX__)
-	//	__SEEME__ Note that older iterations of libstdc++ used __GLIBCPP__
-
+#if LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP
 	#if !LBAL_LIBCPP2A_VERSION
 		/*
 			If we get here, then we were not initially able to determine
@@ -55,52 +54,30 @@
 		#endif
 	#endif
 
-	#if (__GNUC__ >= 7) && (LBAL_cpp_version > LBAL_CPP14_VERSION)
-		#if __cpp_lib_launder
-			#define LBAL_LIBCPP17_LAUNDER __cpp_lib_launder
-		#else
-			#define LBAL_LIBCPP17_LAUNDER 201606L
-		#endif
-
-		#if __cpp_lib_node_extract
-			#define LBAL_LIBCPP17_NODE_EXTRACT __cpp_lib_node_extract
-		#else
-			#define LBAL_LIBCPP17_NODE_EXTRACT 201606L
-		#endif
-	#endif
-
-	#if (__GNUC__ >= 8) && (LBAL_cpp_version > LBAL_CPP14_VERSION)
+	#if (__GNUC__ >= 8)
 		//	__SEEME__ Only ints are supported; floats are forthcoming.
-		#if __cpp_lib_to_chars
-			#define LBAL_LIBCPP17_TO_CHARS_INTEGER __cpp_lib_to_chars
-		#endif
-
-		#if !defined(__cpp_lib_endian)
-			#define LBAL_LIBCPP2A_STD_ENDIAN 201907L
-		#endif
-
-		#if !defined(__cpp_lib_to_address)
-			#define LBAL_LIBCPP2A_TO_ADDRESS 201711L
-		#endif
-	#endif
-
-	#if (__GNUC__ >= 9)
-		#if !defined(__cpp_lib_remove_cvref)
-			#define LBAL_LIBCPP2A_REMOVE_CVREF 201711
+		//	libstdc++ might be a little too optimistic about its level of
+		//	support.
+		#if !defined(LBAL_LIBCPP17_TO_CHARS_INTEGER) \
+			#if __has_include (<charconv>)
+				#if __cpp_lib_to_chars
+					#define LBAL_LIBCPP17_TO_CHARS_INTEGER __cpp_lib_to_chars
+				#elif (LBAL_cpp_version > LBAL_CPP14_VERSION)
+					#define LBAL_LIBCPP17_TO_CHARS_INTEGER 201611L
+				#else
+					#define LBAL_LIBCPP17_TO_CHARS_INTEGER 0
+				#endif
+			#else
+				#define LBAL_LIBCPP17_TO_CHARS_INTEGER 0
+			#endif
 		#endif
 	#endif
 
-	#if LBAL_LIBCPP17_TO_CHARS_INTEGER && \
-			LBAL_LIBCPP17_TO_CHARS_FP
-		#define LBAL_LIBCPP17_TO_CHARS	 __cpp_lib_to_chars
+	//	Explicitly disabled charconv support for floats to avoid it getting
+	//	mistakenly set later.
+	#if !defined(LBAL_LIBCPP17_TO_CHARS_FP)
+		#define LBAL_LIBCPP17_TO_CHARS_FP 0
 	#endif
-
-
-	//	Set up identifiers
-	#define LBAL_NAME_STANDARD_LIBRARY \
-		u8"GNU libstdc++ version " LBAL_Stringify_ (__GLIBCXX__)
-
-	#define LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP 1
 #else
-	#error "lbalStandardLibraryLibStdCpp.hpp was directly included with the incorrect Standard Library implementation"
+	#error "lbalStandardLibraryLibStdCppInitialization.hpp was directly included with the incorrect Standard Library implementation"
 #endif

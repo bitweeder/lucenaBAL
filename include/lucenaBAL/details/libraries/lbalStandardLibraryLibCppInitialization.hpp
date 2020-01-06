@@ -1,7 +1,7 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“lbalStandardLibraryLibCpp.hpp”
+	“lbalStandardLibraryLibCppInitialization.hpp”
 	Copyright © 2019-2020 Lucena
 	All Rights Reserved
 
@@ -18,6 +18,8 @@
 
 //	lbal
 #include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/details/lbalDetectStandardLibrary.hpp>
+#include <lucenaBAL/details/lbalKnownVersions.hpp>
 #include <lucenaBAL/details/lbalVersionSetup.hpp>
 
 
@@ -25,8 +27,7 @@
 	libc++ Standard Library
 */
 
-//	This duplicates the test peformed to include this file in the first place.
-#if defined (_LIBCPP_VERSION) && !defined (__apple_build_version__)
+#if LBAL_TARGET_STANDARD_LIBRARY_LIBCPP
 	#if !LBAL_LIBCPP2A_VERSION
 		/*
 			If we get here, then we were not initially able to determine
@@ -48,46 +49,29 @@
 		#endif
 	#endif
 
-	#if (_LIBCPP_VERSION >= 6000)
-		#if !defined(__cpp_lib_launder)
-			#define LBAL_LIBCPP17_LAUNDER 201606L
-		#endif
-
-		#if !defined(__cpp_lib_remove_cvref)
-			#define LBAL_LIBCPP2A_REMOVE_CVREF 201711
-		#endif
-
-		#if !defined(__cpp_lib_starts_ends_with)
-			#define LBAL_LIBCPP2A_STARTS_ENDS_WITH 201711L
-		#endif
-
-		#if !defined(__cpp_lib_to_address)
-			#define LBAL_LIBCPP2A_TO_ADDRESS 201711L
-		#endif
-	#endif
-
 	#if (_LIBCPP_VERSION >= 7000)
-		#if !defined(__cpp_lib_endian)
-			#define LBAL_LIBCPP2A_STD_ENDIAN 201907L
-		#endif
-
-		#if !defined(__cpp_lib_chrono)
-			#define LBAL_LIBCPP2A_CHRONO_CALENDAR 201803L
+		//	__SEEME__ Only ints are supported; floats are forthcoming.
+		//	libc++ might be a little too optimistic about its level of support.
+		#if !defined(LBAL_LIBCPP17_TO_CHARS_INTEGER) \
+			#if __has_include (<charconv>)
+				#if __cpp_lib_to_chars
+					#define LBAL_LIBCPP17_TO_CHARS_INTEGER __cpp_lib_to_chars
+				#elif (LBAL_cpp_version > LBAL_CPP14_VERSION)
+					#define LBAL_LIBCPP17_TO_CHARS_INTEGER 201611L
+				#else
+					#define LBAL_LIBCPP17_TO_CHARS_INTEGER 0
+				#endif
+			#else
+				#define LBAL_LIBCPP17_TO_CHARS_INTEGER 0
+			#endif
 		#endif
 	#endif
 
-	#if (_LIBCPP_VERSION >= 8000)
-		#if !defined(__cpp_lib_type_identity)
-			#define LBAL_LIBCPP2A_TYPE_IDENTITY 201806L
-		#endif
+	//	Explicitly disabled charconv support for floats to avoid it getting
+	//	mistakenly set later.
+	#if !defined(LBAL_LIBCPP17_TO_CHARS_FP)
+		#define LBAL_LIBCPP17_TO_CHARS_FP 0
 	#endif
-
-
-	//	Set up identifiers
-	#define LBAL_NAME_STANDARD_LIBRARY \
-		u8"libc++ version " LBAL_Stringify_ (_LIBCPP_VERSION)
-
-	#define LBAL_TARGET_STANDARD_LIBRARY_LIBCPP 1
 #else
-	#error "lbalStandardLibraryLibCpp.hpp was directly included with the incorrect Standard Library implementation"
+	#error "lbalStandardLibraryLibCppInitialization.hpp was directly included with the incorrect Standard Library implementation"
 #endif
