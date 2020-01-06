@@ -918,7 +918,7 @@
 #elif LBAL_TARGET_STANDARD_LIBRARY_LIBCPP
 	#include <lucenaBAL/details/libraries/lbalStandardLibraryLibCppPostInitialization.hpp>
 #elif LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP
-	#include <lucenaBAL/details/libraries/lbalStandardLibraryLibStdPostCppInitialization.hpp>
+	#include <lucenaBAL/details/libraries/lbalStandardLibraryLibStdCppPostInitialization.hpp>
 #elif LBAL_TARGET_STANDARD_LIBRARY_MSVC
 	#include <lucenaBAL/details/libraries/lbalStandardLibraryMSVCPostInitialization.hpp>
 #else
