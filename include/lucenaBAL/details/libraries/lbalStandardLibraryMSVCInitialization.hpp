@@ -49,7 +49,7 @@
 
 	#if (_MSC_VER >= 1914)
 		//	__SEEME__ Only ints are supported until `1924`
-		#if !defined(LBAL_LIBCPP17_TO_CHARS_INTEGER) \
+		#if !defined(LBAL_LIBCPP17_TO_CHARS_INTEGER)
 			#if __has_include (<charconv>)
 				#if __cpp_lib_to_chars
 					#define LBAL_LIBCPP17_TO_CHARS_INTEGER __cpp_lib_to_chars
@@ -65,7 +65,7 @@
 	#endif
 
 	#if (_MSC_VER >= 1924)
-		#if !defined(LBAL_LIBCPP17_TO_CHARS_FP) \
+		#if !defined(LBAL_LIBCPP17_TO_CHARS_FP)
 			#if __has_include (<charconv>)
 				#if __cpp_lib_to_chars
 					#define LBAL_LIBCPP17_TO_CHARS_FP __cpp_lib_to_chars

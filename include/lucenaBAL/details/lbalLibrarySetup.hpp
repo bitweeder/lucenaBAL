@@ -36,7 +36,7 @@
 #elif LBAL_TARGET_STANDARD_LIBRARY_LIBCPP
 	#include <lucenaBAL/details/libraries/lbalStandardLibraryLibCppInitialization.hpp>
 #elif LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP
-	#include <lucenaBAL/details/libraries/lbalStandardLibraryLibStdInitializationCpp.hpp>
+	#include <lucenaBAL/details/libraries/lbalStandardLibraryLibStdCppInitialization.hpp>
 #elif LBAL_TARGET_STANDARD_LIBRARY_MSVC
 	#include <lucenaBAL/details/libraries/lbalStandardLibraryMSVCInitialization.hpp>
 #else
