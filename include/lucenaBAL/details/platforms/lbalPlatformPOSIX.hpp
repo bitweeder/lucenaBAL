@@ -1,8 +1,8 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“PlatformPOSIX.hpp”
-	Copyright © 2019 Lucena
+	“lbalPlatformPOSIX.hpp”
+	Copyright © 2019-2020 Lucena
 	All Rights Reserved
 
 	This file is distributed under the University of Illinois Open Source
@@ -14,14 +14,6 @@
 
 
 #pragma once
-
-
-//	std
-#include <ciso646>
-	//	In C++, this is a do-nothing header we include just for the side
-	//	effects: the Standard Library implementation will be configured
-	//	and many assorted compiler-dependent feature detection macros will
-	//	be defined.
 
 
 //	lbal

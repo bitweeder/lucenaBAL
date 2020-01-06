@@ -1,8 +1,8 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“Config.hpp”
-	Copyright © 2015-2019 Lucena
+	“lbalConfig.hpp”
+	Copyright © 2015-2020 Lucena
 	All Rights Reserved
 
 	This file is distributed under the University of Illinois Open Source
@@ -11,7 +11,7 @@
 ------------------------------------------------------------------------------*/
 
 /**
-	@file lucenaBAL/lbalConfig.hpp
+	@file lucenaBAL/details/lbalConfig.hpp
 
 	@brief Documents the internal options used in a given build of lucenaBAL.
 

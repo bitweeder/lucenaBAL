@@ -1,8 +1,8 @@
 /*------------------------------------------------------------------------------
 
 	Lucena Build Abstraction Library
-	“PlatformApple.hpp”
-	Copyright © 2019 Lucena
+	“lbalPlatformApple.hpp”
+	Copyright © 2019-2020 Lucena
 	All Rights Reserved
 
 	This file is distributed under the University of Illinois Open Source
@@ -18,10 +18,13 @@
 
 //	std
 #include <ciso646>
-	//	In C++, this is a do-nothing header we include just for the side
-	//	effects: the Standard Library implementation will be configured
-	//	and many assorted compiler-dependent feature detection macros will
-	//	be defined.
+	/*
+		In C++, this is a do-nothing header we include just for the side
+		effects: by convention, the Standard Library implementation will be
+		configured. We need this for the library implementation detection
+		below. Note that in the C++20 world, we would use <version> for this
+		purpose.
+	*/
 
 
 //	lbal
@@ -120,6 +123,8 @@
 				(__WATCH_OS_VERSION_MIN_REQUIRED < 50000))))
 		#define LBAL_LIBCPP17_ANY 0L
 		#define LBAL_LIBCPP17_OPTIONAL 0L
+		#define LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL 0L
+		#define LBAL_LIBCPP17_OPTIONAL_INTERFACE 0L
 		#define LBAL_LIBCPP17_VARIANT 0L
 	#endif
 
