@@ -44,7 +44,7 @@ Enter **lucenaBAL**:
 
 ## Getting Started
 
-[CMake](https://cmake.org/) scripts are provided which will install the library itself, build and run test applications, and generate documentation. We require at least CMake 3.15, so that will need to be [installed first](https://cmake.org/download/).
+[CMake](https://cmake.org/) scripts are provided which will install the library itself, build and run test applications, and generate [documentation](https://bitweeder.github.io/lucenaBAL/html/index.html). We require at least CMake 3.15, so that will need to be [installed first](https://cmake.org/download/).
 
 More detailed instructions are provided below, but for a quick start, simply clone the repository, open up a terminal window, change to the local repo directory, and execute the following:
 
@@ -104,7 +104,7 @@ Line 5 can be replaced by `make install` (or `sudo make install`). Tests are gen
 
 Tests can be scripted in the usual way for CMake and CTest, for example in order to only install the library if testing succeeds.
 
-Docs can also be generated, if desired, and are left in `<build>/docs`.
+[Docs](https://bitweeder.github.io/lucenaBAL/html/index.html) can also be generated, if desired, and are left in `<build>/docs`.
 
 ## To-Do
 _Roughly in order of precedence_
@@ -113,6 +113,8 @@ _Roughly in order of precedence_
 - generate nicer-looking IDE project files
 
 ## Support
+
+There is extensive [documentation](https://bitweeder.github.io/lucenaBAL/html/index.html) which is regularly updated and expanded.
 
 lucenaBAL aggressively tracks the latest tools and standards, but maintaining support for older tools in new releases is unlikely to happen. The cold reality is that we do not have the bandwidth to pay the interest on anyone else’s technical debt. If an older release does what you need, use it. If you find a bug in any release, we greatly appreciate patches, though we strongly encourage you to at least [open an issue](https://github.com/bitweeder/lucenaBAL/issues) even if you can’t [submit a pull request](https://github.com/bitweeder/lucenaBAL/pulls). Feature requests will be considered, but requests to increase our maintenance surface are unlikely to be carried out.
 
