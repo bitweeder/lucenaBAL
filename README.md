@@ -1,3 +1,5 @@
+[![Actions Status](https://github.com/bitweeder/lucenaBAL/workflows/Build%20Matrix/badge.svg)](https://github.com/bitweeder/lucenaBAL/actions)
+
 # Lucena Build Abstraction Library
 
 The purpose of the Lucena Build Abstraction Library (lucenaBAL) is to provide tools to smooth over differences between build environments when working with C++17 and later Standards. It’s a foundational tool that allows code built upon it to remain agnostic to compilers, C++ Standard Library variants, and aspects of the runtime. Note that lucenaBAL is **not** a build system, but rather a C++ header library with a collection of build system support scripts.
