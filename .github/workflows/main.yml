@@ -13,7 +13,7 @@
 # Instead of relying on the toolset bundled with the runner, we download our
 # preferred tools to the container via CMake scripts and use those instead.
 
-name: Simple Test Matrix
+name: Build Matrix
 
 on: [push]
 
