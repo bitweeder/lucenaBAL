@@ -108,6 +108,16 @@ if (LBAL_CONFIG_DISABLE_PEDANTIC_WARNINGS)
 	add_compile_definitions(LBAL_CONFIG_enable_pedantic_warnings=0)
 endif()
 
+option (
+	LBAL_CONFIG_TREAT_UNCERTAINTY_AS_FAILURE
+	"Control whether an uncertain result during feature detection should be treated as unavailability. BE WARY OF CHANGING THIS!"
+	OFF)
+
+if (LBAL_CONFIG_TREAT_UNCERTAINTY_AS_FAILURE)
+	# By default, `LBAL_CONFIG_treat_uncertainty_as_failure` is set to `0`.
+	add_compile_definitions(LBAL_CONFIG_treat_uncertainty_as_failure=1)
+endif()
+
 # `CMAKE_SYSTEM_NAME` is expected to be set correctly somewhere, e.g., as a
 # command line option when cross-compiling. Note that as of CMake 3.14, the
 # various Apple OS’s can be targeted individually, so the full list of

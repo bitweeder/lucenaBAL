@@ -229,9 +229,6 @@
 	@details These can be set by simply passing macro definitions on the
 	command-line to the compiler or build system.
 
-	@remarks At this time, none of these will change any resulting binaries,
-	but will instead provide different levels of feedback at build-time.
-
 	@remarks Due to certain limitations of CMake, when using that build system,
 	it is necessary to use proxies specific to CMake in the form of `options`
 	in order to pass macro definitions on to the compiler. See `CMakeLists.txt`
@@ -256,6 +253,40 @@
 */
 #ifndef LBAL_CONFIG_enable_pedantic_warnings
 	#define LBAL_CONFIG_enable_pedantic_warnings 1
+#endif
+
+/**
+	@def LBAL_CONFIG_treat_uncertainty_as_failure
+
+	@brief Client setting to force conservative guesses when detecting features
+
+	@details Sometimes when a feature detection is done, we won’t have enough
+	information to make a definitive determination regarding availability. When
+	this happens, we assume, by default, that the feature is available. To
+	change this behavior, set this macro to `1` instead of `0`. Note that this
+	may have an effect on generated binaries, and so changing this should be
+	accompanied by equivalent changes to any dependencies or clients.
+
+	Keep in mind that we perform a battery of tests to determine feature
+	availability, so situations where this setting becomes relevant typically
+	arise either when attempting tobuild in an untested environment, i.e., one
+	we haven’t established special-case rules for, or when building in a known
+	environment with low-quality reporting, e.g., attempting to detect headers
+	when the compiler doesn’t provide `__has_include`. We assume building will
+	mostly happen in known, tested environments, so trust that our special-
+	casing will have issued a definitive failure if a given feature is
+	genuinely unavailable. The corollary to this is that new environments
+	should have implementation files created for them as needed in order to
+	minimize repercussions and keep things simple.
+
+	@remarks __SEEME__ Because alterations to this are effectively viral, it is
+	strongly recommended to only change this globally, and to be very through
+	about it. It is even better to not change it at all, and instead provide
+	new implementation file with appropriate special cases to avoid nasty
+	surprises if some tool in the chain has a different value for this setting.
+*/
+#ifndef LBAL_CONFIG_treat_uncertainty_as_failure
+	#define LBAL_CONFIG_treat_uncertainty_as_failure 0
 #endif
 
 ///	@}	Settings
