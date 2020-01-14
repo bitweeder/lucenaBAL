@@ -28,26 +28,20 @@
 */
 
 #if LBAL_TARGET_STANDARD_LIBRARY_LIBCPP
-	#if !LBAL_LIBCPP2A_VERSION
-		/*
-			If we get here, then we were not initially able to determine
-			whether to set `LBAL_LIBCPP2A_VERSION`. We know that libc++ 7 or
-			later always has an implementation of `<version>`, so we include
-			it. Note that _LIBCPP_VERSION will have been initialized correctly
-			by the earlier inclusion of `lbalVersionSetup.hpp`.
+	/*
+		Note that `<version>` is available if we’re using libc++ 7+, but we
+		won’t necessarily have access to `__has_include` unless we’re using
+		clang; in particular, MSVS didn’t support `__has_include` until 15.3.
+		We consider this sufficiently fringe-y to not warrant a workaround.
 
-			__SEEME__ libc++ 7 only included a token `<version>`; the first
-			meaningful iteration appeared in libc++ 8, but it was out of sync
-			with the SD-6 doc at the time (e.g., `std::endian`).
-		*/
-		#if (_LIBCPP_VERSION >= 7000)
-			#define LBAL_LIBCPP2A_VERSION 1L
-
-			#include <version>
-		#else
-			#define LBAL_LIBCPP2A_VERSION 0L
-		#endif
-	#endif
+		__SEEME__ While `<version>` appeared in libc++ 7; the first meaningful
+		iteration didn’t appear until libc++ 8. That iteration was out of sync
+		with the SD-6 doc, however, and has gotten even more out-of-sync. One
+		upshot is that we can’t fully trust the `<version>` bundled with any
+		libc++ until version 10, or so, e.g., some of the token names have
+		drifted from the official ones, and some of the token values have
+		changed (and not just been updated).
+	*/
 
 	#if (_LIBCPP_VERSION >= 7000)
 		//	__SEEME__ Only ints are supported; floats are forthcoming.

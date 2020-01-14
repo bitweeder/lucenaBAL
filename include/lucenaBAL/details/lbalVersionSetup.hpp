@@ -34,37 +34,27 @@
 */
 
 #if !defined (LBAL_LIBCPP2A_VERSION)
-	#if defined (__has_include)
-		#if __has_include (<version>)
-			#define LBAL_LIBCPP2A_VERSION 1L
-		#else
-			#define LBAL_LIBCPP2A_VERSION 0L
-		#endif
+	#if defined (__has_include) && __has_include (<version>)
+		#define LBAL_LIBCPP2A_VERSION 1L
 	#else
-		/*
-			In this case, we don’t have `__has_include`, and can’t safely
-			determine whether `<version>` exists. We leave
-			`LBAL_LIBCPP2A_VERSION` undefined for now, and come back to it
-			after acquiring sufficient metadata to make a better guess.
-		*/
+		#define LBAL_LIBCPP2A_VERSION 0L
 	#endif
-#elif LBAL_LIBCPP2A_VERSION
+#endif
+
+//	Pedantic test in case LBAL_LIBCPP2A_VERSION was previously defined.
+#if LBAL_LIBCPP2A_VERSION
 	#ifdef (__has_include)
 		#if !__has_include (<version>)
-			/*
-				The client claims `<version>` exists, but it doesn’t. We
-				override.
-			*/
+			//	The client claims `<version>` exists, but it doesn’t. We
+			//	override.
 			#undef LBAL_LIBCPP2A_VERSION
 			#define LBAL_LIBCPP2A_VERSION 0L
 			#warning "<version> not found; resetting LBAL_LIBCPP2A_VERSION"
 		#endif
 	#else
-		/*
-			We don’t block on this, as the header may have been back-ported,
-			even if the means to test for the header is not available, and the
-			client somehow accommodated this.
-		*/
+		//	We don’t block on this, as the header may have been back-ported,
+		//	even if the means to test for the header is not available, and the
+		//	client somehow accommodated this.
 		#if LBAL_CONFIG_enable_pedantic_warnings
 			#warning "Unable to validate user-set LBAL_LIBCPP2A_VERSION; attempting to include <version>"
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
@@ -74,10 +64,8 @@
 #if LBAL_LIBCPP2A_VERSION
 	#include <version>
 #else
+	//	In C++, this is a do-nothing header we include just for the side
+	//	effects: by convention, the Standard Library implementation will be
+	//	configured.
 	#include <ciso646>
-		/*
-			In C++, this is a do-nothing header we include just for the side
-			effects: by convention, the Standard Library implementation will be
-			configured.
-		*/
 #endif
