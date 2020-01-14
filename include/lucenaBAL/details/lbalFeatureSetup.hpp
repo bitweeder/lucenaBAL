@@ -2795,7 +2795,7 @@
 /**
 	@def LBAL_LIBCPP14_IS_FINAL
 	@brief Detect finalized classes
-	@details Equivalent SD-6 macro: `__cpp_lib_integral_constant_callable`
+	@details Equivalent SD-6 macro: `__cpp_lib_is_final`
 	- [201402L](https://wg21.link/LWG2112)
 
 	@sa `<type_traits>`
@@ -3597,13 +3597,15 @@
 	@brief Standardize the Parallelism TS
 
 	@details Equivalent SD-6 macro: `__cpp_lib_parallel_algorithm`
-	- [P0024R2](https://wg21.link/p0024r2) __PDF__
+	- [201603L](https://wg21.link/p0024r2) __PDF__
 
 	@remarks By itself, this macro does not measure compliance with the
 	Working Group paper; for that, use
 	LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS.
 
 	@remarks __APIME__ We do not track experimental versions of this.
+
+	@sa `<algorithm>` `<numeric>`
 */
 #ifndef LBAL_LIBCPP17_PARALLEL_ALGORITHM
 	#define LBAL_LIBCPP17_PARALLEL_ALGORITHM 0
@@ -4015,7 +4017,7 @@
 	@brief Provide `constexpr` `std::array` `swap` and `fill`
 
 	@details Equivalent SD-6 macro: `__cpp_lib_array_constexpr`. This token
-	corresponds to the `201806L` variant; it will only be set to a non-`0`
+	corresponds to the `201811L` variant; it will only be set to a non-`0`
 	value if that variant is available.
 	- [201603L](https://wg21.link/P0031R0)
 	- [201803L](https://wg21.link/P0858R0)
@@ -4063,7 +4065,7 @@
 	@def LBAL_LIBCPP2A_ATOMIC_FLOAT
 	@brief Extend `<atomic>` support to floating point types
 	@details Equivalent SD-6 macro: `__cpp_lib_atomic_float`
-	- [default](https://wg21.link/P0020R6)
+	- [201711L](https://wg21.link/P0020R6)
 
 	@sa `<atomic>`
 */
@@ -4571,8 +4573,8 @@
 	@def LBAL_LIBCPP2A_COROUTINES
 	@brief Standard Library coroutines
 	@details Equivalent SD-6 macro: `__cpp_coroutines`
-	- [default](https://wg21.link/n4736) __PDF__
-	- [default](https://wg21.link/n4760) __PDF__
+	- [201902L](https://wg21.link/n4736) __PDF__
+	- [201902L](https://wg21.link/n4760) __PDF__
 	- [201902L](https://wg21.link/p0912r5)
 
 	@remarks Note that `<coroutine>` requires language support.
@@ -4594,8 +4596,8 @@
 	@def LBAL_LIBCPP2A_COROUTINES_EXP
 	@brief Experimental Standard Library coroutines
 	@details Equivalent SD-6 macro: `__cpp_coroutines`
-	- [default](https://wg21.link/n4736) __PDF__
-	- [default](https://wg21.link/n4760) __PDF__
+	- [201902L](https://wg21.link/n4736) __PDF__
+	- [201902L](https://wg21.link/n4760) __PDF__
 	- [201902L](https://wg21.link/p0912r5)
 
 	@remarks Note that `<coroutine>` requires language support.
