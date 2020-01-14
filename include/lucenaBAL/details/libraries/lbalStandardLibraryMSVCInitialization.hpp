@@ -28,24 +28,12 @@
 */
 
 #if LBAL_TARGET_STANDARD_LIBRARY_MSVC
-	#if !LBAL_LIBCPP2A_VERSION
-		/*
-			If we get here, then we were not initially able to determine
-			whether to set `LBAL_LIBCPP2A_VERSION`. We know that the Standard
-			Library bundled with MSVS 2019 16.2 or later always has an
-			implementation of `<version>`, so we include it. Practically
-			speaking, though, this step should never happen since we should
-			have been able to detect its availability using other means at an
-			earlier stage.
-		*/
-		#if (_MSC_VER >= 1922)
-			#define LBAL_LIBCPP2A_VERSION 1L
-
-			#include <version>
-		#else
-			#define LBAL_LIBCPP2A_VERSION 0L
-		#endif
-	#endif
+	/*
+		The Standard Library bundled with MSVS 2019 16.2 or later always has an
+		implementation of `<version>`. MSVC has had support for `__has_include`
+		since MSVC 2017 15.3. Pragmatically speaking, we’ll be able to detect
+		the presence of `<version>` directly if it’s there to detect.
+	*/
 
 	#if (_MSC_VER >= 1914)
 		//	__SEEME__ Only ints are supported until `1924`

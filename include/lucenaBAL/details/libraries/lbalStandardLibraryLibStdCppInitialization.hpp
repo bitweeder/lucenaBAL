@@ -36,23 +36,12 @@
 */
 
 #if LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP
-	#if !LBAL_LIBCPP2A_VERSION
-		/*
-			If we get here, then we were not initially able to determine
-			whether to set `LBAL_LIBCPP2A_VERSION`. We know that the Standard
-			Library bundled with gcc 9 or later always has an implementation of
-			`<version>`, so we include it. Practically speaking, though, this
-			step should never happen since we should have been able to detect
-			its availability using other means at an earlier stage.
-		*/
-		#if (__GNUC__ >= 9)
-			#define LBAL_LIBCPP2A_VERSION 1L
-
-			#include <version>
-		#else
-			#define LBAL_LIBCPP2A_VERSION 0L
-		#endif
-	#endif
+	/*
+		libstdc++ has had a `<version> header since gcc 9; gcc has had support
+		for `__has_include` since version 5. Therefor, we don’t worry about not
+		being able to detect whether or not `<version>` exists in any iteration
+		of libstdc++ that would actually have it.
+	*/
 
 	#if (__GNUC__ >= 8)
 		//	__SEEME__ Only ints are supported; floats are forthcoming.
