@@ -43,7 +43,7 @@
 
 //	Pedantic test in case LBAL_LIBCPP2A_VERSION was previously defined.
 #if LBAL_LIBCPP2A_VERSION
-	#ifdef (__has_include)
+	#if defined (__has_include)
 		#if !__has_include (<version>)
 			//	The client claims `<version>` exists, but it doesn’t. We
 			//	override.
