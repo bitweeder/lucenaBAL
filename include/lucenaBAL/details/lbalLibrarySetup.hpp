@@ -1035,8 +1035,8 @@
 #endif	//	LBAL_LIBCPP2A_SPAN_USABILITY
 
 #if !defined (LBAL_LIBCPP2A_SSIZE)
-	#if __cpp_lib_ssize >= __cpp_lib_ssize
-		#define LBAL_LIBCPP2A_SSIZE 201902L
+	#if __cpp_lib_ssize >= 201902L
+		#define LBAL_LIBCPP2A_SSIZE __cpp_lib_ssize
 	#endif
 #endif	//	LBAL_LIBCPP2A_SSIZE
 
