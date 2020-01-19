@@ -39,7 +39,7 @@
 
 	//	Implement a cross-platform `#warning` substitute
 	#define LBAL_CPP_WARNING(LBAL_CPP_WARNING_message) \
-		LBAL_PRAGMA(message(LBAL_CPP_WARNING_message))
+		LBAL_PRAGMA(message("warning: " LBAL_CPP_WARNING_message))
 
 
 	//	Identify processor.
