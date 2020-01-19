@@ -106,7 +106,7 @@
 		@defgroup lbal_compiler Compiler Features
 		@defgroup lbal_library Standard Library Features
 	@}
-	#defgroup lbal_compiler_control Diagnostics, Pragmas, and Warnings
+	@defgroup lbal_compiler_control Diagnostics, Pragmas, and Warnings
 	@defgroup lbal_builtins Compiler Intrinsics & Built-in Functions
 	@defgroup lbal_decorators Linker Decorators
 */
