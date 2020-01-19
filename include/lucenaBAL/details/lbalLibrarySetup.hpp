@@ -1202,7 +1202,7 @@
 		#if !__has_include (<chrono>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_CHRONO_UDLS
-			#warning "<chrono> not found"
+			LBAL_CPP_WARNING ("<chrono> not found")
 		#endif	//	<chrono> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1211,7 +1211,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_CHRONO_UDLS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_CHRONO_UDLS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_CHRONO_UDLS
@@ -1222,7 +1222,7 @@
 		#if !__has_include (<complex>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_COMPLEX_UDLS
-			#warning "<complex> not found"
+			LBAL_CPP_WARNING ("<complex> not found")
 		#endif	//	<complex> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1231,7 +1231,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_COMPLEX_UDLS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_COMPLEX_UDLS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_COMPLEX_UDLS
@@ -1242,7 +1242,7 @@
 		#if !__has_include (<utility>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_EXCHANGE_FUNCTION
-			#warning "<utility> not found"
+			LBAL_CPP_WARNING ("<utility> not found")
 		#endif	//	<utility> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1251,7 +1251,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_EXCHANGE_FUNCTION"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_EXCHANGE_FUNCTION")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_EXCHANGE_FUNCTION
@@ -1262,13 +1262,13 @@
 		#if !__has_include (<map>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP
-			#warning "<map> not found"
+			LBAL_CPP_WARNING ("<map> not found")
 		#endif	//	<map> test
 
 		#if !__has_include (<set>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP
-			#warning "<set> not found"
+			LBAL_CPP_WARNING ("<set> not found")
 		#endif	//	<set> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1277,7 +1277,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP
@@ -1288,7 +1288,7 @@
 		#if !__has_include (<utility>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_INTEGER_SEQUENCE
-			#warning "<utility> not found"
+			LBAL_CPP_WARNING ("<utility> not found")
 		#endif	//	<utility> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1297,7 +1297,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_INTEGER_SEQUENCE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_INTEGER_SEQUENCE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_INTEGER_SEQUENCE
@@ -1308,7 +1308,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1317,7 +1317,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE
@@ -1328,7 +1328,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_IS_FINAL
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1337,7 +1337,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_IS_FINAL"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_IS_FINAL")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_IS_FINAL
@@ -1348,7 +1348,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_IS_NULL_POINTER
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1357,7 +1357,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_IS_NULL_POINTER"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_IS_NULL_POINTER")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_IS_NULL_POINTER
@@ -1368,7 +1368,7 @@
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR
-			#warning "<iterator> not found"
+			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1377,7 +1377,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR
@@ -1388,7 +1388,7 @@
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_MAKE_UNIQUE
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1397,7 +1397,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_MAKE_UNIQUE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_MAKE_UNIQUE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_MAKE_UNIQUE
@@ -1408,7 +1408,7 @@
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_NULL_ITERATORS
-			#warning "<iterator> not found"
+			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1417,7 +1417,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_NULL_ITERATORS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_NULL_ITERATORS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_NULL_ITERATORS
@@ -1428,7 +1428,7 @@
 		#if !__has_include (<iomanip>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_QUOTED_STRING_IO
-			#warning "<iomanip> not found"
+			LBAL_CPP_WARNING ("<iomanip> not found")
 		#endif	//	<iomanip> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1437,7 +1437,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_QUOTED_STRING_IO"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_QUOTED_STRING_IO")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_QUOTED_STRING_IO
@@ -1448,13 +1448,13 @@
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_RESULT_OF_SFINAE
-			#warning "<functional> not found"
+			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_RESULT_OF_SFINAE
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1463,7 +1463,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_RESULT_OF_SFINAE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_RESULT_OF_SFINAE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_RESULT_OF_SFINAE
@@ -1474,7 +1474,7 @@
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS
-			#warning "<algorithm> not found"
+			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1483,7 +1483,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS
@@ -1494,7 +1494,7 @@
 		#if !__has_include (<shared_mutex>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_SHARED_TIMED_MUTEX
-			#warning "<shared_mutex> not found"
+			LBAL_CPP_WARNING ("<shared_mutex> not found")
 		#endif	//	<shared_mutex> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1503,7 +1503,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_SHARED_TIMED_MUTEX"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_SHARED_TIMED_MUTEX")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_SHARED_TIMED_MUTEX
@@ -1514,7 +1514,7 @@
 		#if !__has_include (<string>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_STRING_UDLS
-			#warning "<string> not found"
+			LBAL_CPP_WARNING ("<string> not found")
 		#endif	//	<string> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1523,7 +1523,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_STRING_UDLS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_STRING_UDLS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_STRING_UDLS
@@ -1534,7 +1534,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1543,7 +1543,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES
@@ -1554,13 +1554,13 @@
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_TRANSPARENT_OPERATORS
-			#warning "<functional> not found"
+			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_TRANSPARENT_OPERATORS
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1569,7 +1569,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_TRANSPARENT_OPERATORS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_TRANSPARENT_OPERATORS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_TRANSPARENT_OPERATORS
@@ -1580,7 +1580,7 @@
 		#if !__has_include (<tuple>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_TUPLE_ELEMENT_T
-			#warning "<tuple> not found"
+			LBAL_CPP_WARNING ("<tuple> not found")
 		#endif	//	<tuple> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1589,7 +1589,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_TUPLE_ELEMENT_T"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_TUPLE_ELEMENT_T")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_TUPLE_ELEMENT_T
@@ -1600,13 +1600,13 @@
 		#if !__has_include (<tuple>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_TUPLES_BY_TYPE
-			#warning "<tuple> not found"
+			LBAL_CPP_WARNING ("<tuple> not found")
 		#endif	//	<tuple> test
 
 		#if !__has_include (<utility>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP14_TUPLES_BY_TYPE
-			#warning "<utility> not found"
+			LBAL_CPP_WARNING ("<utility> not found")
 		#endif	//	<utility> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1615,7 +1615,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP14_TUPLES_BY_TYPE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP14_TUPLES_BY_TYPE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP14_TUPLES_BY_TYPE
@@ -1626,7 +1626,7 @@
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1635,7 +1635,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR
@@ -1646,31 +1646,31 @@
 		#if !__has_include (<deque>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL
-			#warning "<deque> not found"
+			LBAL_CPP_WARNING ("<deque> not found")
 		#endif	//	<deque> test
 
 		#if !__has_include (<forward_list>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL
-			#warning "<forward_list> not found"
+			LBAL_CPP_WARNING ("<forward_list> not found")
 		#endif	//	<forward_list> test
 
 		#if !__has_include (<list>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL
-			#warning "<list> not found"
+			LBAL_CPP_WARNING ("<list> not found")
 		#endif	//	<list> test
 
 		#if !__has_include (<map>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL
-			#warning "<map> not found"
+			LBAL_CPP_WARNING ("<map> not found")
 		#endif	//	<map> test
 
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1679,7 +1679,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL
@@ -1690,7 +1690,7 @@
 		#if !__has_include (<any>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_ANY
-			#warning "<any> not found"
+			LBAL_CPP_WARNING ("<any> not found")
 		#endif	//	<any> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1699,7 +1699,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_ANY"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_ANY")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_ANY
@@ -1710,7 +1710,7 @@
 		#if !__has_include (<any>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_ANY_INTERFACE
-			#warning "<any> not found"
+			LBAL_CPP_WARNING ("<any> not found")
 		#endif	//	<any> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1719,7 +1719,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_ANY_INTERFACE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_ANY_INTERFACE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_ANY_INTERFACE
@@ -1730,7 +1730,7 @@
 		#if !__has_include (<tuple>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_APPLY
-			#warning "<tuple> not found"
+			LBAL_CPP_WARNING ("<tuple> not found")
 		#endif	//	<tuple> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1739,7 +1739,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_APPLY"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_APPLY")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_APPLY
@@ -1750,13 +1750,13 @@
 		#if !__has_include (<array>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_ARRAY_CONSTEXPR
-			#warning "<array> not found"
+			LBAL_CPP_WARNING ("<array> not found")
 		#endif	//	<array> test
 
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_ARRAY_CONSTEXPR
-			#warning "<iterator> not found"
+			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1765,7 +1765,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_ARRAY_CONSTEXPR"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_ARRAY_CONSTEXPR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_ARRAY_CONSTEXPR
@@ -1776,7 +1776,7 @@
 		#if !__has_include (<utility>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_AS_CONST
-			#warning "<utility> not found"
+			LBAL_CPP_WARNING ("<utility> not found")
 		#endif	//	<utility> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1785,7 +1785,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_AS_CONST"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_AS_CONST")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_AS_CONST
@@ -1796,7 +1796,7 @@
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_ATOMIC_IS_ALWAYS_LOCK_FREE
-			#warning "<atomic> not found"
+			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1805,7 +1805,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_ATOMIC_IS_ALWAYS_LOCK_FREE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_ATOMIC_IS_ALWAYS_LOCK_FREE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_ATOMIC_IS_ALWAYS_LOCK_FREE
@@ -1816,7 +1816,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_BOOL_CONSTANT
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1825,7 +1825,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_BOOL_CONSTANT"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_BOOL_CONSTANT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_BOOL_CONSTANT
@@ -1836,7 +1836,7 @@
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_BOYER_MOORE_SEARCHER
-			#warning "<functional> not found"
+			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1845,7 +1845,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_BOYER_MOORE_SEARCHER"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_BOYER_MOORE_SEARCHER")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_BOYER_MOORE_SEARCHER
@@ -1856,7 +1856,7 @@
 		#if !__has_include (<cstddef>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_BYTE
-			#warning "<cstddef> not found"
+			LBAL_CPP_WARNING ("<cstddef> not found")
 		#endif	//	<cstddef> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1865,7 +1865,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_BYTE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_BYTE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_BYTE
@@ -1876,7 +1876,7 @@
 		#if !__has_include (<chrono>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_CHRONO
-			#warning "<chrono> not found"
+			LBAL_CPP_WARNING ("<chrono> not found")
 		#endif	//	<chrono> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1885,7 +1885,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_CHRONO"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_CHRONO")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_CHRONO
@@ -1896,7 +1896,7 @@
 		#if !__has_include (<chrono>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_CHRONO_CONSTEXPR
-			#warning "<chrono> not found"
+			LBAL_CPP_WARNING ("<chrono> not found")
 		#endif	//	<chrono> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1905,7 +1905,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_CHRONO_CONSTEXPR"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_CHRONO_CONSTEXPR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_CHRONO_CONSTEXPR
@@ -1916,7 +1916,7 @@
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_CLAMP
-			#warning "<algorithm> not found"
+			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1925,7 +1925,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_CLAMP"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_CLAMP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_CLAMP
@@ -1936,7 +1936,7 @@
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1945,7 +1945,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS
@@ -1956,7 +1956,7 @@
 		#if !__has_include (<execution>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_EXECUTION
-			#warning "<execution> not found"
+			LBAL_CPP_WARNING ("<execution> not found")
 		#endif	//	<execution> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1965,7 +1965,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_EXECUTION"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_EXECUTION")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_EXECUTION
@@ -1976,7 +1976,7 @@
 		#if !__has_include (<filesystem>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_FILESYSTEM
-			#warning "<filesystem> not found"
+			LBAL_CPP_WARNING ("<filesystem> not found")
 		#endif	//	<filesystem> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -1985,7 +1985,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_FILESYSTEM"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_FILESYSTEM")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_FILESYSTEM
@@ -1996,7 +1996,7 @@
 		#if !__has_include (<filesystem>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED
-			#warning "<filesystem> not found"
+			LBAL_CPP_WARNING ("<filesystem> not found")
 		#endif	//	<filesystem> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2005,7 +2005,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED
@@ -2016,7 +2016,7 @@
 		#if !__has_include (<filesystem>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING
-			#warning "<filesystem> not found"
+			LBAL_CPP_WARNING ("<filesystem> not found")
 		#endif	//	<filesystem> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2025,7 +2025,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING
@@ -2036,7 +2036,7 @@
 		#if !__has_include (<filesystem>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_FILESYSTEM_EXP
-			#warning "<filesystem> not found"
+			LBAL_CPP_WARNING ("<filesystem> not found")
 		#endif	//	<filesystem> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2045,7 +2045,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_FILESYSTEM_EXP"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_FILESYSTEM_EXP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_FILESYSTEM_EXP
@@ -2056,7 +2056,7 @@
 		#if !__has_include (<numeric>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_GCD_LCM
-			#warning "<numeric> not found"
+			LBAL_CPP_WARNING ("<numeric> not found")
 		#endif	//	<numeric> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2065,7 +2065,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_GCD_LCM"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_GCD_LCM")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_GCD_LCM
@@ -2076,7 +2076,7 @@
 		#if !__has_include (<new>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
-			#warning "<new> not found"
+			LBAL_CPP_WARNING ("<new> not found")
 		#endif	//	<new> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2085,7 +2085,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
@@ -2096,7 +2096,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2105,7 +2105,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS
@@ -2116,7 +2116,7 @@
 		#if !__has_include (<cmath>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_HYPOT
-			#warning "<cmath> not found"
+			LBAL_CPP_WARNING ("<cmath> not found")
 		#endif	//	<cmath> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2125,7 +2125,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_HYPOT"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_HYPOT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_HYPOT
@@ -2136,19 +2136,19 @@
 		#if !__has_include (<forward_list>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS
-			#warning "<forward_list> not found"
+			LBAL_CPP_WARNING ("<forward_list> not found")
 		#endif	//	<forward_list> test
 
 		#if !__has_include (<list>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS
-			#warning "<list> not found"
+			LBAL_CPP_WARNING ("<list> not found")
 		#endif	//	<list> test
 
 		#if !__has_include (<vector>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS
-			#warning "<vector> not found"
+			LBAL_CPP_WARNING ("<vector> not found")
 		#endif	//	<vector> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2157,7 +2157,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS
@@ -2168,7 +2168,7 @@
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_INVOKE
-			#warning "<functional> not found"
+			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2177,7 +2177,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_INVOKE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_INVOKE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_INVOKE
@@ -2188,7 +2188,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_IS_AGGREGATE
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2197,7 +2197,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_IS_AGGREGATE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_IS_AGGREGATE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_IS_AGGREGATE
@@ -2208,7 +2208,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_IS_INVOCABLE
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2217,7 +2217,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_IS_INVOCABLE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_IS_INVOCABLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_IS_INVOCABLE
@@ -2228,7 +2228,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_IS_SWAPPABLE
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2237,7 +2237,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_IS_SWAPPABLE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_IS_SWAPPABLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_IS_SWAPPABLE
@@ -2248,7 +2248,7 @@
 		#if !__has_include (<new>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_LAUNDER
-			#warning "<new> not found"
+			LBAL_CPP_WARNING ("<new> not found")
 		#endif	//	<new> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2257,7 +2257,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_LAUNDER"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_LAUNDER")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_LAUNDER
@@ -2268,7 +2268,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_LOGICAL_TRAITS
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2277,7 +2277,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_LOGICAL_TRAITS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_LOGICAL_TRAITS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_LOGICAL_TRAITS
@@ -2288,7 +2288,7 @@
 		#if !__has_include (<tuple>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_MAKE_FROM_TUPLE
-			#warning "<tuple> not found"
+			LBAL_CPP_WARNING ("<tuple> not found")
 		#endif	//	<tuple> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2297,7 +2297,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_MAKE_FROM_TUPLE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_MAKE_FROM_TUPLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_MAKE_FROM_TUPLE
@@ -2308,7 +2308,7 @@
 		#if !__has_include (<map>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_MAP_TRY_EMPLACE
-			#warning "<map> not found"
+			LBAL_CPP_WARNING ("<map> not found")
 		#endif	//	<map> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2317,7 +2317,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_MAP_TRY_EMPLACE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_MAP_TRY_EMPLACE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_MAP_TRY_EMPLACE
@@ -2328,7 +2328,7 @@
 		#if !__has_include (<cmath>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_MATH_SPECIAL_FUNCTIONS
-			#warning "<cmath> not found"
+			LBAL_CPP_WARNING ("<cmath> not found")
 		#endif	//	<cmath> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2337,7 +2337,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_MATH_SPECIAL_FUNCTIONS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_MATH_SPECIAL_FUNCTIONS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_MATH_SPECIAL_FUNCTIONS
@@ -2348,7 +2348,7 @@
 		#if !__has_include (<memory_resource>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_MEMORY_RESOURCE
-			#warning "<memory_resource> not found"
+			LBAL_CPP_WARNING ("<memory_resource> not found")
 		#endif	//	<memory_resource> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2357,7 +2357,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_MEMORY_RESOURCE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_MEMORY_RESOURCE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_MEMORY_RESOURCE
@@ -2368,25 +2368,25 @@
 		#if !__has_include (<map>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_NODE_EXTRACT
-			#warning "<map> not found"
+			LBAL_CPP_WARNING ("<map> not found")
 		#endif	//	<map> test
 
 		#if !__has_include (<set>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_NODE_EXTRACT
-			#warning "<set> not found"
+			LBAL_CPP_WARNING ("<set> not found")
 		#endif	//	<set> test
 
 		#if !__has_include (<unordered_map>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_NODE_EXTRACT
-			#warning "<unordered_map> not found"
+			LBAL_CPP_WARNING ("<unordered_map> not found")
 		#endif	//	<unordered_map> test
 
 		#if !__has_include (<unordered_set>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_NODE_EXTRACT
-			#warning "<unordered_set> not found"
+			LBAL_CPP_WARNING ("<unordered_set> not found")
 		#endif	//	<unordered_set> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2395,7 +2395,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_NODE_EXTRACT"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_NODE_EXTRACT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_NODE_EXTRACT
@@ -2406,37 +2406,37 @@
 		#if !__has_include (<array>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
-			#warning "<array> not found"
+			LBAL_CPP_WARNING ("<array> not found")
 		#endif	//	<array> test
 
 		#if !__has_include (<deque>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
-			#warning "<deque> not found"
+			LBAL_CPP_WARNING ("<deque> not found")
 		#endif	//	<deque> test
 
 		#if !__has_include (<forward_list>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
-			#warning "<forward_list> not found"
+			LBAL_CPP_WARNING ("<forward_list> not found")
 		#endif	//	<forward_list> test
 
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
-			#warning "<iterator> not found"
+			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 
 		#if !__has_include (<list>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
-			#warning "<list> not found"
+			LBAL_CPP_WARNING ("<list> not found")
 		#endif	//	<list> test
 
 		#if !__has_include (<map>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
-			#warning "<map> not found"
+			LBAL_CPP_WARNING ("<map> not found")
 		#endif	//	<map> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2445,7 +2445,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
@@ -2456,7 +2456,7 @@
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_NOT_FN
-			#warning "<functional> not found"
+			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2465,7 +2465,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_NOT_FN"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_NOT_FN")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_NOT_FN
@@ -2476,7 +2476,7 @@
 		#if !__has_include (<optional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_OPTIONAL
-			#warning "<optional> not found"
+			LBAL_CPP_WARNING ("<optional> not found")
 		#endif	//	<optional> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2485,7 +2485,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_OPTIONAL"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_OPTIONAL")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_OPTIONAL
@@ -2496,7 +2496,7 @@
 		#if !__has_include (<optional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL
-			#warning "<optional> not found"
+			LBAL_CPP_WARNING ("<optional> not found")
 		#endif	//	<optional> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2505,7 +2505,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL
@@ -2516,7 +2516,7 @@
 		#if !__has_include (<optional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_OPTIONAL_INTERFACE
-			#warning "<optional> not found"
+			LBAL_CPP_WARNING ("<optional> not found")
 		#endif	//	<optional> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2525,7 +2525,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_OPTIONAL_INTERFACE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_OPTIONAL_INTERFACE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_OPTIONAL_INTERFACE
@@ -2536,13 +2536,13 @@
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_PARALLEL_ALGORITHM
-			#warning "<algorithm> not found"
+			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 
 		#if !__has_include (<numeric>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_PARALLEL_ALGORITHM
-			#warning "<numeric> not found"
+			LBAL_CPP_WARNING ("<numeric> not found")
 		#endif	//	<numeric> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2551,7 +2551,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_PARALLEL_ALGORITHM"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_PARALLEL_ALGORITHM")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_PARALLEL_ALGORITHM
@@ -2562,7 +2562,7 @@
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_RAW_MEMORY_ALGORITHMS
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2571,7 +2571,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_RAW_MEMORY_ALGORITHMS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_RAW_MEMORY_ALGORITHMS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_RAW_MEMORY_ALGORITHMS
@@ -2582,19 +2582,19 @@
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
-			#warning "<algorithm> not found"
+			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 
 		#if !__has_include (<execution>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
-			#warning "<execution> not found"
+			LBAL_CPP_WARNING ("<execution> not found")
 		#endif	//	<execution> test
 
 		#if !__has_include (<numeric>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
-			#warning "<numeric> not found"
+			LBAL_CPP_WARNING ("<numeric> not found")
 		#endif	//	<numeric> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2603,7 +2603,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
@@ -2614,7 +2614,7 @@
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_SAMPLE
-			#warning "<algorithm> not found"
+			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2623,7 +2623,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_SAMPLE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_SAMPLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_SAMPLE
@@ -2634,7 +2634,7 @@
 		#if !__has_include (<mutex>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_SCOPED_LOCK
-			#warning "<mutex> not found"
+			LBAL_CPP_WARNING ("<mutex> not found")
 		#endif	//	<mutex> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2643,7 +2643,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_SCOPED_LOCK"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_SCOPED_LOCK")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_SCOPED_LOCK
@@ -2654,7 +2654,7 @@
 		#if !__has_include (<shared_mutex>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_SHARED_MUTEX
-			#warning "<shared_mutex> not found"
+			LBAL_CPP_WARNING ("<shared_mutex> not found")
 		#endif	//	<shared_mutex> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2663,7 +2663,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_SHARED_MUTEX"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_SHARED_MUTEX")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_SHARED_MUTEX
@@ -2674,7 +2674,7 @@
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_SHARED_PTR_ARRAYS
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2683,7 +2683,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_SHARED_PTR_ARRAYS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_SHARED_PTR_ARRAYS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_SHARED_PTR_ARRAYS
@@ -2694,7 +2694,7 @@
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_SHARED_PTR_WEAK_TYPE
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2703,7 +2703,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_SHARED_PTR_WEAK_TYPE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_SHARED_PTR_WEAK_TYPE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_SHARED_PTR_WEAK_TYPE
@@ -2714,13 +2714,13 @@
 		#if !__has_include (<string>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_STRING_VIEW
-			#warning "<string> not found"
+			LBAL_CPP_WARNING ("<string> not found")
 		#endif	//	<string> test
 
 		#if !__has_include (<string_view>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_STRING_VIEW
-			#warning "<string_view> not found"
+			LBAL_CPP_WARNING ("<string_view> not found")
 		#endif	//	<string_view> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2729,7 +2729,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_STRING_VIEW"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_STRING_VIEW")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_STRING_VIEW
@@ -2740,13 +2740,13 @@
 		#if !__has_include (<string>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_STRING_VIEW_INTERFACE
-			#warning "<string> not found"
+			LBAL_CPP_WARNING ("<string> not found")
 		#endif	//	<string> test
 
 		#if !__has_include (<string_view>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_STRING_VIEW_INTERFACE
-			#warning "<string_view> not found"
+			LBAL_CPP_WARNING ("<string_view> not found")
 		#endif	//	<string_view> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2755,7 +2755,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_STRING_VIEW_INTERFACE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_STRING_VIEW_INTERFACE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_STRING_VIEW_INTERFACE
@@ -2766,7 +2766,7 @@
 		#if !__has_include (<charconv>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_TO_CHARS
-			#warning "<charconv> not found"
+			LBAL_CPP_WARNING ("<charconv> not found")
 		#endif	//	<charconv> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2775,7 +2775,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_TO_CHARS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_TO_CHARS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_TO_CHARS
@@ -2786,7 +2786,7 @@
 		#if !__has_include (<charconv>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_TO_CHARS_FP
-			#warning "<charconv> not found"
+			LBAL_CPP_WARNING ("<charconv> not found")
 		#endif	//	<charconv> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2795,7 +2795,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_TO_CHARS_FP"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_TO_CHARS_FP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_TO_CHARS_FP
@@ -2806,7 +2806,7 @@
 		#if !__has_include (<charconv>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_TO_CHARS_INTEGER
-			#warning "<charconv> not found"
+			LBAL_CPP_WARNING ("<charconv> not found")
 		#endif	//	<charconv> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2815,7 +2815,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_TO_CHARS_INTEGER"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_TO_CHARS_INTEGER")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_TO_CHARS_INTEGER
@@ -2826,13 +2826,13 @@
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_TRANSPARENT_OPERATORS
-			#warning "<functional> not found"
+			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_TRANSPARENT_OPERATORS
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2841,7 +2841,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_TRANSPARENT_OPERATORS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_TRANSPARENT_OPERATORS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_TRANSPARENT_OPERATORS
@@ -2852,7 +2852,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2861,7 +2861,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES
@@ -2872,7 +2872,7 @@
 		#if !__has_include (<exception>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_UNCAUGHT_EXCEPTIONS
-			#warning "<exception> not found"
+			LBAL_CPP_WARNING ("<exception> not found")
 		#endif	//	<exception> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2881,7 +2881,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_UNCAUGHT_EXCEPTIONS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_UNCAUGHT_EXCEPTIONS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_UNCAUGHT_EXCEPTIONS
@@ -2892,7 +2892,7 @@
 		#if !__has_include (<unordered_map>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_UNORDERED_MAP_TRY_EMPLACE
-			#warning "<unordered_map> not found"
+			LBAL_CPP_WARNING ("<unordered_map> not found")
 		#endif	//	<unordered_map> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2901,7 +2901,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_UNORDERED_MAP_TRY_EMPLACE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_UNORDERED_MAP_TRY_EMPLACE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_UNORDERED_MAP_TRY_EMPLACE
@@ -2912,7 +2912,7 @@
 		#if !__has_include (<variant>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_VARIANT
-			#warning "<variant> not found"
+			LBAL_CPP_WARNING ("<variant> not found")
 		#endif	//	<variant> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2921,7 +2921,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_VARIANT"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_VARIANT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_VARIANT
@@ -2932,7 +2932,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP17_VOID_T
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2941,7 +2941,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP17_VOID_T"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_VOID_T")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_VOID_T
@@ -2952,13 +2952,13 @@
 		#if !__has_include (<array>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR
-			#warning "<array> not found"
+			LBAL_CPP_WARNING ("<array> not found")
 		#endif	//	<array> test
 
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR
-			#warning "<iterator> not found"
+			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2967,7 +2967,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR
@@ -2978,13 +2978,13 @@
 		#if !__has_include (<array>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS
-			#warning "<array> not found"
+			LBAL_CPP_WARNING ("<array> not found")
 		#endif	//	<array> test
 
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS
-			#warning "<iterator> not found"
+			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -2993,7 +2993,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS
@@ -3004,13 +3004,13 @@
 		#if !__has_include (<array>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES
-			#warning "<array> not found"
+			LBAL_CPP_WARNING ("<array> not found")
 		#endif	//	<array> test
 
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES
-			#warning "<iterator> not found"
+			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3019,7 +3019,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES
@@ -3030,7 +3030,7 @@
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ASSUME_ALIGNED
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3039,7 +3039,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_ASSUME_ALIGNED"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ASSUME_ALIGNED")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_ASSUME_ALIGNED
@@ -3050,7 +3050,7 @@
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ATOMIC_FLAG_TEST
-			#warning "<atomic> not found"
+			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3059,7 +3059,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_ATOMIC_FLAG_TEST"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ATOMIC_FLAG_TEST")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_ATOMIC_FLAG_test
@@ -3068,7 +3068,7 @@
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ATOMIC_FLOAT
-			#warning "<atomic> not found"
+			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3077,7 +3077,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_ATOMIC_FLOAT"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ATOMIC_FLOAT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_ATOMIC_FLOAT
@@ -3088,7 +3088,7 @@
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES
-			#warning "<atomic> not found"
+			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3097,7 +3097,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES
@@ -3108,7 +3108,7 @@
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ATOMIC_REF
-			#warning "<atomic> not found"
+			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3117,7 +3117,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_ATOMIC_REF"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ATOMIC_REF")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_ATOMIC_REF
@@ -3128,7 +3128,7 @@
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ATOMIC_SHARED_PTR
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3137,7 +3137,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_ATOMIC_SHARED_PTR"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ATOMIC_SHARED_PTR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_ATOMIC_SHARED_PTR
@@ -3148,13 +3148,13 @@
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION
-			#warning "<atomic> not found"
+			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3163,7 +3163,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION
@@ -3174,7 +3174,7 @@
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ATOMIC_WAIT
-			#warning "<atomic> not found"
+			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3183,7 +3183,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_ATOMIC_WAIT"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ATOMIC_WAIT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_ATOMIC_WAIT
@@ -3194,7 +3194,7 @@
 		#if !__has_include (<barrier>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_BARRIER
-			#warning "<barrier> not found"
+			LBAL_CPP_WARNING ("<barrier> not found")
 		#endif	//	<barrier> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3203,7 +3203,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_BARRIER"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_BARRIER")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_BARRIER
@@ -3214,7 +3214,7 @@
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_BIND_FRONT
-			#warning "<functional> not found"
+			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3223,7 +3223,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_BIND_FRONT"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_BIND_FRONT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_BIND_FRONT
@@ -3234,7 +3234,7 @@
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP
-			#warning "<functional> not found"
+			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3243,7 +3243,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP
@@ -3254,7 +3254,7 @@
 		#if !__has_include (<bit>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_BIT_CAST
-			#warning "<bit> not found"
+			LBAL_CPP_WARNING ("<bit> not found")
 		#endif	//	<bit> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3263,7 +3263,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_BIT_CAST"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_BIT_CAST")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_BIT_CAST
@@ -3274,7 +3274,7 @@
 		#if !__has_include (<bit>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_BITOPS
-			#warning "<bit> not found"
+			LBAL_CPP_WARNING ("<bit> not found")
 		#endif	//	<bit> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3283,7 +3283,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_BITOPS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_BITOPS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_BITOPS
@@ -3294,7 +3294,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3303,7 +3303,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS
@@ -3314,37 +3314,37 @@
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CHAR8_T
-			#warning "<atomic> not found"
+			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 
 		#if !__has_include (<filesystem>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CHAR8_T
-			#warning "<filesystem> not found"
+			LBAL_CPP_WARNING ("<filesystem> not found")
 		#endif	//	<filesystem> test
 
 		#if !__has_include (<istream>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CHAR8_T
-			#warning "<istream> not found"
+			LBAL_CPP_WARNING ("<istream> not found")
 		#endif	//	<istream> test
 
 		#if !__has_include (<limits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CHAR8_T
-			#warning "<limits> not found"
+			LBAL_CPP_WARNING ("<limits> not found")
 		#endif	//	<limits> test
 
 		#if !__has_include (<locale>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CHAR8_T
-			#warning "<locale> not found"
+			LBAL_CPP_WARNING ("<locale> not found")
 		#endif	//	<locale> test
 
 		#if !__has_include (<ostream>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CHAR8_T
-			#warning "<ostream> not found"
+			LBAL_CPP_WARNING ("<ostream> not found")
 		#endif	//	<ostream> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3353,7 +3353,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CHAR8_T"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CHAR8_T")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CHAR8_T
@@ -3364,37 +3364,37 @@
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CHAR8_T_COMPAT
-			#warning "<atomic> not found"
+			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 
 		#if !__has_include (<filesystem>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CHAR8_T_COMPAT
-			#warning "<filesystem> not found"
+			LBAL_CPP_WARNING ("<filesystem> not found")
 		#endif	//	<filesystem> test
 
 		#if !__has_include (<istream>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CHAR8_T_COMPAT
-			#warning "<istream> not found"
+			LBAL_CPP_WARNING ("<istream> not found")
 		#endif	//	<istream> test
 
 		#if !__has_include (<limits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CHAR8_T_COMPAT
-			#warning "<limits> not found"
+			LBAL_CPP_WARNING ("<limits> not found")
 		#endif	//	<limits> test
 
 		#if !__has_include (<locale>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CHAR8_T_COMPAT
-			#warning "<locale> not found"
+			LBAL_CPP_WARNING ("<locale> not found")
 		#endif	//	<locale> test
 
 		#if !__has_include (<ostream>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CHAR8_T_COMPAT
-			#warning "<ostream> not found"
+			LBAL_CPP_WARNING ("<ostream> not found")
 		#endif	//	<ostream> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3403,7 +3403,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CHAR8_T_COMPAT"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CHAR8_T_COMPAT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CHAR8_T_COMPAT
@@ -3414,7 +3414,7 @@
 		#if !__has_include (<chrono>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CHRONO_CALENDAR
-			#warning "<chrono> not found"
+			LBAL_CPP_WARNING ("<chrono> not found")
 		#endif	//	<chrono> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3423,7 +3423,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CHRONO_CALENDAR"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CHRONO_CALENDAR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CHRONO_CALENDAR
@@ -3434,7 +3434,7 @@
 		#if !__has_include (<chrono>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CHRONO_FIXES
-			#warning "<chrono> not found"
+			LBAL_CPP_WARNING ("<chrono> not found")
 		#endif	//	<chrono> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3443,7 +3443,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CHRONO_FIXES"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CHRONO_FIXES")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CHRONO_FIXES
@@ -3454,7 +3454,7 @@
 		#if !__has_include (<concepts>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONCEPTS
-			#warning "<concepts> not found"
+			LBAL_CPP_WARNING ("<concepts> not found")
 		#endif	//	<concepts> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3463,7 +3463,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONCEPTS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONCEPTS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONCEPTS
@@ -3474,7 +3474,7 @@
 		#if !__has_include (<experimental/concepts>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONCEPTS_EXP
-			#warning "<experimental/concepts> not found"
+			LBAL_CPP_WARNING ("<experimental/concepts> not found")
 		#endif	//	<experimental/concepts> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3483,7 +3483,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONCEPTS_EXP"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONCEPTS_EXP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONCEPTS_EXP
@@ -3494,7 +3494,7 @@
 		#if !__has_include (<concepts>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE
-			#warning "<concepts> not found"
+			LBAL_CPP_WARNING ("<concepts> not found")
 		#endif	//	<concepts> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3503,7 +3503,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE
@@ -3514,7 +3514,7 @@
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS
-			#warning "<algorithm> not found"
+			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3523,7 +3523,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS
@@ -3534,7 +3534,7 @@
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP
-			#warning "<algorithm> not found"
+			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3543,7 +3543,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP
@@ -3554,7 +3554,7 @@
 		#if !__has_include (<complex>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONSTEXPR_COMPLEX
-			#warning "<complex> not found"
+			LBAL_CPP_WARNING ("<complex> not found")
 		#endif	//	<complex> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3563,7 +3563,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONSTEXPR_COMPLEX"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_COMPLEX")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_COMPLEX
@@ -3574,7 +3574,7 @@
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3583,7 +3583,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC
@@ -3594,7 +3594,7 @@
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL
-			#warning "<functional> not found"
+			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3603,7 +3603,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL
@@ -3614,7 +3614,7 @@
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE
-			#warning "<functional> not found"
+			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3623,7 +3623,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE
@@ -3634,7 +3634,7 @@
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONSTEXPR_ITERATOR
-			#warning "<iterator> not found"
+			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3643,7 +3643,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONSTEXPR_ITERATOR"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_ITERATOR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_ITERATOR
@@ -3654,7 +3654,7 @@
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONSTEXPR_MEMORY
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3663,7 +3663,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONSTEXPR_MEMORY"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_MEMORY")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_MEMORY
@@ -3674,7 +3674,7 @@
 		#if !__has_include (<numeric>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONSTEXPR_NUMERIC
-			#warning "<numeric> not found"
+			LBAL_CPP_WARNING ("<numeric> not found")
 		#endif	//	<numeric> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3683,7 +3683,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONSTEXPR_NUMERIC"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_NUMERIC")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_NUMERIC
@@ -3694,7 +3694,7 @@
 		#if !__has_include (<string>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONSTEXPR_STRING
-			#warning "<string> not found"
+			LBAL_CPP_WARNING ("<string> not found")
 		#endif	//	<string> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3703,7 +3703,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONSTEXPR_STRING"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_STRING")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_STRING
@@ -3714,7 +3714,7 @@
 		#if !__has_include (<string_view>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW
-			#warning "<string_view> not found"
+			LBAL_CPP_WARNING ("<string_view> not found")
 		#endif	//	<string_view> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3723,7 +3723,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW
@@ -3734,7 +3734,7 @@
 		#if !__has_include (<tuple>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONSTEXPR_TUPLE
-			#warning "<tuple> not found"
+			LBAL_CPP_WARNING ("<tuple> not found")
 		#endif	//	<tuple> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3743,7 +3743,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONSTEXPR_TUPLE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_TUPLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_TUPLE
@@ -3754,7 +3754,7 @@
 		#if !__has_include (<utility>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONSTEXPR_UTILITY
-			#warning "<utility> not found"
+			LBAL_CPP_WARNING ("<utility> not found")
 		#endif	//	<utility> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3763,7 +3763,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONSTEXPR_UTILITY"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_UTILITY")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_UTILITY
@@ -3774,7 +3774,7 @@
 		#if !__has_include (<vector>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_CONSTEXPR_VECTOR
-			#warning "<vector> not found"
+			LBAL_CPP_WARNING ("<vector> not found")
 		#endif	//	<vector> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3783,7 +3783,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_CONSTEXPR_VECTOR"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_VECTOR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_VECTOR
@@ -3794,19 +3794,19 @@
 		#if !__has_include (<compare>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_COROUTINES
-			#warning "<compare> not found"
+			LBAL_CPP_WARNING ("<compare> not found")
 		#endif	//	<compare> test
 
 		#if !__has_include (<coroutine>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_COROUTINES
-			#warning "<coroutine> not found"
+			LBAL_CPP_WARNING ("<coroutine> not found")
 		#endif	//	<coroutine> test
 
 		#if !__has_include (<syncstream>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_COROUTINES
-			#warning "<syncstream> not found"
+			LBAL_CPP_WARNING ("<syncstream> not found")
 		#endif	//	<syncstream> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3815,7 +3815,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_COROUTINES"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_COROUTINES")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_COROUTINES
@@ -3826,7 +3826,7 @@
 		#if !__has_include (<experimental/coroutine>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_COROUTINES_EXP
-			#warning "<experimental/coroutine> not found"
+			LBAL_CPP_WARNING ("<experimental/coroutine> not found")
 		#endif	//	<experimental/coroutine> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3835,7 +3835,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_COROUTINES_EXP"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_COROUTINES_EXP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_COROUTINES_EXP
@@ -3846,7 +3846,7 @@
 		#if !__has_include (<new>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_DESTROYING_DELETE
-			#warning "<new> not found"
+			LBAL_CPP_WARNING ("<new> not found")
 		#endif	//	<new> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3855,7 +3855,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_DESTROYING_DELETE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_DESTROYING_DELETE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_DESTROYING_DELETE
@@ -3866,7 +3866,7 @@
 		#if !__has_include (<bit>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ENDIAN
-			#warning "<bit> not found"
+			LBAL_CPP_WARNING ("<bit> not found")
 		#endif	//	<bit> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3875,7 +3875,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_ENDIAN"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ENDIAN")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_ENDIAN
@@ -3886,7 +3886,7 @@
 		#if !__has_include (<bit>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ENDIAN_BIT
-			#warning "<bit> not found"
+			LBAL_CPP_WARNING ("<bit> not found")
 		#endif	//	<bit> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3895,7 +3895,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_ENDIAN_BIT"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ENDIAN_BIT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_ENDIAN_BIT
@@ -3906,37 +3906,37 @@
 		#if !__has_include (<deque>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ERASE_IF
-			#warning "<deque> not found"
+			LBAL_CPP_WARNING ("<deque> not found")
 		#endif	//	<deque> test
 
 		#if !__has_include (<forward_list>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ERASE_IF
-			#warning "<forward_list> not found"
+			LBAL_CPP_WARNING ("<forward_list> not found")
 		#endif	//	<forward_list> test
 
 		#if !__has_include (<list>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ERASE_IF
-			#warning "<list> not found"
+			LBAL_CPP_WARNING ("<list> not found")
 		#endif	//	<list> test
 
 		#if !__has_include (<map>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ERASE_IF
-			#warning "<map> not found"
+			LBAL_CPP_WARNING ("<map> not found")
 		#endif	//	<map> test
 
 		#if !__has_include (<set>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ERASE_IF
-			#warning "<set> not found"
+			LBAL_CPP_WARNING ("<set> not found")
 		#endif	//	<set> test
 
 		#if !__has_include (<string>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_ERASE_IF
-			#warning "<string> not found"
+			LBAL_CPP_WARNING ("<string> not found")
 		#endif	//	<string> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3945,7 +3945,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_ERASE_IF"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ERASE_IF")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_ERASE_IF
@@ -3956,7 +3956,7 @@
 		#if !__has_include (<execution>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_EXECUTION_VECTORIZATION
-			#warning "<execution> not found"
+			LBAL_CPP_WARNING ("<execution> not found")
 		#endif	//	<execution> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3965,7 +3965,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_EXECUTION_VECTORIZATION"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_EXECUTION_VECTORIZATION")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_EXECUTION_VECTORIZATION
@@ -3976,7 +3976,7 @@
 		#if !__has_include (<format>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_FORMAT
-			#warning "<format> not found"
+			LBAL_CPP_WARNING ("<format> not found")
 		#endif	//	<format> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -3985,7 +3985,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_FORMAT"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_FORMAT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_FORMAT
@@ -3996,13 +3996,13 @@
 		#if !__has_include (<unordered_map>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP
-			#warning "<unordered_map> not found"
+			LBAL_CPP_WARNING ("<unordered_map> not found")
 		#endif	//	<unordered_map> test
 
 		#if !__has_include (<unordered_set>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP
-			#warning "<unordered_set> not found"
+			LBAL_CPP_WARNING ("<unordered_set> not found")
 		#endif	//	<unordered_set> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4011,7 +4011,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP
@@ -4022,13 +4022,13 @@
 		#if !__has_include (<unordered_map>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP
-			#warning "<unordered_map> not found"
+			LBAL_CPP_WARNING ("<unordered_map> not found")
 		#endif	//	<unordered_map> test
 
 		#if !__has_include (<unordered_set>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP
-			#warning "<unordered_set> not found"
+			LBAL_CPP_WARNING ("<unordered_set> not found")
 		#endif	//	<unordered_set> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4037,7 +4037,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP
@@ -4048,7 +4048,7 @@
 		#if !__has_include (<bit>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_INT_POW2
-			#warning "<bit> not found"
+			LBAL_CPP_WARNING ("<bit> not found")
 		#endif	//	<bit> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4057,7 +4057,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_INT_POW2"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_INT_POW2")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_INT_POW2
@@ -4068,13 +4068,13 @@
 		#if !__has_include (<cmath>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_INTERPOLATE
-			#warning "<cmath> not found"
+			LBAL_CPP_WARNING ("<cmath> not found")
 		#endif	//	<cmath> test
 
 		#if !__has_include (<numeric>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_INTERPOLATE
-			#warning "<numeric> not found"
+			LBAL_CPP_WARNING ("<numeric> not found")
 		#endif	//	<numeric> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4083,7 +4083,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_INTERPOLATE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_INTERPOLATE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_INTERPOLATE
@@ -4094,7 +4094,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4103,7 +4103,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED
@@ -4114,7 +4114,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4123,7 +4123,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE
@@ -4134,7 +4134,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4143,7 +4143,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE
@@ -4154,13 +4154,13 @@
 		#if !__has_include (<stop_token>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_JTHREAD
-			#warning "<stop_token> not found"
+			LBAL_CPP_WARNING ("<stop_token> not found")
 		#endif	//	<stop_token> test
 
 		#if !__has_include (<thread>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_JTHREAD
-			#warning "<thread> not found"
+			LBAL_CPP_WARNING ("<thread> not found")
 		#endif	//	<thread> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4169,7 +4169,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_JTHREAD"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_JTHREAD")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_JTHREAD
@@ -4180,13 +4180,13 @@
 		#if !__has_include (<stop_token>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_JTHREAD_CV
-			#warning "<stop_token> not found"
+			LBAL_CPP_WARNING ("<stop_token> not found")
 		#endif	//	<stop_token> test
 
 		#if !__has_include (<thread>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_JTHREAD_CV
-			#warning "<thread> not found"
+			LBAL_CPP_WARNING ("<thread> not found")
 		#endif	//	<thread> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4195,7 +4195,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_JTHREAD_CV"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_JTHREAD_CV")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_JTHREAD_CV
@@ -4206,7 +4206,7 @@
 		#if !__has_include (<latch>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_LATCH
-			#warning "<latch> not found"
+			LBAL_CPP_WARNING ("<latch> not found")
 		#endif	//	<latch> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4215,7 +4215,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_LATCH"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_LATCH")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_LATCH
@@ -4226,13 +4226,13 @@
 		#if !__has_include (<forward_list>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
-			#warning "<forward_list> not found"
+			LBAL_CPP_WARNING ("<forward_list> not found")
 		#endif	//	<forward_list> test
 
 		#if !__has_include (<list>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
-			#warning "<list> not found"
+			LBAL_CPP_WARNING ("<list> not found")
 		#endif	//	<list> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4241,7 +4241,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
@@ -4252,7 +4252,7 @@
 		#if !__has_include (<numbers>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_MATH_CONSTANTS
-			#warning "<numbers> not found"
+			LBAL_CPP_WARNING ("<numbers> not found")
 		#endif	//	<numbers> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4261,7 +4261,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_MATH_CONSTANTS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_MATH_CONSTANTS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_MATH_CONSTANTS
@@ -4272,7 +4272,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4281,7 +4281,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE
@@ -4292,7 +4292,7 @@
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4301,7 +4301,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR
@@ -4312,31 +4312,31 @@
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES
-			#warning "<algorithm> not found"
+			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES
-			#warning "<functional> not found"
+			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES
-			#warning "<iterator> not found"
+			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 
 		#if !__has_include (<ranges>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES
-			#warning "<ranges> not found"
+			LBAL_CPP_WARNING ("<ranges> not found")
 		#endif	//	<ranges> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4345,7 +4345,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_RANGES"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_RANGES")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_RANGES
@@ -4356,31 +4356,31 @@
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
-			#warning "<algorithm> not found"
+			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
-			#warning "<functional> not found"
+			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
-			#warning "<iterator> not found"
+			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 
 		#if !__has_include (<ranges>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
-			#warning "<ranges> not found"
+			LBAL_CPP_WARNING ("<ranges> not found")
 		#endif	//	<ranges> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4389,7 +4389,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
@@ -4400,31 +4400,31 @@
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
-			#warning "<algorithm> not found"
+			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
-			#warning "<functional> not found"
+			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
-			#warning "<iterator> not found"
+			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 
 		#if !__has_include (<ranges>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
-			#warning "<ranges> not found"
+			LBAL_CPP_WARNING ("<ranges> not found")
 		#endif	//	<ranges> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4433,7 +4433,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
@@ -4444,7 +4444,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_REMOVE_CVREF
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4453,7 +4453,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_REMOVE_CVREF"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_REMOVE_CVREF")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_REMOVE_CVREF
@@ -4464,7 +4464,7 @@
 		#if !__has_include (<semaphore>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_SEMAPHORE
-			#warning "<semaphore> not found"
+			LBAL_CPP_WARNING ("<semaphore> not found")
 		#endif	//	<semaphore> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4473,7 +4473,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_SEMAPHORE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SEMAPHORE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_SEMAPHORE
@@ -4484,7 +4484,7 @@
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_SHARED_PTR_ARRAYS
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4493,7 +4493,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_SHARED_PTR_ARRAYS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SHARED_PTR_ARRAYS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_SHARED_PTR_ARRAYS
@@ -4504,7 +4504,7 @@
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_SHIFT
-			#warning "<algorithm> not found"
+			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4513,7 +4513,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_SHIFT"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SHIFT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_SHIFT
@@ -4524,7 +4524,7 @@
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4533,7 +4533,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT
@@ -4544,7 +4544,7 @@
 		#if !__has_include (<source_location>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_SOURCE_LOCATION
-			#warning "<source_location> not found"
+			LBAL_CPP_WARNING ("<source_location> not found")
 		#endif	//	<source_location> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4553,7 +4553,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_SOURCE_LOCATION"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SOURCE_LOCATION")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_SOURCE_LOCATION
@@ -4564,7 +4564,7 @@
 		#if !__has_include (<span>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_SPAN
-			#warning "<span> not found"
+			LBAL_CPP_WARNING ("<span> not found")
 		#endif	//	<span> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4573,7 +4573,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_SPAN"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SPAN")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_SPAN
@@ -4584,7 +4584,7 @@
 		#if !__has_include (<span>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_SPAN_USABILITY
-			#warning "<span> not found"
+			LBAL_CPP_WARNING ("<span> not found")
 		#endif	//	<span> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4593,7 +4593,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_SPAN_USABILITY"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SPAN_USABILITY")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_SPAN_USABILITY
@@ -4604,13 +4604,13 @@
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_SSIZE
-			#warning "<iterator> not found"
+			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 
 		#if !__has_include (<span>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_SSIZE
-			#warning "<span> not found"
+			LBAL_CPP_WARNING ("<span> not found")
 		#endif	//	<span> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4619,7 +4619,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_SSIZE"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SSIZE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_SSIZE
@@ -4630,13 +4630,13 @@
 		#if !__has_include (<string>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_STARTS_ENDS_WITH
-			#warning "<string> not found"
+			LBAL_CPP_WARNING ("<string> not found")
 		#endif	//	<string> test
 
 		#if !__has_include (<string_view>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_STARTS_ENDS_WITH
-			#warning "<string_view> not found"
+			LBAL_CPP_WARNING ("<string_view> not found")
 		#endif	//	<string_view> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4645,7 +4645,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_STARTS_ENDS_WITH"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_STARTS_ENDS_WITH")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_STARTS_ENDS_WITH
@@ -4656,13 +4656,13 @@
 		#if !__has_include (<string>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR
-			#warning "<string> not found"
+			LBAL_CPP_WARNING ("<string> not found")
 		#endif	//	<string> test
 
 		#if !__has_include (<string_view>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR
-			#warning "<string_view> not found"
+			LBAL_CPP_WARNING ("<string_view> not found")
 		#endif	//	<string_view> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4671,7 +4671,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR
@@ -4682,7 +4682,7 @@
 		#if !__has_include (<syncstream>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_SYNCBUF
-			#warning "<syncstream> not found"
+			LBAL_CPP_WARNING ("<syncstream> not found")
 		#endif	//	<syncstream> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4691,7 +4691,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_SYNCBUF"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SYNCBUF")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_SYNCBUF
@@ -4702,7 +4702,7 @@
 		#if !__has_include (<syncstream>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS
-			#warning "<syncstream> not found"
+			LBAL_CPP_WARNING ("<syncstream> not found")
 		#endif	//	<syncstream> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4711,7 +4711,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS
@@ -4722,7 +4722,7 @@
 		#if !__has_include (<compare>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_THREE_WAY_COMPARISON
-			#warning "<compare> not found"
+			LBAL_CPP_WARNING ("<compare> not found")
 		#endif	//	<compare> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4731,7 +4731,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_THREE_WAY_COMPARISON"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_THREE_WAY_COMPARISON")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_THREE_WAY_COMPARISON
@@ -4742,7 +4742,7 @@
 		#if !__has_include (<compare>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY
-			#warning "<compare> not found"
+			LBAL_CPP_WARNING ("<compare> not found")
 		#endif	//	<compare> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4751,7 +4751,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY
@@ -4762,7 +4762,7 @@
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_TO_ADDRESS
-			#warning "<memory> not found"
+			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4771,7 +4771,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_TO_ADDRESS"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_TO_ADDRESS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_TO_ADDRESS
@@ -4782,7 +4782,7 @@
 		#if !__has_include (<array>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_TO_ARRAY
-			#warning "<array> not found"
+			LBAL_CPP_WARNING ("<array> not found")
 		#endif	//	<array> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4791,7 +4791,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_TO_ARRAY"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_TO_ARRAY")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_TO_ARRAY
@@ -4802,7 +4802,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_TYPE_IDENTITY
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4811,7 +4811,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_TYPE_IDENTITY"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_TYPE_IDENTITY")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_TYPE_IDENTITY
@@ -4822,7 +4822,7 @@
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
 			#undef LBAL_LIBCPP2A_UNWRAP_REF
-			#warning "<type_traits> not found"
+			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
@@ -4831,7 +4831,7 @@
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate LBAL_LIBCPP2A_UNWRAP_REF"
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_UNWRAP_REF")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_UNWRAP_REF

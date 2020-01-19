@@ -73,6 +73,6 @@
 	#define LBAL_NAME_STANDARD_LIBRARY u8"Unknown Standard Library implementation"
 
 	#if LBAL_CONFIG_enable_pedantic_warnings
-		#warning "Unable to identify the Standard Library implementation is use; attempting to go fully generic"
+		LBAL_CPP_WARNING ("Unable to identify the Standard Library implementation is use; attempting to go fully generic")
 	#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 #endif

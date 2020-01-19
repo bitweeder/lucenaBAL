@@ -49,14 +49,14 @@
 			//	override.
 			#undef LBAL_LIBCPP2A_VERSION
 			#define LBAL_LIBCPP2A_VERSION 0L
-			#warning "<version> not found; resetting LBAL_LIBCPP2A_VERSION"
+			LBAL_CPP_WARNING ("<version> not found; resetting LBAL_LIBCPP2A_VERSION")
 		#endif
 	#else
 		//	We don’t block on this, as the header may have been back-ported,
 		//	even if the means to test for the header is not available, and the
 		//	client somehow accommodated this.
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			#warning "Unable to validate user-set LBAL_LIBCPP2A_VERSION; attempting to include <version>"
+			LBAL_CPP_WARNING ("Unable to validate user-set LBAL_LIBCPP2A_VERSION; attempting to include <version>")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif
 #endif	//	LBAL_LIBCPP2A_VERSION
