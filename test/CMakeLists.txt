@@ -87,7 +87,6 @@ target_compile_options (
   	$<$<CXX_COMPILER_ID:MSVC>:/std:c++17>
   	$<$<CXX_COMPILER_ID:MSVC>:/Zc:__cplusplus>
 	$<$<CXX_COMPILER_ID:MSVC>:/W4>
-	$<$<CXX_COMPILER_ID:MSVC>:/WX>
 	$<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-Wall>
 	$<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-pedantic>
 )
