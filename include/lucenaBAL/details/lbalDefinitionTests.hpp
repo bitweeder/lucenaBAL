@@ -257,6 +257,21 @@
 #error "Don’t define LBAL_FUNC_xxx externally."
 #endif	//	LBAL_FUNC_xxx check
 
+#if defined (LBAL_DIAGNOSTIC_PUSH) || \
+	defined (LBAL_DIAGNOSTIC_POP) || \
+	defined (LBAL_DIAGNOSTIC_DISABLE_UNKNOWN_PRAGMAS)
+
+#error "Don’t define LBAL_DIAGNOSTIC_xxx externally."
+#endif	//	LBAL_DIAGNOSTIC_xxx checks
+
+#if defined (LBAL_PRAGMA)
+	#error "Don’t define LBAL_PRAGMA_xxx externally."
+#endif	//	LBAL_PRAGMA check
+
+#if defined (LBAL_CPP_WARNING)
+	#error "Don’t define LBAL_CPP_WARNING externally."
+#endif	//	LBAL_CPP_WARNING check
+
 #if defined (LBAL_HINT_likely) || \
 	defined (LBAL_HINT_unlikely)
 

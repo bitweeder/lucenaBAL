@@ -27,6 +27,23 @@
 */
 
 #if LBAL_TARGET_COMPILER_APPLE_CLANG
+	//	Implement some cross-platform `#pragma` handling
+	#define LBAL_DIAGNOSTIC_DISABLE_UNKNOWN_PRAGMAS \
+		_Pragma("clang diagnostic ignored \"-Wunknown-pragmas\"")
+
+	#define LBAL_DIAGNOSTIC_PUSH _Pragma("clang diagnostic push")
+	#define LBAL_DIAGNOSTIC_POP _Pragma("clang diagnostic pop")
+
+	#define LBAL_PRAGMA(LBAL_PRAGMA_pragma) _Pragma(#LBAL_PRAGMA_pragma)
+
+
+	//	Implement a cross-platform `#warning` substitute
+	#define LBAL_CPP_WARNING(LBAL_CPP_WARNING_message) \
+		LBAL_DIAGNOSTIC_PUSH \
+		LBAL_DIAGNOSTIC_DISABLE_UNKNOWN_PRAGMAS \
+		LBAL_PRAGMA(clang warning LBAL_CPP_WARNING_message) \
+		LBAL_DIAGNOSTIC_POP
+
 	//	Identify processor and characteristics.
 	//	Note that AMD64 and x86_64 both trigger each other’s identifiers. We
 	//	simply refer to all of them as LBAL_TARGET_CPU_X86_64.
@@ -152,11 +169,7 @@
 	//	__SEEME__ Apparently, __STDC_VERSION__ only gets set if we’re using the
 	//	C compiler, so this test doesn’t work. Since we’re requiring C++11 or
 	//	greater, we assume the following C99 features are available.
-	#if 1	//	__STDC_VERSION__ >= 199901L
-		#define LBAL_C99_PREPROCESSOR 1
-	#else
-		#warning "D'oh!"
-	#endif	//	__STDC_VERSION__
+	#define LBAL_C99_PREPROCESSOR 1
 
 
 	//	C++11 features

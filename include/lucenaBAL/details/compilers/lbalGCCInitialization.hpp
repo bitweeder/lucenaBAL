@@ -37,6 +37,22 @@
 		__GNUC_MINOR__ * 100 +\
 		__GNUC_PATCHLEVEL__ )
 
+
+	//	Implement some cross-platform `#pragma` handling
+	#define LBAL_DIAGNOSTIC_DISABLE_UNKNOWN_PRAGMAS \
+		_Pragma("GCC diagnostic ignored \"-Wunknown-pragmas\"")
+
+	#define LBAL_DIAGNOSTIC_PUSH _Pragma("GCC diagnostic push")
+	#define LBAL_DIAGNOSTIC_POP _Pragma("GCC diagnostic pop")
+
+	#define LBAL_PRAGMA(LBAL_PRAGMA_pragma) _Pragma(#LBAL_PRAGMA_pragma)
+
+
+	//	Implement a cross-platform `#warning` substitute
+	#define LBAL_CPP_WARNING(LBAL_CPP_WARNING_message) \
+		LBAL_PRAGMA(GCC warning LBAL_CPP_WARNING_message)
+
+
 	//	Identify processor.
 	//	Note that AMD64 and x86_64 both trigger each other’s identifiers. We
 	//	simply refer to all of them as LBAL_TARGET_CPU_X86_64.
