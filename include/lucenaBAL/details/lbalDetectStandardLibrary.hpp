@@ -26,6 +26,7 @@
 
 //	lbal
 #include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/details/lbalCompilerSetup.hpp>
 
 
 /*------------------------------------------------------------------------------
