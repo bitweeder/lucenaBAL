@@ -28,42 +28,31 @@
 */
 
 
-
-#define LBAL_DIAGNOSTIC_COMPILE_TIME_REPORTING 0
-#define LBAL_DIAGNOSTIC_LOG_ALL_STATUS 1
-#define LBAL_DIAGNOSTIC_LOG_ALL_UNSUPPORTED 1
+#define LBAL_DIAGNOSTIC_LOG_ALL_STATUS false
+#define LBAL_DIAGNOSTIC_LOG_ALL_UNSUPPORTED true
 
 #if LBAL_DIAGNOSTIC_LOG_ALL_STATUS
 	#define LBAL_DIAGNOSTIC_LOG_SUPPORTED(LBAL_DIAGNOSTIC_feature_) \
 		std::cerr << LBAL_DIAGNOSTIC_feature_ " is supported" << std::endl;
-#elif
+#else
 	#define LBAL_DIAGNOSTIC_LOG_SUPPORTED(LBAL_DIAGNOSTIC_feature_)
 #endif
 
-#if LBAL_LOG_DIAGNOSTIC_ALL_STATUS || LBAL_DIAGNOSTIC_LOG_ALL_UNSUPPORTED
+#if LBAL_DIAGNOSTIC_LOG_ALL_STATUS || LBAL_DIAGNOSTIC_LOG_ALL_UNSUPPORTED
 	#define LBAL_DIAGNOSTIC_LOG_UNSUPPORTED(LBAL_DIAGNOSTIC_feature_) \
 		std::cerr << LBAL_DIAGNOSTIC_feature_ " is UNSUPPORTED" << std::endl;
 #elif
 	#define LBAL_DIAGNOSTIC_LOG_UNSUPPORTED(LBAL_DIAGNOSTIC_feature_)
 #endif
 
-//	__FIXME__ This only works in C++17 or later, being a holdover from before
-//	the more inclusive rewrite.
-#if LBAL_CPP17_IF_CONSTEXPR
-	#define LBAL_DIAGNOSTIC_TEST(LBAL_DIAGNOSTIC_feature_) \
-		do { \
-			if constexpr (0 == LBAL_DIAGNOSTIC_feature_) { \
-				LBAL_DIAGNOSTIC_LOG_UNSUPPORTED (#LBAL_DIAGNOSTIC_feature_) \
-				if constexpr (0 != LBAL_DIAGNOSTIC_COMPILE_TIME_REPORTING) { \
-					LBAL_CPP_WARNING (#LBAL_DIAGNOSTIC_feature_ " is UNSUPPORTED") \
-				} \
-			} else { \
-				LBAL_DIAGNOSTIC_LOG_SUPPORTED (#LBAL_DIAGNOSTIC_feature_) \
-			} \
-		} while (false)
-#else
-	#define LBAL_DIAGNOSTIC_TEST(LBAL_DIAGNOSTIC_feature_)
-#endif
+#define LBAL_DIAGNOSTIC_TEST(LBAL_DIAGNOSTIC_feature_) \
+	do { \
+		if (0 == LBAL_DIAGNOSTIC_feature_) { \
+			LBAL_DIAGNOSTIC_LOG_UNSUPPORTED (#LBAL_DIAGNOSTIC_feature_) \
+		} else { \
+			LBAL_DIAGNOSTIC_LOG_SUPPORTED (#LBAL_DIAGNOSTIC_feature_) \
+		} \
+	} while (false)
 
 
 using namespace LBAL_;

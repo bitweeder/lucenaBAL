@@ -18,6 +18,7 @@
 
 //	lbal
 #include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/details/lbalCompilerSetup.hpp>
 #include <lucenaBAL/details/lbalDetectStandardLibrary.hpp>
 #include <lucenaBAL/details/lbalKnownVersions.hpp>
 
@@ -1195,6 +1196,14 @@
 
 	Make sure that the headers needed to support supposedly available features
 	are actually present, if possible.
+
+	__SEEME__ There are quite a few of these checks, but it’s unclear how
+	expensive they actually are. We could optimize by checking for the presence
+	of each header of interest once and caching the results, but that seems
+	like the sort of trivial thing the compiler is already doing. For that
+	matter, we could offer an option to skip header checks entirely and avoid
+	the disk hits, if any; but that seems heavy-handed in the absence of
+	evidence of a negative impact.
 */
 
 #if LBAL_LIBCPP14_CHRONO_UDLS

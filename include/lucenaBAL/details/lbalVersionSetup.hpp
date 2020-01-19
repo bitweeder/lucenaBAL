@@ -20,6 +20,7 @@
 //	for the following evaluation. This will have no impact on how any
 //	subsequently-included std headers are evaluated.
 #include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/details/lbalCompilerSetup.hpp>
 
 
 /*------------------------------------------------------------------------------
