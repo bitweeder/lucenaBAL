@@ -2610,11 +2610,10 @@
 
 /**
 	@def LBAL_C99_PREPROCESSOR
-	__SEEME__ Only MSVS is known to have problems with this, and it appears
-	progress is finally being made to fully address it, at which point this
-	flag will be retired. Note that if support requires having a particular
-	compiler switch set to get compatibility, setting the switch will
-	likely be mandated.
+	__SEEME__ Only older versions of MSVS are known to have problems with this,
+	despite otherwise conforming to the C++11 Standard. Note that if support
+	requires having a particular compiler switch set to get compatibility,
+	this token will mirror that condition.
 */
 #ifndef LBAL_C99_PREPROCESSOR
 	#define LBAL_C99_PREPROCESSOR 0
@@ -5376,6 +5375,90 @@
 ///	@}	LBAL_LIBCPP2A
 
 ///	@}	lbal_library
+
+
+/**
+	@addtogroup lbal_compiler_control
+
+	@brief Provides compiler-agnostic control over compiler diagnostics,
+	warnings, and pragmas
+
+	@details Currently, this provides a minimal set of controls geared
+	specifically towards allowing the generation of compile-time warnings. This
+	section may gain more controls as needs arise.
+
+	@{
+*/
+
+/**
+	@def LBAL_DIAGNOSTIC_PUSH
+
+	@brief Begin a new diagnostic context
+
+	@details Any diagnostic controls engaged after this call may be reverted to
+	their previous settings with a subsequent call to `LBAL_DIAGNOSTIC_POP`.
+*/
+#ifndef LBAL_DIAGNOSTIC_PUSH
+	#define LBAL_DIAGNOSTIC_PUSH
+#endif
+
+/**
+	@def LBAL_DIAGNOSTIC_POP
+
+	@brief Dispose of the current diagnostic context
+
+	@details This will revert any settings changed by diagnostic controls since
+	the last call to `LBAL_DIAGNOSTIC_PUSH`.
+*/
+#ifndef LBAL_DIAGNOSTIC_POP
+	#define LBAL_DIAGNOSTIC_POP
+#endif
+
+/**
+	@def LBAL_DIAGNOSTIC_DISABLE_UNKNOWN_PRAGMAS
+
+	@brief Disable warning generation if the compiler encounters a `#pragma` it
+	doesn’t recognize
+
+	@details Not all compilers expose this functionality, but most do.
+*/
+#ifndef LBAL_DIAGNOSTIC_DISABLE_UNKNOWN_PRAGMAS
+	#define LBAL_DIAGNOSTIC_DISABLE_UNKNOWN_PRAGMAS
+#endif
+
+/**
+	@def LBAL_PRAGMA(LBAL_PRAGMA_pragma)
+
+	@brief Invoke the specified pragma.
+
+	@details This is mostly for use as an internal macro, as its pragmatic
+	use in generic code is profoundly limited.
+*/
+#ifndef LBAL_PRAGMA
+	#define LBAL_PRAGMA(LBAL_PRAGMA_pragma)
+#endif
+
+/**
+	@def LBAL_CPP_WARNING(LBAL_CPP_WARNING_message)
+
+	@brief Generate a compile-time warning
+
+	@details This is intended to be a cross-platform replacement for the
+	C preprocessor `#warning` directive, which is sadly unsupported by most
+	compilers that aren’t clang. Notably, warnings generate visible diagnostic
+	messages when compiling, but do not halt compilation. Behaviorally, these
+	warnings are preprocesor constructs, and are subject to the same
+	limitations as `#error`, which are more rigid than those of, for example,
+	`static_assert`. In particular, assume there is o macro substitution, and
+	that constructs that depend upon compile-time evaluation are unavailable
+	(e.g., Standard Library type traits).
+*/
+#ifndef LBAL_CPP_WARNING
+	#define LBAL_CPP_WARNING(LBAL_CPP_WARNING_message)
+#endif
+
+///	@}	lbal_compiler_control
+
 
 /**
 	@addtogroup lbal_builtins

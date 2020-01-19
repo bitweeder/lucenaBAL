@@ -1,3 +1,4 @@
+
 [![Actions Status](https://github.com/bitweeder/lucenaBAL/workflows/Build%20Matrix/badge.svg)](https://github.com/bitweeder/lucenaBAL/actions)
 
 # Lucena Build Abstraction Library
@@ -44,7 +45,7 @@ Enter **lucenaBAL**:
 
 ## Getting Started
 
-[CMake](https://cmake.org/) scripts are provided which will install the library itself, build and run test applications, and generate [documentation](https://bitweeder.github.io/lucenaBAL/html/index.html). We require at least CMake 3.15, so that will need to be [installed first](https://cmake.org/download/).
+[CMake](https://cmake.org/) scripts are provided which will install the library itself, build and run test applications, and generate documentation. We require at least CMake 3.15, so that will need to be [installed first](https://cmake.org/download/).
 
 More detailed instructions are provided below, but for a quick start, simply clone the repository, open up a terminal window, change to the local repo directory, and execute the following:
 
@@ -104,7 +105,7 @@ Line 5 can be replaced by `make install` (or `sudo make install`). Tests are gen
 
 Tests can be scripted in the usual way for CMake and CTest, for example in order to only install the library if testing succeeds.
 
-[Docs](https://bitweeder.github.io/lucenaBAL/html/index.html) can also be generated, if desired, and are left in `<build>/docs`.
+Docs can also be generated, if desired, and are left in `<build>/docs`.
 
 ## To-Do
 _Roughly in order of precedence_
@@ -113,8 +114,6 @@ _Roughly in order of precedence_
 - generate nicer-looking IDE project files
 
 ## Support
-
-There is extensive [documentation](https://bitweeder.github.io/lucenaBAL/html/index.html) which is regularly updated and expanded.
 
 lucenaBAL aggressively tracks the latest tools and standards, but maintaining support for older tools in new releases is unlikely to happen. The cold reality is that we do not have the bandwidth to pay the interest on anyone else’s technical debt. If an older release does what you need, use it. If you find a bug in any release, we greatly appreciate patches, though we strongly encourage you to at least [open an issue](https://github.com/bitweeder/lucenaBAL/issues) even if you can’t [submit a pull request](https://github.com/bitweeder/lucenaBAL/pulls). Feature requests will be considered, but requests to increase our maintenance surface are unlikely to be carried out.
 
@@ -147,5 +146,6 @@ Some portions of the project are governed by other, compatible licenses, as desc
 - [**Dominik Berner**](http://dominikberner.ch/)—_Without whom I’d probably still have CMake 3 as a To-Do item._
 - [**Sy Brand**](https://devblogs.microsoft.com/cppblog/author/sibrandmicrosoft-com/)—_Without whose blog post on_ [_Doxygen and Sphinx_](https://devblogs.microsoft.com/cppblog/clear-functional-c-documentation-with-sphinx-breathe-doxygen-cmake/) _I would probably still not be generating proper docs._
 - [**Cristian Adam**](https://cristianadam.eu/)—_For providing a_ [_pragmatic example_](https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/) _of how to use GitHub actions for continuous integration._
+- [**Evan Nemerson**](https://evan.nemerson.com/)—_Who figured out a_ [_viable cross-platform_ `#warning` _replacement_](https://nemequ.github.io/hedley/) _._
 - [**Billie Thompson**](https://github.com/PurpleBooth)—_Thanks for the_ [_Readme template_](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)_!_
 - [**Coraline Ada Ehmke**](http://where.coraline.codes/  "Coraline Ada Ehmke")—_Creator of_ [_The Contributor Covenant_](https://www.contributor-covenant.org/)_, used here under the terms of the_ [_Creative Commons Attribution License_](https://github.com/ContributorCovenant/contributor_covenant/blob/master/LICENSE.md)

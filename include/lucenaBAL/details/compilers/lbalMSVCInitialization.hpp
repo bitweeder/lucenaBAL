@@ -27,6 +27,21 @@
 */
 
 #if LBAL_TARGET_COMPILER_VANILLA_MSVC
+	//	Implement some cross-platform `#pragma` handling
+	#define LBAL_DIAGNOSTIC_DISABLE_UNKNOWN_PRAGMAS \
+		__pragma(warning(disable:4068))
+
+	#define LBAL_DIAGNOSTIC_PUSH __pragma(warning(push))
+	#define LBAL_DIAGNOSTIC_POP __pragma(warning(pop))
+
+	#define LBAL_PRAGMA(LBAL_PRAGMA_pragma) __pragma(LBAL_PRAGMA_pragma)
+
+
+	//	Implement a cross-platform `#warning` substitute
+	#define LBAL_CPP_WARNING(LBAL_CPP_WARNING_message) \
+		LBAL_PRAGMA(message(LBAL_CPP_WARNING_message))
+
+
 	//	Identify processor.
 	//	Note that AMD64 and x86_64 have the same identifier.
 	#if defined (_M_IX86)
