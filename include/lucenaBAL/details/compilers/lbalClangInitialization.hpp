@@ -41,8 +41,9 @@
 	#define LBAL_CPP_WARNING(LBAL_CPP_WARNING_message) \
 		LBAL_DIAGNOSTIC_PUSH \
 		LBAL_DIAGNOSTIC_DISABLE_UNKNOWN_PRAGMAS \
-		LBAL_PRAGMA(clang warning LBAL_CPP_WARNING_message) \
+		LBAL_PRAGMA(GCC warning LBAL_CPP_WARNING_message) \
 		LBAL_DIAGNOSTIC_POP
+
 
 	//	Identify processor and characteristics.
 	//	Note that AMD64 and x86_64 both trigger each other’s identifiers. We
