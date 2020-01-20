@@ -43,6 +43,12 @@
 		changed (and not just been updated).
 	*/
 
+	//	__SEEME__ The clangs all have this set incorrectly in `<version>`, so
+	//	we preemptively disable it. Eventually, this will need a version guard.
+	#if !defined (LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE)
+		#define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE 0
+	#endif	//	LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
+
 	#if (_LIBCPP_VERSION >= 7000)
 		//	__SEEME__ Only ints are supported; floats are forthcoming.
 		//	libc++ might be a little too optimistic about its level of support.

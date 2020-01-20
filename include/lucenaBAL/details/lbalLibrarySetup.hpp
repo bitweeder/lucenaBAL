@@ -21,6 +21,7 @@
 #include <lucenaBAL/details/lbalCompilerSetup.hpp>
 #include <lucenaBAL/details/lbalDetectStandardLibrary.hpp>
 #include <lucenaBAL/details/lbalKnownVersions.hpp>
+#include <lucenaBAL/details/lbalPlatformSetup.hpp>
 
 
 /*------------------------------------------------------------------------------

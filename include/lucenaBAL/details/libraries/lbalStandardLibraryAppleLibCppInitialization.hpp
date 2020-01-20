@@ -48,6 +48,12 @@
 		from the official ones, and some of the token values have changed (and
 		not just been updated).
 	*/
+
+	//	__SEEME__ The clangs all have this set incorrectly in `<version>`, so
+	//	we preemptively disable it. Eventually, this will need a version guard.
+	#if !defined (LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE)
+		#define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE 0
+	#endif	//	LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
 #else
 	#error "lbalStandardLibraryAppleLibCppInitialization.hpp was directly included with the incorrect Standard Library implementation"
 #endif	//	LBAL_TARGET_STANDARD_LIBRARY_APPLE_LIBCPP
