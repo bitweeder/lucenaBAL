@@ -2735,7 +2735,7 @@
 	@def LBAL_LIBCPP14_COMPLEX_UDLS
 	@brief User-defined Literals for `<complex>`
 	@details Equivalent SD-6 macro: `__cpp_lib_complex_udls`
-	- [201309L](https://wg21.link/N3779)
+	- [201309L](https://wg21.link/N3779) __PDF__
 
 	@sa `<complex>`
 */
@@ -5043,7 +5043,7 @@
 	variant is available.
 	- [201803L](https://wg21.link/P0122R7)
 	- [201803L](https://wg21.link/LWG3274)
-	- [201902L](https://wg21.link/P1024R3)
+	- [201902L](https://wg21.link/P1024R3) __PDF__
 
 	@remarks The issue raised in [LWG3274](https://wg21.link/LWG3274) was
 	simply that [P0122R7](https://wg21.link/P0122R7) had been voted in without
