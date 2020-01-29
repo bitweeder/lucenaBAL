@@ -107,11 +107,17 @@ Tests can be scripted in the usual way for CMake and CTest, for example in order
 
 Docs can also be generated, if desired, and are left in `<build>/docs`.
 
+## Planning
+Upon the official completion of C++20, all `CPP2A` tokens will be deprecated and replaced with their `CPP20` equivalents. These deprecated tokens and any others deprecated previous to this will be removed as part of the eventual lucenaBAL 3.0 release, but will remain available until then.
+
+As always, prefer to use the non-deprecated version of a token, especially when starting a new project.
+
 ## To-Do
 _Roughly in order of precedence_
-- finish implementations for updated Library feature detection support (interface is complete)
 - flesh out the unit tests
 - generate nicer-looking IDE project files
+
+A more formal action items list will be maintained on our [GitHub issues page](https://github.com/bitweeder/lucenaBAL/issues).
 
 ## Support
 
