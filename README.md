@@ -12,7 +12,7 @@ The purpose of the Lucena Build Abstraction Library (**lucenaBAL**) is to provid
 Imagine that you are working on a project that would benefit from using the C++17 parallelized algorithm for `std::sort`, and you would like to use it conditionally based on availability.
 - Simply querying `__cplusplus` won't tell you if the parallelized algorithms are available, as they are part of the Standard Library.
 - Ignoring that will get you into trouble since 2 out of the 3 major Standard Library implementations did not include the parallelized algorithms for most of their post-C++17-release existence.
--  Checking for the presence of a header won't work since the parallelized versions of the algorithms are part of the existing `<algorithm>` header.
+-  Checking for the presence of a header won't work since the parallelized versions of the Standard Library algorithms are part of the existing `<algorithm>` header.
 - Even though you _could_ check for the `<execution>` header, that will only tell you that Execution Policies are _probably_ available—it specifically won't tell you about the availability of the algorithm implementations themselves.
 - Checking the values of both `__cpp_lib_execution` and `__cpp_lib_parallel_algorithm` would probably work, but those are only guaranteed to be defined if the [SD-6 macros](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations) are defined, and those weren't formally integrated into the Standard until C++20 and the introduction of the `<version>` header.
 - Of course, the `<version>` header might be available, anyway, as a vendor extension, but at least one major IDE vendor shipped such a header for multiple releases that didn't actually include SD-6 macro definitions.
@@ -68,11 +68,11 @@ Under Windows:
 This will:
 1. Generate headers, test binaries, and docs in the build directory.
 2. Copy the headers  to `/usr/local/include/lucenaBAL` (or the equivalent specified directory).
-3. Copy any support files to `/usr/local/share/lucebaBAL` (or the equivalent specified directory).
+3. Copy any support files to `/usr/local/share/lucenaBAL` (or the equivalent specified directory).
 
 (Note that tests and docs will remain in the build directory.)
 
-Since lucenaBAL is a header-only library, it is not necessary to link it; simply `#include <lucenaBAL/lucenaBAL.hpp>` where you need feature tests. Usage information is available in the online docs, as well as in the headers themselves (primarily in  `<lucenaBAL/details/lbalFeatureSetup.hpp>`).
+Since lucenaBAL is a header-only library, it is not necessary to link it; simply `#include <lucenaBAL/lucenaBAL.hpp>` where you need feature tests. Usage information is available in the [online docs](https://bitweeder.github.io/lucenaBAL/html/index.html), as well as in the headers themselves (primarily in  `<lucenaBAL/details/lbalFeatureSetup.hpp>`).
 
 ## Prerequisites
 
