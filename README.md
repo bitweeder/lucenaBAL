@@ -1,11 +1,8 @@
-
 [![Actions Status](https://github.com/bitweeder/lucenaBAL/workflows/Build%20Matrix/badge.svg)](https://github.com/bitweeder/lucenaBAL/actions)
 
 # Lucena Build Abstraction Library
 
 The purpose of the Lucena Build Abstraction Library (**lucenaBAL**) is to provide tools to smooth over the differences between build environments when working with C++11 and later Standards. It’s a foundational tool that allows code built upon it to remain agnostic to compilers, C++ Standard Library variants, and aspects of the runtime. Note that lucenaBAL is **not** a build system, but rather a C++ header library with a collection of build system support scripts.
-
-**lucenaBAL 2.0 is in active development. Breaking changes are possible—though unlikely—until the tagged 2.0 release.**
 
 ## Motivating Example
 
@@ -76,7 +73,7 @@ Since lucenaBAL is a header-only library, it is not necessary to link it; simply
 
 ## Prerequisites
 
-lucenaBAL requires compiler support for C++11 or later. It has been tested with **gcc** 6 thru 9.2, **Microsoft Visual Studio** 2015 Update 3 thru MSVS 2019 16.4.2, **Xcode** 9 thru 11.3, and **llvm/clang** 6 thru 9. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
+lucenaBAL requires compiler support for C++11 or later. It has been tested with **gcc** 6 thru 9.2, **Microsoft Visual Studio** 2015 Update 3 thru MSVS 2019 16.4.4, **Xcode** 9 thru 11.3.1, and **llvm/clang** 6 thru 9. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
 
 ## Building, Installing, and Testing
 
@@ -114,6 +111,7 @@ As always, prefer to use the non-deprecated version of a token, especially when 
 
 ## To-Do
 _Roughly in order of precedence_
+- add more examples
 - flesh out the unit tests
 - generate nicer-looking IDE project files
 
