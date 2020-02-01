@@ -371,7 +371,80 @@
 
 
 	//	C++20 Library Features
+	//	MSVC has had a `<version>` header since MSVS 2019 16.2 (_MSC_VER 1922),
+	//	so if a feature requires at least that _and_ it was correctly
+	//	identified in `<version>`, we don’t bother explicitly checking for it
+	//	here.
 	#if LBAL_cpp_version > LBAL_CPP17_VERSION
+		#if (_MSC_VER >= 1911)
+			#if !defined (LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR)
+				#define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR 201803L
+			#endif	//	LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR
+		#endif	//	1911
+
+		#if (_MSC_VER >= 1920)
+			#if !defined (LBAL_LIBCPP2A_REMOVE_CVREF)
+				#define LBAL_LIBCPP2A_REMOVE_CVREF 201711L
+			#endif	//	LBAL_LIBCPP2A_REMOVE_CVREF
+		#endif	//	1920
+
+		#if (_MSC_VER >= 1921)
+			#if !defined (LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE)
+				#define LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE 201806L
+			#endif	//	LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
+
+			#if !defined (LBAL_LIBCPP2A_SHIFT)
+				#define LBAL_LIBCPP2A_SHIFT 201806L
+			#endif	//	LBAL_LIBCPP2A_SHIFT
+
+			#if !defined (LBAL_LIBCPP2A_STARTS_ENDS_WITH)
+				#define LBAL_LIBCPP2A_STARTS_ENDS_WITH 201711L
+			#endif	//	LBAL_LIBCPP2A_STARTS_ENDS_WITH
+
+			#if !defined (LBAL_LIBCPP2A_TYPE_IDENTITY)
+				#define LBAL_LIBCPP2A_TYPE_IDENTITY 201806L
+			#endif	//	LBAL_LIBCPP2A_TYPE_IDENTITY
+
+			#if !defined (LBAL_LIBCPP2A_UNWRAP_REF)
+				#define LBAL_LIBCPP2A_UNWRAP_REF 201811L
+			#endif	//	LBAL_LIBCPP2A_UNWRAP_REF
+		#endif	//	1921
+
+		#if (_MSC_VER >= 1922)
+			//	__SEEME__ Not in `<version>` as of 1924
+			#if !defined (LBAL_LIBCPP2A_ATOMIC_FLOAT)
+				#define LBAL_LIBCPP2A_ATOMIC_FLOAT 201711L
+			#endif	//	LBAL_LIBCPP2A_ATOMIC_FLOAT
+
+			//	__SEEME__ Not in `<version>` as of 1924
+			#if !defined (LBAL_LIBCPP2A_ENDIAN)
+				#define LBAL_LIBCPP2A_ENDIAN 201907L
+			#endif	//	LBAL_LIBCPP2A_ENDIAN
+
+			//	__SEEME__ Not in `<version>` as of 1924
+			#if !defined (LBAL_LIBCPP2A_ENDIAN_BIT)
+				#define LBAL_LIBCPP2A_ENDIAN_BIT 201907L
+			#endif	//	LBAL_LIBCPP2A_ENDIAN_BIT
+
+			//	__SEEME__ Not in `<version>` as of 1924
+			#if !defined (LBAL_LIBCPP2A_TO_ADDRESS)
+				#define LBAL_LIBCPP2A_TO_ADDRESS 201711L
+			#endif	//	LBAL_LIBCPP2A_TO_ADDRESS
+		#endif	//	1922
+
+		#if (_MSC_VER >= 1923)
+			//	__SEEME__ Not in `<version>` as of 1924
+			#if !defined (LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE)
+				#define LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE 201806L
+			#endif	//	LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE
+		#endif	//	1923
+
+		#if (_MSC_VER >= 1924)
+			//	__SEEME__ Not in `<version>` as of 1924
+			#if !defined (LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE)
+				#define LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE 201907L
+			#endif	//	LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE
+		#endif	//	1923
 	#endif	//	LBAL_CPP20_VERSION
 
 
