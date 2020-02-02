@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['platform_20features_394',['Platform Features',['../group__lbal__platform.html',1,'']]]
+  ['linker_20decorators_401',['Linker Decorators',['../group__lbal__decorators.html',1,'']]]
 ];

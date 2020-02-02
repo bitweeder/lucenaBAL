@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">lucenaBAL
-   &#160;<span id="projectnumber">2.0.0.16</span>
+   &#160;<span id="projectnumber">2.0.0.18</span>
    </div>
    <div id="projectbrief">Lucena Build Abstraction Library for C++</div>
   </td>
@@ -676,7 +676,7 @@ LBAL_LIBCPPTS</h2></td></tr>
 
 <p>User-defined Literals for <code>&lt;complex&gt;</code> </p>
 <p>Equivalent SD-6 macro: <code>__cpp_lib_complex_udls</code></p><ul>
-<li><a href="https://wg21.link/N3779">201309L</a></li>
+<li><a href="https://wg21.link/N3779">201309L</a> <b>PDF</b></li>
 </ul>
 <dl class="section see"><dt>See also</dt><dd><code>&lt;complex&gt;</code> </dd></dl>
 
@@ -775,7 +775,7 @@ LBAL_LIBCPPTS</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Detect finalized classes. </p>
-<p>Equivalent SD-6 macro: <code>__cpp_lib_integral_constant_callable</code></p><ul>
+<p>Equivalent SD-6 macro: <code>__cpp_lib_is_final</code></p><ul>
 <li><a href="https://wg21.link/LWG2112">201402L</a></li>
 </ul>
 <dl class="section see"><dt>See also</dt><dd><code>&lt;type_traits&gt;</code> </dd></dl>
@@ -1916,11 +1916,12 @@ LBAL_LIBCPPTS</h2></td></tr>
 
 <p>Standardize the Parallelism TS. </p>
 <p>Equivalent SD-6 macro: <code>__cpp_lib_parallel_algorithm</code></p><ul>
-<li><a href="https://wg21.link/p0024r2">P0024R2</a> <b>PDF</b></li>
+<li><a href="https://wg21.link/p0024r2">201603L</a> <b>PDF</b></li>
 </ul>
 <dl class="section remark"><dt>Remarks</dt><dd>By itself, this macro does not measure compliance with the Working Group paper; for that, use LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS.</dd>
 <dd>
-<b>APIME</b> We do not track experimental versions of this. </dd></dl>
+<b>APIME</b> We do not track experimental versions of this.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><code>&lt;algorithm&gt;</code> <code>&lt;numeric&gt;</code> </dd></dl>
 
 </div>
 </div>
@@ -2377,7 +2378,7 @@ LBAL_LIBCPPTS</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Provide <code>constexpr</code> <code>std::array</code> <code>swap</code> and <code>fill</code> </p>
-<p>Equivalent SD-6 macro: <code>__cpp_lib_array_constexpr</code>. This token corresponds to the <code>201806L</code> variant; it will only be set to a non-<code>0</code> value if that variant is available.</p><ul>
+<p>Equivalent SD-6 macro: <code>__cpp_lib_array_constexpr</code>. This token corresponds to the <code>201811L</code> variant; it will only be set to a non-<code>0</code> value if that variant is available.</p><ul>
 <li><a href="https://wg21.link/P0031R0">201603L</a></li>
 <li><a href="https://wg21.link/P0858R0">201803L</a></li>
 <li><a href="https://wg21.link/LWG3257">201803L</a></li>
@@ -2442,7 +2443,7 @@ LBAL_LIBCPPTS</h2></td></tr>
 
 <p>Extend <code>&lt;atomic&gt;</code> support to floating point types. </p>
 <p>Equivalent SD-6 macro: <code>__cpp_lib_atomic_float</code></p><ul>
-<li><a href="https://wg21.link/P0020R6">default</a></li>
+<li><a href="https://wg21.link/P0020R6">201711L</a></li>
 </ul>
 <dl class="section see"><dt>See also</dt><dd><code>&lt;atomic&gt;</code> </dd></dl>
 
@@ -3125,8 +3126,8 @@ LBAL_LIBCPPTS</h2></td></tr>
 
 <p>Standard Library coroutines. </p>
 <p>Equivalent SD-6 macro: <code>__cpp_coroutines</code></p><ul>
-<li><a href="https://wg21.link/n4736">default</a> <b>PDF</b></li>
-<li><a href="https://wg21.link/n4760">default</a> <b>PDF</b></li>
+<li><a href="https://wg21.link/n4736">201902L</a> <b>PDF</b></li>
+<li><a href="https://wg21.link/n4760">201902L</a> <b>PDF</b></li>
 <li><a href="https://wg21.link/p0912r5">201902L</a></li>
 </ul>
 <dl class="section remark"><dt>Remarks</dt><dd>Note that <code>&lt;coroutine&gt;</code> requires language support.</dd>
@@ -3152,8 +3153,8 @@ This does not currently have its own SD-6 macro. We use the value of the languag
 
 <p>Experimental Standard Library coroutines. </p>
 <p>Equivalent SD-6 macro: <code>__cpp_coroutines</code></p><ul>
-<li><a href="https://wg21.link/n4736">default</a> <b>PDF</b></li>
-<li><a href="https://wg21.link/n4760">default</a> <b>PDF</b></li>
+<li><a href="https://wg21.link/n4736">201902L</a> <b>PDF</b></li>
+<li><a href="https://wg21.link/n4760">201902L</a> <b>PDF</b></li>
 <li><a href="https://wg21.link/p0912r5">201902L</a></li>
 </ul>
 <dl class="section remark"><dt>Remarks</dt><dd>Note that <code>&lt;coroutine&gt;</code> requires language support.</dd>
@@ -3783,7 +3784,7 @@ This does not currently have its own SD-6 macro. We use the value of the languag
 <p>Equivalent SD-6 macro: <code>__cpp_lib_span</code>. This token corresponds to the <code>201803L</code> variant; it will only be set to a non-<code>0</code> value if that variant is available.</p><ul>
 <li><a href="https://wg21.link/P0122R7">201803L</a></li>
 <li><a href="https://wg21.link/LWG3274">201803L</a></li>
-<li><a href="https://wg21.link/P1024R3">201902L</a></li>
+<li><a href="https://wg21.link/P1024R3">201902L</a> <b>PDF</b></li>
 </ul>
 <dl class="section remark"><dt>Remarks</dt><dd>The issue raised in <a href="https://wg21.link/LWG3274">LWG3274</a> was simply that <a href="https://wg21.link/P0122R7">P0122R7</a> had been voted in without specifying an SD-6 macro.</dd></dl>
 <dl class="section see"><dt>See also</dt><dd><code>&lt;span&gt;</code> </dd></dl>

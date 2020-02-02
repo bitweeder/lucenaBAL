@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['linker_20decorators_393',['Linker Decorators',['../group__lbal__decorators.html',1,'']]]
+  ['feature_20detection_20macros_400',['Feature Detection Macros',['../group__lbal__features.html',1,'']]]
 ];

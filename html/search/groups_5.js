@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['standard_20library_20features_395',['Standard Library Features',['../group__lbal__library.html',1,'']]]
+  ['platform_20features_402',['Platform Features',['../group__lbal__platform.html',1,'']]]
 ];

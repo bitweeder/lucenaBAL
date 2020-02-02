@@ -6,6 +6,7 @@ var group__lbal__config =
     [ "LBAL_begin_v_namespace", "group__lbal__config.html#gafbd322d6fdedbf807b2258143bd35074", null ],
     [ "LBAL_Concat_", "group__lbal__config.html#gaac667133b1152484d53bb1c930baa99d", null ],
     [ "LBAL_CONFIG_enable_pedantic_warnings", "group__lbal__config.html#gaa7a89d51db94ecdb0a6c83435cdb693d", null ],
+    [ "LBAL_CONFIG_treat_uncertainty_as_failure", "group__lbal__config.html#ga3681552158e0ce16cd028ddf584392b5", null ],
     [ "LBAL_cpp_version", "group__lbal__config.html#ga457c696ea79bec1cecf8825fe2fa27d0", null ],
     [ "LBAL_end_namespace", "group__lbal__config.html#gab600bf52cc46f7994e1a0ea961ab37e2", null ],
     [ "LBAL_end_v_namespace", "group__lbal__config.html#gaf3d72d521a5133dfb45fbdda5043f658", null ],

@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">lucenaBAL
-   &#160;<span id="projectnumber">2.0.0.16</span>
+   &#160;<span id="projectnumber">2.0.0.18</span>
    </div>
    <div id="projectbrief">Lucena Build Abstraction Library for C++</div>
   </td>
@@ -144,13 +144,14 @@ Environment</h2></td></tr>
 Settings</h2></td></tr>
 <tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrpf4f70727dc34561dfde1a3c529b6205c"></a>Configure the library itself</p>
 <p>These can be set by simply passing macro definitions on the command-line to the compiler or build system.</p>
-<dl class="section remark"><dt>Remarks</dt><dd>At this time, none of these will change any resulting binaries, but will instead provide different levels of feedback at build-time.</dd>
-<dd>
-Due to certain limitations of CMake, when using that build system, it is necessary to use proxies specific to CMake in the form of <code>options</code> in order to pass macro definitions on to the compiler. See <code>CMakeLists.txt</code> for details, in the “option setup” section. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>Due to certain limitations of CMake, when using that build system, it is necessary to use proxies specific to CMake in the form of <code>options</code> in order to pass macro definitions on to the compiler. See <code>CMakeLists.txt</code> for details, in the “option setup” section. </dd></dl>
 </td></tr>
 <tr class="memitem:gaa7a89d51db94ecdb0a6c83435cdb693d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__config.html#gaa7a89d51db94ecdb0a6c83435cdb693d">LBAL_CONFIG_enable_pedantic_warnings</a></td></tr>
 <tr class="memdesc:gaa7a89d51db94ecdb0a6c83435cdb693d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Client setting to control certain compile-time warnings.  <a href="group__lbal__config.html#gaa7a89d51db94ecdb0a6c83435cdb693d">More...</a><br /></td></tr>
 <tr class="separator:gaa7a89d51db94ecdb0a6c83435cdb693d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3681552158e0ce16cd028ddf584392b5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__config.html#ga3681552158e0ce16cd028ddf584392b5">LBAL_CONFIG_treat_uncertainty_as_failure</a></td></tr>
+<tr class="memdesc:ga3681552158e0ce16cd028ddf584392b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Client setting to force conservative guesses when detecting features.  <a href="group__lbal__config.html#ga3681552158e0ce16cd028ddf584392b5">More...</a><br /></td></tr>
+<tr class="separator:ga3681552158e0ce16cd028ddf584392b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Namespaces</h2></td></tr>
@@ -317,6 +318,25 @@ Namespaces</h2></td></tr>
 <p>Client setting to control certain compile-time warnings. </p>
 <p>Generally, this should be set to <code>1</code>, as the associated warnings trigger whenever anything unusual happens, and “anything unusual” is almost definitely going to be something undesirable. If the client is in the rare situation of tripping these warnings and finding them spurious, however, this setting offers a blunt instrument to silence them.</p>
 <dl class="section remark"><dt>Remarks</dt><dd>This can be set per-tranlation unit, globally, or any combination in-between. </dd></dl>
+
+</div>
+</div>
+<a id="ga3681552158e0ce16cd028ddf584392b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3681552158e0ce16cd028ddf584392b5">&#9670;&nbsp;</a></span>LBAL_CONFIG_treat_uncertainty_as_failure</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBAL_CONFIG_treat_uncertainty_as_failure</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Client setting to force conservative guesses when detecting features. </p>
+<p>Sometimes when a feature detection is done, we won’t have enough information to make a definitive determination regarding availability. When this happens, we assume, by default, that the feature is available. To change this behavior, set this macro to <code>1</code> instead of <code>0</code>. Note that this may have an effect on generated binaries, and so changing this should be accompanied by equivalent changes to any dependencies or clients.</p>
+<p>Keep in mind that we perform a battery of tests to determine feature availability, so situations where this setting becomes relevant typically arise either when attempting tobuild in an untested environment, i.e., one we haven’t established special-case rules for, or when building in a known environment with low-quality reporting, e.g., attempting to detect headers when the compiler doesn’t provide <code>__has_include</code>. We assume building will mostly happen in known, tested environments, so trust that our special- casing will have issued a definitive failure if a given feature is genuinely unavailable. The corollary to this is that new environments should have implementation files created for them as needed in order to minimize repercussions and keep things simple.</p>
+<dl class="section remark"><dt>Remarks</dt><dd><b>SEEME</b> Because alterations to this are effectively viral, it is strongly recommended to only change this globally, and to be very through about it. It is even better to not change it at all, and instead provide new implementation file with appropriate special cases to avoid nasty surprises if some tool in the chain has a different value for this setting. </dd></dl>
 
 </div>
 </div>
