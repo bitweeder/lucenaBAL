@@ -5449,7 +5449,7 @@
 	messages when compiling, but do not halt compilation. Behaviorally, these
 	warnings are preprocesor constructs, and are subject to the same
 	limitations as `#error`, which are more rigid than those of, for example,
-	`static_assert`. In particular, assume there is o macro substitution, and
+	`static_assert`. In particular, assume there is no macro substitution, and
 	that constructs that depend upon compile-time evaluation are unavailable
 	(e.g., Standard Library type traits).
 */
