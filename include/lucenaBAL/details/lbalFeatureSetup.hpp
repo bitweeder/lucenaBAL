@@ -2211,18 +2211,26 @@
 #endif
 
 /**
-	@def LBAL_CPP2A_COROUTINES
+	@def LBAL_CPP2A_IMPL_COROUTINE
 	@brief Add necessary language support for the `<coroutine>` library feature
-	@details Equivalent SD-6 macro: `__cpp_coroutines`
+	@details Equivalent SD-6 macro: `__cpp_impl_coroutine`
 	- [201902L](https://wg21.link/p0912r5)
+	- [201902L](https://wg21.link/LWG3393)
 
 	@remarks Technically, the proposal this is from only directs that the
 	Coroutines TS be merged into the Standard. For reference the latest draft
 	is [n4775](https://wg21.link/n4775) __PDF__.
 */
-#ifndef LBAL_CPP2A_COROUTINES
-	#define LBAL_CPP2A_COROUTINES 0
+#ifndef LBAL_CPP2A_IMPL_COROUTINE
+	#define LBAL_CPP2A_IMPL_COROUTINE 0
 #endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated.
+	#ifndef LBAL_CPP2A_COROUTINES
+		#define LBAL_CPP2A_COROUTINES LBAL_CPP2A_IMPL_COROUTINE
+	#endif
+///@endcond
 
 /**
 	@def LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES
@@ -4316,6 +4324,7 @@
 	value if that variant is available.
 	- [201806L](https://wg21.link/P0898R3) __PDF__
 	- [201907L](https://wg21.link/P1754R1) __PDF__
+	- [202002L](https://wg21.link/P1964R2)
 
 	@sa `<concepts>`
 */
@@ -4351,11 +4360,28 @@
 	value if that variant is available.
 	- [201806L](https://wg21.link/P0898R3) __PDF__
 	- [201907L](https://wg21.link/P1754R1) __PDF__
+	- [202002L](https://wg21.link/P1964R2)
 
 	@sa `<concepts>`
 */
 #ifndef LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE
 	#define LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE
+	@brief Wording for boolean-testable
+	@details Equivalent SD-6 macro: `__cpp_lib_concepts`. This token
+	corresponds to the `202002L` variant; it will only be set to a non-`0`
+	value if that variant is available.
+	- [201806L](https://wg21.link/P0898R3) __PDF__
+	- [201907L](https://wg21.link/P1754R1) __PDF__
+	- [202002L](https://wg21.link/P1964R2)
+
+	@sa `<concepts>`
+*/
+#ifndef LBAL_LIBCPP2A_CONCEPTS
+	#define LBAL_LIBCPP2A_CONCEPTS 0
 #endif
 
 /**
@@ -4569,40 +4595,40 @@
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_COROUTINES
+	@def LBAL_LIBCPP2A_COROUTINE
 	@brief Standard Library coroutines
-	@details Equivalent SD-6 macro: `__cpp_coroutines`
-	- [201902L](https://wg21.link/n4736) __PDF__
-	- [201902L](https://wg21.link/n4760) __PDF__
-	- [201902L](https://wg21.link/p0912r5)
+	@details Equivalent SD-6 macro: `__cpp_lib_coroutine`
+	- [201902L](https://wg21.link/P0912R5)
+	- [201902L](https://wg21.link/LWG3393)
 
 	@remarks Note that `<coroutine>` requires language support.
-
-	@remarks This does not currently have its own SD-6 macro. We use the
-	value of the language feature macro as a proxy for library support.
 
 	@remarks __SEEME__ Confusingly, [n4736](https://wg21.link/n4736) __PDF__
 	was voted into the Standard, but [n4760](https://wg21.link/n4760) __PDF__
 	is the fixed version of it.
 
-	@sa `<compare>` `<coroutine>` `<syncstream>`
+	@sa `<coroutine>`
 */
-#ifndef LBAL_LIBCPP2A_COROUTINES
-	#define LBAL_LIBCPP2A_COROUTINES 0
+#ifndef LBAL_LIBCPP2A_COROUTINE
+	#define LBAL_LIBCPP2A_COROUTINE 0
 #endif
 
+///@cond LBAL_INTERNAL
+	//	__APIME__ Our old token has been replaced by an official version. The
+	//	old name is deprecated and will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_COROUTINES
+		#define LBAL_LIBCPP2A_COROUTINES LBAL_LIBCPP2A_COROUTINE
+	#endif
+///@endcond
+
 /**
-	@def LBAL_LIBCPP2A_COROUTINES_EXP
+	@def LBAL_LIBCPP2A_COROUTINE_EXP
 	@brief Experimental Standard Library coroutines
-	@details Equivalent SD-6 macro: `__cpp_coroutines`
-	- [201902L](https://wg21.link/n4736) __PDF__
-	- [201902L](https://wg21.link/n4760) __PDF__
-	- [201902L](https://wg21.link/p0912r5)
+	@details Equivalent SD-6 macro: `__cpp_lib_experimental_coroutine`
+	- [201902L](https://wg21.link/P0912R5)
+	- [201902L](https://wg21.link/LWG3393)
 
 	@remarks Note that `<coroutine>` requires language support.
-
-	@remarks This does not currently have its own SD-6 macro. We use the
-	value of the language feature macro as a proxy for library support.
 
 	@remarks __SEEME__ Confusingly, [n4736](https://wg21.link/n4736) __PDF__
 	was voted into the Standard, but [n4760](https://wg21.link/n4760) __PDF__
@@ -4610,9 +4636,17 @@
 
 	@sa `<experimental/coroutine>`
 */
-#ifndef LBAL_LIBCPP2A_COROUTINES_EXP
-	#define LBAL_LIBCPP2A_COROUTINES_EXP 0
+#ifndef LBAL_LIBCPP2A_COROUTINE_EXP
+	#define LBAL_LIBCPP2A_COROUTINE_EXP 0
 #endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ Our old token has been replaced by an official version. The
+	//	old name is deprecated and will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_COROUTINES_EXP
+		#define LBAL_LIBCPP2A_COROUTINES_EXP LBAL_LIBCPP2A_COROUTINE_EXP
+	#endif
+///@endcond
 
 /**
 	@def LBAL_LIBCPP2A_DESTROYING_DELETE
@@ -4671,12 +4705,33 @@
 	@brief Adopt consistent container erasure
 	@details Equivalent SD-6 macro: `__cpp_lib_erase_if`
 	- [201811L](https://wg21.link/P1209R0)
+	- [202002L](https://wg21.link/P1115R3) __PDF__
+
+	This token corresponds to the `201811L` variant; it will only be set to a
+	non-`0` value if that variant is available.
 
 	@sa `<deque>` `<forward_list>` `<list>` `<map>` `<set>` `<string>`
 	`<unordered_map>` `<unordered_set>` `<vector>`
 */
 #ifndef LBAL_LIBCPP2A_ERASE_IF
 	#define LBAL_LIBCPP2A_ERASE_IF 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+	@brief Update `erase_if` free function return types
+	@details Equivalent SD-6 macro: `__cpp_lib_erase_if`
+	- [201811L](https://wg21.link/P1209R0)
+	- [202002L](https://wg21.link/P1115R3) __PDF__
+
+	This token corresponds to the `202002L` variant; it will only be set to a
+	non-`0` value if that variant is available.
+
+	@sa `<deque>` `<forward_list>` `<list>` `<map>` `<set>` `<string>`
+	`<unordered_map>` `<unordered_set>` `<vector>`
+*/
+#ifndef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+	#define LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS 0
 #endif
 
 /**
@@ -4748,8 +4803,11 @@
 /**
 	@def LBAL_LIBCPP2A_INT_POW2
 	@brief Integral power-of-2 operations
-	@details Equivalent SD-6 macro: `__cpp_lib_int_pow2`
+	@details Equivalent SD-6 macro: `__cpp_lib_int_pow2`. This token
+	corresponds to the `201806L` variant; it will only be set to a non-`0`
+	value if that variant is available.
 	- [201806L](https://wg21.link/P0556R3)
+	- [202002L](https://wg21.link/P1956R1)
 
 	@sa `<bit>`
 */
@@ -4758,8 +4816,35 @@
 #endif
 
 /**
+	@def LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME
+	@brief Rename the assorted bit-manipulation fucntions
+	@details Equivalent SD-6 macro: `__cpp_lib_int_pow2`. This token
+	corresponds to the `202002L` variant; it will only be set to a non-`0`
+	value if that variant is available.
+	- [201806L](https://wg21.link/P0556R3)
+	- [202002L](https://wg21.link/P1956R1)
+
+	@sa `<bit>`
+*/
+#ifndef LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME
+	#define LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS
+	@brief Add Safe integral comparisons
+	@details Equivalent SD-6 macro: `__cpp_lib_integer_comparison_functions`
+	- [202002L](https://wg21.link/P0586R2)
+
+	@sa `<utility>`
+*/
+#ifndef LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS
+	#define LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS 0
+#endif
+
+/**
 	@def LBAL_LIBCPP2A_INTERPOLATE
-	@brief Add well-behaved interpoltaion for numbers and pointers
+	@brief Add well-behaved interpolation for numbers and pointers
 	@details Equivalent SD-6 macro: `__cpp_lib_interpolate`
 	- [201902L](https://wg21.link/P0811R3)
 
@@ -4872,19 +4957,29 @@
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE
+	@def LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE
 	@brief Add `std::is_nothrow_convertible` type trait
-	@details Equivalent SD-6 macro: `__cpp_lib_nothrow_convertible`
+	@details Equivalent SD-6 macro: `__cpp_lib_is_nothrow_convertible`
 	- [201806L](https://wg21.link/P0758R1)
-
-	@remarks __SEEME__ The token for this  is inconsitently named relative to
-	similar type traits, and may well change prior to Standardization.
+	- [201806L](https://wg21.link/LWG3356)
+	@remarks __SEEME__ LWG3356 should probably have gotten its own value;
+	the argument against that is that it was a defect corrected prior to
+	Standardization.
 
 	@sa `<type_traits>`
 */
-#ifndef LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE
-	#define LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE 0
+#ifndef LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE
+	#define LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE 0
 #endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE
+		#define LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE \
+				LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE
+	#endif
+///@endcond
 
 /**
 	@def LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR
@@ -5012,16 +5107,28 @@
 #endif
 
 /**
-	@def LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT
+	@def LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE
 	@brief Support smart pointer creation with default initialization
-	@details Equivalent SD-6 macro: `__cpp_lib_smart_ptr_default_init`
+	@details Equivalent SD-6 macro: `__cpp_lib_smart_ptr_for_overwrite`
 	- [201811L](https://wg21.link/P1020R1)
+	- [201811L](https://wg21.link/P1973R1)
+	@remarks The SD-6 token name was renamed, but it was done as part of a
+	proposal which did not include an update to the token value.
 
 	@sa `<memory>`
 */
-#ifndef LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT
-	#define LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT 0
+#ifndef LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE
+	#define LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE 0
 #endif
+
+///@cond LBAL_INTERNAL
+	//	__APIME__ This token has been renamed. The old name is deprecated and
+	//	will be removed in a future release.
+	#ifndef LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT
+		#define LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT \
+				LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE
+	#endif
+///@endcond
 
 /**
 	@def LBAL_LIBCPP2A_SOURCE_LOCATION
@@ -5044,6 +5151,7 @@
 	- [201803L](https://wg21.link/P0122R7)
 	- [201803L](https://wg21.link/LWG3274)
 	- [201902L](https://wg21.link/P1024R3) __PDF__
+	- [202002L](https://wg21.link/P1976R2)
 
 	@remarks The issue raised in [LWG3274](https://wg21.link/LWG3274) was
 	simply that [P0122R7](https://wg21.link/P0122R7) had been voted in without
@@ -5064,11 +5172,29 @@
 	- [201803L](https://wg21.link/P0122R7)
 	- [201803L](https://wg21.link/LWG3274)
 	- [201902L](https://wg21.link/P1024R3)
+	- [202002L](https://wg21.link/P1976R2)
 
 	@sa `<span>`
 */
 #ifndef LBAL_LIBCPP2A_SPAN_USABILITY
 	#define LBAL_LIBCPP2A_SPAN_USABILITY 0
+#endif
+
+/**
+	@def LBAL_LIBCPP2A_SPAN_FIXED_SIZE
+	@brief Fix constructing a fixed-size `std::span` from a dynamic range
+	@details Equivalent SD-6 macro: `__cpp_lib_span`. This token corresponds to
+	the `202002L` variant; it will only be set to a non-`0` value if that
+	variant is available.
+	- [201803L](https://wg21.link/P0122R7)
+	- [201803L](https://wg21.link/LWG3274)
+	- [201902L](https://wg21.link/P1024R3)
+	- [202002L](https://wg21.link/P1976R2)
+
+	@sa `<span>`
+*/
+#ifndef LBAL_LIBCPP2A_SPAN_FIXED_SIZE
+	#define LBAL_LIBCPP2A_SPAN_FIXED_SIZE 0
 #endif
 
 /**
@@ -5258,8 +5384,10 @@
 	@brief Add `std::unwrap_reference` and `std::unwrap_ref_decay`
 	@details Equivalent SD-6 macro: `__cpp_lib_unwrap_ref`
 	- [201811L](https://wg21.link/P0318R1) __PDF__
+	- [201811L](https://wg21.link/LWG3348)
+	@remarks LWG3348 just moved this to `<functional>` from `<type_traits>`.
 
-	@sa `<type_traits>`
+	@sa `<functional>`
 */
 #ifndef LBAL_LIBCPP2A_UNWRAP_REF
 	#define LBAL_LIBCPP2A_UNWRAP_REF 0

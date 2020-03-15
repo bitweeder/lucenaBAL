@@ -35,7 +35,7 @@ cmake_minimum_required (VERSION 3.15)
 # Forbid poisoning the source tree, ’cuz we’re authoritarian that way. Note,
 # though, that CMake will have already left a few droppings at this point, so
 # maintaining a clean source directory in the face of a determined user is
-# probably s hopeless endeavor.
+# probably a hopeless endeavor.
 #
 # __SEEME__ Consider adding some entries to `.gitignore` to avoid polluting
 # future commits.

@@ -479,8 +479,8 @@
 	#define LBAL_CPP2A_CONSTINIT __cpp_constinit
 #endif
 
-#if !defined(LBAL_CPP2A_COROUTINES) && (__cpp_coroutines >= 201902L)
-	#define LBAL_CPP2A_COROUTINES __cpp_coroutines
+#if !defined(LBAL_CPP2A_IMPL_COROUTINE) && (__cpp_impl_coroutine >= 201902L)
+	#define LBAL_CPP2A_IMPL_COROUTINE __cpp_impl_coroutine
 #endif
 
 #if !defined(LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES) \

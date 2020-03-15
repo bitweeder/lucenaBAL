@@ -750,6 +750,12 @@
 	#endif
 #endif	//	LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE
 
+#if !defined (LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE)
+	#if __cpp_lib_concepts >= 202002L
+		#define LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE __cpp_lib_concepts
+	#endif
+#endif	//	LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE
+
 #if !defined (LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS)
 	#if __cpp_lib_constexpr_algorithms >= 201703L
 		#define LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS \
@@ -840,21 +846,18 @@
 	#endif
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_VECTOR
 
-//	__SEEME__ The `<coroutine>` library feature does not currently have its own
-//	SD-6 macro. We use the value of the language feature macro as a proxy for
-//	library support.
-#if !defined (LBAL_LIBCPP2A_COROUTINES)
-	#if __cpp_coroutines >= 201902L
-		#define LBAL_LIBCPP2A_COROUTINES __cpp_coroutines
-		#define LBAL_LIBCPP2A_COROUTINES_EXP 0
+#if !defined (LBAL_LIBCPP2A_COROUTINE)
+	#if __cpp_lib_coroutine >= 201902L
+		#define LBAL_LIBCPP2A_COROUTINE __cpp_lib_coroutine
+		#define LBAL_LIBCPP2A_COROUTINE_EXP 0
 	#endif
-#endif	//	LBAL_LIBCPP2A_COROUTINES
+#endif	//	LBAL_LIBCPP2A_COROUTINE
 
-#if !defined (LBAL_LIBCPP2A_COROUTINES_EXP)
-	#if __cpp_experimental_coroutines >= 201902L
-		#define LBAL_LIBCPP2A_COROUTINES_EXP __cpp_experimental_coroutines
+#if !defined (LBAL_LIBCPP2A_COROUTINE_EXP)
+	#if __cpp_lib_experimental_coroutine >= 201902L
+		#define LBAL_LIBCPP2A_COROUTINE_EXP __cpp_lib_experimental_coroutine
 	#endif
-#endif	//	LBAL_LIBCPP2A_COROUTINES_EXP
+#endif	//	LBAL_LIBCPP2A_COROUTINE_EXP
 
 #if !defined (LBAL_LIBCPP2A_DESTROYING_DELETE)
 	#if __cpp_lib_destroying_delete >= 201806L
@@ -880,6 +883,12 @@
 	#endif
 #endif	//	LBAL_LIBCPP2A_ERASE_IF
 
+#if !defined (LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS)
+	#if __cpp_lib_erase_if >= 202002L
+		#define LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS __cpp_lib_erase_if
+	#endif
+#endif	//	LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+
 #if !defined (LBAL_LIBCPP2A_EXECUTION_VECTORIZATION)
 	#if __cpp_lib_execution >= 201902L
 		#define LBAL_LIBCPP2A_EXECUTION_VECTORIZATION __cpp_lib_execution
@@ -897,6 +906,19 @@
 		#define LBAL_LIBCPP2A_INT_POW2 __cpp_lib_int_pow2
 	#endif
 #endif	//	LBAL_LIBCPP2A_INT_POW2
+
+#if !defined (LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME)
+	#if __cpp_lib_int_pow2 >= 202002L
+		#define LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME __cpp_lib_int_pow2
+	#endif
+#endif	//	LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME
+
+#if !defined (LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS)
+	#if __cpp_lib_integer_comparison_functions >= 202002L
+		#define LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS \
+				__cpp_lib_integer_comparison_functions
+	#endif
+#endif	//	LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS
 
 #if !defined (LBAL_LIBCPP2A_INTERPOLATE)
 	#if __cpp_lib_interpolate >= 201902L
@@ -956,11 +978,11 @@
 	#endif
 #endif	//	LBAL_LIBCPP2A_MATH_CONSTANTS
 
-#if !defined (LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE)
-	#if __cpp_lib_nothrow_convertible >= 201806L
-		#define LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE __cpp_lib_nothrow_convertible
+#if !defined (LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE)
+	#if __cpp_lib_is_nothrow_convertible >= 201806L
+		#define LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE __cpp_lib_is_nothrow_convertible
 	#endif
-#endif	//	LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE
+#endif	//	LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE
 
 #if !defined (LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR)
 	#if __cpp_lib_polymorphic_allocator >= 201902L
@@ -1011,12 +1033,12 @@
 	#endif
 #endif	//	LBAL_LIBCPP2A_SHIFT
 
-#if !defined (LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT)
-	#if __cpp_lib_smart_ptr_default_init >= 201811L
-		#define LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT \
-				__cpp_lib_smart_ptr_default_init
+#if !defined (LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE)
+	#if __cpp_lib_smart_ptr_for_overwrite >= 201811L
+		#define LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE \
+				__cpp_lib_smart_ptr_for_overwrite
 	#endif
-#endif	//	LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT
+#endif	//	LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE
 
 #if !defined (LBAL_LIBCPP2A_SOURCE_LOCATION)
 	#if __cpp_lib_source_location >= 201907L
@@ -1035,6 +1057,12 @@
 		#define LBAL_LIBCPP2A_SPAN_USABILITY __cpp_lib_span
 	#endif
 #endif	//	LBAL_LIBCPP2A_SPAN_USABILITY
+
+#if !defined (LBAL_LIBCPP2A_SPAN_FIXED_SIZE)
+	#if __cpp_lib_span >= 202002L
+		#define LBAL_LIBCPP2A_SPAN_FIXED_SIZE __cpp_lib_span
+	#endif
+#endif	//	LBAL_LIBCPP2A_SPAN_FIXED_SIZE
 
 #if !defined (LBAL_LIBCPP2A_SSIZE)
 	#if __cpp_lib_ssize >= 201902L
@@ -3519,6 +3547,26 @@
 #endif	//	LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE
 
 
+#if LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE
+	#if defined (__has_include)
+		#if !__has_include (<concepts>)
+			//	Always warn if this happens.
+			#undef LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE
+			LBAL_CPP_WARNING ("<concepts> not found")
+		#endif	//	<concepts> test
+	#else
+		#if LBAL_CONFIG_treat_uncertainty_as_failure
+			#undef LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE
+			#define LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE 0
+		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
+
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE")
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
+	#endif	//	__has_include
+#endif	//	LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE
+
+
 #if LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS
 	#if defined (__has_include)
 		#if !__has_include (<algorithm>)
@@ -3799,56 +3847,44 @@
 #endif	//	LBAL_LIBCPP2A_CONSTEXPR_VECTOR
 
 
-#if LBAL_LIBCPP2A_COROUTINES
+#if LBAL_LIBCPP2A_COROUTINE
 	#if defined (__has_include)
-		#if !__has_include (<compare>)
-			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_COROUTINES
-			LBAL_CPP_WARNING ("<compare> not found")
-		#endif	//	<compare> test
-
 		#if !__has_include (<coroutine>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_COROUTINES
+			#undef LBAL_LIBCPP2A_COROUTINE
 			LBAL_CPP_WARNING ("<coroutine> not found")
 		#endif	//	<coroutine> test
-
-		#if !__has_include (<syncstream>)
-			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_COROUTINES
-			LBAL_CPP_WARNING ("<syncstream> not found")
-		#endif	//	<syncstream> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_COROUTINES
-			#define LBAL_LIBCPP2A_COROUTINES 0
+			#undef LBAL_LIBCPP2A_COROUTINE
+			#define LBAL_LIBCPP2A_COROUTINE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_COROUTINES")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_COROUTINE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_COROUTINES
+#endif	//	LBAL_LIBCPP2A_COROUTINE
 
 
-#if LBAL_LIBCPP2A_COROUTINES_EXP
+#if LBAL_LIBCPP2A_COROUTINE_EXP
 	#if defined (__has_include)
 		#if !__has_include (<experimental/coroutine>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_COROUTINES_EXP
+			#undef LBAL_LIBCPP2A_COROUTINE_EXP
 			LBAL_CPP_WARNING ("<experimental/coroutine> not found")
 		#endif	//	<experimental/coroutine> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_COROUTINES_EXP
-			#define LBAL_LIBCPP2A_COROUTINES_EXP 0
+			#undef LBAL_LIBCPP2A_COROUTINE_EXP
+			#define LBAL_LIBCPP2A_COROUTINE_EXP 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_COROUTINES_EXP")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_COROUTINE_EXP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_COROUTINES_EXP
+#endif	//	LBAL_LIBCPP2A_COROUTINE_EXP
 
 
 #if LBAL_LIBCPP2A_DESTROYING_DELETE
@@ -3961,6 +3997,56 @@
 #endif	//	LBAL_LIBCPP2A_ERASE_IF
 
 
+#if LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+	#if defined (__has_include)
+		#if !__has_include (<deque>)
+			//	Always warn if this happens.
+			#undef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+			LBAL_CPP_WARNING ("<deque> not found")
+		#endif	//	<deque> test
+
+		#if !__has_include (<forward_list>)
+			//	Always warn if this happens.
+			#undef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+			LBAL_CPP_WARNING ("<forward_list> not found")
+		#endif	//	<forward_list> test
+
+		#if !__has_include (<list>)
+			//	Always warn if this happens.
+			#undef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+			LBAL_CPP_WARNING ("<list> not found")
+		#endif	//	<list> test
+
+		#if !__has_include (<map>)
+			//	Always warn if this happens.
+			#undef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+			LBAL_CPP_WARNING ("<map> not found")
+		#endif	//	<map> test
+
+		#if !__has_include (<set>)
+			//	Always warn if this happens.
+			#undef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+			LBAL_CPP_WARNING ("<set> not found")
+		#endif	//	<set> test
+
+		#if !__has_include (<string>)
+			//	Always warn if this happens.
+			#undef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+			LBAL_CPP_WARNING ("<string> not found")
+		#endif	//	<string> test
+	#else
+		#if LBAL_CONFIG_treat_uncertainty_as_failure
+			#undef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+			#define LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS 0
+		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
+
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS")
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
+	#endif	//	__has_include
+#endif	//	LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+
+
 #if LBAL_LIBCPP2A_EXECUTION_VECTORIZATION
 	#if defined (__has_include)
 		#if !__has_include (<execution>)
@@ -4071,6 +4157,46 @@
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_INT_POW2
+
+
+#if LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME
+	#if defined (__has_include)
+		#if !__has_include (<bit>)
+			//	Always warn if this happens.
+			#undef LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME
+			LBAL_CPP_WARNING ("<bit> not found")
+		#endif	//	<bit> test
+	#else
+		#if LBAL_CONFIG_treat_uncertainty_as_failure
+			#undef LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME
+			#define LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME 0
+		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
+
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME")
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
+	#endif	//	__has_include
+#endif	//	LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME
+
+
+#if LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS
+	#if defined (__has_include)
+		#if !__has_include (<utility>)
+			//	Always warn if this happens.
+			#undef LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS
+			LBAL_CPP_WARNING ("<cmath> not found")
+		#endif	//	<cmath> test
+	#else
+		#if LBAL_CONFIG_treat_uncertainty_as_failure
+			#undef LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS
+			#define LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS 0
+		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
+
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS")
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
+	#endif	//	__has_include
+#endif	//	LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS
 
 
 #if LBAL_LIBCPP2A_INTERPOLATE
@@ -4277,24 +4403,24 @@
 #endif	//	LBAL_LIBCPP2A_MATH_CONSTANTS
 
 
-#if LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE
+#if LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE
 	#if defined (__has_include)
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE
+			#undef LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE
 			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE
-			#define LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE 0
+			#undef LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE
+			#define LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE
+#endif	//	LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE
 
 
 #if LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR
@@ -4529,24 +4655,24 @@
 #endif	//	LBAL_LIBCPP2A_SHIFT
 
 
-#if LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT
+#if LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE
 	#if defined (__has_include)
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT
+			#undef LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE
 			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT
-			#define LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT 0
+			#undef LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE
+			#define LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT
+#endif	//	LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE
 
 
 #if LBAL_LIBCPP2A_SOURCE_LOCATION
@@ -4607,6 +4733,26 @@
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP2A_SPAN_USABILITY
+
+
+#if LBAL_LIBCPP2A_SPAN_FIXED_SIZE
+	#if defined (__has_include)
+		#if !__has_include (<span>)
+			//	Always warn if this happens.
+			#undef LBAL_LIBCPP2A_SPAN_FIXED_SIZE
+			LBAL_CPP_WARNING ("<span> not found")
+		#endif	//	<span> test
+	#else
+		#if LBAL_CONFIG_treat_uncertainty_as_failure
+			#undef LBAL_LIBCPP2A_SPAN_FIXED_SIZE
+			#define LBAL_LIBCPP2A_SPAN_FIXED_SIZE 0
+		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
+
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SPAN_FIXED_SIZE")
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
+	#endif	//	__has_include
+#endif	//	LBAL_LIBCPP2A_SPAN_FIXED_SIZE
 
 
 #if LBAL_LIBCPP2A_SSIZE
