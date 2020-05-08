@@ -1039,7 +1039,7 @@
 	@def LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY
 	@brief Optimization hint when compiling with certain memory models
 	@details Equivalent SD-6 test: `__has_cpp_attribute(carries_dependency)`
-	- [200809L](https://wg21.link/N2761) __PDF__
+	- [200809L](https://wg21.link/N2782) __PDF__
 */
 #ifndef LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY
 	#define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY 0
@@ -5111,9 +5111,9 @@
 	@brief Support smart pointer creation with default initialization
 	@details Equivalent SD-6 macro: `__cpp_lib_smart_ptr_for_overwrite`
 	- [201811L](https://wg21.link/P1020R1)
-	- [201811L](https://wg21.link/P1973R1)
-	@remarks The SD-6 token name was renamed, but it was done as part of a
-	proposal which did not include an update to the token value.
+	- [202002L](https://wg21.link/P1973R1)
+	@remarks The SD-6 token name was renamed as part of 
+	[P1973R1](https://wg21.link/P1973R1).
 
 	@sa `<memory>`
 */

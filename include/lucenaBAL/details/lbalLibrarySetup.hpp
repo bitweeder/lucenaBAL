@@ -1034,7 +1034,7 @@
 #endif	//	LBAL_LIBCPP2A_SHIFT
 
 #if !defined (LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE)
-	#if __cpp_lib_smart_ptr_for_overwrite >= 201811L
+	#if __cpp_lib_smart_ptr_for_overwrite >= 202002L
 		#define LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE \
 				__cpp_lib_smart_ptr_for_overwrite
 	#endif
