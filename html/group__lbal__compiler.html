@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">lucenaBAL
-   &#160;<span id="projectnumber">2.0.0.18</span>
+   &#160;<span id="projectnumber">2.0.0.20</span>
    </div>
    <div id="projectbrief">Lucena Build Abstraction Library for C++</div>
   </td>
@@ -300,131 +300,129 @@ LBAL_CPP17</h2></td></tr>
 <tr class="separator:ga1e32a49c42810b4781774df315a3206a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
-LBAL_CPP2A</h2></td></tr>
-<tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrp9c85cbd986fe0e0fd8adb2845ee43e7d"></a>Identify language features specific to the C++2a draft standard</p>
-<p>Support across compilers for C++2a features is unsurprisingly inconsistent, and is one of the fundamental reasons why lucenaBAL exists. These will be updated regularly as the Standard develops.</p>
+LBAL_CPP20</h2></td></tr>
+<tr><td class="ititle" colspan="2"><p><a class="anchor" id="amgrp6e07aabb8720a21b85d5d39002b68a5f"></a>Identify language features specific to the C++20 Standard</p>
+<p>Support across compilers for C++20 features is currently inconsistent, and is one of the fundamental reasons why lucenaBAL exists. These will be updated regularly as the Standard develops.</p>
 <p>Note that a very large number of features do not have SD-6 macros, so we often provide our own tokens. Should an official macro be created, we will synchronize with it and deprecate the proprietary one.</p>
-<dl class="section remark"><dt>Remarks</dt><dd><b>SEEME</b> A proposal to standardize SD-6 macros was accepted for C++2a, and is updated regularly to track new features, but it tends to lag the adoption rate. Additionally, a lot of proposed new language and library features—and fixes—don’t suggest corresponding SD-6 macros, which can make identifying availability more challenging than it needs to be. Taken together, many of these are either placeholders awaiting testing or depend on compiler version-differentiated activation.</dd>
-<dd>
-<b>APIME</b> These will eventually all be renamed, most likely to use the <code>LBAL_CPP20</code> prefix, once the Draft Standard finalizes. Once that happens, the original names will persist for a while as aliases for the new ones. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd><b>APIME</b> Most of these have deprecated variants that use the <code>LBAL_CPP2A</code> prefix, dating from the time prior to the finalization of the C++20 Standard. Prefer using the <code>LBAL_CPP20</code> variants, as the deprecated versions will eventually be removed. </dd></dl>
 </td></tr>
-<tr class="memitem:ga5dc90e36dc83aeef8bba4e9e675b5518"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga5dc90e36dc83aeef8bba4e9e675b5518">LBAL_CPP2A_AGGREGATE_PAREN_INIT</a></td></tr>
-<tr class="memdesc:ga5dc90e36dc83aeef8bba4e9e675b5518"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow aggregate initialization from parentheses as well as braces.  <a href="group__lbal__compiler.html#ga5dc90e36dc83aeef8bba4e9e675b5518">More...</a><br /></td></tr>
-<tr class="separator:ga5dc90e36dc83aeef8bba4e9e675b5518"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad8b97f519adf1c50cb150451a2e1c76a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gad8b97f519adf1c50cb150451a2e1c76a">LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS</a></td></tr>
-<tr class="separator:gad8b97f519adf1c50cb150451a2e1c76a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa5b1a4689401fcda41810f5aa53bfaff"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gaa5b1a4689401fcda41810f5aa53bfaff">LBAL_CPP2A_ATTRIBUTE_LIKELY</a></td></tr>
-<tr class="separator:gaa5b1a4689401fcda41810f5aa53bfaff"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga85499167552bb3d74899ff18089b4b38"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga85499167552bb3d74899ff18089b4b38">LBAL_CPP2A_ATTRIBUTE_NODISCARD_EXPANDED</a></td></tr>
-<tr class="memdesc:ga85499167552bb3d74899ff18089b4b38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add explanatory text to the <code>nodiscard</code> attribute and allow it on constructors.  <a href="group__lbal__compiler.html#ga85499167552bb3d74899ff18089b4b38">More...</a><br /></td></tr>
-<tr class="separator:ga85499167552bb3d74899ff18089b4b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gad60278378879ca580165c80bcfecab5a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gad60278378879ca580165c80bcfecab5a">LBAL_CPP2A_ATTRIBUTE_UNLIKELY</a></td></tr>
-<tr class="separator:gad60278378879ca580165c80bcfecab5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8eb83bdbad7517a268eb50afe55c9693"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga8eb83bdbad7517a268eb50afe55c9693">LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY</a></td></tr>
-<tr class="memdesc:ga8eb83bdbad7517a268eb50afe55c9693"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggregate tracking the availability of <code>likely</code> and <code>unlikely</code> attributes.  <a href="group__lbal__compiler.html#ga8eb83bdbad7517a268eb50afe55c9693">More...</a><br /></td></tr>
-<tr class="separator:ga8eb83bdbad7517a268eb50afe55c9693"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0013c84c56323368c12af883e4c23e10"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga0013c84c56323368c12af883e4c23e10">LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS</a></td></tr>
-<tr class="separator:ga0013c84c56323368c12af883e4c23e10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac1a2b6e9d1b28af4c52efd8dda016498"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gac1a2b6e9d1b28af4c52efd8dda016498">LBAL_CPP2A_CHAR8_T</a></td></tr>
-<tr class="memdesc:gac1a2b6e9d1b28af4c52efd8dda016498"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add <code>char8_t</code> as a UTF-8 equivalent for <code>char16_t</code> and <code>char32_t</code>.  <a href="group__lbal__compiler.html#gac1a2b6e9d1b28af4c52efd8dda016498">More...</a><br /></td></tr>
-<tr class="separator:gac1a2b6e9d1b28af4c52efd8dda016498"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa562304c10aac6e1cf130504abd2b3bf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gaa562304c10aac6e1cf130504abd2b3bf">LBAL_CPP2A_CONCEPTS</a></td></tr>
-<tr class="memdesc:gaa562304c10aac6e1cf130504abd2b3bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Incorporate the Concepts TS into the Standard.  <a href="group__lbal__compiler.html#gaa562304c10aac6e1cf130504abd2b3bf">More...</a><br /></td></tr>
-<tr class="separator:gaa562304c10aac6e1cf130504abd2b3bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2d01bba1085cb0eb01cd8f32409dd739"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga2d01bba1085cb0eb01cd8f32409dd739">LBAL_CPP2A_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS</a></td></tr>
-<tr class="memdesc:ga2d01bba1085cb0eb01cd8f32409dd739"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refine definition of return-type-requirements.  <a href="group__lbal__compiler.html#ga2d01bba1085cb0eb01cd8f32409dd739">More...</a><br /></td></tr>
-<tr class="separator:ga2d01bba1085cb0eb01cd8f32409dd739"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga73318c031d5b7f79ba1aef9763778649"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga73318c031d5b7f79ba1aef9763778649">LBAL_CPP2A_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS</a></td></tr>
-<tr class="memdesc:ga73318c031d5b7f79ba1aef9763778649"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refine definition of return-type-requirements.  <a href="group__lbal__compiler.html#ga73318c031d5b7f79ba1aef9763778649">More...</a><br /></td></tr>
-<tr class="separator:ga73318c031d5b7f79ba1aef9763778649"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga94e0777f35262608ac169fa5f5c125f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga94e0777f35262608ac169fa5f5c125f6">LBAL_CPP2A_CONDITIONAL_EXPLICIT</a></td></tr>
-<tr class="separator:ga94e0777f35262608ac169fa5f5c125f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga2b198fbd60be8fe32edd3abce96e850a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga2b198fbd60be8fe32edd3abce96e850a">LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS</a></td></tr>
-<tr class="separator:ga2b198fbd60be8fe32edd3abce96e850a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0d5820b4731f1af0e406ba293e25de41"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga0d5820b4731f1af0e406ba293e25de41">LBAL_CPP2A_CONSTEVAL</a></td></tr>
-<tr class="memdesc:ga0d5820b4731f1af0e406ba293e25de41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Immediate functions.  <a href="group__lbal__compiler.html#ga0d5820b4731f1af0e406ba293e25de41">More...</a><br /></td></tr>
-<tr class="separator:ga0d5820b4731f1af0e406ba293e25de41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga54cd34c85fca356c75c010bb749dd5ba"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga54cd34c85fca356c75c010bb749dd5ba">LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC</a></td></tr>
-<tr class="memdesc:ga54cd34c85fca356c75c010bb749dd5ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Language support for variable-sized containers suitable for use in constexpr computations.  <a href="group__lbal__compiler.html#ga54cd34c85fca356c75c010bb749dd5ba">More...</a><br /></td></tr>
-<tr class="separator:ga54cd34c85fca356c75c010bb749dd5ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gadcbe7bfff8b56bb9f95c33ffc09163a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gadcbe7bfff8b56bb9f95c33ffc09163a5">LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</a></td></tr>
-<tr class="memdesc:gadcbe7bfff8b56bb9f95c33ffc09163a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow <code>dynamic_cast</code>, polymorphic <code>typeid</code> in <code>constexpr</code> functions.  <a href="group__lbal__compiler.html#gadcbe7bfff8b56bb9f95c33ffc09163a5">More...</a><br /></td></tr>
-<tr class="separator:gadcbe7bfff8b56bb9f95c33ffc09163a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1a955ae380bf7ca88e03b09aac96c437"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga1a955ae380bf7ca88e03b09aac96c437">LBAL_CPP2A_CONSTEXPR_IN_DECLTYPE</a></td></tr>
-<tr class="memdesc:ga1a955ae380bf7ca88e03b09aac96c437"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address Core Issue regarding when <code>constexpr</code> functions are defined.  <a href="group__lbal__compiler.html#ga1a955ae380bf7ca88e03b09aac96c437">More...</a><br /></td></tr>
-<tr class="separator:ga1a955ae380bf7ca88e03b09aac96c437"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga4ffa3c194958ac481ef649048ae22d18"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga4ffa3c194958ac481ef649048ae22d18">LBAL_CPP2A_CONSTEXPR_INTRINSICS</a></td></tr>
-<tr class="memdesc:ga4ffa3c194958ac481ef649048ae22d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permit unevaluated inline assembly in <code>constexpr</code> functions.  <a href="group__lbal__compiler.html#ga4ffa3c194958ac481ef649048ae22d18">More...</a><br /></td></tr>
-<tr class="separator:ga4ffa3c194958ac481ef649048ae22d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga54ea8c13c91c53c23e7f37ad07a52129"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga54ea8c13c91c53c23e7f37ad07a52129">LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION</a></td></tr>
-<tr class="memdesc:ga54ea8c13c91c53c23e7f37ad07a52129"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address an inconsistency in the lambda specification.  <a href="group__lbal__compiler.html#ga54ea8c13c91c53c23e7f37ad07a52129">More...</a><br /></td></tr>
-<tr class="separator:ga54ea8c13c91c53c23e7f37ad07a52129"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6bf319e0e543fa5ccda3ecfbd18e9e64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga6bf319e0e543fa5ccda3ecfbd18e9e64">LBAL_CPP2A_CONSTEXPR_TRY_CATCH</a></td></tr>
-<tr class="memdesc:ga6bf319e0e543fa5ccda3ecfbd18e9e64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permit unevaluated inline assembly in constexpr functions.  <a href="group__lbal__compiler.html#ga6bf319e0e543fa5ccda3ecfbd18e9e64">More...</a><br /></td></tr>
-<tr class="separator:ga6bf319e0e543fa5ccda3ecfbd18e9e64"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga44be301282c87093d839a0ca3b38cfb8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga44be301282c87093d839a0ca3b38cfb8">LBAL_CPP2A_CONSTEXPR_UNION_ALTERATION</a></td></tr>
-<tr class="memdesc:ga44be301282c87093d839a0ca3b38cfb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow changing the active member of a <code>union</code> in constexpr functions.  <a href="group__lbal__compiler.html#ga44be301282c87093d839a0ca3b38cfb8">More...</a><br /></td></tr>
-<tr class="separator:ga44be301282c87093d839a0ca3b38cfb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga39788f3eb222783d245d3f9a68499d41"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga39788f3eb222783d245d3f9a68499d41">LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION</a></td></tr>
-<tr class="memdesc:ga39788f3eb222783d245d3f9a68499d41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow virtual function calls in constexpr functions.  <a href="group__lbal__compiler.html#ga39788f3eb222783d245d3f9a68499d41">More...</a><br /></td></tr>
-<tr class="separator:ga39788f3eb222783d245d3f9a68499d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf5bbe3daff7887d67cc4a901ae1e59c3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gaf5bbe3daff7887d67cc4a901ae1e59c3">LBAL_CPP2A_CONSTINIT</a></td></tr>
-<tr class="memdesc:gaf5bbe3daff7887d67cc4a901ae1e59c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the <code>constinit</code> keyword.  <a href="group__lbal__compiler.html#gaf5bbe3daff7887d67cc4a901ae1e59c3">More...</a><br /></td></tr>
-<tr class="separator:gaf5bbe3daff7887d67cc4a901ae1e59c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga265e83859c9051043fe80add46265ee4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga265e83859c9051043fe80add46265ee4">LBAL_CPP2A_COROUTINES</a></td></tr>
-<tr class="memdesc:ga265e83859c9051043fe80add46265ee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add necessary language support for the <code>&lt;coroutine&gt;</code> library feature.  <a href="group__lbal__compiler.html#ga265e83859c9051043fe80add46265ee4">More...</a><br /></td></tr>
-<tr class="separator:ga265e83859c9051043fe80add46265ee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga31ff9653c299083aa2ea09b384ae8c1b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga31ff9653c299083aa2ea09b384ae8c1b">LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES</a></td></tr>
-<tr class="memdesc:ga31ff9653c299083aa2ea09b384ae8c1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class template argument deduction for aggregates.  <a href="group__lbal__compiler.html#ga31ff9653c299083aa2ea09b384ae8c1b">More...</a><br /></td></tr>
-<tr class="separator:ga31ff9653c299083aa2ea09b384ae8c1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaa62abd749876dc40bcf808b7ad653cd9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gaa62abd749876dc40bcf808b7ad653cd9">LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS</a></td></tr>
-<tr class="separator:gaa62abd749876dc40bcf808b7ad653cd9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga59d51e917840cc9bd1809e2dc6f2867f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga59d51e917840cc9bd1809e2dc6f2867f">LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS</a></td></tr>
-<tr class="separator:ga59d51e917840cc9bd1809e2dc6f2867f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga0da46213f9a8d995bd2679c190136711"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga0da46213f9a8d995bd2679c190136711">LBAL_CPP2A_DESIGNATED_INITIALIZERS</a></td></tr>
-<tr class="separator:ga0da46213f9a8d995bd2679c190136711"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga39b419b1ddd03ebd4bcb86ad515b7d37"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga39b419b1ddd03ebd4bcb86ad515b7d37">LBAL_CPP2A_DESTROYING_DELETE</a></td></tr>
-<tr class="memdesc:ga39b419b1ddd03ebd4bcb86ad515b7d37"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efficient sized delete for variable sized classes.  <a href="group__lbal__compiler.html#ga39b419b1ddd03ebd4bcb86ad515b7d37">More...</a><br /></td></tr>
-<tr class="separator:ga39b419b1ddd03ebd4bcb86ad515b7d37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga1823ca3efeb9eb7dd04452f967cdde4e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga1823ca3efeb9eb7dd04452f967cdde4e">LBAL_CPP2A_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST</a></td></tr>
-<tr class="memdesc:ga1823ca3efeb9eb7dd04452f967cdde4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic (Polymorphic) Lambda Expressions.  <a href="group__lbal__compiler.html#ga1823ca3efeb9eb7dd04452f967cdde4e">More...</a><br /></td></tr>
-<tr class="separator:ga1823ca3efeb9eb7dd04452f967cdde4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gab94955a114b69ddb19b5275b7f49de45"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gab94955a114b69ddb19b5275b7f49de45">LBAL_CPP2A_INIT_CAPTURES_PACK_EXPANSION</a></td></tr>
-<tr class="memdesc:gab94955a114b69ddb19b5275b7f49de45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow pack-expansion in lambda init-capture.  <a href="group__lbal__compiler.html#gab94955a114b69ddb19b5275b7f49de45">More...</a><br /></td></tr>
-<tr class="separator:gab94955a114b69ddb19b5275b7f49de45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaf2f59afdd5c59c6458e3da5a44e3077d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gaf2f59afdd5c59c6458e3da5a44e3077d">LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR</a></td></tr>
-<tr class="separator:gaf2f59afdd5c59c6458e3da5a44e3077d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga8e37ce9977cc515ce1eb2ba3f58ce51b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga8e37ce9977cc515ce1eb2ba3f58ce51b">LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION</a></td></tr>
-<tr class="separator:ga8e37ce9977cc515ce1eb2ba3f58ce51b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7f0f126185dcd382f98d85f3c14eeb97"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga7f0f126185dcd382f98d85f3c14eeb97">LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS</a></td></tr>
-<tr class="memdesc:ga7f0f126185dcd382f98d85f3c14eeb97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrate universal feature test macros into the Standard.  <a href="group__lbal__compiler.html#ga7f0f126185dcd382f98d85f3c14eeb97">More...</a><br /></td></tr>
-<tr class="separator:ga7f0f126185dcd382f98d85f3c14eeb97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7e1971ccc931b2c3f037e49d060c81b4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga7e1971ccc931b2c3f037e49d060c81b4">LBAL_CPP2A_MODULES</a></td></tr>
-<tr class="memdesc:ga7e1971ccc931b2c3f037e49d060c81b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Incorporate modules.  <a href="group__lbal__compiler.html#ga7e1971ccc931b2c3f037e49d060c81b4">More...</a><br /></td></tr>
-<tr class="separator:ga7e1971ccc931b2c3f037e49d060c81b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga38e4c48a4aa057f370b3d21e4a0054f3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga38e4c48a4aa057f370b3d21e4a0054f3">LBAL_CPP2A_NONTYPE_TEMPLATE_ARGS_FIXES</a></td></tr>
-<tr class="memdesc:ga38e4c48a4aa057f370b3d21e4a0054f3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address inconsistencies in handling of non-type template arguments.  <a href="group__lbal__compiler.html#ga38e4c48a4aa057f370b3d21e4a0054f3">More...</a><br /></td></tr>
-<tr class="separator:ga38e4c48a4aa057f370b3d21e4a0054f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gaedfe1b6293428b42e6fcffa0aa889a52"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gaedfe1b6293428b42e6fcffa0aa889a52">LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS</a></td></tr>
-<tr class="memdesc:gaedfe1b6293428b42e6fcffa0aa889a52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class Types in Non-Type Template Parameters.  <a href="group__lbal__compiler.html#gaedfe1b6293428b42e6fcffa0aa889a52">More...</a><br /></td></tr>
-<tr class="separator:gaedfe1b6293428b42e6fcffa0aa889a52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga169c5ae26a332d028ac116bb8a34f01c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga169c5ae26a332d028ac116bb8a34f01c">LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR</a></td></tr>
-<tr class="memdesc:ga169c5ae26a332d028ac116bb8a34f01c"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the original three-way comparison operator.  <a href="group__lbal__compiler.html#ga169c5ae26a332d028ac116bb8a34f01c">More...</a><br /></td></tr>
-<tr class="separator:ga169c5ae26a332d028ac116bb8a34f01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga7834b32830edc87483617f5f7cf335ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga7834b32830edc87483617f5f7cf335ad">LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX</a></td></tr>
-<tr class="memdesc:ga7834b32830edc87483617f5f7cf335ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the original three-way comparison operator.  <a href="group__lbal__compiler.html#ga7834b32830edc87483617f5f7cf335ad">More...</a><br /></td></tr>
-<tr class="separator:ga7834b32830edc87483617f5f7cf335ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gac9c0230950c29c0e5c0dceb9fdc485ac"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gac9c0230950c29c0e5c0dceb9fdc485ac">LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP</a></td></tr>
-<tr class="memdesc:gac9c0230950c29c0e5c0dceb9fdc485ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the updated three-way comparison operator.  <a href="group__lbal__compiler.html#gac9c0230950c29c0e5c0dceb9fdc485ac">More...</a><br /></td></tr>
-<tr class="separator:gac9c0230950c29c0e5c0dceb9fdc485ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga6450d7df0efa95d485c53532dbe2375e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga6450d7df0efa95d485c53532dbe2375e">LBAL_CPP2A_TYPENAME_OPTIONAL</a></td></tr>
-<tr class="separator:ga6450d7df0efa95d485c53532dbe2375e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:gacd60df165cc13aa8d7a156ce430e631e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gacd60df165cc13aa8d7a156ce430e631e">LBAL_CPP2A_USING_ENUM</a></td></tr>
-<tr class="memdesc:gacd60df165cc13aa8d7a156ce430e631e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specify using aliases for enums.  <a href="group__lbal__compiler.html#gacd60df165cc13aa8d7a156ce430e631e">More...</a><br /></td></tr>
-<tr class="separator:gacd60df165cc13aa8d7a156ce430e631e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ga74733c861b39998b5a15ff29edce75da"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga74733c861b39998b5a15ff29edce75da">LBAL_CPP2A_VA_OPT</a></td></tr>
-<tr class="memdesc:ga74733c861b39998b5a15ff29edce75da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provide a smarter predefined macro equivalent to <b>VA__ARGS</b>  <a href="group__lbal__compiler.html#ga74733c861b39998b5a15ff29edce75da">More...</a><br /></td></tr>
-<tr class="separator:ga74733c861b39998b5a15ff29edce75da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9db66773ebe3c231daf1b63f7a5a33db"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga9db66773ebe3c231daf1b63f7a5a33db">LBAL_CPP20_AGGREGATE_PAREN_INIT</a></td></tr>
+<tr class="memdesc:ga9db66773ebe3c231daf1b63f7a5a33db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow aggregate initialization from parentheses as well as braces.  <a href="group__lbal__compiler.html#ga9db66773ebe3c231daf1b63f7a5a33db">More...</a><br /></td></tr>
+<tr class="separator:ga9db66773ebe3c231daf1b63f7a5a33db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga39be3e75fe430b844d1b3cba16ffe51a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga39be3e75fe430b844d1b3cba16ffe51a">LBAL_CPP20_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS</a></td></tr>
+<tr class="separator:ga39be3e75fe430b844d1b3cba16ffe51a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf9377b80038c54750b3d8b7d0103dc4a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gaf9377b80038c54750b3d8b7d0103dc4a">LBAL_CPP20_ATTRIBUTE_LIKELY</a></td></tr>
+<tr class="separator:gaf9377b80038c54750b3d8b7d0103dc4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga86de48d04ee2ef8893280f062815615e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga86de48d04ee2ef8893280f062815615e">LBAL_CPP20_ATTRIBUTE_NODISCARD_EXPANDED</a></td></tr>
+<tr class="memdesc:ga86de48d04ee2ef8893280f062815615e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add explanatory text to the <code>nodiscard</code> attribute and allow it on constructors.  <a href="group__lbal__compiler.html#ga86de48d04ee2ef8893280f062815615e">More...</a><br /></td></tr>
+<tr class="separator:ga86de48d04ee2ef8893280f062815615e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6e5828824abbfd609537b36e35192124"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga6e5828824abbfd609537b36e35192124">LBAL_CPP20_ATTRIBUTE_UNLIKELY</a></td></tr>
+<tr class="separator:ga6e5828824abbfd609537b36e35192124"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga788b983faf54aad5066c56c4dc548ec8"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga788b983faf54aad5066c56c4dc548ec8">LBAL_CPP20_ATTRIBUTES_LIKELY_AND_UNLIKELY</a></td></tr>
+<tr class="memdesc:ga788b983faf54aad5066c56c4dc548ec8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Aggregate tracking the availability of <code>likely</code> and <code>unlikely</code> attributes.  <a href="group__lbal__compiler.html#ga788b983faf54aad5066c56c4dc548ec8">More...</a><br /></td></tr>
+<tr class="separator:ga788b983faf54aad5066c56c4dc548ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf87dd7702331f1dc28f3fa076bc7fa53"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gaf87dd7702331f1dc28f3fa076bc7fa53">LBAL_CPP20_ATTRIBUTE_NO_UNIQUE_ADDRESS</a></td></tr>
+<tr class="separator:gaf87dd7702331f1dc28f3fa076bc7fa53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2b0b0d6ba7bf4cc89b0998885cd40e0c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga2b0b0d6ba7bf4cc89b0998885cd40e0c">LBAL_CPP20_CHAR8_T</a></td></tr>
+<tr class="memdesc:ga2b0b0d6ba7bf4cc89b0998885cd40e0c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add <code>char8_t</code> as a UTF-8 equivalent for <code>char16_t</code> and <code>char32_t</code>.  <a href="group__lbal__compiler.html#ga2b0b0d6ba7bf4cc89b0998885cd40e0c">More...</a><br /></td></tr>
+<tr class="separator:ga2b0b0d6ba7bf4cc89b0998885cd40e0c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3d71530e7bc8a7672e1d44d6a17379cd"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga3d71530e7bc8a7672e1d44d6a17379cd">LBAL_CPP20_CONCEPTS</a></td></tr>
+<tr class="memdesc:ga3d71530e7bc8a7672e1d44d6a17379cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Incorporate the Concepts TS into the Standard.  <a href="group__lbal__compiler.html#ga3d71530e7bc8a7672e1d44d6a17379cd">More...</a><br /></td></tr>
+<tr class="separator:ga3d71530e7bc8a7672e1d44d6a17379cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga34f1d84dfd4dbc9863b1a747e85f0506"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga34f1d84dfd4dbc9863b1a747e85f0506">LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS</a></td></tr>
+<tr class="memdesc:ga34f1d84dfd4dbc9863b1a747e85f0506"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refine definition of return-type-requirements.  <a href="group__lbal__compiler.html#ga34f1d84dfd4dbc9863b1a747e85f0506">More...</a><br /></td></tr>
+<tr class="separator:ga34f1d84dfd4dbc9863b1a747e85f0506"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga773947b0761bd5323a40fe0577aa4239"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga773947b0761bd5323a40fe0577aa4239">LBAL_CPP20_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS</a></td></tr>
+<tr class="memdesc:ga773947b0761bd5323a40fe0577aa4239"><td class="mdescLeft">&#160;</td><td class="mdescRight">Refine definition of return-type-requirements.  <a href="group__lbal__compiler.html#ga773947b0761bd5323a40fe0577aa4239">More...</a><br /></td></tr>
+<tr class="separator:ga773947b0761bd5323a40fe0577aa4239"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga07978a593a0d1496a9ac2138138f86ad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga07978a593a0d1496a9ac2138138f86ad">LBAL_CPP20_CONDITIONAL_EXPLICIT</a></td></tr>
+<tr class="separator:ga07978a593a0d1496a9ac2138138f86ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga44a99ef5d9d60f7939f85ef329056652"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga44a99ef5d9d60f7939f85ef329056652">LBAL_CPP20_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS</a></td></tr>
+<tr class="separator:ga44a99ef5d9d60f7939f85ef329056652"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2b2f701ef8bfdb176df9609c93f4b7b1"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga2b2f701ef8bfdb176df9609c93f4b7b1">LBAL_CPP20_CONSTEVAL</a></td></tr>
+<tr class="memdesc:ga2b2f701ef8bfdb176df9609c93f4b7b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Immediate functions.  <a href="group__lbal__compiler.html#ga2b2f701ef8bfdb176df9609c93f4b7b1">More...</a><br /></td></tr>
+<tr class="separator:ga2b2f701ef8bfdb176df9609c93f4b7b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9c5ee8970e5763ca755725520017472f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga9c5ee8970e5763ca755725520017472f">LBAL_CPP20_CONSTEXPR_DYNAMIC_ALLOC</a></td></tr>
+<tr class="memdesc:ga9c5ee8970e5763ca755725520017472f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Language support for variable-sized containers suitable for use in constexpr computations.  <a href="group__lbal__compiler.html#ga9c5ee8970e5763ca755725520017472f">More...</a><br /></td></tr>
+<tr class="separator:ga9c5ee8970e5763ca755725520017472f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gadca4dc49f25ab4c58bd8b0d4dfdadb82"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gadca4dc49f25ab4c58bd8b0d4dfdadb82">LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM</a></td></tr>
+<tr class="memdesc:gadca4dc49f25ab4c58bd8b0d4dfdadb82"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow <code>dynamic_cast</code>, polymorphic <code>typeid</code> in <code>constexpr</code> functions.  <a href="group__lbal__compiler.html#gadca4dc49f25ab4c58bd8b0d4dfdadb82">More...</a><br /></td></tr>
+<tr class="separator:gadca4dc49f25ab4c58bd8b0d4dfdadb82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2be283c71ae2b548ab5e5e7d79fcfee4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga2be283c71ae2b548ab5e5e7d79fcfee4">LBAL_CPP20_CONSTEXPR_IN_DECLTYPE</a></td></tr>
+<tr class="memdesc:ga2be283c71ae2b548ab5e5e7d79fcfee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address Core Issue regarding when <code>constexpr</code> functions are defined.  <a href="group__lbal__compiler.html#ga2be283c71ae2b548ab5e5e7d79fcfee4">More...</a><br /></td></tr>
+<tr class="separator:ga2be283c71ae2b548ab5e5e7d79fcfee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga7e729ea692a12af325664b402c3d171f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga7e729ea692a12af325664b402c3d171f">LBAL_CPP20_CONSTEXPR_INTRINSICS</a></td></tr>
+<tr class="memdesc:ga7e729ea692a12af325664b402c3d171f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permit unevaluated inline assembly in <code>constexpr</code> functions.  <a href="group__lbal__compiler.html#ga7e729ea692a12af325664b402c3d171f">More...</a><br /></td></tr>
+<tr class="separator:ga7e729ea692a12af325664b402c3d171f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa8d376afb716039726c0ddaa5fb3be64"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gaa8d376afb716039726c0ddaa5fb3be64">LBAL_CPP20_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION</a></td></tr>
+<tr class="memdesc:gaa8d376afb716039726c0ddaa5fb3be64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address an inconsistency in the lambda specification.  <a href="group__lbal__compiler.html#gaa8d376afb716039726c0ddaa5fb3be64">More...</a><br /></td></tr>
+<tr class="separator:gaa8d376afb716039726c0ddaa5fb3be64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4385e7af36e6d7c18fcd294c4387385d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga4385e7af36e6d7c18fcd294c4387385d">LBAL_CPP20_CONSTEXPR_TRY_CATCH</a></td></tr>
+<tr class="memdesc:ga4385e7af36e6d7c18fcd294c4387385d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permit unevaluated inline assembly in constexpr functions.  <a href="group__lbal__compiler.html#ga4385e7af36e6d7c18fcd294c4387385d">More...</a><br /></td></tr>
+<tr class="separator:ga4385e7af36e6d7c18fcd294c4387385d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gabbf3b72af534613d0d113907986a7206"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gabbf3b72af534613d0d113907986a7206">LBAL_CPP20_CONSTEXPR_UNION_ALTERATION</a></td></tr>
+<tr class="memdesc:gabbf3b72af534613d0d113907986a7206"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow changing the active member of a <code>union</code> in constexpr functions.  <a href="group__lbal__compiler.html#gabbf3b72af534613d0d113907986a7206">More...</a><br /></td></tr>
+<tr class="separator:gabbf3b72af534613d0d113907986a7206"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga75b15142d974ddefdf741bc53b130dc7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga75b15142d974ddefdf741bc53b130dc7">LBAL_CPP20_CONSTEXPR_VIRTUAL_FUNCTION</a></td></tr>
+<tr class="memdesc:ga75b15142d974ddefdf741bc53b130dc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow virtual function calls in constexpr functions.  <a href="group__lbal__compiler.html#ga75b15142d974ddefdf741bc53b130dc7">More...</a><br /></td></tr>
+<tr class="separator:ga75b15142d974ddefdf741bc53b130dc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad432998d45aab8fcb22adbdf2539b43e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gad432998d45aab8fcb22adbdf2539b43e">LBAL_CPP20_CONSTINIT</a></td></tr>
+<tr class="memdesc:gad432998d45aab8fcb22adbdf2539b43e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add the <code>constinit</code> keyword.  <a href="group__lbal__compiler.html#gad432998d45aab8fcb22adbdf2539b43e">More...</a><br /></td></tr>
+<tr class="separator:gad432998d45aab8fcb22adbdf2539b43e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8c250fd92de00eec7442cc5be6d12617"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga8c250fd92de00eec7442cc5be6d12617">LBAL_CPP20_IMPL_COROUTINE</a></td></tr>
+<tr class="memdesc:ga8c250fd92de00eec7442cc5be6d12617"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add necessary language support for the <code>&lt;coroutine&gt;</code> library feature.  <a href="group__lbal__compiler.html#ga8c250fd92de00eec7442cc5be6d12617">More...</a><br /></td></tr>
+<tr class="separator:ga8c250fd92de00eec7442cc5be6d12617"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga05ab164b2b7126201a68269995676cbe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga05ab164b2b7126201a68269995676cbe">LBAL_CPP20_DEDUCTION_GUIDES_FOR_AGGREGATES</a></td></tr>
+<tr class="memdesc:ga05ab164b2b7126201a68269995676cbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class template argument deduction for aggregates.  <a href="group__lbal__compiler.html#ga05ab164b2b7126201a68269995676cbe">More...</a><br /></td></tr>
+<tr class="separator:ga05ab164b2b7126201a68269995676cbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf20cc08c33548216da282608df6ccdef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gaf20cc08c33548216da282608df6ccdef">LBAL_CPP20_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS</a></td></tr>
+<tr class="separator:gaf20cc08c33548216da282608df6ccdef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2b0d23bf4e559e30700812ebea36bec5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga2b0d23bf4e559e30700812ebea36bec5">LBAL_CPP20_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS</a></td></tr>
+<tr class="separator:ga2b0d23bf4e559e30700812ebea36bec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa9797502d6f53b871f692749bce84985"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gaa9797502d6f53b871f692749bce84985">LBAL_CPP20_DESIGNATED_INITIALIZERS</a></td></tr>
+<tr class="separator:gaa9797502d6f53b871f692749bce84985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gac254b3b2b1d33acd5c822ff3e05c16f7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gac254b3b2b1d33acd5c822ff3e05c16f7">LBAL_CPP20_DESTROYING_DELETE</a></td></tr>
+<tr class="memdesc:gac254b3b2b1d33acd5c822ff3e05c16f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Efficient sized delete for variable sized classes.  <a href="group__lbal__compiler.html#gac254b3b2b1d33acd5c822ff3e05c16f7">More...</a><br /></td></tr>
+<tr class="separator:gac254b3b2b1d33acd5c822ff3e05c16f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4b8e6baee8303f2a5b6867914e757596"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga4b8e6baee8303f2a5b6867914e757596">LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST</a></td></tr>
+<tr class="memdesc:ga4b8e6baee8303f2a5b6867914e757596"><td class="mdescLeft">&#160;</td><td class="mdescRight">Generic (Polymorphic) Lambda Expressions.  <a href="group__lbal__compiler.html#ga4b8e6baee8303f2a5b6867914e757596">More...</a><br /></td></tr>
+<tr class="separator:ga4b8e6baee8303f2a5b6867914e757596"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga6addf62cfce8ddeff19f1338839e4d85"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga6addf62cfce8ddeff19f1338839e4d85">LBAL_CPP20_INIT_CAPTURES_PACK_EXPANSION</a></td></tr>
+<tr class="memdesc:ga6addf62cfce8ddeff19f1338839e4d85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allow pack-expansion in lambda init-capture.  <a href="group__lbal__compiler.html#ga6addf62cfce8ddeff19f1338839e4d85">More...</a><br /></td></tr>
+<tr class="separator:ga6addf62cfce8ddeff19f1338839e4d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga340502f5bf897759f46863306e1b7753"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga340502f5bf897759f46863306e1b7753">LBAL_CPP20_INIT_STATEMENTS_FOR_RANGE_BASED_FOR</a></td></tr>
+<tr class="separator:ga340502f5bf897759f46863306e1b7753"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga914386737153f51bbf79976ebb308e35"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga914386737153f51bbf79976ebb308e35">LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION</a></td></tr>
+<tr class="separator:ga914386737153f51bbf79976ebb308e35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga44e05aa3156cb6f6f5fb6f4b77ab318d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga44e05aa3156cb6f6f5fb6f4b77ab318d">LBAL_CPP20_INTEGRATING_OUR_FEATURE_TEST_MACROS</a></td></tr>
+<tr class="memdesc:ga44e05aa3156cb6f6f5fb6f4b77ab318d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Integrate universal feature test macros into the Standard.  <a href="group__lbal__compiler.html#ga44e05aa3156cb6f6f5fb6f4b77ab318d">More...</a><br /></td></tr>
+<tr class="separator:ga44e05aa3156cb6f6f5fb6f4b77ab318d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga1fa2214f6df15b5798234c8d29b66370"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga1fa2214f6df15b5798234c8d29b66370">LBAL_CPP20_MODULES</a></td></tr>
+<tr class="memdesc:ga1fa2214f6df15b5798234c8d29b66370"><td class="mdescLeft">&#160;</td><td class="mdescRight">Incorporate modules.  <a href="group__lbal__compiler.html#ga1fa2214f6df15b5798234c8d29b66370">More...</a><br /></td></tr>
+<tr class="separator:ga1fa2214f6df15b5798234c8d29b66370"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaf25411b90e8cc4a0b35827acb6ea2232"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gaf25411b90e8cc4a0b35827acb6ea2232">LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FIXES</a></td></tr>
+<tr class="memdesc:gaf25411b90e8cc4a0b35827acb6ea2232"><td class="mdescLeft">&#160;</td><td class="mdescRight">Address inconsistencies in handling of non-type template arguments.  <a href="group__lbal__compiler.html#gaf25411b90e8cc4a0b35827acb6ea2232">More...</a><br /></td></tr>
+<tr class="separator:gaf25411b90e8cc4a0b35827acb6ea2232"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9692cd7ea998c3cfd07d60425bacf5a2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga9692cd7ea998c3cfd07d60425bacf5a2">LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS</a></td></tr>
+<tr class="memdesc:ga9692cd7ea998c3cfd07d60425bacf5a2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Class Types in Non-Type Template Parameters.  <a href="group__lbal__compiler.html#ga9692cd7ea998c3cfd07d60425bacf5a2">More...</a><br /></td></tr>
+<tr class="separator:ga9692cd7ea998c3cfd07d60425bacf5a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gae821ba8fc6d29f94ddcc8f1a28cf893a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#gae821ba8fc6d29f94ddcc8f1a28cf893a">LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR</a></td></tr>
+<tr class="memdesc:gae821ba8fc6d29f94ddcc8f1a28cf893a"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the original three-way comparison operator.  <a href="group__lbal__compiler.html#gae821ba8fc6d29f94ddcc8f1a28cf893a">More...</a><br /></td></tr>
+<tr class="separator:gae821ba8fc6d29f94ddcc8f1a28cf893a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga4ee29c52fe9c90cb8e04e32da52dfef9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga4ee29c52fe9c90cb8e04e32da52dfef9">LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX</a></td></tr>
+<tr class="memdesc:ga4ee29c52fe9c90cb8e04e32da52dfef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the original three-way comparison operator.  <a href="group__lbal__compiler.html#ga4ee29c52fe9c90cb8e04e32da52dfef9">More...</a><br /></td></tr>
+<tr class="separator:ga4ee29c52fe9c90cb8e04e32da52dfef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga8023cb472c7aae34e40781518f2a9705"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga8023cb472c7aae34e40781518f2a9705">LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_TUNEUP</a></td></tr>
+<tr class="memdesc:ga8023cb472c7aae34e40781518f2a9705"><td class="mdescLeft">&#160;</td><td class="mdescRight">This is the updated three-way comparison operator.  <a href="group__lbal__compiler.html#ga8023cb472c7aae34e40781518f2a9705">More...</a><br /></td></tr>
+<tr class="separator:ga8023cb472c7aae34e40781518f2a9705"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga2336eb9a65b554543ce9138532ef51c7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga2336eb9a65b554543ce9138532ef51c7">LBAL_CPP20_TYPENAME_OPTIONAL</a></td></tr>
+<tr class="separator:ga2336eb9a65b554543ce9138532ef51c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga9f9a0a343744063d9fa63b08b7aeff1a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga9f9a0a343744063d9fa63b08b7aeff1a">LBAL_CPP20_USING_ENUM</a></td></tr>
+<tr class="memdesc:ga9f9a0a343744063d9fa63b08b7aeff1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Specify using aliases for enums.  <a href="group__lbal__compiler.html#ga9f9a0a343744063d9fa63b08b7aeff1a">More...</a><br /></td></tr>
+<tr class="separator:ga9f9a0a343744063d9fa63b08b7aeff1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga3ebeef621949ff4a9277dc1cab1dc4fe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__lbal__compiler.html#ga3ebeef621949ff4a9277dc1cab1dc4fe">LBAL_CPP20_VA_OPT</a></td></tr>
+<tr class="memdesc:ga3ebeef621949ff4a9277dc1cab1dc4fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Provide a smarter predefined macro equivalent to <b>VA__ARGS</b>  <a href="group__lbal__compiler.html#ga3ebeef621949ff4a9277dc1cab1dc4fe">More...</a><br /></td></tr>
+<tr class="separator:ga3ebeef621949ff4a9277dc1cab1dc4fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="member-group"></a>
 Technical Specifications and Proposals</h2></td></tr>
@@ -461,7 +459,7 @@ LBAL_C99</h2></td></tr>
 <p>Note that these tokens are neither exhaustive nor bounded:</p>
 <ul>
 <li>Features which are available in all supported compilers are not required to have associated tokens. However, features that could conceivably be manually disabled in a given compiler—e.g., exception handling—always have tokens; whether the token is set to a non-<code>0</code> value depends on the feature’s availability at build time.</li>
-<li>Features we (the developers) have not had cause to use or care about are often not represented right away. Eventually, all language features accepted into the Standard from C++2a onwards will appear here.</li>
+<li>Features we (the developers) have not had cause to use or care about are often not represented right away. Eventually, all language features accepted into the Standard from C++20 onwards will appear here.</li>
 <li>Features from proposals to the Standard may have flags here; in some cases, this may occur for proposed features that have not been accepted into the Standard, e.g., as part of a Technical Specification. This typically happens with de facto standards (e.g., variants on symbol visibility handling) when it relates to language features. This sort of thing is much more common for proposed library features (e.g., <code>likely</code>/<code>unlikely</code> support was made available long before it was formally voted in).</li>
 </ul>
 <p>Finally, the descriptions of the various language and library features listed here tend to be terse or oblique. This is because this documentation is not intended to be a C++ reference there are much better references out there. Rather, it is hoped that enough context is given to remind you of what a given feature does, and then any additional notes are intended only to describe gotchas and implementation oddities specific to the feature detection problem domain.</p>
@@ -469,13 +467,13 @@ LBAL_C99</h2></td></tr>
 <dd>
 <b>SEEME</b> Note that there are ambiguous cases where a feature may have been updated, e.g., as a result of a Defect Report (DR), but a new SD-6 value has not been assigned; this can be further complicated if the DR resolution is not finalized, meaning that the available feature is in an intermediate state. Currently, we have no policy for dealing with this situation, as it has not arisen yet in practice.</dd>
 <dd>
-<b>APIME</b> Previous iterations of this header also attempted to determine whether various C99 and C11 features were available. This turned out to be impractical and a bit pointless. As a result, such features are only tracked - if they are tracked at all - in the context of their applicability to a given C++ Standard, e.g., support for the C99 preprocessor as required by C++11, and the C11 preprocessor as required by C++2a.</dd>
+<b>APIME</b> Previous iterations of this header also attempted to determine whether various C99 and C11 features were available. This turned out to be impractical and a bit pointless. As a result, such features are only tracked - if they are tracked at all - in the context of their applicability to a given C++ Standard, e.g., support for the C99 preprocessor as required by C++11, and the C11 preprocessor as required by C++20.</dd>
 <dd>
 <b>SEEME</b> Some implementations may choose to make a feature available to an earlier C++ release than the the first officially supported one. This can be done, for example, to make features available from a Draft Standard. Generally, we don’t second-guess the implementation if they set an SD-6 macro a particular—unless we have good reason to know it was set incorrectly. More challenging is dealing with implementations that <em>don’t</em> have SD-6 macros. Our approach in this case is to identify a feature as available if the implementation is known to support it <em>and</em> the Language version in use is greater than the last unsupported version; this latter condition catches the frequent convention of compilers identifying a future unreleased dialect as the last Standard (e.g., 201103L) plus one (e.g., 201104L), until the Standard is official and the the version changes (e.g., to 201402L).</dd>
 <dd>
-<b>APIME</b> Features prior to the C++2a Standard are represented by tokens generally only if they have equivalent SD-6 tokens. Support can be broadened if there is demand.</dd>
+<b>APIME</b> Features prior to the C++20 Standard are represented by tokens generally only if they have equivalent SD-6 tokens. Support can be broadened if there is demand.</dd>
 <dd>
-The SD-6 tokens and their values referenced here are current as of the 2019-10-02 revision. </dd></dl>
+The SD-6 tokens and their values referenced here are current as of the 2020-05-02 revision. </dd></dl>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="gadd397e50e35c7986b0e4eb963c7e11e3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gadd397e50e35c7986b0e4eb963c7e11e3">&#9670;&nbsp;</a></span>LBAL_C99_PREPROCESSOR</h2>
@@ -525,7 +523,7 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 <p>Optimization hint when compiling with certain memory models. </p>
 <p>Equivalent SD-6 test: <code>__has_cpp_attribute(carries_dependency)</code></p><ul>
-<li><a href="https://wg21.link/N2761">200809L</a> <b>PDF</b> </li>
+<li><a href="https://wg21.link/N2782">200809L</a> <b>PDF</b> </li>
 </ul>
 
 </div>
@@ -1680,14 +1678,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="ga5dc90e36dc83aeef8bba4e9e675b5518"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga5dc90e36dc83aeef8bba4e9e675b5518">&#9670;&nbsp;</a></span>LBAL_CPP2A_AGGREGATE_PAREN_INIT</h2>
+<a id="ga9db66773ebe3c231daf1b63f7a5a33db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9db66773ebe3c231daf1b63f7a5a33db">&#9670;&nbsp;</a></span>LBAL_CPP20_AGGREGATE_PAREN_INIT</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_AGGREGATE_PAREN_INIT</td>
+          <td class="memname">#define LBAL_CPP20_AGGREGATE_PAREN_INIT</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1700,14 +1698,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="gad8b97f519adf1c50cb150451a2e1c76a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad8b97f519adf1c50cb150451a2e1c76a">&#9670;&nbsp;</a></span>LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS</h2>
+<a id="ga39be3e75fe430b844d1b3cba16ffe51a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga39be3e75fe430b844d1b3cba16ffe51a">&#9670;&nbsp;</a></span>LBAL_CPP20_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS</td>
+          <td class="memname">#define LBAL_CPP20_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1717,14 +1715,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="gaa5b1a4689401fcda41810f5aa53bfaff"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa5b1a4689401fcda41810f5aa53bfaff">&#9670;&nbsp;</a></span>LBAL_CPP2A_ATTRIBUTE_LIKELY</h2>
+<a id="gaf9377b80038c54750b3d8b7d0103dc4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf9377b80038c54750b3d8b7d0103dc4a">&#9670;&nbsp;</a></span>LBAL_CPP20_ATTRIBUTE_LIKELY</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_ATTRIBUTE_LIKELY</td>
+          <td class="memname">#define LBAL_CPP20_ATTRIBUTE_LIKELY</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1734,14 +1732,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="ga0013c84c56323368c12af883e4c23e10"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0013c84c56323368c12af883e4c23e10">&#9670;&nbsp;</a></span>LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS</h2>
+<a id="gaf87dd7702331f1dc28f3fa076bc7fa53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf87dd7702331f1dc28f3fa076bc7fa53">&#9670;&nbsp;</a></span>LBAL_CPP20_ATTRIBUTE_NO_UNIQUE_ADDRESS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS</td>
+          <td class="memname">#define LBAL_CPP20_ATTRIBUTE_NO_UNIQUE_ADDRESS</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1751,14 +1749,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="ga85499167552bb3d74899ff18089b4b38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga85499167552bb3d74899ff18089b4b38">&#9670;&nbsp;</a></span>LBAL_CPP2A_ATTRIBUTE_NODISCARD_EXPANDED</h2>
+<a id="ga86de48d04ee2ef8893280f062815615e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga86de48d04ee2ef8893280f062815615e">&#9670;&nbsp;</a></span>LBAL_CPP20_ATTRIBUTE_NODISCARD_EXPANDED</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_ATTRIBUTE_NODISCARD_EXPANDED</td>
+          <td class="memname">#define LBAL_CPP20_ATTRIBUTE_NODISCARD_EXPANDED</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1773,14 +1771,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="gad60278378879ca580165c80bcfecab5a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gad60278378879ca580165c80bcfecab5a">&#9670;&nbsp;</a></span>LBAL_CPP2A_ATTRIBUTE_UNLIKELY</h2>
+<a id="ga6e5828824abbfd609537b36e35192124"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6e5828824abbfd609537b36e35192124">&#9670;&nbsp;</a></span>LBAL_CPP20_ATTRIBUTE_UNLIKELY</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_ATTRIBUTE_UNLIKELY</td>
+          <td class="memname">#define LBAL_CPP20_ATTRIBUTE_UNLIKELY</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1790,14 +1788,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="ga8eb83bdbad7517a268eb50afe55c9693"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8eb83bdbad7517a268eb50afe55c9693">&#9670;&nbsp;</a></span>LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY</h2>
+<a id="ga788b983faf54aad5066c56c4dc548ec8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga788b983faf54aad5066c56c4dc548ec8">&#9670;&nbsp;</a></span>LBAL_CPP20_ATTRIBUTES_LIKELY_AND_UNLIKELY</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY</td>
+          <td class="memname">#define LBAL_CPP20_ATTRIBUTES_LIKELY_AND_UNLIKELY</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1810,14 +1808,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="gac1a2b6e9d1b28af4c52efd8dda016498"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac1a2b6e9d1b28af4c52efd8dda016498">&#9670;&nbsp;</a></span>LBAL_CPP2A_CHAR8_T</h2>
+<a id="ga2b0b0d6ba7bf4cc89b0998885cd40e0c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2b0b0d6ba7bf4cc89b0998885cd40e0c">&#9670;&nbsp;</a></span>LBAL_CPP20_CHAR8_T</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CHAR8_T</td>
+          <td class="memname">#define LBAL_CPP20_CHAR8_T</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1829,14 +1827,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="gaa562304c10aac6e1cf130504abd2b3bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa562304c10aac6e1cf130504abd2b3bf">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONCEPTS</h2>
+<a id="ga3d71530e7bc8a7672e1d44d6a17379cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3d71530e7bc8a7672e1d44d6a17379cd">&#9670;&nbsp;</a></span>LBAL_CPP20_CONCEPTS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONCEPTS</td>
+          <td class="memname">#define LBAL_CPP20_CONCEPTS</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1853,14 +1851,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="ga73318c031d5b7f79ba1aef9763778649"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga73318c031d5b7f79ba1aef9763778649">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS</h2>
+<a id="ga773947b0761bd5323a40fe0577aa4239"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga773947b0761bd5323a40fe0577aa4239">&#9670;&nbsp;</a></span>LBAL_CPP20_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS</td>
+          <td class="memname">#define LBAL_CPP20_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1877,14 +1875,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="ga2d01bba1085cb0eb01cd8f32409dd739"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2d01bba1085cb0eb01cd8f32409dd739">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS</h2>
+<a id="ga34f1d84dfd4dbc9863b1a747e85f0506"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga34f1d84dfd4dbc9863b1a747e85f0506">&#9670;&nbsp;</a></span>LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS</td>
+          <td class="memname">#define LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1901,14 +1899,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="ga94e0777f35262608ac169fa5f5c125f6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga94e0777f35262608ac169fa5f5c125f6">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONDITIONAL_EXPLICIT</h2>
+<a id="ga07978a593a0d1496a9ac2138138f86ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga07978a593a0d1496a9ac2138138f86ad">&#9670;&nbsp;</a></span>LBAL_CPP20_CONDITIONAL_EXPLICIT</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONDITIONAL_EXPLICIT</td>
+          <td class="memname">#define LBAL_CPP20_CONDITIONAL_EXPLICIT</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1919,14 +1917,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="ga2b198fbd60be8fe32edd3abce96e850a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga2b198fbd60be8fe32edd3abce96e850a">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS</h2>
+<a id="ga44a99ef5d9d60f7939f85ef329056652"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga44a99ef5d9d60f7939f85ef329056652">&#9670;&nbsp;</a></span>LBAL_CPP20_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS</td>
+          <td class="memname">#define LBAL_CPP20_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1936,14 +1934,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="ga0d5820b4731f1af0e406ba293e25de41"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0d5820b4731f1af0e406ba293e25de41">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONSTEVAL</h2>
+<a id="ga2b2f701ef8bfdb176df9609c93f4b7b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2b2f701ef8bfdb176df9609c93f4b7b1">&#9670;&nbsp;</a></span>LBAL_CPP20_CONSTEVAL</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONSTEVAL</td>
+          <td class="memname">#define LBAL_CPP20_CONSTEVAL</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1955,14 +1953,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="ga54cd34c85fca356c75c010bb749dd5ba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga54cd34c85fca356c75c010bb749dd5ba">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC</h2>
+<a id="ga9c5ee8970e5763ca755725520017472f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9c5ee8970e5763ca755725520017472f">&#9670;&nbsp;</a></span>LBAL_CPP20_CONSTEXPR_DYNAMIC_ALLOC</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC</td>
+          <td class="memname">#define LBAL_CPP20_CONSTEXPR_DYNAMIC_ALLOC</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -1975,14 +1973,14 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 
 </div>
 </div>
-<a id="gadcbe7bfff8b56bb9f95c33ffc09163a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gadcbe7bfff8b56bb9f95c33ffc09163a5">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</h2>
+<a id="gadca4dc49f25ab4c58bd8b0d4dfdadb82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gadca4dc49f25ab4c58bd8b0d4dfdadb82">&#9670;&nbsp;</a></span>LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</td>
+          <td class="memname">#define LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2001,18 +1999,18 @@ The SD-6 tokens and their values referenced here are current as of the 2019-10-0
 </ul>
 <dl class="section remark"><dt>Remarks</dt><dd><code>__cpp_constexpr</code> has many values associated with it, taken from a number of different proposals. </dd>
 <dd>
-This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LBAL_CPP2A_CONSTEXPR_UNION_ALTERATION</code> variants are aliases for each other. </dd></dl>
+This and the <code>LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LBAL_CPP20_CONSTEXPR_UNION_ALTERATION</code> variants are aliases for each other. </dd></dl>
 
 </div>
 </div>
-<a id="ga1a955ae380bf7ca88e03b09aac96c437"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1a955ae380bf7ca88e03b09aac96c437">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONSTEXPR_IN_DECLTYPE</h2>
+<a id="ga2be283c71ae2b548ab5e5e7d79fcfee4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2be283c71ae2b548ab5e5e7d79fcfee4">&#9670;&nbsp;</a></span>LBAL_CPP20_CONSTEXPR_IN_DECLTYPE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONSTEXPR_IN_DECLTYPE</td>
+          <td class="memname">#define LBAL_CPP20_CONSTEXPR_IN_DECLTYPE</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2024,14 +2022,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="ga4ffa3c194958ac481ef649048ae22d18"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga4ffa3c194958ac481ef649048ae22d18">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONSTEXPR_INTRINSICS</h2>
+<a id="ga7e729ea692a12af325664b402c3d171f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga7e729ea692a12af325664b402c3d171f">&#9670;&nbsp;</a></span>LBAL_CPP20_CONSTEXPR_INTRINSICS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONSTEXPR_INTRINSICS</td>
+          <td class="memname">#define LBAL_CPP20_CONSTEXPR_INTRINSICS</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2050,18 +2048,18 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 </ul>
 <dl class="section remark"><dt>Remarks</dt><dd><code>__cpp_constexpr</code> has many values associated with it, taken from a number of different proposals. </dd>
 <dd>
-This and the <code>LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION</code> variant are aliases for each other. </dd></dl>
+This and the <code>LBAL_CPP20_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION</code> variant are aliases for each other. </dd></dl>
 
 </div>
 </div>
-<a id="ga54ea8c13c91c53c23e7f37ad07a52129"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga54ea8c13c91c53c23e7f37ad07a52129">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION</h2>
+<a id="gaa8d376afb716039726c0ddaa5fb3be64"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa8d376afb716039726c0ddaa5fb3be64">&#9670;&nbsp;</a></span>LBAL_CPP20_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION</td>
+          <td class="memname">#define LBAL_CPP20_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2080,18 +2078,18 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION</code> va
 </ul>
 <dl class="section remark"><dt>Remarks</dt><dd><code>__cpp_constexpr</code> has many values associated with it, taken from a number of different proposals. </dd>
 <dd>
-This and the <code>LBAL_CPP2A_CONSTEXPR_INTRINSICS</code> variant are aliases for each other. </dd></dl>
+This and the <code>LBAL_CPP20_CONSTEXPR_INTRINSICS</code> variant are aliases for each other. </dd></dl>
 
 </div>
 </div>
-<a id="ga6bf319e0e543fa5ccda3ecfbd18e9e64"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6bf319e0e543fa5ccda3ecfbd18e9e64">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONSTEXPR_TRY_CATCH</h2>
+<a id="ga4385e7af36e6d7c18fcd294c4387385d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4385e7af36e6d7c18fcd294c4387385d">&#9670;&nbsp;</a></span>LBAL_CPP20_CONSTEXPR_TRY_CATCH</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONSTEXPR_TRY_CATCH</td>
+          <td class="memname">#define LBAL_CPP20_CONSTEXPR_TRY_CATCH</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2110,18 +2108,18 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_INTRINSICS</code> variant are aliases fo
 </ul>
 <dl class="section remark"><dt>Remarks</dt><dd><code>__cpp_constexpr</code> has many values associated with it, taken from a number of different proposals. </dd>
 <dd>
-This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LBAL_CPP2A_CONSTEXPR_UNION_ALTERATION</code> variants are aliases for each other. </dd></dl>
+This and the <code>LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LBAL_CPP20_CONSTEXPR_UNION_ALTERATION</code> variants are aliases for each other. </dd></dl>
 
 </div>
 </div>
-<a id="ga44be301282c87093d839a0ca3b38cfb8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga44be301282c87093d839a0ca3b38cfb8">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONSTEXPR_UNION_ALTERATION</h2>
+<a id="gabbf3b72af534613d0d113907986a7206"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gabbf3b72af534613d0d113907986a7206">&#9670;&nbsp;</a></span>LBAL_CPP20_CONSTEXPR_UNION_ALTERATION</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONSTEXPR_UNION_ALTERATION</td>
+          <td class="memname">#define LBAL_CPP20_CONSTEXPR_UNION_ALTERATION</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2140,18 +2138,18 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 </ul>
 <dl class="section remark"><dt>Remarks</dt><dd><code>__cpp_constexpr</code> has many values associated with it, taken from a number of different proposals. </dd>
 <dd>
-This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LBAL_CPP2A_CONSTEXPR_TRY_CATCH</code> variants are aliases for each other. </dd></dl>
+This and the <code>LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LBAL_CPP20_CONSTEXPR_TRY_CATCH</code> variants are aliases for each other. </dd></dl>
 
 </div>
 </div>
-<a id="ga39788f3eb222783d245d3f9a68499d41"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga39788f3eb222783d245d3f9a68499d41">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION</h2>
+<a id="ga75b15142d974ddefdf741bc53b130dc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga75b15142d974ddefdf741bc53b130dc7">&#9670;&nbsp;</a></span>LBAL_CPP20_CONSTEXPR_VIRTUAL_FUNCTION</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION</td>
+          <td class="memname">#define LBAL_CPP20_CONSTEXPR_VIRTUAL_FUNCTION</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2172,14 +2170,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="gaf5bbe3daff7887d67cc4a901ae1e59c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf5bbe3daff7887d67cc4a901ae1e59c3">&#9670;&nbsp;</a></span>LBAL_CPP2A_CONSTINIT</h2>
+<a id="gad432998d45aab8fcb22adbdf2539b43e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad432998d45aab8fcb22adbdf2539b43e">&#9670;&nbsp;</a></span>LBAL_CPP20_CONSTINIT</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_CONSTINIT</td>
+          <td class="memname">#define LBAL_CPP20_CONSTINIT</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2189,38 +2187,18 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 <p>Equivalent SD-6 macro: __cpp_constinit</p><ul>
 <li><a href="https://wg21.link/p1143r2">201907L</a></li>
 </ul>
-<dl class="section remark"><dt>Remarks</dt><dd>This feature is broadly intended to be back-portable to older C++ dialects; in certain circumstances it’s conceivable that <code>__cpp_constinit</code> will be set even if the dialect is older than C++2a. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>This feature is broadly intended to be back-portable to older C++ dialects; in certain circumstances it’s conceivable that <code>__cpp_constinit</code> will be set even if the dialect is older than C++20. </dd></dl>
 
 </div>
 </div>
-<a id="ga265e83859c9051043fe80add46265ee4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga265e83859c9051043fe80add46265ee4">&#9670;&nbsp;</a></span>LBAL_CPP2A_COROUTINES</h2>
+<a id="ga05ab164b2b7126201a68269995676cbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga05ab164b2b7126201a68269995676cbe">&#9670;&nbsp;</a></span>LBAL_CPP20_DEDUCTION_GUIDES_FOR_AGGREGATES</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_COROUTINES</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Add necessary language support for the <code>&lt;coroutine&gt;</code> library feature. </p>
-<p>Equivalent SD-6 macro: <code>__cpp_coroutines</code></p><ul>
-<li><a href="https://wg21.link/p0912r5">201902L</a></li>
-</ul>
-<dl class="section remark"><dt>Remarks</dt><dd>Technically, the proposal this is from only directs that the Coroutines TS be merged into the Standard. For reference the latest draft is <a href="https://wg21.link/n4775">n4775</a> <b>PDF</b>. </dd></dl>
-
-</div>
-</div>
-<a id="ga31ff9653c299083aa2ea09b384ae8c1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga31ff9653c299083aa2ea09b384ae8c1b">&#9670;&nbsp;</a></span>LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES</td>
+          <td class="memname">#define LBAL_CPP20_DEDUCTION_GUIDES_FOR_AGGREGATES</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2237,14 +2215,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="gaa62abd749876dc40bcf808b7ad653cd9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaa62abd749876dc40bcf808b7ad653cd9">&#9670;&nbsp;</a></span>LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS</h2>
+<a id="gaf20cc08c33548216da282608df6ccdef"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf20cc08c33548216da282608df6ccdef">&#9670;&nbsp;</a></span>LBAL_CPP20_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS</td>
+          <td class="memname">#define LBAL_CPP20_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2254,14 +2232,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="ga59d51e917840cc9bd1809e2dc6f2867f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga59d51e917840cc9bd1809e2dc6f2867f">&#9670;&nbsp;</a></span>LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS</h2>
+<a id="ga2b0d23bf4e559e30700812ebea36bec5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2b0d23bf4e559e30700812ebea36bec5">&#9670;&nbsp;</a></span>LBAL_CPP20_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS</td>
+          <td class="memname">#define LBAL_CPP20_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2271,14 +2249,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="ga0da46213f9a8d995bd2679c190136711"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga0da46213f9a8d995bd2679c190136711">&#9670;&nbsp;</a></span>LBAL_CPP2A_DESIGNATED_INITIALIZERS</h2>
+<a id="gaa9797502d6f53b871f692749bce84985"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaa9797502d6f53b871f692749bce84985">&#9670;&nbsp;</a></span>LBAL_CPP20_DESIGNATED_INITIALIZERS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_DESIGNATED_INITIALIZERS</td>
+          <td class="memname">#define LBAL_CPP20_DESIGNATED_INITIALIZERS</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2288,14 +2266,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="ga39b419b1ddd03ebd4bcb86ad515b7d37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga39b419b1ddd03ebd4bcb86ad515b7d37">&#9670;&nbsp;</a></span>LBAL_CPP2A_DESTROYING_DELETE</h2>
+<a id="gac254b3b2b1d33acd5c822ff3e05c16f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gac254b3b2b1d33acd5c822ff3e05c16f7">&#9670;&nbsp;</a></span>LBAL_CPP20_DESTROYING_DELETE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_DESTROYING_DELETE</td>
+          <td class="memname">#define LBAL_CPP20_DESTROYING_DELETE</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2307,14 +2285,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="ga1823ca3efeb9eb7dd04452f967cdde4e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga1823ca3efeb9eb7dd04452f967cdde4e">&#9670;&nbsp;</a></span>LBAL_CPP2A_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST</h2>
+<a id="ga4b8e6baee8303f2a5b6867914e757596"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4b8e6baee8303f2a5b6867914e757596">&#9670;&nbsp;</a></span>LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST</td>
+          <td class="memname">#define LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2327,14 +2305,35 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="gab94955a114b69ddb19b5275b7f49de45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gab94955a114b69ddb19b5275b7f49de45">&#9670;&nbsp;</a></span>LBAL_CPP2A_INIT_CAPTURES_PACK_EXPANSION</h2>
+<a id="ga8c250fd92de00eec7442cc5be6d12617"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8c250fd92de00eec7442cc5be6d12617">&#9670;&nbsp;</a></span>LBAL_CPP20_IMPL_COROUTINE</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_INIT_CAPTURES_PACK_EXPANSION</td>
+          <td class="memname">#define LBAL_CPP20_IMPL_COROUTINE</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Add necessary language support for the <code>&lt;coroutine&gt;</code> library feature. </p>
+<p>Equivalent SD-6 macro: <code>__cpp_impl_coroutine</code></p><ul>
+<li><a href="https://wg21.link/p0912r5">201902L</a></li>
+<li><a href="https://wg21.link/LWG3393">201902L</a></li>
+</ul>
+<dl class="section remark"><dt>Remarks</dt><dd>Technically, the proposal this is from only directs that the Coroutines TS be merged into the Standard. For reference the latest draft is <a href="https://wg21.link/n4775">n4775</a> <b>PDF</b>. </dd></dl>
+
+</div>
+</div>
+<a id="ga6addf62cfce8ddeff19f1338839e4d85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga6addf62cfce8ddeff19f1338839e4d85">&#9670;&nbsp;</a></span>LBAL_CPP20_INIT_CAPTURES_PACK_EXPANSION</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define LBAL_CPP20_INIT_CAPTURES_PACK_EXPANSION</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2347,14 +2346,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="gaf2f59afdd5c59c6458e3da5a44e3077d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaf2f59afdd5c59c6458e3da5a44e3077d">&#9670;&nbsp;</a></span>LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR</h2>
+<a id="ga340502f5bf897759f46863306e1b7753"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga340502f5bf897759f46863306e1b7753">&#9670;&nbsp;</a></span>LBAL_CPP20_INIT_STATEMENTS_FOR_RANGE_BASED_FOR</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR</td>
+          <td class="memname">#define LBAL_CPP20_INIT_STATEMENTS_FOR_RANGE_BASED_FOR</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2364,14 +2363,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="ga8e37ce9977cc515ce1eb2ba3f58ce51b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga8e37ce9977cc515ce1eb2ba3f58ce51b">&#9670;&nbsp;</a></span>LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION</h2>
+<a id="ga914386737153f51bbf79976ebb308e35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga914386737153f51bbf79976ebb308e35">&#9670;&nbsp;</a></span>LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION</td>
+          <td class="memname">#define LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2381,14 +2380,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="ga7f0f126185dcd382f98d85f3c14eeb97"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7f0f126185dcd382f98d85f3c14eeb97">&#9670;&nbsp;</a></span>LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS</h2>
+<a id="ga44e05aa3156cb6f6f5fb6f4b77ab318d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga44e05aa3156cb6f6f5fb6f4b77ab318d">&#9670;&nbsp;</a></span>LBAL_CPP20_INTEGRATING_OUR_FEATURE_TEST_MACROS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS</td>
+          <td class="memname">#define LBAL_CPP20_INTEGRATING_OUR_FEATURE_TEST_MACROS</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2401,14 +2400,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="ga7e1971ccc931b2c3f037e49d060c81b4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7e1971ccc931b2c3f037e49d060c81b4">&#9670;&nbsp;</a></span>LBAL_CPP2A_MODULES</h2>
+<a id="ga1fa2214f6df15b5798234c8d29b66370"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga1fa2214f6df15b5798234c8d29b66370">&#9670;&nbsp;</a></span>LBAL_CPP20_MODULES</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_MODULES</td>
+          <td class="memname">#define LBAL_CPP20_MODULES</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2421,14 +2420,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="ga38e4c48a4aa057f370b3d21e4a0054f3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga38e4c48a4aa057f370b3d21e4a0054f3">&#9670;&nbsp;</a></span>LBAL_CPP2A_NONTYPE_TEMPLATE_ARGS_FIXES</h2>
+<a id="gaf25411b90e8cc4a0b35827acb6ea2232"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gaf25411b90e8cc4a0b35827acb6ea2232">&#9670;&nbsp;</a></span>LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FIXES</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_NONTYPE_TEMPLATE_ARGS_FIXES</td>
+          <td class="memname">#define LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FIXES</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2441,14 +2440,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="gaedfe1b6293428b42e6fcffa0aa889a52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gaedfe1b6293428b42e6fcffa0aa889a52">&#9670;&nbsp;</a></span>LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS</h2>
+<a id="ga9692cd7ea998c3cfd07d60425bacf5a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9692cd7ea998c3cfd07d60425bacf5a2">&#9670;&nbsp;</a></span>LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS</td>
+          <td class="memname">#define LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2461,14 +2460,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="ga169c5ae26a332d028ac116bb8a34f01c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga169c5ae26a332d028ac116bb8a34f01c">&#9670;&nbsp;</a></span>LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR</h2>
+<a id="gae821ba8fc6d29f94ddcc8f1a28cf893a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gae821ba8fc6d29f94ddcc8f1a28cf893a">&#9670;&nbsp;</a></span>LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR</td>
+          <td class="memname">#define LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2484,14 +2483,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="ga7834b32830edc87483617f5f7cf335ad"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga7834b32830edc87483617f5f7cf335ad">&#9670;&nbsp;</a></span>LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX</h2>
+<a id="ga4ee29c52fe9c90cb8e04e32da52dfef9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga4ee29c52fe9c90cb8e04e32da52dfef9">&#9670;&nbsp;</a></span>LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX</td>
+          <td class="memname">#define LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2507,14 +2506,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="gac9c0230950c29c0e5c0dceb9fdc485ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gac9c0230950c29c0e5c0dceb9fdc485ac">&#9670;&nbsp;</a></span>LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP</h2>
+<a id="ga8023cb472c7aae34e40781518f2a9705"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga8023cb472c7aae34e40781518f2a9705">&#9670;&nbsp;</a></span>LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_TUNEUP</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP</td>
+          <td class="memname">#define LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_TUNEUP</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2530,14 +2529,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="ga6450d7df0efa95d485c53532dbe2375e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga6450d7df0efa95d485c53532dbe2375e">&#9670;&nbsp;</a></span>LBAL_CPP2A_TYPENAME_OPTIONAL</h2>
+<a id="ga2336eb9a65b554543ce9138532ef51c7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga2336eb9a65b554543ce9138532ef51c7">&#9670;&nbsp;</a></span>LBAL_CPP20_TYPENAME_OPTIONAL</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_TYPENAME_OPTIONAL</td>
+          <td class="memname">#define LBAL_CPP20_TYPENAME_OPTIONAL</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2547,14 +2546,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="gacd60df165cc13aa8d7a156ce430e631e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#gacd60df165cc13aa8d7a156ce430e631e">&#9670;&nbsp;</a></span>LBAL_CPP2A_USING_ENUM</h2>
+<a id="ga9f9a0a343744063d9fa63b08b7aeff1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga9f9a0a343744063d9fa63b08b7aeff1a">&#9670;&nbsp;</a></span>LBAL_CPP20_USING_ENUM</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_USING_ENUM</td>
+          <td class="memname">#define LBAL_CPP20_USING_ENUM</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2566,14 +2565,14 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 
 </div>
 </div>
-<a id="ga74733c861b39998b5a15ff29edce75da"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ga74733c861b39998b5a15ff29edce75da">&#9670;&nbsp;</a></span>LBAL_CPP2A_VA_OPT</h2>
+<a id="ga3ebeef621949ff4a9277dc1cab1dc4fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ga3ebeef621949ff4a9277dc1cab1dc4fe">&#9670;&nbsp;</a></span>LBAL_CPP20_VA_OPT</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define LBAL_CPP2A_VA_OPT</td>
+          <td class="memname">#define LBAL_CPP20_VA_OPT</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -2645,7 +2644,7 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 <p>Equivalent SD-6 test: <code>__has_cpp_attribute(assert)</code></p><ul>
 <li><a href="https://wg21.link/p0542r5">unassigned</a></li>
 </ul>
-<dl class="section remark"><dt>Remarks</dt><dd>These were yoinked from C++2A prior to national balloting for various reasons and are currently back in the oven, but expected to pop in the C++23 Draft Standard. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>These were yoinked from C++20 prior to national balloting for various reasons and are currently back in the oven, but expected to pop in the C++23 Draft Standard. </dd></dl>
 
 </div>
 </div>
@@ -2666,7 +2665,7 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 <p>Equivalent SD-6 test: <code>__has_cpp_attribute(assert)</code></p><ul>
 <li><a href="https://wg21.link/p0542r5">unassigned</a></li>
 </ul>
-<dl class="section remark"><dt>Remarks</dt><dd>These were yoinked from C++2A prior to national balloting for various reasons and are currently back in the oven, but expected to pop in the C++23 Draft Standard. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>These were yoinked from C++20 prior to national balloting for various reasons and are currently back in the oven, but expected to pop in the C++23 Draft Standard. </dd></dl>
 
 </div>
 </div>
@@ -2687,7 +2686,7 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 <p>Equivalent SD-6 test: <code>__has_cpp_attribute(expects)</code></p><ul>
 <li><a href="https://wg21.link/p0542r5">unassigned</a></li>
 </ul>
-<dl class="section remark"><dt>Remarks</dt><dd>These were yoinked from C++2A prior to national balloting for various reasons and are currently back in the oven, but expected to pop in the C++23 Draft Standard. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>These were yoinked from C++20 prior to national balloting for various reasons and are currently back in the oven, but expected to pop in the C++23 Draft Standard. </dd></dl>
 
 </div>
 </div>
@@ -2708,7 +2707,7 @@ This and the <code>LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM</code> and <code>LB
 <p>Equivalent SD-6 macro: none</p><ul>
 <li><a href="https://wg21.link/p0542r5">default</a></li>
 </ul>
-<dl class="section remark"><dt>Remarks</dt><dd>These were yoinked from C++2A prior to national balloting for various reasons and are currently back in the oven, but expected to pop in the C++23 Draft Standard. </dd></dl>
+<dl class="section remark"><dt>Remarks</dt><dd>These were yoinked from C++20 prior to national balloting for various reasons and are currently back in the oven, but expected to pop in the C++23 Draft Standard. </dd></dl>
 
 </div>
 </div>

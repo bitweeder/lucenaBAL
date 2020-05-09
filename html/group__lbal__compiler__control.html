@@ -30,7 +30,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">lucenaBAL
-   &#160;<span id="projectnumber">2.0.0.18</span>
+   &#160;<span id="projectnumber">2.0.0.20</span>
    </div>
    <div id="projectbrief">Lucena Build Abstraction Library for C++</div>
   </td>
@@ -136,7 +136,7 @@ Macros</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Generate a compile-time warning. </p>
-<p>This is intended to be a cross-platform replacement for the C preprocessor <code>#warning</code> directive, which is sadly unsupported by most compilers that aren’t clang. Notably, warnings generate visible diagnostic messages when compiling, but do not halt compilation. Behaviorally, these warnings are preprocesor constructs, and are subject to the same limitations as <code>#error</code>, which are more rigid than those of, for example, <code>static_assert</code>. In particular, assume there is o macro substitution, and that constructs that depend upon compile-time evaluation are unavailable (e.g., Standard Library type traits). </p>
+<p>This is intended to be a cross-platform replacement for the C preprocessor <code>#warning</code> directive, which is sadly unsupported by most compilers that aren’t clang. Notably, warnings generate visible diagnostic messages when compiling, but do not halt compilation. Behaviorally, these warnings are preprocesor constructs, and are subject to the same limitations as <code>#error</code>, which are more rigid than those of, for example, <code>static_assert</code>. In particular, assume there is no macro substitution, and that constructs that depend upon compile-time evaluation are unavailable (e.g., Standard Library type traits). </p>
 
 </div>
 </div>
