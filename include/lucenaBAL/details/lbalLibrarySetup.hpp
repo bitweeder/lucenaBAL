@@ -597,541 +597,541 @@
 
 //	C++20 features.
 
-#if !defined (LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR)
+#if !defined (LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR)
 	#if __cpp_lib_array_constexpr >= 201603L
-		#define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR \
+		#define LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR \
 				__cpp_lib_array_constexpr
 	#endif
-#endif	//	LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR
+#endif	//	LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
 
-#if !defined (LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS)
+#if !defined (LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS)
 	#if __cpp_lib_array_constexpr >= 201806L
-		#define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS \
+		#define LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS \
 				__cpp_lib_array_constexpr
 	#endif
-#endif	//	LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS
+#endif	//	LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS
 
-#if !defined (LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES)
+#if !defined (LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES)
 	#if __cpp_lib_array_constexpr >= 201811L
-		#define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES \
+		#define LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES \
 				__cpp_lib_array_constexpr
 	#endif
-#endif	//	LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES
+#endif	//	LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES
 
-#if !defined (LBAL_LIBCPP2A_ASSUME_ALIGNED)
+#if !defined (LBAL_LIBCPP20_ASSUME_ALIGNED)
 	#if __cpp_lib_assume_aligned >= 201811L
-		#define LBAL_LIBCPP2A_ASSUME_ALIGNED __cpp_lib_assume_aligned
+		#define LBAL_LIBCPP20_ASSUME_ALIGNED __cpp_lib_assume_aligned
 	#endif
-#endif	//	LBAL_LIBCPP2A_ASSUME_ALIGNED
+#endif	//	LBAL_LIBCPP20_ASSUME_ALIGNED
 
-#if !defined (LBAL_LIBCPP2A_ATOMIC_FLAG_TEST)
+#if !defined (LBAL_LIBCPP20_ATOMIC_FLAG_TEST)
 	#if __cpp_lib_atomic_flag_test >= 201907L
-		#define LBAL_LIBCPP2A_ATOMIC_FLAG_TEST __cpp_lib_atomic_flag_test
+		#define LBAL_LIBCPP20_ATOMIC_FLAG_TEST __cpp_lib_atomic_flag_test
 	#endif
-#endif	//	LBAL_LIBCPP2A_ATOMIC_FLAG_TEST
+#endif	//	LBAL_LIBCPP20_ATOMIC_FLAG_TEST
 
-#if !defined (LBAL_LIBCPP2A_ATOMIC_FLOAT)
+#if !defined (LBAL_LIBCPP20_ATOMIC_FLOAT)
 	#if __cpp_lib_atomic_float >= 201711L
-		#define LBAL_LIBCPP2A_ATOMIC_FLOAT __cpp_lib_atomic_float
+		#define LBAL_LIBCPP20_ATOMIC_FLOAT __cpp_lib_atomic_float
 	#endif
-#endif	//	LBAL_LIBCPP2A_ATOMIC_FLOAT
+#endif	//	LBAL_LIBCPP20_ATOMIC_FLOAT
 
-#if !defined (LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES)
+#if !defined (LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES)
 	#if __cpp_lib_atomic_lock_free_type_aliases >= 201907L
-		#define LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES \
+		#define LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES \
 				__cpp_lib_atomic_lock_free_type_aliases
 	#endif
-#endif	//	LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES
+#endif	//	LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES
 
-#if !defined (LBAL_LIBCPP2A_ATOMIC_REF)
+#if !defined (LBAL_LIBCPP20_ATOMIC_REF)
 	#if __cpp_lib_atomic_ref >= 201806L
-		#define LBAL_LIBCPP2A_ATOMIC_REF __cpp_lib_atomic_ref
+		#define LBAL_LIBCPP20_ATOMIC_REF __cpp_lib_atomic_ref
 	#endif
-#endif	//	LBAL_LIBCPP2A_ATOMIC_REF
+#endif	//	LBAL_LIBCPP20_ATOMIC_REF
 
-#if !defined (LBAL_LIBCPP2A_ATOMIC_SHARED_PTR)
+#if !defined (LBAL_LIBCPP20_ATOMIC_SHARED_PTR)
 	#if __cpp_lib_atomic_shared_ptr >= 201711L
-		#define LBAL_LIBCPP2A_ATOMIC_SHARED_PTR __cpp_lib_atomic_shared_ptr
+		#define LBAL_LIBCPP20_ATOMIC_SHARED_PTR __cpp_lib_atomic_shared_ptr
 	#endif
-#endif	//	LBAL_LIBCPP2A_ATOMIC_SHARED_PTR
+#endif	//	LBAL_LIBCPP20_ATOMIC_SHARED_PTR
 
-#if !defined (LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION)
+#if !defined (LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION)
 	#if __cpp_lib_atomic_value_initialization >= 201911L
-		#define LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION \
+		#define LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION \
 				__cpp_lib_atomic_value_initialization
 	#endif
-#endif	//	LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION
+#endif	//	LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION
 
-#if !defined (LBAL_LIBCPP2A_ATOMIC_WAIT)
+#if !defined (LBAL_LIBCPP20_ATOMIC_WAIT)
 	#if __cpp_lib_atomic_wait >= 201907L
-		#define LBAL_LIBCPP2A_ATOMIC_WAIT __cpp_lib_atomic_wait
+		#define LBAL_LIBCPP20_ATOMIC_WAIT __cpp_lib_atomic_wait
 	#endif
-#endif	//	LBAL_LIBCPP2A_ATOMIC_WAIT
+#endif	//	LBAL_LIBCPP20_ATOMIC_WAIT
 
-#if !defined (LBAL_LIBCPP2A_BARRIER)
+#if !defined (LBAL_LIBCPP20_BARRIER)
 	#if __cpp_lib_barrier >= 201907L
-		#define LBAL_LIBCPP2A_BARRIER __cpp_lib_barrier
+		#define LBAL_LIBCPP20_BARRIER __cpp_lib_barrier
 	#endif
-#endif	//	LBAL_LIBCPP2A_BARRIER
+#endif	//	LBAL_LIBCPP20_BARRIER
 
-#if !defined (LBAL_LIBCPP2A_BIND_FRONT)
+#if !defined (LBAL_LIBCPP20_BIND_FRONT)
 	#if __cpp_lib_bind_front >= 201811L
-		#define LBAL_LIBCPP2A_BIND_FRONT __cpp_lib_bind_front
+		#define LBAL_LIBCPP20_BIND_FRONT __cpp_lib_bind_front
 	#endif
-#endif	//	LBAL_LIBCPP2A_BIND_FRONT
+#endif	//	LBAL_LIBCPP20_BIND_FRONT
 
-#if !defined (LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP)
+#if !defined (LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP)
 	#if __cpp_lib_bind_front >= 201907L
-		#define LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP __cpp_lib_bind_front
+		#define LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP __cpp_lib_bind_front
 	#endif
-#endif	//	LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP
+#endif	//	LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP
 
-#if !defined (LBAL_LIBCPP2A_BIT_CAST)
+#if !defined (LBAL_LIBCPP20_BIT_CAST)
 	#if __cpp_lib_bit_cast >= 201806L
-		#define LBAL_LIBCPP2A_BIT_CAST __cpp_lib_bit_cast
+		#define LBAL_LIBCPP20_BIT_CAST __cpp_lib_bit_cast
 	#endif
-#endif	//	LBAL_LIBCPP2A_BIT_CAST
+#endif	//	LBAL_LIBCPP20_BIT_CAST
 
-#if !defined (LBAL_LIBCPP2A_BITOPS)
+#if !defined (LBAL_LIBCPP20_BITOPS)
 	#if __cpp_lib_bitops >= 201907L
-		#define LBAL_LIBCPP2A_BITOPS __cpp_lib_bitops
+		#define LBAL_LIBCPP20_BITOPS __cpp_lib_bitops
 	#endif
-#endif	//	LBAL_LIBCPP2A_BITOPS
+#endif	//	LBAL_LIBCPP20_BITOPS
 
-#if !defined (LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS)
+#if !defined (LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS)
 	#if __cpp_lib_bounded_array_traits >= 201902L
-		#define LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS \
+		#define LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS \
 				__cpp_lib_bounded_array_traits
 	#endif
-#endif	//	LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS
+#endif	//	LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS
 
-#if !defined (LBAL_LIBCPP2A_CHAR8_T)
+#if !defined (LBAL_LIBCPP20_CHAR8_T)
 	#if __cpp_lib_char8_t >= 201811L
-		#define LBAL_LIBCPP2A_CHAR8_T __cpp_lib_char8_t
+		#define LBAL_LIBCPP20_CHAR8_T __cpp_lib_char8_t
 	#endif
-#endif	//	LBAL_LIBCPP2A_CHAR8_T
+#endif	//	LBAL_LIBCPP20_CHAR8_T
 
-#if !defined (LBAL_LIBCPP2A_CHAR8_T_COMPAT)
+#if !defined (LBAL_LIBCPP20_CHAR8_T_COMPAT)
 	#if __cpp_lib_char8_t >= 201907L
-		#define LBAL_LIBCPP2A_CHAR8_T_COMPAT __cpp_lib_char8_t
+		#define LBAL_LIBCPP20_CHAR8_T_COMPAT __cpp_lib_char8_t
 	#endif
-#endif	//	LBAL_LIBCPP2A_CHAR8_T_COMPAT
+#endif	//	LBAL_LIBCPP20_CHAR8_T_COMPAT
 
-#if !defined (LBAL_LIBCPP2A_CHRONO_CALENDAR)
+#if !defined (LBAL_LIBCPP20_CHRONO_CALENDAR)
 	#if __cpp_lib_chrono >= 201803L
-		#define LBAL_LIBCPP2A_CHRONO_CALENDAR __cpp_lib_chrono
+		#define LBAL_LIBCPP20_CHRONO_CALENDAR __cpp_lib_chrono
 	#endif
-#endif	//	LBAL_LIBCPP2A_CHRONO_CALENDAR
+#endif	//	LBAL_LIBCPP20_CHRONO_CALENDAR
 
-#if !defined (LBAL_LIBCPP2A_CHRONO_FIXES)
+#if !defined (LBAL_LIBCPP20_CHRONO_FIXES)
 	#if __cpp_lib_chrono >= 201907L
-		#define LBAL_LIBCPP2A_CHRONO_FIXES __cpp_lib_chrono
+		#define LBAL_LIBCPP20_CHRONO_FIXES __cpp_lib_chrono
 	#endif
-#endif	//	LBAL_LIBCPP2A_CHRONO_FIXES
+#endif	//	LBAL_LIBCPP20_CHRONO_FIXES
 
 //	Note that this for the Concepts support library; the language feature is
 //	handled separately.
-#if !defined (LBAL_LIBCPP2A_CONCEPTS)
+#if !defined (LBAL_LIBCPP20_CONCEPTS)
 	#if __cpp_lib_concepts >= 201806L
-		#define LBAL_LIBCPP2A_CONCEPTS __cpp_lib_concepts
-		#define LBAL_LIBCPP2A_CONCEPTS_EXP 0
+		#define LBAL_LIBCPP20_CONCEPTS __cpp_lib_concepts
+		#define LBAL_LIBCPP20_CONCEPTS_EXP 0
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONCEPTS
+#endif	//	LBAL_LIBCPP20_CONCEPTS
 
-#if !defined (LBAL_LIBCPP2A_CONCEPTS_EXP)
+#if !defined (LBAL_LIBCPP20_CONCEPTS_EXP)
 	#if __cpp_lib_concepts_exp >= 201806L
-		#define LBAL_LIBCPP2A_CONCEPTS_EXP __cpp_lib_concepts_exp
+		#define LBAL_LIBCPP20_CONCEPTS_EXP __cpp_lib_concepts_exp
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONCEPTS_EXP
+#endif	//	LBAL_LIBCPP20_CONCEPTS_EXP
 
-#if !defined (LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE)
+#if !defined (LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE)
 	#if __cpp_lib_concepts >= 201907L
-		#define LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE __cpp_lib_concepts
+		#define LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE __cpp_lib_concepts
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE
+#endif	//	LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE
 
-#if !defined (LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE)
+#if !defined (LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE)
 	#if __cpp_lib_concepts >= 202002L
-		#define LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE __cpp_lib_concepts
+		#define LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE __cpp_lib_concepts
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE
+#endif	//	LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE
 
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS)
+#if !defined (LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS)
 	#if __cpp_lib_constexpr_algorithms >= 201703L
-		#define LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS \
+		#define LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS \
 				__cpp_lib_constexpr_algorithms
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS
 
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP)
+#if !defined (LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP)
 	#if __cpp_lib_constexpr_algorithms >= 201806L
-		#define LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP \
+		#define LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP \
 				__cpp_lib_constexpr_algorithms
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP
 
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_COMPLEX)
+#if !defined (LBAL_LIBCPP20_CONSTEXPR_COMPLEX)
 	#if __cpp_lib_constexpr_complex >= 201711L
-		#define LBAL_LIBCPP2A_CONSTEXPR_COMPLEX __cpp_lib_constexpr_complex
+		#define LBAL_LIBCPP20_CONSTEXPR_COMPLEX __cpp_lib_constexpr_complex
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_COMPLEX
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_COMPLEX
 
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC)
+#if !defined (LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC)
 	#if __cpp_lib_constexpr_dynamic_alloc >= 201907L
-		#define LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC \
+		#define LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC \
 				__cpp_lib_constexpr_dynamic_alloc
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC
 
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL)
+#if !defined (LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL)
 	#if __cpp_lib_constexpr_functional >= 201811L
-		#define LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL \
+		#define LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL \
 				__cpp_lib_constexpr_functional
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL
 
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE)
+#if !defined (LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE)
 	#if __cpp_lib_constexpr_functional >= 201907L
-		#define LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE \
+		#define LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE \
 				__cpp_lib_constexpr_functional
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE
 
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_ITERATOR)
+#if !defined (LBAL_LIBCPP20_CONSTEXPR_ITERATOR)
 	#if __cpp_lib_constexpr_iterator >= 201811L
-		#define LBAL_LIBCPP2A_CONSTEXPR_ITERATOR __cpp_lib_constexpr_iterator
+		#define LBAL_LIBCPP20_CONSTEXPR_ITERATOR __cpp_lib_constexpr_iterator
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_ITERATOR
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_ITERATOR
 
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_MEMORY)
+#if !defined (LBAL_LIBCPP20_CONSTEXPR_MEMORY)
 	#if __cpp_lib_constexpr_memory >= 201811L
-		#define LBAL_LIBCPP2A_CONSTEXPR_MEMORY __cpp_lib_constexpr_memory
+		#define LBAL_LIBCPP20_CONSTEXPR_MEMORY __cpp_lib_constexpr_memory
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_MEMORY
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_MEMORY
 
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_NUMERIC)
+#if !defined (LBAL_LIBCPP20_CONSTEXPR_NUMERIC)
 	#if __cpp_lib_constexpr_numeric >= 201911L
-		#define LBAL_LIBCPP2A_CONSTEXPR_NUMERIC __cpp_lib_constexpr_numeric
+		#define LBAL_LIBCPP20_CONSTEXPR_NUMERIC __cpp_lib_constexpr_numeric
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_NUMERIC
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_NUMERIC
 
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_STRING)
+#if !defined (LBAL_LIBCPP20_CONSTEXPR_STRING)
 	#if __cpp_lib_constexpr_string >= 201907L
-		#define LBAL_LIBCPP2A_CONSTEXPR_STRING __cpp_lib_constexpr_string
+		#define LBAL_LIBCPP20_CONSTEXPR_STRING __cpp_lib_constexpr_string
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_STRING
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_STRING
 
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW)
+#if !defined (LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW)
 	#if __cpp_lib_constexpr_string_view >= 201811L
-		#define LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW \
+		#define LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW \
 				__cpp_lib_constexpr_string_view
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW
 
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_TUPLE)
+#if !defined (LBAL_LIBCPP20_CONSTEXPR_TUPLE)
 	#if __cpp_lib_constexpr_tuple >= 201811L
-		#define LBAL_LIBCPP2A_CONSTEXPR_TUPLE __cpp_lib_constexpr_tuple
+		#define LBAL_LIBCPP20_CONSTEXPR_TUPLE __cpp_lib_constexpr_tuple
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_TUPLE
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_TUPLE
 
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_UTILITY)
+#if !defined (LBAL_LIBCPP20_CONSTEXPR_UTILITY)
 	#if __cpp_lib_constexpr_utility >= 201811L
-		#define LBAL_LIBCPP2A_CONSTEXPR_UTILITY __cpp_lib_constexpr_utility
+		#define LBAL_LIBCPP20_CONSTEXPR_UTILITY __cpp_lib_constexpr_utility
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_UTILITY
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_UTILITY
 
-#if !defined (LBAL_LIBCPP2A_CONSTEXPR_VECTOR)
+#if !defined (LBAL_LIBCPP20_CONSTEXPR_VECTOR)
 	#if __cpp_lib_constexpr_vector >= 201907L
-		#define LBAL_LIBCPP2A_CONSTEXPR_VECTOR __cpp_lib_constexpr_vector
+		#define LBAL_LIBCPP20_CONSTEXPR_VECTOR __cpp_lib_constexpr_vector
 	#endif
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_VECTOR
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_VECTOR
 
-#if !defined (LBAL_LIBCPP2A_COROUTINE)
+#if !defined (LBAL_LIBCPP20_COROUTINE)
 	#if __cpp_lib_coroutine >= 201902L
-		#define LBAL_LIBCPP2A_COROUTINE __cpp_lib_coroutine
-		#define LBAL_LIBCPP2A_COROUTINE_EXP 0
+		#define LBAL_LIBCPP20_COROUTINE __cpp_lib_coroutine
+		#define LBAL_LIBCPP20_COROUTINE_EXP 0
 	#endif
-#endif	//	LBAL_LIBCPP2A_COROUTINE
+#endif	//	LBAL_LIBCPP20_COROUTINE
 
-#if !defined (LBAL_LIBCPP2A_COROUTINE_EXP)
+#if !defined (LBAL_LIBCPP20_COROUTINE_EXP)
 	#if __cpp_lib_experimental_coroutine >= 201902L
-		#define LBAL_LIBCPP2A_COROUTINE_EXP __cpp_lib_experimental_coroutine
+		#define LBAL_LIBCPP20_COROUTINE_EXP __cpp_lib_experimental_coroutine
 	#endif
-#endif	//	LBAL_LIBCPP2A_COROUTINE_EXP
+#endif	//	LBAL_LIBCPP20_COROUTINE_EXP
 
-#if !defined (LBAL_LIBCPP2A_DESTROYING_DELETE)
+#if !defined (LBAL_LIBCPP20_DESTROYING_DELETE)
 	#if __cpp_lib_destroying_delete >= 201806L
-		#define LBAL_LIBCPP2A_DESTROYING_DELETE __cpp_lib_destroying_delete
+		#define LBAL_LIBCPP20_DESTROYING_DELETE __cpp_lib_destroying_delete
 	#endif
-#endif	//	LBAL_LIBCPP2A_DESTROYING_DELETE
+#endif	//	LBAL_LIBCPP20_DESTROYING_DELETE
 
-#if !defined (LBAL_LIBCPP2A_ENDIAN)
+#if !defined (LBAL_LIBCPP20_ENDIAN)
 	#if __cpp_lib_endian >= 201907L
-		#define LBAL_LIBCPP2A_ENDIAN __cpp_lib_endian
+		#define LBAL_LIBCPP20_ENDIAN __cpp_lib_endian
 	#endif
-#endif	//	LBAL_LIBCPP2A_ENDIAN
+#endif	//	LBAL_LIBCPP20_ENDIAN
 
-#if !defined (LBAL_LIBCPP2A_ENDIAN_BIT)
+#if !defined (LBAL_LIBCPP20_ENDIAN_BIT)
 	#if __cpp_lib_endian >= 201907L
-		#define LBAL_LIBCPP2A_ENDIAN_BIT __cpp_lib_endian
+		#define LBAL_LIBCPP20_ENDIAN_BIT __cpp_lib_endian
 	#endif
-#endif	//	LBAL_LIBCPP2A_ENDIAN_BIT
+#endif	//	LBAL_LIBCPP20_ENDIAN_BIT
 
-#if !defined (LBAL_LIBCPP2A_ERASE_IF)
+#if !defined (LBAL_LIBCPP20_ERASE_IF)
 	#if __cpp_lib_erase_if >= 201811L
-		#define LBAL_LIBCPP2A_ERASE_IF __cpp_lib_erase_if
+		#define LBAL_LIBCPP20_ERASE_IF __cpp_lib_erase_if
 	#endif
-#endif	//	LBAL_LIBCPP2A_ERASE_IF
+#endif	//	LBAL_LIBCPP20_ERASE_IF
 
-#if !defined (LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS)
+#if !defined (LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS)
 	#if __cpp_lib_erase_if >= 202002L
-		#define LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS __cpp_lib_erase_if
+		#define LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS __cpp_lib_erase_if
 	#endif
-#endif	//	LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+#endif	//	LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
 
-#if !defined (LBAL_LIBCPP2A_EXECUTION_VECTORIZATION)
+#if !defined (LBAL_LIBCPP20_EXECUTION_VECTORIZATION)
 	#if __cpp_lib_execution >= 201902L
-		#define LBAL_LIBCPP2A_EXECUTION_VECTORIZATION __cpp_lib_execution
+		#define LBAL_LIBCPP20_EXECUTION_VECTORIZATION __cpp_lib_execution
 	#endif
-#endif	//	LBAL_LIBCPP2A_EXECUTION_VECTORIZATION
+#endif	//	LBAL_LIBCPP20_EXECUTION_VECTORIZATION
 
-#if !defined (LBAL_LIBCPP2A_FORMAT)
+#if !defined (LBAL_LIBCPP20_FORMAT)
 	#if __cpp_lib_format >= 201907L
-		#define LBAL_LIBCPP2A_FORMAT __cpp_lib_format
+		#define LBAL_LIBCPP20_FORMAT __cpp_lib_format
 	#endif
-#endif	//	LBAL_LIBCPP2A_FORMAT
+#endif	//	LBAL_LIBCPP20_FORMAT
 
-#if !defined (LBAL_LIBCPP2A_INT_POW2)
+#if !defined (LBAL_LIBCPP20_INT_POW2)
 	#if __cpp_lib_int_pow2 >= 201806L
-		#define LBAL_LIBCPP2A_INT_POW2 __cpp_lib_int_pow2
+		#define LBAL_LIBCPP20_INT_POW2 __cpp_lib_int_pow2
 	#endif
-#endif	//	LBAL_LIBCPP2A_INT_POW2
+#endif	//	LBAL_LIBCPP20_INT_POW2
 
-#if !defined (LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME)
+#if !defined (LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME)
 	#if __cpp_lib_int_pow2 >= 202002L
-		#define LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME __cpp_lib_int_pow2
+		#define LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME __cpp_lib_int_pow2
 	#endif
-#endif	//	LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME
+#endif	//	LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME
 
-#if !defined (LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS)
+#if !defined (LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS)
 	#if __cpp_lib_integer_comparison_functions >= 202002L
-		#define LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS \
+		#define LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS \
 				__cpp_lib_integer_comparison_functions
 	#endif
-#endif	//	LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS
+#endif	//	LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS
 
-#if !defined (LBAL_LIBCPP2A_INTERPOLATE)
+#if !defined (LBAL_LIBCPP20_INTERPOLATE)
 	#if __cpp_lib_interpolate >= 201902L
-		#define LBAL_LIBCPP2A_INTERPOLATE __cpp_lib_interpolate
+		#define LBAL_LIBCPP20_INTERPOLATE __cpp_lib_interpolate
 	#endif
-#endif	//	LBAL_LIBCPP2A_INTERPOLATE
+#endif	//	LBAL_LIBCPP20_INTERPOLATE
 
-#if !defined (LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED)
+#if !defined (LBAL_LIBCPP20_IS_CONSTANT_EVALUATED)
 	#if __cpp_lib_is_constant_evaluated >= 201811L
-		#define LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED \
+		#define LBAL_LIBCPP20_IS_CONSTANT_EVALUATED \
 				__cpp_lib_is_constant_evaluated
 	#endif
-#endif	//	LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED
+#endif	//	LBAL_LIBCPP20_IS_CONSTANT_EVALUATED
 
-#if !defined (LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE)
+#if !defined (LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE)
 	#if __cpp_lib_is_layout_compatible >= 201907L
-		#define LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE \
+		#define LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE \
 				__cpp_lib_is_layout_compatible
 	#endif
-#endif	//	LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE
+#endif	//	LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE
 
-#if !defined (LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE)
+#if !defined (LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE)
 	#if __cpp_lib_is_pointer_interconvertible >= 201907L
-		#define LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE \
+		#define LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE \
 				__cpp_lib_is_pointer_interconvertible
 	#endif
-#endif	//	LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE
+#endif	//	LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
 
-#if !defined (LBAL_LIBCPP2A_JTHREAD)
+#if !defined (LBAL_LIBCPP20_JTHREAD)
 	#if __cpp_lib_jthread >= 201907L
-		#define LBAL_LIBCPP2A_JTHREAD __cpp_lib_jthread
+		#define LBAL_LIBCPP20_JTHREAD __cpp_lib_jthread
 	#endif
-#endif	//	LBAL_LIBCPP2A_JTHREAD
+#endif	//	LBAL_LIBCPP20_JTHREAD
 
-#if !defined (LBAL_LIBCPP2A_JTHREAD_CV)
+#if !defined (LBAL_LIBCPP20_JTHREAD_CV)
 	#if __cpp_lib_jthread >= 201911L
-		#define LBAL_LIBCPP2A_JTHREAD_CV __cpp_lib_jthread
+		#define LBAL_LIBCPP20_JTHREAD_CV __cpp_lib_jthread
 	#endif
-#endif	//	LBAL_LIBCPP2A_JTHREAD_CV
+#endif	//	LBAL_LIBCPP20_JTHREAD_CV
 
-#if !defined (LBAL_LIBCPP2A_LATCH)
+#if !defined (LBAL_LIBCPP20_LATCH)
 	#if __cpp_lib_latch >= 201907L
-		#define LBAL_LIBCPP2A_LATCH __cpp_lib_latch
+		#define LBAL_LIBCPP20_LATCH __cpp_lib_latch
 	#endif
-#endif	//	LBAL_LIBCPP2A_LATCH
+#endif	//	LBAL_LIBCPP20_LATCH
 
-#if !defined (LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE)
+#if !defined (LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE)
 	#if __cpp_lib_list_remove_return_type >= 201806L
-		#define LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE \
+		#define LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE \
 				__cpp_lib_list_remove_return_type
 	#endif
-#endif	//	LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
+#endif	//	LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE
 
-#if !defined (LBAL_LIBCPP2A_MATH_CONSTANTS)
+#if !defined (LBAL_LIBCPP20_MATH_CONSTANTS)
 	#if __cpp_lib_math_constants >= 201907L
-		#define LBAL_LIBCPP2A_MATH_CONSTANTS __cpp_lib_math_constants
+		#define LBAL_LIBCPP20_MATH_CONSTANTS __cpp_lib_math_constants
 	#endif
-#endif	//	LBAL_LIBCPP2A_MATH_CONSTANTS
+#endif	//	LBAL_LIBCPP20_MATH_CONSTANTS
 
-#if !defined (LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE)
+#if !defined (LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE)
 	#if __cpp_lib_is_nothrow_convertible >= 201806L
-		#define LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE __cpp_lib_is_nothrow_convertible
+		#define LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE __cpp_lib_is_nothrow_convertible
 	#endif
-#endif	//	LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE
+#endif	//	LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE
 
-#if !defined (LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR)
+#if !defined (LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR)
 	#if __cpp_lib_polymorphic_allocator >= 201902L
-		#define LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR \
+		#define LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR \
 				__cpp_lib_polymorphic_allocator
 	#endif
-#endif	//	LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR
+#endif	//	LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR
 
-#if !defined (LBAL_LIBCPP2A_RANGES)
+#if !defined (LBAL_LIBCPP20_RANGES)
 	#if __cpp_lib_ranges >= 201811L
-		#define LBAL_LIBCPP2A_RANGES __cpp_lib_ranges
+		#define LBAL_LIBCPP20_RANGES __cpp_lib_ranges
 	#endif
-#endif	//	LBAL_LIBCPP2A_RANGES
+#endif	//	LBAL_LIBCPP20_RANGES
 
-#if !defined (LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS)
+#if !defined (LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS)
 	#if __cpp_lib_ranges >= 201907L
-		#define LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS __cpp_lib_ranges
+		#define LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS __cpp_lib_ranges
 	#endif
-#endif	//	LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
+#endif	//	LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
 
-#if !defined (LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE)
+#if !defined (LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE)
 	#if __cpp_lib_ranges >= 201911L
-		#define LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE __cpp_lib_ranges
+		#define LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE __cpp_lib_ranges
 	#endif
-#endif	//	LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
+#endif	//	LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE
 
-#if !defined (LBAL_LIBCPP2A_REMOVE_CVREF)
+#if !defined (LBAL_LIBCPP20_REMOVE_CVREF)
 	#if __cpp_lib_remove_cvref >= 201711L
-		#define LBAL_LIBCPP2A_REMOVE_CVREF __cpp_lib_remove_cvref
+		#define LBAL_LIBCPP20_REMOVE_CVREF __cpp_lib_remove_cvref
 	#endif
-#endif	//	LBAL_LIBCPP2A_REMOVE_CVREF
+#endif	//	LBAL_LIBCPP20_REMOVE_CVREF
 
-#if !defined (LBAL_LIBCPP2A_SEMAPHORE)
+#if !defined (LBAL_LIBCPP20_SEMAPHORE)
 	#if __cpp_lib_semaphore >= 201907L
-		#define LBAL_LIBCPP2A_SEMAPHORE __cpp_lib_semaphore
+		#define LBAL_LIBCPP20_SEMAPHORE __cpp_lib_semaphore
 	#endif
-#endif	//	LBAL_LIBCPP2A_SEMAPHORE
+#endif	//	LBAL_LIBCPP20_SEMAPHORE
 
-#if !defined (LBAL_LIBCPP2A_SHARED_PTR_ARRAYS)
+#if !defined (LBAL_LIBCPP20_SHARED_PTR_ARRAYS)
 	#if __cpp_lib_shared_ptr_arrays >= 201707L
-		#define LBAL_LIBCPP2A_SHARED_PTR_ARRAYS __cpp_lib_shared_ptr_arrays
+		#define LBAL_LIBCPP20_SHARED_PTR_ARRAYS __cpp_lib_shared_ptr_arrays
 	#endif
-#endif	//	LBAL_LIBCPP2A_SHARED_PTR_ARRAYS
+#endif	//	LBAL_LIBCPP20_SHARED_PTR_ARRAYS
 
-#if !defined (LBAL_LIBCPP2A_SHIFT)
+#if !defined (LBAL_LIBCPP20_SHIFT)
 	#if __cpp_lib_shift >= 201806L
-		#define LBAL_LIBCPP2A_SHIFT __cpp_lib_shift
+		#define LBAL_LIBCPP20_SHIFT __cpp_lib_shift
 	#endif
-#endif	//	LBAL_LIBCPP2A_SHIFT
+#endif	//	LBAL_LIBCPP20_SHIFT
 
-#if !defined (LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE)
+#if !defined (LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE)
 	#if __cpp_lib_smart_ptr_for_overwrite >= 202002L
-		#define LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE \
+		#define LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE \
 				__cpp_lib_smart_ptr_for_overwrite
 	#endif
-#endif	//	LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE
+#endif	//	LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE
 
-#if !defined (LBAL_LIBCPP2A_SOURCE_LOCATION)
+#if !defined (LBAL_LIBCPP20_SOURCE_LOCATION)
 	#if __cpp_lib_source_location >= 201907L
-		#define LBAL_LIBCPP2A_SOURCE_LOCATION __cpp_lib_source_location
+		#define LBAL_LIBCPP20_SOURCE_LOCATION __cpp_lib_source_location
 	#endif
-#endif	//	LBAL_LIBCPP2A_SOURCE_LOCATION
+#endif	//	LBAL_LIBCPP20_SOURCE_LOCATION
 
-#if !defined (LBAL_LIBCPP2A_SPAN)
+#if !defined (LBAL_LIBCPP20_SPAN)
 	#if __cpp_lib_span >= 201803L
-		#define LBAL_LIBCPP2A_SPAN __cpp_lib_span
+		#define LBAL_LIBCPP20_SPAN __cpp_lib_span
 	#endif
-#endif	//	LBAL_LIBCPP2A_SPAN
+#endif	//	LBAL_LIBCPP20_SPAN
 
-#if !defined (LBAL_LIBCPP2A_SPAN_USABILITY)
+#if !defined (LBAL_LIBCPP20_SPAN_USABILITY)
 	#if __cpp_lib_span >= 201803L
-		#define LBAL_LIBCPP2A_SPAN_USABILITY __cpp_lib_span
+		#define LBAL_LIBCPP20_SPAN_USABILITY __cpp_lib_span
 	#endif
-#endif	//	LBAL_LIBCPP2A_SPAN_USABILITY
+#endif	//	LBAL_LIBCPP20_SPAN_USABILITY
 
-#if !defined (LBAL_LIBCPP2A_SPAN_FIXED_SIZE)
+#if !defined (LBAL_LIBCPP20_SPAN_FIXED_SIZE)
 	#if __cpp_lib_span >= 202002L
-		#define LBAL_LIBCPP2A_SPAN_FIXED_SIZE __cpp_lib_span
+		#define LBAL_LIBCPP20_SPAN_FIXED_SIZE __cpp_lib_span
 	#endif
-#endif	//	LBAL_LIBCPP2A_SPAN_FIXED_SIZE
+#endif	//	LBAL_LIBCPP20_SPAN_FIXED_SIZE
 
-#if !defined (LBAL_LIBCPP2A_SSIZE)
+#if !defined (LBAL_LIBCPP20_SSIZE)
 	#if __cpp_lib_ssize >= 201902L
-		#define LBAL_LIBCPP2A_SSIZE __cpp_lib_ssize
+		#define LBAL_LIBCPP20_SSIZE __cpp_lib_ssize
 	#endif
-#endif	//	LBAL_LIBCPP2A_SSIZE
+#endif	//	LBAL_LIBCPP20_SSIZE
 
-#if !defined (LBAL_LIBCPP2A_STARTS_ENDS_WITH)
+#if !defined (LBAL_LIBCPP20_STARTS_ENDS_WITH)
 	#if __cpp_lib_starts_ends_with >= 201711L
-		#define LBAL_LIBCPP2A_STARTS_ENDS_WITH __cpp_lib_starts_ends_with
+		#define LBAL_LIBCPP20_STARTS_ENDS_WITH __cpp_lib_starts_ends_with
 	#endif
-#endif	//	LBAL_LIBCPP2A_STARTS_ENDS_WITH
+#endif	//	LBAL_LIBCPP20_STARTS_ENDS_WITH
 
-#if !defined (LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR)
+#if !defined (LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR)
 	#if __cpp_lib_string_view >= 201803L
-		#define LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR \
+		#define LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR \
 				__cpp_lib_string_view
 	#endif
-#endif	//	LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR
+#endif	//	LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR
 
-#if !defined (LBAL_LIBCPP2A_SYNCBUF)
+#if !defined (LBAL_LIBCPP20_SYNCBUF)
 	#if __cpp_lib_syncbuf >= 201711L
-		#define LBAL_LIBCPP2A_SYNCBUF __cpp_lib_syncbuf
+		#define LBAL_LIBCPP20_SYNCBUF __cpp_lib_syncbuf
 	#endif
-#endif	//	LBAL_LIBCPP2A_SYNCBUF
+#endif	//	LBAL_LIBCPP20_SYNCBUF
 
-#if !defined (LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS)
+#if !defined (LBAL_LIBCPP20_SYNCBUF_MANIPULATORS)
 	#if __cpp_lib_syncbuf >= 201803L
-		#define LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS __cpp_lib_syncbuf
+		#define LBAL_LIBCPP20_SYNCBUF_MANIPULATORS __cpp_lib_syncbuf
 	#endif
-#endif	//	LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS
+#endif	//	LBAL_LIBCPP20_SYNCBUF_MANIPULATORS
 
-#if !defined (LBAL_LIBCPP2A_THREE_WAY_COMPARISON)
+#if !defined (LBAL_LIBCPP20_THREE_WAY_COMPARISON)
 	#if __cpp_lib_three_way_comparison >= 201711L
-		#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON \
+		#define LBAL_LIBCPP20_THREE_WAY_COMPARISON \
 				__cpp_lib_three_way_comparison
 	#endif
-#endif	//	LBAL_LIBCPP2A_THREE_WAY_COMPARISON
+#endif	//	LBAL_LIBCPP20_THREE_WAY_COMPARISON
 
-#if !defined (LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY)
+#if !defined (LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY)
 	#if __cpp_lib_three_way_comparison >= 201907L
-		#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY \
+		#define LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY \
 				__cpp_lib_three_way_comparison
 	#endif
-#endif	//	LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY
+#endif	//	LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY
 
-#if !defined (LBAL_LIBCPP2A_TO_ADDRESS)
+#if !defined (LBAL_LIBCPP20_TO_ADDRESS)
 	#if __cpp_lib_to_address >= 201711L
-		#define LBAL_LIBCPP2A_TO_ADDRESS __cpp_lib_to_address
+		#define LBAL_LIBCPP20_TO_ADDRESS __cpp_lib_to_address
 	#endif
-#endif	//	LBAL_LIBCPP2A_TO_ADDRESS
+#endif	//	LBAL_LIBCPP20_TO_ADDRESS
 
-#if !defined (LBAL_LIBCPP2A_TO_ARRAY)
+#if !defined (LBAL_LIBCPP20_TO_ARRAY)
 	#if __cpp_lib_to_array >= 201907L
-		#define LBAL_LIBCPP2A_TO_ARRAY __cpp_lib_to_array
+		#define LBAL_LIBCPP20_TO_ARRAY __cpp_lib_to_array
 	#endif
-#endif	//	LBAL_LIBCPP2A_TO_ARRAY
+#endif	//	LBAL_LIBCPP20_TO_ARRAY
 
-#if !defined (LBAL_LIBCPP2A_TYPE_IDENTITY)
+#if !defined (LBAL_LIBCPP20_TYPE_IDENTITY)
 	#if __cpp_lib_type_identity >= 201806L
-		#define LBAL_LIBCPP2A_TYPE_IDENTITY __cpp_lib_type_identity
+		#define LBAL_LIBCPP20_TYPE_IDENTITY __cpp_lib_type_identity
 	#endif
-#endif	//	LBAL_LIBCPP2A_TYPE_IDENTITY
+#endif	//	LBAL_LIBCPP20_TYPE_IDENTITY
 
-#if !defined (LBAL_LIBCPP2A_UNWRAP_REF)
+#if !defined (LBAL_LIBCPP20_UNWRAP_REF)
 	#if __cpp_lib_unwrap_ref >= 201811L
-		#define LBAL_LIBCPP2A_UNWRAP_REF __cpp_lib_unwrap_ref
+		#define LBAL_LIBCPP20_UNWRAP_REF __cpp_lib_unwrap_ref
 	#endif
-#endif	//	LBAL_LIBCPP2A_UNWRAP_REF
+#endif	//	LBAL_LIBCPP20_UNWRAP_REF
 
 
 //	Technical Specifications
@@ -2985,2009 +2985,2009 @@
 #endif	//	LBAL_LIBCPP17_VOID_T
 
 
-#if LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR
+#if LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
 	#if defined (__has_include)
 		#if !__has_include (<array>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR
+			#undef LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
 			LBAL_CPP_WARNING ("<array> not found")
 		#endif	//	<array> test
 
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR
+			#undef LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
 			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR
-			#define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR 0
+			#undef LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
+			#define LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR
+#endif	//	LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
 
 
-#if LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS
+#if LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS
 	#if defined (__has_include)
 		#if !__has_include (<array>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS
+			#undef LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS
 			LBAL_CPP_WARNING ("<array> not found")
 		#endif	//	<array> test
 
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS
+			#undef LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS
 			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS
-			#define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS 0
+			#undef LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS
+			#define LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS
+#endif	//	LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS
 
 
-#if LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES
+#if LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES
 	#if defined (__has_include)
 		#if !__has_include (<array>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES
+			#undef LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES
 			LBAL_CPP_WARNING ("<array> not found")
 		#endif	//	<array> test
 
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES
+			#undef LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES
 			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES
-			#define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES 0
+			#undef LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES
+			#define LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES
+#endif	//	LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES
 
 
-#if LBAL_LIBCPP2A_ASSUME_ALIGNED
+#if LBAL_LIBCPP20_ASSUME_ALIGNED
 	#if defined (__has_include)
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ASSUME_ALIGNED
+			#undef LBAL_LIBCPP20_ASSUME_ALIGNED
 			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ASSUME_ALIGNED
-			#define LBAL_LIBCPP2A_ASSUME_ALIGNED 0
+			#undef LBAL_LIBCPP20_ASSUME_ALIGNED
+			#define LBAL_LIBCPP20_ASSUME_ALIGNED 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ASSUME_ALIGNED")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ASSUME_ALIGNED")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ASSUME_ALIGNED
+#endif	//	LBAL_LIBCPP20_ASSUME_ALIGNED
 
 
-#if LBAL_LIBCPP2A_ATOMIC_FLAG_TEST
+#if LBAL_LIBCPP20_ATOMIC_FLAG_TEST
 	#if defined (__has_include)
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ATOMIC_FLAG_TEST
+			#undef LBAL_LIBCPP20_ATOMIC_FLAG_TEST
 			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ATOMIC_FLAG_TEST
-			#define LBAL_LIBCPP2A_ATOMIC_FLAG_TEST 0
+			#undef LBAL_LIBCPP20_ATOMIC_FLAG_TEST
+			#define LBAL_LIBCPP20_ATOMIC_FLAG_TEST 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ATOMIC_FLAG_TEST")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ATOMIC_FLAG_TEST")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ATOMIC_FLAG_test
-#if LBAL_LIBCPP2A_ATOMIC_FLOAT
+#endif	//	LBAL_LIBCPP20_ATOMIC_FLAG_test
+#if LBAL_LIBCPP20_ATOMIC_FLOAT
 	#if defined (__has_include)
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ATOMIC_FLOAT
+			#undef LBAL_LIBCPP20_ATOMIC_FLOAT
 			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ATOMIC_FLOAT
-			#define LBAL_LIBCPP2A_ATOMIC_FLOAT 0
+			#undef LBAL_LIBCPP20_ATOMIC_FLOAT
+			#define LBAL_LIBCPP20_ATOMIC_FLOAT 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ATOMIC_FLOAT")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ATOMIC_FLOAT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ATOMIC_FLOAT
+#endif	//	LBAL_LIBCPP20_ATOMIC_FLOAT
 
 
-#if LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES
+#if LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES
 	#if defined (__has_include)
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES
+			#undef LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES
 			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES
-			#define LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES 0
+			#undef LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES
+			#define LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES
+#endif	//	LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES
 
 
-#if LBAL_LIBCPP2A_ATOMIC_REF
+#if LBAL_LIBCPP20_ATOMIC_REF
 	#if defined (__has_include)
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ATOMIC_REF
+			#undef LBAL_LIBCPP20_ATOMIC_REF
 			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ATOMIC_REF
-			#define LBAL_LIBCPP2A_ATOMIC_REF 0
+			#undef LBAL_LIBCPP20_ATOMIC_REF
+			#define LBAL_LIBCPP20_ATOMIC_REF 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ATOMIC_REF")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ATOMIC_REF")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ATOMIC_REF
+#endif	//	LBAL_LIBCPP20_ATOMIC_REF
 
 
-#if LBAL_LIBCPP2A_ATOMIC_SHARED_PTR
+#if LBAL_LIBCPP20_ATOMIC_SHARED_PTR
 	#if defined (__has_include)
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ATOMIC_SHARED_PTR
+			#undef LBAL_LIBCPP20_ATOMIC_SHARED_PTR
 			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ATOMIC_SHARED_PTR
-			#define LBAL_LIBCPP2A_ATOMIC_SHARED_PTR 0
+			#undef LBAL_LIBCPP20_ATOMIC_SHARED_PTR
+			#define LBAL_LIBCPP20_ATOMIC_SHARED_PTR 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ATOMIC_SHARED_PTR")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ATOMIC_SHARED_PTR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ATOMIC_SHARED_PTR
+#endif	//	LBAL_LIBCPP20_ATOMIC_SHARED_PTR
 
 
-#if LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION
+#if LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION
 	#if defined (__has_include)
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION
+			#undef LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION
 			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION
+			#undef LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION
 			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION
-			#define LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION 0
+			#undef LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION
+			#define LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION
+#endif	//	LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION
 
 
-#if LBAL_LIBCPP2A_ATOMIC_WAIT
+#if LBAL_LIBCPP20_ATOMIC_WAIT
 	#if defined (__has_include)
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ATOMIC_WAIT
+			#undef LBAL_LIBCPP20_ATOMIC_WAIT
 			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ATOMIC_WAIT
-			#define LBAL_LIBCPP2A_ATOMIC_WAIT 0
+			#undef LBAL_LIBCPP20_ATOMIC_WAIT
+			#define LBAL_LIBCPP20_ATOMIC_WAIT 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ATOMIC_WAIT")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ATOMIC_WAIT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ATOMIC_WAIT
+#endif	//	LBAL_LIBCPP20_ATOMIC_WAIT
 
 
-#if LBAL_LIBCPP2A_BARRIER
+#if LBAL_LIBCPP20_BARRIER
 	#if defined (__has_include)
 		#if !__has_include (<barrier>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_BARRIER
+			#undef LBAL_LIBCPP20_BARRIER
 			LBAL_CPP_WARNING ("<barrier> not found")
 		#endif	//	<barrier> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_BARRIER
-			#define LBAL_LIBCPP2A_BARRIER 0
+			#undef LBAL_LIBCPP20_BARRIER
+			#define LBAL_LIBCPP20_BARRIER 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_BARRIER")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_BARRIER")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_BARRIER
+#endif	//	LBAL_LIBCPP20_BARRIER
 
 
-#if LBAL_LIBCPP2A_BIND_FRONT
+#if LBAL_LIBCPP20_BIND_FRONT
 	#if defined (__has_include)
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_BIND_FRONT
+			#undef LBAL_LIBCPP20_BIND_FRONT
 			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_BIND_FRONT
-			#define LBAL_LIBCPP2A_BIND_FRONT 0
+			#undef LBAL_LIBCPP20_BIND_FRONT
+			#define LBAL_LIBCPP20_BIND_FRONT 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_BIND_FRONT")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_BIND_FRONT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_BIND_FRONT
+#endif	//	LBAL_LIBCPP20_BIND_FRONT
 
 
-#if LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP
+#if LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP
 	#if defined (__has_include)
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP
+			#undef LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP
 			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP
-			#define LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP 0
+			#undef LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP
+			#define LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP
+#endif	//	LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP
 
 
-#if LBAL_LIBCPP2A_BIT_CAST
+#if LBAL_LIBCPP20_BIT_CAST
 	#if defined (__has_include)
 		#if !__has_include (<bit>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_BIT_CAST
+			#undef LBAL_LIBCPP20_BIT_CAST
 			LBAL_CPP_WARNING ("<bit> not found")
 		#endif	//	<bit> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_BIT_CAST
-			#define LBAL_LIBCPP2A_BIT_CAST 0
+			#undef LBAL_LIBCPP20_BIT_CAST
+			#define LBAL_LIBCPP20_BIT_CAST 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_BIT_CAST")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_BIT_CAST")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_BIT_CAST
+#endif	//	LBAL_LIBCPP20_BIT_CAST
 
 
-#if LBAL_LIBCPP2A_BITOPS
+#if LBAL_LIBCPP20_BITOPS
 	#if defined (__has_include)
 		#if !__has_include (<bit>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_BITOPS
+			#undef LBAL_LIBCPP20_BITOPS
 			LBAL_CPP_WARNING ("<bit> not found")
 		#endif	//	<bit> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_BITOPS
-			#define LBAL_LIBCPP2A_BITOPS 0
+			#undef LBAL_LIBCPP20_BITOPS
+			#define LBAL_LIBCPP20_BITOPS 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_BITOPS")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_BITOPS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_BITOPS
+#endif	//	LBAL_LIBCPP20_BITOPS
 
 
-#if LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS
+#if LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS
 	#if defined (__has_include)
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS
+			#undef LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS
 			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS
-			#define LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS 0
+			#undef LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS
+			#define LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS
+#endif	//	LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS
 
 
-#if LBAL_LIBCPP2A_CHAR8_T
+#if LBAL_LIBCPP20_CHAR8_T
 	#if defined (__has_include)
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CHAR8_T
+			#undef LBAL_LIBCPP20_CHAR8_T
 			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 
 		#if !__has_include (<filesystem>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CHAR8_T
+			#undef LBAL_LIBCPP20_CHAR8_T
 			LBAL_CPP_WARNING ("<filesystem> not found")
 		#endif	//	<filesystem> test
 
 		#if !__has_include (<istream>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CHAR8_T
+			#undef LBAL_LIBCPP20_CHAR8_T
 			LBAL_CPP_WARNING ("<istream> not found")
 		#endif	//	<istream> test
 
 		#if !__has_include (<limits>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CHAR8_T
+			#undef LBAL_LIBCPP20_CHAR8_T
 			LBAL_CPP_WARNING ("<limits> not found")
 		#endif	//	<limits> test
 
 		#if !__has_include (<locale>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CHAR8_T
+			#undef LBAL_LIBCPP20_CHAR8_T
 			LBAL_CPP_WARNING ("<locale> not found")
 		#endif	//	<locale> test
 
 		#if !__has_include (<ostream>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CHAR8_T
+			#undef LBAL_LIBCPP20_CHAR8_T
 			LBAL_CPP_WARNING ("<ostream> not found")
 		#endif	//	<ostream> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CHAR8_T
-			#define LBAL_LIBCPP2A_CHAR8_T 0
+			#undef LBAL_LIBCPP20_CHAR8_T
+			#define LBAL_LIBCPP20_CHAR8_T 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CHAR8_T")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CHAR8_T")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CHAR8_T
+#endif	//	LBAL_LIBCPP20_CHAR8_T
 
 
-#if LBAL_LIBCPP2A_CHAR8_T_COMPAT
+#if LBAL_LIBCPP20_CHAR8_T_COMPAT
 	#if defined (__has_include)
 		#if !__has_include (<atomic>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CHAR8_T_COMPAT
+			#undef LBAL_LIBCPP20_CHAR8_T_COMPAT
 			LBAL_CPP_WARNING ("<atomic> not found")
 		#endif	//	<atomic> test
 
 		#if !__has_include (<filesystem>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CHAR8_T_COMPAT
+			#undef LBAL_LIBCPP20_CHAR8_T_COMPAT
 			LBAL_CPP_WARNING ("<filesystem> not found")
 		#endif	//	<filesystem> test
 
 		#if !__has_include (<istream>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CHAR8_T_COMPAT
+			#undef LBAL_LIBCPP20_CHAR8_T_COMPAT
 			LBAL_CPP_WARNING ("<istream> not found")
 		#endif	//	<istream> test
 
 		#if !__has_include (<limits>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CHAR8_T_COMPAT
+			#undef LBAL_LIBCPP20_CHAR8_T_COMPAT
 			LBAL_CPP_WARNING ("<limits> not found")
 		#endif	//	<limits> test
 
 		#if !__has_include (<locale>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CHAR8_T_COMPAT
+			#undef LBAL_LIBCPP20_CHAR8_T_COMPAT
 			LBAL_CPP_WARNING ("<locale> not found")
 		#endif	//	<locale> test
 
 		#if !__has_include (<ostream>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CHAR8_T_COMPAT
+			#undef LBAL_LIBCPP20_CHAR8_T_COMPAT
 			LBAL_CPP_WARNING ("<ostream> not found")
 		#endif	//	<ostream> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CHAR8_T_COMPAT
-			#define LBAL_LIBCPP2A_CHAR8_T_COMPAT 0
+			#undef LBAL_LIBCPP20_CHAR8_T_COMPAT
+			#define LBAL_LIBCPP20_CHAR8_T_COMPAT 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CHAR8_T_COMPAT")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CHAR8_T_COMPAT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CHAR8_T_COMPAT
+#endif	//	LBAL_LIBCPP20_CHAR8_T_COMPAT
 
 
-#if LBAL_LIBCPP2A_CHRONO_CALENDAR
+#if LBAL_LIBCPP20_CHRONO_CALENDAR
 	#if defined (__has_include)
 		#if !__has_include (<chrono>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CHRONO_CALENDAR
+			#undef LBAL_LIBCPP20_CHRONO_CALENDAR
 			LBAL_CPP_WARNING ("<chrono> not found")
 		#endif	//	<chrono> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CHRONO_CALENDAR
-			#define LBAL_LIBCPP2A_CHRONO_CALENDAR 0
+			#undef LBAL_LIBCPP20_CHRONO_CALENDAR
+			#define LBAL_LIBCPP20_CHRONO_CALENDAR 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CHRONO_CALENDAR")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CHRONO_CALENDAR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CHRONO_CALENDAR
+#endif	//	LBAL_LIBCPP20_CHRONO_CALENDAR
 
 
-#if LBAL_LIBCPP2A_CHRONO_FIXES
+#if LBAL_LIBCPP20_CHRONO_FIXES
 	#if defined (__has_include)
 		#if !__has_include (<chrono>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CHRONO_FIXES
+			#undef LBAL_LIBCPP20_CHRONO_FIXES
 			LBAL_CPP_WARNING ("<chrono> not found")
 		#endif	//	<chrono> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CHRONO_FIXES
-			#define LBAL_LIBCPP2A_CHRONO_FIXES 0
+			#undef LBAL_LIBCPP20_CHRONO_FIXES
+			#define LBAL_LIBCPP20_CHRONO_FIXES 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CHRONO_FIXES")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CHRONO_FIXES")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CHRONO_FIXES
+#endif	//	LBAL_LIBCPP20_CHRONO_FIXES
 
 
-#if LBAL_LIBCPP2A_CONCEPTS
+#if LBAL_LIBCPP20_CONCEPTS
 	#if defined (__has_include)
 		#if !__has_include (<concepts>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONCEPTS
+			#undef LBAL_LIBCPP20_CONCEPTS
 			LBAL_CPP_WARNING ("<concepts> not found")
 		#endif	//	<concepts> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONCEPTS
-			#define LBAL_LIBCPP2A_CONCEPTS 0
+			#undef LBAL_LIBCPP20_CONCEPTS
+			#define LBAL_LIBCPP20_CONCEPTS 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONCEPTS")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONCEPTS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONCEPTS
+#endif	//	LBAL_LIBCPP20_CONCEPTS
 
 
-#if LBAL_LIBCPP2A_CONCEPTS_EXP
+#if LBAL_LIBCPP20_CONCEPTS_EXP
 	#if defined (__has_include)
 		#if !__has_include (<experimental/concepts>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONCEPTS_EXP
+			#undef LBAL_LIBCPP20_CONCEPTS_EXP
 			LBAL_CPP_WARNING ("<experimental/concepts> not found")
 		#endif	//	<experimental/concepts> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONCEPTS_EXP
-			#define LBAL_LIBCPP2A_CONCEPTS_EXP 0
+			#undef LBAL_LIBCPP20_CONCEPTS_EXP
+			#define LBAL_LIBCPP20_CONCEPTS_EXP 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONCEPTS_EXP")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONCEPTS_EXP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONCEPTS_EXP
+#endif	//	LBAL_LIBCPP20_CONCEPTS_EXP
 
 
-#if LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE
+#if LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE
 	#if defined (__has_include)
 		#if !__has_include (<concepts>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE
+			#undef LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE
 			LBAL_CPP_WARNING ("<concepts> not found")
 		#endif	//	<concepts> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE
-			#define LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE 0
+			#undef LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE
+			#define LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE
+#endif	//	LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE
 
 
-#if LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE
+#if LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE
 	#if defined (__has_include)
 		#if !__has_include (<concepts>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE
+			#undef LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE
 			LBAL_CPP_WARNING ("<concepts> not found")
 		#endif	//	<concepts> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE
-			#define LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE 0
+			#undef LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE
+			#define LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE
+#endif	//	LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE
 
 
-#if LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS
+#if LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS
 	#if defined (__has_include)
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS
+			#undef LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS
 			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS
-			#define LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS 0
+			#undef LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS
+			#define LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS
 
 
-#if LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP
+#if LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP
 	#if defined (__has_include)
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP
+			#undef LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP
 			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP
-			#define LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP 0
+			#undef LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP
+			#define LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP
 
 
-#if LBAL_LIBCPP2A_CONSTEXPR_COMPLEX
+#if LBAL_LIBCPP20_CONSTEXPR_COMPLEX
 	#if defined (__has_include)
 		#if !__has_include (<complex>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONSTEXPR_COMPLEX
+			#undef LBAL_LIBCPP20_CONSTEXPR_COMPLEX
 			LBAL_CPP_WARNING ("<complex> not found")
 		#endif	//	<complex> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONSTEXPR_COMPLEX
-			#define LBAL_LIBCPP2A_CONSTEXPR_COMPLEX 0
+			#undef LBAL_LIBCPP20_CONSTEXPR_COMPLEX
+			#define LBAL_LIBCPP20_CONSTEXPR_COMPLEX 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_COMPLEX")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_COMPLEX")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_COMPLEX
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_COMPLEX
 
 
-#if LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC
+#if LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC
 	#if defined (__has_include)
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC
+			#undef LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC
 			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC
-			#define LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC 0
+			#undef LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC
+			#define LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC
 
 
-#if LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL
+#if LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL
 	#if defined (__has_include)
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL
+			#undef LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL
 			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL
-			#define LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL 0
+			#undef LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL
+			#define LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL
 
 
-#if LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE
+#if LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE
 	#if defined (__has_include)
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE
+			#undef LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE
 			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE
-			#define LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE 0
+			#undef LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE
+			#define LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE
 
 
-#if LBAL_LIBCPP2A_CONSTEXPR_ITERATOR
+#if LBAL_LIBCPP20_CONSTEXPR_ITERATOR
 	#if defined (__has_include)
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONSTEXPR_ITERATOR
+			#undef LBAL_LIBCPP20_CONSTEXPR_ITERATOR
 			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONSTEXPR_ITERATOR
-			#define LBAL_LIBCPP2A_CONSTEXPR_ITERATOR 0
+			#undef LBAL_LIBCPP20_CONSTEXPR_ITERATOR
+			#define LBAL_LIBCPP20_CONSTEXPR_ITERATOR 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_ITERATOR")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_ITERATOR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_ITERATOR
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_ITERATOR
 
 
-#if LBAL_LIBCPP2A_CONSTEXPR_MEMORY
+#if LBAL_LIBCPP20_CONSTEXPR_MEMORY
 	#if defined (__has_include)
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONSTEXPR_MEMORY
+			#undef LBAL_LIBCPP20_CONSTEXPR_MEMORY
 			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONSTEXPR_MEMORY
-			#define LBAL_LIBCPP2A_CONSTEXPR_MEMORY 0
+			#undef LBAL_LIBCPP20_CONSTEXPR_MEMORY
+			#define LBAL_LIBCPP20_CONSTEXPR_MEMORY 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_MEMORY")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_MEMORY")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_MEMORY
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_MEMORY
 
 
-#if LBAL_LIBCPP2A_CONSTEXPR_NUMERIC
+#if LBAL_LIBCPP20_CONSTEXPR_NUMERIC
 	#if defined (__has_include)
 		#if !__has_include (<numeric>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONSTEXPR_NUMERIC
+			#undef LBAL_LIBCPP20_CONSTEXPR_NUMERIC
 			LBAL_CPP_WARNING ("<numeric> not found")
 		#endif	//	<numeric> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONSTEXPR_NUMERIC
-			#define LBAL_LIBCPP2A_CONSTEXPR_NUMERIC 0
+			#undef LBAL_LIBCPP20_CONSTEXPR_NUMERIC
+			#define LBAL_LIBCPP20_CONSTEXPR_NUMERIC 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_NUMERIC")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_NUMERIC")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_NUMERIC
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_NUMERIC
 
 
-#if LBAL_LIBCPP2A_CONSTEXPR_STRING
+#if LBAL_LIBCPP20_CONSTEXPR_STRING
 	#if defined (__has_include)
 		#if !__has_include (<string>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONSTEXPR_STRING
+			#undef LBAL_LIBCPP20_CONSTEXPR_STRING
 			LBAL_CPP_WARNING ("<string> not found")
 		#endif	//	<string> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONSTEXPR_STRING
-			#define LBAL_LIBCPP2A_CONSTEXPR_STRING 0
+			#undef LBAL_LIBCPP20_CONSTEXPR_STRING
+			#define LBAL_LIBCPP20_CONSTEXPR_STRING 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_STRING")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_STRING")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_STRING
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_STRING
 
 
-#if LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW
+#if LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW
 	#if defined (__has_include)
 		#if !__has_include (<string_view>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW
+			#undef LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW
 			LBAL_CPP_WARNING ("<string_view> not found")
 		#endif	//	<string_view> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW
-			#define LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW 0
+			#undef LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW
+			#define LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW
 
 
-#if LBAL_LIBCPP2A_CONSTEXPR_TUPLE
+#if LBAL_LIBCPP20_CONSTEXPR_TUPLE
 	#if defined (__has_include)
 		#if !__has_include (<tuple>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONSTEXPR_TUPLE
+			#undef LBAL_LIBCPP20_CONSTEXPR_TUPLE
 			LBAL_CPP_WARNING ("<tuple> not found")
 		#endif	//	<tuple> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONSTEXPR_TUPLE
-			#define LBAL_LIBCPP2A_CONSTEXPR_TUPLE 0
+			#undef LBAL_LIBCPP20_CONSTEXPR_TUPLE
+			#define LBAL_LIBCPP20_CONSTEXPR_TUPLE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_TUPLE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_TUPLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_TUPLE
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_TUPLE
 
 
-#if LBAL_LIBCPP2A_CONSTEXPR_UTILITY
+#if LBAL_LIBCPP20_CONSTEXPR_UTILITY
 	#if defined (__has_include)
 		#if !__has_include (<utility>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONSTEXPR_UTILITY
+			#undef LBAL_LIBCPP20_CONSTEXPR_UTILITY
 			LBAL_CPP_WARNING ("<utility> not found")
 		#endif	//	<utility> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONSTEXPR_UTILITY
-			#define LBAL_LIBCPP2A_CONSTEXPR_UTILITY 0
+			#undef LBAL_LIBCPP20_CONSTEXPR_UTILITY
+			#define LBAL_LIBCPP20_CONSTEXPR_UTILITY 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_UTILITY")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_UTILITY")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_UTILITY
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_UTILITY
 
 
-#if LBAL_LIBCPP2A_CONSTEXPR_VECTOR
+#if LBAL_LIBCPP20_CONSTEXPR_VECTOR
 	#if defined (__has_include)
 		#if !__has_include (<vector>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_CONSTEXPR_VECTOR
+			#undef LBAL_LIBCPP20_CONSTEXPR_VECTOR
 			LBAL_CPP_WARNING ("<vector> not found")
 		#endif	//	<vector> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_CONSTEXPR_VECTOR
-			#define LBAL_LIBCPP2A_CONSTEXPR_VECTOR 0
+			#undef LBAL_LIBCPP20_CONSTEXPR_VECTOR
+			#define LBAL_LIBCPP20_CONSTEXPR_VECTOR 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_CONSTEXPR_VECTOR")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_VECTOR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_CONSTEXPR_VECTOR
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_VECTOR
 
 
-#if LBAL_LIBCPP2A_COROUTINE
+#if LBAL_LIBCPP20_COROUTINE
 	#if defined (__has_include)
 		#if !__has_include (<coroutine>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_COROUTINE
+			#undef LBAL_LIBCPP20_COROUTINE
 			LBAL_CPP_WARNING ("<coroutine> not found")
 		#endif	//	<coroutine> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_COROUTINE
-			#define LBAL_LIBCPP2A_COROUTINE 0
+			#undef LBAL_LIBCPP20_COROUTINE
+			#define LBAL_LIBCPP20_COROUTINE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_COROUTINE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_COROUTINE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_COROUTINE
+#endif	//	LBAL_LIBCPP20_COROUTINE
 
 
-#if LBAL_LIBCPP2A_COROUTINE_EXP
+#if LBAL_LIBCPP20_COROUTINE_EXP
 	#if defined (__has_include)
 		#if !__has_include (<experimental/coroutine>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_COROUTINE_EXP
+			#undef LBAL_LIBCPP20_COROUTINE_EXP
 			LBAL_CPP_WARNING ("<experimental/coroutine> not found")
 		#endif	//	<experimental/coroutine> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_COROUTINE_EXP
-			#define LBAL_LIBCPP2A_COROUTINE_EXP 0
+			#undef LBAL_LIBCPP20_COROUTINE_EXP
+			#define LBAL_LIBCPP20_COROUTINE_EXP 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_COROUTINE_EXP")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_COROUTINE_EXP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_COROUTINE_EXP
+#endif	//	LBAL_LIBCPP20_COROUTINE_EXP
 
 
-#if LBAL_LIBCPP2A_DESTROYING_DELETE
+#if LBAL_LIBCPP20_DESTROYING_DELETE
 	#if defined (__has_include)
 		#if !__has_include (<new>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_DESTROYING_DELETE
+			#undef LBAL_LIBCPP20_DESTROYING_DELETE
 			LBAL_CPP_WARNING ("<new> not found")
 		#endif	//	<new> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_DESTROYING_DELETE
-			#define LBAL_LIBCPP2A_DESTROYING_DELETE 0
+			#undef LBAL_LIBCPP20_DESTROYING_DELETE
+			#define LBAL_LIBCPP20_DESTROYING_DELETE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_DESTROYING_DELETE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_DESTROYING_DELETE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_DESTROYING_DELETE
+#endif	//	LBAL_LIBCPP20_DESTROYING_DELETE
 
 
-#if LBAL_LIBCPP2A_ENDIAN
+#if LBAL_LIBCPP20_ENDIAN
 	#if defined (__has_include)
 		#if !__has_include (<bit>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ENDIAN
+			#undef LBAL_LIBCPP20_ENDIAN
 			LBAL_CPP_WARNING ("<bit> not found")
 		#endif	//	<bit> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ENDIAN
-			#define LBAL_LIBCPP2A_ENDIAN 0
+			#undef LBAL_LIBCPP20_ENDIAN
+			#define LBAL_LIBCPP20_ENDIAN 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ENDIAN")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ENDIAN")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ENDIAN
+#endif	//	LBAL_LIBCPP20_ENDIAN
 
 
-#if LBAL_LIBCPP2A_ENDIAN_BIT
+#if LBAL_LIBCPP20_ENDIAN_BIT
 	#if defined (__has_include)
 		#if !__has_include (<bit>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ENDIAN_BIT
+			#undef LBAL_LIBCPP20_ENDIAN_BIT
 			LBAL_CPP_WARNING ("<bit> not found")
 		#endif	//	<bit> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ENDIAN_BIT
-			#define LBAL_LIBCPP2A_ENDIAN_BIT 0
+			#undef LBAL_LIBCPP20_ENDIAN_BIT
+			#define LBAL_LIBCPP20_ENDIAN_BIT 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ENDIAN_BIT")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ENDIAN_BIT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ENDIAN_BIT
+#endif	//	LBAL_LIBCPP20_ENDIAN_BIT
 
 
-#if LBAL_LIBCPP2A_ERASE_IF
+#if LBAL_LIBCPP20_ERASE_IF
 	#if defined (__has_include)
 		#if !__has_include (<deque>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ERASE_IF
+			#undef LBAL_LIBCPP20_ERASE_IF
 			LBAL_CPP_WARNING ("<deque> not found")
 		#endif	//	<deque> test
 
 		#if !__has_include (<forward_list>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ERASE_IF
+			#undef LBAL_LIBCPP20_ERASE_IF
 			LBAL_CPP_WARNING ("<forward_list> not found")
 		#endif	//	<forward_list> test
 
 		#if !__has_include (<list>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ERASE_IF
+			#undef LBAL_LIBCPP20_ERASE_IF
 			LBAL_CPP_WARNING ("<list> not found")
 		#endif	//	<list> test
 
 		#if !__has_include (<map>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ERASE_IF
+			#undef LBAL_LIBCPP20_ERASE_IF
 			LBAL_CPP_WARNING ("<map> not found")
 		#endif	//	<map> test
 
 		#if !__has_include (<set>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ERASE_IF
+			#undef LBAL_LIBCPP20_ERASE_IF
 			LBAL_CPP_WARNING ("<set> not found")
 		#endif	//	<set> test
 
 		#if !__has_include (<string>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ERASE_IF
+			#undef LBAL_LIBCPP20_ERASE_IF
 			LBAL_CPP_WARNING ("<string> not found")
 		#endif	//	<string> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ERASE_IF
-			#define LBAL_LIBCPP2A_ERASE_IF 0
+			#undef LBAL_LIBCPP20_ERASE_IF
+			#define LBAL_LIBCPP20_ERASE_IF 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ERASE_IF")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ERASE_IF")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ERASE_IF
+#endif	//	LBAL_LIBCPP20_ERASE_IF
 
 
-#if LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+#if LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
 	#if defined (__has_include)
 		#if !__has_include (<deque>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+			#undef LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
 			LBAL_CPP_WARNING ("<deque> not found")
 		#endif	//	<deque> test
 
 		#if !__has_include (<forward_list>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+			#undef LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
 			LBAL_CPP_WARNING ("<forward_list> not found")
 		#endif	//	<forward_list> test
 
 		#if !__has_include (<list>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+			#undef LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
 			LBAL_CPP_WARNING ("<list> not found")
 		#endif	//	<list> test
 
 		#if !__has_include (<map>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+			#undef LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
 			LBAL_CPP_WARNING ("<map> not found")
 		#endif	//	<map> test
 
 		#if !__has_include (<set>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+			#undef LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
 			LBAL_CPP_WARNING ("<set> not found")
 		#endif	//	<set> test
 
 		#if !__has_include (<string>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+			#undef LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
 			LBAL_CPP_WARNING ("<string> not found")
 		#endif	//	<string> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
-			#define LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS 0
+			#undef LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
+			#define LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
+#endif	//	LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
 
 
-#if LBAL_LIBCPP2A_EXECUTION_VECTORIZATION
+#if LBAL_LIBCPP20_EXECUTION_VECTORIZATION
 	#if defined (__has_include)
 		#if !__has_include (<execution>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_EXECUTION_VECTORIZATION
+			#undef LBAL_LIBCPP20_EXECUTION_VECTORIZATION
 			LBAL_CPP_WARNING ("<execution> not found")
 		#endif	//	<execution> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_EXECUTION_VECTORIZATION
-			#define LBAL_LIBCPP2A_EXECUTION_VECTORIZATION 0
+			#undef LBAL_LIBCPP20_EXECUTION_VECTORIZATION
+			#define LBAL_LIBCPP20_EXECUTION_VECTORIZATION 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_EXECUTION_VECTORIZATION")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_EXECUTION_VECTORIZATION")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_EXECUTION_VECTORIZATION
+#endif	//	LBAL_LIBCPP20_EXECUTION_VECTORIZATION
 
 
-#if LBAL_LIBCPP2A_FORMAT
+#if LBAL_LIBCPP20_FORMAT
 	#if defined (__has_include)
 		#if !__has_include (<format>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_FORMAT
+			#undef LBAL_LIBCPP20_FORMAT
 			LBAL_CPP_WARNING ("<format> not found")
 		#endif	//	<format> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_FORMAT
-			#define LBAL_LIBCPP2A_FORMAT 0
+			#undef LBAL_LIBCPP20_FORMAT
+			#define LBAL_LIBCPP20_FORMAT 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_FORMAT")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_FORMAT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_FORMAT
+#endif	//	LBAL_LIBCPP20_FORMAT
 
 
-#if LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP
+#if LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP
 	#if defined (__has_include)
 		#if !__has_include (<unordered_map>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP
+			#undef LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP
 			LBAL_CPP_WARNING ("<unordered_map> not found")
 		#endif	//	<unordered_map> test
 
 		#if !__has_include (<unordered_set>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP
+			#undef LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP
 			LBAL_CPP_WARNING ("<unordered_set> not found")
 		#endif	//	<unordered_set> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP
-			#define LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP 0
+			#undef LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP
+			#define LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP
+#endif	//	LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP
 
 
-#if LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP
+#if LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP
 	#if defined (__has_include)
 		#if !__has_include (<unordered_map>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP
+			#undef LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP
 			LBAL_CPP_WARNING ("<unordered_map> not found")
 		#endif	//	<unordered_map> test
 
 		#if !__has_include (<unordered_set>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP
+			#undef LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP
 			LBAL_CPP_WARNING ("<unordered_set> not found")
 		#endif	//	<unordered_set> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP
-			#define LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP 0
+			#undef LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP
+			#define LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP
+#endif	//	LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP
 
 
-#if LBAL_LIBCPP2A_INT_POW2
+#if LBAL_LIBCPP20_INT_POW2
 	#if defined (__has_include)
 		#if !__has_include (<bit>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_INT_POW2
+			#undef LBAL_LIBCPP20_INT_POW2
 			LBAL_CPP_WARNING ("<bit> not found")
 		#endif	//	<bit> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_INT_POW2
-			#define LBAL_LIBCPP2A_INT_POW2 0
+			#undef LBAL_LIBCPP20_INT_POW2
+			#define LBAL_LIBCPP20_INT_POW2 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_INT_POW2")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_INT_POW2")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_INT_POW2
+#endif	//	LBAL_LIBCPP20_INT_POW2
 
 
-#if LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME
+#if LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME
 	#if defined (__has_include)
 		#if !__has_include (<bit>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME
+			#undef LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME
 			LBAL_CPP_WARNING ("<bit> not found")
 		#endif	//	<bit> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME
-			#define LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME 0
+			#undef LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME
+			#define LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME
+#endif	//	LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME
 
 
-#if LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS
+#if LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS
 	#if defined (__has_include)
 		#if !__has_include (<utility>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS
+			#undef LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS
 			LBAL_CPP_WARNING ("<cmath> not found")
 		#endif	//	<cmath> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS
-			#define LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS 0
+			#undef LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS
+			#define LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS
+#endif	//	LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS
 
 
-#if LBAL_LIBCPP2A_INTERPOLATE
+#if LBAL_LIBCPP20_INTERPOLATE
 	#if defined (__has_include)
 		#if !__has_include (<cmath>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_INTERPOLATE
+			#undef LBAL_LIBCPP20_INTERPOLATE
 			LBAL_CPP_WARNING ("<cmath> not found")
 		#endif	//	<cmath> test
 
 		#if !__has_include (<numeric>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_INTERPOLATE
+			#undef LBAL_LIBCPP20_INTERPOLATE
 			LBAL_CPP_WARNING ("<numeric> not found")
 		#endif	//	<numeric> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_INTERPOLATE
-			#define LBAL_LIBCPP2A_INTERPOLATE 0
+			#undef LBAL_LIBCPP20_INTERPOLATE
+			#define LBAL_LIBCPP20_INTERPOLATE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_INTERPOLATE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_INTERPOLATE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_INTERPOLATE
+#endif	//	LBAL_LIBCPP20_INTERPOLATE
 
 
-#if LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED
+#if LBAL_LIBCPP20_IS_CONSTANT_EVALUATED
 	#if defined (__has_include)
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED
+			#undef LBAL_LIBCPP20_IS_CONSTANT_EVALUATED
 			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED
-			#define LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED 0
+			#undef LBAL_LIBCPP20_IS_CONSTANT_EVALUATED
+			#define LBAL_LIBCPP20_IS_CONSTANT_EVALUATED 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_IS_CONSTANT_EVALUATED")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED
+#endif	//	LBAL_LIBCPP20_IS_CONSTANT_EVALUATED
 
 
-#if LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE
+#if LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE
 	#if defined (__has_include)
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE
+			#undef LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE
 			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE
-			#define LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE 0
+			#undef LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE
+			#define LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE
+#endif	//	LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE
 
 
-#if LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE
+#if LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
 	#if defined (__has_include)
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE
+			#undef LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
 			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE
-			#define LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE 0
+			#undef LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
+			#define LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE
+#endif	//	LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
 
 
-#if LBAL_LIBCPP2A_JTHREAD
+#if LBAL_LIBCPP20_JTHREAD
 	#if defined (__has_include)
 		#if !__has_include (<stop_token>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_JTHREAD
+			#undef LBAL_LIBCPP20_JTHREAD
 			LBAL_CPP_WARNING ("<stop_token> not found")
 		#endif	//	<stop_token> test
 
 		#if !__has_include (<thread>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_JTHREAD
+			#undef LBAL_LIBCPP20_JTHREAD
 			LBAL_CPP_WARNING ("<thread> not found")
 		#endif	//	<thread> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_JTHREAD
-			#define LBAL_LIBCPP2A_JTHREAD 0
+			#undef LBAL_LIBCPP20_JTHREAD
+			#define LBAL_LIBCPP20_JTHREAD 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_JTHREAD")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_JTHREAD")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_JTHREAD
+#endif	//	LBAL_LIBCPP20_JTHREAD
 
 
-#if LBAL_LIBCPP2A_JTHREAD_CV
+#if LBAL_LIBCPP20_JTHREAD_CV
 	#if defined (__has_include)
 		#if !__has_include (<stop_token>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_JTHREAD_CV
+			#undef LBAL_LIBCPP20_JTHREAD_CV
 			LBAL_CPP_WARNING ("<stop_token> not found")
 		#endif	//	<stop_token> test
 
 		#if !__has_include (<thread>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_JTHREAD_CV
+			#undef LBAL_LIBCPP20_JTHREAD_CV
 			LBAL_CPP_WARNING ("<thread> not found")
 		#endif	//	<thread> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_JTHREAD_CV
-			#define LBAL_LIBCPP2A_JTHREAD_CV 0
+			#undef LBAL_LIBCPP20_JTHREAD_CV
+			#define LBAL_LIBCPP20_JTHREAD_CV 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_JTHREAD_CV")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_JTHREAD_CV")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_JTHREAD_CV
+#endif	//	LBAL_LIBCPP20_JTHREAD_CV
 
 
-#if LBAL_LIBCPP2A_LATCH
+#if LBAL_LIBCPP20_LATCH
 	#if defined (__has_include)
 		#if !__has_include (<latch>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_LATCH
+			#undef LBAL_LIBCPP20_LATCH
 			LBAL_CPP_WARNING ("<latch> not found")
 		#endif	//	<latch> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_LATCH
-			#define LBAL_LIBCPP2A_LATCH 0
+			#undef LBAL_LIBCPP20_LATCH
+			#define LBAL_LIBCPP20_LATCH 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_LATCH")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_LATCH")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_LATCH
+#endif	//	LBAL_LIBCPP20_LATCH
 
 
-#if LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
+#if LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE
 	#if defined (__has_include)
 		#if !__has_include (<forward_list>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
+			#undef LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE
 			LBAL_CPP_WARNING ("<forward_list> not found")
 		#endif	//	<forward_list> test
 
 		#if !__has_include (<list>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
+			#undef LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE
 			LBAL_CPP_WARNING ("<list> not found")
 		#endif	//	<list> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
-			#define LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE 0
+			#undef LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE
+			#define LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
+#endif	//	LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE
 
 
-#if LBAL_LIBCPP2A_MATH_CONSTANTS
+#if LBAL_LIBCPP20_MATH_CONSTANTS
 	#if defined (__has_include)
 		#if !__has_include (<numbers>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_MATH_CONSTANTS
+			#undef LBAL_LIBCPP20_MATH_CONSTANTS
 			LBAL_CPP_WARNING ("<numbers> not found")
 		#endif	//	<numbers> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_MATH_CONSTANTS
-			#define LBAL_LIBCPP2A_MATH_CONSTANTS 0
+			#undef LBAL_LIBCPP20_MATH_CONSTANTS
+			#define LBAL_LIBCPP20_MATH_CONSTANTS 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_MATH_CONSTANTS")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_MATH_CONSTANTS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_MATH_CONSTANTS
+#endif	//	LBAL_LIBCPP20_MATH_CONSTANTS
 
 
-#if LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE
+#if LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE
 	#if defined (__has_include)
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE
+			#undef LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE
 			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE
-			#define LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE 0
+			#undef LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE
+			#define LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE
+#endif	//	LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE
 
 
-#if LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR
+#if LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR
 	#if defined (__has_include)
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR
+			#undef LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR
 			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR
-			#define LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR 0
+			#undef LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR
+			#define LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR
+#endif	//	LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR
 
 
-#if LBAL_LIBCPP2A_RANGES
+#if LBAL_LIBCPP20_RANGES
 	#if defined (__has_include)
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES
+			#undef LBAL_LIBCPP20_RANGES
 			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES
+			#undef LBAL_LIBCPP20_RANGES
 			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES
+			#undef LBAL_LIBCPP20_RANGES
 			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES
+			#undef LBAL_LIBCPP20_RANGES
 			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 
 		#if !__has_include (<ranges>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES
+			#undef LBAL_LIBCPP20_RANGES
 			LBAL_CPP_WARNING ("<ranges> not found")
 		#endif	//	<ranges> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_RANGES
-			#define LBAL_LIBCPP2A_RANGES 0
+			#undef LBAL_LIBCPP20_RANGES
+			#define LBAL_LIBCPP20_RANGES 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_RANGES")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_RANGES")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_RANGES
+#endif	//	LBAL_LIBCPP20_RANGES
 
 
-#if LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
+#if LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
 	#if defined (__has_include)
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
+			#undef LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
 			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
+			#undef LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
 			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
+			#undef LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
 			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
+			#undef LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
 			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 
 		#if !__has_include (<ranges>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
+			#undef LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
 			LBAL_CPP_WARNING ("<ranges> not found")
 		#endif	//	<ranges> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
-			#define LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS 0
+			#undef LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
+			#define LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
+#endif	//	LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
 
 
-#if LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
+#if LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE
 	#if defined (__has_include)
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
+			#undef LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE
 			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 
 		#if !__has_include (<functional>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
+			#undef LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE
 			LBAL_CPP_WARNING ("<functional> not found")
 		#endif	//	<functional> test
 
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
+			#undef LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE
 			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
+			#undef LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE
 			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 
 		#if !__has_include (<ranges>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
+			#undef LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE
 			LBAL_CPP_WARNING ("<ranges> not found")
 		#endif	//	<ranges> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
-			#define LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE 0
+			#undef LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE
+			#define LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
+#endif	//	LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE
 
 
-#if LBAL_LIBCPP2A_REMOVE_CVREF
+#if LBAL_LIBCPP20_REMOVE_CVREF
 	#if defined (__has_include)
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_REMOVE_CVREF
+			#undef LBAL_LIBCPP20_REMOVE_CVREF
 			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_REMOVE_CVREF
-			#define LBAL_LIBCPP2A_REMOVE_CVREF 0
+			#undef LBAL_LIBCPP20_REMOVE_CVREF
+			#define LBAL_LIBCPP20_REMOVE_CVREF 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_REMOVE_CVREF")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_REMOVE_CVREF")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_REMOVE_CVREF
+#endif	//	LBAL_LIBCPP20_REMOVE_CVREF
 
 
-#if LBAL_LIBCPP2A_SEMAPHORE
+#if LBAL_LIBCPP20_SEMAPHORE
 	#if defined (__has_include)
 		#if !__has_include (<semaphore>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_SEMAPHORE
+			#undef LBAL_LIBCPP20_SEMAPHORE
 			LBAL_CPP_WARNING ("<semaphore> not found")
 		#endif	//	<semaphore> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_SEMAPHORE
-			#define LBAL_LIBCPP2A_SEMAPHORE 0
+			#undef LBAL_LIBCPP20_SEMAPHORE
+			#define LBAL_LIBCPP20_SEMAPHORE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SEMAPHORE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_SEMAPHORE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_SEMAPHORE
+#endif	//	LBAL_LIBCPP20_SEMAPHORE
 
 
-#if LBAL_LIBCPP2A_SHARED_PTR_ARRAYS
+#if LBAL_LIBCPP20_SHARED_PTR_ARRAYS
 	#if defined (__has_include)
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_SHARED_PTR_ARRAYS
+			#undef LBAL_LIBCPP20_SHARED_PTR_ARRAYS
 			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_SHARED_PTR_ARRAYS
-			#define LBAL_LIBCPP2A_SHARED_PTR_ARRAYS 0
+			#undef LBAL_LIBCPP20_SHARED_PTR_ARRAYS
+			#define LBAL_LIBCPP20_SHARED_PTR_ARRAYS 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SHARED_PTR_ARRAYS")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_SHARED_PTR_ARRAYS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_SHARED_PTR_ARRAYS
+#endif	//	LBAL_LIBCPP20_SHARED_PTR_ARRAYS
 
 
-#if LBAL_LIBCPP2A_SHIFT
+#if LBAL_LIBCPP20_SHIFT
 	#if defined (__has_include)
 		#if !__has_include (<algorithm>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_SHIFT
+			#undef LBAL_LIBCPP20_SHIFT
 			LBAL_CPP_WARNING ("<algorithm> not found")
 		#endif	//	<algorithm> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_SHIFT
-			#define LBAL_LIBCPP2A_SHIFT 0
+			#undef LBAL_LIBCPP20_SHIFT
+			#define LBAL_LIBCPP20_SHIFT 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SHIFT")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_SHIFT")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_SHIFT
+#endif	//	LBAL_LIBCPP20_SHIFT
 
 
-#if LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE
+#if LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE
 	#if defined (__has_include)
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE
+			#undef LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE
 			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE
-			#define LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE 0
+			#undef LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE
+			#define LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE
+#endif	//	LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE
 
 
-#if LBAL_LIBCPP2A_SOURCE_LOCATION
+#if LBAL_LIBCPP20_SOURCE_LOCATION
 	#if defined (__has_include)
 		#if !__has_include (<source_location>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_SOURCE_LOCATION
+			#undef LBAL_LIBCPP20_SOURCE_LOCATION
 			LBAL_CPP_WARNING ("<source_location> not found")
 		#endif	//	<source_location> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_SOURCE_LOCATION
-			#define LBAL_LIBCPP2A_SOURCE_LOCATION 0
+			#undef LBAL_LIBCPP20_SOURCE_LOCATION
+			#define LBAL_LIBCPP20_SOURCE_LOCATION 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SOURCE_LOCATION")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_SOURCE_LOCATION")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_SOURCE_LOCATION
+#endif	//	LBAL_LIBCPP20_SOURCE_LOCATION
 
 
-#if LBAL_LIBCPP2A_SPAN
+#if LBAL_LIBCPP20_SPAN
 	#if defined (__has_include)
 		#if !__has_include (<span>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_SPAN
+			#undef LBAL_LIBCPP20_SPAN
 			LBAL_CPP_WARNING ("<span> not found")
 		#endif	//	<span> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_SPAN
-			#define LBAL_LIBCPP2A_SPAN 0
+			#undef LBAL_LIBCPP20_SPAN
+			#define LBAL_LIBCPP20_SPAN 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SPAN")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_SPAN")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_SPAN
+#endif	//	LBAL_LIBCPP20_SPAN
 
 
-#if LBAL_LIBCPP2A_SPAN_USABILITY
+#if LBAL_LIBCPP20_SPAN_USABILITY
 	#if defined (__has_include)
 		#if !__has_include (<span>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_SPAN_USABILITY
+			#undef LBAL_LIBCPP20_SPAN_USABILITY
 			LBAL_CPP_WARNING ("<span> not found")
 		#endif	//	<span> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_SPAN_USABILITY
-			#define LBAL_LIBCPP2A_SPAN_USABILITY 0
+			#undef LBAL_LIBCPP20_SPAN_USABILITY
+			#define LBAL_LIBCPP20_SPAN_USABILITY 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SPAN_USABILITY")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_SPAN_USABILITY")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_SPAN_USABILITY
+#endif	//	LBAL_LIBCPP20_SPAN_USABILITY
 
 
-#if LBAL_LIBCPP2A_SPAN_FIXED_SIZE
+#if LBAL_LIBCPP20_SPAN_FIXED_SIZE
 	#if defined (__has_include)
 		#if !__has_include (<span>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_SPAN_FIXED_SIZE
+			#undef LBAL_LIBCPP20_SPAN_FIXED_SIZE
 			LBAL_CPP_WARNING ("<span> not found")
 		#endif	//	<span> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_SPAN_FIXED_SIZE
-			#define LBAL_LIBCPP2A_SPAN_FIXED_SIZE 0
+			#undef LBAL_LIBCPP20_SPAN_FIXED_SIZE
+			#define LBAL_LIBCPP20_SPAN_FIXED_SIZE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SPAN_FIXED_SIZE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_SPAN_FIXED_SIZE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_SPAN_FIXED_SIZE
+#endif	//	LBAL_LIBCPP20_SPAN_FIXED_SIZE
 
 
-#if LBAL_LIBCPP2A_SSIZE
+#if LBAL_LIBCPP20_SSIZE
 	#if defined (__has_include)
 		#if !__has_include (<iterator>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_SSIZE
+			#undef LBAL_LIBCPP20_SSIZE
 			LBAL_CPP_WARNING ("<iterator> not found")
 		#endif	//	<iterator> test
 
 		#if !__has_include (<span>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_SSIZE
+			#undef LBAL_LIBCPP20_SSIZE
 			LBAL_CPP_WARNING ("<span> not found")
 		#endif	//	<span> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_SSIZE
-			#define LBAL_LIBCPP2A_SSIZE 0
+			#undef LBAL_LIBCPP20_SSIZE
+			#define LBAL_LIBCPP20_SSIZE 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SSIZE")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_SSIZE")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_SSIZE
+#endif	//	LBAL_LIBCPP20_SSIZE
 
 
-#if LBAL_LIBCPP2A_STARTS_ENDS_WITH
+#if LBAL_LIBCPP20_STARTS_ENDS_WITH
 	#if defined (__has_include)
 		#if !__has_include (<string>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_STARTS_ENDS_WITH
+			#undef LBAL_LIBCPP20_STARTS_ENDS_WITH
 			LBAL_CPP_WARNING ("<string> not found")
 		#endif	//	<string> test
 
 		#if !__has_include (<string_view>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_STARTS_ENDS_WITH
+			#undef LBAL_LIBCPP20_STARTS_ENDS_WITH
 			LBAL_CPP_WARNING ("<string_view> not found")
 		#endif	//	<string_view> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_STARTS_ENDS_WITH
-			#define LBAL_LIBCPP2A_STARTS_ENDS_WITH 0
+			#undef LBAL_LIBCPP20_STARTS_ENDS_WITH
+			#define LBAL_LIBCPP20_STARTS_ENDS_WITH 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_STARTS_ENDS_WITH")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_STARTS_ENDS_WITH")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_STARTS_ENDS_WITH
+#endif	//	LBAL_LIBCPP20_STARTS_ENDS_WITH
 
 
-#if LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR
+#if LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR
 	#if defined (__has_include)
 		#if !__has_include (<string>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR
+			#undef LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR
 			LBAL_CPP_WARNING ("<string> not found")
 		#endif	//	<string> test
 
 		#if !__has_include (<string_view>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR
+			#undef LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR
 			LBAL_CPP_WARNING ("<string_view> not found")
 		#endif	//	<string_view> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR
-			#define LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR 0
+			#undef LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR
+			#define LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR
+#endif	//	LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR
 
 
-#if LBAL_LIBCPP2A_SYNCBUF
+#if LBAL_LIBCPP20_SYNCBUF
 	#if defined (__has_include)
 		#if !__has_include (<syncstream>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_SYNCBUF
+			#undef LBAL_LIBCPP20_SYNCBUF
 			LBAL_CPP_WARNING ("<syncstream> not found")
 		#endif	//	<syncstream> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_SYNCBUF
-			#define LBAL_LIBCPP2A_SYNCBUF 0
+			#undef LBAL_LIBCPP20_SYNCBUF
+			#define LBAL_LIBCPP20_SYNCBUF 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SYNCBUF")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_SYNCBUF")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_SYNCBUF
+#endif	//	LBAL_LIBCPP20_SYNCBUF
 
 
-#if LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS
+#if LBAL_LIBCPP20_SYNCBUF_MANIPULATORS
 	#if defined (__has_include)
 		#if !__has_include (<syncstream>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS
+			#undef LBAL_LIBCPP20_SYNCBUF_MANIPULATORS
 			LBAL_CPP_WARNING ("<syncstream> not found")
 		#endif	//	<syncstream> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS
-			#define LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS 0
+			#undef LBAL_LIBCPP20_SYNCBUF_MANIPULATORS
+			#define LBAL_LIBCPP20_SYNCBUF_MANIPULATORS 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_SYNCBUF_MANIPULATORS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS
+#endif	//	LBAL_LIBCPP20_SYNCBUF_MANIPULATORS
 
 
-#if LBAL_LIBCPP2A_THREE_WAY_COMPARISON
+#if LBAL_LIBCPP20_THREE_WAY_COMPARISON
 	#if defined (__has_include)
 		#if !__has_include (<compare>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_THREE_WAY_COMPARISON
+			#undef LBAL_LIBCPP20_THREE_WAY_COMPARISON
 			LBAL_CPP_WARNING ("<compare> not found")
 		#endif	//	<compare> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_THREE_WAY_COMPARISON
-			#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON 0
+			#undef LBAL_LIBCPP20_THREE_WAY_COMPARISON
+			#define LBAL_LIBCPP20_THREE_WAY_COMPARISON 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_THREE_WAY_COMPARISON")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_THREE_WAY_COMPARISON")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_THREE_WAY_COMPARISON
+#endif	//	LBAL_LIBCPP20_THREE_WAY_COMPARISON
 
 
-#if LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY
+#if LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY
 	#if defined (__has_include)
 		#if !__has_include (<compare>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY
+			#undef LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY
 			LBAL_CPP_WARNING ("<compare> not found")
 		#endif	//	<compare> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY
-			#define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY 0
+			#undef LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY
+			#define LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY
+#endif	//	LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY
 
 
-#if LBAL_LIBCPP2A_TO_ADDRESS
+#if LBAL_LIBCPP20_TO_ADDRESS
 	#if defined (__has_include)
 		#if !__has_include (<memory>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_TO_ADDRESS
+			#undef LBAL_LIBCPP20_TO_ADDRESS
 			LBAL_CPP_WARNING ("<memory> not found")
 		#endif	//	<memory> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_TO_ADDRESS
-			#define LBAL_LIBCPP2A_TO_ADDRESS 0
+			#undef LBAL_LIBCPP20_TO_ADDRESS
+			#define LBAL_LIBCPP20_TO_ADDRESS 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_TO_ADDRESS")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_TO_ADDRESS")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_TO_ADDRESS
+#endif	//	LBAL_LIBCPP20_TO_ADDRESS
 
 
-#if LBAL_LIBCPP2A_TO_ARRAY
+#if LBAL_LIBCPP20_TO_ARRAY
 	#if defined (__has_include)
 		#if !__has_include (<array>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_TO_ARRAY
+			#undef LBAL_LIBCPP20_TO_ARRAY
 			LBAL_CPP_WARNING ("<array> not found")
 		#endif	//	<array> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_TO_ARRAY
-			#define LBAL_LIBCPP2A_TO_ARRAY 0
+			#undef LBAL_LIBCPP20_TO_ARRAY
+			#define LBAL_LIBCPP20_TO_ARRAY 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_TO_ARRAY")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_TO_ARRAY")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_TO_ARRAY
+#endif	//	LBAL_LIBCPP20_TO_ARRAY
 
 
-#if LBAL_LIBCPP2A_TYPE_IDENTITY
+#if LBAL_LIBCPP20_TYPE_IDENTITY
 	#if defined (__has_include)
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_TYPE_IDENTITY
+			#undef LBAL_LIBCPP20_TYPE_IDENTITY
 			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_TYPE_IDENTITY
-			#define LBAL_LIBCPP2A_TYPE_IDENTITY 0
+			#undef LBAL_LIBCPP20_TYPE_IDENTITY
+			#define LBAL_LIBCPP20_TYPE_IDENTITY 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_TYPE_IDENTITY")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_TYPE_IDENTITY")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_TYPE_IDENTITY
+#endif	//	LBAL_LIBCPP20_TYPE_IDENTITY
 
 
-#if LBAL_LIBCPP2A_UNWRAP_REF
+#if LBAL_LIBCPP20_UNWRAP_REF
 	#if defined (__has_include)
 		#if !__has_include (<type_traits>)
 			//	Always warn if this happens.
-			#undef LBAL_LIBCPP2A_UNWRAP_REF
+			#undef LBAL_LIBCPP20_UNWRAP_REF
 			LBAL_CPP_WARNING ("<type_traits> not found")
 		#endif	//	<type_traits> test
 	#else
 		#if LBAL_CONFIG_treat_uncertainty_as_failure
-			#undef LBAL_LIBCPP2A_UNWRAP_REF
-			#define LBAL_LIBCPP2A_UNWRAP_REF 0
+			#undef LBAL_LIBCPP20_UNWRAP_REF
+			#define LBAL_LIBCPP20_UNWRAP_REF 0
 		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
 
 		#if LBAL_CONFIG_enable_pedantic_warnings
-			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP2A_UNWRAP_REF")
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_UNWRAP_REF")
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
-#endif	//	LBAL_LIBCPP2A_UNWRAP_REF
+#endif	//	LBAL_LIBCPP20_UNWRAP_REF
