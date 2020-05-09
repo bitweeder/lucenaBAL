@@ -6411,6 +6411,7 @@
 	#define LBAL_LIBCPP20_VERSION 0
 #endif
 
+///@cond LBAL_INTERNAL
 	//	__APIME__ This token has been renamed for the official C++20 release.
 	//	The old name is deprecated and will be removed in a future release.
 	#ifndef LBAL_LIBCPP2A_VERSION
