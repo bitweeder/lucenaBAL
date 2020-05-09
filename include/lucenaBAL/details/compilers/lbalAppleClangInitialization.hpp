@@ -232,7 +232,7 @@
 	#endif
 
 
-	//	C++2a features
+	//	C++20 features
 
 	//	__SEEME__ <https://en.cppreference.com/w/cpp/compiler_support> reports
 	//	that this is non-compliant, but that’s not exactly correct. Rather,
@@ -241,7 +241,7 @@
 	//	they’ve had the implementation stripped out. Additionally, Apple lags a
 	//	bit in updating the token values to reflect updates; it’s not always
 	//	clear if this is an oversight or if an update has been held back.
-	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
+	#define LBAL_CPP20_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 
 
 	//	intrinsic functions

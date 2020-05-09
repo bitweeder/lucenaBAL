@@ -367,19 +367,19 @@
 	//	correctly in at least one shipping version of gcc.
 	#if LBAL_cpp_version > LBAL_CPP17_VERSION
 		#if (LBAL_GCC_VERSION >= 80100)
-			#if !defined(LBAL_LIBCPP2A_STD_ENDIAN)
-				#define LBAL_LIBCPP2A_STD_ENDIAN 201907L
-			#endif	//	LBAL_LIBCPP2A_STD_ENDIAN
+			#if !defined(LBAL_LIBCPP20_STD_ENDIAN)
+				#define LBAL_LIBCPP20_STD_ENDIAN 201907L
+			#endif	//	LBAL_LIBCPP20_STD_ENDIAN
 
-			#if !defined(LBAL_LIBCPP2A_TO_ADDRESS)
-				#define LBAL_LIBCPP2A_TO_ADDRESS 201711L
-			#endif	//	LBAL_LIBCPP2A_TO_ADDRESS
+			#if !defined(LBAL_LIBCPP20_TO_ADDRESS)
+				#define LBAL_LIBCPP20_TO_ADDRESS 201711L
+			#endif	//	LBAL_LIBCPP20_TO_ADDRESS
 		#endif	//	gcc 8.1
 
 		#if (LBAL_GCC_VERSION >= 90100)
-			#if !defined(LBAL_LIBCPP2A_REMOVE_CVREF)
-				#define LBAL_LIBCPP2A_REMOVE_CVREF 201711
-			#endif	//	LBAL_LIBCPP2A_REMOVE_CVREF
+			#if !defined(LBAL_LIBCPP20_REMOVE_CVREF)
+				#define LBAL_LIBCPP20_REMOVE_CVREF 201711
+			#endif	//	LBAL_LIBCPP20_REMOVE_CVREF
 		#endif	//	gcc 9.1
 
 		#if (LBAL_GCC_VERSION >= 100100)

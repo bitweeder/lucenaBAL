@@ -1,11 +1,8 @@
-
 [![Actions Status](https://github.com/bitweeder/lucenaBAL/workflows/Build%20Matrix/badge.svg)](https://github.com/bitweeder/lucenaBAL/actions)
 
 # Lucena Build Abstraction Library
 
 The purpose of the Lucena Build Abstraction Library (**lucenaBAL**) is to provide tools to smooth over the differences between build environments when working with C++11 and later Standards. It’s a foundational tool that allows code built upon it to remain agnostic to compilers, C++ Standard Library variants, and aspects of the runtime. Note that lucenaBAL is **not** a build system, but rather a C++ header library with a collection of build system support scripts.
-
-**lucenaBAL 2.0 is in active development. Breaking changes are possible—though unlikely—until the tagged 2.0 release.**
 
 ## Motivating Example
 
@@ -76,7 +73,7 @@ Since lucenaBAL is a header-only library, it is not necessary to link it; simply
 
 ## Prerequisites
 
-lucenaBAL requires compiler support for C++11 or later. It has been tested with **gcc** 6 thru 9.2, **Microsoft Visual Studio** 2015 Update 3 thru MSVS 2019 16.4.2, **Xcode** 9 thru 11.3, and **llvm/clang** 6 thru 9. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
+lucenaBAL requires compiler support for C++11 or later. It has been tested with **gcc** 6 thru 9.2, **Microsoft Visual Studio** 2015 Update 3 thru MSVS 2019 16.4.4, **Xcode** 9 thru 11.3.1, and **llvm/clang** 6 thru 9. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
 
 ## Building, Installing, and Testing
 
@@ -108,12 +105,13 @@ Tests can be scripted in the usual way for CMake and CTest, for example in order
 Docs can also be generated, if desired, and are left in `<build>/docs`.
 
 ## Planning
-Upon the official completion of C++20, all `CPP2A` tokens will be deprecated and replaced with their `CPP20` equivalents. These deprecated tokens and any others deprecated previous to this will be removed as part of the eventual lucenaBAL 3.0 release, but will remain available until then.
+Tokens deprecated prior to the official lucenaBAL 2.0 release—in particular, placeholder tokens superseded by formalized C++20 variants—will be removed as part of the eventual lucenaBAL 3.0 release, but will remain available until then.
 
 As always, prefer to use the non-deprecated version of a token, especially when starting a new project.
 
 ## To-Do
 _Roughly in order of precedence_
+- add more examples
 - flesh out the unit tests
 - generate nicer-looking IDE project files
 
@@ -155,3 +153,4 @@ Some portions of the project are governed by other, compatible licenses, as desc
 - [**Evan Nemerson**](https://evan.nemerson.com/)—_Who figured out a_ [_viable cross-platform_ `#warning` _replacement_](https://nemequ.github.io/hedley/) _._
 - [**Billie Thompson**](https://github.com/PurpleBooth)—_Thanks for the_ [_Readme template_](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)_!_
 - [**Coraline Ada Ehmke**](http://where.coraline.codes/  "Coraline Ada Ehmke")—_Creator of_ [_The Contributor Covenant_](https://www.contributor-covenant.org/)_, used here under the terms of the_ [_Creative Commons Attribution License_](https://github.com/ContributorCovenant/contributor_covenant/blob/master/LICENSE.md)
+

@@ -300,79 +300,79 @@
 	#endif	//	LBAL_CPP17_VERSION
 
 
-	//	C++2a features
+	//	C++20 features
 
 	#if LBAL_cpp_version > LBAL_CPP17_VERSION
 		#if (_MSC_VER >= 1900)
 			//	__SEEME__ None of these have SD-6 macros, so we rely on a
 			//	compiler version check and a language test.
-			#if !defined(LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS)
-				#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 1L
+			#if !defined(LBAL_CPP20_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS)
+				#define LBAL_CPP20_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 1L
 			#endif
 		#endif	//	1900
 
 		#if (_MSC_VER >= 1914)
 			//	__SEEME__ None of these have SD-6 macros, so we rely on a
 			//	compiler version check and a language test.
-			#if !defined(LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION)
-				#define LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION 1L
+			#if !defined(LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION)
+				#define LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION 1L
 			#endif
 		#endif	//	1914
 
 		#if (_MSC_VER >= 1920)
 			//	__SEEME__ None of these have SD-6 macros, so we rely on a
 			//	compiler version check and a language test.
-			#if !defined(LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS)
-				#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
+			#if !defined(LBAL_CPP20_INTEGRATING_OUR_FEATURE_TEST_MACROS)
+				#define LBAL_CPP20_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 			#endif
 		#endif	//	1920
 
 		#if (_MSC_VER >= 1921)
 			//	__SEEME__ This did not have a proper SD-6 token value until
 			//	Dec 2019.
-			#if !defined(LBAL_CPP2A_DESIGNATED_INITIALIZERS)
+			#if !defined(LBAL_CPP20_DESIGNATED_INITIALIZERS)
 				#if defined(__cpp_designated_initializers) \
 						&& (__cpp_designated_initializers >= 201707L)
-					#define LBAL_CPP2A_DESIGNATED_INITIALIZERS \
+					#define LBAL_CPP20_DESIGNATED_INITIALIZERS \
 							__cpp_designated_initializers
 				#else
-					#define LBAL_CPP2A_DESIGNATED_INITIALIZERS 201707L
+					#define LBAL_CPP20_DESIGNATED_INITIALIZERS 201707L
 				#endif
 			#endif
 		#endif	//	1921
 
 		#if (_MSC_VER >= 1922)
 			//	__SEEME__ No SD-6 macro.
-			#if !defined(LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS)
-				#define LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 1L
+			#if !defined(LBAL_CPP20_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS)
+				#define LBAL_CPP20_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 1L
 			#endif
 
 			//	__SEEME__ No SD-6 macro.
-			#if !defined(LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS)
-				#define LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS 1L
+			#if !defined(LBAL_CPP20_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS)
+				#define LBAL_CPP20_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS 1L
 			#endif
 
 			//	__SEEME__ This did not have a proper SD-6 token value until
 			//	Dec 2019.
-			#if !defined(LBAL_CPP2A_INIT_CAPTURES_PACK_EXPANSION)
+			#if !defined(LBAL_CPP20_INIT_CAPTURES_PACK_EXPANSION)
 				#if defined(__cpp_init_captures) \
 						&& (__cpp_init_captures >= 201803L)
-					#define LBAL_CPP2A_INIT_CAPTURES_PACK_EXPANSION\
+					#define LBAL_CPP20_INIT_CAPTURES_PACK_EXPANSION\
 							__cpp_init_captures
 				#else
-					#define LBAL_CPP2A_INIT_CAPTURES_PACK_EXPANSION 201803L
+					#define LBAL_CPP20_INIT_CAPTURES_PACK_EXPANSION 201803L
 				#endif
 			#endif
 
 			//	__SEEME__ This did not have a proper SD-6 token value until
 			//	Dec 2019.
-			#if !defined(LBAL_CPP2A_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST)
+			#if !defined(LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST)
 				#if defined(__cpp_generic_lambdas) \
 						&& (__cpp_generic_lambdas >= 201707L)
-					#define LBAL_CPP2A_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST \
+					#define LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST \
 							__cpp_generic_lambdas
 				#else
-					#define LBAL_CPP2A_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST \
+					#define LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST \
 							201707L
 				#endif
 			#endif

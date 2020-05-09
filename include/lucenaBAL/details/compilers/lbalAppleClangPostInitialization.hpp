@@ -49,31 +49,31 @@
 	#endif
 
 
-	//	C++2a features
+	//	C++20 features
 
 	#if (__clang_major__ >= 10) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
 		//	__SEEME__ None of these have SD-6 macros, so we rely on a compiler
 		//	version check and a language test. This will miss back-ported
 		//	extensions, but will pick up preview implementations.
 
-		#if !defined(LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS)
-			#define LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 1L
+		#if !defined(LBAL_CPP20_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS)
+			#define LBAL_CPP20_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 1L
 		#endif
 
-		#if !defined(LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS)
-			#define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 1L
+		#if !defined(LBAL_CPP20_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS)
+			#define LBAL_CPP20_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 1L
 		#endif
 
-		#if !defined(LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS)
-			#define LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 1L
+		#if !defined(LBAL_CPP20_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS)
+			#define LBAL_CPP20_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 1L
 		#endif
 
-		#if !defined(LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION)
-			#define LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION 1L
+		#if !defined(LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION)
+			#define LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION 1L
 		#endif
 
-		#if !defined(LBAL_CPP2A_VA_OPT)
-			#define LBAL_CPP2A_VA_OPT 1L
+		#if !defined(LBAL_CPP20_VA_OPT)
+			#define LBAL_CPP20_VA_OPT 1L
 		#endif
 	#endif
 
@@ -82,8 +82,8 @@
 		//	version check and a language test. This will miss back-ported
 		//	extensions, but will pick up preview implementations.
 
-		#if !defined(LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR)
-			#define LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 1L
+		#if !defined(LBAL_CPP20_INIT_STATEMENTS_FOR_RANGE_BASED_FOR)
+			#define LBAL_CPP20_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 1L
 		#endif
 	#endif
 #else

@@ -192,10 +192,10 @@
 	#endif
 
 
-	//	C++2a features
+	//	C++20 features
 
 	#if (LBAL_GCC_VERSION < 70300)
-		#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
+		#define LBAL_CPP20_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 	#endif
 
 

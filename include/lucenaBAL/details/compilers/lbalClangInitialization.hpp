@@ -190,12 +190,12 @@
 	#endif
 
 
-	//	C++2a features
+	//	C++20 features
 
 	//	clang has supported SD-6 macros since 3.4, so we can generally rely on
 	//	those for feature detection. Ironically, there is no way to detect this
 	//	support.
-	#define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
+	#define LBAL_CPP20_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 
 
 	//	intrinsic functions
