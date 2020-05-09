@@ -899,7 +899,7 @@
 
 	- Features we (the developers) have not had cause to use or care about
 	are often not represented right away. Eventually, all language features
-	accepted into the Standard from C++2a onwards will appear here.
+	accepted into the Standard from C++20 onwards will appear here.
 
 	- Features from proposals to the Standard may have flags here; in some
 	cases, this may occur for proposed features that have not been accepted
@@ -942,7 +942,7 @@
 	only tracked - if they are tracked at all - in the context of their
 	applicability to a given C++ Standard, e.g., support for the C99
 	preprocessor as required by C++11, and the C11 preprocessor as required by
-	C++2a.
+	C++20.
 
 	@remarks __SEEME__ Some implementations may choose to make a feature
 	available to an earlier C++ release than the the first officially supported
@@ -958,12 +958,12 @@
 	201104L), until the Standard is official and the the version changes (e.g.,
 	to 201402L).
 
-	@remarks __APIME__ Features prior to the C++2a Standard are represented by
+	@remarks __APIME__ Features prior to the C++20 Standard are represented by
 	tokens generally only if they have equivalent SD-6 tokens. Support can be
 	broadened if there is demand.
 
 	@remarks The SD-6 tokens and their values referenced here are current as of
-	the 2019-10-02 revision.
+	the 2020-05-02 revision.
 
 	@{
 */
@@ -2387,7 +2387,7 @@
 
 	@remarks This feature is broadly intended to be back-portable to older C++
 	dialects; in certain circumstances it’s conceivable that `__cpp_constinit`
-	will be set even if the dialect is older than C++2a.
+	will be set even if the dialect is older than C++20.
 */
 #ifndef LBAL_CPP20_CONSTINIT
 	#define LBAL_CPP20_CONSTINIT 0
@@ -2872,7 +2872,7 @@
 	Equivalent SD-6 test: `__has_cpp_attribute(assert)`
 	- [unassigned](https://wg21.link/p0542r5)
 
-	@remarks These were yoinked from C++2A prior to national balloting for
+	@remarks These were yoinked from C++20 prior to national balloting for
 	various reasons and are currently back in the oven, but expected to pop in
 	the C++23 Draft Standard.
 */
@@ -2890,7 +2890,7 @@
 	Equivalent SD-6 test: `__has_cpp_attribute(assert)`
 	- [unassigned](https://wg21.link/p0542r5)
 
-	@remarks These were yoinked from C++2A prior to national balloting for
+	@remarks These were yoinked from C++20 prior to national balloting for
 	various reasons and are currently back in the oven, but expected to pop in
 	the C++23 Draft Standard.
 */
@@ -2908,7 +2908,7 @@
 	Equivalent SD-6 test: `__has_cpp_attribute(expects)`
 	- [unassigned](https://wg21.link/p0542r5)
 
-	@remarks These were yoinked from C++2A prior to national balloting for
+	@remarks These were yoinked from C++20 prior to national balloting for
 	various reasons and are currently back in the oven, but expected to pop in
 	the C++23 Draft Standard.
 */
@@ -2929,7 +2929,7 @@
 	Equivalent SD-6 macro: none
 	- [default](https://wg21.link/p0542r5)
 
-	@remarks These were yoinked from C++2A prior to national balloting for
+	@remarks These were yoinked from C++20 prior to national balloting for
 	various reasons and are currently back in the oven, but expected to pop in
 	the C++23 Draft Standard.
 */

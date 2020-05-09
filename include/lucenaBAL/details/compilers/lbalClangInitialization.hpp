@@ -190,7 +190,7 @@
 	#endif
 
 
-	//	C++2a features
+	//	C++20 features
 
 	//	clang has supported SD-6 macros since 3.4, so we can generally rely on
 	//	those for feature detection. Ironically, there is no way to detect this

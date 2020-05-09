@@ -399,7 +399,7 @@
 #endif
 
 
-//	C++2a features
+//	C++20 features
 
 #if !defined(LBAL_CPP20_AGGREGATE_PAREN_INIT) \
 		&& (__cpp_aggregate_paren_init >= 201902L)
@@ -615,7 +615,7 @@
 #endif
 
 
-//	C++2a Attributes
+//	C++20 attributes
 
 #if !defined(LBAL_CPP20_ATTRIBUTE_LIKELY) && defined(__has_cpp_attribute) \
 		&& (__has_cpp_attribute(likely) >= 201803L)

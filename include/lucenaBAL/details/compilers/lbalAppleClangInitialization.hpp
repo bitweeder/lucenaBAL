@@ -232,7 +232,7 @@
 	#endif
 
 
-	//	C++2a features
+	//	C++20 features
 
 	//	__SEEME__ <https://en.cppreference.com/w/cpp/compiler_support> reports
 	//	that this is non-compliant, but that’s not exactly correct. Rather,

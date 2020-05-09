@@ -224,7 +224,7 @@
 	#endif	//	LBAL_CPP14_VERSION
 
 
-	//	C++2a features
+	//	C++20 features
 	//
 	//	In the absence of SD-6 macros, we rely on language and compiler version
 	//	tests. We check for any Standard version greater than C++17, which will

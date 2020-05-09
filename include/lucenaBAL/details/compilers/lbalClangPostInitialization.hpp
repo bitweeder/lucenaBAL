@@ -42,7 +42,7 @@
 	#endif
 
 
-	//	C++2a features
+	//	C++20 features
 
 	#if (__clang_major__ >= 6) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
 		//	__SEEME__ None of these have SD-6 macros, so we rely on a compiler

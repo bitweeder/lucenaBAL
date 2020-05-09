@@ -300,7 +300,7 @@
 	#endif	//	LBAL_CPP17_VERSION
 
 
-	//	C++2a features
+	//	C++20 features
 
 	#if LBAL_cpp_version > LBAL_CPP17_VERSION
 		#if (_MSC_VER >= 1900)
