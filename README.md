@@ -105,7 +105,7 @@ Tests can be scripted in the usual way for CMake and CTest, for example in order
 Docs can also be generated, if desired, and are left in `<build>/docs`.
 
 ## Planning
-Upon the official completion of C++20, all `CPP2A` tokens will be deprecated and replaced with their `CPP20` equivalents. These deprecated tokens and any others deprecated previous to this will be removed as part of the eventual lucenaBAL 3.0 release, but will remain available until then.
+Tokens deprecated prior to the official lucenaBAL 2.0 release—in particular, placeholder tokens superseded by formalized C++20 variants—will be removed as part of the eventual lucenaBAL 3.0 release, but will remain available until then.
 
 As always, prefer to use the non-deprecated version of a token, especially when starting a new project.
 
@@ -153,3 +153,4 @@ Some portions of the project are governed by other, compatible licenses, as desc
 - [**Evan Nemerson**](https://evan.nemerson.com/)—_Who figured out a_ [_viable cross-platform_ `#warning` _replacement_](https://nemequ.github.io/hedley/) _._
 - [**Billie Thompson**](https://github.com/PurpleBooth)—_Thanks for the_ [_Readme template_](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)_!_
 - [**Coraline Ada Ehmke**](http://where.coraline.codes/  "Coraline Ada Ehmke")—_Creator of_ [_The Contributor Covenant_](https://www.contributor-covenant.org/)_, used here under the terms of the_ [_Creative Commons Attribution License_](https://github.com/ContributorCovenant/contributor_covenant/blob/master/LICENSE.md)
+
