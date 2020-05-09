@@ -25,21 +25,21 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - # Currently macOS 10.15 and Xcode 11.1
+        - # Currently macOS 10.15 and Xcode 11.4.1
           name: "macOS-latest/Xcode/libc++"
           artifact: "macOS-AppleClang-libcpp.tar.xz"
           os: macos-latest
           build_type: "Release"
           cc: "clang"
           cxx: "clang++"
-        - # Currently Ubuntu 18.04 LTS and gcc 7.4
+        - # Currently Ubuntu 18.04 LTS and gcc 7.5.0
           name: "Ubuntu-latest/gcc/libstdc++"
           artifact: "linux64-gcc-libstdcpp.tar.xz"
           os: ubuntu-latest
           build_type: "Release"
           cc: "gcc"
           cxx: "g++"
-        - # Currently Windows Server 2019 and MSVS 16.4.0
+        - # Currently Windows Server 2019 and MSVS 16.5.0
           name: "Windows-latest/MSVS/Microsoft"
           artifact: "win64-msvc-microsoft.tar.xz"
           os: windows-latest
