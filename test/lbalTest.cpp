@@ -63,13 +63,8 @@ using namespace LBAL_;
 
 GTEST_TEST (lbalTest, Validation)
 {
-	/*	Report the results of the various feature tests. In addition to
-		runtime reporting, there is also compile-time reporting; depending on
-		your IDE, you may not even need to explicitly compile to see the test
-		results.
-
-		__SEEME__ Note that we can’t use preprocessor or template magic when
-		displaying warning messages, so gratuitous boilerplate is needed.
+	/*	Report the results of the various feature tests; depending on your IDE,
+		you may not even need to explicitly compile to see the test results.
 	*/
 
 	LBAL_DIAGNOSTIC_TEST(LBAL_CPP98_EXCEPTIONS);
@@ -217,6 +212,8 @@ GTEST_TEST (lbalTest, Validation)
 	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP17_CHRONO);
 	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP17_CHRONO_CONSTEXPR);
 	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP17_CLAMP);
+	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP17_CONSTEXPR_STRING);
+	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW);
 	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP17_EXECUTION);
 	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS);
 	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP17_FILESYSTEM);
@@ -301,6 +298,7 @@ GTEST_TEST (lbalTest, Validation)
 	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP20_CONSTEXPR_MEMORY);
 	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP20_CONSTEXPR_NUMERIC);
 	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP20_CONSTEXPR_STRING);
+	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL);
 	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW);
 	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP20_CONSTEXPR_TUPLE);
 	LBAL_DIAGNOSTIC_TEST(LBAL_LIBCPP20_CONSTEXPR_UTILITY);
