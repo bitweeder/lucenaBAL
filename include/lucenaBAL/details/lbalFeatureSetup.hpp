@@ -3535,6 +3535,39 @@
 #endif
 
 /**
+	@def LBAL_LIBCPP17_CONSTEXPR_STRING
+	@brief Make `std::char_traits` `constexpr`
+	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_string`
+	- [201611L](https://wg21.link/P0426R1)
+	- [201811L](https://wg21.link/P1032R1)
+	- [201907L](https://wg21.link/P0980R1)
+
+	@sa `<string>`
+
+	This token corresponds to the `201611L` variant; it will only be set to a
+	non-`0` value if that variant is available.
+*/
+#ifndef LBAL_LIBCPP17_CONSTEXPR_STRING
+	#define LBAL_LIBCPP17_CONSTEXPR_STRING 0
+#endif
+
+/**
+	@def LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW
+	@brief Make `std::char_traits` `constexpr`
+	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_string_view`
+	- [201611L](https://wg21.link/P0426R1)
+	- [201811L](https://wg21.link/P1032R1)
+
+	@sa `<string_view>`
+
+	This token corresponds to the `201611L` variant; it will only be set to a
+	non-`0` value if that variant is available.
+*/
+#ifndef LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW
+	#define LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW 0
+#endif
+
+/**
 	@def LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS
 	@brief Re-enable `std::shared_from_this`
 	@details Equivalent SD-6 macro: `__cpp_lib_enable_shared_from_this`
@@ -5134,12 +5167,34 @@
 ///@endcond
 
 /**
-	@def LBAL_LIBCPP20_CONSTEXPR_STRING
-	@brief Make `std::string` `constexpr`
+	@def LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL
+	@brief Make parts of `std::string` `constexpr`
 	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_string`
+	- [201611L](https://wg21.link/P0426R1)
+	- [201811L](https://wg21.link/P1032R1)
 	- [201907L](https://wg21.link/P0980R1)
 
 	@sa `<string>`
+
+	This token corresponds to the `201811L` variant; it will only be set to a
+	non-`0` value if that variant is available.
+*/
+#ifndef LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL
+	#define LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL 0
+#endif
+
+/**
+	@def LBAL_LIBCPP20_CONSTEXPR_STRING
+	@brief Make `std::string` `constexpr`
+	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_string`
+	- [201611L](https://wg21.link/P0426R1)
+	- [201811L](https://wg21.link/P1032R1)
+	- [201907L](https://wg21.link/P0980R1)
+
+	@sa `<string>`
+
+	This token corresponds to the `201907L` variant; it will only be set to a
+	non-`0` value if that variant is available.
 */
 #ifndef LBAL_LIBCPP20_CONSTEXPR_STRING
 	#define LBAL_LIBCPP20_CONSTEXPR_STRING 0
@@ -5157,9 +5212,13 @@
 	@def LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW
 	@brief Make more of `<string_view>` `constexpr`
 	@details Equivalent SD-6 macro: `__cpp_lib_constexpr_string_view`
+	- [201611L](https://wg21.link/P0426R1)
 	- [201811L](https://wg21.link/P1032R1)
 
 	@sa `<string_view>`
+
+	This token corresponds to the `201811L` variant; it will only be set to a
+	non-`0` value if that variant is available.
 */
 #ifndef LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW
 	#define LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW 0

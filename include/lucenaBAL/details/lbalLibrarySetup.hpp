@@ -299,6 +299,18 @@
 	#endif
 #endif	//	LBAL_LIBCPP17_CLAMP
 
+#if !defined (LBAL_LIBCPP17_CONSTEXPR_STRING)
+	#if __cpp_lib_constexpr_string >= 201611L
+		#define LBAL_LIBCPP17_CONSTEXPR_STRING __cpp_lib_constexpr_string
+	#endif
+#endif	//	LBAL_LIBCPP17_CONSTEXPR_STRING
+
+#if !defined (LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW)
+	#if __cpp_lib_constexpr_string_view >= 201611L
+		#define LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW __cpp_lib_constexpr_string_view
+	#endif
+#endif	//	LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW
+
 #if !defined (LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS)
 	#if __cpp_lib_enable_shared_from_this >= 201603L
 		#define LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS \
@@ -816,6 +828,10 @@
 #endif	//	LBAL_LIBCPP20_CONSTEXPR_NUMERIC
 
 #if !defined (LBAL_LIBCPP20_CONSTEXPR_STRING)
+	#if __cpp_lib_constexpr_string >= 201811L
+		#define LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL __cpp_lib_constexpr_string
+	#endif
+
 	#if __cpp_lib_constexpr_string >= 201907L
 		#define LBAL_LIBCPP20_CONSTEXPR_STRING __cpp_lib_constexpr_string
 	#endif
@@ -1967,6 +1983,46 @@
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP17_CLAMP
+
+
+#if LBAL_LIBCPP17_CONSTEXPR_STRING
+	#if defined (__has_include)
+		#if !__has_include (<string>)
+			//	Always warn if this happens.
+			#undef LBAL_LIBCPP17_CONSTEXPR_STRING
+			LBAL_CPP_WARNING ("<string> not found")
+		#endif	//	<string> test
+	#else
+		#if LBAL_CONFIG_treat_uncertainty_as_failure
+			#undef LBAL_LIBCPP17_CONSTEXPR_STRING
+			#define LBAL_LIBCPP17_CONSTEXPR_STRING 0
+		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
+
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_CONSTEXPR_STRING")
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
+	#endif	//	__has_include
+#endif	//	LBAL_LIBCPP17_CONSTEXPR_STRING
+
+
+#if LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW
+	#if defined (__has_include)
+		#if !__has_include (<string_view>)
+			//	Always warn if this happens.
+			#undef LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW
+			LBAL_CPP_WARNING ("<string_view> not found")
+		#endif	//	<string_view> test
+	#else
+		#if LBAL_CONFIG_treat_uncertainty_as_failure
+			#undef LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW
+			#define LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW 0
+		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
+
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW")
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
+	#endif	//	__has_include
+#endif	//	LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW
 
 
 #if LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS
@@ -3765,6 +3821,26 @@
 		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
 	#endif	//	__has_include
 #endif	//	LBAL_LIBCPP20_CONSTEXPR_STRING
+
+
+#if LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL
+	#if defined (__has_include)
+		#if !__has_include (<string>)
+			//	Always warn if this happens.
+			#undef LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL
+			LBAL_CPP_WARNING ("<string> not found")
+		#endif	//	<string> test
+	#else
+		#if LBAL_CONFIG_treat_uncertainty_as_failure
+			#undef LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL
+			#define LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL 0
+		#endif	//	LBAL_CONFIG_treat_uncertainty_as_failure
+
+		#if LBAL_CONFIG_enable_pedantic_warnings
+			LBAL_CPP_WARNING ("Unable to validate LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL")
+		#endif	//	LBAL_CONFIG_enable_pedantic_warnings
+	#endif	//	__has_include
+#endif	//	LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL
 
 
 #if LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW
