@@ -351,7 +351,7 @@ jobs:
       with:
         tag_name: ${{ github.ref }}
         release_name: Release ${{ github.ref }}
-        draft: false
+        draft: true
         prerelease: false
 
     - name: Store Release url
@@ -373,13 +373,13 @@ jobs:
         config:
         - name: "macOS-latest/Xcode/libc++"
           artifact: "macOS-AppleClang-libcpp.tar.xz"
-          os: ubuntu-latest
+          os: macos-latest
         - name: "Ubuntu-latest/gcc/libstdc++"
           artifact: "linux64-gcc-libstdcpp.tar.xz"
           os: ubuntu-latest
         - name: "Windows-latest/MSVS/Microsoft"
           artifact: "win64-msvc-microsoft.tar.xz"
-          os: ubuntu-latest
+          os: windows-latest
     needs: release
 
     steps:
