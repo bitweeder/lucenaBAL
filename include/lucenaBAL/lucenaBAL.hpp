@@ -64,7 +64,7 @@
 	grouped loosely into [build-time descriptors](@ref lbal_build_env),
 	[feature identifiers](@ref lbal_features), and
 	[linker decorators](@ref lbal_decorators). Names are generally modeled on
-	their equivalent [SD-6 macros](https://wg21.link/sd6)m if any, with the
+	their equivalent [SD-6 macros](https://wg21.link/sd6), if any, with the
 	addition of a short C++ Standard version tag e.g., `LBAL_LIBCPP17_OPTIONAL`
 	vs `__cpp_lib_optional`. the LBAL tags should be used preferentially as
 	they capture more information than the SD-6 tags. See the relevant sections
