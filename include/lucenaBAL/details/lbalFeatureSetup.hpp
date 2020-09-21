@@ -849,27 +849,6 @@
 	#define LBAL_FEATURE_UTF16_FILE_SYSTEM 0
 #endif
 
-/**
-	@def LBAL_FEATURE_CONSTEXPR_INTRINSICS
-
-	@brief Indicate whether the current compiler’s intrinsics are constant
-	expressions in the C++ sense.
-
-	@details In the absence of a means to identify whether a given function is
-	constexpr at compile-time, we rely on tools like this to aid us in
-	determining, expression-by-expression, whether a given function is
-	_probably_ able to be declared constexpr.
-
-	@remarks __SEEME__ This is most likely insufficiently granular, but it’s
-	academic for now: none of the supported compilers advertise constexpr
-	intrinsics, and to the extent that they have any, it’s pure happenstance
-	and dangerous to rely on.
-*/
-#ifndef LBAL_FEATURE_CONSTEXPR_INTRINSICS
-	#define LBAL_FEATURE_CONSTEXPR_INTRINSICS 0
-#endif
-
-
 ///	@}	LBAL_FEATURE
 
 ///	@}	lbal_platform
@@ -2233,6 +2212,12 @@
 	//	The old name is deprecated and will be removed in a future release.
 	#ifndef LBAL_CPP2A_CONSTEXPR_INTRINSICS
 		#define LBAL_CPP2A_CONSTEXPR_INTRINSICS \
+			LBAL_CPP20_CONSTEXPR_INTRINSICS
+	#endif
+
+	//	__APIME__ This token has been subsumed by the equivalent C++20 token.
+	#ifndef LBAL_FEATURE_CONSTEXPR_INTRINSICS
+		#define LBAL_FEATURE_CONSTEXPR_INTRINSICS \
 			LBAL_CPP20_CONSTEXPR_INTRINSICS
 	#endif
 ///@endcond
