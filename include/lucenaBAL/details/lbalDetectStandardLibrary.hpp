@@ -16,6 +16,11 @@
 #pragma once
 
 
+//	lbal
+#include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/details/lbalCompilerSetup.hpp>
+
+
 //	std
 #include <ciso646>
 	//	In C++, this is a do-nothing header we include just for the side
@@ -23,10 +28,6 @@
 	//	configured. We need this for the library implementation detection
 	//	below. Note that in an all-C++20 world, we would use <version> for
 	//	this purpose.
-
-//	lbal
-#include <lucenaBAL/details/lbalConfig.hpp>
-#include <lucenaBAL/details/lbalCompilerSetup.hpp>
 
 
 /*------------------------------------------------------------------------------
