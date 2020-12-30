@@ -20,7 +20,7 @@
 #define LBAL_CPP11_VERSION 201103L
 #define LBAL_CPP14_VERSION 201402L
 #define LBAL_CPP17_VERSION 201703L
-//#define LBAL_CPP20_VERSION 202002L
+#define LBAL_CPP20_VERSION 202002L
 
 
 //	__SEEME__ Ostensibly, we could track all the SD-6 macro values here so
