@@ -11,16 +11,16 @@
 ------------------------------------------------------------------------------*/
 
 
-//	std
-#include <iostream>
+//	lbal
+#include <lucenaBAL/lucenaBAL.hpp>
 
 
 //	gtest
 #include <gtest/gtest.h>
 
 
-//	lbal
-#include <lucenaBAL/lucenaBAL.hpp>
+//	std
+#include <iostream>
 
 
 /*------------------------------------------------------------------------------
