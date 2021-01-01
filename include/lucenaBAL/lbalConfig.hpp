@@ -11,7 +11,7 @@
 ------------------------------------------------------------------------------*/
 
 /**
-	@file lucenaBAL/details/lbalConfig.hpp
+	@file lucenaBAL/lbalConfig.hpp
 
 	@brief Documents the internal options used in a given build of lucenaBAL.
 
@@ -25,6 +25,9 @@
 	global settings may also be documented here, as well as certain situational
 	settings. Such settings should typically be set in the client code’s own
 	headers.
+
+	@remarks Do not include this header directly. It is public explicitly to
+	expose it for configuration and formalize it as part of the interface.
 */
 
 

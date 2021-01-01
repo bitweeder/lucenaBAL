@@ -17,7 +17,7 @@
 
 
 //	lbal
-#include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/lbalConfig.hpp>
 #include <lucenaBAL/details/lbalDetectStandardLibrary.hpp>
 
 

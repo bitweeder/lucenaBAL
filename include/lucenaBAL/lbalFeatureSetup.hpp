@@ -10,11 +10,26 @@
 
 ------------------------------------------------------------------------------*/
 
+/**
+	@file lucenaBAL/lbalFeatureSetup.hpp
+
+	@brief Documents the complete set of feature macros defined by lucenaBAL
+
+	@details Tokens described herein may be considered part of the public
+	interface of lucenaBAL. An effort will be made to maintain these in a
+	stable fashion in keeping with the principles of
+	[semantic versioning](https://semver.org/).
+
+	@remarks Do not include this header directly. It is intended only to
+	document the public interface of lucenaBAL.
+*/
+
+
 #pragma once
 
 
 //	lbal
-#include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/lbalConfig.hpp>
 #include <lucenaBAL/details/lbalDefinitionTests.hpp>
 #include <lucenaBAL/details/lbalPlatformSetup.hpp>
 #include <lucenaBAL/details/lbalCompilerSetup.hpp>

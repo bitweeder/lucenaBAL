@@ -15,7 +15,7 @@
 
 
 //	lbal
-#include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/lbalConfig.hpp>
 	//	This file MUST be included first.
 
 

@@ -15,7 +15,7 @@
 
 
 //	lbal
-#include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/lbalConfig.hpp>
 #include <lucenaBAL/details/lbalDetectCompiler.hpp>
 #include <lucenaBAL/details/lbalKnownVersions.hpp>
 

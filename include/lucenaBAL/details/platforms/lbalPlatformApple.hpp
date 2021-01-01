@@ -28,7 +28,7 @@
 
 
 //	lbal
-#include <lucenaBAL/details/lbalConfig.hpp>
+#include <lucenaBAL/lbalConfig.hpp>
 
 
 /*------------------------------------------------------------------------------
