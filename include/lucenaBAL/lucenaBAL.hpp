@@ -111,5 +111,5 @@
 	@defgroup lbal_decorators Linker Decorators
 */
 
-#include <lucenaBAL/details/lbalConfig.hpp>
-#include <lucenaBAL/details/lbalFeatureSetup.hpp>
+#include <lucenaBAL/lbalConfig.hpp>
+#include <lucenaBAL/lbalFeatureSetup.hpp>

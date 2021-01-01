@@ -69,7 +69,7 @@ This will:
 
 (Note that tests and docs will remain in the build directory.)
 
-Since lucenaBAL is a header-only library, it is not necessary to link it; simply `#include <lucenaBAL/lucenaBAL.hpp>` where you need feature tests. Usage information is available in the [online docs](https://bitweeder.github.io/lucenaBAL/html/index.html), as well as in the headers themselves (primarily in  `<lucenaBAL/details/lbalFeatureSetup.hpp>`).
+Since lucenaBAL is a header-only library, it is not necessary to link it; simply `#include <lucenaBAL/lucenaBAL.hpp>` where you need feature tests. Usage information is available in the [online docs](https://bitweeder.github.io/lucenaBAL/html/index.html), as well as in the headers themselves (primarily in  `<lucenaBAL/lbalFeatureSetup.hpp>`).
 
 ## Prerequisites
 
