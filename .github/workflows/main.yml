@@ -384,16 +384,20 @@ jobs:
 
     steps:
     - name: Download artifact
-      uses: actions/download-artifact@v3.0.2
+      uses: actions/download-artifact@v4.1.8
       with:
         name: ${{ matrix.config.artifact }}
         path: ./
+        pattern: my-artifact-*
+        merge-multiple: true
 
     - name: Download URL
-      uses: actions/download-artifact@v3.0.2
+      uses: actions/download-artifact@v4.1.8
       with:
         name: upload_url
         path: ./
+        pattern: my-artifact-*
+        merge-multiple: true
     - id: set_upload_url
       run: |
         upload_url=`cat ./upload_url`
