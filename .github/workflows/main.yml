@@ -71,9 +71,9 @@ jobs:
               result
           )
 
-          # if (NOT result EQUAL 0)
-          #   message(FATAL_ERROR "Converting Windows env failed: ${result}")
-          # endif()
+          if (NOT result EQUAL 0)
+            message(FATAL_ERROR "Converting Windows env failed: ${result}")
+          endif()
 
           file(
             STRINGS
