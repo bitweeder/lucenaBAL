@@ -60,32 +60,32 @@ jobs:
       run: |
         # Manually set up the shell environment for MSVS since we’re not coming
         # in through the Developer Command Prompt.
-        # if ("${{ runner.os }}" STREQUAL "Windows"
-        #     AND NOT "x${{ matrix.config.environment_script }}" STREQUAL "x")
-        #   execute_process(
-        #     COMMAND
-        #       "${{ matrix.config.environment_script }}" && set
-        #     OUTPUT_FILE
-        #       environment_script_output.txt
-        #     RESULT_VARIABLE
-        #       result
-        #   )
+        if ("${{ runner.os }}" STREQUAL "Windows"
+            AND NOT "x${{ matrix.config.environment_script }}" STREQUAL "x")
+          execute_process(
+            COMMAND
+              "${{ matrix.config.environment_script }}" && set
+            OUTPUT_FILE
+              environment_script_output.txt
+            RESULT_VARIABLE
+              result
+          )
 
-        #   if (NOT result EQUAL 0)
-        #     message(FATAL_ERROR "Converting Windows env failed: ${result}")
-        #   endif()
+          # if (NOT result EQUAL 0)
+          #   message(FATAL_ERROR "Converting Windows env failed: ${result}")
+          # endif()
 
-        #   file(
-        #     STRINGS
-        #       environment_script_output.txt output_lines)
+          file(
+            STRINGS
+              environment_script_output.txt output_lines)
 
-        #   foreach(line IN LISTS output_lines)
-        #     if (line MATCHES "^([a-zA-Z0-9_-]+)=(.*)$")
-        #       set(
-        #         ENV{${CMAKE_MATCH_1}} "${CMAKE_MATCH_2}")
-        #     endif()
-        #   endforeach()
-        # endif()
+          foreach(line IN LISTS output_lines)
+            if (line MATCHES "^([a-zA-Z0-9_-]+)=(.*)$")
+              set(
+                ENV{${CMAKE_MATCH_1}} "${CMAKE_MATCH_2}")
+            endif()
+          endforeach()
+        endif()
 
         execute_process(
           COMMAND
