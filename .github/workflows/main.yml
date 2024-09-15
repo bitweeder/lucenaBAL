@@ -1,7 +1,7 @@
 ---
 # Lucena Build Abstraction Library
 # “main.yml”
-# Copyright © 2020 Lucena
+# Copyright © 2024 Lucena
 # All Rights Reserved
 #
 # This file is distributed under the University of Illinois Open Source
@@ -10,8 +10,7 @@
 # Configure GitHub actions for continuous integration.
 #
 # Based on examples presented by Cristian Adam at <https://cristianadam.eu/20191222/using-github-actions-with-c-plus-plus-and-cmake/>.
-# Instead of relying on the toolset bundled with the runner, we download our
-# preferred tools to the container via CMake scripts and use those instead.
+# Uses CMake as a multiplatform scripting language to simplify management.
 
 name: Build Matrix
 
@@ -25,205 +24,40 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - # Currently macOS 10.15 and Xcode 11.4.1
-          name: "macOS-latest/Xcode/libc++"
+        - # Currently macOS 14.6.1 and Xcode 15.3
+          name: "macOS-14/Xcode/libc++"
           artifact: "macOS-AppleClang-libcpp.tar.xz"
-          os: macos-latest
+          os: macos-14
           build_type: "Release"
           cc: "clang"
           cxx: "clang++"
-        - # Currently Ubuntu 18.04 LTS and gcc 7.5.0
-          name: "Ubuntu-latest/gcc/libstdc++"
+        - # Currently Ubuntu 24.04 LTS and gcc 14.0.1
+          name: "Ubuntu-24.04/gcc/libstdc++"
           artifact: "linux64-gcc-libstdcpp.tar.xz"
-          os: ubuntu-latest
+          os: ubuntu-24.04
           build_type: "Release"
           cc: "gcc"
           cxx: "g++"
-        # - # Currently Windows Server 2019 and MSVS 16.5.0
-        #   name: "Windows-latest/MSVS/Microsoft"
-        #   artifact: "win64-msvc-microsoft.tar.xz"
-        #   os: windows-latest
-        #   build_type: "Release"
-        #   cc: "cl"
-        #   cxx: "cl"
+        - # Currently Windows Server 2022 and MSVS 17.11
+          name: "Windows-2022/MSVS/Microsoft"
+          artifact: "win64-msvc-microsoft.tar.xz"
+          os: windows-2022
+          build_type: "Release"
+          cc: "cl"
+          cxx: "cl"
 
           # It appears we need to invoke this directly.
           environment_script: "C:/Program Files (x86)/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
 
     steps:
-    - uses: actions/checkout@v2
-
-    - name: Update Build Tools
-      id: update_build_tools
-      shell: cmake -P {0}
-      run: |
-        set(cmake_version "3.16.2")
-        set(ninja_version "1.9.0")
-
-        set(
-          cmake_base_dl_url
-          "https://github.com/Kitware/CMake/releases/download"
-        )
-
-        set(
-          ninja_base_dl_url
-          "https://github.com/ninja-build/ninja/releases/download"
-        )
-
-        message(
-          STATUS
-            "Host: CMake ${CMAKE_VERSION}")
-
-        if ("${{ runner.os }}" STREQUAL "macOS")
-          message(
-            STATUS
-              "Executing macOS build path")
-
-          set(cmake_variant "Darwin-x86_64")
-          set(cmake_file_type "tar.gz")
-          set(cmake_rpath_to_cmake "CMake.app/Contents/bin/cmake")
-          set(cmake_rpath_to_ctest "CMake.app/Contents/bin/ctest")
-
-          set(ninja_variant "mac")
-          set(ninja_file_type "zip")
-          set(ninja_rpath_to_ninja "ninja")
-        elseif ("${{ runner.os }}" STREQUAL "Linux")
-          message(
-            STATUS
-             "Executing Linux build path")
-
-          set(cmake_variant "Linux-x86_64")
-          set(cmake_file_type "tar.gz")
-          set(cmake_rpath_to_cmake "bin/cmake")
-          set(cmake_rpath_to_ctest "bin/ctest")
-
-          set(ninja_variant "linux")
-          set(ninja_file_type "zip")
-          set(ninja_rpath_to_ninja "ninja")
-        elseif ("${{ runner.os }}" STREQUAL "Windows")
-          message(
-            STATUS
-              "Executing Windows build path")
-
-          set(cmake_variant "win64-x64")
-          set(cmake_file_type "zip")
-          set(cmake_rpath_to_cmake "bin/cmake")
-          set(cmake_rpath_to_ctest "bin/ctest")
-
-          set(ninja_variant "win")
-          set(ninja_file_type "zip")
-          set(ninja_rpath_to_ninja "ninja")
-        endif()
-
-        set(cmake_base "cmake-${cmake_version}-${cmake_variant}")
-
-        set(
-          cmake_src
-          "${cmake_base_dl_url}/v${cmake_version}/${cmake_base}.${cmake_file_type}"
-        )
-
-        set(cmake_dst "./cmake.${cmake_file_type}")
-
-        set(ninja_base "ninja-${ninja_variant}")
-
-        set(
-          ninja_src
-          "${ninja_base_dl_url}/v${ninja_version}/${ninja_base}.${ninja_file_type}"
-        )
-
-        set(ninja_dst "./ninja.${ninja_file_type}")
-
-        file(
-          DOWNLOAD
-            "${cmake_src}" "${cmake_dst}" SHOW_PROGRESS
-        )
-
-        file(
-          DOWNLOAD
-            "${ninja_src}" "${ninja_dst}" SHOW_PROGRESS
-        )
-
-        execute_process(
-          COMMAND
-            ${CMAKE_COMMAND} -E tar xvf "${cmake_dst}"
-          RESULT_VARIABLE
-            result
-        )
-
-        if (NOT result EQUAL 0)
-          message(FATAL_ERROR "Unarchiving CMake failed: ${result}")
-        endif()
-
-        execute_process(
-          COMMAND
-            ${CMAKE_COMMAND} -E tar xvf "${ninja_dst}"
-          RESULT_VARIABLE
-            result
-        )
-
-        if (NOT result EQUAL 0)
-          message(FATAL_ERROR "Unarchiving ninja failed: ${result}")
-        endif()
-
-        # Save clean paths to the new binaries and make sure we can run them.
-        # CMake binaries will be in nested subdirectories, while ninja will
-        # just be sitting in the working directory.
-        #
-        # SEEME Note that the `::set-output` lines are mandatory in the absence
-        # of explicit metadata identifying output variables.
-        file(
-          TO_CMAKE_PATH
-            "$ENV{GITHUB_WORKSPACE}/${cmake_base}/${cmake_rpath_to_cmake}"
-            cmake_path)
-
-        message("::set-output name=cmake_path::${cmake_path}")
-
-        message(
-          STATUS
-           "Using CMake at ${cmake_path}"
-        )
-
-        file(
-          TO_CMAKE_PATH
-            "$ENV{GITHUB_WORKSPACE}/${cmake_base}/${cmake_rpath_to_ctest}" ctest_path)
-
-        message("::set-output name=ctest_path::${ctest_path}")
-
-        message(
-          STATUS
-           "Using CTest at ${ctest_path}")
-
-        file(
-          TO_CMAKE_PATH
-            "$ENV{GITHUB_WORKSPACE}/${ninja_rpath_to_ninja}" ninja_path)
-
-        message("::set-output name=ninja_path::${ninja_path}")
-
-        message(
-          STATUS
-           "Using ninja at ${ninja_path}")
-
-        if (NOT "${{ runner.os }}" STREQUAL "Windows")
-          execute_process(
-            COMMAND
-              chmod a+x "${cmake_path}" "${ctest_path}" "${ninja_path}"
-            RESULT_VARIABLE
-              result
-          )
-
-          if (NOT result EQUAL 0)
-            message(FATAL_ERROR "chmod failed: ${result}")
-          endif()
-        endif()
+    - uses: actions/checkout@v4
 
     - name: Configure
+      env:
+        CC: ${{ matrix.config.cc }}
+        CXX: ${{ matrix.config.CXX }}
       shell: cmake -P {0}
       run: |
-        # Make sure to propagate any compiler flags.
-        # SEEME It’s unclear if we need to do this for linker, etc, as well.
-        set(ENV{CC} ${{ matrix.config.cc }})
-        set(ENV{CXX} ${{ matrix.config.cxx }})
-
         # Manually set up the shell environment for MSVS since we’re not coming
         # in through the Developer Command Prompt.
         if ("${{ runner.os }}" STREQUAL "Windows"
@@ -255,12 +89,10 @@ jobs:
 
         execute_process(
           COMMAND
-            ${{ steps.update_build_tools.outputs.cmake_path }}
+            cmake
               -S .
               -B build
               -D CMAKE_BUILD_TYPE=${{ matrix.config.build_type }}
-              -G Ninja
-              -D CMAKE_MAKE_PROGRAM=${{ steps.update_build_tools.outputs.ninja_path }}
           RESULT_VARIABLE
             result
         )
@@ -273,8 +105,6 @@ jobs:
     - name: Build
       shell: cmake -P {0}
       run: |
-        set(ENV{NINJA_STATUS} "[%f/%t %o/sec] ")
-
         # Manually set up the shell environment for MSVS since we’re not coming
         # in through the Developer Command Prompt.
         if ("${{ runner.os }}" STREQUAL "Windows"
@@ -292,7 +122,7 @@ jobs:
 
         execute_process(
           COMMAND
-            ${{ steps.update_build_tools.outputs.cmake_path }} --build build
+            cmake --build build
           RESULT_VARIABLE
             result
         )
@@ -310,7 +140,7 @@ jobs:
 
         execute_process(
           COMMAND
-            ${{ steps.update_build_tools.outputs.ctest_path }} -j ${N}
+            ctest -j ${N}
           WORKING_DIRECTORY
             build
           RESULT_VARIABLE
@@ -322,24 +152,24 @@ jobs:
 
 
     - name: Install Strip
-      run: ${{ steps.update_build_tools.outputs.cmake_path }} --install build --prefix instdir --strip
+      run: cmake --install build --prefix instdir --strip
 
 
     - name: Pack
       working-directory: instdir
-      run: ${{ steps.update_build_tools.outputs.cmake_path }} -E tar cJfv ../${{ matrix.config.artifact }} .
+      run: cmake -E tar cJfv ../${{ matrix.config.artifact }} .
 
 
     - name: Upload
-      uses: actions/upload-artifact@v1
+      uses: actions/upload-artifact@v4
       with:
         path: ./${{ matrix.config.artifact }}
         name: ${{ matrix.config.artifact }}
 
   release:
     if: contains(github.ref, 'tags/v')
-    name: ${{ matrix.config.name }}
-    runs-on: ubuntu-latest
+    name: Release
+    runs-on: ubuntu-24.04
     needs: build
 
     steps:
@@ -358,7 +188,7 @@ jobs:
       run: |
         echo "${{ steps.create_release.outputs.upload_url }}" > ./upload_url
 
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v4
       with:
         path: ./upload_url
         name: upload_url
@@ -371,12 +201,12 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - name: "macOS-latest/Xcode/libc++"
+        - name: "macOS-14/Xcode/libc++"
           artifact: "macOS-AppleClang-libcpp.tar.xz"
-          os: macos-latest
-        - name: "Ubuntu-latest/gcc/libstdc++"
+          os: macos-14
+        - name: "Ubuntu-24.04/gcc/libstdc++"
           artifact: "linux64-gcc-libstdcpp.tar.xz"
-          os: ubuntu-latest
+          os: ubuntu-24.04
         - name: "Windows-latest/MSVS/Microsoft"
           artifact: "win64-msvc-microsoft.tar.xz"
           os: windows-latest
@@ -384,19 +214,17 @@ jobs:
 
     steps:
     - name: Download artifact
-      uses: actions/download-artifact@v4.1.8
+      uses: actions/download-artifact@v4
       with:
         name: ${{ matrix.config.artifact }}
         path: ./
-        pattern: my-artifact-*
         merge-multiple: true
 
     - name: Download URL
-      uses: actions/download-artifact@v4.1.8
+      uses: actions/download-artifact@v4
       with:
         name: upload_url
         path: ./
-        pattern: my-artifact-*
         merge-multiple: true
     - id: set_upload_url
       run: |
@@ -405,7 +233,7 @@ jobs:
 
     - name: Upload to Release
       id: upload_to_release
-      uses: actions/upload-release-asset@v1.0.1
+      uses: actions/upload-release-asset@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
