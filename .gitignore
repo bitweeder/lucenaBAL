@@ -22,14 +22,6 @@ MSVS/ipch/
 .vs
 
 
-# Xcode build data and per-user settings
-Xcode/**/*.mode1v3
-Xcode/**/*.mode2
-Xcode/**/*.mode2v3
-Xcode/**/*.pbxuser
-xcuserdata/
-
-
 # CodeLite per-user settings
 CodeLite/**/tags
 CodeLite/**/workspace.*
@@ -43,3 +35,15 @@ CodeLite/**/compilation.db
 nbproject/private/
 nbproject/**/*.bash
 nbproject/**/.dep.inc
+
+
+# VS Code per-user settings
+.vscode/
+
+
+# Xcode build data and per-user settings
+Xcode/**/*.mode1v3
+Xcode/**/*.mode2
+Xcode/**/*.mode2v3
+Xcode/**/*.pbxuser
+xcuserdata/
