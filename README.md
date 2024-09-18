@@ -73,7 +73,7 @@ Since lucenaBAL is a header-only library, it is not necessary to link it; simply
 
 ## Prerequisites
 
-lucenaBAL requires compiler support for C++11 or later. It has been tested with **gcc** 6 thru 10.1, **Microsoft Visual Studio** 2015 Update 3 thru MSVS 2019 16.6.1, **Xcode** 9 thru 11.5, and **llvm/clang** 6 thru 10. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
+lucenaBAL requires compiler support for C++11 or later. It has been tested with **gcc** 6 thru 14.2, **Microsoft Visual Studio** 2015 Update 3 thru MSVS 2022 17.6.1, **Xcode** 9 thru 16.0, and **llvm/clang** 6 thru 20. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
 
 ## Building, Installing, and Testing
 
@@ -105,7 +105,7 @@ Tests can be scripted in the usual way for CMake and CTest, for example in order
 Docs can also be generated, if desired, and are left in `<build>/docs`.
 
 ## Planning
-Tokens deprecated prior to the official lucenaBAL 2.0 release—in particular, placeholder tokens superseded by formalized C++20 variants—will be removed as part of the eventual lucenaBAL 3.0 release, but will remain available until then.
+Tokens deprecated prior to the official lucenaBAL 2.0 release—in particular, placeholder tokens superseded by formalized C++20/C++23 variants—will be removed as part of the eventual lucenaBAL 3.0 release, but will remain available until then.
 
 As always, prefer to use the non-deprecated version of a token, especially when starting a new project.
 
