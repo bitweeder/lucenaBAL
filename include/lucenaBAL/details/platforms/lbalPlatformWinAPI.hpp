@@ -2,7 +2,7 @@
 
 	Lucena Build Abstraction Library
 	“lbalPlatformWinAPI.hpp”
-	Copyright © 2019-2020 Lucena
+	Copyright © 2019-2024 Lucena
 	All Rights Reserved
 
 	This file is distributed under the University of Illinois Open Source
