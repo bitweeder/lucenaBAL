@@ -73,7 +73,7 @@ Since lucenaBAL is a header-only library, it is not necessary to link it; simply
 
 ## Prerequisites
 
-lucenaBAL requires compiler support for C++11 or later. It has been tested with **gcc** 6 thru 14.2, **Microsoft Visual Studio** 2015 Update 3 thru MSVS 2022 17.6.1, **Xcode** 9 thru 16.0, and **llvm/clang** 6 thru 20. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
+lucenaBAL requires compiler support for C++11 or later. It has been tested with **gcc** 6 thru 14.2, **Microsoft Visual Studio** 2015 Update 3 thru MSVS 2022 17.11.4, **Xcode** 9 thru 16.0, and **llvm/clang** 6 thru 20. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
 
 ## Building, Installing, and Testing
 
