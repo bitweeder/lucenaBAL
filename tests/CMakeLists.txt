@@ -1,60 +1,54 @@
 #[[#############################################################################
 
-    Lucena Build Abstraction Library
-    “lbalTest/CMakeLists.txt”
-    Copyright © 2018-2024 Lucena
-    All Rights Reserved
+  Lucena Build Abstraction Library
+  “lbalTest/CMakeLists.txt”
+  Copyright © 2018-2024 Lucena
+  All Rights Reserved
 
-    This file is distributed under the University of Illinois Open Source
-    License. See license/License.txt for details.
+  This file is distributed under the University of Illinois Open Source
+  License. See LICENSE.md for details.
 
-    This script expects to be called by the lucenaBAL root script; in
-    particular, default values for various properties are assumed to have been
-    previously set.
+	This script expects to be called by the lucenaBAL root script; in particular, 
+	values for various properties are assumed to have been previously set.
 
 ##############################################################################]]
 
 
 #[[#############################################################################
-    initialization
+  initialization
 #]]
 
 # This minimum is for
 #   - FetchContent (3.11)
-#   - CONFIGURE_DEPENDS for usable globs (3.12),
+#   - CONFIGURE_DEPENDS for usable globs (3.12)
+#   - improved FetchContent handling (3.14))
 #   - correct Xcode project generation (3.15)
-cmake_minimum_required (VERSION 3.15)
+cmake_minimum_required (VERSION 3.15...3.30)
 
 
 #[[#############################################################################
-    configuration
+  configuration
 #]]
 
 include (FetchContent)
 
 FetchContent_Declare (
-    googletest
-    GIT_REPOSITORY https://github.com/google/googletest.git
-    GIT_TAG release-1.8.1
+  googletest
+  GIT_REPOSITORY https://github.com/google/googletest.git
+  GIT_TAG v1.15.2
 )
 
-FetchContent_GetProperties (googletest)
+# For Windows: Prevent overriding the parent project’s compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
-if (NOT googletest_POPULATED)
-    FetchContent_Populate (googletest)
+# For macOS: build fat binaries; this is only done for re-usability with non-
+# CMake project tooling.
+set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE INTERNAL "" FORCE)
 
-    set (CMAKE_SUPPRESS_DEVELOPER_WARNINGS 1 CACHE BOOL "")
-    add_subdirectory (
-        ${googletest_SOURCE_DIR}
-        ${googletest_BINARY_DIR}
-        EXCLUDE_FROM_ALL
-    )
-    unset (CMAKE_SUPPRESS_DEVELOPER_WARNINGS)
-endif()
-
+FetchContent_MakeAvailable(googletest)
 
 #[[#############################################################################
-    set up targets
+  set up targets
 #]]
 
 include (GoogleTest)
@@ -77,14 +71,14 @@ target_include_directories (
 # target_compile_features (
 # 	lbalTest
 #     PRIVATE
-#         cxx_std_17
+#         cxx_std_26
 # )
 
 # __FIXME__ Needs refinement. Or elimination.
 target_compile_options (
   lbalTest
   PRIVATE
-  	$<$<CXX_COMPILER_ID:MSVC>:/std:c++17>
+  	$<$<CXX_COMPILER_ID:MSVC>:/std:c++23>
   	$<$<CXX_COMPILER_ID:MSVC>:/Zc:__cplusplus>
 	$<$<CXX_COMPILER_ID:MSVC>:/W4>
 	$<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-Wall>
@@ -101,7 +95,6 @@ target_link_libraries (
 	lbalTest
     PUBLIC
         lucenaBAL
-        gtest
         gtest_main
 )
 
@@ -109,7 +102,7 @@ gtest_discover_tests (lbalTest)
 
 
 #[[#############################################################################
-    clean up
+  clean up
 #]]
 
 # Keep the cache and GUI clean.

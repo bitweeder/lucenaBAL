@@ -6,11 +6,10 @@
 	All Rights Reserved
 
 	This file is distributed under the University of Illinois Open Source
-	License. See license/License.txt for details.
+	License. See LICENSE.md for details.
 
-	This script expects to be called by the Lucena-Build-Abstraction root
-	script; in particular, default values for various properties are assumed to
-	have been previously set.
+	This script expects to be called by the lucenaBAL root script; in particular, 
+	values for various properties are assumed to have been previously set.
 
 ##############################################################################]]
 

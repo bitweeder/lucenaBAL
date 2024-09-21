@@ -5,7 +5,7 @@
 # All Rights Reserved
 #
 # This file is distributed under the University of Illinois Open Source
-# License. See license/License.txt for details.
+# License. See LICENSE.md for details.
 #
 # Configure GitHub actions for continuous integration.
 #
@@ -92,7 +92,7 @@ jobs:
             cmake
               -S .
               -B build
-              -D CMAKE_BUILD_TYPE=${{ matrix.config.build_type }}
+              -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }}
           RESULT_VARIABLE
             result
         )
@@ -121,13 +121,15 @@ jobs:
 
         execute_process(
           COMMAND
-            cmake --build build
+            cmake 
+              --build build
+              --config ${{ matrix.config.build_type }}
           RESULT_VARIABLE
             result
         )
 
         if (NOT result EQUAL 0)
-          message(FATAL_ERROR "Converting Windows env failed: ${result}")
+          message(FATAL_ERROR "CMake build failed: ${result}")
         endif()
 
 

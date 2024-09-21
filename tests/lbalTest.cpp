@@ -6,7 +6,7 @@
 	All Rights Reserved
 
 	This file is distributed under the University of Illinois Open Source
-	License. See license/License.txt for details.
+	License. See LICENSE.md for details.
 
 ------------------------------------------------------------------------------*/
 
@@ -45,15 +45,20 @@
 	#define LBAL_DIAGNOSTIC_LOG_UNSUPPORTED(LBAL_DIAGNOSTIC_feature_)
 #endif
 
+#if LBAL_CPP17_IF_CONSTEXPR
+	#define LBAL_IF_CONSTEXPR if constexpr
+#else
+	#define LBAL_IF_CONSTEXPR if
+#endif
+
 #define LBAL_DIAGNOSTIC_TEST(LBAL_DIAGNOSTIC_feature_) \
 	do { \
-		if (0 == LBAL_DIAGNOSTIC_feature_) { \
+		LBAL_IF_CONSTEXPR (0 == LBAL_DIAGNOSTIC_feature_) { \
 			LBAL_DIAGNOSTIC_LOG_UNSUPPORTED (#LBAL_DIAGNOSTIC_feature_) \
 		} else { \
 			LBAL_DIAGNOSTIC_LOG_SUPPORTED (#LBAL_DIAGNOSTIC_feature_) \
 		} \
 	} while (false)
-
 
 using namespace LBAL_;
 
@@ -359,3 +364,5 @@ GTEST_TEST (lbalTest, Validation)
 
 	EXPECT_TRUE (true);
 }
+
+#undef LBAL_IF_CONSTEXPR
