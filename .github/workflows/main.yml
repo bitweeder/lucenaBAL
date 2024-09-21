@@ -123,7 +123,6 @@ jobs:
           COMMAND
             cmake 
               --build build
-              --target all
               --config ${{ matrix.config.build_type }}
           RESULT_VARIABLE
             result
