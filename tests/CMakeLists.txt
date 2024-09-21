@@ -95,7 +95,6 @@ target_link_libraries (
 	lbalTest
     PUBLIC
         lucenaBAL
-        gtest
         gtest_main
 )
 
