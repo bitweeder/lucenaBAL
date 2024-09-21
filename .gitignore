@@ -1,7 +1,7 @@
 # global stuff
 .DS_Store
 /build/
-/proj/
+/tools/proj/
 
 
 # CMake stuff; only intended to catch accidental spills
@@ -47,3 +47,7 @@ Xcode/**/*.mode2
 Xcode/**/*.mode2v3
 Xcode/**/*.pbxuser
 xcuserdata/
+
+
+# Generated code
+/include/lucenaBAL/lbalGenerated.hpp
