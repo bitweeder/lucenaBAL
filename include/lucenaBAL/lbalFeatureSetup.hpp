@@ -2671,6 +2671,11 @@
 	latest supported variant, or `0` if this variant is not supported.
 	- [201411L](https://wg21.link/n4268)
 	- [201911L](https://wg21.link/P1907R1)
+
+ @remarks Most mainstream compilers support this, except for `float`-type
+ arguments, but there is no “partial support” value to qualify this. The latest
+ versions of some compilers even support `floats` “experimentally”, but have
+ not yet updated the macro value.
 */
 #ifndef LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FIXES
 	#define LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FIXES 0

@@ -71,7 +71,8 @@
 		//	version check and a language test. This will miss back-ported
 		//	extensions, but will pick up preview implementations.
 
-		#if !defined(LBAL_CPP20_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS)
+    //	__SEEME__ There is no SD-6 token for this.
+    #if !defined(LBAL_CPP20_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS)
 			#define LBAL_CPP20_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS 1L
 		#endif
 
