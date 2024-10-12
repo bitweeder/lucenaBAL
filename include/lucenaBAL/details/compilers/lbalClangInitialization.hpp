@@ -164,8 +164,9 @@
 	//	C++14 features
 
 	//	As of vanilla clang 8, this is disabled by default in order to avoid
-	//	ABI-breaking changes. It’s unclear when it will be enabled by default.
-	//
+	//	ABI-breaking changes. It’s unclear when it will be enabled by default (it
+  //  has not been re-enabled by default as of clang 18).
+  //
 	//	__SEEME__ This explicit test is here for documentation, but could
 	//	actually be dropped as the common test will serve just as well.
 	#if (__cpp_sized_deallocation >= 201309L)
@@ -177,9 +178,11 @@
 
 	//	C++17 features
 
-	//	As of vanilla clang 8, this is disabled by default in order to avoid a
-	//	defect introduced by the associated proposal (which was intended to
-	//	resolve another defect).
+	//	As of vanilla clang 8, this is disabled by default in order to avoid
+  //  breaking code which was previously legal but is now malformed (thereby
+  //  perpetuating the defect for over a decade in order to support a few
+  //  months worth of bad code). To enable the DR fix, it is necessary to pass
+  //  in `-frelaxed-template-template-args` to the compiler.
 	//
 	//	__SEEME__ This explicit test is here for documentation, but could
 	//	actually be dropped as the common test will serve just as well.

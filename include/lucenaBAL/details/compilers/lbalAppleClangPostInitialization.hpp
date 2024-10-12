@@ -29,7 +29,7 @@
 	equivalent SD-6 tokens are undefined; this can happen because the
 	implementation does not supply them, or because the feature in question is
 	unavailable. We resolve this here, if needed. Note that any situation that
-	would require us to pre-emptively disablea feature would have been handled
+	would require us to pre-emptively disable a feature would have been handled
 	previously in `lbalAppleClangInitialization.hpp`.
 */
 
@@ -84,6 +84,14 @@
 
 		#if !defined(LBAL_CPP20_INIT_STATEMENTS_FOR_RANGE_BASED_FOR)
 			#define LBAL_CPP20_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 1L
+		#endif
+	#endif
+
+	#if (__clang_major__ >= 12) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
+		//	__SEEME__ There is no SD-6 token for this. Apple clang started
+    //  supporting it initially in a bug fix in the Xcode 10-series.
+		#if !defined(LBAL_CPP20_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS)
+      #define LBAL_CPP20_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS 1L
 		#endif
 	#endif
 #else
