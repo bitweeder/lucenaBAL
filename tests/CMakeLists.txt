@@ -2,7 +2,7 @@
 
   Lucena Build Abstraction Library
   “lbalTest/CMakeLists.txt”
-  Copyright © 2018-2024 Lucena
+  Copyright © 2018-2026 Lucena
   All Rights Reserved
 
   This file is distributed under the University of Illinois Open Source
@@ -23,7 +23,7 @@
 #   - CONFIGURE_DEPENDS for usable globs (3.12)
 #   - improved FetchContent handling (3.14))
 #   - correct Xcode project generation (3.15)
-cmake_minimum_required (VERSION 3.15...3.30)
+cmake_minimum_required (VERSION 3.15...4.3.2)
 
 
 #[[#############################################################################
@@ -35,7 +35,7 @@ include (FetchContent)
 FetchContent_Declare (
   googletest
   GIT_REPOSITORY https://github.com/google/googletest.git
-  GIT_TAG v1.15.2
+  GIT_TAG v1.17.0
 )
 
 # For Windows: Prevent overriding the parent project’s compiler/linker settings
@@ -46,6 +46,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE INTERNAL "" FORCE)
 
 FetchContent_MakeAvailable(googletest)
+
 
 #[[#############################################################################
   set up targets
@@ -74,11 +75,12 @@ target_include_directories (
 #         cxx_std_26
 # )
 
-# __FIXME__ Needs refinement. Or elimination.
+# FIXME - bitweeder
+# Needs refinement. Or elimination.
 target_compile_options (
   lbalTest
   PRIVATE
-  	$<$<CXX_COMPILER_ID:MSVC>:/std:c++23>
+  	$<$<CXX_COMPILER_ID:MSVC>:/std:c++26>
   	$<$<CXX_COMPILER_ID:MSVC>:/Zc:__cplusplus>
 	$<$<CXX_COMPILER_ID:MSVC>:/W4>
 	$<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-Wall>

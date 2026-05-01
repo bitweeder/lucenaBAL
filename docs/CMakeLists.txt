@@ -2,7 +2,7 @@
 
 	Lucena Build Abstraction Library
 	“doc/CMakeLists.txt”
-	Copyright © 2018-2024 Lucena
+	Copyright © 2018-2026 Lucena
 	All Rights Reserved
 
 	This file is distributed under the University of Illinois Open Source

@@ -1,30 +1,27 @@
 /*------------------------------------------------------------------------------
 
-	Lucena Build Abstraction Library
-	“lbalKnownVersions.hpp”
-	Copyright © 2019-2024 Lucena
-	All Rights Reserved
+  Lucena Build Abstraction Library
+  “lbalKnownVersions.hpp”
+  Copyright © 2019-2026 Lucena
+  All Rights Reserved
 
-	This file is distributed under the University of Illinois Open Source
-	License. See LICENSE.md for details.
+  This file is distributed under the University of Illinois Open Source
+  License. See LICENSE.md for details.
 
-	See `lbalFeatureSetup.hpp` for descriptions of the various tokens.
+  Named C++ standard releases so we can make semantic comparisons. Note that
+  while these values usually correlate with `__cplusplus`, some compilers,
+  such as MSVC, have separate variables (e.g., `_MSVC_LANG`) we must reference
+  to figure out exactly what dialect is in use. The consistent intent with
+  these values is that any value greater than an earlier value indicates
+  support for _at least_ the previous standard.
 
 ------------------------------------------------------------------------------*/
 
-
 #pragma once
-
 
 //	C++ Standards
 #define LBAL_CPP11_VERSION 201103L
 #define LBAL_CPP14_VERSION 201402L
 #define LBAL_CPP17_VERSION 201703L
 #define LBAL_CPP20_VERSION 202002L
-
-
-//	__SEEME__ Ostensibly, we could track all the SD-6 macro values here so
-//	we’re not just relying on magic numbers. Pragmatically speaking, though,
-//	there are so many of them that it wouldn’t necessarily help with spotting
-//	errors, besides which, the names would all be synthetic in one way or
-//	another. Regardless, addressing this is a fairly low priority.
+#define LBAL_CPP23_VERSION 202302L

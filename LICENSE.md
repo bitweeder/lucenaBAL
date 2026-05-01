@@ -1,6 +1,6 @@
 # University of Illinois/NCSA Open Source License
 
-Copyright © 2015-2024 Lucena. All rights reserved.
+Copyright © 2015-2026 Lucena. All rights reserved.
 
 Developed by: Lucena
 <https://lucena.com>

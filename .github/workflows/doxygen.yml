@@ -1,0 +1,39 @@
+---
+# Lucena Build Abstraction Library
+# “main.yml”
+# Copyright © 2026 Lucena
+# All Rights Reserved
+#
+# This file is distributed under the University of Illinois Open Source
+# License. See LICENSE.md for details.
+#
+# Update Doxygen-generated docs whenever we commit to `main`.
+
+name: Doxygen gh-pages Update Action
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          # Shallow clone to keep Doxygen focused
+          fetch-depth: 0
+
+      - name: Doxygen
+        uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: gh-pages
+          folder: html
+          config_file: Doxyfile
+
+...
