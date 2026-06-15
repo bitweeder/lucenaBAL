@@ -25,9 +25,9 @@ jobs:
       matrix:
         config:
         - # Currently macOS 14.6.1 and Xcode 15.3
-          name: "macOS-14/Xcode/libc++"
+          name: "macOS-26/Xcode/libc++"
           artifact: "macOS-AppleClang-libcpp.tar.xz"
-          os: macos-14
+          os: macos-26
           build_type: "Release"
           cc: "clang"
           cxx: "clang++"
@@ -39,9 +39,9 @@ jobs:
           cc: "gcc"
           cxx: "g++"
         - # Currently Windows Server 2022 and MSVS 17.11
-          name: "Windows-2022/MSVS/Microsoft"
+          name: "Windows-2025/MSVS/Microsoft"
           artifact: "win64-msvc-microsoft.tar.xz"
-          os: windows-2022
+          os: windows-2025
           build_type: "Release"
           cc: "cl"
           cxx: "cl"
