@@ -24,30 +24,30 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - # Currently macOS 14.6.1 and Xcode 15.3
+        - # Currently macOS 26.5.1 and Xcode 26.5
           name: "macOS-26/Xcode/libc++"
           artifact: "macOS-AppleClang-libcpp.tar.xz"
           os: macos-26
           build_type: "Release"
           cc: "clang"
           cxx: "clang++"
-        - # Currently Ubuntu 24.04 LTS and gcc 14.0.1
-          name: "Ubuntu-24.04/gcc/libstdc++"
+        - # Currently Ubuntu 26.04 LTS and gcc 15.2
+          name: "Ubuntu-26.04/gcc/libstdc++"
           artifact: "linux64-gcc-libstdcpp.tar.xz"
-          os: ubuntu-24.04
+          os: ubuntu-26.04
           build_type: "Release"
-          cc: "gcc"
-          cxx: "g++"
-        - # Currently Windows Server 2022 and MSVS 17.11
+          cc: "gcc-15"
+          cxx: "g++-15"
+        - # Currently Windows Server 2025 and MSVS 18.7
           name: "Windows-2025/MSVS/Microsoft"
           artifact: "win64-msvc-microsoft.tar.xz"
-          os: windows-2025
+          os: windows-2025-vs2026
           build_type: "Release"
           cc: "cl"
           cxx: "cl"
 
           # It appears we need to invoke this directly.
-          environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
+          environment_script: "C:/Program Files/Microsoft Visual Studio/2026/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
 
     steps:
     - uses: actions/checkout@v6
@@ -202,12 +202,12 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - name: "macOS-14/Xcode/libc++"
+        - name: "macOS-latest/Xcode/libc++"
           artifact: "macOS-AppleClang-libcpp.tar.xz"
-          os: macos-14
-        - name: "Ubuntu-24.04/gcc/libstdc++"
+          os: macos-latest
+        - name: "Ubuntu-latest/gcc/libstdc++"
           artifact: "linux64-gcc-libstdcpp.tar.xz"
-          os: ubuntu-24.04
+          os: ubuntu-latest
         - name: "Windows-latest/MSVS/Microsoft"
           artifact: "win64-msvc-microsoft.tar.xz"
           os: windows-latest
