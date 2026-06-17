@@ -192,10 +192,19 @@ target_include_directories(
   INTERFACE $<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include/${PROJECT_NAME}>
             $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}>)
 
-target_compile_features(
-	${PROJECT_NAME}
-	INTERFACE
-		cxx_std_26)
+if(MSVC)
+	# FIXME
+  # MSVC is failing to recognize `cxx_std_26` in GitHub
+  target_compile_options(y
+	  ${PROJECT_NAME}
+		INTERFACE
+		  /std:c++latest)
+else()
+  target_compile_features(
+	  ${PROJECT_NAME}
+	  INTERFACE
+		  cxx_std_26)
+endif()
 
 # Customized packaging boilerplate
 target_compile_definitions (
