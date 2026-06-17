@@ -2,7 +2,7 @@
 
 	Lucena Build Abstraction Library
 	“Generated.hpp”
-	Copyright © 2019-2024 Lucena
+	Copyright © 2019-2026 Lucena
 	All Rights Reserved
 
 	This file is distributed under the University of Illinois Open Source
@@ -18,6 +18,6 @@
 
 #define LBAL_version_major 2
 #define LBAL_version_minor 0
-#define LBAL_version_patch 0
+#define LBAL_version_patch 1
 
 #define LBAL_abi_version 2

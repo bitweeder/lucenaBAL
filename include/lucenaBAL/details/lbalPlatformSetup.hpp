@@ -1,35 +1,35 @@
 /*------------------------------------------------------------------------------
 
-	Lucena Build Abstraction Library
-	“lbalPlatformSetup.hpp”
-	Copyright © 2018-2024 Lucena
-	All Rights Reserved
+  Lucena Build Abstraction Library
+  “lbalPlatformSetup.hpp”
+  Copyright © 2018-2026 Lucena
+  All Rights Reserved
 
-	This file is distributed under the University of Illinois Open Source
-	License. See LICENSE.md for details.
+  This file is distributed under the University of Illinois Open Source
+  License. See LICENSE.md for details.
 
-	See `lbalFeatureSetup.hpp` for descriptions of the various tokens.
+  See `lbalFeatureSetup.hpp` for descriptions of the various tokens.
 
 ------------------------------------------------------------------------------*/
 
-
 #pragma once
-
 
 //	lbal
 #include <lucenaBAL/lbalConfig.hpp>
 
+#include <lucenaBAL/details/lbalDefinitionTests.hpp>
 
 /*------------------------------------------------------------------------------
-	Platform Macros
+  Platform Macros
 */
 
 #if LBAL_TARGET_OS_MACOS || LBAL_TARGET_OS_IOS || LBAL_TARGET_OS_IOS_SIM
-	#include <lucenaBAL/details/platforms/lbalPlatformApple.hpp>
+  #include <lucenaBAL/details/platforms/lbalPlatformApple.hpp>
 #elif LBAL_TARGET_OS_X11
-	#include <lucenaBAL/details/platforms/lbalPlatformPOSIX.hpp>
+  #include <lucenaBAL/details/platforms/lbalPlatformPOSIX.hpp>
 #elif LBAL_TARGET_OS_WINAPI
-	#include <lucenaBAL/details/platforms/lbalPlatformWinAPI.hpp>
+  #include <lucenaBAL/details/platforms/lbalPlatformWinAPI.hpp>
 #else
-	#error "Unknown platform; update lbalPlatformSetup.hpp or specify a recognized platform token"
+  #error                                                                       \
+      "Unknown platform; update lbalPlatformSetup.hpp or specify a recognized platform token"
 #endif

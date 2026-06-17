@@ -15,30 +15,33 @@ Imagine that you are working on a project that would benefit from using the C++1
 - Of course, the `<version>` header might be available, anyway, as a vendor extension, but at least one major IDE vendor shipped such a header for multiple releases that didn't actually include SD-6 macro definitions.
 
 Enter **lucenaBAL**:
+```cpp
+#include <lucenaBAL/lucenaBAL.hpp>
 
-    #include <lucenaBAL/lucenaBAL.hpp>
-    
-    #include <algorithm>
-    #include <vector>
-    
+#include <algorithm>
+#include <vector>
+
+#if LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
+    #include <execution>
+#endif
+
+/**
+    Sort the supplied vector in place and return a reference to it,
+    using a parallelized sort if available.
+*/
+inline std::vector<int> &
+sort_vector (
+    std::vector<int> & io_vector
+) {
     #if LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
-        #include <execution>
+        std::sort (std::execution::par, io_vector.begin(), io_vector.end());
+    #else
+        std::sort (io_vector.begin(), io_vector.end());
     #endif
     
-    /**
-        Sort the supplied vector in place and return a reference to it,
-        using a parallelized sort if available.
-    */
-    inline std::vector<int> & sort_vector (std::vector<int> & io_vector)
-    {
-        #if LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
-            std::sort (std::execution::par, io_vector.begin(), io_vector.end());
-        #else
-            std::sort (io_vector.begin(), io_vector.end());
-        #endif
-        
-        return io_vector;
-    }
+    return io_vector;
+}
+```
 
 ## Getting Started
 
@@ -46,63 +49,50 @@ Enter **lucenaBAL**:
 
 More detailed instructions are provided below, but for a quick start, simply clone the repository, open up a terminal window, change to the local repo directory, and execute the following:
 
-Under macOS or Linux (or other UNIX derivatives):
-  
-    > mkdir build
-    > cd build
-    > cmake ..
-    > cmake --build . --config Release
-    > sudo make install
+```sh
+mkdir -p build
+cmake -DCMAKE_INSTALL_PREFIX=/path/to/install -DCMAKE_BUILD_TYPE=Release -S ./ -B build
+cmake --build build
+cmake --build build --target install
+```
 
-Under Windows:
+This will generate headers, test binaries, and docs in the build directory, then
+install to subdirectories in an optionally-specified directory (the default is `/usr/local` if `-DCMAKE_INSTALL_PREFIX` is _not_ provided):
+- headers will go to `include`
+- CMake configs will got to `share`
 
-    > mkdir build
-    > cd build
-    > cmake -DCMAKE_INSTALL_PREFIX=/path/to/install ..
-    > cmake --build . --config Release
-    > cmake --build . --target install
-
-This will:
-1. Generate headers, test binaries, and docs in the build directory.
-2. Copy the headers  to `/usr/local/include/lucenaBAL` (or the equivalent specified directory).
-3. Copy any support files to `/usr/local/share/lucenaBAL` (or the equivalent specified directory).
-
-(Note that tests and docs will remain in the build directory.)
+Note that if installing to `/usr/local`, you may need to replace the last line with `cd build && sudo make install`; tests and docs will always remain in the `build` directory.
 
 Since lucenaBAL is a header-only library, it is not necessary to link to it; simply `#include <lucenaBAL/lucenaBAL.hpp>` where you need feature tests once the headers are installed. Usage information is available in the [online docs](https://bitweeder.github.io/lucenaBAL/html/index.html), as well as in the headers themselves (primarily in  `<lucenaBAL/lbalFeatureSetup.hpp>`).
 
 ## Prerequisites
 
-lucenaBAL requires compiler support for C++11 or later. It has been tested with **gcc** 6 thru 14.2, **Microsoft Visual Studio** 2015 Update 3 thru MSVS 2022 17.11.4, **Xcode** 9 thru 16.0, and **llvm/clang** 6 thru 20. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
+lucenaBAL requires compiler support for C++11 or later. It has been tested with **gcc** `6` thru `16.1`, **Microsoft Visual Studio** `2015 Update 3` thru MSVS `2022 17.11.4`, **Xcode** `9` thru `26.4.x`, and **llvm/clang** `6` thru `23.1.x`. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
 
 ## Building, Installing, and Testing
 
 The project uses **CMake** as its primary build system. Originally, hand-built project files for a number of different IDEs were used, but they were dependent on a particular folder hierarchy and also didn’t lend themselves very well to automation.
 
-lucenaBAL is a header-only library. The basic build instructions are provided above under **Getting Started**.  We give two different methods since, by default, **macOS** and **Linux** installs are to `/usr/local`, which requires sudo or root access, while **Windows** uses a different model. Ignoring these differences, we have the following, with line numbers added:
+lucenaBAL is a header-only library. The basic build instructions are provided above under **Getting Started**.  We give two different methods since, by default, **macOS** and **Linux** installs are to `/usr/local`, which requires sudo or root access, while **Windows** uses a different model. Ignoring these differences, we have the following:
 
+| | |
+| :- | :- |
+| 1 | `mkdir -p build` |
+| 2 | `cmake -DCMAKE_INSTALL_PREFIX=/path/to/install -DCMAKE_BUILD_TYPE=Release -S ./ -B build` |
+| 3 | `cmake --build build` |
+| 4 | `cmake --build build --target install` |
 
-    1 > mkdir build
-    2 > cd build
-    3 > cmake -DCMAKE_INSTALL_PREFIX=/path/to/install ..
-    4 > cmake --build . --config Release
-    5 > cmake --build . --target install
+Line 2 can be modified with `-G "<generator>"`, where `<generator>` should be replaced with one of the supported [generator strings](https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html).
 
-Line 3 can be changed to:
+Also in line 2, the `-DCMAKE_INSTALL_PREFIX` switch can be left out if the default installation directory of `/usr/local` is acceptable.
 
-    3 > cmake -G "<generator>" -DCMAKE_INSTALL_PREFIX=/path/to/install ..
+Additionally in line 2, the build type may be chosen from the usual set with the usual meanings for CMake: Debug, Release, RelWithDebInfo and MinSizeRel.
 
-`<generator>` should be replaced with one of the supported [generator strings](https://cmake.org/cmake/help/latest/manual/cmake-generators.7.html). The `-DCMAKE_INSTALL_PREFIX` switch could be left out if the default installation directory is acceptable.
+Line 4 can be replaced by `cd build && sudo make install` when installing to a system dir such as `/usr/local`. Tests are generated by default and left in `build/tests`. They can be run in situ by changing line 4 to `cmake --build build --target test`. Tests can be scripted in the usual way for CMake and CTest, for example in order to only install the library if testing succeeds.
 
-In line 4, the config may be chosen from the usual set with the usual meanings for CMake: Debug, Release, RelWithDebInfo and MinSizeRel. Alternatively, you may simply call `make`.
+Linting is possible by changing line 4 to `cmake --build build --target format` to run `clang-format` against all source files, which is handy if you’re not using `git` prehooks or some code editor facility to lint as you go. Relatedly, using `format-dry` instead of `format` will preview the changes instead of simply applying them.
 
-Line 5 can be replaced by `make install` (or `sudo make install`). Tests are generated by default and left in `<build>/tests`. They can be automatically run by changing line 5 to:
-
-    5 > cmake --build . --target tests
-
-Tests can be scripted in the usual way for CMake and CTest, for example in order to only install the library if testing succeeds.
-
-Docs can also be generated, if desired, and are left in `<build>/docs`.
+Docs can also be generated, if desired, and are left in `build/docs`.
 
 ## Planning
 Tokens deprecated prior to the official lucenaBAL 2.0 release—in particular, placeholder tokens superseded by formalized C++20/C++23 variants—will be removed as part of the eventual lucenaBAL 3.0 release, but will remain available until then.
@@ -110,7 +100,7 @@ Tokens deprecated prior to the official lucenaBAL 2.0 release—in particular, p
 As always, prefer to use the non-deprecated version of a token, especially when starting a new project.
 
 ## To-Do
-_Roughly in order of precedence_
+_Roughly in order of precedence:_
 - add more examples
 - flesh out the unit tests
 - generate nicer-looking IDE project files

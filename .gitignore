@@ -1,5 +1,6 @@
 # global stuff
 .DS_Store
+.python-venv
 /build/
 /tools/proj/
 

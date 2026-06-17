@@ -2,7 +2,7 @@
 
     Lucena Build Abstraction Library
     “CMakeLists.txt”
-    Copyright © 2018-2024 Lucena
+    Copyright © 2018-2026 Lucena
     All Rights Reserved
 
     This file is distributed under the University of Illinois Open Source
@@ -29,7 +29,8 @@
 # This minimum is for
 #	- correct cross-compilation for all Apple OS’s (3.14)
 #	- correct Xcode project generation (3.15)
-cmake_minimum_required (VERSION 3.15...3.30)
+# - minimum for `cxx_std_26` support in MSVC (3.30)
+cmake_minimum_required (VERSION 3.30...4.3.2)
 
 
 # Forbid poisoning the source tree, ’cuz we’re authoritarian that way. Note,
@@ -37,7 +38,8 @@ cmake_minimum_required (VERSION 3.15...3.30)
 # maintaining a clean source directory in the face of a determined user is
 # probably a hopeless endeavor.
 #
-# __SEEME__ Consider adding some entries to `.gitignore` to avoid polluting
+# SEEME - bitweeder
+# Consider adding some entries to `.gitignore` to avoid polluting
 # future commits.
 if ("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
     message (FATAL_ERROR "FATAL: In-source builds are not allowed. "
@@ -48,8 +50,8 @@ endif()
 # Versioning; propagates to headers
 set (PROJECT_VERSION_MAJOR 2)
 set (PROJECT_VERSION_MINOR 0)
-set (PROJECT_VERSION_PATCH 0)
-set (PROJECT_VERSION_TWEAK 20)
+set (PROJECT_VERSION_PATCH 1)
+set (PROJECT_VERSION_TWEAK 0)
 
 set (LBAL_ABI_VERSION 2)
 
@@ -141,19 +143,20 @@ set (CMAKE_VISIBILITY_INLINES_HIDDEN 1)
 # unintentionally relying on compiler-specific behaviors. The latter may be
 # undesirable from a user perspective, but it can be overridden.
 #
-# __SEEME__ Setting the target Standard directly is discouraged by CMake, which
-# prefers listing out individual language features required by the code. This
-# is a bit silly as it creates too much coupling. Attempting to get by with
-# proxies, e.g., picking one or two representative features of a desired
-# Standard, is brittle. Unfortunately, a feature laundry list is what CMake
-# expects in order to provide the best, most predictable compilation outcomes.
-# Additionally, `CXX_STANDARD` appears to be completely useless for its
-# intended purpose since it’s viewed as an unenforced suggestion, e.g., under
-# MSVC, requiring us to invoke explicit workarounds that don’t have a fully
-# equivalent effect. All that said, we, we set the global values here, anyway,
-# as a clear declaration of intent.
+# SEEME - bitweeder
+# Setting the target Standard directly is discouraged by CMake, which prefers
+# listing out individual language features required by the code. This is a bit
+# silly as it creates too much coupling. Attempting to get by with proxies,
+# e.g., picking one or two representative features of a desired Standard, is
+# brittle. Unfortunately, a feature laundry list is what CMake expects in order
+# to provide the best, most predictable compilation outcomes. Additionally,
+# `CXX_STANDARD` appears to be completely useless for its intended purpose
+# since it’s viewed as an unenforced suggestion, e.g., under MSVC, requiring us
+# to invoke explicit workarounds that don’t have a fully equivalent effect. All
+# that said, we, we set the global values here, anyway, as a clear declaration
+# of intent.
 if(NOT "${CMAKE_CXX_STANDARD}")
-	set(CMAKE_CXX_STANDARD 23)
+	set(CMAKE_CXX_STANDARD 26)
 endif()
 
 if(NOT "${CMAKE_CXX_STANDARD_REQUIRED}")
@@ -189,10 +192,19 @@ target_include_directories(
   INTERFACE $<BUILD_INTERFACE:${${PROJECT_NAME}_SOURCE_DIR}/include/${PROJECT_NAME}>
             $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}>)
 
-target_compile_features(
-	${PROJECT_NAME}
-	INTERFACE
-		cxx_std_23)
+if(MSVC)
+	# FIXME
+  # MSVC is failing to recognize `cxx_std_26` in GitHub
+  target_compile_options(
+	  ${PROJECT_NAME}
+		INTERFACE
+		  /std:c++26)
+else()
+  target_compile_features(
+	  ${PROJECT_NAME}
+	  INTERFACE
+		  cxx_std_26)
+endif()
 
 # Customized packaging boilerplate
 target_compile_definitions (
@@ -201,7 +213,7 @@ target_compile_definitions (
 		LBAL_PACKAGING_PRODUCT_IDENTIFIER="${CMAKE_PROJECT_NAME}"
 		LBAL_PACKAGING_SIGNATURE="lbal"
 		LBAL_PACKAGING_COPYRIGHT_HOLDER="Lucena"
-		LBAL_PACKAGING_COPYRIGHT_DATE="2019-2024"
+		LBAL_PACKAGING_COPYRIGHT_DATE="2019-2026"
 		LBAL_PACKAGING_PRODUCT_DOMAIN="com.lucena"
 		LBAL_PACKAGING_PREFIX="lbal"
 		LBAL_PACKAGING_DESCRIPTION="${CMAKE_PROJECT_DESCRIPTION}"
@@ -210,10 +222,11 @@ target_compile_definitions (
 		$<$<CONFIG:DEBUG>:LBAL_CONFIG_debug=1>
 )
 
-# __FIXME__ Simulator targets for Apple OS’s are effectively unavailable, as
-# they will not be configured properly. Even with proper configuration,
-# it will be necessary to manually specify Xcode generator arguments to CMake
-# on the command line, or rely on making correct choices in Xcode itself if not
+# FIXME - bitweeder
+# Simulator targets for Apple OS’s are effectively unavailable, as they will
+# not be configured properly. Even with proper configuration, it will be
+# necessary to manually specify Xcode generator arguments to CMake on the
+# command line, or rely on making correct choices in Xcode itself if not
 # building from the command line.
 if ("${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
 	target_compile_definitions (
@@ -264,6 +277,65 @@ else()
 	message (FATAL_ERROR "${PROJECT_NAME} does not appear to support this platform")
 endif()
 
+# Global linting
+#
+# Helpful for when you don’t have IDE or commit prehook support, or 
+# bulk-reformat from your preferred setup to the canonical one before pushing.
+
+# FIXME
+# Kept in a variable since different projects tend to want different versions
+# of the `clang-format` executable; this version isn’t picky, but we should
+# probably pin to a user-supplied version.
+find_program(
+	CLANG_FORMAT_EXE
+	NAMES clang-format
+)
+
+if(CLANG_FORMAT_EXE)
+	# Collect _all_ source and header files; this should not be used for
+	# non-linting purposes as it’s semantically indiscriminate.
+	file(
+		GLOB_RECURSE
+		ALL_LINTABLE_FILES 
+				include/**/*.hpp
+				tests/*.cpp
+				tests/*.hpp
+	)
+
+	# FIXME
+	# Should probably be a shell script that tests inputs and generates sensible
+	# errors rather than silently barfing.
+	if(ALL_LINTABLE_FILES)
+		add_custom_target(
+			format
+			COMMAND ${CLANG_FORMAT_EXE} -i ${ALL_LINTABLE_FILES}
+			COMMAND_EXPAND_LISTS
+			COMMENT "Run clang-format on all lintable files"
+		)
+
+		add_custom_target(
+			format-dry
+			COMMAND /usr/bin/env bash -c "IFS=';' read -ra DELIMITED_FILES <<< \"${ALL_LINTABLE_FILES}\" ; for file in \"\$\{DELIMITED_FILES[@]\}\" ; do diff -u \$\{file\} <(${CLANG_FORMAT_EXE} \$\{file\}) ; done"
+			VERBATIM
+			COMMENT "Dry-run clang-format on all lintable files"
+		)
+
+		# foreach(FILE IN ALL_LINTABLE_FILES MY_FILES)
+		# 	add_custom_command(
+		# 		COMMAND diff <(cat ${FILE}) <(${CLANG_FORMAT_EXE} ${FILE})
+		# 		DEPENDS ${FILE}
+		# 		VERBATIM
+		# 	)
+		# 	list(APPEND ALL_OUTPUTS ${OUTPUT_FILE})
+		# endforeach()
+
+		# # Link the commands to a target so they actually run during build
+		# add_custom_target(
+		# 	format-dry
+		# 	DEPENDS ${ALL_OUTPUTS}
+		# )
+	endif()
+endif()
 
 #[[#############################################################################
     install targets
@@ -353,7 +425,8 @@ endif()
 #[[#############################################################################
     packaging
 
-    __FIXME__ Currently unused.
+    FIXME - bitweeder
+		Currently unused.
 #]]
 
 #set(CPACK_RESOURCE_FILE_LICENSE "${PROJECT_SOURCE_DIR}/LICENSE.md")

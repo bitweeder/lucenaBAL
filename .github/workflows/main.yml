@@ -1,7 +1,7 @@
 ---
 # Lucena Build Abstraction Library
 # “main.yml”
-# Copyright © 2024 Lucena
+# Copyright © 2024-2026 Lucena
 # All Rights Reserved
 #
 # This file is distributed under the University of Illinois Open Source
@@ -24,30 +24,30 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - # Currently macOS 14.6.1 and Xcode 15.3
-          name: "macOS-14/Xcode/libc++"
+        - # Currently macOS 26.5.1 and Xcode 26.5
+          name: "macOS-26/Xcode/libc++"
           artifact: "macOS-AppleClang-libcpp.tar.xz"
-          os: macos-14
+          os: macos-26
           build_type: "Release"
           cc: "clang"
           cxx: "clang++"
-        - # Currently Ubuntu 24.04 LTS and gcc 14.0.1
-          name: "Ubuntu-24.04/gcc/libstdc++"
+        - # Currently Ubuntu 26.04 LTS and gcc 15.2
+          name: "Ubuntu-26.04/gcc/libstdc++"
           artifact: "linux64-gcc-libstdcpp.tar.xz"
-          os: ubuntu-24.04
+          os: ubuntu-26.04
           build_type: "Release"
-          cc: "gcc"
-          cxx: "g++"
-        - # Currently Windows Server 2022 and MSVS 17.11
-          name: "Windows-2022/MSVS/Microsoft"
+          cc: "gcc-15"
+          cxx: "g++-15"
+        - # Currently Windows Server 2025 and MSVS 18.7
+          name: "Windows-2025/MSVS/Microsoft"
           artifact: "win64-msvc-microsoft.tar.xz"
-          os: windows-2022
+          os: windows-2025-vs2026
           build_type: "Release"
           cc: "cl"
           cxx: "cl"
 
-          # It appears we need to invoke this directly.
-          environment_script: "C:/Program Files/Microsoft Visual Studio/2022/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
+          # Partial path to ENV setup script for MSVC
+          environment_script: "VC/Auxiliary/Build/vcvars64.bat"
 
     steps:
     - uses: actions/checkout@v6
@@ -62,9 +62,40 @@ jobs:
         # in through the Developer Command Prompt.
         if ("${{ runner.os }}" STREQUAL "Windows"
             AND NOT "x${{ matrix.config.environment_script }}" STREQUAL "x")
+          find_program(
+            vswhere_exec 
+            NAMES
+              vswhere 
+            PATHS 
+              "$ENV{ProgramFiles\(x86\)}/Microsoft Visual Studio/Installer"
+              "$ENV{ProgramFiles}/Microsoft Visual Studio/Installer"
+            REQUIRED
+          )
+
+          message(
+            STATUS
+              "Found vswhere at: ${vswhere_exec}"
+          )
+
+          # FIXME
+          # `latest` should be replaced with an appropriate version string.
           execute_process(
             COMMAND
-              "${{ matrix.config.environment_script }}" && set
+              "${vswhere_exec}" -products * -latest -prerelease -property installationPath
+            OUTPUT_VARIABLE
+              vs_install_path
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+          )
+
+          message(
+            STATUS
+              "Found MSVC install dir at: ${vs_install_path}"
+          )
+
+
+          execute_process(
+            COMMAND
+              "${vs_install_path}/${{ matrix.config.environment_script }}" && set
             OUTPUT_FILE
               environment_script_output.txt
             RESULT_VARIABLE
@@ -202,12 +233,12 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - name: "macOS-14/Xcode/libc++"
+        - name: "macOS-latest/Xcode/libc++"
           artifact: "macOS-AppleClang-libcpp.tar.xz"
-          os: macos-14
-        - name: "Ubuntu-24.04/gcc/libstdc++"
+          os: macos-latest
+        - name: "Ubuntu-latest/gcc/libstdc++"
           artifact: "linux64-gcc-libstdcpp.tar.xz"
-          os: ubuntu-24.04
+          os: ubuntu-latest
         - name: "Windows-latest/MSVS/Microsoft"
           artifact: "win64-msvc-microsoft.tar.xz"
           os: windows-latest
