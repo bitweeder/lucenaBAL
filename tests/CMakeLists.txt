@@ -23,8 +23,8 @@
 #   - CONFIGURE_DEPENDS for usable globs (3.12)
 #   - improved FetchContent handling (3.14))
 #   - correct Xcode project generation (3.15)
-#   - minimum for `cxx_std_26` support in MSVC (3.25)
-cmake_minimum_required (VERSION 3.25...4.3.2)
+#   - minimum for `cxx_std_26` support in MSVC (3.30)
+cmake_minimum_required (VERSION 3.30...4.3.2)
 
 
 #[[#############################################################################
