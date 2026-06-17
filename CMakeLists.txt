@@ -195,10 +195,10 @@ target_include_directories(
 if(MSVC)
 	# FIXME
   # MSVC is failing to recognize `cxx_std_26` in GitHub
-  target_compile_options(y
+  target_compile_options(
 	  ${PROJECT_NAME}
 		INTERFACE
-		  /std:c++latest)
+		  /std:c++26)
 else()
   target_compile_features(
 	  ${PROJECT_NAME}
