@@ -46,8 +46,8 @@ jobs:
           cc: "cl"
           cxx: "cl"
 
-          # It appears we need to invoke this directly.
-          environment_script: "C:/Program Files/Microsoft Visual Studio/2026/Enterprise/VC/Auxiliary/Build/vcvars64.bat"
+          # Partial path to ENV setup script for MSVC
+          environment_script: "VC/Auxiliary/Build/vcvars64.bat"
 
     steps:
     - uses: actions/checkout@v6
@@ -62,9 +62,29 @@ jobs:
         # in through the Developer Command Prompt.
         if ("${{ runner.os }}" STREQUAL "Windows"
             AND NOT "x${{ matrix.config.environment_script }}" STREQUAL "x")
+          find_program(
+            vswhere_exec 
+            NAMES
+              vswhere 
+            PATHS 
+              "$ENV{ProgramFiles\(x86\)}/Microsoft Visual Studio/Installer"
+              "$ENV{ProgramFiles}/Microsoft Visual Studio/Installer"
+            REQUIRED
+          )
+
+          # FIXME
+          # `latest` should be replaced with an appropriate version string.
           execute_process(
             COMMAND
-              "${{ matrix.config.environment_script }}" && set
+              "${vswhere_exec}" -products * -latest -prerelease -property installationPath
+            OUTPUT_VARIABLE
+              vs_install_path
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+          )
+
+          execute_process(
+            COMMAND
+              "${vswhere_exec}/${{ matrix.config.environment_script }}" && set
             OUTPUT_FILE
               environment_script_output.txt
             RESULT_VARIABLE
