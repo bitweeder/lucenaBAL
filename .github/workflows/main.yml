@@ -72,6 +72,11 @@ jobs:
             REQUIRED
           )
 
+          message(
+            STATUS
+              "Found vswhere at: ${vswhere_exec}"
+          )
+
           # FIXME
           # `latest` should be replaced with an appropriate version string.
           execute_process(
@@ -82,9 +87,15 @@ jobs:
             OUTPUT_STRIP_TRAILING_WHITESPACE
           )
 
+          message(
+            STATUS
+              "Found MSVC install dir at: ${vs_install_path}"
+          )
+
+
           execute_process(
             COMMAND
-              "${vswhere_exec}/${{ matrix.config.environment_script }}" && set
+              "${vs_install_path}/${{ matrix.config.environment_script }}" && set
             OUTPUT_FILE
               environment_script_output.txt
             RESULT_VARIABLE
