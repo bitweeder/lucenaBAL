@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['build_2dtime_20environment_0',['Build-time Environment',['../group__lbal__build__env.html',1,'']]]
+  ['abstraction_20library_0',['Lucena Build Abstraction Library',['../index.html',1,'']]],
+  ['and_20warnings_1',['Diagnostics, Pragmas, and Warnings',['../group__lbal__compiler__control.html',1,'']]]
 ];

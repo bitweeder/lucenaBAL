@@ -1,0 +1,6 @@
+<map id="Feature Detection Macros" name="Feature Detection Macros">
+<area shape="rect" id="Node000003" href="$group__lbal__compiler.html" title="Language feature availability flags to indicate whether a given C++ feature is supported by the curre..." alt="" coords="266,5,406,33"/>
+<area shape="rect" id="Node000001" title="Provides feature detection describing the target platform, compiler, and Standard Library." alt="" coords="5,57,194,85"/>
+<area shape="rect" id="Node000004" href="$group__lbal__library.html" title="Provides feature detection describing the capabilities of the Standard Library implementation." alt="" coords="242,57,430,85"/>
+<area shape="rect" id="Node000002" href="$group__lbal__platform.html" title="Provides feature detection describing the capabilities of platform." alt="" coords="267,109,404,137"/>
+</map>

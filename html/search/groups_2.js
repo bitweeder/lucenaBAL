@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['diagnostics_2c_20pragmas_2c_20and_20warnings_404',['Diagnostics, Pragmas, and Warnings',['../group__lbal__compiler__control.html',1,'']]]
+  ['compiler_20features_0',['Compiler Features',['../group__lbal__compiler.html',1,'']]],
+  ['compiler_20intrinsics_20built_20in_20functions_1',['Compiler Intrinsics &amp;amp; Built-in Functions',['../group__lbal__builtins.html',1,'']]],
+  ['configuration_2',['Configuration',['../group__lbal__config.html',1,'']]]
 ];

@@ -1,0 +1,4 @@
+<map id="Standard Library Features" name="Standard Library Features">
+<area shape="rect" id="Node000002" href="$group__lbal__features.html" title="Provides feature detection describing the target platform, compiler, and Standard Library." alt="" coords="5,5,194,33"/>
+<area shape="rect" id="Node000001" title="Provides feature detection describing the capabilities of the Standard Library implementation." alt="" coords="242,5,430,33"/>
+</map>

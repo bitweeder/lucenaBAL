@@ -1,0 +1,4 @@
+<map id="Platform Features" name="Platform Features">
+<area shape="rect" id="Node000002" href="$group__lbal__features.html" title="Provides feature detection describing the target platform, compiler, and Standard Library." alt="" coords="5,5,194,33"/>
+<area shape="rect" id="Node000001" title="Provides feature detection describing the capabilities of platform." alt="" coords="242,5,379,33"/>
+</map>

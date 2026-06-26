@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['compiler_20intrinsics_20_26_20built_2din_20functions_1',['Compiler Intrinsics &amp; Built-in Functions',['../group__lbal__builtins.html',1,'']]],
-  ['compiler_20features_2',['Compiler Features',['../group__lbal__compiler.html',1,'']]],
-  ['configuration_3',['Configuration',['../group__lbal__config.html',1,'']]]
+  ['build_20abstraction_20library_0',['Lucena Build Abstraction Library',['../index.html',1,'']]],
+  ['build_20time_20environment_1',['Build-time Environment',['../group__lbal__build__env.html',1,'']]],
+  ['built_20in_20functions_2',['Compiler Intrinsics &amp;amp; Built-in Functions',['../group__lbal__builtins.html',1,'']]]
 ];

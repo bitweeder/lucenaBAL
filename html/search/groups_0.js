@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['build_2dtime_20environment_400',['Build-time Environment',['../group__lbal__build__env.html',1,'']]]
+  ['and_20warnings_0',['Diagnostics, Pragmas, and Warnings',['../group__lbal__compiler__control.html',1,'']]]
 ];
