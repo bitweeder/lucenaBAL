@@ -11,13 +11,10 @@
 
 name: Doxygen gh-pages Update Action
 
-# on:
-#   push:
-#     branches:
-#       - main
-
-# Temp for testing
-on: [push]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
