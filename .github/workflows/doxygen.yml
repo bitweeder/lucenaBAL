@@ -11,10 +11,13 @@
 
 name: Doxygen gh-pages Update Action
 
-on:
-  push:
-    branches:
-      - main
+# on:
+#   push:
+#     branches:
+#       - main
+
+# Temp for testing
+on: [push]
 
 jobs:
   deploy:
@@ -25,15 +28,60 @@ jobs:
     steps:
       - uses: actions/checkout@v7
         with:
-          # Shallow clone to keep Doxygen focused
+          # Use a shallow clone to keep Doxygen focused.
           fetch-depth: 0
+          submodules: "true"
+
+      - name: Install dependencies
+        # `noble` only includes `doxygen-1.9.x`; we install a newer version 
+        # below.
+        run: sudo apt update && sudo apt install -y graphviz wget
+        shell: bash
+
+      - name: Install Doxygen
+        run: |
+          doxygen_version='1.17.0'
+          doxygen_dir_version="$(tr '.' '_' <<< "${doxygen_version}")"
+
+          # FIXME We don’t bother with a temp dir, but this affects the repo’s
+          # porcelain status.
+          #
+          # FIXME Possible supply-chain attack vector; archive should be cached 
+          # in a safe location. Even just adding a hash check would be better.
+          pwd
+          wget "https://github.com/doxygen/doxygen/releases/download/Release_${doxygen_dir_version}/doxygen-${doxygen_version}.linux.bin.tar.gz"
+          tar xf "doxygen-${doxygen_version}.linux.bin.tar.gz"
+
+          mkdir -p "/usr/local/bin"
+          sudo mv "doxygen-${doxygen_version}/bin/doxygen" "/usr/local/bin/doxygen"
+        shell: bash
+
+      - name: Generate docs
+        # We run a full CMake build for this as some input files are 
+        # dynamically generated.
+        run: |
+          mkdir -p build
+          cmake -S . -B build -DCMAKE_BULD_TYPE=Release -DLBAL_BUILD_DOCS=ON
+          cmake --build build
+
+          # Prevent `jekyll` from causing trouble, if it runs.
+          touch "build/docs/doxygen/html/.nojekyll"
+
+          # Top-level redirect
+          cp -n "docs/index.html" "build/docs/doxygen/index.html"
+        shell: bash
 
       - name: Doxygen
         uses: DenverCoder1/doxygen-github-pages-action@v2.0.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          folder: html
-          config_file: Doxyfile
+
+      # FIXME - Another supply-chain attack vector; in this case, replicating
+      # the functionality may be the best option.
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: "build/docs/doxygen"
+          token: ${{ secrets.GITHUB_TOKEN }}
 
 ...
