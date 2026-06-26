@@ -43,32 +43,54 @@ jobs:
           doxygen_version='1.17.0'
           doxygen_dir_version="$(tr '.' '_' <<< "${doxygen_version}")"
 
-          # FIXME We don’t bother with a temp dir, but this affects the repo’s
-          # porcelain status.
-          #
+          temp_dir="$(mktemp -d "doxygen.XXXXXX")"
+          trap 'rm -rf "${temp_dir}"' EXIT
+
           # FIXME Possible supply-chain attack vector; archive should be cached 
           # in a safe location. Even just adding a hash check would be better.
-          pwd
-          wget "https://github.com/doxygen/doxygen/releases/download/Release_${doxygen_dir_version}/doxygen-${doxygen_version}.linux.bin.tar.gz"
-          tar xf "doxygen-${doxygen_version}.linux.bin.tar.gz"
+          pushd "${temp_dir}" >/dev/null || exit 31
+            wget "https://github.com/doxygen/doxygen/releases/download/Release_${doxygen_dir_version}/doxygen-${doxygen_version}.linux.bin.tar.gz" \
+            || exit 32
 
-          mkdir -p "/usr/local/bin"
-          sudo mv "doxygen-${doxygen_version}/bin/doxygen" "/usr/local/bin/doxygen"
+            tar xf "doxygen-${doxygen_version}.linux.bin.tar.gz" \
+            || exit 33
+
+            mkdir -p "/usr/local/bin" \
+            || exit 34
+
+            sudo mv \
+              "doxygen-${doxygen_version}/bin/doxygen" \
+              "/usr/local/bin/doxygen" \
+            || exit 35
+          popd >/dev/null
         shell: bash
 
       - name: Generate docs
+        env:
+          CC: "gcc-15"
+          CXX: "g++-15"
+
         # We run a full CMake build for this as some input files are 
         # dynamically generated.
         run: |
-          mkdir -p build
-          cmake -S . -B build -DCMAKE_BULD_TYPE=Release -DLBAL_BUILD_DOCS=ON
-          cmake --build build
+          mkdir -p build > /dev/null \
+          || exit 41
+
+          cmake -S . -B build -DCMAKE_BULD_TYPE=Release -DLBAL_BUILD_DOCS=ON \
+          || exit 42
+
+          cmake --build build \
+          || exit 43
 
           # Prevent `jekyll` from causing trouble, if it runs.
-          touch "build/docs/doxygen/html/.nojekyll"
+          touch "build/docs/doxygen/html/.nojekyll" \
+          || exit 44
 
           # Top-level redirect
-          cp -n "docs/index.html" "build/docs/doxygen/index.html"
+          cp -n \
+            "docs/index.html" \
+            "build/docs/doxygen/index.html" \
+          || exit 45
         shell: bash
 
       - name: Doxygen
