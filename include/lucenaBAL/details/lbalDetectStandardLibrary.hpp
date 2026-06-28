@@ -78,6 +78,7 @@
   #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
     "Unable to identify the Standard Library implementation is use; attempting "
-    "to go fully generic")
+    "to go fully generic"
+)
   #endif  //	LBAL_CONFIG_enable_pedantic_warnings
 #endif

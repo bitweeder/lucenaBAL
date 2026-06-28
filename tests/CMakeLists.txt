@@ -60,7 +60,8 @@ add_executable (lbalTest)
 target_sources (
 	lbalTest
     PRIVATE
-        lbalTest.cpp
+      lbalFeatureTest.cpp
+      lbalFormattingTest.cpp
 )
 
 target_include_directories (
@@ -91,14 +92,14 @@ target_compile_options (
 target_compile_definitions (
 	lbalTest
     PRIVATE
-        LBAL_CONFIG_unit=1
+      LBAL_CONFIG_unit=1
 )
 
 target_link_libraries (
 	lbalTest
     PUBLIC
-        lucenaBAL
-        gtest_main
+      lucenaBAL
+      gtest_main
 )
 
 gtest_discover_tests (lbalTest)
@@ -110,12 +111,12 @@ gtest_discover_tests (lbalTest)
 
 # Keep the cache and GUI clean.
 mark_as_advanced (
-    BUILD_GTEST
-    gtest_build_samples
-    gtest_build_tests
-    gtest_disable_pthreads
-    gtest_force_shared_crt
-    gtest_hide_internal_symbols
+  BUILD_GTEST
+  gtest_build_samples
+  gtest_build_tests
+  gtest_disable_pthreads
+  gtest_force_shared_crt
+  gtest_hide_internal_symbols
 )
 
 # Prettify generated IDE projects
@@ -123,5 +124,5 @@ set_target_properties (
 	gtest
 	gtest_main
     PROPERTIES
-        FOLDER "extern"
+      FOLDER "extern"
 )

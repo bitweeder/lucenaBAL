@@ -58,7 +58,8 @@ LBAL_CPP_WARNING("<version> not found; resetting LBAL_LIBCPP20_VERSION")
     #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
     "Unable to validate user-set LBAL_LIBCPP20_VERSION; attempting to include "
-    "<version>")
+    "<version>"
+)
     #endif  //	LBAL_CONFIG_enable_pedantic_warnings
   #endif
 #endif  //	LBAL_LIBCPP20_VERSION

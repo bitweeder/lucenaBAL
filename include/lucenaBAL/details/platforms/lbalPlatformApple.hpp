@@ -80,7 +80,7 @@
     OS releases before Apple got around to including the necessary object
     code in their runtimes, effectively leaving little bombs to surprise
     the unwary. We generate an error if the minimum supported OS—as
-    specified by the client, is not up to the task of providing such
+    specified by the client—is not up to the task of providing such
     features.
 
     Relatedly, until Xcode 10.0, `<experimental/any>` is provided, but
@@ -97,7 +97,7 @@
   //	shared locks
   #if _LIBCPP_VERSION                                                          \
       && ((defined(__MAC_OS_X_VERSION_MIN_REQUIRED)                            \
-           && (__MAC_OS_X_VERSION_MIN_REQUIRED < 101200))                      \
+              && (__MAC_OS_X_VERSION_MIN_REQUIRED < 101200))                   \
           || (defined(__IPHONE_OS_VERSION_MIN_REQUIRED)                        \
               && (__IPHONE_OS_VERSION_MIN_REQUIRED < 100000))                  \
           || (defined(__TV_OS_VERSION_MIN_REQUIRED)                            \
@@ -111,7 +111,7 @@
   #if defined(_LIBCPP_VERSION)                                                 \
       && ((_LIBCPP_VERSION < 6000)                                             \
           || ((defined(__MAC_OS_X_VERSION_MIN_REQUIRED)                        \
-               && (__MAC_OS_X_VERSION_MIN_REQUIRED < 101400))                  \
+                  && (__MAC_OS_X_VERSION_MIN_REQUIRED < 101400))               \
               || (defined(__IPHONE_OS_VERSION_MIN_REQUIRED)                    \
                   && (__IPHONE_OS_VERSION_MIN_REQUIRED < 120000))              \
               || (defined(__TV_OS_VERSION_MIN_REQUIRED)                        \
@@ -143,7 +143,7 @@
   #if defined(_LIBCPP_VERSION)                                                 \
       && ((_LIBCPP_VERSION < 8000)                                             \
           || ((defined(__MAC_OS_X_VERSION_MIN_REQUIRED)                        \
-               && (__MAC_OS_X_VERSION_MIN_REQUIRED < 101500))                  \
+                  && (__MAC_OS_X_VERSION_MIN_REQUIRED < 101500))               \
               || (defined(__IPHONE_OS_VERSION_MIN_REQUIRED)                    \
                   && (__IPHONE_OS_VERSION_MIN_REQUIRED < 130000))              \
               || (defined(__TV_OS_VERSION_MIN_REQUIRED)                        \

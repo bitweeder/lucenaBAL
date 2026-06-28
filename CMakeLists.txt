@@ -42,8 +42,8 @@ cmake_minimum_required (VERSION 3.30...4.3.2)
 # Consider adding some entries to `.gitignore` to avoid polluting
 # future commits.
 if ("${CMAKE_SOURCE_DIR}" STREQUAL "${CMAKE_BINARY_DIR}")
-    message (FATAL_ERROR "FATAL: In-source builds are not allowed. "
-        "You must create a separate directory for build files.")
+	message (FATAL_ERROR "FATAL: In-source builds are not allowed. "
+		"You must create a separate directory for build files.")
 endif()
 
 
@@ -51,7 +51,7 @@ endif()
 set (PROJECT_VERSION_MAJOR 2)
 set (PROJECT_VERSION_MINOR 0)
 set (PROJECT_VERSION_PATCH 1)
-set (PROJECT_VERSION_TWEAK 0)
+set (PROJECT_VERSION_TWEAK 2)
 
 set (LBAL_ABI_VERSION 2)
 
@@ -63,12 +63,12 @@ endif()
 
 
 project ("lucenaBAL"
-    VERSION ${LBAL_PROXY_VERSION}
-    DESCRIPTION
-        "Lucena Build Abstraction Library for C++ - compiler, library, and build platform feature detection"
-    HOMEPAGE_URL
-        "https://github.com/bitweeder/lucenaBAL"
-    LANGUAGES CXX)
+	VERSION ${LBAL_PROXY_VERSION}
+	DESCRIPTION
+		"Lucena Build Abstraction Library for C++ - compiler, library, and build platform feature detection"
+	HOMEPAGE_URL
+		"https://github.com/bitweeder/lucenaBAL"
+	LANGUAGES CXX)
 
 # Define a short name for use with ancillary projects.
 set (LBAL_PROJECT_PREFIX "lbal")
@@ -85,6 +85,20 @@ configure_file (
 	"${PROJECT_SOURCE_DIR}/include/${PROJECT_NAME}/details/${LBAL_PROJECT_PREFIX}Generated.hpp"
 	@ONLY
 	NEWLINE_STYLE UNIX
+)
+
+set(
+	CLANG_FORMAT_URL
+		"https://github.com/bitweeder/Styleguides/blob/develop/.clang-format"
+	CACHE STRING
+	"Upstream URL for the .clang-format config; set to empty to skip download"
+)
+
+set(
+	CLANG_FORMAT_CONFIG
+		"${PROJECT_SOURCE_DIR}/.clang-format"
+	CACHE FILEPATH
+	"Path to the .clang-format config; if CLANG_FORMAT_URL is set, this file may be overwritten"
 )
 
 
@@ -292,15 +306,43 @@ find_program(
 )
 
 if(CLANG_FORMAT_EXE)
-	# Collect _all_ source and header files; this should not be used for
+	# Pull down the latest `.clang-format` config if we have an upstream source
+	#
+	# FIXME Disabled until the config stabilizes and the Styleguide publishes.
+	# if(CLANG_FORMAT_URL)
+	# 	file(
+	# 			DOWNLOAD 
+	# 				"${CLANG_FORMAT_URL}" 
+	# 				"${CLANG_FORMAT_CONFIG}"
+	# 			STATUS CONFIG_DOWNLOAD_STATUS
+	# 			TIMEOUT 10
+	# 	)
+	# endif())
+
+	# list(GET CONFIG_DOWNLOAD_STATUS 0 STATUS_CODE)
+	# if(NOT STATUS_CODE EQUAL 0)
+	# 		message(ERROR "Failed to download .clang-format.")
+	# endif()
+
+	# Collect (almost) _all_ source and header files; this should not be used for
 	# non-linting purposes as it’s semantically indiscriminate.
+	#
+	# SEEME
+	# Note that files used for diff comparisons will not be formatted, so they
+	# must be separately maintained.
 	file(
 		GLOB_RECURSE
 		ALL_LINTABLE_FILES 
-				include/**/*.hpp
-				tests/*.cpp
-				tests/*.hpp
+			include/**/*.hpp
+			tests/*.cpp
+			tests/*.hpp
 	)
+
+	list(
+		FILTER
+		ALL_LINTABLE_FILES
+		EXCLUDE REGEX
+			".*/tests/reference/.*")
 
 	# FIXME
 	# Should probably be a shell script that tests inputs and generates sensible
@@ -308,21 +350,21 @@ if(CLANG_FORMAT_EXE)
 	if(ALL_LINTABLE_FILES)
 		add_custom_target(
 			format
-			COMMAND ${CLANG_FORMAT_EXE} -i ${ALL_LINTABLE_FILES}
+			COMMAND ${CLANG_FORMAT_EXE} --style=file:${CLANG_FORMAT_CONFIG} -i ${ALL_LINTABLE_FILES}
 			COMMAND_EXPAND_LISTS
 			COMMENT "Run clang-format on all lintable files"
 		)
 
 		add_custom_target(
 			format-dry
-			COMMAND /usr/bin/env bash -c "IFS=';' read -ra DELIMITED_FILES <<< \"${ALL_LINTABLE_FILES}\" ; for file in \"\$\{DELIMITED_FILES[@]\}\" ; do diff -u \$\{file\} <(${CLANG_FORMAT_EXE} \$\{file\}) ; done"
+			COMMAND /usr/bin/env bash -c "IFS=';' read -ra DELIMITED_FILES <<< \"${ALL_LINTABLE_FILES}\" ; for file in \"\$\{DELIMITED_FILES[@]\}\" ; do diff -u \$\{file\} <(${CLANG_FORMAT_EXE} --style=file:${CLANG_FORMAT_CONFIG} \$\{file\}) ; done"
 			VERBATIM
 			COMMENT "Dry-run clang-format on all lintable files"
 		)
 
 		# foreach(FILE IN ALL_LINTABLE_FILES MY_FILES)
 		# 	add_custom_command(
-		# 		COMMAND diff <(cat ${FILE}) <(${CLANG_FORMAT_EXE} ${FILE})
+		# 		COMMAND diff <(cat ${FILE}) <(${CLANG_FORMAT_EXE} --style=file:${CLANG_FORMAT_CONFIG} ${FILE})
 		# 		DEPENDS ${FILE}
 		# 		VERBATIM
 		# 	)
@@ -351,8 +393,8 @@ install (
     	DESTINATION
     		${CMAKE_INSTALL_LIBDIR}
     LIBRARY
-        DESTINATION
-        	${CMAKE_INSTALL_LIBDIR}
+			DESTINATION
+				${CMAKE_INSTALL_LIBDIR}
     RUNTIME
     	DESTINATION
     		${CMAKE_INSTALL_BINDIR}
@@ -371,10 +413,10 @@ write_basic_package_version_file (
     COMPATIBILITY SameMajorVersion)
 
 configure_package_config_file (
-    "${PROJECT_SOURCE_DIR}/tools/cmake/${PROJECT_NAME}Config.cmake.in"
-    "${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-    INSTALL_DESTINATION
-        ${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake
+	"${PROJECT_SOURCE_DIR}/tools/cmake/${PROJECT_NAME}Config.cmake.in"
+	"${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+	INSTALL_DESTINATION
+		${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/cmake
 )
 
 
@@ -396,7 +438,7 @@ install (
 install (
 	FILES
 		"${PROJECT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
-        "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
+    "${PROJECT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake"
     DESTINATION
     	${CMAKE_INSTALL_DATAROOTDIR}/${PROJECT_NAME}/tools/cmake
 )
@@ -414,11 +456,11 @@ install (
 #]]
 
 if (${BUILD_TESTING})
-    add_subdirectory (tests)
+  add_subdirectory (tests)
 endif()
 
 if (${LBAL_BUILD_DOCS})
-    add_subdirectory (docs)
+  add_subdirectory (docs)
 endif()
 
 

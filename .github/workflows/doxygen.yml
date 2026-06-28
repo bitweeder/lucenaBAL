@@ -73,7 +73,7 @@ jobs:
           mkdir -p build > /dev/null \
           || exit 41
 
-          cmake -S . -B build -DCMAKE_BULD_TYPE=Release -DLBAL_BUILD_DOCS=ON \
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release -DLBAL_BUILD_DOCS=ON \
           || exit 42
 
           cmake --build build \
