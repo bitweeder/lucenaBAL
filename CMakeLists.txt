@@ -212,7 +212,7 @@ if(MSVC)
   target_compile_options(
 	  ${PROJECT_NAME}
 		INTERFACE
-		  /std:c++26)
+		  /std:c++latest)
 else()
   target_compile_features(
 	  ${PROJECT_NAME}

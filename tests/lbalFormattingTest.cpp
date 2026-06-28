@@ -67,7 +67,7 @@ ifFunction() {
   int const d{33};
 
   if constexpr (
-      _LIBCPP_VERSION
+      true
       && (((a) && (a < 37))
           || ((b) && (b < 100000))
           || ((c) && (c < 100000))
