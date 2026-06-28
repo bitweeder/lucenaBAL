@@ -15,14 +15,13 @@
 #pragma once
 
 //	std
-#include <ciso646>
-/*
-  In C++, this is a do-nothing header we include just for the side
-  effects: by convention, the Standard Library implementation will be
-  configured. We need this for the library implementation detection
-  below. Note that in the C++20 world, we would use <version> for this
-  purpose.
-*/
+#include <version>
+  // 	We include this just for the side effects: by convention, the Standard
+  //  Library implementation will be onfigured. We need this for the library
+  //  implementation detection below. Note that prior to its removal in C++20,
+  //  we we previously used `<ciso646>` for this purpose; compilers from before
+  //  ~2020 will fail here since few of them have `<version>`, but they also
+  //  lack the common header presence test support we’d need to catch this.
 
 //	lbal
 #include <lucenaBAL/lbalConfig.hpp>

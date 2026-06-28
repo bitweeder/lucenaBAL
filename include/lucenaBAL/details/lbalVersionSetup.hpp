@@ -69,6 +69,7 @@ LBAL_CPP_WARNING(
 #else
   //	In C++, this is a do-nothing header we include just for the side
   //	effects: by convention, the Standard Library implementation will be
-  //	configured.
+  //	configured. Unfortunately, it was formally dropped in C++20 and is
+  //  unlikely to work with older newer Standard Library implementations.
   #include <ciso646>
 #endif
