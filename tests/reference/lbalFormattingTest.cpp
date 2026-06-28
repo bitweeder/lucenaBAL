@@ -21,7 +21,7 @@
 
 #include "lbalFormattingTest.hpp"
 
-#if _LIBCPP_VERSION                                                            \
+#if true                                                                       \
     && ((defined(__MAC_OS_X_VERSION_MIN_REQUIRED)                              \
             && (__MAC_OS_X_VERSION_MIN_REQUIRED < 101200))                     \
         || (defined(__IPHONE_OS_VERSION_MIN_REQUIRED)                          \
