@@ -51,12 +51,12 @@
 
   @section lbal_usage Usage Instructions
 
-  All that’s needed to make use of lucenaBAL is to issue
-  `#include <lucenaBAL/lucenaBAL.hpp>` in each participating file. As a
-  header-only library with no dependencies beyond including `<ciso646>`—and
-  `<version>`, if available—from the C++ Standard Library, there’s nothing
-  else to link or install. Additionally, there’s not much to configure,
-  though you can see [Configuration](@ref lbal_config) for options.
+  All that’s needed to make use of lucenaBAL is to issue `#include
+  <lucenaBAL/lucenaBAL.hpp>` in each participating file. As a header-only
+  library with no dependencies beyond including `<version>` from the C++
+  Standard Library, there’s nothing else to link or install. Additionally,
+  there’s not much to configure, though you can see [Configuration](@ref
+  lbal_config) for options.
 
   The library itself comprises a large collection of preprocessor macros,
   grouped loosely into [build-time descriptors](@ref lbal_build_env),

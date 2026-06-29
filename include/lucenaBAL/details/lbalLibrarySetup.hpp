@@ -1555,7 +1555,8 @@ LBAL_CPP_WARNING("<type_traits> not found")
 
     #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES")
+    "Unable to validate LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES"
+)
     #endif  //	LBAL_CONFIG_enable_pedantic_warnings
   #endif    //	__has_include
 #endif      //	LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES
@@ -1687,7 +1688,8 @@ LBAL_CPP_WARNING("<memory> not found")
 
     #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL")
+    "Unable to validate LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL"
+)
     #endif  //	LBAL_CONFIG_enable_pedantic_warnings
   #endif    //	__has_include
 #endif      //	LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL
@@ -2055,7 +2057,8 @@ LBAL_CPP_WARNING("<filesystem> not found")
 
     #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING")
+    "Unable to validate LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING"
+)
     #endif  //	LBAL_CONFIG_enable_pedantic_warnings
   #endif    //	__has_include
 #endif      //	LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING
@@ -2132,7 +2135,8 @@ LBAL_CPP_WARNING("<type_traits> not found")
 
     #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS")
+    "Unable to validate LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS"
+)
     #endif  //	LBAL_CONFIG_enable_pedantic_warnings
   #endif    //	__has_include
 #endif      //	LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS
@@ -2183,7 +2187,8 @@ LBAL_CPP_WARNING("<vector> not found")
 
     #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS")
+    "Unable to validate LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS"
+)
     #endif  //	LBAL_CONFIG_enable_pedantic_warnings
   #endif    //	__has_include
 #endif      //	LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS
@@ -2611,7 +2616,8 @@ LBAL_CPP_WARNING("<numeric> not found")
 
     #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS")
+    "Unable to validate LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS"
+)
     #endif  //	LBAL_CONFIG_enable_pedantic_warnings
   #endif    //	__has_include
 #endif      //	LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
@@ -2858,7 +2864,8 @@ LBAL_CPP_WARNING("<type_traits> not found")
 
     #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES")
+    "Unable to validate LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES"
+)
     #endif  //	LBAL_CONFIG_enable_pedantic_warnings
   #endif    //	__has_include
 #endif      //	LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES
@@ -3085,7 +3092,8 @@ LBAL_CPP_WARNING("<atomic> not found")
 
     #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES")
+    "Unable to validate LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES"
+)
     #endif  //	LBAL_CONFIG_enable_pedantic_warnings
   #endif    //	__has_include
 #endif      //	LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES
@@ -4035,7 +4043,8 @@ LBAL_CPP_WARNING("<unordered_set> not found")
 
     #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP")
+    "Unable to validate LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP"
+)
     #endif  //	LBAL_CONFIG_enable_pedantic_warnings
   #endif    //	__has_include
 #endif      //	LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP
@@ -4118,7 +4127,8 @@ LBAL_CPP_WARNING("<cmath> not found")
 
     #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS")
+    "Unable to validate LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS"
+)
     #endif  //	LBAL_CONFIG_enable_pedantic_warnings
   #endif    //	__has_include
 #endif      //	LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS
@@ -4727,7 +4737,8 @@ LBAL_CPP_WARNING("<string_view> not found")
 
     #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR")
+    "Unable to validate LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR"
+)
     #endif  //	LBAL_CONFIG_enable_pedantic_warnings
   #endif    //	__has_include
 #endif      //	LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR
@@ -4804,7 +4815,8 @@ LBAL_CPP_WARNING("<compare> not found")
 
     #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY")
+    "Unable to validate LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY"
+)
     #endif  //	LBAL_CONFIG_enable_pedantic_warnings
   #endif    //	__has_include
 #endif      //	LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY

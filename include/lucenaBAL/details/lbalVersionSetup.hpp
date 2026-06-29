@@ -58,7 +58,8 @@ LBAL_CPP_WARNING("<version> not found; resetting LBAL_LIBCPP20_VERSION")
     #if LBAL_CONFIG_enable_pedantic_warnings
 LBAL_CPP_WARNING(
     "Unable to validate user-set LBAL_LIBCPP20_VERSION; attempting to include "
-    "<version>")
+    "<version>"
+)
     #endif  //	LBAL_CONFIG_enable_pedantic_warnings
   #endif
 #endif  //	LBAL_LIBCPP20_VERSION
@@ -68,6 +69,7 @@ LBAL_CPP_WARNING(
 #else
   //	In C++, this is a do-nothing header we include just for the side
   //	effects: by convention, the Standard Library implementation will be
-  //	configured.
+  //	configured. Unfortunately, it was formally dropped in C++20 and is
+  //  unlikely to work with older newer Standard Library implementations.
   #include <ciso646>
 #endif

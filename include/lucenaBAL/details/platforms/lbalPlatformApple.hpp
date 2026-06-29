@@ -15,14 +15,13 @@
 #pragma once
 
 //	std
-#include <ciso646>
-/*
-  In C++, this is a do-nothing header we include just for the side
-  effects: by convention, the Standard Library implementation will be
-  configured. We need this for the library implementation detection
-  below. Note that in the C++20 world, we would use <version> for this
-  purpose.
-*/
+#include <version>
+  // 	We include this just for the side effects: by convention, the Standard
+  //  Library implementation will be onfigured. We need this for the library
+  //  implementation detection below. Note that prior to its removal in C++20,
+  //  we we previously used `<ciso646>` for this purpose; compilers from before
+  //  ~2020 will fail here since few of them have `<version>`, but they also
+  //  lack the common header presence test support we’d need to catch this.
 
 //	lbal
 #include <lucenaBAL/lbalConfig.hpp>
@@ -80,7 +79,7 @@
     OS releases before Apple got around to including the necessary object
     code in their runtimes, effectively leaving little bombs to surprise
     the unwary. We generate an error if the minimum supported OS—as
-    specified by the client, is not up to the task of providing such
+    specified by the client—is not up to the task of providing such
     features.
 
     Relatedly, until Xcode 10.0, `<experimental/any>` is provided, but
@@ -97,7 +96,7 @@
   //	shared locks
   #if _LIBCPP_VERSION                                                          \
       && ((defined(__MAC_OS_X_VERSION_MIN_REQUIRED)                            \
-           && (__MAC_OS_X_VERSION_MIN_REQUIRED < 101200))                      \
+              && (__MAC_OS_X_VERSION_MIN_REQUIRED < 101200))                   \
           || (defined(__IPHONE_OS_VERSION_MIN_REQUIRED)                        \
               && (__IPHONE_OS_VERSION_MIN_REQUIRED < 100000))                  \
           || (defined(__TV_OS_VERSION_MIN_REQUIRED)                            \
@@ -111,7 +110,7 @@
   #if defined(_LIBCPP_VERSION)                                                 \
       && ((_LIBCPP_VERSION < 6000)                                             \
           || ((defined(__MAC_OS_X_VERSION_MIN_REQUIRED)                        \
-               && (__MAC_OS_X_VERSION_MIN_REQUIRED < 101400))                  \
+                  && (__MAC_OS_X_VERSION_MIN_REQUIRED < 101400))               \
               || (defined(__IPHONE_OS_VERSION_MIN_REQUIRED)                    \
                   && (__IPHONE_OS_VERSION_MIN_REQUIRED < 120000))              \
               || (defined(__TV_OS_VERSION_MIN_REQUIRED)                        \
@@ -143,7 +142,7 @@
   #if defined(_LIBCPP_VERSION)                                                 \
       && ((_LIBCPP_VERSION < 8000)                                             \
           || ((defined(__MAC_OS_X_VERSION_MIN_REQUIRED)                        \
-               && (__MAC_OS_X_VERSION_MIN_REQUIRED < 101500))                  \
+                  && (__MAC_OS_X_VERSION_MIN_REQUIRED < 101500))               \
               || (defined(__IPHONE_OS_VERSION_MIN_REQUIRED)                    \
                   && (__IPHONE_OS_VERSION_MIN_REQUIRED < 130000))              \
               || (defined(__TV_OS_VERSION_MIN_REQUIRED)                        \
