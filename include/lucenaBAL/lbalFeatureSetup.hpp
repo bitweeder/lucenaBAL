@@ -298,15 +298,6 @@
   #define LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME The library was previously being misidentified. This is here as
-//	a temporary measure, but it is deprecated and will be going away.
-#ifndef LBAL_TARGET_STANDARD_LIBRARY_STDLIBCPP
-  #define LBAL_TARGET_STANDARD_LIBRARY_STDLIBCPP                               \
-    LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP
-#endif
-///@endcond
-
 ///	@}	LBAL_TARGET_STANDARD_LIBRARY
 
 /**
@@ -929,12 +920,11 @@
   situation, as it has not arisen yet in practice.
 
   @remarks (APIME) Previous iterations of this header also attempted to
-  determine whether various C99 and C11 features were available. This turned out
-  to be impractical and a bit pointless. As a result, such features are only
-  tracked
-  - if they are tracked at all - in the context of their applicability to a
-  given C++ Standard, e.g., support for the C99 preprocessor as required by
-  C++11, and the C11 preprocessor as required by C++20.
+  determine whether various C99 and C11 features were available. This turned
+  out to be impractical and a bit pointless. As a result, such features are
+  only tracked - if they are tracked at all - in the context of their
+  applicability to a given C++ Standard, e.g., support for the C99 preprocessor
+  as required by C++11, and the C11 preprocessor as required by C++20.
 
   @remarks (SEEME - bitweeder) Some implementations may choose to make a
   feature available to an earlier C++ release than the the first officially
@@ -955,7 +945,7 @@
   broadened if there is demand.
 
   @remarks The SD-6 tokens and their values referenced here are current as of
-  the 2020-05-02 revision.
+  the 2026-02-02 revision.
 
   @{
 */
@@ -1002,10 +992,11 @@
   All supported compilers support all required features of C++11. However,
   @ref LBAL_CPP11_THREADSAFE_STATIC_INIT "thread-safe static initialization"
   can be explicitly disabled in some implementations, and
-  @ref LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION "garbage collection" is an
-  optional feature in C++. The rest of these are supplied to allow testing
-  for specific features when using older language dialects, unsupported
-  compilers, or when general language version detection is unavailable.
+  @ref LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION "garbage collection" was an
+  optional feature from C++11 until C++23, when it was removed. The rest of
+  these are supplied to allow testing for specific features when using older
+  language dialects, unsupported compilers, or when general language version
+  detection is unavailable.
 
   @remarks This is not an exhaustive list of C++11 language features. Rather,
   it is currently mostly a collection of those with SD-6 macros. The feature
@@ -1141,6 +1132,8 @@
   @brief Support for optional C++ garbage collection.
   @details Equivalent SD-6 macro: none
   - [default](https://wg21.link/n2670)
+  @remarks This was removed in C++23; we track it, but there should be no
+  expectation that it was ever implemented.
 */
 #ifndef LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION
   #define LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION 0
@@ -1792,11 +1785,6 @@
   often provide our own tokens. Should an official macro be created, we will
   synchronize with it and deprecate the proprietary one.
 
-  @remarks (APIME) Most of these have deprecated variants that use the
-  `LBAL_CPP2A` prefix, dating from the time prior to the finalization of the
-  C++20 Standard. Prefer using the `LBAL_CPP20` variants, as the deprecated
-  versions will eventually be removed.
-
   @{
 */
 
@@ -1813,14 +1801,6 @@
   #define LBAL_CPP20_AGGREGATE_PAREN_INIT 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_AGGREGATE_PAREN_INIT
-  #define LBAL_CPP2A_AGGREGATE_PAREN_INIT LBAL_CPP20_AGGREGATE_PAREN_INIT
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS
 
@@ -1831,32 +1811,15 @@
   #define LBAL_CPP20_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS
-  #define LBAL_CPP2A_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS                          \
-    LBAL_CPP20_ALLOW_LAMBDA_CAPTURE_EQUALS_THIS
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_ATTRIBUTE_LIKELY
 
-  Equivalent SD-6 test: `__has_cpp_attribute(likely)`
+  @details Equivalent SD-6 test: `__has_cpp_attribute(likely)`
   - [201803L](https://wg21.link/p0479r5)
 */
 #ifndef LBAL_CPP20_ATTRIBUTE_LIKELY
   #define LBAL_CPP20_ATTRIBUTE_LIKELY 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_ATTRIBUTE_LIKELY
-  #define LBAL_CPP2A_ATTRIBUTE_LIKELY LBAL_CPP20_ATTRIBUTE_LIKELY
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_ATTRIBUTE_NODISCARD_EXPANDED
@@ -1876,32 +1839,15 @@
   #define LBAL_CPP20_ATTRIBUTE_NODISCARD_EXPANDED 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_ATTRIBUTE_NODISCARD_EXPANDED
-  #define LBAL_CPP2A_ATTRIBUTE_NODISCARD_EXPANDED                              \
-    LBAL_CPP20_ATTRIBUTE_NODISCARD_EXPANDED
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_ATTRIBUTE_UNLIKELY
 
-  Equivalent SD-6 test: `__has_cpp_attribute(unlikely)`
+  @details Equivalent SD-6 test: `__has_cpp_attribute(unlikely)`
   - [201803L](https://wg21.link/p0479r5)
 */
 #ifndef LBAL_CPP20_ATTRIBUTE_UNLIKELY
   #define LBAL_CPP20_ATTRIBUTE_UNLIKELY 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_ATTRIBUTE_UNLIKELY
-  #define LBAL_CPP2A_ATTRIBUTE_UNLIKELY LBAL_CPP20_ATTRIBUTE_UNLIKELY
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_ATTRIBUTES_LIKELY_AND_UNLIKELY
@@ -1922,33 +1868,15 @@
     ((LBAL_CPP20_ATTRIBUTE_LIKELY != 0) && (LBAL_CPP20_ATTRIBUTE_UNLIKELY != 0))
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY
-  #define LBAL_CPP2A_ATTRIBUTES_LIKELY_AND_UNLIKELY                            \
-    LBAL_CPP20_ATTRIBUTES_LIKELY_AND_UNLIKELY
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_ATTRIBUTE_NO_UNIQUE_ADDRESS
 
-  Equivalent SD-6 macro: `__has_cpp_attribute(no_unique_address)`
+  @details Equivalent SD-6 test: `__has_cpp_attribute(no_unique_address)`
   - [201803L](https://wg21.link/p0840r2)
 */
 #ifndef LBAL_CPP20_ATTRIBUTE_NO_UNIQUE_ADDRESS
   #define LBAL_CPP20_ATTRIBUTE_NO_UNIQUE_ADDRESS 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS
-  #define LBAL_CPP2A_ATTRIBUTE_NO_UNIQUE_ADDRESS                               \
-    LBAL_CPP20_ATTRIBUTE_NO_UNIQUE_ADDRESS
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_CHAR8_T
@@ -1959,14 +1887,6 @@
 #ifndef LBAL_CPP20_CHAR8_T
   #define LBAL_CPP20_CHAR8_T 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CHAR8_T
-  #define LBAL_CPP2A_CHAR8_T LBAL_CPP20_CHAR8_T
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_CONCEPTS
@@ -1990,14 +1910,6 @@
   #define LBAL_CPP20_CONCEPTS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONCEPTS
-  #define LBAL_CPP2A_CONCEPTS LBAL_CPP20_CONCEPTS
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS
   @brief Refine definition of return-type-requirements
@@ -2019,15 +1931,6 @@
 #ifndef LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS
   #define LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS
-  #define LBAL_CPP2A_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS               \
-    LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS
@@ -2051,15 +1954,6 @@
   #define LBAL_CPP20_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS
-  #define LBAL_CPP2A_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS                  \
-    LBAL_CPP20_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_CONDITIONAL_EXPLICIT
   Aka, `explicit (bool)`; allows simplification of templated constructors
@@ -2072,14 +1966,6 @@
   #define LBAL_CPP20_CONDITIONAL_EXPLICIT 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONDITIONAL_EXPLICIT
-  #define LBAL_CPP2A_CONDITIONAL_EXPLICIT LBAL_CPP20_CONDITIONAL_EXPLICIT
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS
 
@@ -2090,15 +1976,6 @@
   #define LBAL_CPP20_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS
-  #define LBAL_CPP2A_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS                   \
-    LBAL_CPP20_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_CONSTEVAL
   @brief Immediate functions
@@ -2108,14 +1985,6 @@
 #ifndef LBAL_CPP20_CONSTEVAL
   #define LBAL_CPP20_CONSTEVAL 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONSTEVAL
-  #define LBAL_CPP2A_CONSTEVAL LBAL_CPP20_CONSTEVAL
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_CONSTEXPR_DYNAMIC_ALLOC
@@ -2129,14 +1998,6 @@
 #ifndef LBAL_CPP20_CONSTEXPR_DYNAMIC_ALLOC
   #define LBAL_CPP20_CONSTEXPR_DYNAMIC_ALLOC 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC
-  #define LBAL_CPP2A_CONSTEXPR_DYNAMIC_ALLOC LBAL_CPP20_CONSTEXPR_DYNAMIC_ALLOC
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM
@@ -2165,15 +2026,6 @@
   #define LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM
-  #define LBAL_CPP2A_CONSTEXPR_DYNAMIC_POLYMORPHISM                            \
-    LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_CONSTEXPR_IN_DECLTYPE
   @brief Address Core Issue regarding when `constexpr` functions are defined
@@ -2184,14 +2036,6 @@
 #ifndef LBAL_CPP20_CONSTEXPR_IN_DECLTYPE
   #define LBAL_CPP20_CONSTEXPR_IN_DECLTYPE 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONSTEXPR_IN_DECLTYPE
-  #define LBAL_CPP2A_CONSTEXPR_IN_DECLTYPE LBAL_CPP20_CONSTEXPR_IN_DECLTYPE
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_CONSTEXPR_INTRINSICS
@@ -2219,19 +2063,6 @@
   #define LBAL_CPP20_CONSTEXPR_INTRINSICS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONSTEXPR_INTRINSICS
-  #define LBAL_CPP2A_CONSTEXPR_INTRINSICS LBAL_CPP20_CONSTEXPR_INTRINSICS
-#endif
-
-//	APIME This token has been subsumed by the equivalent C++20 token.
-#ifndef LBAL_FEATURE_CONSTEXPR_INTRINSICS
-  #define LBAL_FEATURE_CONSTEXPR_INTRINSICS LBAL_CPP20_CONSTEXPR_INTRINSICS
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION
   @brief Address an inconsistency in the lambda specification
@@ -2257,15 +2088,6 @@
 #ifndef LBAL_CPP20_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION
   #define LBAL_CPP20_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION
-  #define LBAL_CPP2A_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION                  \
-    LBAL_CPP20_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_CONSTEXPR_TRY_CATCH
@@ -2294,14 +2116,6 @@
   #define LBAL_CPP20_CONSTEXPR_TRY_CATCH 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONSTEXPR_TRY_CATCH
-  #define LBAL_CPP2A_CONSTEXPR_TRY_CATCH LBAL_CPP20_CONSTEXPR_TRY_CATCH
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_CONSTEXPR_UNION_ALTERATION
   @brief Allow changing the active member of a `union` in constexpr functions
@@ -2328,15 +2142,6 @@
   #define LBAL_CPP20_CONSTEXPR_UNION_ALTERATION 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONSTEXPR_UNION_ALTERATION
-  #define LBAL_CPP2A_CONSTEXPR_UNION_ALTERATION                                \
-    LBAL_CPP20_CONSTEXPR_UNION_ALTERATION
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_CONSTEXPR_VIRTUAL_FUNCTION
   @brief Allow virtual function calls in constexpr functions
@@ -2360,15 +2165,6 @@
   #define LBAL_CPP20_CONSTEXPR_VIRTUAL_FUNCTION 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION
-  #define LBAL_CPP2A_CONSTEXPR_VIRTUAL_FUNCTION                                \
-    LBAL_CPP20_CONSTEXPR_VIRTUAL_FUNCTION
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_CONSTINIT
   @brief Add the `constinit` keyword
@@ -2387,14 +2183,6 @@
   #define LBAL_CPP20_CONSTINIT 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_CONSTINIT
-  #define LBAL_CPP2A_CONSTINIT LBAL_CPP20_CONSTINIT
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_IMPL_COROUTINE
   @brief Add necessary language support for the `<coroutine>` library feature
@@ -2409,18 +2197,6 @@
 #ifndef LBAL_CPP20_IMPL_COROUTINE
   #define LBAL_CPP20_IMPL_COROUTINE 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_CPP2A_COROUTINES
-  #define LBAL_CPP2A_COROUTINES LBAL_CPP20_IMPL_COROUTINE
-#endif
-
-#ifndef LBAL_CPP2A_IMPL_COROUTINE
-  #define LBAL_CPP2A_IMPL_COROUTINE LBAL_CPP20_IMPL_COROUTINE
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_DEDUCTION_GUIDES_FOR_AGGREGATES
@@ -2441,15 +2217,6 @@
   #define LBAL_CPP20_DEDUCTION_GUIDES_FOR_AGGREGATES 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES
-  #define LBAL_CPP2A_DEDUCTION_GUIDES_FOR_AGGREGATES                           \
-    LBAL_CPP20_DEDUCTION_GUIDES_FOR_AGGREGATES
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS
   @details Equivalent SD-6 macro: none
@@ -2458,15 +2225,6 @@
 #ifndef LBAL_CPP20_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS
   #define LBAL_CPP20_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS
-  #define LBAL_CPP2A_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS    \
-    LBAL_CPP20_DEFAULT_CONSTRUCTIBLE_AND_ASSIGNABLE_STATELESS_LAMBDAS
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS
@@ -2478,15 +2236,6 @@
   #define LBAL_CPP20_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS
-  #define LBAL_CPP2A_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS                \
-    LBAL_CPP20_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_DESIGNATED_INITIALIZERS
 
@@ -2497,14 +2246,6 @@
   #define LBAL_CPP20_DESIGNATED_INITIALIZERS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_DESIGNATED_INITIALIZERS
-  #define LBAL_CPP2A_DESIGNATED_INITIALIZERS LBAL_CPP20_DESIGNATED_INITIALIZERS
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_DESTROYING_DELETE
   @brief Efficient sized delete for variable sized classes
@@ -2514,14 +2255,6 @@
 #ifndef LBAL_CPP20_DESTROYING_DELETE
   #define LBAL_CPP20_DESTROYING_DELETE 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_DESTROYING_DELETE
-  #define LBAL_CPP2A_DESTROYING_DELETE LBAL_CPP20_DESTROYING_DELETE
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST
@@ -2536,20 +2269,6 @@
   #define LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS
-  #define LBAL_CPP2A_TEMPLATE_PARAMETER_LIST_FOR_GENERIC_LAMBDAS               \
-    LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST
-#endif
-
-#ifndef LBAL_CPP2A_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST
-  #define LBAL_CPP2A_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST                   \
-    LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_INIT_CAPTURES_PACK_EXPANSION
   @brief Allow pack-expansion in lambda init-capture
@@ -2563,20 +2282,6 @@
   #define LBAL_CPP20_INIT_CAPTURES_PACK_EXPANSION 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE
-  #define LBAL_CPP2A_PACK_EXPANSION_IN_LAMBDA_INIT_CAPTURE                     \
-    LBAL_CPP20_INIT_CAPTURES_PACK_EXPANSION
-#endif
-
-#ifndef LBAL_CPP2A_INIT_CAPTURES_PACK_EXPANSION
-  #define LBAL_CPP2A_INIT_CAPTURES_PACK_EXPANSION                              \
-    LBAL_CPP20_INIT_CAPTURES_PACK_EXPANSION
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_INIT_STATEMENTS_FOR_RANGE_BASED_FOR
 
@@ -2586,15 +2291,6 @@
 #ifndef LBAL_CPP20_INIT_STATEMENTS_FOR_RANGE_BASED_FOR
   #define LBAL_CPP20_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR
-  #define LBAL_CPP2A_INIT_STATEMENTS_FOR_RANGE_BASED_FOR                       \
-    LBAL_CPP20_INIT_STATEMENTS_FOR_RANGE_BASED_FOR
-#endif
-///@endcond
 
 /**
   @def
@@ -2607,15 +2303,6 @@
   #define LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION \
     0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION
-  #define LBAL_CPP2A_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION \
-    LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_INTEGRATING_OUR_FEATURE_TEST_MACROS
@@ -2630,15 +2317,6 @@
   #define LBAL_CPP20_INTEGRATING_OUR_FEATURE_TEST_MACROS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS
-  #define LBAL_CPP2A_INTEGRATING_OUR_FEATURE_TEST_MACROS                       \
-    LBAL_CPP20_INTEGRATING_OUR_FEATURE_TEST_MACROS
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_MODULES
   @brief Incorporate modules
@@ -2649,14 +2327,6 @@
 #ifndef LBAL_CPP20_MODULES
   #define LBAL_CPP20_MODULES 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_MODULES
-  #define LBAL_CPP2A_MODULES LBAL_CPP20_MODULES
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FIXES
@@ -2676,15 +2346,6 @@
   #define LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FIXES 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_NONTYPE_TEMPLATE_ARGS_FIXES
-  #define LBAL_CPP2A_NONTYPE_TEMPLATE_ARGS_FIXES                               \
-    LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FIXES
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS
   @brief Class Types in Non-Type Template Parameters
@@ -2700,20 +2361,6 @@
 #ifndef LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS
   #define LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS
-  #define LBAL_CPP2A_CLASS_TYPES_AS_NON_TYPE_TEMPLATE_PARAMETERS               \
-    LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS
-#endif
-
-#ifndef LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS
-  #define LBAL_CPP2A_NONTYPE_TEMPLATE_PARAMETER_CLASS                          \
-    LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR
@@ -2731,15 +2378,6 @@
   #define LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR
-  #define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR                             \
-    LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX
   @brief This is the original three-way comparison operator
@@ -2755,15 +2393,6 @@
 #ifndef LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX
   #define LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX
-  #define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX                \
-    LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_TUNEUP
@@ -2781,15 +2410,6 @@
   #define LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_TUNEUP 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP
-  #define LBAL_CPP2A_THREE_WAY_COMPARISON_OPERATOR_TUNEUP                      \
-    LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_TUNEUP
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_TYPENAME_OPTIONAL
 
@@ -2800,14 +2420,6 @@
   #define LBAL_CPP20_TYPENAME_OPTIONAL 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_TYPENAME_OPTIONAL
-  #define LBAL_CPP2A_TYPENAME_OPTIONAL LBAL_CPP20_TYPENAME_OPTIONAL
-#endif
-///@endcond
-
 /**
   @def LBAL_CPP20_USING_ENUM
   @brief Specify using aliases for enums
@@ -2817,14 +2429,6 @@
 #ifndef LBAL_CPP20_USING_ENUM
   #define LBAL_CPP20_USING_ENUM 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_USING_ENUM
-  #define LBAL_CPP2A_USING_ENUM LBAL_CPP20_USING_ENUM
-#endif
-///@endcond
 
 /**
   @def LBAL_CPP20_VA_OPT
@@ -2844,116 +2448,131 @@
   #define LBAL_CPP20_VA_OPT 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_CPP2A_VA_OPT
-  #define LBAL_CPP2A_VA_OPT LBAL_CPP20_VA_OPT
-#endif
-///@endcond
-
 ///	@}	LBAL_CPP20
 
 /**
-  @name Technical Specifications and Proposals
-  Most of these will eventually migrate to one of the other sections, at
-  which time the associated macro will be renamed (and possibly aliased).
+  @name LBAL_CPP23
+
+  @brief Identify language features specific to the C++23 Standard
+
+  @details Support across compilers for C++23 features is currently
+  inconsistent, and is one of the fundamental reasons why lucenaBAL exists.
+  These will be updated regularly as the Standard develops. Note that a some
+  features do not have formal SD-6 tokens, so we often provide our own. Should
+  an official token be created, we will synchronize with it and deprecate the
+  proprietary one.
 
   @{
 */
 
 /**
-  @brief Contracts: Assert Attribute
-
-  @details This is one of a bundle of attributes using a new syntax. It takes
-  the place of preprocessor-style asserts and serves the same purpose.
-
-  Equivalent SD-6 test: `__has_cpp_attribute(assert)`
-  - [unassigned](https://wg21.link/p0542r5)
-
-  @remarks These were yoinked from C++20 prior to national balloting for
-  various reasons and are currently back in the oven, but expected to pop in
-  the C++23 Draft Standard.
+  @def LBAL_CPP23_PLACEHOLDER
+  @brief Placeholder.
+  @details Equivalent SD-6 macro: `__cpp_23_placeholder`
+  - [202302L](https://wg21.link/placeholder)
 */
+#ifndef LBAL_CPP23_PRETEND
+  #define LBAL_CPP23_PRETEND 0
+#endif
+
+///	@}	LBAL_CPP23
+
+/**
+  @name LBAL_CPP26
+
+  @brief Identify language features specific to the C++26 Standard
+
+  @details Support across compilers for C++26 features is currently
+  inconsistent, and is one of the fundamental reasons why lucenaBAL exists.
+  These will be updated regularly as the Standard develops. Note that a some
+  features do not have formal SD-6 tokens, so we often provide our own. Should
+  an official token be created, we will synchronize with it and deprecate the
+  proprietary one.
+
+  @{
+*/
+
+/**
+  @def LBAL_CPP26_PLACEHOLDER
+  @brief Placeholder.
+  @details Equivalent SD-6 macro: `__cpp_26_placeholder`
+  - [202603L](https://wg21.link/placeholder)
+*/
+#ifndef LBAL_CPP26_PRETEND
+  #define LBAL_CPP26_PRETEND 0
+#endif
+
+///	@}	LBAL_CPP26
+
+/**
+  @name LBAL_CPP29
+
+  @brief Identify language features specific to the proposed C++29 Standard
+
+  @details C++29—which in draft form is referenced as C++2d—is undergoing 
+  active development. In order to allow testing, we track approved language 
+  features here. Since this is all non-final, we use `LBAL_CPP2D_xxx` tokens
+  instead of `LBAL_CPP29_xxx` tokens; upon finalization, we’ll update the
+  token names and deprecate the old forms. Designation of formal SD-6 tokens
+  tends to lag approval of proposals, so we will used the proposed tokens and
+  derive our own tokens from those; where there is not even a proposed token,
+  we’ll make one up. Once official tokens are created, we will synchronize with 
+  them it and deprecate the speculative ones.
+
+  @{
+*/
+
+/**
+  @def LBAL_CPP29_PLACEHOLDER
+  @brief Placeholder.
+  @details Equivalent SD-6 macro: `__cpp_29_placeholder`
+  - [202903L](https://wg21.link/placeholder)
+*/
+#ifndef LBAL_CPP29_PRETEND
+  #define LBAL_CPP29_PRETEND 0
+#endif
+
+///	@}	LBAL_CPP29
+
+/**
+  @name Technical Specifications and Proposals
+
+  @brief C++ Technical Specifications that have not (yet?) been Standardized.
+
+  @details These are typically implemented somewhere, but have not garnered
+  enough support to merge into the Standard. If approved, these will eventually 
+  be aliased—and then moved—into the appropriate Standard section, etc.
+
+  @remarks (SEEME - bitweeder) The TSs can be highly mutable, and support
+  should be considered very experimental. No effort at all will be expended to
+  maintain backwards-compatibility with a TS once a feature has been voted in;
+  it will be deprecated and eventually removed, with the official version
+  beinggated by an updated token. Relatedly, if a TS is dropped, we will 
+  immediately deprecate it, hide the token in our published docs, and drop it
+  in the next major release.
+
+  @{
+*/
+
+///@cond LBAL_INTERNAL
+//	APIME These tokens related to the now-dropped
+//  [C++2a Contracts proposal](https://wg21.link/p0542r5). The feature was not 
+//  widely implemented, and since it’s been superseded by C++26 Contracts, the 
+//  token will be removed in a future release.
 #ifndef LBAL_CPPTS_ATTRIBUTE_ASSERT
   #define LBAL_CPPTS_ATTRIBUTE_ASSERT 0
 #endif
 
-/**
-  @brief Contracts: Postcondition Attribute
-
-  @details This is one of a bundle of attributes using a new syntax. It
-  identifies function postconditions amd is intended to allow at least
-  partial enforcement by a static analyzer.
-
-  Equivalent SD-6 test: `__has_cpp_attribute(assert)`
-  - [unassigned](https://wg21.link/p0542r5)
-
-  @remarks These were yoinked from C++20 prior to national balloting for
-  various reasons and are currently back in the oven, but expected to pop in
-  the C++23 Draft Standard.
-*/
 #ifndef LBAL_CPPTS_ATTRIBUTE_ENSURES
   #define LBAL_CPPTS_ATTRIBUTE_ENSURES 0
 #endif
 
-/**
-  @brief Contracts: Precondition Attribute
-
-  @details This is one of a bundle of attributes using a new syntax. It
-  identifies function preconditions amd is intended to allow at least partial
-  enforcement by a static analyzer.
-
-  Equivalent SD-6 test: `__has_cpp_attribute(expects)`
-  - [unassigned](https://wg21.link/p0542r5)
-
-  @remarks These were yoinked from C++20 prior to national balloting for
-  various reasons and are currently back in the oven, but expected to pop in
-  the C++23 Draft Standard.
-*/
 #ifndef LBAL_CPPTS_ATTRIBUTE_EXPECTS
   #define LBAL_CPPTS_ATTRIBUTE_EXPECTS 0
 #endif
 
-/**
-  @brief Contracts
-
-  @details This is actually a bundle of attributes using a new syntax; the
-  syntax itself has no SD-6 macro, so we rely on the presence of the
-  attributes to determine support. We track the availability of each
-  attribute separately, as well as provide an aggregate to test for
-  compliance. The aggregate’s value will be `0` if any attribute is
-  unavailable, or `1` otherwise.
-
-  Equivalent SD-6 macro: none
-  - [default](https://wg21.link/p0542r5)
-
-  @remarks These were yoinked from C++20 prior to national balloting for
-  various reasons and are currently back in the oven, but expected to pop in
-  the C++23 Draft Standard.
-*/
 #ifndef LBAL_CPPTS_CONTRACTS
   #define LBAL_CPPTS_CONTRACTS 0
-#endif
-
-///@cond LBAL_INTERNAL
-//	APIME These tokens were all renamed after being stripped from the
-//	Draft Standard. They have not yet been formally resubmitted for the next
-//	cycle.
-#ifndef LBAL_CPP2A_ATTRIBUTE_ASSERT
-  #define LBAL_CPP2A_ATTRIBUTE_ASSERT LBAL_CPPTS_ATTRIBUTE_ASSERT
-#endif
-
-#ifndef LBAL_CPP2A_ATTRIBUTE_ENSURES
-  #define LBAL_CPP2A_ATTRIBUTE_ENSURES LBAL_CPPTS_ATTRIBUTE_ENSURES
-#endif
-
-#ifndef LBAL_CPP2A_ATTRIBUTE_EXPECTS
-  #define LBAL_CPP2A_ATTRIBUTE_EXPECTS LBAL_CPPTS_ATTRIBUTE_EXPECTS
-#endif
-
-#ifndef LBAL_CPP2A_CONTRACTS
-  #define LBAL_CPP2A_CONTRACTS LBAL_CPPTS_CONTRACTS
 #endif
 ///@endcond
 
@@ -3890,14 +3509,6 @@
   #define LBAL_LIBCPP17_NODE_EXTRACT 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed. The old name is deprecated and
-//	will be removed in a future release.
-#ifndef LBAL_LIBCPP17_NODE_EXTRACT
-  #define LBAL_LIBCPP17_NODE_EXTRACT LBAL_LIBCPP17_NODE_EXTRACT
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
 
@@ -4175,14 +3786,6 @@
   #define LBAL_LIBCPP17_TO_CHARS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed. The old name is deprecated and
-//	will be removed in a future release.
-#ifndef LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS
-  #define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS LBAL_LIBCPP17_TO_CHARS
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP17_TO_CHARS_FP
   @brief Floating-point compliance with Elementary string conversions
@@ -4211,15 +3814,6 @@
   #define LBAL_LIBCPP17_TO_CHARS_FP 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed. The old name is deprecated and
-//	will be removed in a future release.
-#ifndef LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP
-  #define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_FP                       \
-    LBAL_LIBCPP17_TO_CHARS_FP
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP17_TO_CHARS_INTEGER
   @brief Integer compliance with Elementary string conversions
@@ -4245,15 +3839,6 @@
 #ifndef LBAL_LIBCPP17_TO_CHARS_INTEGER
   #define LBAL_LIBCPP17_TO_CHARS_INTEGER 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed. The old name is deprecated and
-//	will be removed in a future release.
-#ifndef LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER
-  #define LBAL_LIBCPP17_ELEMENTARY_STRING_CONVERSIONS_INTEGER                  \
-    LBAL_LIBCPP17_TO_CHARS_INTEGER
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP17_TRANSPARENT_OPERATORS
@@ -4352,9 +3937,6 @@
   @brief These are all taken from features that have been incorporated into
   the C++20 Standard.
 
-  @remarks The Draft Standard was referred to informally as C++2a; draft
-  variants of these tokens began with a `LBAL_LIBCPP2A` prefix.
-
   @{
 */
 
@@ -4382,20 +3964,6 @@
   #define LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERS
-  #define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERS                                  \
-    LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
-#endif
-
-#ifndef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR
-  #define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_ITERATOR                               \
-    LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS
 
@@ -4415,15 +3983,6 @@
 #ifndef LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS
   #define LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS
-  #define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_COMPARISONS                            \
-    LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES
@@ -4445,15 +4004,6 @@
   #define LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES
-  #define LBAL_LIBCPP2A_ARRAY_CONSTEXPR_UTILITIES                              \
-    LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_ASSUME_ALIGNED
 
@@ -4468,14 +4018,6 @@
 #ifndef LBAL_LIBCPP20_ASSUME_ALIGNED
   #define LBAL_LIBCPP20_ASSUME_ALIGNED 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_ASSUME_ALIGNED
-  #define LBAL_LIBCPP2A_ASSUME_ALIGNED LBAL_LIBCPP20_ASSUME_ALIGNED
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_ATOMIC_FLAG_TEST
@@ -4492,14 +4034,6 @@
   #define LBAL_LIBCPP20_ATOMIC_FLAG_TEST 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_ATOMIC_FLAG_TEST
-  #define LBAL_LIBCPP2A_ATOMIC_FLAG_TEST LBAL_LIBCPP20_ATOMIC_FLAG_TEST
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_ATOMIC_FLOAT
   @brief Extend `<atomic>` support to floating point types
@@ -4511,18 +4045,6 @@
 #ifndef LBAL_LIBCPP20_ATOMIC_FLOAT
   #define LBAL_LIBCPP20_ATOMIC_FLOAT 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC
-  #define LBAL_LIBCPP2A_FLOATING_POINT_ATOMIC LBAL_LIBCPP20_ATOMIC_FLOAT
-#endif
-
-#ifndef LBAL_LIBCPP2A_ATOMIC_FLOAT
-  #define LBAL_LIBCPP2A_ATOMIC_FLOAT LBAL_LIBCPP20_ATOMIC_FLOAT
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES
@@ -4536,15 +4058,6 @@
   #define LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES
-  #define LBAL_LIBCPP2A_ATOMIC_LOCK_FREE_TYPE_ALIASES                          \
-    LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_ATOMIC_REF
   @brief Allow atomic operations to apply to non-atomic objects
@@ -4557,18 +4070,6 @@
   #define LBAL_LIBCPP20_ATOMIC_REF 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_STD_ATOMIC_REF
-  #define LBAL_LIBCPP2A_STD_ATOMIC_REF LBAL_LIBCPP20_ATOMIC_REF
-#endif
-
-#ifndef LBAL_LIBCPP2A_ATOMIC_REF
-  #define LBAL_LIBCPP2A_ATOMIC_REF LBAL_LIBCPP20_ATOMIC_REF
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_ATOMIC_SHARED_PTR
   @brief Fixes for atomic `std::shared_ptr` and `std::weak_ptr`
@@ -4580,14 +4081,6 @@
 #ifndef LBAL_LIBCPP20_ATOMIC_SHARED_PTR
   #define LBAL_LIBCPP20_ATOMIC_SHARED_PTR 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_ATOMIC_SHARED_PTR
-  #define LBAL_LIBCPP2A_ATOMIC_SHARED_PTR LBAL_LIBCPP20_ATOMIC_SHARED_PTR
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION
@@ -4604,15 +4097,6 @@
   #define LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION
-  #define LBAL_LIBCPP2A_ATOMIC_VALUE_INITIALIZATION                            \
-    LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_ATOMIC_WAIT
   @brief Add atomic wait components of the C++20 Synchronization Library
@@ -4625,14 +4109,6 @@
   #define LBAL_LIBCPP20_ATOMIC_WAIT 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_ATOMIC_WAIT
-  #define LBAL_LIBCPP2A_ATOMIC_WAIT LBAL_LIBCPP20_ATOMIC_WAIT
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_BARRIER
   @brief Add `std::barrier` components of the C++20 Synchronization Library
@@ -4644,14 +4120,6 @@
 #ifndef LBAL_LIBCPP20_BARRIER
   #define LBAL_LIBCPP20_BARRIER 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_BARRIER
-  #define LBAL_LIBCPP2A_BARRIER LBAL_LIBCPP20_ATOMIC_WAIT
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_BIND_FRONT
@@ -4669,14 +4137,6 @@
   #define LBAL_LIBCPP20_BIND_FRONT 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_BIND_FRONT
-  #define LBAL_LIBCPP2A_BIND_FRONT LBAL_LIBCPP20_BIND_FRONT
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP
   @brief Prevent `std::bind_front` from unwrapping `std::reference_wrapper`
@@ -4693,14 +4153,6 @@
   #define LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP
-  #define LBAL_LIBCPP2A_BIND_FRONT_NO_UNWRAP LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_BIT_CAST
   @brief Introduce robust casts between bit-compatible types
@@ -4712,14 +4164,6 @@
 #ifndef LBAL_LIBCPP20_BIT_CAST
   #define LBAL_LIBCPP20_BIT_CAST 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_BIT_CAST
-  #define LBAL_LIBCPP2A_BIT_CAST LBAL_LIBCPP20_BIT_CAST
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_BITOPS
@@ -4733,14 +4177,6 @@
   #define LBAL_LIBCPP20_BITOPS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_BITOPS
-  #define LBAL_LIBCPP2A_BITOPS LBAL_LIBCPP20_BITOPS
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS
   @brief Introduce traits to distinguish between bounded and unbounded arrays
@@ -4752,14 +4188,6 @@
 #ifndef LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS
   #define LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS
-  #define LBAL_LIBCPP2A_BOUNDED_ARRAY_TRAITS LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_CHAR8_T
@@ -4778,14 +4206,6 @@
   #define LBAL_LIBCPP20_CHAR8_T 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CHAR8_T
-  #define LBAL_LIBCPP2A_CHAR8_T LBAL_LIBCPP20_CHAR8_T
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_CHAR8_T_COMPAT
   @brief Fix backward compatibility issues introduced by `char8_t`
@@ -4802,14 +4222,6 @@
 #ifndef LBAL_LIBCPP20_CHAR8_T_COMPAT
   #define LBAL_LIBCPP20_CHAR8_T_COMPAT 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CHAR8_T_COMPAT
-  #define LBAL_LIBCPP2A_CHAR8_T_COMPAT LBAL_LIBCPP20_CHAR8_T_COMPAT
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_CHRONO_CALENDAR
@@ -4828,18 +4240,6 @@
   #define LBAL_LIBCPP20_CHRONO_CALENDAR 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CALENDAR_AND_TIMEZONE
-  #define LBAL_LIBCPP20_CALENDAR_AND_TIMEZONE LBAL_LIBCPP20_CHRONO_CALENDAR
-#endif
-
-#ifndef LBAL_LIBCPP2A_CHRONO_CALENDAR
-  #define LBAL_LIBCPP2A_CHRONO_CALENDAR LBAL_LIBCPP20_CHRONO_CALENDAR
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_CHRONO_FIXES
   @brief Miscellaneous minor fixes for `<chrono>`
@@ -4857,14 +4257,6 @@
   #define LBAL_LIBCPP20_CHRONO_FIXES 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CHRONO_FIXES
-  #define LBAL_LIBCPP2A_CHRONO_FIXES LBAL_LIBCPP20_CHRONO_FIXES
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_CONCEPTS
   @brief Standard Library Concepts
@@ -4881,14 +4273,6 @@
   #define LBAL_LIBCPP20_CONCEPTS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONCEPTS
-  #define LBAL_LIBCPP2A_CONCEPTS LBAL_LIBCPP20_CONCEPTS
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_CONCEPTS_EXP
   @brief Experimental version of Standard Library Concepts
@@ -4900,18 +4284,6 @@
 #ifndef LBAL_LIBCPP20_CONCEPTS_EXP
   #define LBAL_LIBCPP20_CONCEPTS_EXP 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP
-  #define LBAL_LIBCPP2A_CONCEPT_LIBRARY_EXP LBAL_LIBCPP20_CONCEPTS_EXP
-#endif
-
-#ifndef LBAL_LIBCPP2A_CONCEPTS_EXP
-  #define LBAL_LIBCPP2A_CONCEPTS_EXP LBAL_LIBCPP20_CONCEPTS_EXP
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE
@@ -4929,15 +4301,6 @@
   #define LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE
-  #define LBAL_LIBCPP2A_CONCEPTS_STANDARD_CASE                                 \
-    LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE
   @brief Wording for boolean-testable
@@ -4953,15 +4316,6 @@
 #ifndef LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE
   #define LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE
-  #define LBAL_LIBCPP2A_CONCEPTS_BOOLEAN_TESTABLE                              \
-    LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS
@@ -4980,19 +4334,6 @@
   #define LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY
-  #define LBAL_LIBCPP2A_CONSTEXPR_FOR_ALGORITHM_AND_UTILITY                    \
-    LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS
-#endif
-
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS
-  #define LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP
   @brief Add `constexpr` to `std::swap` and related functions
@@ -5009,15 +4350,6 @@
   #define LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP
-  #define LBAL_LIBCPP2A_CONSTEXPR_ALGORITHMS_SWAP                              \
-    LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_COMPLEX
   @brief Add more `constexpr` support to `<complex>`
@@ -5030,19 +4362,6 @@
   #define LBAL_LIBCPP20_CONSTEXPR_COMPLEX 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX
-  #define LBAL_LIBCPP2A_MORE_CONSTEXPR_FOR_COMPLEX                             \
-    LBAL_LIBCPP20_CONSTEXPR_COMPLEX
-#endif
-
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_COMPLEX
-  #define LBAL_LIBCPP2A_CONSTEXPR_COMPLEX LBAL_LIBCPP20_CONSTEXPR_COMPLEX
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC
   @brief Add `constexpr` memory allocators used by dynamic containers
@@ -5054,15 +4373,6 @@
 #ifndef LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC
   #define LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC
-  #define LBAL_LIBCPP2A_CONSTEXPR_DYNAMIC_ALLOC                                \
-    LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL
@@ -5079,22 +4389,6 @@
   #define LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-//
-//	SEEME - bitweeder
-//	Note that the original token was split over many other tokens, so
-//	selecting this particular one is somewhat arbitrary.
-#ifndef LBAL_LIBCPP2A_CONSTEXPR
-  #define LBAL_LIBCPP2A_CONSTEXPR LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL
-#endif
-
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL
-  #define LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE
   @brief Make `std::invoke` `constexpr`
@@ -5110,15 +4404,6 @@
   #define LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE
-  #define LBAL_LIBCPP2A_CONSTEXPR_FUNCTIONAL_INVOKE                            \
-    LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_ITERATOR
   @brief Make more of `<iterator>` `constexpr`
@@ -5130,14 +4415,6 @@
 #ifndef LBAL_LIBCPP20_CONSTEXPR_ITERATOR
   #define LBAL_LIBCPP20_CONSTEXPR_ITERATOR 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_ITERATOR
-  #define LBAL_LIBCPP2A_CONSTEXPR_ITERATOR LBAL_LIBCPP20_CONSTEXPR_ITERATOR
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_MEMORY
@@ -5151,14 +4428,6 @@
   #define LBAL_LIBCPP20_CONSTEXPR_MEMORY 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_MEMORY
-  #define LBAL_LIBCPP2A_CONSTEXPR_MEMORY LBAL_LIBCPP20_CONSTEXPR_MEMORY
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_NUMERIC
   @brief Make numeric algorithms `constexpr`
@@ -5170,14 +4439,6 @@
 #ifndef LBAL_LIBCPP20_CONSTEXPR_NUMERIC
   #define LBAL_LIBCPP20_CONSTEXPR_NUMERIC 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_NUMERIC
-  #define LBAL_LIBCPP2A_CONSTEXPR_NUMERIC LBAL_LIBCPP20_CONSTEXPR_NUMERIC
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL
@@ -5213,14 +4474,6 @@
   #define LBAL_LIBCPP20_CONSTEXPR_STRING 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_STRING
-  #define LBAL_LIBCPP2A_CONSTEXPR_STRING LBAL_LIBCPP20_CONSTEXPR_STRING
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW
   @brief Make more of `<string_view>` `constexpr`
@@ -5237,15 +4490,6 @@
   #define LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW
-  #define LBAL_LIBCPP2A_CONSTEXPR_STRING_VIEW                                  \
-    LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_TUPLE
   @brief Make more of `<tuple>` `constexpr`
@@ -5257,14 +4501,6 @@
 #ifndef LBAL_LIBCPP20_CONSTEXPR_TUPLE
   #define LBAL_LIBCPP20_CONSTEXPR_TUPLE 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_TUPLE
-  #define LBAL_LIBCPP2A_CONSTEXPR_TUPLE LBAL_LIBCPP20_CONSTEXPR_TUPLE
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_UTILITY
@@ -5278,14 +4514,6 @@
   #define LBAL_LIBCPP20_CONSTEXPR_UTILITY 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_UTILITY
-  #define LBAL_LIBCPP2A_CONSTEXPR_UTILITY LBAL_LIBCPP20_CONSTEXPR_UTILITY
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_VECTOR
   @brief Make `std::vector` `constexpr`
@@ -5297,14 +4525,6 @@
 #ifndef LBAL_LIBCPP20_CONSTEXPR_VECTOR
   #define LBAL_LIBCPP20_CONSTEXPR_VECTOR 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_CONSTEXPR_VECTOR
-  #define LBAL_LIBCPP2A_CONSTEXPR_VECTOR LBAL_LIBCPP20_CONSTEXPR_VECTOR
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_COROUTINE
@@ -5325,22 +4545,6 @@
   #define LBAL_LIBCPP20_COROUTINE 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-
-//	SEEME - bitweeder
-//	Our old token has been replaced by an official version. The old name is
-//	deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_COROUTINES
-  #define LBAL_LIBCPP2A_COROUTINES LBAL_LIBCPP20_COROUTINE
-#endif
-
-#ifndef LBAL_LIBCPP2A_COROUTINE
-  #define LBAL_LIBCPP2A_COROUTINE LBAL_LIBCPP20_COROUTINE
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_COROUTINE_EXP
   @brief Experimental Standard Library coroutines
@@ -5360,22 +4564,6 @@
   #define LBAL_LIBCPP20_COROUTINE_EXP 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-
-//	SEEME - bitweeder
-//	Our old token has been replaced by an official version. The old name is
-//	deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_COROUTINES_EXP
-  #define LBAL_LIBCPP2A_COROUTINES_EXP LBAL_LIBCPP20_COROUTINE_EXP
-#endif
-
-#ifndef LBAL_LIBCPP2A_COROUTINE_EXP
-  #define LBAL_LIBCPP2A_COROUTINE_EXP LBAL_LIBCPP20_COROUTINE_EXP
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_DESTROYING_DELETE
   @brief Efficient sized `delete` for variable-sized classes
@@ -5387,14 +4575,6 @@
 #ifndef LBAL_LIBCPP20_DESTROYING_DELETE
   #define LBAL_LIBCPP20_DESTROYING_DELETE 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_DESTROYING_DELETE
-  #define LBAL_LIBCPP2A_DESTROYING_DELETE LBAL_LIBCPP20_DESTROYING_DELETE
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_ENDIAN
@@ -5412,18 +4592,6 @@
   #define LBAL_LIBCPP20_ENDIAN 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_STD_ENDIAN
-  #define LBAL_LIBCPP2A_STD_ENDIAN LBAL_LIBCPP20_ENDIAN
-#endif
-
-#ifndef LBAL_LIBCPP2A_ENDIAN
-  #define LBAL_LIBCPP2A_ENDIAN LBAL_LIBCPP20_ENDIAN
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_ENDIAN_BIT
   @brief Relocate `std::endian` to `<bit>`
@@ -5439,14 +4607,6 @@
 #ifndef LBAL_LIBCPP20_ENDIAN_BIT
   #define LBAL_LIBCPP20_ENDIAN_BIT 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_ENDIAN_BIT
-  #define LBAL_LIBCPP2A_ENDIAN_BIT LBAL_LIBCPP20_ENDIAN_BIT
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_ERASE_IF
@@ -5465,14 +4625,6 @@
   #define LBAL_LIBCPP20_ERASE_IF 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_ERASE_IF
-  #define LBAL_LIBCPP2A_ERASE_IF LBAL_LIBCPP20_ERASE_IF
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
   @brief Update `erase_if` free function return types
@@ -5489,15 +4641,6 @@
 #ifndef LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
   #define LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS
-  #define LBAL_LIBCPP2A_ERASE_IF_FREE_FUNCTIONS                                \
-    LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_EXECUTION_VECTORIZATION
@@ -5520,15 +4663,6 @@
   #define LBAL_LIBCPP20_EXECUTION_VECTORIZATION 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_EXECUTION_VECTORIZATION
-  #define LBAL_LIBCPP2A_EXECUTION_VECTORIZATION                                \
-    LBAL_LIBCPP20_EXECUTION_VECTORIZATION
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_FORMAT
   @brief Add text formatting functionality to properly replace `printf`
@@ -5542,14 +4676,6 @@
 #ifndef LBAL_LIBCPP20_FORMAT
   #define LBAL_LIBCPP20_FORMAT 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_FORMAT
-  #define LBAL_LIBCPP2A_FORMAT LBAL_LIBCPP20_FORMAT
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP
@@ -5570,15 +4696,6 @@
   #define LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP
-  #define LBAL_LIBCPP2A_GENERIC_UNORDERED_HASH_LOOKUP                          \
-    LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP
   @brief Heterogeneous lookup for unordered containers
@@ -5590,15 +4707,6 @@
 #ifndef LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP
   #define LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP
-  #define LBAL_LIBCPP2A_GENERIC_UNORDERED_LOOKUP                               \
-    LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_INT_POW2
@@ -5615,14 +4723,6 @@
   #define LBAL_LIBCPP20_INT_POW2 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_INT_POW2
-  #define LBAL_LIBCPP2A_INT_POW2 LBAL_LIBCPP20_INT_POW2
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME
   @brief Rename the assorted bit-manipulation fucntions
@@ -5638,15 +4738,6 @@
   #define LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME
-  #define LBAL_LIBCPP2A_INT_POW2_FUNCTION_RENAME                               \
-    LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS
   @brief Add Safe integral comparisons
@@ -5659,14 +4750,6 @@
   #define LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS
-  #define LBAL_LIBCPP2A_INTEGER_COMPARISON_FUNCTIONS                           \
-    LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_INTERPOLATE
@@ -5680,14 +4763,6 @@
   #define LBAL_LIBCPP20_INTERPOLATE 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_INTERPOLATE
-  #define LBAL_LIBCPP2A_INTERPOLATE LBAL_LIBCPP20_INTERPOLATE
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_IS_CONSTANT_EVALUATED
   @brief Add `std::is_constant_evaluated` type trait
@@ -5699,15 +4774,6 @@
 #ifndef LBAL_LIBCPP20_IS_CONSTANT_EVALUATED
   #define LBAL_LIBCPP20_IS_CONSTANT_EVALUATED 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED
-  #define LBAL_LIBCPP2A_IS_CONSTANT_EVALUATED                                  \
-    LBAL_LIBCPP20_IS_CONSTANT_EVALUATED
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE
@@ -5721,14 +4787,6 @@
   #define LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE
-  #define LBAL_LIBCPP2A_IS_LAYOUT_COMPATIBLE LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
   @brief Add `std::is_pointer_interconvertible` type trait
@@ -5740,15 +4798,6 @@
 #ifndef LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
   #define LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE
-  #define LBAL_LIBCPP2A_IS_POINTER_INTERCONVERTIBLE                            \
-    LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_JTHREAD
@@ -5765,14 +4814,6 @@
   #define LBAL_LIBCPP20_JTHREAD 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_JTHREAD
-  #define LBAL_LIBCPP2A_JTHREAD LBAL_LIBCPP20_JTHREAD
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_JTHREAD_CV
   @brief Simplify condition variable API
@@ -5788,14 +4829,6 @@
   #define LBAL_LIBCPP20_JTHREAD_CV 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_JTHREAD_CV
-  #define LBAL_LIBCPP2A_JTHREAD_CV LBAL_LIBCPP20_JTHREAD_CV
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_LATCH
   @brief Incorporate `std::latch` from the C++20 Synchronization Library
@@ -5807,14 +4840,6 @@
 #ifndef LBAL_LIBCPP20_LATCH
   #define LBAL_LIBCPP20_LATCH 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_LATCH
-  #define LBAL_LIBCPP2A_LATCH LBAL_LIBCPP20_LATCH
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE
@@ -5828,15 +4853,6 @@
   #define LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE
-  #define LBAL_LIBCPP2A_LIST_REMOVE_RETURN_TYPE                                \
-    LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_MATH_CONSTANTS
   @brief Add common math constants to the C++ Standard
@@ -5848,14 +4864,6 @@
 #ifndef LBAL_LIBCPP20_MATH_CONSTANTS
   #define LBAL_LIBCPP20_MATH_CONSTANTS 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_MATH_CONSTANTS
-  #define LBAL_LIBCPP2A_MATH_CONSTANTS LBAL_LIBCPP20_MATH_CONSTANTS
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE
@@ -5873,19 +4881,6 @@
   #define LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE
-  #define LBAL_LIBCPP2A_NOTHROW_CONVERTIBLE LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE
-#endif
-
-#ifndef LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE
-  #define LBAL_LIBCPP2A_IS_NOTHROW_CONVERTIBLE                                 \
-    LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR
   @brief Provide a default template argument for `std::polymorphic_allocator`
@@ -5897,15 +4892,6 @@
 #ifndef LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR
   #define LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR
-  #define LBAL_LIBCPP2A_POLYMORPHIC_ALLOCATOR                                  \
-    LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_RANGES
@@ -5923,14 +4909,6 @@
   #define LBAL_LIBCPP20_RANGES 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_RANGES
-  #define LBAL_LIBCPP2A_RANGES LBAL_LIBCPP20_RANGES
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
   @brief Add input range adaptors
@@ -5946,15 +4924,6 @@
 #ifndef LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
   #define LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS
-  #define LBAL_LIBCPP2A_RANGES_INPUT_ADAPTORS                                  \
-    LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE
@@ -5972,15 +4941,6 @@
   #define LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE
-  #define LBAL_LIBCPP2A_RANGES_LOOSENED_COMPARE                                \
-    LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_REMOVE_CVREF
   @brief Add `std::remove_cvref` type trait
@@ -5992,18 +4952,6 @@
 #ifndef LBAL_LIBCPP20_REMOVE_CVREF
   #define LBAL_LIBCPP20_REMOVE_CVREF 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_STD_REMOVE_CVREF
-  #define LBAL_LIBCPP2A_STD_REMOVE_CVREF LBAL_LIBCPP20_REMOVE_CVREF
-#endif
-
-#ifndef LBAL_LIBCPP2A_REMOVE_CVREF
-  #define LBAL_LIBCPP2A_REMOVE_CVREF LBAL_LIBCPP20_REMOVE_CVREF
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_SEMAPHORE
@@ -6017,14 +4965,6 @@
   #define LBAL_LIBCPP20_SEMAPHORE 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_SEMAPHORE
-  #define LBAL_LIBCPP2A_SEMAPHORE LBAL_LIBCPP20_SEMAPHORE
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_SHARED_PTR_ARRAYS
   @brief Extend `std::make_shared` to support C-style arrays
@@ -6037,19 +4977,6 @@
   #define LBAL_LIBCPP20_SHARED_PTR_ARRAYS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS
-  #define LBAL_LIBCPP2A_EXTENDING_MAKE_SHARED_TO_SUPPORT_ARRAYS                \
-    LBAL_LIBCPP20_SHARED_PTR_ARRAYS
-#endif
-
-#ifndef LBAL_LIBCPP2A_SHARED_PTR_ARRAYS
-  #define LBAL_LIBCPP2A_SHARED_PTR_ARRAYS LBAL_LIBCPP20_SHARED_PTR_ARRAYS
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_SHIFT
   @brief Add `std::shift_left` and `std::shift_right`
@@ -6061,14 +4988,6 @@
 #ifndef LBAL_LIBCPP20_SHIFT
   #define LBAL_LIBCPP20_SHIFT 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_SHIFT
-  #define LBAL_LIBCPP2A_SHIFT LBAL_LIBCPP20_SHIFT
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE
@@ -6085,20 +5004,6 @@
   #define LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT
-  #define LBAL_LIBCPP2A_SMART_PTR_DEFAULT_INIT                                 \
-    LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE
-#endif
-
-#ifndef LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE
-  #define LBAL_LIBCPP2A_SMART_PTR_FOR_OVERWRITE                                \
-    LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_SOURCE_LOCATION
   @brief Adopt `std::source_location` from the Library Fundamentals V3 TS
@@ -6110,14 +5015,6 @@
 #ifndef LBAL_LIBCPP20_SOURCE_LOCATION
   #define LBAL_LIBCPP20_SOURCE_LOCATION 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_SOURCE_LOCATION
-  #define LBAL_LIBCPP2A_SOURCE_LOCATION LBAL_LIBCPP20_SOURCE_LOCATION
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_SPAN
@@ -6140,14 +5037,6 @@
   #define LBAL_LIBCPP20_SPAN 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_SPAN
-  #define LBAL_LIBCPP2A_SPAN LBAL_LIBCPP20_SPAN
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_SPAN_USABILITY
   @brief Enhance usability for `std::span`
@@ -6164,14 +5053,6 @@
 #ifndef LBAL_LIBCPP20_SPAN_USABILITY
   #define LBAL_LIBCPP20_SPAN_USABILITY 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_SPAN_USABILITY
-  #define LBAL_LIBCPP2A_SPAN_USABILITY LBAL_LIBCPP20_SPAN_USABILITY
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_SPAN_FIXED_SIZE
@@ -6190,14 +5071,6 @@
   #define LBAL_LIBCPP20_SPAN_FIXED_SIZE 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_SPAN_FIXED_SIZE
-  #define LBAL_LIBCPP2A_SPAN_FIXED_SIZE LBAL_LIBCPP20_SPAN_FIXED_SIZE
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_SSIZE
   @brief Add `std::ssize` and fix `std::span`’s `size` return values
@@ -6213,14 +5086,6 @@
   #define LBAL_LIBCPP20_SSIZE 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_SSIZE
-  #define LBAL_LIBCPP2A_SSIZE LBAL_LIBCPP20_SSIZE
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_STARTS_ENDS_WITH
   @brief Add string prefix- and suffix-checking
@@ -6232,19 +5097,6 @@
 #ifndef LBAL_LIBCPP20_STARTS_ENDS_WITH
   #define LBAL_LIBCPP20_STARTS_ENDS_WITH 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING
-  #define LBAL_LIBCPP2A_STRING_PREFIX_AND_SUFFIX_CHECKING                      \
-    LBAL_LIBCPP20_STARTS_ENDS_WITH
-#endif
-
-#ifndef LBAL_LIBCPP2A_STARTS_ENDS_WITH
-  #define LBAL_LIBCPP2A_STARTS_ENDS_WITH LBAL_LIBCPP20_STARTS_ENDS_WITH
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR
@@ -6269,15 +5121,6 @@
   #define LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR
-  #define LBAL_LIBCPP2A_STRING_VIEW_CONSTEXPR_ITERATOR                         \
-    LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_SYNCBUF
   @brief Add synchronized buffered output streams
@@ -6292,18 +5135,6 @@
 #ifndef LBAL_LIBCPP20_SYNCBUF
   #define LBAL_LIBCPP20_SYNCBUF 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM
-  #define LBAL_LIBCPP2A_SYNCHRONIZED_BUFFERED_OSTREAM LBAL_LIBCPP20_SYNCBUF
-#endif
-
-#ifndef LBAL_LIBCPP2A_SYNCBUF
-  #define LBAL_LIBCPP2A_SYNCBUF LBAL_LIBCPP20_SYNCBUF
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_SYNCBUF_MANIPULATORS
@@ -6320,14 +5151,6 @@
   #define LBAL_LIBCPP20_SYNCBUF_MANIPULATORS 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS
-  #define LBAL_LIBCPP2A_SYNCBUF_MANIPULATORS LBAL_LIBCPP20_SYNCBUF_MANIPULATORS
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_THREE_WAY_COMPARISON
   @brief Add `<compare>` to the Standard Library
@@ -6342,19 +5165,6 @@
 #ifndef LBAL_LIBCPP20_THREE_WAY_COMPARISON
   #define LBAL_LIBCPP20_THREE_WAY_COMPARISON 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE
-  #define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_OPERATOR_SUPPORT_COMPARE          \
-    LBAL_LIBCPP20_THREE_WAY_COMPARISON
-#endif
-
-#ifndef LBAL_LIBCPP2A_THREE_WAY_COMPARISON
-  #define LBAL_LIBCPP2A_THREE_WAY_COMPARISON LBAL_LIBCPP20_THREE_WAY_COMPARISON
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY
@@ -6371,15 +5181,6 @@
   #define LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY
-  #define LBAL_LIBCPP2A_THREE_WAY_COMPARISON_LIBRARY                           \
-    LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_TO_ADDRESS
   @brief Provide a utility to convert a pointer to a raw pointer
@@ -6391,19 +5192,6 @@
 #ifndef LBAL_LIBCPP20_TO_ADDRESS
   #define LBAL_LIBCPP20_TO_ADDRESS 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME These tokens have been renamed. The old names are deprecated
-//	and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER
-  #define LBAL_LIBCPP2A_UTILITY_TO_CONVERT_A_POINTER_TO_A_RAW_POINTER          \
-    LBAL_LIBCPP20_TO_ADDRESS
-#endif
-
-#ifndef LBAL_LIBCPP2A_TO_ADDRESS
-  #define LBAL_LIBCPP2A_TO_ADDRESS LBAL_LIBCPP20_TO_ADDRESS
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_TO_ARRAY
@@ -6417,14 +5205,6 @@
   #define LBAL_LIBCPP20_TO_ARRAY 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_TO_ARRAY
-  #define LBAL_LIBCPP2A_TO_ARRAY LBAL_LIBCPP20_TO_ARRAY
-#endif
-///@endcond
-
 /**
   @def LBAL_LIBCPP20_TYPE_IDENTITY
   @brief Add the `std::identity` metafunction
@@ -6436,14 +5216,6 @@
 #ifndef LBAL_LIBCPP20_TYPE_IDENTITY
   #define LBAL_LIBCPP20_TYPE_IDENTITY 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_TYPE_IDENTITY
-  #define LBAL_LIBCPP2A_TYPE_IDENTITY LBAL_LIBCPP20_TYPE_IDENTITY
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_UNWRAP_REF
@@ -6458,14 +5230,6 @@
 #ifndef LBAL_LIBCPP20_UNWRAP_REF
   #define LBAL_LIBCPP20_UNWRAP_REF 0
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_UNWRAP_REF
-  #define LBAL_LIBCPP2A_UNWRAP_REF LBAL_LIBCPP20_UNWRAP_REF
-#endif
-///@endcond
 
 /**
   @def LBAL_LIBCPP20_VERSION
@@ -6488,28 +5252,25 @@
   #define LBAL_LIBCPP20_VERSION 0
 #endif
 
-///@cond LBAL_INTERNAL
-//	APIME This token has been renamed for the official C++20 release.
-//	The old name is deprecated and will be removed in a future release.
-#ifndef LBAL_LIBCPP2A_VERSION
-  #define LBAL_LIBCPP2A_VERSION LBAL_LIBCPP20_VERSION
-#endif
-///@endcond
-
 ///	@}	LBAL_LIBCPP20
 
 /**
   @name LBAL_LIBCPPTS
 
-  @brief C++ Technical Specifications that have not (yet?) been Standardized.
+  @brief C++ Technical Specifications for library features that have not (yet?)
+  been Standardized.
 
-  @details These are typically very far along and likely to clear
-  the bar. Generally, these will eventually be aliased—and then moved—into
-  LBAL_LIBCPP2B/LBAL_LIBCPP23, etc.
+  @details These are typically implemented somewhere, but have not garnered
+  enough support to merge into the Standard. If approved, these will eventually 
+  be aliased—and then moved—into the appropriate Standard section, etc.
 
   @remarks (SEEME - bitweeder) The TSs can be highly mutable, and support
   should be considered very experimental. No effort at all will be expended to
-  maintain backwards- compatibility with a TS once a feature has been voted in.
+  maintain backwards-compatibility with a TS once a feature has been voted in;
+  it will be deprecated and eventually removed, with the official version
+  beinggated by an updated token. Relatedly, if a TS is dropped, we will 
+  immediately deprecate it, hide the token in our published docs, and drop it
+  in the next major release.
 
   @{
 */
@@ -6723,18 +5484,6 @@
 #ifndef LBAL_HINT_unlikely
   #define LBAL_HINT_unlikely(LBAL_expr_) LBAL_expr_
 #endif
-
-///@cond LBAL_INTERNAL
-//	APIME These functions have been renamed. The old names are
-//	deprecated and will be removed in a future release.
-#ifndef LBAL_BUILTIN_likely
-  #define LBAL_BUILTIN_likely(LBAL_expr_) LBAL_HINT_likely(LBAL_expr_)
-#endif
-
-#ifndef LBAL_BUILTIN_unlikely
-  #define LBAL_BUILTIN_unlikely(LBAL_expr_) LBAL_HINT_unlikely(LBAL_expr_)
-#endif
-///@endcond
 
 ///	@}	LBAL_HINT
 
