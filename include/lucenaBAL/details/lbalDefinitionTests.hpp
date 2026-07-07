@@ -197,9 +197,13 @@
       || defined(LBAL_CPP20_CONCEPTS)                                                   \
       || defined(LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS)                \
       || defined(LBAL_CPP20_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS)                   \
+      || defined(                                                                       \
+          LBAL_CPP20_CONCEPTS_CONDITIONALLY_TRIVIAL_SPECIAL_MEMBER_FUNCTIONS            \
+      )                                                                                 \
       || defined(LBAL_CPP20_CONDITIONAL_EXPLICIT)                                       \
       || defined(LBAL_CPP20_CONST_REF_QUALIFIED_POINTERS_TO_MEMBERS)                    \
       || defined(LBAL_CPP20_CONSTEVAL)                                                  \
+      || defined(LBAL_CPP20_CONSTEXPR_CHANGE_ACTIVE_UNION_MEMBER)                       \
       || defined(LBAL_CPP20_CONSTEXPR_DYNAMIC_ALLOC)                                    \
       || defined(LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM)                             \
       || defined(LBAL_CPP20_CONSTEXPR_IN_DECLTYPE)                                      \
@@ -236,6 +240,52 @@
 
     #error "Don’t define LBAL_CPP20_xxx externally."
   #endif  //	LBAL_CPP20 check
+
+  #if defined(LBAL_CPP23_ATTRIBUTE_ASSUME)                                     \
+      || defined(LBAL_CPP23_AUTO_CAST)                                         \
+      || defined(LBAL_CPP23_CHAR8_T_COMPATIBILITY)                             \
+      || defined(LBAL_CPP23_CONSTEVAL_PROPAGATE_UP)                            \
+      || defined(LBAL_CPP23_CONSTEXPR_NON_LITERAL_VARIABLES)                   \
+      || defined(LBAL_CPP23_CONSTEXPR_PERMIT_STATIC_CONSTEXPR)                 \
+      || defined(LBAL_CPP23_CONSTEXPR_RELAX_RESTRICTIONS)                      \
+      || defined(LBAL_CPP23_DEDUCTION_GUIDES_FROM_INHERITED_CONSTRUCTORS)      \
+      || defined(LBAL_CPP23_EXPLICIT_THIS_PARAMETER)                           \
+      || defined(LBAL_CPP23_IF_CONSTEVAL)                                      \
+      || defined(LBAL_CPP23_IMPLICIT_MOVE)                                     \
+      || defined(LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT)                        \
+      || defined(LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT_STATIC)                 \
+      || defined(LBAL_CPP23_NAMED_CHARACTER_ESCAPES)                           \
+      || defined(LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES)                       \
+      || defined(LBAL_CPP23_SIZE_T_SUFFIX)                                     \
+      || defined(LBAL_CPP23_STATIC_CALL_OPERATOR)
+
+    #error "Don’t define LBAL_CPP23_xxx externally."
+  #endif  //	LBAL_CPP23 check
+
+  #if defined(LBAL_CPP26_CONSTEXPR_CAST_FROM_VOID_STAR)                        \
+      || defined(LBAL_CPP26_CONSTEXPR_EXCEPTIONS)                              \
+      || defined(LBAL_CPP26_CONSTEXPR_PLACEMENT_NEW)                           \
+      || defined(LBAL_CPP26_CONSTEXPR_VIRTUAL_INHERITANCE)                     \
+      || defined(LBAL_CPP26_CONTRACTS)                                         \
+      || defined(LBAL_CPP26_DELETED_FUNCTION)                                  \
+      || defined(LBAL_CPP26_EXPANSION_STATEMENTS)                              \
+      || defined(LBAL_CPP26_IMPL_REFLECTION)                                   \
+      || defined(LBAL_CPP26_PACK_INDEXING)                                     \
+      || defined(LBAL_CPP26_PLACEHOLDER_VARIABLES)                             \
+      || defined(LBAL_CPP26_STATIC_ASSERT_USER_MESSAGE)                        \
+      || defined(LBAL_CPP26_STRUCTURED_BINDINGS_ATTRIBUTES)                    \
+      || defined(LBAL_CPP26_STRUCTURED_BINDINGS_PACK)                          \
+      || defined(LBAL_CPP26_TEMPLATE_PARAMETERS)                               \
+      || defined(LBAL_CPP26_TRIVIAL_UNION)                                     \
+      || defined(LBAL_CPP26_VARIADIC_FRIEND)
+
+    #error "Don’t define LBAL_CPP26_xxx externally."
+  #endif  //	LBAL_CPP26 check
+
+  #if defined(LBAL_CPP2D_PRETEND)
+
+    #error "Don’t define LBAL_CPP2D_xxx externally."
+  #endif  //	LBAL_CPP2D check
 
   #if defined(LBAL_CPPTS_ATTRIBUTE_ASSERT)                                     \
       || defined(LBAL_CPPTS_ATTRIBUTE_ENSURES)                                 \

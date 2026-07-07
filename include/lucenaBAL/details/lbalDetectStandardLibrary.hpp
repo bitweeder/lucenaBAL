@@ -22,12 +22,12 @@
 
 //	std
 #include <version>
-  //	We include this just for the side effects: by convention, the Standard
-  //  Library implementation will be onfigured. We need this for the library
-  //  implementation detection below. Note that prior to its removal in C++20,
-  //  we we previously used `<ciso646>` for this purpose; compilers from before
-  //  ~2020 will fail here since few of them have `<version>`, but they also
-  //  lack the common header presence test support we’d need to catch this.
+//	We include this just for the side effects: by convention, the Standard
+//  Library implementation will be configured. We need this for the library
+//  implementation detection below. Note that prior to its removal in C++20,
+//  we we previously used `<ciso646>` for this purpose; compilers from before
+//  ~2020 will fail here since few of them have `<version>`, but they also
+//  lack the common header presence test support we’d need to catch this.
 
 /*------------------------------------------------------------------------------
   Detect the Standard Library being used and set up some basic identifiers.

@@ -1063,6 +1063,12 @@
   - [201811L](https://wg21.link/P1330R0)
   - [201907L](https://wg21.link/p1331r2) __PDF__
   - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
 
   @remarks `__cpp_constexpr` has many values associated with it, taken from a
   number of different proposals.
@@ -1157,9 +1163,12 @@
   latest supported variant, or `0` if this variant is not supported.
   - [200907L](https://wg21.link/N2930)
   - [201603L](https://wg21.link/P0184R0)
+  - [202211L](https://wg21.link/p2644r1) __PDF__
+  - [202211L](https://wg21.link/p2718r0) __PDF__
+  - [202211L](https://wg21.link/cwg2659)
 
-  @remarks `__cpp_range_based_for` has at least 2 values associated with it,
-  each from a different proposal.
+  @remarks `__cpp_range_based_for` has multiple values associated with it,
+  from a number of different proposals.
 */
 #ifndef LBAL_CPP11_RANGE_BASED_FOR
   #define LBAL_CPP11_RANGE_BASED_FOR 0
@@ -1203,9 +1212,10 @@
      latest supported variant, or `0` if this variant is not supported.
   - [200410L](https://wg21.link/n1720)
   - [201411L](https://wg21.link/N3928)
+  - [202306L](https://wg21.link/p2741r3) __PDF__
 
-  @remarks `__cpp_static_assert` has at least 2 values associated with it,
-  each from a different proposal.
+  @remarks `__cpp_static_assert` has multiple values associated with it from a
+  number of different proposals.
 */
 #ifndef LBAL_CPP11_STATIC_ASSERT
   #define LBAL_CPP11_STATIC_ASSERT 0
@@ -1322,6 +1332,12 @@
   - [201811L](https://wg21.link/P1330R0)
   - [201907L](https://wg21.link/p1331r2) __PDF__
   - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
 
   @remarks `__cpp_constexpr` has many values associated with it, taken from a
   number of different proposals.
@@ -1495,6 +1511,12 @@
   - [201811L](https://wg21.link/P1330R0)
   - [201907L](https://wg21.link/p1331r2) __PDF__
   - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
 
   @remarks `__cpp_constexpr` has many values associated with it, taken from a
   number of different proposals.
@@ -1514,9 +1536,10 @@
   - [201703L](https://wg21.link/p0620r0)
   - [201907L](https://wg21.link/p1814r0)
   - [201907L](https://wg21.link/P1816R0) __PDF__
+  - [202207L](https://wg21.link/p2582r1) __PDF__
 
-  @remarks `__cpp_deduction_guides` has at least 4 values associated with it,
-  across at least 5 proposals.
+  @remarks `__cpp_deduction_guides` has many values associated with it, taken
+  from a number of different proposals.
 */
 #ifndef LBAL_CPP17_DEDUCTION_GUIDES
   #define LBAL_CPP17_DEDUCTION_GUIDES 0
@@ -1533,9 +1556,10 @@
   - [201703L](https://wg21.link/p0620r0)
   - [201907L](https://wg21.link/p1814r0)
   - [201907L](https://wg21.link/P1816R0) __PDF__
+  - [202207L](https://wg21.link/p2582r1) __PDF__
 
-  @remarks `__cpp_deduction_guides` has at least 4 values associated with it,
-  across at least 5 proposals.
+  @remarks `__cpp_deduction_guides` has many values associated with it, taken
+  from a number of different proposals.
 */
 #ifndef LBAL_CPP17_DEDUCTION_GUIDES_DR
   #define LBAL_CPP17_DEDUCTION_GUIDES_DR 0
@@ -1553,9 +1577,10 @@
   - [201703L](https://wg21.link/p0620r0)
   - [201907L](https://wg21.link/p1814r0)
   - [201907L](https://wg21.link/P1816R0) __PDF__
+  - [202207L](https://wg21.link/p2582r1) __PDF__
 
-  @remarks `__cpp_deduction_guides` has at least 4 values associated with it,
-  across at least 5 proposals.
+  @remarks `__cpp_deduction_guides` has many values associated with it, taken
+  from a number of different proposals.
 */
 #ifndef LBAL_CPP17_DEDUCTION_GUIDES_NB
   #define LBAL_CPP17_DEDUCTION_GUIDES_NB 0
@@ -1711,9 +1736,12 @@
   latest supported variant, or `0` if this variant is not supported.
   - [200907L](https://wg21.link/N2930)
   - [201603L](https://wg21.link/P0184R0)
+  - [202211L](https://wg21.link/p2644r1) __PDF__
+  - [202211L](https://wg21.link/p2718r0) __PDF__
+  - [202211L](https://wg21.link/cwg2659)
 
-  @remarks `__cpp_range_based_for` has at least 2 values associated with it,
-  each from a different proposal.
+  @remarks `__cpp_range_based_for` has multiple values associated with it,
+  from a number of different proposals.
 */
 #ifndef LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED
   #define LBAL_CPP17_RANGE_BASED_FOR_GENERALIZED 0
@@ -1727,9 +1755,10 @@
   latest supported variant, or `0` if this variant is not supported.
   - [200410L](https://wg21.link/n1720)
   - [201411L](https://wg21.link/N3928) __PDF__
+  - [202306L](https://wg21.link/p2741r3) __PDF__
 
-  @remarks `__cpp_static_assert` has at least 2 values associated with it,
-  each from a different proposal.
+  @remarks `__cpp_static_assert` has multiple values associated with it from a
+  number of different proposals.
 */
 #ifndef LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE
   #define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE 0
@@ -1738,8 +1767,15 @@
 /**
   @def LBAL_CPP17_STRUCTURED_BINDINGS
   @brief Add support for multiple function return values and more
-  @details Equivalent SD-6 macro: `__cpp_structured_bindings`
+  @details Equivalent SD-6 macro: `__cpp_structured_bindings`. This token
+  corresponds to the `201606L` variant, but it will have the value of the
+  latest supported variant, or `0` if this variant is not supported.
   - [201606L](https://wg21.link/p0217r3)
+  - [202403L](https://wg21.link/p0609r3) __PDF__
+  - [202411L](https://wg21.link/p1061r10)
+
+  @remarks `__cpp_structured_bindings` has multiple values associated with it
+  from a number of different proposals.
 */
 #ifndef LBAL_CPP17_STRUCTURED_BINDINGS
   #define LBAL_CPP17_STRUCTURED_BINDINGS 0
@@ -1881,8 +1917,11 @@
 /**
   @def LBAL_CPP20_CHAR8_T
   @brief Add `char8_t` as a UTF-8 equivalent for `char16_t` and `char32_t`.
-  @details Equivalent SD-6 macro: `__cpp_char8_t`
+  @details Equivalent SD-6 macro: `__cpp_char8_t`. This token corresponds to
+  the `201811L` variant, but it will have the value of the latest supported
+  variant, or `0` if this variant is not supported.
   - [201811L](https://wg21.link/p0482r6)
+  - [202207] (https://wg21.link/p2513r3)
 */
 #ifndef LBAL_CPP20_CHAR8_T
   #define LBAL_CPP20_CHAR8_T 0
@@ -1897,14 +1936,10 @@
   - [201707L](https://wg21.link/p0734r0) __PDF__
   - [201811L](https://wg21.link/P1084R2) __PDF__
   - [201907L](https://wg21.link/P1452R2)
+  - [202002L](https://wg21.link/p0848r3)
 
-  @remarks `__cpp_concepts` has at least 3 values associated with it, each
+  @remarks `__cpp_concepts` has at least 4 values associated with it, each
   from a different proposal.
-
-  @remarks (SEEME - bitweeder) Earlier versions of lucenaBAL used a placeholder
-  value for this token. We’ve since updated to the official values from SD-6.
-  No migration mechanism is in place since no impacted implementations were in
-  the wild at the time.
 */
 #ifndef LBAL_CPP20_CONCEPTS
   #define LBAL_CPP20_CONCEPTS 0
@@ -1919,14 +1954,10 @@
   - [201707L](https://wg21.link/p0734r0) __PDF__
   - [201811L](https://wg21.link/P1084R2) __PDF__
   - [201907L](https://wg21.link/P1452R2)
+  - [202002L](https://wg21.link/p0848r3)
 
-  @remarks `__cpp_concepts` has at least 3 values associated with it, each
+  @remarks `__cpp_concepts` has at least 4 values associated with it, each
   from a different proposal.
-
-  @remarks (SEEME - bitweeder) Earlier versions of lucenaBAL used a placeholder
-  value for this token. We’ve since updated to the official values from SD-6.
-  No migration mechanism is in place since no impacted implementations were in
-  the wild at the time.
 */
 #ifndef LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS
   #define LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS 0
@@ -1941,17 +1972,31 @@
   - [201707L](https://wg21.link/p0734r0) __PDF__
   - [201811L](https://wg21.link/P1084R2) __PDF__
   - [201907L](https://wg21.link/P1452R2)
+  - [202002L](https://wg21.link/p0848r3)
 
-  @remarks `__cpp_concepts` has at least 3 values associated with it, each
+  @remarks `__cpp_concepts` has at least 4 values associated with it, each
   from a different proposal.
-
-  @remarks (SEEME - bitweeder) Earlier versions of lucenaBAL used a placeholder
-  value for this token. We’ve since updated to the official values from SD-6.
-  No migration mechanism is in place since no impacted implementations were in
-  the wild at the time.
 */
 #ifndef LBAL_CPP20_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS
   #define LBAL_CPP20_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS 0
+#endif
+
+/**
+  @def LBAL_CPP20_CONCEPTS_CONDITIONALLY_TRIVIAL_SPECIAL_MEMBER_FUNCTIONS
+  @brief Make special member functions conditionally trivial
+  @details Equivalent (SD-6) macro: `__cpp_concepts`. This token corresponds
+  to the `202002L` variant, but it will have the value of the latest
+  supported variant, or `0` if this variant is not supported.
+  - [201707L](https://wg21.link/p0734r0) __PDF__
+  - [201811L](https://wg21.link/P1084R2) __PDF__
+  - [201907L](https://wg21.link/P1452R2)
+  - [202002L](https://wg21.link/p0848r3)
+
+  @remarks `__cpp_concepts` has at least 4 values associated with it, each
+  from a different proposal.
+*/
+#ifndef LBAL_CPP20_CONCEPTS_CONDITIONALLY_TRIVIAL_SPECIAL_MEMBER_FUNCTIONS
+  #define LBAL_CPP20_CONCEPTS_CONDITIONALLY_TRIVIAL_SPECIAL_MEMBER_FUNCTIONS 0
 #endif
 
 /**
@@ -1979,11 +2024,43 @@
 /**
   @def LBAL_CPP20_CONSTEVAL
   @brief Immediate functions
-  @details Equivalent SD-6 macro: `__cpp_consteval`
+  @details Equivalent SD-6 macro: `__cpp_consteval`. This token corresponds to
+  the `201811L` variant, but it will have the value of the latest supported
+  variant, or `0` if this variant is not supported.
   - [201811L](https://wg21.link/P1073R3)
+  - [202211L](https://wg21.link/p2564r3)
 */
 #ifndef LBAL_CPP20_CONSTEVAL
   #define LBAL_CPP20_CONSTEVAL 0
+#endif
+
+/**
+  @def LBAL_CPP20_CONSTEXPR_CHANGE_ACTIVE_UNION_MEMBER
+  @brief Allow the active member of a `union` inside `constexpr` to change
+  @details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+  to the `202002L` variant, but it will have the value of the latest
+  supported variant, or `0` if this variant is not supported.
+  - [200704L](https://wg21.link/N2235) __PDF__
+  - [201304L](https://wg21.link/n3652)
+  - [201603L](https://wg21.link/p0170r1) __PDF__
+  - [201806L](https://wg21.link/P1064R0)
+  - [201811L](https://wg21.link/P1002R1)
+  - [201811L](https://wg21.link/P1327R1)
+  - [201811L](https://wg21.link/P1330R0)
+  - [201907L](https://wg21.link/p1331r2) __PDF__
+  - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
+
+  @remarks `__cpp_constexpr` has many values associated with it, taken from a
+  number of different proposals.
+*/
+#ifndef LBAL_CPP20_CONSTEXPR_CHANGE_ACTIVE_UNION_MEMBER
+  #define LBAL_CPP20_CONSTEXPR_CHANGE_ACTIVE_UNION_MEMBER 0
 #endif
 
 /**
@@ -2015,6 +2092,12 @@
   - [201811L](https://wg21.link/P1330R0)
   - [201907L](https://wg21.link/p1331r2) __PDF__
   - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
 
   @remarks `__cpp_constexpr` has many values associated with it, taken from a
   number of different proposals.
@@ -2053,6 +2136,12 @@
   - [201811L](https://wg21.link/P1330R0)
   - [201907L](https://wg21.link/p1331r2) __PDF__
   - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
 
   @remarks `__cpp_constexpr` has many values associated with it, taken from a
   number of different proposals.
@@ -2079,6 +2168,12 @@
   - [201811L](https://wg21.link/P1330R0)
   - [201907L](https://wg21.link/p1331r2) __PDF__
   - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
 
   @remarks `__cpp_constexpr` has many values associated with it, taken from a
   number of different proposals.
@@ -2105,6 +2200,12 @@
   - [201811L](https://wg21.link/P1330R0)
   - [201907L](https://wg21.link/p1331r2) __PDF__
   - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
 
   @remarks `__cpp_constexpr` has many values associated with it, taken from a
   number of different proposals.
@@ -2132,6 +2233,12 @@
   - [201811L](https://wg21.link/P1330R0)
   - [201907L](https://wg21.link/p1331r2) __PDF__
   - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
 
   @remarks `__cpp_constexpr` has many values associated with it, taken from a
   number of different proposals.
@@ -2157,6 +2264,12 @@
   - [201811L](https://wg21.link/P1330R0)
   - [201907L](https://wg21.link/p1331r2) __PDF__
   - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
 
   @remarks `__cpp_constexpr` has many values associated with it, taken from a
   number of different proposals.
@@ -2209,9 +2322,10 @@
   - [201703L](https://wg21.link/p0620r0)
   - [201907L](https://wg21.link/p1814r0)
   - [201907L](https://wg21.link/P1816R0) __PDF__
+  - [202207L](https://wg21.link/p2582r1) __PDF__
 
-  @remarks `__cpp_deduction_guides` has at least 4 values associated with it,
-  across at least 5 proposals.
+  @remarks `__cpp_deduction_guides` has many values associated with it, taken
+  from a number of different proposals.
 */
 #ifndef LBAL_CPP20_DEDUCTION_GUIDES_FOR_AGGREGATES
   #define LBAL_CPP20_DEDUCTION_GUIDES_FOR_AGGREGATES 0
@@ -2351,12 +2465,7 @@
   @brief Class Types in Non-Type Template Parameters
   @details Equivalent SD-6 macro: `__cpp_nontype_template_parameter_class`
   - [201806L](https://wg21.link/p0732r2) __PDF__
-
-  @remarks (SEEME - bitweeder) There’s a slightly confusing note in the SD-6
-  document as of December 2019 which indicates a potential issue with this
-  token. One interpretation is that an earlier version of the doc had
-  incorrectly associated an unrelated proposal as an iteration on this feature;
-  this is the interpretation we’re following.
+  - [201806L](https://wg21.link/p1907r1)
 */
 #ifndef LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS
   #define LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS 0
@@ -2466,13 +2575,269 @@
 */
 
 /**
-  @def LBAL_CPP23_PLACEHOLDER
-  @brief Placeholder.
-  @details Equivalent SD-6 macro: `__cpp_23_placeholder`
-  - [202302L](https://wg21.link/placeholder)
+  @def LBAL_CPP23_ATTRIBUTE_ASSUME
+  @brief Optimization hint to indicate an expression is true
+  @details Equivalent SD-6 test: `__has_cpp_attribute(assume)`
+  - [202207L](https://wg21.link/p1774r8) __PDF__
+  - [202207L](https://wg21.link/cwg2615)
 */
-#ifndef LBAL_CPP23_PRETEND
-  #define LBAL_CPP23_PRETEND 0
+#ifndef LBAL_CPP23_ATTRIBUTE_ASSUME
+  #define LBAL_CPP23_ATTRIBUTE_ASSUME 0
+#endif
+
+/**
+  @def LBAL_CPP23_AUTO_CAST
+  @brief `auto(x)`: `decay-copy` in the language
+  @details Equivalent SD-6 macro: `__cpp_auto_cast`
+  - [202110L](https://wg21.link/p0849r8)
+*/
+#ifndef LBAL_CPP23_AUTO_CAST
+  #define LBAL_CPP23_AUTO_CAST 0
+#endif
+
+/**
+  @def LBAL_CPP23_CHAR8_T_COMPATIBILITY
+  @brief `char8_t` Compatibility and Portability Fix
+  @details Equivalent SD-6 macro: `__cpp_char8_t`. This token corresponds to
+  the `202207L` variant, but it will have the value of the latest supported
+  variant, or `0` if this variant is not supported.
+  - [201811L](https://wg21.link/p0482r6)
+  - [202207L] (https://wg21.link/p2513r3)
+*/
+#ifndef LBAL_CPP23_CHAR8_T_COMPATIBILITY
+  #define LBAL_CPP23_CHAR8_T_COMPATIBILITY 0
+#endif
+
+/**
+  @def LBAL_CPP23_CONSTEVAL_PROPAGATE_UP
+  @brief `consteval` needs to propagate up
+  @details Equivalent SD-6 macro: `__cpp_consteval`. This token corresponds to
+  the `202211L` variant, but it will have the value of the latest supported
+  variant, or `0` if this variant is not supported.
+  - [201811L](https://wg21.link/P1073R3)
+  - [202211L](https://wg21.link/p2564r3)
+*/
+#ifndef LBAL_CPP23_CONSTEVAL_PROPAGATE_UP
+  #define LBAL_CPP23_CONSTEVAL_PROPAGATE_UP 0
+#endif
+
+/**
+  @def LBAL_CPP23_CONSTEXPR_NON_LITERAL_VARIABLES
+  @brief Allow non-literal variables, labels, and gotos in `constexpr`
+  functions
+  @details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+  to the `202110L` variant, but it will have the value of the latest
+  supported variant, or `0` if this variant is not supported.
+  - [200704L](https://wg21.link/N2235) __PDF__
+  - [201304L](https://wg21.link/n3652)
+  - [201603L](https://wg21.link/p0170r1) __PDF__
+  - [201806L](https://wg21.link/P1064R0)
+  - [201811L](https://wg21.link/P1002R1)
+  - [201811L](https://wg21.link/P1327R1)
+  - [201811L](https://wg21.link/P1330R0)
+  - [201907L](https://wg21.link/p1331r2) __PDF__
+  - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
+
+  @remarks `__cpp_constexpr` has many values associated with it, taken from a
+  number of different proposals.
+*/
+#ifndef LBAL_CPP23_CONSTEXPR_NON_LITERAL_VARIABLES
+  #define LBAL_CPP23_CONSTEXPR_NON_LITERAL_VARIABLES 0
+#endif
+
+/**
+  @def LBAL_CPP23_CONSTEXPR_PERMIT_STATIC_CONSTEXPR
+  @brief Permit `static constexpr` variables in `constexpr` functions
+  @details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+  to the `202211L` variant, but it will have the value of the latest
+  supported variant, or `0` if this variant is not supported.
+  - [200704L](https://wg21.link/N2235) __PDF__
+  - [201304L](https://wg21.link/n3652)
+  - [201603L](https://wg21.link/p0170r1) __PDF__
+  - [201806L](https://wg21.link/P1064R0)
+  - [201811L](https://wg21.link/P1002R1)
+  - [201811L](https://wg21.link/P1327R1)
+  - [201811L](https://wg21.link/P1330R0)
+  - [201907L](https://wg21.link/p1331r2) __PDF__
+  - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
+
+  @remarks `__cpp_constexpr` has many values associated with it, taken from a
+  number of different proposals.
+*/
+#ifndef LBAL_CPP23_CONSTEXPR_PERMIT_STATIC_CONSTEXPR
+  #define LBAL_CPP23_CONSTEXPR_PERMIT_STATIC_CONSTEXPR 0
+#endif
+
+/**
+  @def LBAL_CPP23_CONSTEXPR_RELAX_RESTRICTIONS
+  @brief Relax some constexpr restrictions
+  @details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+  to the `202207L` variant, but it will have the value of the latest
+  supported variant, or `0` if this variant is not supported.
+  - [200704L](https://wg21.link/N2235) __PDF__
+  - [201304L](https://wg21.link/n3652)
+  - [201603L](https://wg21.link/p0170r1) __PDF__
+  - [201806L](https://wg21.link/P1064R0)
+  - [201811L](https://wg21.link/P1002R1)
+  - [201811L](https://wg21.link/P1327R1)
+  - [201811L](https://wg21.link/P1330R0)
+  - [201907L](https://wg21.link/p1331r2) __PDF__
+  - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
+
+  @remarks `__cpp_constexpr` has many values associated with it, taken from a
+  number of different proposals.
+*/
+#ifndef LBAL_CPP23_CONSTEXPR_RELAX_RESTRICTIONS
+  #define LBAL_CPP23_CONSTEXPR_RELAX_RESTRICTIONS 0
+#endif
+
+/**
+  @def LBAL_CPP23_DEDUCTION_GUIDES_FROM_INHERITED_CONSTRUCTORS
+  @brief Allow class template argument deduction from inherited constructors
+  @details Equivalent SD-6 macro: `__cpp_deduction_guides`. This token
+  corresponds to the `202207L` variant, but it will have the value of the
+  latest supported variant, or `0` if this variant is not supported.
+  - [201606L](https://wg21.link/p0091r3)
+  - [201611L](https://wg21.link/P0512R0) __PDF__
+  - [201703L](https://wg21.link/p0620r0)
+  - [201907L](https://wg21.link/p1814r0)
+  - [201907L](https://wg21.link/P1816R0) __PDF__
+  - [202207L](https://wg21.link/p2582r1) __PDF__
+
+  @remarks `__cpp_deduction_guides` has many values associated with it, taken
+  from a number of different proposals.
+*/
+#ifndef LBAL_CPP23_DEDUCTION_GUIDES_FROM_INHERITED_CONSTRUCTORS
+  #define LBAL_CPP23_DEDUCTION_GUIDES_FROM_INHERITED_CONSTRUCTORS 0
+#endif
+
+/**
+  @def LBAL_CPP23_EXPLICIT_THIS_PARAMETER
+  @brief Deduce `this`
+  @details Equivalent SD-6 macro: `__cpp_explicit_this_parameter`
+  - [202110L](https://wg21.link/p0847r7)
+*/
+#ifndef LBAL_CPP23_EXPLICIT_THIS_PARAMETER
+  #define LBAL_CPP23_EXPLICIT_THIS_PARAMETER 0
+#endif
+
+/**
+  @def LBAL_CPP23_IF_CONSTEVAL
+  @brief `if consteval`
+  @details Equivalent SD-6 macro: `__cpp_if_consteval`
+  - [202106L](https://wg21.link/p1938r3)
+*/
+#ifndef LBAL_CPP23_IF_CONSTEVAL
+  #define LBAL_CPP23_IF_CONSTEVAL 0
+#endif
+
+/**
+  @def LBAL_CPP23_IMPLICIT_MOVE
+  @brief Simpler implicit move
+  @details Equivalent SD-6 macro: `__cpp_implicit_move`
+  - [202207L](https://wg21.link/p2266r3)
+*/
+#ifndef LBAL_CPP23_IMPLICIT_MOVE
+  #define LBAL_CPP23_IMPLICIT_MOVE 0
+#endif
+
+/**
+  @def LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT
+  @brief Add a multidimensional subscript operator
+  @details Equivalent SD-6 macro: `__cpp_multidimensional_subscript`. This
+  token corresponds to the `202110L` variant, but it will have the value of the
+  latest supported variant, or `0` if this variant is not supported.
+  - [202110L](https://wg21.link/p2128r6) __PDF__
+  - [202211L](https://wg21.link/p2589r1) __PDF__
+
+  @remarks `__cpp_multidimensional_subscript` has multiple values associated
+  with it, taken from a number of different proposals.
+*/
+#ifndef LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT
+  #define LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT 0
+#endif
+
+/**
+  @def LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT_STATIC
+  @brief `static` `operator []`
+  @details Equivalent SD-6 macro: `__cpp_multidimensional_subscript`. This
+  token corresponds to the `202211L` variant, but it will have the value of the
+  latest supported variant, or `0` if this variant is not supported.
+  - [202110L](https://wg21.link/p2128r6) __PDF__
+  - [202211L](https://wg21.link/p2589r1) __PDF__
+
+  @remarks `__cpp_multidimensional_subscript` has multiple values associated
+  with it, taken from a number of different proposals.
+*/
+#ifndef LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT_STATIC
+  #define LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT_STATIC 0
+#endif
+
+/**
+  @def LBAL_CPP23_NAMED_CHARACTER_ESCAPES
+  @brief Add named universal character escapes
+  @details Equivalent SD-6 macro: `__cpp_named_character_escapes`
+  - [202207L](https://wg21.link/p2071r2)
+*/
+#ifndef LBAL_CPP23_NAMED_CHARACTER_ESCAPES
+  #define LBAL_CPP23_NAMED_CHARACTER_ESCAPES 0
+#endif
+
+/**
+  @def LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES
+  @brief Allow some temporaries in range-based for-loops
+  @details Equivalent SD-6 macro: `__cpp_range_based_for`. This token
+  corresponds to the `202211L` variant, but it will have the value of the
+  latest supported variant, or `0` if this variant is not supported.
+  - [200907L](https://wg21.link/N2930)
+  - [201603L](https://wg21.link/P0184R0)
+  - [202211L](https://wg21.link/p2644r1) __PDF__
+  - [202211L](https://wg21.link/p2718r0) __PDF__
+  - [202211L](https://wg21.link/cwg2659)
+
+  @remarks `__cpp_range_based_for` has multiple values associated with it,
+  from a number of different proposals.
+*/
+#ifndef LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES
+  #define LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES 0
+#endif
+
+/**
+  @def LBAL_CPP23_SIZE_T_SUFFIX
+  @brief Add literal suffixes for (signed) `size_t`
+  @details Equivalent SD-6 macro: `__cpp_size_t_suffix`
+  - [202011L](https://wg21.link/p0330r8)
+*/
+#ifndef LBAL_CPP23_SIZE_T_SUFFIX
+  #define LBAL_CPP23_SIZE_T_SUFFIX 0
+#endif
+
+/**
+  @def LBAL_CPP23_STATIC_CALL_OPERATOR
+  @brief Static `operator ()`
+  @details Equivalent SD-6 macro: `__cpp_static_call_operator`
+  - [202207L](https://wg21.link/p1169r4)
+*/
+#ifndef LBAL_CPP23_STATIC_CALL_OPERATOR
+  #define LBAL_CPP23_STATIC_CALL_OPERATOR 0
 #endif
 
 ///	@}	LBAL_CPP23
@@ -2493,46 +2858,258 @@
 */
 
 /**
-  @def LBAL_CPP26_PLACEHOLDER
-  @brief Placeholder.
-  @details Equivalent SD-6 macro: `__cpp_26_placeholder`
-  - [202603L](https://wg21.link/placeholder)
+  @def LBAL_CPP26_CONSTEXPR_CAST_FROM_VOID_STAR
+  @brief All `constexpr` cast from `void *`
+  @details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+  to the `202306L` variant, but it will have the value of the latest
+  supported variant, or `0` if this variant is not supported.
+  - [200704L](https://wg21.link/N2235) __PDF__
+  - [201304L](https://wg21.link/n3652)
+  - [201603L](https://wg21.link/p0170r1) __PDF__
+  - [201806L](https://wg21.link/P1064R0)
+  - [201811L](https://wg21.link/P1002R1)
+  - [201811L](https://wg21.link/P1327R1)
+  - [201811L](https://wg21.link/P1330R0)
+  - [201907L](https://wg21.link/p1331r2) __PDF__
+  - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
+
+  @remarks `__cpp_constexpr` has many values associated with it, taken from a
+  number of different proposals.
 */
-#ifndef LBAL_CPP26_PRETEND
-  #define LBAL_CPP26_PRETEND 0
+#ifndef LBAL_CPP26_CONSTEXPR_CAST_FROM_VOID_STAR
+  #define LBAL_CPP26_CONSTEXPR_CAST_FROM_VOID_STAR 0
+#endif
+
+/**
+  @def LBAL_CPP26_CONSTEXPR_EXCEPTIONS
+  @brief Allow exception throwing in _constant-evaluation_
+  @details Equivalent SD-6 macro: `__cpp_constexpr_exceptions`
+  - [202411L](https://wg21.link/p3068r6)
+*/
+#ifndef LBAL_CPP26_CONSTEXPR_EXCEPTIONS
+  #define LBAL_CPP26_CONSTEXPR_EXCEPTIONS 0
+#endif
+
+/**
+  @def LBAL_CPP26_CONSTEXPR_PLACEMENT_NEW
+  @brief Add `constexpr` placement `new`
+  @details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
+  to the `202406L` variant, but it will have the value of the latest
+  supported variant, or `0` if this variant is not supported.
+  - [200704L](https://wg21.link/N2235) __PDF__
+  - [201304L](https://wg21.link/n3652)
+  - [201603L](https://wg21.link/p0170r1) __PDF__
+  - [201806L](https://wg21.link/P1064R0)
+  - [201811L](https://wg21.link/P1002R1)
+  - [201811L](https://wg21.link/P1327R1)
+  - [201811L](https://wg21.link/P1330R0)
+  - [201907L](https://wg21.link/p1331r2) __PDF__
+  - [201907L](https://wg21.link/P1668R1)
+  - [202002L](https://wg21.link/p1330r0) __PDF__
+  - [202110L](https://wg21.link/p2242r3)
+  - [202207L](https://wg21.link/p2448r2)
+  - [202211L](https://wg21.link/p2647r1)
+  - [202306L](https://wg21.link/p2738r1) __PDF__
+  - [202406L](https://wg21.link/p2747r2)
+
+  @remarks `__cpp_constexpr` has many values associated with it, taken from a
+  number of different proposals.
+*/
+#ifndef LBAL_CPP26_CONSTEXPR_PLACEMENT_NEW
+  #define LBAL_CPP26_CONSTEXPR_PLACEMENT_NEW 0
+#endif
+
+/**
+  @def LBAL_CPP26_CONSTEXPR_VIRTUAL_INHERITANCE
+  @brief Allow exception throwing in _constant-evaluation_
+  @details Equivalent SD-6 macro: `__cpp_constexpr_virtual_inheritance`
+  - [202506L](https://wg21.link/p3533r2)
+*/
+#ifndef LBAL_CPP26_CONSTEXPR_VIRTUAL_INHERITANCE
+  #define LBAL_CPP26_CONSTEXPR_VIRTUAL_INHERITANCE 0
+#endif
+
+/**
+  @def LBAL_CPP26_CONTRACTS
+  @brief Contracts for C++
+  @details Equivalent SD-6 macro: `__cpp_contracts`
+  - [202502L](https://wg21.link/p2900r14) __PDF__
+*/
+#ifndef LBAL_CPP26_CONTRACTS
+  #define LBAL_CPP26_CONTRACTS 0
+#endif
+
+/**
+  @def LBAL_CPP26_DELETED_FUNCTION
+  @brief `= delete("should have a reason")`.
+  @details Equivalent SD-6 macro: `__cpp_deleted_function`
+  - [202403L](https://wg21.link/p2573r2)
+*/
+#ifndef LBAL_CPP26_DELETED_FUNCTION
+  #define LBAL_CPP26_DELETED_FUNCTION 0
+#endif
+
+/**
+  @def LBAL_CPP26_EXPANSION_STATEMENTS
+  @brief Expansion statements
+  @details Equivalent SD-6 macro: `__cpp_expansion_statements`
+  - [202506L](https://wg21.link/p1306r5)
+*/
+#ifndef LBAL_CPP26_EXPANSION_STATEMENTS
+  #define LBAL_CPP26_EXPANSION_STATEMENTS 0
+#endif
+
+/**
+  @def LBAL_CPP26_IMPL_REFLECTION
+  @brief Reflection for C++26
+  @details Equivalent SD-6 macro: `_cpp_impl_reflection`
+  - [202506L](https://wg21.link/p2996r13)
+  - [202506L](https://wg21.link/p3096r12) __PDF__
+  - [202506L](https://wg21.link/p3293r3)
+  - [202506L](https://wg21.link/p3394r4)
+*/
+#ifndef LBAL_CPP26_IMPL_REFLECTION
+  #define LBAL_CPP26_IMPL_REFLECTION 0
+#endif
+
+/**
+  @def LBAL_CPP26_PACK_INDEXING
+  @brief Pack Indexing
+  @details Equivalent SD-6 macro: `__cpp_pack_indexing`
+  - [202311L](https://wg21.link/p2662r3) __PDF__
+*/
+#ifndef LBAL_CPP26_PACK_INDEXING
+  #define LBAL_CPP26_PACK_INDEXING 0
+#endif
+
+/**
+  @def LBAL_CPP26_PLACEHOLDER_VARIABLES
+  @brief Add placeholder variables (aka underscore, underbar, low line)
+  @details Equivalent SD-6 macro: `__cpp_placeholder_variables`
+  - [202306L](https://wg21.link/p2169r4) __PDF__
+*/
+#ifndef LBAL_CPP26_PLACEHOLDER_VARIABLES
+  #define LBAL_CPP26_PLACEHOLDER_VARIABLES 0
+#endif
+
+/**
+  @def LBAL_CPP26_STATIC_ASSERT_USER_MESSAGE
+  @brief Allow static assertions with user-generated messages
+  @details Equivalent SD-6 macro: `__cpp_static_assert`. This token
+  corresponds to the `202306L` variant, but it will have the value of the
+  latest supported variant, or `0` if this variant is not supported.
+  - [200410L](https://wg21.link/n1720)
+  - [201411L](https://wg21.link/N3928) __PDF__
+  - [202306L](https://wg21.link/p2741r3) __PDF__
+
+  @remarks `__cpp_static_assert` has multiple values associated with it from a
+  number of different proposals.
+*/
+#ifndef LBAL_CPP26_STATIC_ASSERT_USER_MESSAGE
+  #define LBAL_CPP26_STATIC_ASSERT_USER_MESSAGE 0
+#endif
+
+/**
+  @def LBAL_CPP26_STRUCTURED_BINDINGS_ATTRIBUTES
+  @brief Allow attributes for Structured Bindings
+  @details Equivalent SD-6 macro: `__cpp_structured_bindings`. This token
+  corresponds to the `202403L` variant, but it will have the value of the
+  latest supported variant, or `0` if this variant is not supported.
+  - [201606L](https://wg21.link/p0217r3)
+  - [202403L](https://wg21.link/p0609r3) __PDF__
+  - [202411L](https://wg21.link/p1061r10)
+
+  @remarks `__cpp_structured_bindings` has multiple values associated with it
+  from a number of different proposals.
+*/
+#ifndef LBAL_CPP26_STRUCTURED_BINDINGS_ATTRIBUTES
+  #define LBAL_CPP26_STRUCTURED_BINDINGS_ATTRIBUTES 0
+#endif
+
+/**
+  @def LBAL_CPP26_STRUCTURED_BINDINGS_PACK
+  @brief Structured Bindings can introduce a Pack
+  @details Equivalent SD-6 macro: `__cpp_structured_bindings`. This token
+  corresponds to the `202403L` variant, but it will have the value of the
+  latest supported variant, or `0` if this variant is not supported.
+  - [201606L](https://wg21.link/p0217r3)
+  - [202403L](https://wg21.link/p0609r3) __PDF__
+  - [202411L](https://wg21.link/p1061r10)
+
+  @remarks `__cpp_structured_bindings` has multiple values associated with it
+  from a number of different proposals.
+*/
+#ifndef LBAL_CPP26_STRUCTURED_BINDINGS_PACK
+  #define LBAL_CPP26_STRUCTURED_BINDINGS_PACK 0
+#endif
+
+/**
+  @def LBAL_CPP26_TEMPLATE_PARAMETERS
+  @brief Allow _concept_ and _variable-template_ _template-parameters_
+  @details Equivalent SD-6 macro: `__cpp_template_parameters`
+  - [202502L](https://wg21.link/p2841r7) __PDF__
+*/
+#ifndef LBAL_CPP26_TEMPLATE_PARAMETERS
+  #define LBAL_CPP26_TEMPLATE_PARAMETERS 0
+#endif
+
+/**
+  @def LBAL_CPP26_TRIVIAL_UNION
+  @brief Allow trivial `unions`
+  @details Equivalent SD-6 macro: `__cpp_trivial_union`
+  - [202502L](https://wg21.link/p3074r7)
+*/
+#ifndef LBAL_CPP26_TRIVIAL_UNION
+  #define LBAL_CPP26_TRIVIAL_UNION 0
+#endif
+
+/**
+  @def LBAL_CPP26_VARIADIC_FRIEND
+  @brief Support variadic friends
+  @details Equivalent SD-6 macro: `__cpp_variadic_friend`
+  - [202403L](https://wg21.link/p2893r3)
+*/
+#ifndef LBAL_CPP26_VARIADIC_FRIEND
+  #define LBAL_CPP26_VARIADIC_FRIEND 0
 #endif
 
 ///	@}	LBAL_CPP26
 
 /**
-  @name LBAL_CPP29
+  @name LBAL_CPP2D
 
   @brief Identify language features specific to the proposed C++29 Standard
 
-  @details C++29—which in draft form is referenced as C++2d—is undergoing 
-  active development. In order to allow testing, we track approved language 
+  @details C++29—which in draft form is referenced as C++2d—is undergoing
+  active development. In order to allow testing, we track approved language
   features here. Since this is all non-final, we use `LBAL_CPP2D_xxx` tokens
   instead of `LBAL_CPP29_xxx` tokens; upon finalization, we’ll update the
   token names and deprecate the old forms. Designation of formal SD-6 tokens
   tends to lag approval of proposals, so we will used the proposed tokens and
   derive our own tokens from those; where there is not even a proposed token,
-  we’ll make one up. Once official tokens are created, we will synchronize with 
+  we’ll make one up. Once official tokens are created, we will synchronize with
   them it and deprecate the speculative ones.
 
   @{
 */
 
 /**
-  @def LBAL_CPP29_PLACEHOLDER
+  @def LBAL_CPP2D_PRETEND
   @brief Placeholder.
-  @details Equivalent SD-6 macro: `__cpp_29_placeholder`
-  - [202903L](https://wg21.link/placeholder)
+  @details Equivalent SD-6 macro: `__cpp_2d_pretend`
+  - [202604L](https://wg21.link/placeholder)
 */
-#ifndef LBAL_CPP29_PRETEND
-  #define LBAL_CPP29_PRETEND 0
+#ifndef LBAL_CPP2D_PRETEND
+  #define LBAL_CPP2D_PRETEND 0
 #endif
 
-///	@}	LBAL_CPP29
+///	@}	LBAL_CPP2D
 
 /**
   @name Technical Specifications and Proposals
@@ -2540,14 +3117,14 @@
   @brief C++ Technical Specifications that have not (yet?) been Standardized.
 
   @details These are typically implemented somewhere, but have not garnered
-  enough support to merge into the Standard. If approved, these will eventually 
+  enough support to merge into the Standard. If approved, these will eventually
   be aliased—and then moved—into the appropriate Standard section, etc.
 
   @remarks (SEEME - bitweeder) The TSs can be highly mutable, and support
   should be considered very experimental. No effort at all will be expended to
   maintain backwards-compatibility with a TS once a feature has been voted in;
   it will be deprecated and eventually removed, with the official version
-  beinggated by an updated token. Relatedly, if a TS is dropped, we will 
+  being gated by an updated token. Relatedly, if a TS is dropped, we will
   immediately deprecate it, hide the token in our published docs, and drop it
   in the next major release.
 
@@ -2556,8 +3133,8 @@
 
 ///@cond LBAL_INTERNAL
 //	APIME These tokens related to the now-dropped
-//  [C++2a Contracts proposal](https://wg21.link/p0542r5). The feature was not 
-//  widely implemented, and since it’s been superseded by C++26 Contracts, the 
+//  [C++2a Contracts proposal](https://wg21.link/p0542r5). The feature was not
+//  widely implemented, and since it’s been superseded by C++26 Contracts, the
 //  token will be removed in a future release.
 #ifndef LBAL_CPPTS_ATTRIBUTE_ASSERT
   #define LBAL_CPPTS_ATTRIBUTE_ASSERT 0
@@ -4750,7 +5327,6 @@
   #define LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS 0
 #endif
 
-
 /**
   @def LBAL_LIBCPP20_INTERPOLATE
   @brief Add well-behaved interpolation for numbers and pointers
@@ -5261,14 +5837,14 @@
   been Standardized.
 
   @details These are typically implemented somewhere, but have not garnered
-  enough support to merge into the Standard. If approved, these will eventually 
+  enough support to merge into the Standard. If approved, these will eventually
   be aliased—and then moved—into the appropriate Standard section, etc.
 
   @remarks (SEEME - bitweeder) The TSs can be highly mutable, and support
   should be considered very experimental. No effort at all will be expended to
   maintain backwards-compatibility with a TS once a feature has been voted in;
   it will be deprecated and eventually removed, with the official version
-  beinggated by an updated token. Relatedly, if a TS is dropped, we will 
+  being gated by an updated token. Relatedly, if a TS is dropped, we will
   immediately deprecate it, hide the token in our published docs, and drop it
   in the next major release.
 
@@ -5503,60 +6079,56 @@
   @{
 */
 
+// clang-format off: Doxygen code example
 /**
   @name LBAL_VIS
 
   @brief Decorators to control symbol visibility in the ABI
 
-  @details These allow explicit control over what gets exported - and
-  subsequently imported - by the linker. This task is somewhat complicated by
-  different approaches on each platform toward what constitutes the contents
-  of a library, e.g., whether inline functions are header-only constructs or
-  whether they contribute object code to the library itself. We’ve noted
-  usage issues to be aware of, as well as some relevant historical oddities.
-  Note that some of these macros should be used conditionally; they should
-  not be used to decorate symbols directly, but should instead be used to
-  define decorators specific to a given project. Such decorators’ values
-  should be dependent upon whether the project is being built or used; when
-  building, set the decorator to the `EXPORT` variant of a given macro, but
-  when using the build product, set it to the `IMPORT` variant. Macros that
-  do not have multiple versions are not context-dependent and can be used
-  directly - or used to define a library-specific macro unconditionally.
+  @details These allow explicit control over what gets exported—and
+  subsequently imported—by the linker. This task is somewhat complicated by
+  different approaches on each platform toward what constitutes the contents of
+  a library, e.g., whether inline functions are header-only constructs or
+  whether they contribute object code to the library itself. We’ve noted usage
+  issues to be aware of, as well as some relevant historical oddities. Note
+  that some of these macros should be used conditionally; they should not be
+  used to decorate symbols directly, but should instead be used to define
+  decorators specific to a given project. Such decorators’ values should be
+  dependent upon whether the project is being built or used; when building, set
+  the decorator to the `EXPORT` variant of a given macro, but when using the
+  build product, set it to the `IMPORT` variant. Macros that do not have
+  multiple versions are not context-dependent and can be used directly—or
+  used to define a library-specific macro unconditionally.
 
-  If there are multiple declarations of a given symbol, all declarations
-  should have the same decorators; in particular, do not leave some
-  declarations undecorated. Failing to adhere to this policy will give
-  warnings and possibly unpredictable behavior with some compilers.
+  If there are multiple declarations of a given symbol, all declarations should
+  have the same decorators; in particular, do not leave some declarations
+  undecorated. Failing to adhere to this policy will give warnings and possibly
+  unpredictable behavior with some compilers.
 
   Establishing visibility rules for templates is fraught; read all the notes
   carefully before attempting to decorate templates of any kind, including
   classes containing member templates.
 
   Usage example:
-
-    #if MY_LIB_CONFIG_buiding
-
-    #define MY_LIB_VIS_CLASS                        LBAL_VIS_CLASS_EXPORT
-    #define MY_LIB_VIS_EXTERN_CLASS_TEMPLATE
-  LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT #define
-  MY_LIB_VIS_CLASS_TEMPLATE_INSTANTIATION
-  LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_EXPORT #define MY_LIB_VIS_FUNC
-  LBAL_VIS_FUNC_EXPORT #define MY_LIB_VIS_OVERLOADABLE_FUNC
-  LBAL_VIS_OVERLOADABLE_FUNC_EXPORT #define MY_LIB_VIS_EXCEPTION
-  LBAL_VIS_EXCEPTION_EXPORT #define MY_LIB_VIS_EXTERN LBAL_VIS_EXTERN_EXPORT
-
-    #else
-
-    #define MY_LIB_VIS_CLASS                        LBAL_VIS_CLASS_IMPORT
-    #define MY_LIB_VIS_EXTERN_CLASS_TEMPLATE
-  LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT #define
-  MY_LIB_VIS_CLASS_TEMPLATE_INSTANTIATION
-  LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_IMPORT #define MY_LIB_VIS_FUNC
-  LBAL_VIS_FUNC_IMPORT #define MY_LIB_VIS_OVERLOADABLE_FUNC
-  LBAL_VIS_OVERLOADABLE_FUNC_IMPORT #define MY_LIB_VIS_EXCEPTION
-  LBAL_VIS_EXCEPTION_IMPORT #define MY_LIB_VIS_EXTERN LBAL_VIS_EXTERN_IMPORT
-
-    #endif
+  ```cpp
+  #if MY_LIB_CONFIG_buiding
+    #define MY_LIB_VIS_CLASS LBAL_VIS_CLASS_EXPORT
+    #define MY_LIB_VIS_EXTERN_CLASS_TEMPLATE LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT
+    #define MY_LIB_VIS_CLASS_TEMPLATE_INSTANTIATION LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_EXPORT
+    #define MY_LIB_VIS_FUNC LBAL_VIS_FUNC_EXPORT
+    #define MY_LIB_VIS_OVERLOADABLE_FUNC LBAL_VIS_OVERLOADABLE_FUNC_EXPORT
+    #define MY_LIB_VIS_EXCEPTION LBAL_VIS_EXCEPTION_EXPORT
+    #define MY_LIB_VIS_EXTERN LBAL_VIS_EXTERN_EXPORT
+  #else
+    #define MY_LIB_VIS_CLASS LBAL_VIS_CLASS_IMPORT
+    #define MY_LIB_VIS_EXTERN_CLASS_TEMPLATE LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT
+    #define MY_LIB_VIS_CLASS_TEMPLATE_INSTANTIATION LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_IMPORT
+    #define MY_LIB_VIS_FUNC LBAL_VIS_FUNC_IMPORT
+    #define MY_LIB_VIS_OVERLOADABLE_FUNC LBAL_VIS_OVERLOADABLE_FUNC_IMPORT
+    #define MY_LIB_VIS_EXCEPTION LBAL_VIS_EXCEPTION_IMPORT
+    #define MY_LIB_VIS_EXTERN LBAL_VIS_EXTERN_IMPORT
+  #endif
+  ```
 
   In this example, `MY_LIB_CONFIG_buiding` is only defined when building the
   binary, and left undefined otherwise. Symbols should be decorated with
@@ -5586,6 +6158,7 @@
 
   @{
 */
+// clang-format on
 
 /**
   @def LBAL_VIS_HIDDEN
