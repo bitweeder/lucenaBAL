@@ -294,6 +294,153 @@
     #error "Don’t define LBAL_CPPTS_xxx externally."
   #endif  //	LBAL_CPPTS check
 
+  #if defined(LBAL_CPP14_AGGREGATE_NSDMI)                                      \
+      || defined(LBAL_CPP14_ATTRIBUTE_DEPRECATED)                              \
+      || defined(LBAL_CPP14_BINARY_LITERALS)                                   \
+      || defined(LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS)                     \
+      || defined(LBAL_CPP14_DECLTYPE_AUTO)                                     \
+      || defined(LBAL_CPP14_GENERIC_LAMBDAS)                                   \
+      || defined(LBAL_CPP14_INIT_CAPTURES)                                     \
+      || defined(LBAL_CPP14_RETURN_TYPE_DEDUCTION)                             \
+      || defined(LBAL_CPP14_SIZED_DEALLOCATION)                                \
+      || defined(LBAL_CPP14_VARIABLE_TEMPLATES)
+    #error "Don’t define LBAL_CPP14_xxx externally."
+  #endif  //	LBAL_CPP14 check
+
+  #if defined(LBAL_HAS_HEADER_ALGORITHM)                                       \
+      || defined(LBAL_HAS_HEADER_BITSET)                                       \
+      || defined(LBAL_HAS_HEADER_CASSERT)                                      \
+      || defined(LBAL_HAS_HEADER_CCTYPE)                                       \
+      || defined(LBAL_HAS_HEADER_CFLOAT)                                       \
+      || defined(LBAL_HAS_HEADER_CLIMITS)                                      \
+      || defined(LBAL_HAS_HEADER_CLOCALE)                                      \
+      || defined(LBAL_HAS_HEADER_CMATH)                                        \
+      || defined(LBAL_HAS_HEADER_COMPLEX)                                      \
+      || defined(LBAL_HAS_HEADER_CSETJMP)                                      \
+      || defined(LBAL_HAS_HEADER_CSIGNAL)                                      \
+      || defined(LBAL_HAS_HEADER_CSTDARG)                                      \
+      || defined(LBAL_HAS_HEADER_CSTDDEF)                                      \
+      || defined(LBAL_HAS_HEADER_CSTDIO)                                       \
+      || defined(LBAL_HAS_HEADER_CSTDLIB)                                      \
+      || defined(LBAL_HAS_HEADER_CSTRING)                                      \
+      || defined(LBAL_HAS_HEADER_CTIME)                                        \
+      || defined(LBAL_HAS_HEADER_DEQUE)                                        \
+      || defined(LBAL_HAS_HEADER_EXCEPTION)                                    \
+      || defined(LBAL_HAS_HEADER_FSTREAM)                                      \
+      || defined(LBAL_HAS_HEADER_FUNCTIONAL)                                   \
+      || defined(LBAL_HAS_HEADER_IOMANIP)                                      \
+      || defined(LBAL_HAS_HEADER_IOS)                                          \
+      || defined(LBAL_HAS_HEADER_IOSFWD)                                       \
+      || defined(LBAL_HAS_HEADER_IOSTREAM)                                     \
+      || defined(LBAL_HAS_HEADER_ISTREAM)                                      \
+      || defined(LBAL_HAS_HEADER_ITERATOR)                                     \
+      || defined(LBAL_HAS_HEADER_LIMITS)                                       \
+      || defined(LBAL_HAS_HEADER_LIST)                                         \
+      || defined(LBAL_HAS_HEADER_LOCALE)                                       \
+      || defined(LBAL_HAS_HEADER_MAP)                                          \
+      || defined(LBAL_HAS_HEADER_MEMORY)                                       \
+      || defined(LBAL_HAS_HEADER_NEW)                                          \
+      || defined(LBAL_HAS_HEADER_NUMERIC)                                      \
+      || defined(LBAL_HAS_HEADER_OSTREAM)                                      \
+      || defined(LBAL_HAS_HEADER_QUEUE)                                        \
+      || defined(LBAL_HAS_HEADER_SET)                                          \
+      || defined(LBAL_HAS_HEADER_SSTREAM)                                      \
+      || defined(LBAL_HAS_HEADER_STACK)                                        \
+      || defined(LBAL_HAS_HEADER_STDEXCEPT)                                    \
+      || defined(LBAL_HAS_HEADER_STREAMBUF)                                    \
+      || defined(LBAL_HAS_HEADER_STRING)                                       \
+      || defined(LBAL_HAS_HEADER_UTILITY)                                      \
+      || defined(LBAL_HAS_HEADER_VALARRAY)                                     \
+      || defined(LBAL_HAS_HEADER_VECTOR)
+    #error "Don’t define LBAL_HAS_HEADER_xxx externally."
+  #endif  //	LBAL_HAS_HEADER_xxx C++98/03 check
+
+  #if defined(LBAL_HAS_HEADER_ARRAY)                                           \
+      || defined(LBAL_HAS_HEADER_ATOMIC)                                       \
+      || defined(LBAL_HAS_HEADER_CFENV)                                        \
+      || defined(LBAL_HAS_HEADER_CHRONO)                                       \
+      || defined(LBAL_HAS_HEADER_CINTTYPES)                                    \
+      || defined(LBAL_HAS_HEADER_CONDITION_VARIABLE)                           \
+      || defined(LBAL_HAS_HEADER_CSTDINT)                                      \
+      || defined(LBAL_HAS_HEADER_CUCHAR)                                       \
+      || defined(LBAL_HAS_HEADER_FORWARD_LIST)                                 \
+      || defined(LBAL_HAS_HEADER_FUTURE)                                       \
+      || defined(LBAL_HAS_HEADER_INITIALIZER_LIST)                             \
+      || defined(LBAL_HAS_HEADER_MUTEX)                                        \
+      || defined(LBAL_HAS_HEADER_RANDOM)                                       \
+      || defined(LBAL_HAS_HEADER_RATIO)                                        \
+      || defined(LBAL_HAS_HEADER_REGEX)                                        \
+      || defined(LBAL_HAS_HEADER_SCOPED_ALLOCATOR)                             \
+      || defined(LBAL_HAS_HEADER_SYSTEM_ERROR)                                 \
+      || defined(LBAL_HAS_HEADER_THREAD)                                       \
+      || defined(LBAL_HAS_HEADER_TUPLE)                                        \
+      || defined(LBAL_HAS_HEADER_TYPE_TRAITS)                                  \
+      || defined(LBAL_HAS_HEADER_TYPEINDEX)                                    \
+      || defined(LBAL_HAS_HEADER_UNORDERED_MAP)                                \
+      || defined(LBAL_HAS_HEADER_UNORDERED_SET)                                \
+      || defined(LBAL_HAS_HEADER_CSTDALIGN)                                    \
+      || defined(LBAL_HAS_HEADER_CSTDBOOL)
+    #error "Don’t define LBAL_HAS_HEADER_xxx externally."
+  #endif  //	LBAL_HAS_HEADER_xxx C++11 check
+
+  #if defined(LBAL_HAS_HEADER_SHARED_MUTEX)
+    #error "Don’t define LBAL_HAS_HEADER_xxx externally."
+  #endif  //	LBAL_HAS_HEADER_xxx C++14 check
+
+  #if defined(LBAL_HAS_HEADER_ANY)                                             \
+      || defined(LBAL_HAS_HEADER_CHARCONV)                                     \
+      || defined(LBAL_HAS_HEADER_EXECUTION)                                    \
+      || defined(LBAL_HAS_HEADER_FILESYSTEM)                                   \
+      || defined(LBAL_HAS_HEADER_MEMORY_RESOURCE)                              \
+      || defined(LBAL_HAS_HEADER_OPTIONAL)                                     \
+      || defined(LBAL_HAS_HEADER_STRING_VIEW)                                  \
+      || defined(LBAL_HAS_HEADER_VARIANT)
+    #error "Don’t define LBAL_HAS_HEADER_xxx externally."
+  #endif  //	LBAL_HAS_HEADER_xxx C++17 check
+
+  #if defined(LBAL_HAS_HEADER_BARRIER)                                         \
+      || defined(LBAL_HAS_HEADER_BIT)                                          \
+      || defined(LBAL_HAS_HEADER_COMPARE)                                      \
+      || defined(LBAL_HAS_HEADER_CONCEPTS)                                     \
+      || defined(LBAL_HAS_HEADER_COROUTINE)                                    \
+      || defined(LBAL_HAS_HEADER_FORMAT)                                       \
+      || defined(LBAL_HAS_HEADER_LATCH)                                        \
+      || defined(LBAL_HAS_HEADER_NUMBERS)                                      \
+      || defined(LBAL_HAS_HEADER_RANGES)                                       \
+      || defined(LBAL_HAS_HEADER_SEMAPHORE)                                    \
+      || defined(LBAL_HAS_HEADER_SOURCE_LOCATION)                              \
+      || defined(LBAL_HAS_HEADER_SPAN)                                         \
+      || defined(LBAL_HAS_HEADER_STOP_TOKEN)                                   \
+      || defined(LBAL_HAS_HEADER_SYNCSTREAM)                                   \
+      || defined(LBAL_HAS_HEADER_VERSION)
+    #error "Don’t define LBAL_HAS_HEADER_xxx externally."
+  #endif  //	LBAL_HAS_HEADER_xxx C++20 check
+
+  #if defined(LBAL_HAS_HEADER_EXPECTED)                                        \
+      || defined(LBAL_HAS_HEADER_FLAT_MAP)                                     \
+      || defined(LBAL_HAS_HEADER_FLAT_SET)                                     \
+      || defined(LBAL_HAS_HEADER_GENERATOR)                                    \
+      || defined(LBAL_HAS_HEADER_MDSPAN)                                       \
+      || defined(LBAL_HAS_HEADER_PRINT)                                        \
+      || defined(LBAL_HAS_HEADER_SPANSTREAM)                                   \
+      || defined(LBAL_HAS_HEADER_STACKTRACE)                                   \
+      || defined(LBAL_HAS_HEADER_STDATOMIC_H)                                  \
+      || defined(LBAL_HAS_HEADER_STDFLOAT)
+    #error "Don’t define LBAL_HAS_HEADER_xxx externally."
+  #endif  //	LBAL_HAS_HEADER_xxx C++23 check
+
+  #if defined(LBAL_HAS_HEADER_DEBUGGING)                                       \
+      || defined(LBAL_HAS_HEADER_HAZARD_POINTER)                               \
+      || defined(LBAL_HAS_HEADER_HIVE)                                         \
+      || defined(LBAL_HAS_HEADER_INPLACE_VECTOR)                               \
+      || defined(LBAL_HAS_HEADER_LINALG)                                       \
+      || defined(LBAL_HAS_HEADER_RCU)                                          \
+      || defined(LBAL_HAS_HEADER_SIMD)                                         \
+      || defined(LBAL_HAS_HEADER_CONTRACTS)                                    \
+      || defined(LBAL_HAS_HEADER_TEXT_ENCODING)
+    #error "Don’t define LBAL_HAS_HEADER_xxx externally."
+  #endif  //	LBAL_HAS_HEADER_xxx C++26 check
+
   #if defined(LBAL_C99_PREPROCESSOR)
     #error "Don’t define LBAL_C99_xxx externally."
   #endif  //	LBAL_C99 check
