@@ -5831,6 +5831,87 @@
 ///	@}	LBAL_LIBCPP20
 
 /**
+  @name LBAL_LIBCPP23
+
+  @brief These are all taken from features that have been incorporated into
+  the C++23 Standard.
+
+  @{
+*/
+
+/**
+  @def LBAL_LIBCPP23_ADAPTOR_ITERATOR_PAIR_CONSTRUCTOR
+  @brief Iterators `pair` constructors for `stack` and `queue`
+  @details Equivalent SD-6 macro: `__cpp_lib_adaptor_iterator_pair_constructor`
+  - [202106L](https://wg21.link/p1425r4) __PDF__
+
+  @sa `<queue>` `<stack>`
+*/
+#ifndef LBAL_LIBCPP23_ADAPTOR_ITERATOR_PAIR_CONSTRUCTOR
+  #define LBAL_LIBCPP23_ADAPTOR_ITERATOR_PAIR_CONSTRUCTOR 0
+#endif
+
+/**
+  @def LBAL_LIBCPP23_ALGORITHM_ITERATOR_REQUIREMENTS
+  @brief Ranges iterators as inputs to non-Ranges algorithms
+  @details Equivalent SD-6 macro: `__cpp_lib_algorithm_iterator_requirements`
+  - [202207L](https://wg21.link/p2408r5) __PDF__
+
+  @sa `<algorithm>` `<memory>` `<numeric>`
+*/
+#ifndef LBAL_LIBCPP23_ALGORITHM_ITERATOR_REQUIREMENTS
+  #define LBAL_LIBCPP23_ALGORITHM_ITERATOR_REQUIREMENTS 0
+#endif
+
+///	@}	LBAL_LIBCPP23
+
+/**
+  @name LBAL_LIBCPP26
+
+  @brief These are all taken from features that have been incorporated into
+  the C++26 Standard.
+
+  @{
+*/
+
+/**
+  @def LBAL_LIBCPP26_TYPE_IDENTITY
+  @brief Add the `std::identity` metafunction
+  @details Equivalent SD-6 macro: `__cpp_lib_type_identity`
+  - [201806L](https://wg21.link/P0887R1) __PDF__
+
+  @sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP26_TYPE_IDENTITY
+  #define LBAL_LIBCPP26_TYPE_IDENTITY 0
+#endif
+
+///	@}	LBAL_LIBCPP26
+
+/**
+  @name LBAL_LIBCPP2D
+
+  @brief These are all taken from features that have been incorporated into
+  the C++2d Draft Standard.
+
+  @{
+*/
+
+/**
+  @def LBAL_LIBCPP2D_PRETEND
+  @brief Placeholder
+  @details Equivalent SD-6 macro: `__cpp_lib_pretend`
+  - [202604L](https://wg21.link/PLACEHOLDER) __PDF__
+
+  @sa `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP2D_PRETEND
+  #define LBAL_LIBCPP2D_PRETEND 0
+#endif
+
+///	@}	LBAL_LIBCPP2D
+
+/**
   @name LBAL_LIBCPPTS
 
   @brief C++ Technical Specifications for library features that have not (yet?)
