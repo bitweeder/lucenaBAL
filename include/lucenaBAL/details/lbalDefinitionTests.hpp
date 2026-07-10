@@ -282,11 +282,6 @@
     #error "Don’t define LBAL_CPP26_xxx externally."
   #endif  //	LBAL_CPP26 check
 
-  #if defined(LBAL_CPP2D_PRETEND)
-
-    #error "Don’t define LBAL_CPP2D_xxx externally."
-  #endif  //	LBAL_CPP2D check
-
   #if defined(LBAL_CPPTS_ATTRIBUTE_ASSERT)                                     \
       || defined(LBAL_CPPTS_ATTRIBUTE_ENSURES)                                 \
       || defined(LBAL_CPPTS_ATTRIBUTE_EXPECTS)                                 \

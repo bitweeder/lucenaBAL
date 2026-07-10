@@ -2,7 +2,7 @@
 
 # Lucena Build Abstraction Library
 
-The purpose of the Lucena Build Abstraction Library (**lucenaBAL**) is to provide tools to smooth over the differences between build environments when working with C++11 and later Standards. It’s a foundational tool that allows code built upon it to remain agnostic to compilers, C++ Standard Library variants, and aspects of the runtime. Note that lucenaBAL is **not** a build system, but rather a C++ header library with a collection of build system support scripts.
+The purpose of the Lucena Build Abstraction Library (**lucenaBAL**) is to provide tools to smooth over the differences between build environments when working with C++11 and later Standards (currently up thru the entirety of C++26 and proposals adopted into C++2d). It’s a foundational tool that allows code built upon it to remain agnostic to compilers, C++ Standard Library variants, and aspects of the runtime. Note that lucenaBAL is **not** a build system, but rather a C++ header library with a collection of build system support scripts.
 
 ## Motivating Example
 
@@ -45,7 +45,7 @@ sort_vector (
 
 ## Getting Started
 
-[CMake](https://cmake.org/) scripts are provided which will install the library itself, build and run test applications, and generate documentation. We require at least CMake 3.15, so that will need to be [installed first](https://cmake.org/download/).
+[CMake](https://cmake.org/) scripts are provided which will install the library itself, build and run test applications, and generate documentation. We require at least CMake 3.30, so that will need to be [installed first](https://cmake.org/download/).
 
 More detailed instructions are provided below, but for a quick start, simply clone the repository, open up a terminal window, change to the local repo directory, and execute the following:
 
@@ -67,7 +67,7 @@ Since lucenaBAL is a header-only library, it is not necessary to link to it; sim
 
 ## Prerequisites
 
-lucenaBAL requires compiler support for C++11 or later. It has been tested with **gcc** `6` thru `16.1`, **Microsoft Visual Studio** `2015 Update 3` thru MSVS `2022 17.11.4`, **Xcode** `9` thru `26.4.x`, and **llvm/clang** `6` thru `23.1.x`. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
+lucenaBAL requires compiler support for C++11 or later. It has been tested with many versions of **gcc**, **Microsoft Visual Studio**, **Xcode**, and **llvm/clang**. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
 
 ## Building, Installing, and Testing
 
@@ -93,11 +93,6 @@ Line 4 can be replaced by `cd build && sudo make install` when installing to a s
 Linting is possible by changing line 4 to `cmake --build build --target format` to run `clang-format` against all source files, which is handy if you’re not using `git` prehooks or some code editor facility to lint as you go. Relatedly, using `format-dry` instead of `format` will preview the changes instead of simply applying them.
 
 Docs can also be generated, if desired, and are left in `build/docs`.
-
-## Planning
-Tokens deprecated prior to the official lucenaBAL 2.0 release—in particular, placeholder tokens superseded by formalized C++20/C++23 variants—will be removed as part of the eventual lucenaBAL 3.0 release, but will remain available until then.
-
-As always, prefer to use the non-deprecated version of a token, especially when starting a new project.
 
 ## To-Do
 _Roughly in order of precedence:_

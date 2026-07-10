@@ -1145,19 +1145,11 @@
 
 //	C++26 features.
 
-#if !defined(LBAL_LIBCPP26_PRETEND)
-  #if __cpp_lib_pretend >= 202304L
-    #define LBAL_LIBCPP26_PRETEND __cpp_lib_pretend
+#if !defined(LBAL_LIBCPP26_ALIGNED_ACCESSOR)
+  #if __cpp_lib_aligned_accessor >= 202411L
+    #define LBAL_LIBCPP26_ALIGNED_ACCESSOR __cpp_lib_aligned_accessor
   #endif
-#endif  //	LBAL_LIBCPP26_PRETEND
-
-//	C++2d features.
-
-#if !defined(LBAL_LIBCPP2D_PRETEND)
-  #if __cpp_lib_pretend >= 202604L
-    #define LBAL_LIBCPP2D_PRETEND __cpp_lib_pretend
-  #endif
-#endif  //	LBAL_LIBCPP2D_PRETEND
+#endif  //	LBAL_LIBCPP26_ALIGNED_ACCESSOR
 
 //	Technical Specifications
 
@@ -1998,7 +1990,8 @@ LBAL_CPP_WARNING(
   We “fail off” if we have no header detection method available.
 */
 
-//  placeholder
+//  (FIXME - bitweeder) These are on hold till the associated proposals
+//  are published publicly.
 
 /*
   Token Tests
@@ -3820,3 +3813,13 @@ LBAL_CPP_WARNING(
 )
   #endif  // LBAL_HAS_HEADER_ test
 #endif    // LBAL_LIBCPP23_ALGORITHM_ITERATOR_REQUIREMENTS
+
+#if LBAL_LIBCPP26_ALIGNED_ACCESSOR
+  #if LBAL_HAS_HEADER_MDSPAN != 1
+    #undef LBAL_LIBCPP26_ALIGNED_ACCESSOR
+    #define LBAL_LIBCPP26_ALIGNED_ACCESSOR 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_ALIGNED_ACCESSOR: <mdspan> not found"
+)
+  #endif  // LBAL_HAS_HEADER_MDSPAN
+#endif    // LBAL_LIBCPP26_ALIGNED_ACCESSOR

@@ -699,9 +699,8 @@
 
 //	C++2d features
 
-#if !defined(LBAL_CPP2D_PRETEND) && (__cpp_2d_pretend >= 202604L)
-  #define LBAL_CPP2D_PRETEND __cpp_2d_pretend
-#endif
+//  (FIXME - bitweeder) These are on hold till the associated proposals
+//  are published publicly.
 
 //	C++ Attributes
 //
