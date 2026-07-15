@@ -386,6 +386,7 @@
       || defined(LBAL_HAS_HEADER_CHARCONV)                                     \
       || defined(LBAL_HAS_HEADER_EXECUTION)                                    \
       || defined(LBAL_HAS_HEADER_FILESYSTEM)                                   \
+      || defined(LBAL_HAS_HEADER_EXPERIMENTAL_FILESYSTEM)                      \
       || defined(LBAL_HAS_HEADER_MEMORY_RESOURCE)                              \
       || defined(LBAL_HAS_HEADER_OPTIONAL)                                     \
       || defined(LBAL_HAS_HEADER_STRING_VIEW)                                  \
@@ -397,7 +398,9 @@
       || defined(LBAL_HAS_HEADER_BIT)                                          \
       || defined(LBAL_HAS_HEADER_COMPARE)                                      \
       || defined(LBAL_HAS_HEADER_CONCEPTS)                                     \
+      || defined(LBAL_HAS_HEADER_EXPERIMENTAL_CONCEPTS)                        \
       || defined(LBAL_HAS_HEADER_COROUTINE)                                    \
+      || defined(LBAL_HAS_HEADER_EXPERIMENTAL_COROUTINE)                       \
       || defined(LBAL_HAS_HEADER_FORMAT)                                       \
       || defined(LBAL_HAS_HEADER_LATCH)                                        \
       || defined(LBAL_HAS_HEADER_NUMBERS)                                      \
