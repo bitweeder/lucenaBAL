@@ -1336,46 +1336,7 @@
 
 //	Technical Specifications
 
-//	Networking functionality spans an array of new headers; we only check for
-//	the presence of the convenience header, <net>.
-#if !defined(LBAL_LIBCPPTS_NETWORKING)
-  #if __cpp_lib_net >= 1
-    #define LBAL_LIBCPPTS_NETWORKING __cpp_lib_net
-    #define LBAL_LIBCPPTS_NETWORKING_EXP 0
-  #endif
-#endif  //	LBAL_LIBCPPTS_NETWORKING
-
-#if !defined(LBAL_LIBCPPTS_NETWORKING_EXP)
-  #if __cpp_lib_experimental_net >= 1
-    #define LBAL_LIBCPPTS_NETWORKING_EXP __cpp_lib_experimental_net
-  #endif
-#endif  //	LBAL_LIBCPPTS_NETWORKING_EXP
-
-#if !defined(LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE)
-  #if __cpp_lib_net_extensible >= 1
-    #define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE __cpp_lib_net_extensible
-    #define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP 0
-  #endif
-#endif  //	LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE
-
-#if !defined(LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP)
-  #if __cpp_lib_experimental_net_extensible >= 1
-    #define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP                            \
-      __cpp_lib_experimental_net_extensible
-  #endif
-#endif  //	LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP
-
-#if !defined(LBAL_LIBCPPTS_OBSERVER_PTR)
-  #if __cpp_lib_observer_ptr >= 1
-    #define LBAL_LIBCPPTS_OBSERVER_PTR __cpp_lib_observer_ptr
-  #endif
-#endif  //	LBAL_LIBCPPTS_OBSERVER_PTR
-
-#if !defined(LBAL_LIBCPPTS_OBSERVER_PTR_EXP)
-  #if __cpp_lib_experimental_observer_ptr >= 1
-    #define LBAL_LIBCPPTS_OBSERVER_PTR_EXP __cpp_lib_experimental_observer_ptr
-  #endif
-#endif  //	LBAL_LIBCPPTS_OBSERVER_PTR_EXP
+//  None currently supported.
 
 /*------------------------------------------------------------------------------
   Implementation-specific Overrides

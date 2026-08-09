@@ -2080,7 +2080,7 @@
   @def LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM
   @brief Allow `dynamic_cast`, polymorphic `typeid` in `constexpr` functions
   @details Equivalent SD-6 macro: `__cpp_constexpr`. This token corresponds
-  to the [201811L](https://wg21.link/P1002R1) variant, but it will have the
+  to the [201811L](https://wg21.link/P1327R1) variant, but it will have the
   value of the latest supported variant, or `0` if this variant is not
   supported.
   - [200704L](https://wg21.link/N2235) __PDF__
@@ -7079,75 +7079,7 @@
   @{
 */
 
-/**
-  @def LBAL_LIBCPPTS_NETWORKING
-
-  Equivalent SD-6 macro: `__cpp_lib_net`
-
-  https://wg21.link/n4734 __PDF__
-*/
-#ifndef LBAL_LIBCPPTS_NETWORKING
-  #define LBAL_LIBCPPTS_NETWORKING 0
-#endif
-
-/**
-  @def LBAL_LIBCPPTS_NETWORKING_EXP
-
-  Equivalent SD-6 macro: `__cpp_lib_experimental_net`
-
-  https://wg21.link/n4734 __PDF__
-*/
-#ifndef LBAL_LIBCPPTS_NETWORKING_EXP
-  #define LBAL_LIBCPPTS_NETWORKING_EXP 0
-#endif
-
-/**
-  @def LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE
-
-  Equivalent SD-6 macro: `__cpp_lib_net_extensible`
-
-  https://wg21.link/n4734 __PDF__
-*/
-#ifndef LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE
-  #define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE 0
-#endif
-
-/**
-  @def LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP
-
-  Equivalent SD-6 macro: `__cpp_lib_experimental_net_extensible`
-
-  https://wg21.link/n4734 __PDF__
-*/
-#ifndef LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP
-  #define LBAL_LIBCPPTS_NETWORKING_EXTENSIBLE_EXP 0
-#endif
-
-/**
-  @def LBAL_LIBCPPTS_OBSERVER_PTR
-
-  Equivalent SD-6 macro: `__cpp_lib_observer_ptr`
-
-  https://wg21.link/n4282 __PDF__
-  https://wg21.link/n4758
-*/
-#ifndef LBAL_LIBCPPTS_OBSERVER_PTR
-  #define LBAL_LIBCPPTS_OBSERVER_PTR 0
-#endif
-
-/**
-  @def LBAL_LIBCPPTS_OBSERVER_PTR_EXP
-
-  Equivalent SD-6 macro: `__cpp_lib_experimental_observer_ptr`
-
-  https://wg21.link/n4282 __PDF__
-  https://wg21.link/n4758
-*/
-#ifndef LBAL_LIBCPPTS_OBSERVER_PTR_EXP
-  #define LBAL_LIBCPPTS_OBSERVER_PTR_EXP 0
-#endif
-
-///	@}	LBAL_LIBCPP20
+///	@}	LBAL_LIBCPPTS
 
 ///	@}	lbal_library
 
