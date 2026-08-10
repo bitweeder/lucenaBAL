@@ -146,8 +146,8 @@
   //	SEEME - bitweeder
   //	This will probably need to be conditionally handled in a later version of
   //	gcc if they deprecate `__EXCEPTIONS`.
-  #if !defined(LBAL_CPP98_EXCEPTIONS) && __EXCEPTIONS
-    #define LBAL_CPP98_EXCEPTIONS 199711L
+  #if !defined(LBAL_CPP03_EXCEPTIONS) && __EXCEPTIONS
+    #define LBAL_CPP03_EXCEPTIONS 199711L
   #endif
 
   //	It’s unclear whether we can count on `__cpp_rtti` being unset if this
@@ -157,8 +157,8 @@
   //	SEEME - bitweeder
   //	This will probably need to be conditionally handled in a later version of
   //	gcc if they deprecate `__GXX_RTTI`.
-  #if !defined(LBAL_CPP98_RTTI) && __GXX_RTTI
-    #define LBAL_CPP98_RTTI 199711L
+  #if !defined(LBAL_CPP03_RTTI) && __GXX_RTTI
+    #define LBAL_CPP03_RTTI 199711L
   #endif
 
   //	C++11 features

@@ -38,12 +38,12 @@
 //	used in case the newer-style is unsupported, so they are checked after
 //	the SD-6 checks have been performed.
 
-  #if !defined(LBAL_CPP98_EXCEPTIONS) && __has_feature(__cxx_exceptions__)
-    #define LBAL_CPP98_EXCEPTIONS 199711L
+  #if !defined(LBAL_CPP03_EXCEPTIONS) && __has_feature(__cxx_exceptions__)
+    #define LBAL_CPP03_EXCEPTIONS 199711L
   #endif
 
-  #if !defined(LBAL_CPP98_RTTI) && __has_feature(__cxx_exceptions__)
-    #define LBAL_CPP98_RTTI 199711L
+  #if !defined(LBAL_CPP03_RTTI) && __has_feature(__cxx_exceptions__)
+    #define LBAL_CPP03_RTTI 199711L
   #endif
 
 //	C++20 features

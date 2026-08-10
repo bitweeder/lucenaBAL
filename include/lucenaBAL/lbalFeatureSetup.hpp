@@ -951,7 +951,7 @@
 */
 
 /**
-  @name LBAL_CPP98
+  @name LBAL_CPP03
   These are here only because compilers can be made to disable specific
   features for various reasons and we want to have a universal way of
   determining whether that’s happened.
@@ -960,7 +960,7 @@
 */
 
 /**
-  @def LBAL_CPP98_EXCEPTIONS
+  @def LBAL_CPP03_EXCEPTIONS
   @brief Language-level support for C++ Exceptions
   @details This can be conditionally disabled at build-time, so we can’t rely on
   a language version test to detect it.
@@ -969,12 +969,12 @@
   of `0` if the proposal described here is not supported.
   - `199711L` [N1146](https://wg21.link/N1146) C++98 Final Working Draft
 */
-#ifndef LBAL_CPP98_EXCEPTIONS
-  #define LBAL_CPP98_EXCEPTIONS 0
+#ifndef LBAL_CPP03_EXCEPTIONS
+  #define LBAL_CPP03_EXCEPTIONS 0
 #endif
 
 /**
-  @def LBAL_CPP98_RTTI
+  @def LBAL_CPP03_RTTI
   @brief Language-level support for run-time type identification (RTTI)
   @details This can be conditionally disabled at build-time, so we can’t rely on
   a language version test to detect it.
@@ -983,11 +983,11 @@
   if the proposal described here is not supported.
   - `199711L` [N1146](https://wg21.link/N1146) C++98 Final Working Draft
 */
-#ifndef LBAL_CPP98_RTTI
-  #define LBAL_CPP98_RTTI 0
+#ifndef LBAL_CPP03_RTTI
+  #define LBAL_CPP03_RTTI 0
 #endif
 
-///	@}	LBAL_CPP98
+///	@}	LBAL_CPP03
 
 /**
   @name LBAL_CPP11
@@ -1014,7 +1014,7 @@
   @def LBAL_CPP11_ALIAS_TEMPLATES
   @brief Allow type aliases to be templated.
   @details SD-6 equivalent: `__cpp_alias_templates >= 200704L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `200704L` [N2258 __PDF__](https://wg21.link/N2258) Templates Aliases
 */
 #ifndef LBAL_CPP11_ALIAS_TEMPLATES
@@ -1025,7 +1025,7 @@
   @def LBAL_CPP11_ATTRIBUTES
   @brief Formalize attributes as a language feature.
   @details SD-6 equivalent: `__cpp_attributes >= 200809L`. This token will have
-  a value of `0` if the proposal described here is not supported.`
+  a value of `0` if the proposal described here is not supported.
   - `200809L` [N2761 __PDF__](https://wg21.link/N2761) Towards support for
   attributes in C++ (Revision 6)
 */
@@ -1038,7 +1038,7 @@
   @brief Optimization hint when compiling with certain memory models
   @details SD-6 equivalent: `__has_cpp_attribute(carries_dependency) >=
   200809L`. This token will have a value of `0` if the proposal described here
-  is not supported.`
+  is not supported.
   - `200809L` [N2782 __PDF__](https://wg21.link/N2782) C++ Data-Dependency
   Ordering: Function Annotation
 */
@@ -1051,7 +1051,7 @@
   @brief Indicate that a function does not return
   @details SD-6 equivalent: `__has_cpp_attribute(noreturn) >= 200809L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `200809L` [N2761 __PDF__](https://wg21.link/N2761) Towards support for
   attributes in C++ (Revision 6)
 */
@@ -1065,7 +1065,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 200704L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `200704L` [N2235 __PDF__](https://wg21.link/N2235) Generalized Constant
   Expressions—Revision 5
 */
@@ -1077,7 +1077,7 @@
   @def LBAL_CPP11_DECLTYPE
   @brief Query the type of an expression
   @details SD-6 equivalent: `__cpp_decltype >= 200707L`. This token will have a
-  value of `0` if the proposal described here is not supported.`
+  value of `0` if the proposal described here is not supported.
   - `200707L` [N2343 __PDF__](https://wg21.link/N2343) Decltype (revision 7):
   proposed wording
 */
@@ -1090,7 +1090,7 @@
   @brief Delegating constructors
   @details SD-6 equivalent: `__cpp_delegating_constructors >= 200604L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `200604L` [N1986 __PDF__](https://wg21.link/N1986) Delegating Constructors
   (revision 3)
 */
@@ -1105,7 +1105,7 @@
   that `__cpp_inheriting_constructors` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
-  supported.`
+  supported.
   - `200802L` [N2540](https://wg21.link/N2540) Inheriting Constructors (revision
   5)
 */
@@ -1117,7 +1117,7 @@
   @def LBAL_CPP11_INITIALIZER_LISTS
   @brief Initializer lists
   @details SD-6 equivalent: `__cpp_initializer_lists >= 200806L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `200806L` [N2672](https://wg21.link/N2672) Initializer List proposed wording
 */
 #ifndef LBAL_CPP11_INITIALIZER_LISTS
@@ -1128,7 +1128,7 @@
   @def LBAL_CPP11_LAMBDAS
   @brief Support for Lambda functions
   @details SD-6 equivalent: `__cpp_lambdas >= 200907L`. This token will have a
-  value of `0` if the proposal described here is not supported.`
+  value of `0` if the proposal described here is not supported.
   - `200907L` [N2927 __PDF__](https://wg21.link/N2927) New wording for C++0x
   Lambdas (rev. 2)
 */
@@ -1148,7 +1148,7 @@
   @def LBAL_CPP11_NSDMI
   @brief Support for non-static data member initializers.
   @details SD-6 equivalent: `__cpp_nsdmi >= 200809L`. This token will have a
-  value of `0` if the proposal described here is not supported.`
+  value of `0` if the proposal described here is not supported.
   - `200809L` [N2756](https://wg21.link/N2756) Non-static data member
   initializers
 */
@@ -1162,7 +1162,7 @@
   @details SD-6 equivalent: `__cpp_range_based_for >= 200907L`. Note that
   `__cpp_range_based_for` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `200907L` [N2930](https://wg21.link/N2930) Range-Based For Loop Wording
   (Without Concepts)
 */
@@ -1174,7 +1174,7 @@
   @def LBAL_CPP11_RAW_STRINGS
   @brief Support for raw string literals
   @details SD-6 equivalent: `__cpp_raw_strings >= 200710L`. This token will have
-  a value of `0` if the proposal described here is not supported.`
+  a value of `0` if the proposal described here is not supported.
   - `200710L` [N2442](https://wg21.link/N2442) Raw and Unicode String Literals;
   Unified Proposal (Rev. 2)
 */
@@ -1186,7 +1186,7 @@
   @def LBAL_CPP11_REF_QUALIFIERS
   @brief Extend move semantics to *this
   @details SD-6 equivalent: `__cpp_ref_qualifiers >= 200710L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `200710L` [N2439](https://wg21.link/N2439) Extending move semantics to *this
   (revised wording)
 */
@@ -1198,7 +1198,7 @@
   @def LBAL_CPP11_RVALUE_REFERENCES
   @brief Add rvalue references
   @details SD-6 equivalent: `__cpp_rvalue_references >= 200610L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `200610L` [N2118](https://wg21.link/N2118) A Proposal to Add an Rvalue
   Reference to the C++ Language: Proposed Wording: Revision 3
 */
@@ -1212,7 +1212,7 @@
   @details SD-6 equivalent: `__cpp_static_assert >= 200410L`. Note that
   `__cpp_static_assert` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `200410L` [N1720](https://wg21.link/N1720) Proposal to Add Static Assertions
   to the Core Language (Revision 3)
 */
@@ -1239,7 +1239,7 @@
   @def LBAL_CPP11_UNICODE_CHARACTERS
   @brief Add `char16_t` and `char32_t` with requisite Unicode encoding
   @details SD-6 equivalent: `__cpp_unicode_characters >= 200704L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `200704L` [N2249](https://wg21.link/N2249) New Character Types in C++
 */
 #ifndef LBAL_CPP11_UNICODE_CHARACTERS
@@ -1250,7 +1250,7 @@
   @def LBAL_CPP11_UNICODE_LITERALS
   @brief Support for Unicode string literals
   @details SD-6 equivalent: `__cpp_unicode_literals >= 200710L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `200710L` [N2442](https://wg21.link/N2442) Raw and Unicode String Literals;
   Unified Proposal (Rev. 2)
 */
@@ -1262,7 +1262,7 @@
   @def LBAL_CPP11_USER_DEFINED_LITERALS
   @brief Support for user-defined literals
   @details SD-6 equivalent: `__cpp_user_defined_literals >= 200809L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `200809L` [N2765 __PDF__](https://wg21.link/N2765) User-defined Literals
   (aka. Extensible Literals (revision 5))
 */
@@ -1274,7 +1274,7 @@
   @def LBAL_CPP11_VARIADIC_TEMPLATES
   @brief Support for templates with variable numbers of arguments
   @details SD-6 equivalent: `__cpp_variadic_templates >= 200704L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `200704L` [N2242 __PDF__](https://wg21.link/N2242) Proposed Wording for
   Variadic Templates (Revision 2)
 */
@@ -1298,7 +1298,7 @@
   @brief Relax the requirements on aggregates and specify aggregate member
   initialization
   @details SD-6 equivalent: `__cpp_aggregate_nsdmi >= 201304L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201304L` [N3653](https://wg21.link/N3653) Member initializers and
   aggregates
 */
@@ -1311,7 +1311,7 @@
   @brief Support for marking symbols as deprecated
   @details SD-6 equivalent: `__has_cpp_attribute(deprecated) >= 201309L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201309L` [N3760](https://wg21.link/N3760) [[deprecated]] attribute
 */
 #ifndef LBAL_CPP14_ATTRIBUTE_DEPRECATED
@@ -1322,7 +1322,7 @@
   @def LBAL_CPP14_BINARY_LITERALS
   @brief Add binary literal support.
   @details SD-6 equivalent: `__cpp_binary_literals >= 201304L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201304L` [N3472 __PDF__](https://wg21.link/N3472) Binary Literals in the C+
   + Core Language
 */
@@ -1337,7 +1337,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 201304L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201304L` [N3652](https://wg21.link/N3652) Relaxing constraints on constexpr
   functions / constexpr member functions and implicit const
 */
@@ -1349,7 +1349,7 @@
   @def LBAL_CPP14_DECLTYPE_AUTO
   @brief Allow deduced return types and `decltype (auto)`
   @details SD-6 equivalent: `__cpp_decltype_auto >= 201304L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201304L` [N3638](https://wg21.link/N3638) Return type deduction for normal
   functions
 */
@@ -1363,7 +1363,7 @@
   @details SD-6 equivalent: `__cpp_generic_lambdas >= 201304L`. Note that
   `__cpp_generic_lambdas` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201304L` [N3649](https://wg21.link/N3649) Generic (Polymorphic) Lambda
   Expressions (Revision 3)
 */
@@ -1377,7 +1377,7 @@
   @details SD-6 equivalent: `__cpp_init_captures >= 201304L`. Note that
   `__cpp_init_captures` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201304L` [N3648](https://wg21.link/N3648) Wording Changes for Generalized
   Lambda-capture
 */
@@ -1389,7 +1389,7 @@
   @def LBAL_CPP14_RETURN_TYPE_DEDUCTION
   @brief Support for return type deduction for normal functions
   @details SD-6 equivalent: `__cpp_return_type_deduction >= 201304L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201304L` [N3638](https://wg21.link/N3638) Return type deduction for normal
   functions
 */
@@ -1401,7 +1401,7 @@
   @def LBAL_CPP14_SIZED_DEALLOCATION
   @brief Make available a global `operator delete` that takes a size argument
   @details SD-6 equivalent: `__cpp_sized_deallocation >= 201309L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201309L` [N3778](https://wg21.link/N3778) C++ Sized Deallocation
 
   @remark Some compilers disable this by default since it’s an ABI-breaking
@@ -1415,7 +1415,7 @@
   @def LBAL_CPP14_VARIABLE_TEMPLATES
   @brief Support for variable templates
   @details SD-6 equivalent: `__cpp_variable_templates >= 201304L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201304L` [N3651 __PDF__](https://wg21.link/N3651) Variable Templates
   (Revision 1)
 */
@@ -1439,7 +1439,7 @@
   @def LBAL_CPP17_AGGREGATE_BASES
   @brief Relax the restrictions on aggregate initialization.
   @details SD-6 equivalent: `__cpp_aggregate_bases >= 201603L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201603L` [P0017R1](https://wg21.link/P0017R1) Extension to aggregate
   initialization
 */
@@ -1451,7 +1451,7 @@
   @def LBAL_CPP17_ALIGNED_NEW
   @brief Specify handling of dynamic memory allocation for over-aligned data.
   @details SD-6 equivalent: `__cpp_aligned_new >= 201606L`. This token will have
-  a value of `0` if the proposal described here is not supported.`
+  a value of `0` if the proposal described here is not supported.
   - `201606L` [P0035R4](https://wg21.link/P0035R4) Dynamic memory allocation for
   over-aligned data
 */
@@ -1464,7 +1464,7 @@
   @brief Indicate that a case within a switch statements falls through
   @details SD-6 equivalent: `__has_cpp_attribute(fallthrough) >= 201603L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201603L` [P0188R1 __PDF__](https://wg21.link/P0188R1) Wording for
   [[fallthrough]] attribute
 */
@@ -1477,7 +1477,7 @@
   @brief Indicate that a name or entity is possibly intentionally unused
   @details SD-6 equivalent: `__has_cpp_attribute(maybe_unused) >= 201603L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201603L` [P0212R1 __PDF__](https://wg21.link/P0212R1) Wording for
   [[maybe_unused]] attribute
 */
@@ -1492,7 +1492,7 @@
   that `__has_cpp_attribute(nodiscard)` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201603L` [P0189R1 __PDF__](https://wg21.link/P0189R1) Wording for
   [[nodiscard]] attribute
 */
@@ -1504,7 +1504,7 @@
   @def LBAL_CPP17_CAPTURE_STAR_THIS
   @brief Allow lambda capture of `*this` by value as `as [=,*this]`.
   @details SD-6 equivalent: `__cpp_capture_star_this >= 201603L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201603L` [P0018R3](https://wg21.link/P0018R3) Lambda Capture of *this by
   Value as [=,*this]
 */
@@ -1518,7 +1518,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 201603L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201603L` [P0170R1 __PDF__](https://wg21.link/P0170R1) Wording for Constexpr
   Lambda
 */
@@ -1532,7 +1532,7 @@
   @details SD-6 equivalent: `__cpp_deduction_guides >= 201606L`. Note that
   `__cpp_deduction_guides` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201606L` [P0091R3](https://wg21.link/P0091R3) Template argument deduction
   for class templates (Rev. 6)
 */
@@ -1546,7 +1546,7 @@
   @details SD-6 equivalent: `__cpp_deduction_guides >= 201703L`. Note that
   `__cpp_deduction_guides` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201703L` [P0620R0](https://wg21.link/P0620R0) Drafting for class template
   argument deduction issues
 */
@@ -1561,7 +1561,7 @@
   @details SD-6 equivalent: `__cpp_deduction_guides >= 201611L`. Note that
   `__cpp_deduction_guides` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201611L` [P0512R0 __PDF__](https://wg21.link/P0512R0) Class Template
   Argument Deduction Assorted NB resolution and issues
 */
@@ -1573,7 +1573,7 @@
   @def LBAL_CPP17_ENUMERATOR_ATTRIBUTES
   @brief Attributes for enumerators
   @details SD-6 equivalent: `__cpp_enumerator_attributes >= 201411L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201411L` [N4266](https://wg21.link/N4266) Attributes for namespaces and
   enumerators
 */
@@ -1587,7 +1587,7 @@
   @details SD-6 equivalent: `__cpp_fold_expressions >= 201411L`. Note that
   `__cpp_fold_expressions` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201411L` [N4295](https://wg21.link/N4295) Folding Expressions
 */
 #ifndef LBAL_CPP17_FOLD_EXPRESSIONS
@@ -1601,7 +1601,7 @@
   @details SD-6 equivalent: `__cpp_fold_expressions >= 201603L`. Note that
   `__cpp_fold_expressions` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201603L` [P0036R0 __PDF__](https://wg21.link/P0036R0) Unary Folds and Empty
   Parameter Packs (Revision 1)
 */
@@ -1614,7 +1614,7 @@
   @brief Guarantee copy and move elision in well-defined situations
   @details SD-6 equivalent: `__cpp_guaranteed_copy_elision >= 201606L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201606L` [P0135R1](https://wg21.link/P0135R1) Wording for guaranteed copy
   elision through simplified value categories
 */
@@ -1626,7 +1626,7 @@
   @def LBAL_CPP17_HEX_FLOAT
   @brief Specify Hexadecimal float literals
   @details SD-6 equivalent: `__cpp_hex_float >= 201603L`. This token will have a
-  value of `0` if the proposal described here is not supported.`
+  value of `0` if the proposal described here is not supported.
   - `201603L` [P0245R1](https://wg21.link/P0245R1) Hexadecimal float literals
   for C++
 */
@@ -1638,7 +1638,7 @@
   @def LBAL_CPP17_IF_CONSTEXPR
   @brief Allow constant expressions as if statements
   @details SD-6 equivalent: `__cpp_if_constexpr >= 201606L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201606L` [P0292R2](https://wg21.link/P0292R2) constexpr if: A slightly
   different syntax
 */
@@ -1653,7 +1653,7 @@
   that `__cpp_inheriting_constructors` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201511L` [P0136R1](https://wg21.link/P0136R1) Rewording inheriting
   constructors (core issue 1941 et al)
 */
@@ -1665,7 +1665,7 @@
   @def LBAL_CPP17_INLINE_VARIABLES
   @brief `inline` variables
   @details SD-6 equivalent: `__cpp_inline_variables >= 201606L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201606L` [P0386R2 __PDF__](https://wg21.link/P0386R2) Inline Variables
 */
 #ifndef LBAL_CPP17_INLINE_VARIABLES
@@ -1676,7 +1676,7 @@
   @def LBAL_CPP17_NAMESPACE_ATTRIBUTES
   @brief Attributes for namespaces
   @details SD-6 equivalent: `__cpp_namespace_attributes >= 201411L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201411L` [N4266](https://wg21.link/N4266) Attributes for namespaces and
   enumerators
 */
@@ -1689,7 +1689,7 @@
   @brief Make exception specifications be part of the type system
   @details SD-6 equivalent: `__cpp_noexcept_function_type >= 201510L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201510L` [P0012R1](https://wg21.link/P0012R1) Make exception specifications
   be part of the type system, version 5
 */
@@ -1703,7 +1703,7 @@
   @details SD-6 equivalent: `__cpp_nontype_template_args >= 201411L`. Note that
   `__cpp_nontype_template_args` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201411L` [N4268](https://wg21.link/N4268) Allow constant evaluation for all
   non-type template arguments
 */
@@ -1716,7 +1716,7 @@
   @brief Allow declaring non-type template arguments with auto
   @details SD-6 equivalent: `__cpp_nontype_template_parameter_auto >= 201606L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201606L` [P0127R2](https://wg21.link/P0127R2) Declaring non-type template
   arguments with auto
 */
@@ -1730,7 +1730,7 @@
   @details SD-6 equivalent: `__cpp_range_based_for >= 201603L`. Note that
   `__cpp_range_based_for` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201603L` [P0184R0](https://wg21.link/P0184R0) Generalizing the Range-Based
   For Loop
 */
@@ -1744,7 +1744,7 @@
   @details SD-6 equivalent: `__cpp_static_assert >= 201411L`. Note that
   `__cpp_static_assert` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201411L` [N3928](https://wg21.link/N3928) Extending static_assert, v2
 */
 #ifndef LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE
@@ -1757,7 +1757,7 @@
   @details SD-6 equivalent: `__cpp_structured_bindings >= 201606L`. Note that
   `__cpp_structured_bindings` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201606L` [P0217R3](https://wg21.link/P0217R3) Proposed wording for
   structured bindings
 */
@@ -1771,7 +1771,7 @@
   parameters
   @details SD-6 equivalent: `__cpp_template_template_args >= 201611L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201611L` [P0522R0](https://wg21.link/P0522R0) DR: Matching of template
   template-arguments excludes compatible templates
 
@@ -1787,7 +1787,7 @@
   @def LBAL_CPP17_VARIADIC_USING
   @brief Add support for pack expansions in using-declarations
   @details SD-6 equivalent: `__cpp_variadic_using >= 201611L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201611L` [P0195R2](https://wg21.link/P0195R2) Pack expansions in using-
   declarations
 */
@@ -1817,7 +1817,7 @@
   @def LBAL_CPP20_AGGREGATE_PAREN_INIT
   @brief Allow aggregate initialization from parentheses as well as braces.
   @details SD-6 equivalent: `__cpp_aggregate_paren_init >= 201902L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201902L` [P0960R3](https://wg21.link/P0960R3) Allow initializing aggregates
   from a parenthesized list of values
 
@@ -1851,7 +1851,7 @@
   @def LBAL_CPP20_ATTRIBUTE_LIKELY
   @brief Add `likely` attribute for labels and statements
   @details SD-6 equivalent: `__has_cpp_attribute(likely) >= 201803L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201803L` [P0479R5](https://wg21.link/P0479R5) Proposed wording for likely
   and unlikely attributes
 */
@@ -1867,7 +1867,7 @@
   that `__has_cpp_attribute(nodiscard)` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201907L` [P1301R4](https://wg21.link/P1301R4) [[nodiscard(should have
   a reason)]]
   - `201907L` [P1771R1 __PDF__](https://wg21.link/P1771R1) [[nodiscard]] for
@@ -1882,7 +1882,7 @@
   @brief Add language support for for empty objects
   @details SD-6 equivalent: `__has_cpp_attribute(no_unique_address) >= 201803L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201803L` [P0840R2](https://wg21.link/P0840R2) Language support for empty
   objects
 */
@@ -1895,7 +1895,7 @@
   @brief Add `unlikely` attribute for labels and statements
   @details SD-6 equivalent: `__has_cpp_attribute(unlikely) >= 201803L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201803L` [P0479R5](https://wg21.link/P0479R5) Proposed wording for likely
   and unlikely attributes
 */
@@ -1909,7 +1909,7 @@
   @details SD-6 equivalent: `__cpp_char8_t >= 201811L`. Note that
   `__cpp_char8_t` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201811L` [P0482R6](https://wg21.link/P0482R6) char8_t: A type for UTF-8
   characters and strings (Revision 6)
 */
@@ -1923,7 +1923,7 @@
   @details SD-6 equivalent: `__cpp_concepts >= 201707L`. Note that
   `__cpp_concepts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201707L` [P0734R0 __PDF__](https://wg21.link/P0734R0) Wording Paper, C++
   extensions for Concepts
 */
@@ -1937,7 +1937,7 @@
   @details SD-6 equivalent: `__cpp_concepts >= 202002L`. Note that
   `__cpp_concepts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202002L` [P0848R3](https://wg21.link/P0848R3) Conditionally Trivial Special
   Member Functions
 */
@@ -1951,7 +1951,7 @@
   @details SD-6 equivalent: `__cpp_concepts >= 201907L`. Note that
   `__cpp_concepts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P1452R2](https://wg21.link/P1452R2) On the non-uniform semantics
   of return-type-requirements
 */
@@ -1965,7 +1965,7 @@
   @details SD-6 equivalent: `__cpp_concepts >= 201811L`. Note that
   `__cpp_concepts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201811L` [P1084R2 __PDF__](https://wg21.link/P1084R2) Today’s return-type-
   requirements Are Insufficient
 */
@@ -1993,7 +1993,7 @@
   @details SD-6 equivalent: `__cpp_consteval >= 201811L`. Note that
   `__cpp_consteval` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201811L` [P1073R3](https://wg21.link/P1073R3) Immediate functions
 */
 #ifndef LBAL_CPP20_CONSTEVAL
@@ -2006,7 +2006,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 202002L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202002L` [P1330R0 __PDF__](https://wg21.link/P1330R0) Changing the active
   member of a union inside constexpr
 */
@@ -2020,7 +2020,7 @@
   constexpr computations.
   @details SD-6 equivalent: `__cpp_constexpr_dynamic_alloc >= 201907L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201907L` [P0784R7](https://wg21.link/P0784R7) More constexpr containers
 
   @remark AKA, “More constexpr containers”.
@@ -2035,7 +2035,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 201811L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201811L` [P1002R1](https://wg21.link/P1002R1) Try-catch blocks in constexpr
   functions
   - `201811L` [P1327R1](https://wg21.link/P1327R1) Allowing dynamic_cast,
@@ -2054,7 +2054,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 201907L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P1668R1](https://wg21.link/P1668R1) Enabling constexpr Intrinsics
   By Permitting Unevaluated inline-assembly in constexpr Functions
 
@@ -2086,7 +2086,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 201907L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P1331R2](https://wg21.link/P1331R2) Permitting trivial default
   initialization in constexpr contexts
 
@@ -2103,7 +2103,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 201811L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201811L` [P1002R1](https://wg21.link/P1002R1) Try-catch blocks in constexpr
   functions
 
@@ -2120,7 +2120,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 201811L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202002L` [P1330R0 __PDF__](https://wg21.link/P1330R0) Changing the active
   member of a union inside constexpr
 
@@ -2137,7 +2137,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 201806L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201806L` [P1064R0](https://wg21.link/P1064R0) Allowing Virtual Function
   Calls in Constant Expressions
 */
@@ -2178,7 +2178,7 @@
   @details SD-6 equivalent: `__cpp_deduction_guides >= 201907L`. Note that
   `__cpp_deduction_guides` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P1814R0](https://wg21.link/P1814R0) Wording for Class Template
   Argument Deduction for Alias Templates
   - `201907L` [P1816R0 __PDF__](https://wg21.link/P1816R0) Wording for class
@@ -2209,7 +2209,7 @@
   @brief Add designated initializers
   @details SD-6 equivalent: `__cpp_designated_initializers >= 201707L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201707L` [P0329R4 __PDF__](https://wg21.link/P0329R4) Designated
   Initialization Wording
 */
@@ -2222,7 +2222,7 @@
   @brief Efficient sized delete for variable sized classes
   @details SD-6 equivalent: `__cpp_impl_destroying_delete >= 201806L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201806L` [P0722R3](https://wg21.link/P0722R3) Efficient sized delete for
   variable sized classes
 */
@@ -2236,7 +2236,7 @@
   @details SD-6 equivalent: `__cpp_generic_lambdas >= 201707L`. Note that
   `__cpp_generic_lambdas` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201707L` [P0428R2](https://wg21.link/P0428R2) Familiar template syntax for
   generic lambdas
 */
@@ -2248,7 +2248,7 @@
   @def LBAL_CPP20_IMPL_COROUTINE
   @brief Add necessary language support for the `<coroutine>` library feature
   @details SD-6 equivalent: `__cpp_impl_coroutine >= 201902L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201902L` [LWG3393](https://wg21.link/LWG3393) Missing/incorrect feature
   test macro for coroutines
   - `201902L` [P0912R5](https://wg21.link/P0912R5) Merge Coroutines TS into C+
@@ -2267,7 +2267,7 @@
   @details SD-6 equivalent: `__cpp_init_captures >= 201803L`. Note that
   `__cpp_init_captures` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201803L` [P0780R2](https://wg21.link/P0780R2) Allow pack expansion in
   lambda init-capture
 */
@@ -2298,7 +2298,7 @@
   @def LBAL_CPP20_MODULES
   @brief Incorporate modules
   @details SD-6 equivalent: `__cpp_modules >= 201907L`. This token will have a
-  value of `0` if the proposal described here is not supported.`
+  value of `0` if the proposal described here is not supported.
   - `201907L` [P1103R3 __PDF__](https://wg21.link/P1103R3) Merging Modules
   - `201907L` [P1811R0](https://wg21.link/P1811R0) Relaxing redefinition
   restrictions for re-exportation robustness
@@ -2313,7 +2313,7 @@
   @details SD-6 equivalent: `__cpp_nontype_template_args >= 201911L`. Note that
   `__cpp_nontype_template_args` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201911L` [P1907R1](https://wg21.link/P1907R1) Inconsistencies with non-type
   template parameters
 
@@ -2331,7 +2331,7 @@
   @brief Class Types in Non-Type Template Parameters
   @details SD-6 equivalent: `__cpp_nontype_template_parameter_class >= 201806L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201806L` [P0732R2 __PDF__](https://wg21.link/P0732R2) Class Types in Non-
   Type Template Parameters
 */
@@ -2346,7 +2346,7 @@
   that `__cpp_impl_three_way_comparison` has multiple values associated with
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
-  not supported.`
+  not supported.
   - `201711L` [P0515R3 __PDF__](https://wg21.link/P0515R3) Consistent comparison
   - `201711L` [P0768R1 __PDF__](https://wg21.link/P0768R1) Library Support for
   the Spaceship (Comparison) Operator
@@ -2362,8 +2362,8 @@
   that `__cpp_impl_three_way_comparison` has multiple values associated with
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
-  not supported.`
-  - `201902L` [P1185R2](https://wg21.link/P1185R2) <=> != ==
+  not supported.
+  - `201902L` [P1185R2](https://wg21.link/P1185R2) `<=> != ==`
 */
 #ifndef LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX
   #define LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX 0
@@ -2376,7 +2376,7 @@
   that `__cpp_impl_three_way_comparison` has multiple values associated with
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
-  not supported.`
+  not supported.
   - `201907L` [P1630R1](https://wg21.link/P1630R1) Spaceship needs a tune-up
 */
 #ifndef LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_TUNEUP
@@ -2395,7 +2395,7 @@
   @def LBAL_CPP20_USING_ENUM
   @brief Specify using aliases for enums
   @details SD-6 equivalent: `__cpp_using_enum >= 201907L`. This token will have
-  a value of `0` if the proposal described here is not supported.`
+  a value of `0` if the proposal described here is not supported.
   - `201907L` [P1099R5](https://wg21.link/P1099R5) Using Enum
 */
 #ifndef LBAL_CPP20_USING_ENUM
@@ -2436,7 +2436,7 @@
   @def LBAL_CPP23_ATTRIBUTE_ASSUME
   @brief Optimization hint to indicate an expression is true
   @details SD-6 equivalent: `__has_cpp_attribute(assume) >= 202207L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `202207L` [CWG2615](https://wg21.link/CWG2615) Missing
   __has_cpp_attribute(assume)
   - `202207L` [P1774R8 __PDF__](https://wg21.link/P1774R8) Portable assumptions
@@ -2449,7 +2449,7 @@
   @def LBAL_CPP23_AUTO_CAST
   @brief `auto(x)`: `decay-copy` in the language
   @details SD-6 equivalent: `__cpp_auto_cast >= 202110L`. This token will have a
-  value of `0` if the proposal described here is not supported.`
+  value of `0` if the proposal described here is not supported.
   - `202110L` [P0849R8](https://wg21.link/P0849R8) auto(x): decay-copy in the
   language
 */
@@ -2463,7 +2463,7 @@
   @details SD-6 equivalent: `__cpp_char8_t >= 202207L`. Note that
   `__cpp_char8_t` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202207L` [P2513R3](https://wg21.link/P2513R3) char8_t Compatibility and
   Portability Fix
 */
@@ -2477,7 +2477,7 @@
   @details SD-6 equivalent: `__cpp_consteval >= 202211L`. Note that
   `__cpp_consteval` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202211L` [P2564R3](https://wg21.link/P2564R3) consteval needs to propagate
   up
 */
@@ -2491,7 +2491,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 202110L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202110L` [P2242R3](https://wg21.link/P2242R3) Non-literal variables (and
   labels and gotos) in constexpr functions
 */
@@ -2505,7 +2505,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 202211L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202211L` [P2647R1](https://wg21.link/P2647R1) Permitting static constexpr
   variables in constexpr functions
 */
@@ -2519,7 +2519,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 202207L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202207L` [P2448R2](https://wg21.link/P2448R2) Relaxing some constexpr
   restrictions
 */
@@ -2533,7 +2533,7 @@
   @details SD-6 equivalent: `__cpp_deduction_guides >= 202207L`. Note that
   `__cpp_deduction_guides` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202207L` [P2582R1 __PDF__](https://wg21.link/P2582R1) Wording for class
   template argument deduction from inherited constructors
 */
@@ -2546,7 +2546,7 @@
   @brief Deduce `this`
   @details SD-6 equivalent: `__cpp_explicit_this_parameter >= 202110L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `202110L` [P0847R7](https://wg21.link/P0847R7) Deducing this
 */
 #ifndef LBAL_CPP23_EXPLICIT_THIS_PARAMETER
@@ -2557,7 +2557,7 @@
   @def LBAL_CPP23_IF_CONSTEVAL
   @brief `if consteval`
   @details SD-6 equivalent: `__cpp_if_consteval >= 202106L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `202106L` [P1938R3](https://wg21.link/P1938R3) if consteval
 */
 #ifndef LBAL_CPP23_IF_CONSTEVAL
@@ -2568,7 +2568,7 @@
   @def LBAL_CPP23_IMPLICIT_MOVE
   @brief Simpler implicit move
   @details SD-6 equivalent: `__cpp_implicit_move >= 202207L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `202207L` [P2266R3](https://wg21.link/P2266R3) Simpler implicit move
 */
 #ifndef LBAL_CPP23_IMPLICIT_MOVE
@@ -2582,7 +2582,7 @@
   that `__cpp_multidimensional_subscript` has multiple values associated with
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
-  not supported.`
+  not supported.
   - `202110L` [P2128R6 __PDF__](https://wg21.link/P2128R6) Multidimensional
   subscript operator
 */
@@ -2597,7 +2597,7 @@
   that `__cpp_multidimensional_subscript` has multiple values associated with
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
-  not supported.`
+  not supported.
   - `202211L` [P2589R1 __PDF__](https://wg21.link/P2589R1) static operator[]
 */
 #ifndef LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT_STATIC
@@ -2609,7 +2609,7 @@
   @brief Add named universal character escapes
   @details SD-6 equivalent: `__cpp_named_character_escapes >= 202207L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `202207L` [P2071R2](https://wg21.link/P2071R2) Named universal character
   escapes
 */
@@ -2623,7 +2623,7 @@
   @details SD-6 equivalent: `__cpp_range_based_for >= 202211L`. Note that
   `__cpp_range_based_for` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202211L` [CWG2659](https://wg21.link/CWG2659) Missing feature-test macro
   for lifetime extension in range-for loop
   - `202211L` [P2644R1 __PDF__](https://wg21.link/P2644R1) Final Fix of Broken
@@ -2639,7 +2639,7 @@
   @def LBAL_CPP23_SIZE_T_SUFFIX
   @brief Add literal suffixes for (signed) `size_t`
   @details SD-6 equivalent: `__cpp_size_t_suffix >= 202011L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `202011L` [P0330R8](https://wg21.link/P0330R8) Literal Suffixes for (signed)
   size_t
 */
@@ -2651,7 +2651,7 @@
   @def LBAL_CPP23_STATIC_CALL_OPERATOR
   @brief Static `operator ()`
   @details SD-6 equivalent: `__cpp_static_call_operator >= 202207L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `202207L` [P1169R4](https://wg21.link/P1169R4) static operator()
 */
 #ifndef LBAL_CPP23_STATIC_CALL_OPERATOR
@@ -2681,7 +2681,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 202306L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202306L` [P2738R1 __PDF__](https://wg21.link/P2738R1) constexpr cast from
   void*: towards constexpr type-erasure
 */
@@ -2693,7 +2693,7 @@
   @def LBAL_CPP26_CONSTEXPR_EXCEPTIONS
   @brief Allow exception throwing in _constant-evaluation_
   @details SD-6 equivalent: `__cpp_constexpr_exceptions >= 202411L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `202411L` [P3068R6](https://wg21.link/P3068R6) Allowing exception throwing
   in constant-evaluation
 */
@@ -2707,7 +2707,7 @@
   @details SD-6 equivalent: `__cpp_constexpr >= 202406L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202406L` [P2747R2](https://wg21.link/P2747R2) constexpr placement new
 */
 #ifndef LBAL_CPP26_CONSTEXPR_PLACEMENT_NEW
@@ -2719,7 +2719,7 @@
   @brief Allow exception throwing in _constant-evaluation_
   @details SD-6 equivalent: `__cpp_constexpr_virtual_inheritance >= 202506L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `202506L` [P3533R2](https://wg21.link/P3533R2) constexpr virtual inheritance
 */
 #ifndef LBAL_CPP26_CONSTEXPR_VIRTUAL_INHERITANCE
@@ -2730,7 +2730,7 @@
   @def LBAL_CPP26_CONTRACTS
   @brief Contracts for C++
   @details SD-6 equivalent: `__cpp_contracts >= 202502L`. This token will have a
-  value of `0` if the proposal described here is not supported.`
+  value of `0` if the proposal described here is not supported.
   - `202502L` [P2900R14 __PDF__](https://wg21.link/P2900R14) Contracts for C++
 */
 #ifndef LBAL_CPP26_CONTRACTS
@@ -2741,7 +2741,7 @@
   @def LBAL_CPP26_DELETED_FUNCTION
   @brief `= delete(\should have a reason\)`.
   @details SD-6 equivalent: `__cpp_deleted_function >= 202403L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `202403L` [P2573R2](https://wg21.link/P2573R2) = delete(“should have a
   reason”);
 */
@@ -2753,7 +2753,7 @@
   @def LBAL_CPP26_EXPANSION_STATEMENTS
   @brief Expansion statements
   @details SD-6 equivalent: `__cpp_expansion_statements >= 202506L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `202506L` [P1306R5](https://wg21.link/P1306R5) Expansion statements
 */
 #ifndef LBAL_CPP26_EXPANSION_STATEMENTS
@@ -2764,7 +2764,7 @@
   @def LBAL_CPP26_IMPL_REFLECTION
   @brief Reflection for C++26
   @details SD-6 equivalent: `__cpp_impl_reflection >= 202506L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `202506L` [P2996R13](https://wg21.link/P2996R13) Reflection for C++26
   - `202506L` [P3096R12 __PDF__](https://wg21.link/P3096R12) Function Parameter
   Reflection in Reflection for C++26
@@ -2780,7 +2780,7 @@
   @def LBAL_CPP26_PACK_INDEXING
   @brief Pack Indexing
   @details SD-6 equivalent: `__cpp_pack_indexing >= 202311L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `202311L` [P2662R3 __PDF__](https://wg21.link/P2662R3) Pack Indexing
 */
 #ifndef LBAL_CPP26_PACK_INDEXING
@@ -2791,7 +2791,7 @@
   @def LBAL_CPP26_PLACEHOLDER_VARIABLES
   @brief Add placeholder variables (aka underscore, underbar, low line)
   @details SD-6 equivalent: `__cpp_placeholder_variables >= 202306L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `202306L` [P2169R4 __PDF__](https://wg21.link/P2169R4) A Nice Placeholder
   With No Name
 */
@@ -2805,7 +2805,7 @@
   @details SD-6 equivalent: `__cpp_static_assert >= 202306L`. Note that
   `__cpp_static_assert` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202306L` [P2741R3 __PDF__](https://wg21.link/P2741R3) user-generated
   static_assert messages
 */
@@ -2819,7 +2819,7 @@
   @details SD-6 equivalent: `__cpp_structured_bindings >= 202403L`. Note that
   `__cpp_structured_bindings` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202411L` [P1061R10](https://wg21.link/P1061R10) Structured Bindings can
   introduce a Pack
 */
@@ -2833,7 +2833,7 @@
   @details SD-6 equivalent: `__cpp_structured_bindings >= 202403L`. Note that
   `__cpp_structured_bindings` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202403L` [P0609R3 __PDF__](https://wg21.link/P0609R3) Attributes for
   Structured Bindings
 */
@@ -2845,7 +2845,7 @@
   @def LBAL_CPP26_TEMPLATE_PARAMETERS
   @brief Allow _concept_ and _variable-template_ _template-parameters_
   @details SD-6 equivalent: `__cpp_template_parameters >= 202502L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `202502L` [P2841R7 __PDF__](https://wg21.link/P2841R7) Concept and variable-
   template template-parameters
 */
@@ -2857,7 +2857,7 @@
   @def LBAL_CPP26_TRIVIAL_UNION
   @brief Allow trivial `unions`
   @details SD-6 equivalent: `__cpp_trivial_union >= 202502L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `202502L` [P3074R7](https://wg21.link/P3074R7) trivial unions (was
   std::uninitialized<T>)
 */
@@ -2869,7 +2869,7 @@
   @def LBAL_CPP26_VARIADIC_FRIEND
   @brief Support variadic friends
   @details SD-6 equivalent: `__cpp_variadic_friend >= 202403L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `202403L` [P2893R3](https://wg21.link/P2893R3) Variadic Friends
 */
 #ifndef LBAL_CPP26_VARIADIC_FRIEND
@@ -3070,7 +3070,7 @@
   @def LBAL_LIBCPP14_CHRONO_UDLS
   @brief User-defined Literals for `<chrono>` types
   @details SD-6 equivalent: `__cpp_lib_chrono_udls >= 201304L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201304L` [N3642 __PDF__](https://wg21.link/N3642) User-defined Literals for
   Standard Library Types (part 1 - version 4)
 
@@ -3084,7 +3084,7 @@
   @def LBAL_LIBCPP14_COMPLEX_UDLS
   @brief User-defined Literals for `<complex>`
   @details SD-6 equivalent: `__cpp_lib_complex_udls >= 201309L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201309L` [N3779 __PDF__](https://wg21.link/N3779) User-defined Literals
   for std::complex
 
@@ -3098,7 +3098,7 @@
   @def LBAL_LIBCPP14_EXCHANGE_FUNCTION
   @brief Add `std::exchange` utility function
   @details SD-6 equivalent: `__cpp_lib_exchange_function >= 201304L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201304L` [N3668](https://wg21.link/N3668) exchange() utility function,
   revision 3
 
@@ -3113,7 +3113,7 @@
   @brief Add heterogeneous comparison lookup to associative containers
   @details SD-6 equivalent: `__cpp_lib_generic_associative_lookup >= 201304L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201304L` [N3657](https://wg21.link/N3657) Adding heterogeneous comparison
   lookup to associative containers (rev 4)
 
@@ -3129,7 +3129,7 @@
   @details SD-6 equivalent: `__cpp_lib_integer_sequence >= 201304L`. Note that
   `__cpp_lib_integer_sequence` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201304L` [N3658](https://wg21.link/N3658) Compile-time integer sequences
 
   @sa `<utility>`
@@ -3143,7 +3143,7 @@
   @brief Add `constexpr` operator-() to `std::integral_constant`
   @details SD-6 equivalent: `__cpp_lib_integral_constant_callable >= 201304L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201304L` [N3545 __PDF__](https://wg21.link/N3545) An Incremental
   Improvement to integral_constant
 
@@ -3157,7 +3157,7 @@
   @def LBAL_LIBCPP14_IS_FINAL
   @brief Detect finalized classes
   @details SD-6 equivalent: `__cpp_lib_is_final >= 201402L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201402L` [LWG2112](https://wg21.link/LWG2112) User-defined classes that
   cannot be derived from
 
@@ -3171,7 +3171,7 @@
   @def LBAL_LIBCPP14_IS_NULL_POINTER
   @brief Detect null pointers
   @details SD-6 equivalent: `__cpp_lib_is_null_pointer >= 201309L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201309L` [LWG2247](https://wg21.link/LWG2247) Type traits and
   std::nullptr_t
 
@@ -3186,7 +3186,7 @@
   @brief `std::make_reverse_iterator`
   @details SD-6 equivalent: `__cpp_lib_make_reverse_iterator >= 201402L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201402L` [LWG2285](https://wg21.link/LWG2285) make_reverse_iterator
 
   @sa `<iterator>`
@@ -3199,7 +3199,7 @@
   @def LBAL_LIBCPP14_MAKE_UNIQUE
   @brief `std::make_unique`
   @details SD-6 equivalent: `__cpp_lib_make_unique >= 201304L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201304L` [N3656](https://wg21.link/N3656) make_unique (Revision 1)
 
   @sa `<memory>`
@@ -3212,7 +3212,7 @@
   @def LBAL_LIBCPP14_NULL_ITERATORS
   @brief Allow value-initialized forward iterators to be compared
   @details SD-6 equivalent: `__cpp_lib_null_iterators >= 201304L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201304L` [N3644 __PDF__](https://wg21.link/N3644) Null Forward Iterators
 
   @sa `<iterator>`
@@ -3225,7 +3225,7 @@
   @def LBAL_LIBCPP14_QUOTED_STRING_IO
   @brief Add quoted-string sream i/o manipulator
   @details SD-6 equivalent: `__cpp_lib_quoted_string_io >= 201304L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201304L` [N3654](https://wg21.link/N3654) Quoted Strings Library Proposal
   (Revision 2)
 
@@ -3239,7 +3239,7 @@
   @def LBAL_LIBCPP14_RESULT_OF_SFINAE
   @brief Make `std::result_of` SFINAE-friendly
   @details SD-6 equivalent: `__cpp_lib_result_of_sfinae >= 201210L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201210L` [N3462](https://wg21.link/N3462) std::result_of and SFINAE
 
   @sa `<functional>` `<type_traits>`
@@ -3253,7 +3253,7 @@
   @brief Make non-modifying sequence operations more robust
   @details SD-6 equivalent: `__cpp_lib_robust_nonmodifying_seq_ops >= 201304L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201304L` [N3671](https://wg21.link/N3671) Making non-modifying sequence
   operations more robust: Revision 2
 
@@ -3268,7 +3268,7 @@
   @brief Rename `std::shared_mutex` to `std::shared_timed_mutex`
   @details SD-6 equivalent: `__cpp_lib_shared_timed_mutex >= 201402L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201402L` [N3891](https://wg21.link/N3891) A proposal to rename shared_mutex
   to shared_timed_mutex
 
@@ -3282,7 +3282,7 @@
   @def LBAL_LIBCPP14_STRING_UDLS
   @brief Predefine UDLs for strings
   @details SD-6 equivalent: `__cpp_lib_string_udls >= 201304L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201304L` [N3642 __PDF__](https://wg21.link/N3642) User-defined Literals for
   Standard Library Types (part 1 - version 4)
 
@@ -3297,7 +3297,7 @@
   @brief Provide type aliases for transformation traits
   @details SD-6 equivalent: `__cpp_lib_transformation_trait_aliases >= 201304L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201304L` [N3655 __PDF__](https://wg21.link/N3655) TransformationTraits
   Redux, v2
 
@@ -3315,7 +3315,7 @@
   that `__cpp_lib_transparent_operators` has multiple values associated with
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
-  not supported.`
+  not supported.
   - `201210L` [N3421](https://wg21.link/N3421) Making Operator Functors
   greater<>
 
@@ -3329,7 +3329,7 @@
   @def LBAL_LIBCPP14_TUPLES_BY_TYPE
   @brief Allow addressing `std::tuple`s by type
   @details SD-6 equivalent: `__cpp_lib_tuples_by_type >= 201304L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201304L` [N3670 __PDF__](https://wg21.link/N3670) Wording for Addressing
   Tuples by Type: Revision 2
 
@@ -3343,7 +3343,7 @@
   @def LBAL_LIBCPP14_TUPLE_ELEMENT_T
   @brief Add `std::tuple` `element_t` type alias
   @details SD-6 equivalent: `__cpp_lib_tuple_element_t >= 201402L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201402L` [N3887 __PDF__](https://wg21.link/N3887) Consistent Metafunction
   Aliases
 
@@ -3371,7 +3371,7 @@
   @brief Make `std::addressof` `constexpr`, as per defect report
   @details SD-6 equivalent: `__cpp_lib_addressof_constexpr >= 201603L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201603L` [LWG2296](https://wg21.link/LWG2296) std::addressof should be
   constexpr
 
@@ -3386,7 +3386,7 @@
   @brief Clean up `noexcept` usage (Rev 3)
   @details SD-6 equivalent: `__cpp_lib_allocator_traits_is_always_equal >=
   201411L`. This token will have a value of `0` if the proposal described here
-  is not supported.`
+  is not supported.
   - `201411L` [N4258 __PDF__](https://wg21.link/N4258) Cleaning up noexcept in
   the Library (Rev 3)
 
@@ -3404,7 +3404,7 @@
   @details SD-6 equivalent: `__cpp_lib_any >= 201603L`. Note that
   `__cpp_lib_any` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201603L` [P0220R1](https://wg21.link/P0220R1) Adopt Library Fundamentals V1
   TS Components for C++17 (R1)
 
@@ -3423,7 +3423,7 @@
   @details SD-6 equivalent: `__cpp_lib_any >= 201606L`. Note that
   `__cpp_lib_any` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201606L` [P0032R3 __PDF__](https://wg21.link/P0032R3) Homogeneous interface
   for variant, any and optional (Revision 3)
 
@@ -3439,7 +3439,7 @@
   @def LBAL_LIBCPP17_APPLY
   @brief `std::apply` component from Library Fundamentals V1 TS
   @details SD-6 equivalent: `__cpp_lib_apply >= 201603L`. This token will have a
-  value of `0` if the proposal described here is not supported.`
+  value of `0` if the proposal described here is not supported.
   - `201603L` [P0220R1](https://wg21.link/P0220R1) Adopt Library Fundamentals V1
   TS Components for C++17 (R1)
 
@@ -3456,7 +3456,7 @@
   @details SD-6 equivalent: `__cpp_lib_array_constexpr >= 201603L`. Note that
   `__cpp_lib_array_constexpr` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201603L` [P0031R0](https://wg21.link/P0031R0) A Proposal to Add Constexpr
   Modifiers to reverse_iterator, move_iterator, array and Range Access
 
@@ -3470,7 +3470,7 @@
   @def LBAL_LIBCPP17_AS_CONST
   @brief Add `std::as_const` helper function template
   @details SD-6 equivalent: `__cpp_lib_as_const >= 201510L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201510L` [P0007R1](https://wg21.link/P0007R1) Constant View: A proposal for
   a std::as_const helper function template
 
@@ -3485,7 +3485,7 @@
   @brief Add `constexpr` `atomic<T>::is_always_lock_free`
   @details SD-6 equivalent: `__cpp_lib_atomic_is_always_lock_free >= 201603L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201603L` [P0152R1](https://wg21.link/P0152R1) constexpr
   atomic<T>::is_always_lock_free
 
@@ -3499,7 +3499,7 @@
   @def LBAL_LIBCPP17_BOOL_CONSTANT
   @brief Introduce `std::bool_constant`
   @details SD-6 equivalent: `__cpp_lib_bool_constant >= 201505L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201505L` [N4389](https://wg21.link/N4389) Wording for bool_constant,
   revision 1
 
@@ -3514,7 +3514,7 @@
   @brief Add text search components from Library Fundamentals V1 TS
   @details SD-6 equivalent: `__cpp_lib_boyer_moore_searcher >= 201603L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201603L` [P0220R1](https://wg21.link/P0220R1) Adopt Library Fundamentals V1
   TS Components for C++17 (R1)
 
@@ -3528,7 +3528,7 @@
   @def LBAL_LIBCPP17_BYTE
   @brief Define `std::byte` type
   @details SD-6 equivalent: `__cpp_lib_byte >= 201603L`. This token will have a
-  value of `0` if the proposal described here is not supported.`
+  value of `0` if the proposal described here is not supported.
   - `201603L` [P0298R3](https://wg21.link/P0298R3) A byte type definition
 
   @sa `<cstddef>`
@@ -3543,8 +3543,8 @@
   @details SD-6 equivalent: `__cpp_lib_chrono >= 201510L`. Note that
   `__cpp_lib_chrono` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
-  - `201510L` [P0092R1](https://wg21.link/P0092R1) Polishing <chrono>
+  proposal, or `0` if the proposal described here is not supported.
+  - `201510L` [P0092R1](https://wg21.link/P0092R1) Polishing `<chrono>`
 
   @sa `<chrono>`
 */
@@ -3558,7 +3558,7 @@
   @details SD-6 equivalent: `__cpp_lib_chrono >= 201611L`. Note that
   `__cpp_lib_chrono` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201611L` [P0505R0](https://wg21.link/P0505R0) Wording for GB 50
 
   @sa `<chrono>`
@@ -3571,7 +3571,7 @@
   @def LBAL_LIBCPP17_CLAMP
   @brief Standard clamping algorithm
   @details SD-6 equivalent: `__cpp_lib_clamp >= 201603L`. This token will have a
-  value of `0` if the proposal described here is not supported.`
+  value of `0` if the proposal described here is not supported.
   - `201603L` [P0025R0](https://wg21.link/P0025R0) An algorithm to “clamp” a
   value between a pair of boundary values
 
@@ -3587,7 +3587,7 @@
   @details SD-6 equivalent: `__cpp_lib_constexpr_string >= 201611L`. Note that
   `__cpp_lib_constexpr_string` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201611L` [P0426R1](https://wg21.link/P0426R1) Constexpr for
   std::char_traits
 
@@ -3604,7 +3604,7 @@
   that `__cpp_lib_constexpr_string_view` has multiple values associated with
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
-  not supported.`
+  not supported.
   - `201611L` [P0426R1](https://wg21.link/P0426R1) Constexpr for
   std::char_traits
 
@@ -3619,7 +3619,7 @@
   @brief Re-enable `std::shared_from_this`
   @details SD-6 equivalent: `__cpp_lib_enable_shared_from_this >= 201603L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201603L` [P0033R1](https://wg21.link/P0033R1) Re-enabling shared_from_this
   (revision 1)
 
@@ -3641,7 +3641,7 @@
   @details SD-6 equivalent: `__cpp_lib_execution >= 201603L`. Note that
   `__cpp_lib_execution` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201603L` [P0024R2 __PDF__](https://wg21.link/P0024R2) The Parallelism TS
   Should be Standardized
 
@@ -3662,7 +3662,7 @@
   @details SD-6 equivalent: `__cpp_lib_filesystem >= 201603L`. Note that
   `__cpp_lib_filesystem` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201603L` [P0218R1](https://wg21.link/P0218R1) Adopt File System TS for
   C++17
 
@@ -3681,7 +3681,7 @@
   @details SD-6 equivalent: `__cpp_lib_filesystem >= 201703L`. Note that
   `__cpp_lib_filesystem` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201703L` [P0317R1](https://wg21.link/P0317R1) Directory Entry Caching for
   Filesystem
 
@@ -3699,7 +3699,7 @@
   @brief Experimental implementation of the Filesystem TS
   @details SD-6 equivalent: `__cpp_lib_experimental_filesystem >= 201603L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
 
   @remark (SEEME - bitweeder) The experimental version differs in many ways
   from the final version, but it’s all that is offered until gcc 8 and clang 7.
@@ -3715,7 +3715,7 @@
   @details SD-6 equivalent: `__cpp_lib_filesystem >= 201606L`. Note that
   `__cpp_lib_filesystem` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201606L` [P0392R0](https://wg21.link/P0392R0) Adapting string_view by
   filesystem paths
 
@@ -3732,7 +3732,7 @@
   @def LBAL_LIBCPP17_GCD_LCM
   @brief Add `std::gcd` and `std::lcm`
   @details SD-6 equivalent: `__cpp_lib_gcd_lcm >= 201606L`. This token will have
-  a value of `0` if the proposal described here is not supported.`
+  a value of `0` if the proposal described here is not supported.
   - `201606L` [P0295R0](https://wg21.link/P0295R0) Adopt Selected Library
   Fundamentals V2 Components for C++17
 
@@ -3747,7 +3747,7 @@
   @brief Provide relevant cache line sizes for construction and destruction.
   @details SD-6 equivalent: `__cpp_lib_hardware_interference_size >= 201703L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201703L` [P0154R1](https://wg21.link/P0154R1) constexpr
   std::thread::hardware_{true,false}_sharing_size
 
@@ -3798,7 +3798,7 @@
   @brief Introduce minimal incomplete type support for Standard containers
   @details SD-6 equivalent: `__cpp_lib_incomplete_container_elements >=
   201505L`. This token will have a value of `0` if the proposal described here
-  is not supported.`
+  is not supported.
   - `201505L` [N4510](https://wg21.link/N4510) Minimal incomplete type support
   for standard containers, revision 4
 
@@ -3812,7 +3812,7 @@
   @def LBAL_LIBCPP17_INVOKE
   @brief Add `std::invoke` function template
   @details SD-6 equivalent: `__cpp_lib_invoke >= 201411L`. This token will have
-  a value of `0` if the proposal described here is not supported.`
+  a value of `0` if the proposal described here is not supported.
   - `201411L` [N4169](https://wg21.link/N4169) A proposal to add invoke function
   template (Revision 1)
 
@@ -3826,7 +3826,7 @@
   @def LBAL_LIBCPP17_IS_AGGREGATE
   @brief Add `std::is_aggregate` type trait
   @details SD-6 equivalent: `__cpp_lib_is_aggregate >= 201703L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201703L` [LWG2911](https://wg21.link/LWG2911) An is_aggregate type trait
   is needed
 
@@ -3840,7 +3840,7 @@
   @def LBAL_LIBCPP17_IS_INVOCABLE
   @brief Add `std::is_invocable` type trait to replace `is_callable`
   @details SD-6 equivalent: `__cpp_lib_is_invocable >= 201703L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201703L` [P0604R0](https://wg21.link/P0604R0) Resolving GB 55, US 84, US
   85, US 86
 
@@ -3854,7 +3854,7 @@
   @def LBAL_LIBCPP17_IS_SWAPPABLE
   @brief Add `std::is_swappable` type trait family
   @details SD-6 equivalent: `__cpp_lib_is_swappable >= 201603L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201603L` [P0185R1](https://wg21.link/P0185R1) Adding [nothrow-]swappable
   traits, revision 3
 
@@ -3868,7 +3868,7 @@
   @def LBAL_LIBCPP17_LAUNDER
   @brief Replacement of class objects containing reference members
   @details SD-6 equivalent: `__cpp_lib_launder >= 201606L`. This token will have
-  a value of `0` if the proposal described here is not supported.`
+  a value of `0` if the proposal described here is not supported.
   - `201606L` [P0137R1](https://wg21.link/P0137R1) Core Issue 1776: Replacement
   of class objects containing reference members
 
@@ -3882,7 +3882,7 @@
   @def LBAL_LIBCPP17_LOGICAL_TRAITS
   @brief Provide type traits for performing logical operations
   @details SD-6 equivalent: `__cpp_lib_logical_traits >= 201510L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201510L` [P0013R1](https://wg21.link/P0013R1) Logical Operator Type Traits
   (revison 1)
 
@@ -3896,7 +3896,7 @@
   @def LBAL_LIBCPP17_MAKE_FROM_TUPLE
   @brief Introduce `std::make_from_tuple` to unpack a tuple into arguments
   @details SD-6 equivalent: `__cpp_lib_make_from_tuple >= 201606L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201606L` [P0209R2 __PDF__](https://wg21.link/P0209R2) make_from_tuple:
   apply for construction
 
@@ -3910,7 +3910,7 @@
   @def LBAL_LIBCPP17_MAP_TRY_EMPLACE
   @brief Improve insertion into `std::map`
   @details SD-6 equivalent: `__cpp_lib_map_try_emplace >= 201411L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201411L` [N4279](https://wg21.link/N4279) Improved insertion interface for
   unique-key maps (Revision 2.3)
 
@@ -3925,7 +3925,7 @@
   @brief Incorporate math functions specified in IS 29124:2010
   @details SD-6 equivalent: `__cpp_lib_math_special_functions >= 201603L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201603L` [P0226R1 __PDF__](https://wg21.link/P0226R1) Mathematical Special
   Functions for C++17, v5
 
@@ -3940,7 +3940,7 @@
   @brief Incorporate memory management components from Library Fundamentals
   V1 TS
   @details SD-6 equivalent: `__cpp_lib_memory_resource >= 201603L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201603L` [P0220R1](https://wg21.link/P0220R1) Adopt Library Fundamentals V1
   TS Components for C++17 (R1)
 
@@ -3954,7 +3954,7 @@
   @def LBAL_LIBCPP17_NODE_EXTRACT
   @brief Add splicing to associative containers
   @details SD-6 equivalent: `__cpp_lib_node_extract >= 201606L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201606L` [P0083R3 __PDF__](https://wg21.link/P0083R3) Splicing Maps and
   Sets (Revision 5)
 
@@ -3970,7 +3970,7 @@
   interfaces
   @details SD-6 equivalent: `__cpp_lib_nonmember_container_access >= 201411L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201411L` [N4280](https://wg21.link/N4280) Non-member size() and more
   (Revison 2)
 
@@ -3987,7 +3987,7 @@
   @details SD-6 equivalent: `__cpp_lib_not_fn >= 201603L`. Note that
   `__cpp_lib_not_fn` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201603L` [P0005R4 __PDF__](https://wg21.link/P0005R4) Adopt not_fn from
   Library Fundamentals 2 for C++17
 
@@ -4003,7 +4003,7 @@
   @details SD-6 equivalent: `__cpp_lib_optional >= 201603L`. Note that
   `__cpp_lib_optional` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201603L` [P0220R1](https://wg21.link/P0220R1) Adopt Library Fundamentals V1
   TS Components for C++17 (R1)
 
@@ -4019,7 +4019,7 @@
   @details SD-6 equivalent: `__cpp_lib_optional >= 201606L`. Note that
   `__cpp_lib_optional` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201606L` [P0032R3 __PDF__](https://wg21.link/P0032R3) Homogeneous interface
   for variant, any and optional (Revision 3)
 
@@ -4042,7 +4042,7 @@
   @details SD-6 equivalent: `__cpp_lib_optional >= 201606L`. Note that
   `__cpp_lib_optional` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201606L` [P0307R2 __PDF__](https://wg21.link/P0307R2) Making Optional
   Greater Equal Again
 
@@ -4065,7 +4065,7 @@
   @details SD-6 equivalent: `__cpp_lib_parallel_algorithm >= 201603L`. Note that
   `__cpp_lib_parallel_algorithm` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201603L` [P0024R2 __PDF__](https://wg21.link/P0024R2) The Parallelism TS
   Should be Standardized
 
@@ -4088,7 +4088,7 @@
   that `__cpp_lib_raw_memory_algorithms` has multiple values associated with
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
-  not supported.`
+  not supported.
   - `201606L` [P0040R3](https://wg21.link/P0040R3) Extending memory management
   tools
 
@@ -4102,7 +4102,7 @@
   @def LBAL_LIBCPP17_SAMPLE
   @brief Adopt `std::sample` from the Library Fundamentals V1 TS
   @details SD-6 equivalent: `__cpp_lib_sample >= 201603L`. This token will have
-  a value of `0` if the proposal described here is not supported.`
+  a value of `0` if the proposal described here is not supported.
   - `201603L` [P0220R1](https://wg21.link/P0220R1) Adopt Library Fundamentals V1
   TS Components for C++17 (R1)
 
@@ -4116,7 +4116,7 @@
   @def LBAL_LIBCPP17_SCOPED_LOCK
   @brief Add a variadic variant of `std::lock_guard` under a new name
   @details SD-6 equivalent: `__cpp_lib_scoped_lock >= 201703L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201703L` [P0156R2](https://wg21.link/P0156R2) Variadic lock_guard (Rev. 4)
 
   @remark It was determined that simply making `std::lock_guard` variadic would
@@ -4151,7 +4151,7 @@
   @details SD-6 equivalent: `__cpp_lib_shared_ptr_arrays >= 201611L`. Note that
   `__cpp_lib_shared_ptr_arrays` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201611L` [P0497R0](https://wg21.link/P0497R0) Fixes to shared_ptr support
   for arrays
 
@@ -4166,7 +4166,7 @@
   @brief Add `shared_ptr::weak_type`
   @details SD-6 equivalent: `__cpp_lib_shared_ptr_weak_type >= 201606L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201606L` [P0163R0](https://wg21.link/P0163R0) shared_ptr::weak_type
 
   @sa `<memory>`
@@ -4207,7 +4207,7 @@
   @details SD-6 equivalent: `__cpp_lib_string_view >= 201603L`. Note that
   `__cpp_lib_string_view` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201603L` [P0220R1](https://wg21.link/P0220R1) Adopt Library Fundamentals V1
   TS Components for C++17 (R1)
 
@@ -4223,7 +4223,7 @@
   @details SD-6 equivalent: `__cpp_lib_string_view >= 201606L`. Note that
   `__cpp_lib_string_view` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201606L` [P0254R2 __PDF__](https://wg21.link/P0254R2) Integrating
   std::string_view and std::string
 
@@ -4336,7 +4336,7 @@
   that `__cpp_lib_transparent_operators` has multiple values associated with
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
-  not supported.`
+  not supported.
   - `201510L` [P0074R0](https://wg21.link/P0074R0) Making std::owner_less more
   flexible
 
@@ -4356,7 +4356,7 @@
   V1 TS
   @details SD-6 equivalent: `__cpp_lib_type_trait_variable_templates >=
   201510L`. This token will have a value of `0` if the proposal described here
-  is not supported.`
+  is not supported.
   - `201510L` [P0006R0](https://wg21.link/P0006R0) Adopt Type Traits Variable
   Templates from Library Fundamentals TS for C++17
 
@@ -4371,7 +4371,7 @@
   @brief Add `std::uncaught_exceptions`
   @details SD-6 equivalent: `__cpp_lib_uncaught_exceptions >= 201411L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201411L` [N4259](https://wg21.link/N4259) Wording for
   std::uncaught_exceptions
 
@@ -4386,7 +4386,7 @@
   @brief Improve insertion into `std::unordered_map`
   @details SD-6 equivalent: `__cpp_lib_unordered_map_try_emplace >= 201411L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201411L` [N4279](https://wg21.link/N4279) Improved insertion interface for
   unique-key maps (Revision 2.3)
 
@@ -4402,7 +4402,7 @@
   @details SD-6 equivalent: `__cpp_lib_variant >= 201606L`. Note that
   `__cpp_lib_variant` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201606L` [P0032R3 __PDF__](https://wg21.link/P0032R3) Homogeneous interface
   for variant, any and optional (Revision 3)
   - `201606L` [P0088R3](https://wg21.link/P0088R3) Variant: a type-safe union
@@ -4424,7 +4424,7 @@
   @def LBAL_LIBCPP17_VOID_T
   @brief Add `std::void_t` as a transformation type trait
   @details SD-6 equivalent: `__cpp_lib_void_t >= 201411L`. This token will have
-  a value of `0` if the proposal described here is not supported.`
+  a value of `0` if the proposal described here is not supported.
   - `201411L` [N3911](https://wg21.link/N3911) TransformationTrait Alias void_t
 
   @sa `<type_traits>`
@@ -4450,7 +4450,7 @@
   @details SD-6 equivalent: `__cpp_lib_array_constexpr >= 201806L`. Note that
   `__cpp_lib_array_constexpr` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201806L` [P1023R0](https://wg21.link/P1023R0) constexpr comparison
   operators for std::array
 
@@ -4466,7 +4466,7 @@
   @details SD-6 equivalent: `__cpp_lib_array_constexpr >= 201803L`. Note that
   `__cpp_lib_array_constexpr` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201803L` [LWG3257](https://wg21.link/LWG3257) Missing feature testing macro
   update from P0858
   - `201803L` [P0858R0](https://wg21.link/P0858R0) Constexpr iterator
@@ -4488,7 +4488,7 @@
   @details SD-6 equivalent: `__cpp_lib_array_constexpr >= 201811L`. Note that
   `__cpp_lib_array_constexpr` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201811L` [P1032R1](https://wg21.link/P1032R1) Misc constexpr bits
 
   @sa `<array>` `<iterator>`
@@ -4501,7 +4501,7 @@
   @def LBAL_LIBCPP20_ASSUME_ALIGNED
   @brief Provide `std::assume_aligned` compiler hint utility function Library
   @details SD-6 equivalent: `__cpp_lib_assume_aligned >= 201811L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201811L` [P1007R3](https://wg21.link/P1007R3) std::assume_aligned
 
   @sa `<memory>`
@@ -4514,7 +4514,7 @@
   @def LBAL_LIBCPP20_ATOMIC_FLAG_TEST
   @brief Add `atomic_flag::test` components of the C++20 Synchronization Library
   @details SD-6 equivalent: `__cpp_lib_atomic_flag_test >= 201907L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201907L` [P1135R6](https://wg21.link/P1135R6) The C++20 Synchronization
   Library
 
@@ -4528,7 +4528,7 @@
   @def LBAL_LIBCPP20_ATOMIC_FLOAT
   @brief Extend `<atomic>` support to floating point types
   @details SD-6 equivalent: `__cpp_lib_atomic_float >= 201711L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201711L` [P0020R6](https://wg21.link/P0020R6) Floating Point Atomic
 
   @sa `<atomic>`
@@ -4542,7 +4542,7 @@
   @brief Add atomic lockfree type aliases from the C++20 Synchronization
   @details SD-6 equivalent: `__cpp_lib_atomic_lock_free_type_aliases >=
   201907L`. This token will have a value of `0` if the proposal described here
-  is not supported.`
+  is not supported.
   - `201907L` [P1135R6](https://wg21.link/P1135R6) The C++20 Synchronization
   Library
 
@@ -4558,7 +4558,7 @@
   @details SD-6 equivalent: `__cpp_lib_atomic_ref >= 201806L`. Note that
   `__cpp_lib_atomic_ref` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201806L` [P0019R8](https://wg21.link/P0019R8) Atomic Ref
 
   @sa `<atomic>`
@@ -4571,7 +4571,7 @@
   @def LBAL_LIBCPP20_ATOMIC_SHARED_PTR
   @brief Fixes for atomic `std::shared_ptr` and `std::weak_ptr`
   @details SD-6 equivalent: `__cpp_lib_atomic_shared_ptr >= 201711L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201711L` [P0718R2](https://wg21.link/P0718R2) Revising atomic_shared_ptr
   for C++20
 
@@ -4586,7 +4586,7 @@
   @brief Eliminate the surprising value-initialization behavior of `std::atomic`
   @details SD-6 equivalent: `__cpp_lib_atomic_value_initialization >= 201911L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201911L` [P0883R2](https://wg21.link/P0883R2) Fixing Atomic Initialization
 
   @sa `<atomic>` `<memory>`
@@ -4599,7 +4599,7 @@
   @def LBAL_LIBCPP20_ATOMIC_WAIT
   @brief Add atomic wait components of the C++20 Synchronization Library
   @details SD-6 equivalent: `__cpp_lib_atomic_wait >= 201907L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201907L` [P1135R6](https://wg21.link/P1135R6) The C++20 Synchronization
   Library
 
@@ -4615,7 +4615,7 @@
   @details SD-6 equivalent: `__cpp_lib_barrier >= 201907L`. Note that
   `__cpp_lib_barrier` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P1135R6](https://wg21.link/P1135R6) The C++20 Synchronization
   Library
 
@@ -4631,7 +4631,7 @@
   @details SD-6 equivalent: `__cpp_lib_bind_front >= 201811L`. Note that
   `__cpp_lib_bind_front` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201811L` [P0356R5](https://wg21.link/P0356R5) Simplified partial function
   application
 
@@ -4647,7 +4647,7 @@
   @details SD-6 equivalent: `__cpp_lib_bind_front >= 201907L`. Note that
   `__cpp_lib_bind_front` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P1651R0](https://wg21.link/P1651R0) bind_front should not unwrap
   reference_wrapper
 
@@ -4661,7 +4661,7 @@
   @def LBAL_LIBCPP20_BITOPS
   @brief Introduce support for hardware-level bit operations
   @details SD-6 equivalent: `__cpp_lib_bitops >= 201907L`. This token will have
-  a value of `0` if the proposal described here is not supported.`
+  a value of `0` if the proposal described here is not supported.
   - `201907L` [P0553R4](https://wg21.link/P0553R4) Bit operations
 
   @sa `<bit>`
@@ -4674,7 +4674,7 @@
   @def LBAL_LIBCPP20_BIT_CAST
   @brief Introduce robust casts between bit-compatible types
   @details SD-6 equivalent: `__cpp_lib_bit_cast >= 201806L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201806L` [P0476R2](https://wg21.link/P0476R2) Bit-casting object
   representations
 
@@ -4689,7 +4689,7 @@
   @brief Introduce traits to distinguish between bounded and unbounded arrays
   @details SD-6 equivalent: `__cpp_lib_bounded_array_traits >= 201902L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201902L` [P1357R1](https://wg21.link/P1357R1) Traits for [Un]bounded Arrays
 
   @sa `<type_traits>`
@@ -4704,7 +4704,7 @@
   @details SD-6 equivalent: `__cpp_lib_char8_t >= 201811L`. Note that
   `__cpp_lib_char8_t` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201811L` [P0482R6](https://wg21.link/P0482R6) char8_t: A type for UTF-8
   characters and strings (Revision 6)
 
@@ -4721,7 +4721,7 @@
   @details SD-6 equivalent: `__cpp_lib_char8_t >= 201907L`. Note that
   `__cpp_lib_char8_t` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P1423R3](https://wg21.link/P1423R3) char8_t backward
   compatibility remediation
 
@@ -4738,8 +4738,8 @@
   @details SD-6 equivalent: `__cpp_lib_chrono >= 201803L`. Note that
   `__cpp_lib_chrono` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
-  - `201803L` [P0355R7](https://wg21.link/P0355R7) Extending <chrono> to
+  proposal, or `0` if the proposal described here is not supported.
+  - `201803L` [P0355R7](https://wg21.link/P0355R7) Extending `<chrono>` to
   Calendars and Time Zones
 
   @sa `<chrono>`
@@ -4754,7 +4754,7 @@
   @details SD-6 equivalent: `__cpp_lib_chrono >= 201907L`. Note that
   `__cpp_lib_chrono` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P1466R3](https://wg21.link/P1466R3) Miscellaneous minor fixes
   for chrono
 
@@ -4770,7 +4770,7 @@
   @details SD-6 equivalent: `__cpp_lib_concepts >= 201806L`. Note that
   `__cpp_lib_concepts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201806L` [P0898R3 __PDF__](https://wg21.link/P0898R3) Standard Library
   Concepts
 
@@ -4786,7 +4786,7 @@
   @details SD-6 equivalent: `__cpp_lib_concepts >= 202002L`. Note that
   `__cpp_lib_concepts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202002L` [P1964R2](https://wg21.link/P1964R2) Wording for boolean-testable
 
   @sa `<compare>` `<concepts>`
@@ -4800,7 +4800,7 @@
   @brief Experimental version of Standard Library Concepts
   @details SD-6 equivalent: `__cpp_lib_experimental_concepts >= 201806L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
 */
 #ifndef LBAL_LIBCPP20_CONCEPTS_EXP
   #define LBAL_LIBCPP20_CONCEPTS_EXP 0
@@ -4812,7 +4812,7 @@
   @details SD-6 equivalent: `__cpp_lib_concepts >= 201907L`. Note that
   `__cpp_lib_concepts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P1754R1 __PDF__](https://wg21.link/P1754R1) Rename concepts to
   standard_case for C++20, while we still can
 
@@ -4829,9 +4829,9 @@
   that `__cpp_lib_constexpr_algorithms` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201703L` [P0202R3](https://wg21.link/P0202R3) Add Constexpr Modifiers to
-  Functions in <algorithm> and <utility> Headers
+  Functions in `<algorithm>` and `<utility>` Headers
 
   @sa `<algorithm>` `<utility>`
 */
@@ -4846,7 +4846,7 @@
   that `__cpp_lib_constexpr_algorithms` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201806L` [LWG3256](https://wg21.link/LWG3256) Feature testing macro for
   constexpr algorithms
   - `201806L` [LWG3792](https://wg21.link/LWG3792)
@@ -4866,7 +4866,7 @@
   @details SD-6 equivalent: `__cpp_lib_constexpr_complex >= 201711L`. Note that
   `__cpp_lib_constexpr_complex` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201711L` [P0415R1 __PDF__](https://wg21.link/P0415R1) Constexpr for
   std::complex
 
@@ -4881,7 +4881,7 @@
   @brief Add `constexpr` memory allocators used by dynamic containers
   @details SD-6 equivalent: `__cpp_lib_constexpr_dynamic_alloc >= 201907L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201907L` [P0784R7](https://wg21.link/P0784R7) More constexpr containers
 
   @sa `<memory>`
@@ -4897,7 +4897,7 @@
   that `__cpp_lib_constexpr_functional` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201811L` [P1032R1](https://wg21.link/P1032R1) Misc constexpr bits
 
   @sa `<functional>`
@@ -4913,7 +4913,7 @@
   that `__cpp_lib_constexpr_functional` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201907L` [P1065R2](https://wg21.link/P1065R2) constexpr INVOKE
 
   @sa `<functional>`
@@ -4927,7 +4927,7 @@
   @brief Make more of `<iterator>` `constexpr`
   @details SD-6 equivalent: `__cpp_lib_constexpr_iterator >= 201811L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201811L` [P1032R1](https://wg21.link/P1032R1) Misc constexpr bits
 
   @sa `<iterator>`
@@ -4942,7 +4942,7 @@
   @details SD-6 equivalent: `__cpp_lib_constexpr_memory >= 201811L`. Note that
   `__cpp_lib_constexpr_memory` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201811L` [P1006R1](https://wg21.link/P1006R1) Constexpr in
   std::pointer_traits
 
@@ -4956,7 +4956,7 @@
   @def LBAL_LIBCPP20_CONSTEXPR_NUMERIC
   @brief Make numeric algorithms `constexpr`
   @details SD-6 equivalent: `__cpp_lib_constexpr_numeric >= 201911L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201911L` [P1645R1](https://wg21.link/P1645R1) constexpr for numeric
   algorithms
 
@@ -4972,7 +4972,7 @@
   @details SD-6 equivalent: `__cpp_lib_constexpr_string >= 201907L`. Note that
   `__cpp_lib_constexpr_string` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P0980R1](https://wg21.link/P0980R1) Making std::string constexpr
 
   @sa `<string>`
@@ -4987,7 +4987,7 @@
   @details SD-6 equivalent: `__cpp_lib_constexpr_string >= 201811L`. Note that
   `__cpp_lib_constexpr_string` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201811L` [P1032R1](https://wg21.link/P1032R1) Misc constexpr bits
 
   @sa `<string>`
@@ -5003,7 +5003,7 @@
   that `__cpp_lib_constexpr_string_view` has multiple values associated with
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
-  not supported.`
+  not supported.
   - `201811L` [P1032R1](https://wg21.link/P1032R1) Misc constexpr bits
 
   @sa `<string_view>`
@@ -5016,7 +5016,7 @@
   @def LBAL_LIBCPP20_CONSTEXPR_TUPLE
   @brief Make more of `<tuple>` `constexpr`
   @details SD-6 equivalent: `__cpp_lib_constexpr_tuple >= 201811L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201811L` [P1032R1](https://wg21.link/P1032R1) Misc constexpr bits
 
   @sa `<tuple>`
@@ -5029,7 +5029,7 @@
   @def LBAL_LIBCPP20_CONSTEXPR_UTILITY
   @brief Make more of `<tuple>` `constexpr`
   @details SD-6 equivalent: `__cpp_lib_constexpr_utility >= 201811L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201811L` [P1032R1](https://wg21.link/P1032R1) Misc constexpr bits
 
   @sa `<utility>`
@@ -5042,7 +5042,7 @@
   @def LBAL_LIBCPP20_CONSTEXPR_VECTOR
   @brief Make `std::vector` `constexpr`
   @details SD-6 equivalent: `__cpp_lib_constexpr_vector >= 201907L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201907L` [P1004R2 __PDF__](https://wg21.link/P1004R2) Making std::vector
   constexpr
 
@@ -5056,7 +5056,7 @@
   @def LBAL_LIBCPP20_COROUTINE
   @brief Standard Library coroutines
   @details SD-6 equivalent: `__cpp_lib_coroutine >= 201902L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201902L` [LWG3393](https://wg21.link/LWG3393) Missing/incorrect feature
   test macro for coroutines
   - `201902L` [P0912R5](https://wg21.link/P0912R5) Merge Coroutines TS into C+
@@ -5075,7 +5075,7 @@
   @brief Experimental Standard Library coroutines
   @details SD-6 equivalent: `__cpp_lib_experimental_coroutine >= 201902L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
 
   @remark Note that `<coroutine>` requires language support.
 
@@ -5090,7 +5090,7 @@
   @def LBAL_LIBCPP20_DESTROYING_DELETE
   @brief Efficient sized `delete` for variable-sized classes
   @details SD-6 equivalent: `__cpp_lib_destroying_delete >= 201806L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201806L` [P0722R3](https://wg21.link/P0722R3) Efficient sized delete for
   variable sized classes
 
@@ -5104,7 +5104,7 @@
   @def LBAL_LIBCPP20_ENDIAN
   @brief Add `std::endian` enum
   @details SD-6 equivalent: `__cpp_lib_endian >= 201907L`. This token will have
-  a value of `0` if the proposal described here is not supported.`
+  a value of `0` if the proposal described here is not supported.
   - `201907L` [P0463R1](https://wg21.link/P0463R1) endian, Just endian
 
   @sa `<bit>`
@@ -5117,7 +5117,7 @@
   @def LBAL_LIBCPP20_ENDIAN_BIT
   @brief Relocate `std::endian` to `<bit>`
   @details SD-6 equivalent: `__cpp_lib_endian >= 201907L`. This token will have
-  a value of `0` if the proposal described here is not supported.`
+  a value of `0` if the proposal described here is not supported.
   - `201907L` [P1612R1 __PDF__](https://wg21.link/P1612R1) Relocate Endian’s
   Specification
 
@@ -5133,7 +5133,7 @@
   @details SD-6 equivalent: `__cpp_lib_erase_if >= 201811L`. Note that
   `__cpp_lib_erase_if` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201811L` [P1209R0](https://wg21.link/P1209R0) Adopt Consistent Container
   Erasure from Library Fundamentals 2 for C++20
 
@@ -5150,7 +5150,7 @@
   @details SD-6 equivalent: `__cpp_lib_erase_if >= 202002L`. Note that
   `__cpp_lib_erase_if` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202002L` [P1115R3 __PDF__](https://wg21.link/P1115R3) Improving the Return
   Value of Erase-Like Algorithms II: Free erase/erase_if
 
@@ -5167,7 +5167,7 @@
   @details SD-6 equivalent: `__cpp_lib_execution >= 201902L`. Note that
   `__cpp_lib_execution` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201902L` [P1001R2](https://wg21.link/P1001R2) Target Vectorization Policies
   from Parallelism V2 TS to C++20
 
@@ -5185,7 +5185,7 @@
   @details SD-6 equivalent: `__cpp_lib_format >= 201907L`. Note that
   `__cpp_lib_format` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P0645R10](https://wg21.link/P0645R10) Text Formatting
   - `201907L` [P1361R2](https://wg21.link/P1361R2) Integration of chrono with
   text formatting
@@ -5203,7 +5203,7 @@
   @brief The feature was removed prior to Standardization
   @details SD-6 equivalent: `__cpp_lib_generic_unordered_hash_lookup >=
   201902L`. This token will have a value of `0` if the proposal described here
-  is not supported.`
+  is not supported.
   - `201902L` [P0920R2](https://wg21.link/P0920R2) Precalculated hash values
   in lookup
 
@@ -5224,7 +5224,7 @@
   @brief Heterogeneous lookup for unordered containers
   @details SD-6 equivalent: `__cpp_lib_generic_unordered_lookup >= 201811L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201811L` [P0919R3](https://wg21.link/P0919R3) Heterogeneous lookup for
   unordered containers
 
@@ -5239,7 +5239,7 @@
   @brief Add Safe integral comparisons
   @details SD-6 equivalent: `__cpp_lib_integer_comparison_functions >= 202002L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `202002L` [P0586R2](https://wg21.link/P0586R2) Safe integral comparisons
 
   @sa `<utility>`
@@ -5252,7 +5252,7 @@
   @def LBAL_LIBCPP20_INTERPOLATE
   @brief Add well-behaved interpolation for numbers and pointers
   @details SD-6 equivalent: `__cpp_lib_interpolate >= 201902L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201902L` [P0811R3](https://wg21.link/P0811R3) Well-behaved interpolation
   for numbers and pointers
 
@@ -5268,7 +5268,7 @@
   @details SD-6 equivalent: `__cpp_lib_int_pow2 >= 201806L`. Note that
   `__cpp_lib_int_pow2` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201806L` [P0556R3](https://wg21.link/P0556R3) Integral power-of-
   2 operations
 
@@ -5284,7 +5284,7 @@
   @details SD-6 equivalent: `__cpp_lib_int_pow2 >= 202002L`. Note that
   `__cpp_lib_int_pow2` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202002L` [P1956R1](https://wg21.link/P1956R1) On the naming of low-level
   bit manipulation functions
 
@@ -5299,7 +5299,7 @@
   @brief Add `std::is_constant_evaluated` type trait
   @details SD-6 equivalent: `__cpp_lib_is_constant_evaluated >= 201811L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201811L` [P0595R2](https://wg21.link/P0595R2) std::is_constant_evaluated
 
   @sa `<type_traits>`
@@ -5313,7 +5313,7 @@
   @brief Add `std::is_layout_compatible` type trait
   @details SD-6 equivalent: `__cpp_lib_is_layout_compatible >= 201907L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201907L` [P0466R5](https://wg21.link/P0466R5) Layout-compatibility and
   Pointer-interconvertibility Traits
 
@@ -5328,7 +5328,7 @@
   @brief Add `std::is_nothrow_convertible` type trait
   @details SD-6 equivalent: `__cpp_lib_is_nothrow_convertible >= 201806L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201806L` [LWG3356](https://wg21.link/LWG3356) __cpp_lib_nothrow_convertible
   should be __cpp_lib_is_nothrow_convertible
   - `201806L` [P0758R1](https://wg21.link/P0758R1) Implicit conversion traits
@@ -5349,7 +5349,7 @@
   @brief Add `std::is_pointer_interconvertible` type trait
   @details SD-6 equivalent: `__cpp_lib_is_pointer_interconvertible >= 201907L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201907L` [P0466R5](https://wg21.link/P0466R5) Layout-compatibility and
   Pointer-interconvertibility Traits
 
@@ -5365,7 +5365,7 @@
   @details SD-6 equivalent: `__cpp_lib_jthread >= 201907L`. Note that
   `__cpp_lib_jthread` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P0660R10](https://wg21.link/P0660R10) Stop Token and Joining
   Thread
 
@@ -5381,7 +5381,7 @@
   @details SD-6 equivalent: `__cpp_lib_jthread >= 201911L`. Note that
   `__cpp_lib_jthread` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201911L` [P1869R1](https://wg21.link/P1869R1) Rename
   ‘condition_variable_any’ interruptible wait methods
 
@@ -5395,7 +5395,7 @@
   @def LBAL_LIBCPP20_LATCH
   @brief Incorporate `std::latch` from the C++20 Synchronization Library
   @details SD-6 equivalent: `__cpp_lib_latch >= 201907L`. This token will have a
-  value of `0` if the proposal described here is not supported.`
+  value of `0` if the proposal described here is not supported.
   - `201907L` [P1135R6](https://wg21.link/P1135R6) The C++20 Synchronization
   Library
 
@@ -5410,7 +5410,7 @@
   @brief Improve the return value of erase-like algorithms
   @details SD-6 equivalent: `__cpp_lib_list_remove_return_type >= 201806L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201806L` [P0646R1 __PDF__](https://wg21.link/P0646R1) Improving the Return
   Value of Erase-Like Algorithms I: list/forward list
 
@@ -5424,7 +5424,7 @@
   @def LBAL_LIBCPP20_MATH_CONSTANTS
   @brief Add common math constants to the C++ Standard
   @details SD-6 equivalent: `__cpp_lib_math_constants >= 201907L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201907L` [P0631R8 __PDF__](https://wg21.link/P0631R8) Math Constants
 
   @sa `<numbers>`
@@ -5438,7 +5438,7 @@
   @brief Provide a default template argument for `std::polymorphic_allocator`
   @details SD-6 equivalent: `__cpp_lib_polymorphic_allocator >= 201902L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201902L` [LWG3437](https://wg21.link/LWG3437)
   __cpp_lib_polymorphic_allocator is in the wrong header
   - `201902L` [P0339R6 __PDF__](https://wg21.link/P0339R6)
@@ -5456,7 +5456,7 @@
   @details SD-6 equivalent: `__cpp_lib_ranges >= 201811L`. Note that
   `__cpp_lib_ranges` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201811L` [P0896R4 __PDF__](https://wg21.link/P0896R4) The One Ranges
   Proposal
 
@@ -5472,7 +5472,7 @@
   @details SD-6 equivalent: `__cpp_lib_ranges >= 201907L`. Note that
   `__cpp_lib_ranges` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P1035R7 __PDF__](https://wg21.link/P1035R7) Input Range Adaptors
 
   @sa `<algorithm>` `<functional>` `<iterator>` `<memory>` `<ranges>`
@@ -5487,7 +5487,7 @@
   @details SD-6 equivalent: `__cpp_lib_ranges >= 201911L`. Note that
   `__cpp_lib_ranges` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201911L` [P1716R3](https://wg21.link/P1716R3) ranges compare algorithm are
   over-constrained
 
@@ -5501,7 +5501,7 @@
   @def LBAL_LIBCPP20_REMOVE_CVREF
   @brief Add `std::remove_cvref` type trait
   @details SD-6 equivalent: `__cpp_lib_remove_cvref >= 201711L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201711L` [P0550R2 __PDF__](https://wg21.link/P0550R2) Transformation Trait
   remove_cvref
 
@@ -5515,7 +5515,7 @@
   @def LBAL_LIBCPP20_SEMAPHORE
   @brief Incorporate `std::semaphore` from the C++20 Synchronization Library
   @details SD-6 equivalent: `__cpp_lib_semaphore >= 201907L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201907L` [P1135R6](https://wg21.link/P1135R6) The C++20 Synchronization
   Library
 
@@ -5531,7 +5531,7 @@
   @details SD-6 equivalent: `__cpp_lib_shared_ptr_arrays >= 201707L`. Note that
   `__cpp_lib_shared_ptr_arrays` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201707L` [P0674R1](https://wg21.link/P0674R1) Extending make_shared to
   Support Arrays
 
@@ -5547,8 +5547,8 @@
   @details SD-6 equivalent: `__cpp_lib_shift >= 201806L`. Note that
   `__cpp_lib_shift` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
-  - `201806L` [P0769R2](https://wg21.link/P0769R2) Add shift to <algorithm>
+  proposal, or `0` if the proposal described here is not supported.
+  - `201806L` [P0769R2](https://wg21.link/P0769R2) Add shift to `<algorithm>`
 
   @sa `<algorithm>`
 */
@@ -5561,7 +5561,7 @@
   @brief Support smart pointer creation with default initialization
   @details SD-6 equivalent: `__cpp_lib_smart_ptr_for_overwrite >= 202002L`.
   This token will have a value of `0` if the proposal described here is not
-  supported.`
+  supported.
   - `202002L` [P1020R1](https://wg21.link/P1020R1) Smart pointer creation with
   default initialization
   - `202002L` [P1973R1](https://wg21.link/P1973R1) Rename _default_init
@@ -5580,7 +5580,7 @@
   @def LBAL_LIBCPP20_SOURCE_LOCATION
   @brief Adopt `std::source_location` from the Library Fundamentals V3 TS
   @details SD-6 equivalent: `__cpp_lib_source_location >= 201907L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201907L` [P1208R6](https://wg21.link/P1208R6) Adopt source location from
   Library Fundamentals V3 for C++20
 
@@ -5596,10 +5596,10 @@
   @details SD-6 equivalent: `__cpp_lib_span >= 201803L`. Note that
   `__cpp_lib_span` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201803L` [LWG3274](https://wg21.link/LWG3274) Missing feature test macro
-  for <span>
-  - `201803L` [P0122R7](https://wg21.link/P0122R7) span: bounds-safe views for
+  for `<span>`
+  - `201803L` [P0122R7](https://wg21.link/P0122R7) `span`: bounds-safe views for
   sequences of objects
 
   @remark The issue raised in [LWG3274](https://wg21.link/LWG3274) was simply
@@ -5618,7 +5618,7 @@
   @details SD-6 equivalent: `__cpp_lib_span >= 202002L`. Note that
   `__cpp_lib_span` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202002L` [P1976R2](https://wg21.link/P1976R2) Fixed-size span construction
   from dynamic range
 
@@ -5634,7 +5634,7 @@
   @details SD-6 equivalent: `__cpp_lib_span >= 201902L`. Note that
   `__cpp_lib_span` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201902L` [P1024R3](https://wg21.link/P1024R3) Usability Enhancements for
   std::span
 
@@ -5648,7 +5648,7 @@
   @def LBAL_LIBCPP20_SSIZE
   @brief Add `std::ssize` and fix `std::span`’s `size` return values
   @details SD-6 equivalent: `__cpp_lib_ssize >= 201902L`. This token will have a
-  value of `0` if the proposal described here is not supported.`
+  value of `0` if the proposal described here is not supported.
   - `201902L` [P1227R2](https://wg21.link/P1227R2) Signed ssize() functions,
   unsigned size() functions
 
@@ -5665,7 +5665,7 @@
   @def LBAL_LIBCPP20_STARTS_ENDS_WITH
   @brief Add string prefix- and suffix-checking
   @details SD-6 equivalent: `__cpp_lib_starts_ends_with >= 201711L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201711L` [P0457R2](https://wg21.link/P0457R2) String Prefix and Suffix
   Checking
 
@@ -5681,7 +5681,7 @@
   @details SD-6 equivalent: `__cpp_lib_string_view >= 201803L`. Note that
   `__cpp_lib_string_view` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `201803L` [LWG3257](https://wg21.link/LWG3257) Missing feature testing macro
   update from P0858
   - `201803L` [P0858R0](https://wg21.link/P0858R0) Constexpr iterator
@@ -5703,7 +5703,7 @@
   @details SD-6 equivalent: `__cpp_lib_syncbuf >= 201711L`. Note that
   `__cpp_lib_syncbuf` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201711L` [P0053R7 __PDF__](https://wg21.link/P0053R7) C++ Synchronized
   Buffered Ostream
 
@@ -5719,7 +5719,7 @@
   @details SD-6 equivalent: `__cpp_lib_syncbuf >= 201803L`. Note that
   `__cpp_lib_syncbuf` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `201803L` [P0753R2 __PDF__](https://wg21.link/P0753R2) Manipulators for C++
   Synchronized Buffered Ostream
 
@@ -5736,7 +5736,7 @@
   that `__cpp_lib_three_way_comparison` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201711L` [P0768R1 __PDF__](https://wg21.link/P0768R1) Library Support for
   the Spaceship (Comparison) Operator
 
@@ -5753,7 +5753,7 @@
   that `__cpp_lib_three_way_comparison` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
-  supported.`
+  supported.
   - `201907L` [P1614R2](https://wg21.link/P1614R2) The Mothership Has Landed:
   Adding <=> to the Library
 
@@ -5767,7 +5767,7 @@
   @def LBAL_LIBCPP20_TO_ADDRESS
   @brief Provide a utility to convert a pointer to a raw pointer
   @details SD-6 equivalent: `__cpp_lib_to_address >= 201711L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201711L` [P0653R2 __PDF__](https://wg21.link/P0653R2) Utility to convert a
   pointer to a raw pointer
 
@@ -5781,7 +5781,7 @@
   @def LBAL_LIBCPP20_TO_ARRAY
   @brief Adopt `std::to_array` from the Library Fundamentals TS
   @details SD-6 equivalent: `__cpp_lib_to_array >= 201907L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201907L` [P0325R4](https://wg21.link/P0325R4) to_array from LFTS with
   updates
 
@@ -5795,7 +5795,7 @@
   @def LBAL_LIBCPP20_TYPE_IDENTITY
   @brief Add the `std::identity` metafunction
   @details SD-6 equivalent: `__cpp_lib_type_identity >= 201806L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `201806L` [P0887R1 __PDF__](https://wg21.link/P0887R1) The identity
   metafunction
 
@@ -5809,7 +5809,7 @@
   @def LBAL_LIBCPP20_UNWRAP_REF
   @brief Add `std::unwrap_reference` and `std::unwrap_ref_decay`
   @details SD-6 equivalent: `__cpp_lib_unwrap_ref >= 201811L`. This token will
-  have a value of `0` if the proposal described here is not supported.`
+  have a value of `0` if the proposal described here is not supported.
   - `201811L` [LWG3348](https://wg21.link/LWG3348) __cpp_lib_unwrap_ref in wrong
   header
   - `201811L` [P0318R1 __PDF__](https://wg21.link/P0318R1) unwrap_ref_decay
@@ -5845,6 +5845,7 @@
 #ifndef LBAL_LIBCPP20_VERSION
   #define LBAL_LIBCPP20_VERSION 0
 #endif
+
 ///	@}	LBAL_LIBCPP20
 
 /**
@@ -5861,7 +5862,7 @@
   @brief Iterators `pair` constructors for `stack` and `queue`
   @details SD-6 equivalent: `__cpp_lib_adaptor_iterator_pair_constructor >=
   202106L`. This token will have a value of `0` if the proposal described here
-  is not supported.`
+  is not supported.
   - `202106L` [P1425R4 __PDF__](https://wg21.link/P1425R4) Iterators pair
   constructors for stack and queue
 
@@ -5876,7 +5877,7 @@
   @brief Ranges iterators as inputs to non-Ranges algorithms
   @details SD-6 equivalent: `__cpp_lib_algorithm_iterator_requirements >=
   202207L`. This token will have a value of `0` if the proposal described here
-  is not supported.`
+  is not supported.
   - `202207L` [P2408R5 __PDF__](https://wg21.link/P2408R5) Ranges iterators as
   inputs to non-Ranges algorithms
 
@@ -5892,7 +5893,7 @@
   @details SD-6 equivalent: `__cpp_lib_barrier >= 202302L`. Note that
   `__cpp_lib_barrier` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202302L` [P2588R3](https://wg21.link/P2588R3) Relax std::barrier phase
   completion step guarantees
 
@@ -5909,7 +5910,7 @@
   @details SD-6 equivalent: `__cpp_lib_concepts >= 202207L`. Note that
   `__cpp_lib_concepts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202207L` [P2404R3](https://wg21.link/P2404R3) Move-only types for
   equality_comparable_with, totally_ordered_with, and three_way_comparable_with
 
@@ -5925,7 +5926,7 @@
   @details SD-6 equivalent: `__cpp_lib_constexpr_memory >= 202202L`. Note that
   `__cpp_lib_constexpr_memory` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202202L` [P2273R3](https://wg21.link/P2273R3) Making std::unique_ptr
   constexpr
 
@@ -5941,7 +5942,7 @@
   @details SD-6 equivalent: `__cpp_lib_format >= 202106L`. Note that
   `__cpp_lib_format` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202106L` [P2216R3](https://wg21.link/P2216R3) std::format improvements
 
   @sa `<format>`
@@ -5956,7 +5957,7 @@
   @details SD-6 equivalent: `__cpp_lib_format >= 202207L`. Note that
   `__cpp_lib_format` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202207L` [P2508R1](https://wg21.link/P2508R1) Exposing std::basic-format-
   string
 
@@ -5976,7 +5977,7 @@
   @details SD-6 equivalent: `__cpp_lib_format >= 202207L`. Note that
   `__cpp_lib_format` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202207L` [P2419R2](https://wg21.link/P2419R2) Clarify handling of encodings
   in localized formatting of chrono types
 
@@ -5996,7 +5997,7 @@
   @details SD-6 equivalent: `__cpp_lib_format >= 202110L`. Note that
   `__cpp_lib_format` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202110L` [P2418R2](https://wg21.link/P2418R2) Add support for
   std::generator-like types to std::format
 
@@ -6016,7 +6017,7 @@
   @details SD-6 equivalent: `__cpp_lib_format >= 202110L`. Note that
   `__cpp_lib_format` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202110L` [P2372R3](https://wg21.link/P2372R3) Fixing locale handling in
   chrono formatters
 
@@ -6036,7 +6037,7 @@
   @details SD-6 equivalent: `__cpp_lib_optional >= 202106L`. Note that
   `__cpp_lib_optional` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202106L` [P2231R1](https://wg21.link/P2231R1) Add further constexpr support
   for optional/variant
 
@@ -6052,7 +6053,7 @@
   @details SD-6 equivalent: `__cpp_lib_optional >= 202110L`. Note that
   `__cpp_lib_optional` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202110L` [LWG3621](https://wg21.link/LWG3621) Remove feature-test macro
   __cpp_lib_monadic_optional
   - `202110L` [P0798R8](https://wg21.link/P0798R8) Monadic operations for
@@ -6074,7 +6075,7 @@
   @details SD-6 equivalent: `__cpp_lib_variant >= 202106L`. Note that
   `__cpp_lib_variant` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202106L` [P2231R1](https://wg21.link/P2231R1) Add further constexpr support
   for optional/variant
 
@@ -6090,7 +6091,7 @@
   @details SD-6 equivalent: `__cpp_lib_variant >= 202102L`. Note that
   `__cpp_lib_variant` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202102L` [P2162R2](https://wg21.link/P2162R2) Inheriting from std::variant
   (resolving LWG3052)
 
@@ -6115,7 +6116,7 @@
   @def LBAL_LIBCPP26_ALIGNED_ACCESSOR
   @brief An `mdspan` accessor expressing pointer overalignment
   @details SD-6 equivalent: `__cpp_lib_aligned_accessor >= 202411L`. This token
-  will have a value of `0` if the proposal described here is not supported.`
+  will have a value of `0` if the proposal described here is not supported.
   - `202411L` [P2897R7](https://wg21.link/P2897R7) aligned_accessor: An mdspan
   accessor expressing pointer overalignment
 
@@ -6131,7 +6132,7 @@
   @details SD-6 equivalent: `__cpp_lib_atomic_ref >= 202411L`. Note that
   `__cpp_lib_atomic_ref` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202411L` [P2835R7](https://wg21.link/P2835R7) Expose std::atomic_ref’s
   object address
 
@@ -6147,7 +6148,7 @@
   @details SD-6 equivalent: `__cpp_lib_bind_front >= 202306L`. Note that
   `__cpp_lib_bind_front` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202306L` [P2714R1](https://wg21.link/P2714R1) Bind front and back to NTTP
   callables
 
@@ -6163,7 +6164,7 @@
   @details SD-6 equivalent: `__cpp_lib_chrono >= 202306L`. Note that
   `__cpp_lib_chrono` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202306L` [P2592R3](https://wg21.link/P2592R3) Hashing support for
   std::chrono value classes
 
@@ -6180,7 +6181,7 @@
   that `__cpp_lib_constexpr_algorithms` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
-  supported.`
+  supported.
   - `202306L` [P2562R1 __PDF__](https://wg21.link/P2562R1) constexpr Stable
   Sorting
 
@@ -6196,7 +6197,7 @@
   @details SD-6 equivalent: `__cpp_lib_constexpr_complex >= 202306L`. Note that
   `__cpp_lib_constexpr_complex` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202306L` [P1383R2](https://wg21.link/P1383R2) More constexpr for cmath
   and complex
 
@@ -6212,7 +6213,7 @@
   @details SD-6 equivalent: `__cpp_lib_constexpr_memory >= 202506L`. Note that
   `__cpp_lib_constexpr_memory` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202506L` [P3037R6](https://wg21.link/P3037R6) constexpr std::shared_ptr
   and friends
 
@@ -6228,7 +6229,7 @@
   @details SD-6 equivalent: `__cpp_lib_format >= 202306L`. Note that
   `__cpp_lib_format` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202306L` [P2637R3](https://wg21.link/P2637R3) Member visit
 
   @sa `<format>`
@@ -6243,7 +6244,7 @@
   @details SD-6 equivalent: `__cpp_lib_format >= 202304L`. Note that
   `__cpp_lib_format` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202304L` [P2510R3](https://wg21.link/P2510R3) Formatting pointers
 
   @sa `<format>`
@@ -6258,7 +6259,7 @@
   @details SD-6 equivalent: `__cpp_lib_format >= 202311L`. Note that
   `__cpp_lib_format` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202311L` [P2918R2](https://wg21.link/P2918R2) Runtime format strings II
 
   @sa `<format>`
@@ -6273,7 +6274,7 @@
   @details SD-6 equivalent: `__cpp_lib_format >= 202305L`. Note that
   `__cpp_lib_format` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202305L` [P2757R3](https://wg21.link/P2757R3) Type checking format args
 
   @sa `<format>`
@@ -6288,7 +6289,7 @@
   @details SD-6 equivalent: `__cpp_lib_integer_sequence >= 202511L`. Note that
   `__cpp_lib_integer_sequence` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202511L` [P1789R3](https://wg21.link/P1789R3) Library Support for Expansion
   Statements
 
@@ -6304,7 +6305,7 @@
   @details SD-6 equivalent: `__cpp_lib_not_fn >= 202306L`. Note that
   `__cpp_lib_not_fn` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202306L` [P2714R1](https://wg21.link/P2714R1) Bind front and back to NTTP
   callables
 
@@ -6320,7 +6321,7 @@
   @details SD-6 equivalent: `__cpp_lib_optional >= 202506L`. Note that
   `__cpp_lib_optional` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202506L` [P2988R12](https://wg21.link/P2988R12) std::optional<T&>
 
   @sa `<optional>`
@@ -6335,7 +6336,7 @@
   @details SD-6 equivalent: `__cpp_lib_parallel_algorithm >= 202506L`. Note that
   `__cpp_lib_parallel_algorithm` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202506L` [P3179R9](https://wg21.link/P3179R9) C++ parallel range algorithms
 
   @sa `<algorithm>` `<numeric>`
@@ -6351,7 +6352,7 @@
   that `__cpp_lib_raw_memory_algorithms` has multiple values associated with
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
-  not supported.`
+  not supported.
   - `202411L` [P3369R0](https://wg21.link/P3369R0) constexpr for
   uninitialized_default_construct
   - `202411L` [P3508R0](https://wg21.link/P3508R0) Wording for constexpr for
@@ -6369,7 +6370,7 @@
   @details SD-6 equivalent: `__cpp_lib_string_view >= 202403L`. Note that
   `__cpp_lib_string_view` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.`
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202403L` [P2591R5](https://wg21.link/P2591R5) Concatenation of strings and
   string views
 
@@ -6385,7 +6386,7 @@
   @details SD-6 equivalent: `__cpp_lib_to_chars >= 202306L`. Note that
   `__cpp_lib_to_chars` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202306L` [P2497R0](https://wg21.link/P2497R0) Testing for success or
   failure of charconv functions
 
@@ -6401,7 +6402,7 @@
   @details SD-6 equivalent: `__cpp_lib_variant >= 202306L`. Note that
   `__cpp_lib_variant` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
-  proposal, or `0` if the proposal described here is not supported.`
+  proposal, or `0` if the proposal described here is not supported.
   - `202306L` [P2637R3](https://wg21.link/P2637R3) Member visit
 
   @sa `<variant>`

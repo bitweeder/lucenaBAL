@@ -114,10 +114,10 @@
     #error "Don’t define LBAL_TYPE_xxx externally."
   #endif  //	LBAL_TYPE check
 
-  #if defined(LBAL_CPP98_EXCEPTIONS) || defined(LBAL_CPP98_RTTI)
+  #if defined(LBAL_CPP03_EXCEPTIONS) || defined(LBAL_CPP03_RTTI)
 
-    #error "Don’t define LBAL_CPP98_xxx externally."
-  #endif  //	LBAL_CPP98 check
+    #error "Don’t define LBAL_CPP03_xxx externally."
+  #endif  //	LBAL_CPP03 check
 
   #if defined(LBAL_CPP11_ALIAS_TEMPLATES)                                      \
       || defined(LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY)                      \

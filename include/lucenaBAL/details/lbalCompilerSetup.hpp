@@ -63,12 +63,12 @@
 //	C++98 features
 //	These can be conditionally disabled.
 
-#if !defined(LBAL_CPP98_EXCEPTIONS) && (__cpp_exceptions >= 199711L)
-  #define LBAL_CPP98_EXCEPTIONS __cpp_exceptions
+#if !defined(LBAL_CPP03_EXCEPTIONS) && (__cpp_exceptions >= 199711L)
+  #define LBAL_CPP03_EXCEPTIONS __cpp_exceptions
 #endif
 
-#if !defined(LBAL_CPP98_RTTI) && (__cpp_rtti >= 199711L)
-  #define LBAL_CPP98_RTTI __cpp_rtti
+#if !defined(LBAL_CPP03_RTTI) && (__cpp_rtti >= 199711L)
+  #define LBAL_CPP03_RTTI __cpp_rtti
 #endif
 
 //	C++11 features.
