@@ -2679,21 +2679,6 @@
 #endif
 
 /*------------------------------------------------------------------------------
-  Aggregates
-
-  These are convenience macros that combine multiple other macros.
-*/
-
-//	This is an aggregate that tracks two different SD-6 macros for the purpose
-//	of establishing Standard compliance. There is no single corresponding SD-6
-//	macro. Note that we do not track experimental versions of the components.
-#if !defined(LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS)
-  #if LBAL_LIBCPP17_EXECUTION && LBAL_LIBCPP17_PARALLEL_ALGORITHM
-    #define LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS 1L
-  #endif
-#endif  //	LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
-
-/*------------------------------------------------------------------------------
   Header Checks
 
   Make sure that the headers needed to support supposedly available features
@@ -3475,6 +3460,8 @@ LBAL_CPP_WARNING(
   Token Tests
 */
 
+// C++14
+
 #if LBAL_LIBCPP14_CHRONO_UDLS
   #if LBAL_HAS_HEADER_CHRONO != 1
     #undef LBAL_LIBCPP14_CHRONO_UDLS
@@ -3482,8 +3469,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_CHRONO_UDLS: <chrono> not found"
 )
-  #endif  // LBAL_HAS_HEADER_CHRONO
-#endif    // LBAL_LIBCPP14_CHRONO_UDLS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_CHRONO_UDLS
 
 #if LBAL_LIBCPP14_COMPLEX_UDLS
   #if LBAL_HAS_HEADER_COMPLEX != 1
@@ -3492,8 +3479,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_COMPLEX_UDLS: <complex> not found"
 )
-  #endif  // LBAL_HAS_HEADER_COMPLEX
-#endif    // LBAL_LIBCPP14_COMPLEX_UDLS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_COMPLEX_UDLS
 
 #if LBAL_LIBCPP14_EXCHANGE_FUNCTION
   #if LBAL_HAS_HEADER_UTILITY != 1
@@ -3502,8 +3489,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_EXCHANGE_FUNCTION: <utility> not found"
 )
-  #endif  // LBAL_HAS_HEADER_UTILITY
-#endif    // LBAL_LIBCPP14_EXCHANGE_FUNCTION
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_EXCHANGE_FUNCTION
 
 #if LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP
   #if LBAL_HAS_HEADER_MAP != 1 || LBAL_HAS_HEADER_SET != 1
@@ -3511,10 +3498,10 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP: at least one "
-    "of {<map>,<set>} not found"
+    "of {<map>, <set>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP
 
 #if LBAL_LIBCPP14_INTEGER_SEQUENCE
   #if LBAL_HAS_HEADER_UTILITY != 1
@@ -3523,8 +3510,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_INTEGER_SEQUENCE: <utility> not found"
 )
-  #endif  // LBAL_HAS_HEADER_UTILITY
-#endif    // LBAL_LIBCPP14_INTEGER_SEQUENCE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_INTEGER_SEQUENCE
 
 #if LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -3534,8 +3521,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE: "
     "<type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE
 
 #if LBAL_LIBCPP14_IS_FINAL
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -3544,8 +3531,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_IS_FINAL: <type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP14_IS_FINAL
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_IS_FINAL
 
 #if LBAL_LIBCPP14_IS_NULL_POINTER
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -3554,8 +3541,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_IS_NULL_POINTER: <type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP14_IS_NULL_POINTER
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_IS_NULL_POINTER
 
 #if LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR
   #if LBAL_HAS_HEADER_ITERATOR != 1
@@ -3565,8 +3552,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR: <iterator> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_ITERATOR
-#endif    // LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR
 
 #if LBAL_LIBCPP14_MAKE_UNIQUE
   #if LBAL_HAS_HEADER_MEMORY != 1
@@ -3575,8 +3562,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_MAKE_UNIQUE: <memory> not found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP14_MAKE_UNIQUE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_MAKE_UNIQUE
 
 #if LBAL_LIBCPP14_NULL_ITERATORS
   #if LBAL_HAS_HEADER_ITERATOR != 1
@@ -3585,8 +3572,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_NULL_ITERATORS: <iterator> not found"
 )
-  #endif  // LBAL_HAS_HEADER_ITERATOR
-#endif    // LBAL_LIBCPP14_NULL_ITERATORS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_NULL_ITERATORS
 
 #if LBAL_LIBCPP14_QUOTED_STRING_IO
   #if LBAL_HAS_HEADER_IOMANIP != 1
@@ -3595,8 +3582,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_QUOTED_STRING_IO: <iomanip> not found"
 )
-  #endif  // LBAL_HAS_HEADER_IOMANIP
-#endif    // LBAL_LIBCPP14_QUOTED_STRING_IO
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_QUOTED_STRING_IO
 
 #if LBAL_LIBCPP14_RESULT_OF_SFINAE
   #if LBAL_HAS_HEADER_FUNCTIONAL != 1 || LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -3604,10 +3591,10 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP14_RESULT_OF_SFINAE 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_RESULT_OF_SFINAE: at least one of "
-    "{<functional>,<type_traits>} not found"
+    "{<functional>, <type_traits>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP14_RESULT_OF_SFINAE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_RESULT_OF_SFINAE
 
 #if LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS
   #if LBAL_HAS_HEADER_ALGORITHM != 1
@@ -3617,8 +3604,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS: <algorithm> "
     "not found"
 )
-  #endif  // LBAL_HAS_HEADER_ALGORITHM
-#endif    // LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS
 
 #if LBAL_LIBCPP14_SHARED_TIMED_MUTEX
   #if LBAL_HAS_HEADER_SHARED_MUTEX != 1
@@ -3628,8 +3615,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_SHARED_TIMED_MUTEX: <shared_mutex> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_SHARED_MUTEX
-#endif    // LBAL_LIBCPP14_SHARED_TIMED_MUTEX
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_SHARED_TIMED_MUTEX
 
 #if LBAL_LIBCPP14_STRING_UDLS
   #if LBAL_HAS_HEADER_STRING != 1
@@ -3638,8 +3625,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_STRING_UDLS: <string> not found"
 )
-  #endif  // LBAL_HAS_HEADER_STRING
-#endif    // LBAL_LIBCPP14_STRING_UDLS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_STRING_UDLS
 
 #if LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -3649,8 +3636,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES: "
     "<type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES
 
 #if LBAL_LIBCPP14_TRANSPARENT_OPERATORS
   #if LBAL_HAS_HEADER_FUNCTIONAL != 1 || LBAL_HAS_HEADER_MEMORY != 1
@@ -3658,10 +3645,21 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP14_TRANSPARENT_OPERATORS 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_TRANSPARENT_OPERATORS: at least one of "
-    "{<functional>,<memory>} not found"
+    "{<functional>, <memory>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP14_TRANSPARENT_OPERATORS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_TRANSPARENT_OPERATORS
+
+#if LBAL_LIBCPP14_TUPLES_BY_TYPE
+  #if LBAL_HAS_HEADER_TUPLE != 1 || LBAL_HAS_HEADER_UTILITY != 1
+    #undef LBAL_LIBCPP14_TUPLES_BY_TYPE
+    #define LBAL_LIBCPP14_TUPLES_BY_TYPE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_TUPLES_BY_TYPE: at least one of "
+    "{<tuple>, <utility>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_TUPLES_BY_TYPE
 
 #if LBAL_LIBCPP14_TUPLE_ELEMENT_T
   #if LBAL_HAS_HEADER_TUPLE != 1
@@ -3670,19 +3668,10 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP14_TUPLE_ELEMENT_T: <tuple> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TUPLE
-#endif    // LBAL_LIBCPP14_TUPLE_ELEMENT_T
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_TUPLE_ELEMENT_T
 
-#if LBAL_LIBCPP14_TUPLES_BY_TYPE
-  #if LBAL_HAS_HEADER_TUPLE != 1 || LBAL_HAS_HEADER_UTILITY != 1
-    #undef LBAL_LIBCPP14_TUPLES_BY_TYPE
-    #define LBAL_LIBCPP14_TUPLES_BY_TYPE 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP14_TUPLES_BY_TYPE: at least one of "
-    "{<tuple>,<utility>} not found"
-)
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP14_TUPLES_BY_TYPE
+// C++17
 
 #if LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR
   #if LBAL_HAS_HEADER_MEMORY != 1
@@ -3691,31 +3680,39 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR: <memory> not found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR
 
 #if LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL
   #if LBAL_HAS_HEADER_DEQUE != 1                                               \
       || LBAL_HAS_HEADER_FORWARD_LIST != 1                                     \
       || LBAL_HAS_HEADER_LIST != 1                                             \
       || LBAL_HAS_HEADER_MAP != 1                                              \
-      || LBAL_HAS_HEADER_MEMORY != 1
+      || LBAL_HAS_HEADER_MEMORY != 1                                           \
+      || LBAL_HAS_HEADER_SCOPED_ALLOCATOR != 1                                 \
+      || LBAL_HAS_HEADER_SET != 1                                              \
+      || LBAL_HAS_HEADER_STRING != 1                                           \
+      || LBAL_HAS_HEADER_UNORDERED_MAP != 1                                    \
+      || LBAL_HAS_HEADER_UNORDERED_SET != 1                                    \
+      || LBAL_HAS_HEADER_VECTOR != 1
     #undef LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL
     #define LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL: at "
-    "least one of {<deque>,<forward_list>,<list>,<map>,<memory>} not found"
+    "least one of {<deque>, <forward_list>, <list>, <map>, <memory>, "
+    "<scoped_allocator>, <set>, <string>, <unordered_map>, <unordered_set>, "
+    "<vector>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_ALLOCATOR_TRAITS_IS_ALWAYS_EQUAL
 
 #if LBAL_LIBCPP17_ANY
   #if LBAL_HAS_HEADER_ANY != 1
     #undef LBAL_LIBCPP17_ANY
     #define LBAL_LIBCPP17_ANY 0
 LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP17_ANY: <any> not found")
-  #endif  // LBAL_HAS_HEADER_ANY
-#endif    // LBAL_LIBCPP17_ANY
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_ANY
 
 #if LBAL_LIBCPP17_ANY_INTERFACE
   #if LBAL_HAS_HEADER_ANY != 1
@@ -3724,16 +3721,16 @@ LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP17_ANY: <any> not found")
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_ANY_INTERFACE: <any> not found"
 )
-  #endif  // LBAL_HAS_HEADER_ANY
-#endif    // LBAL_LIBCPP17_ANY_INTERFACE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_ANY_INTERFACE
 
 #if LBAL_LIBCPP17_APPLY
   #if LBAL_HAS_HEADER_TUPLE != 1
     #undef LBAL_LIBCPP17_APPLY
     #define LBAL_LIBCPP17_APPLY 0
 LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP17_APPLY: <tuple> not found")
-  #endif  // LBAL_HAS_HEADER_TUPLE
-#endif    // LBAL_LIBCPP17_APPLY
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_APPLY
 
 #if LBAL_LIBCPP17_ARRAY_CONSTEXPR
   #if LBAL_HAS_HEADER_ARRAY != 1 || LBAL_HAS_HEADER_ITERATOR != 1
@@ -3741,10 +3738,10 @@ LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP17_APPLY: <tuple> not found")
     #define LBAL_LIBCPP17_ARRAY_CONSTEXPR 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_ARRAY_CONSTEXPR: at least one of "
-    "{<array>,<iterator>} not found"
+    "{<array>, <iterator>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP17_ARRAY_CONSTEXPR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_ARRAY_CONSTEXPR
 
 #if LBAL_LIBCPP17_AS_CONST
   #if LBAL_HAS_HEADER_UTILITY != 1
@@ -3753,8 +3750,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_AS_CONST: <utility> not found"
 )
-  #endif  // LBAL_HAS_HEADER_UTILITY
-#endif    // LBAL_LIBCPP17_AS_CONST
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_AS_CONST
 
 #if LBAL_LIBCPP17_ATOMIC_IS_ALWAYS_LOCK_FREE
   #if LBAL_HAS_HEADER_ATOMIC != 1
@@ -3764,8 +3761,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_ATOMIC_IS_ALWAYS_LOCK_FREE: <atomic> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_ATOMIC
-#endif    // LBAL_LIBCPP17_ATOMIC_IS_ALWAYS_LOCK_FREE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_ATOMIC_IS_ALWAYS_LOCK_FREE
 
 #if LBAL_LIBCPP17_BOOL_CONSTANT
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -3774,8 +3771,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_BOOL_CONSTANT: <type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP17_BOOL_CONSTANT
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_BOOL_CONSTANT
 
 #if LBAL_LIBCPP17_BOYER_MOORE_SEARCHER
   #if LBAL_HAS_HEADER_FUNCTIONAL != 1
@@ -3785,24 +3782,24 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_BOYER_MOORE_SEARCHER: <functional> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_FUNCTIONAL
-#endif    // LBAL_LIBCPP17_BOYER_MOORE_SEARCHER
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_BOYER_MOORE_SEARCHER
 
 #if LBAL_LIBCPP17_BYTE
   #if LBAL_HAS_HEADER_CSTDDEF != 1
     #undef LBAL_LIBCPP17_BYTE
     #define LBAL_LIBCPP17_BYTE 0
 LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP17_BYTE: <cstddef> not found")
-  #endif  // LBAL_HAS_HEADER_CSTDDEF
-#endif    // LBAL_LIBCPP17_BYTE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_BYTE
 
 #if LBAL_LIBCPP17_CHRONO
   #if LBAL_HAS_HEADER_CHRONO != 1
     #undef LBAL_LIBCPP17_CHRONO
     #define LBAL_LIBCPP17_CHRONO 0
 LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP17_CHRONO: <chrono> not found")
-  #endif  // LBAL_HAS_HEADER_CHRONO
-#endif    // LBAL_LIBCPP17_CHRONO
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_CHRONO
 
 #if LBAL_LIBCPP17_CHRONO_CONSTEXPR
   #if LBAL_HAS_HEADER_CHRONO != 1
@@ -3811,8 +3808,8 @@ LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP17_CHRONO: <chrono> not found")
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_CHRONO_CONSTEXPR: <chrono> not found"
 )
-  #endif  // LBAL_HAS_HEADER_CHRONO
-#endif    // LBAL_LIBCPP17_CHRONO_CONSTEXPR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_CHRONO_CONSTEXPR
 
 #if LBAL_LIBCPP17_CLAMP
   #if LBAL_HAS_HEADER_ALGORITHM != 1
@@ -3821,8 +3818,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_CLAMP: <algorithm> not found"
 )
-  #endif  // LBAL_HAS_HEADER_ALGORITHM
-#endif    // LBAL_LIBCPP17_CLAMP
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_CLAMP
 
 #if LBAL_LIBCPP17_CONSTEXPR_STRING
   #if LBAL_HAS_HEADER_STRING != 1
@@ -3831,8 +3828,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_CONSTEXPR_STRING: <string> not found"
 )
-  #endif  // LBAL_HAS_HEADER_STRING
-#endif    // LBAL_LIBCPP17_CONSTEXPR_STRING
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_CONSTEXPR_STRING
 
 #if LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW
   #if LBAL_HAS_HEADER_STRING_VIEW != 1
@@ -3842,8 +3839,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW: <string_view> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_STRING_VIEW
-#endif    // LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW
 
 #if LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS
   #if LBAL_HAS_HEADER_MEMORY != 1
@@ -3853,8 +3850,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS: <memory> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS
 
 #if LBAL_LIBCPP17_EXECUTION
   #if LBAL_HAS_HEADER_EXECUTION != 1
@@ -3863,8 +3860,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_EXECUTION: <execution> not found"
 )
-  #endif  // LBAL_HAS_HEADER_EXECUTION
-#endif    // LBAL_LIBCPP17_EXECUTION
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_EXECUTION
 
 #if LBAL_LIBCPP17_FILESYSTEM
   #if LBAL_HAS_HEADER_FILESYSTEM != 1
@@ -3873,19 +3870,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_FILESYSTEM: <filesystem> not found"
 )
-  #endif  // LBAL_HAS_HEADER_FILESYSTEM
-#endif    // LBAL_LIBCPP17_FILESYSTEM
-
-#if LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED
-  #if LBAL_HAS_HEADER_FILESYSTEM != 1
-    #undef LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED
-    #define LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED: <filesystem> "
-    "not found"
-)
-  #endif  // LBAL_HAS_HEADER_FILESYSTEM
-#endif    // LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_FILESYSTEM
 
 #if LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING
   #if LBAL_HAS_HEADER_FILESYSTEM != 1
@@ -3895,19 +3881,30 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING: "
     "<filesystem> not found"
 )
-  #endif  // LBAL_HAS_HEADER_FILESYSTEM
-#endif    // LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING
 
-#if LBAL_LIBCPP17_FILESYSTEM_EXP
+#if LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED
   #if LBAL_HAS_HEADER_FILESYSTEM != 1
-    #undef LBAL_LIBCPP17_FILESYSTEM_EXP
-    #define LBAL_LIBCPP17_FILESYSTEM_EXP 0
+    #undef LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED
+    #define LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP17_FILESYSTEM_EXP: "
-    "<experimental/filesystem> not found"
+    "Unable to validate LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED: <filesystem> "
+    "not found"
 )
-  #endif  // LBAL_HAS_HEADER_FILESYSTEM
-#endif    // LBAL_LIBCPP17_FILESYSTEM_EXP
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED
+
+#if LBAL_LIBCPP17_FILESYSTEM_RELATIVE_PATHS
+  #if LBAL_HAS_HEADER_FILESYSTEM != 1
+    #undef LBAL_LIBCPP17_FILESYSTEM_RELATIVE_PATHS
+    #define LBAL_LIBCPP17_FILESYSTEM_RELATIVE_PATHS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP17_FILESYSTEM_RELATIVE_PATHS: <filesystem> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_FILESYSTEM_RELATIVE_PATHS
 
 #if LBAL_LIBCPP17_GCD_LCM
   #if LBAL_HAS_HEADER_NUMERIC != 1
@@ -3916,8 +3913,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_GCD_LCM: <numeric> not found"
 )
-  #endif  // LBAL_HAS_HEADER_NUMERIC
-#endif    // LBAL_LIBCPP17_GCD_LCM
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_GCD_LCM
 
 #if LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
   #if LBAL_HAS_HEADER_NEW != 1
@@ -3927,8 +3924,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE: <new> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_NEW
-#endif    // LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
 
 #if LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -3938,16 +3935,16 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS: "
     "<type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS
 
 #if LBAL_LIBCPP17_HYPOT
   #if LBAL_HAS_HEADER_CMATH != 1
     #undef LBAL_LIBCPP17_HYPOT
     #define LBAL_LIBCPP17_HYPOT 0
 LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP17_HYPOT: <cmath> not found")
-  #endif  // LBAL_HAS_HEADER_CMATH
-#endif    // LBAL_LIBCPP17_HYPOT
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_HYPOT
 
 #if LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS
   #if LBAL_HAS_HEADER_FORWARD_LIST != 1                                        \
@@ -3957,10 +3954,10 @@ LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP17_HYPOT: <cmath> not found")
     #define LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS: at least "
-    "one of {<forward_list>,<list>,<vector>} not found"
+    "one of {<forward_list>, <list>, <vector>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_INCOMPLETE_CONTAINER_ELEMENTS
 
 #if LBAL_LIBCPP17_INVOKE
   #if LBAL_HAS_HEADER_FUNCTIONAL != 1
@@ -3969,8 +3966,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_INVOKE: <functional> not found"
 )
-  #endif  // LBAL_HAS_HEADER_FUNCTIONAL
-#endif    // LBAL_LIBCPP17_INVOKE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_INVOKE
 
 #if LBAL_LIBCPP17_IS_AGGREGATE
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -3979,8 +3976,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_IS_AGGREGATE: <type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP17_IS_AGGREGATE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_IS_AGGREGATE
 
 #if LBAL_LIBCPP17_IS_INVOCABLE
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -3989,8 +3986,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_IS_INVOCABLE: <type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP17_IS_INVOCABLE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_IS_INVOCABLE
 
 #if LBAL_LIBCPP17_IS_SWAPPABLE
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -3999,16 +3996,16 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_IS_SWAPPABLE: <type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP17_IS_SWAPPABLE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_IS_SWAPPABLE
 
 #if LBAL_LIBCPP17_LAUNDER
   #if LBAL_HAS_HEADER_NEW != 1
     #undef LBAL_LIBCPP17_LAUNDER
     #define LBAL_LIBCPP17_LAUNDER 0
 LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP17_LAUNDER: <new> not found")
-  #endif  // LBAL_HAS_HEADER_NEW
-#endif    // LBAL_LIBCPP17_LAUNDER
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_LAUNDER
 
 #if LBAL_LIBCPP17_LOGICAL_TRAITS
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -4017,8 +4014,8 @@ LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP17_LAUNDER: <new> not found")
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_LOGICAL_TRAITS: <type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP17_LOGICAL_TRAITS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_LOGICAL_TRAITS
 
 #if LBAL_LIBCPP17_MAKE_FROM_TUPLE
   #if LBAL_HAS_HEADER_TUPLE != 1
@@ -4027,8 +4024,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_MAKE_FROM_TUPLE: <tuple> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TUPLE
-#endif    // LBAL_LIBCPP17_MAKE_FROM_TUPLE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_MAKE_FROM_TUPLE
 
 #if LBAL_LIBCPP17_MAP_TRY_EMPLACE
   #if LBAL_HAS_HEADER_MAP != 1
@@ -4037,8 +4034,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_MAP_TRY_EMPLACE: <map> not found"
 )
-  #endif  // LBAL_HAS_HEADER_MAP
-#endif    // LBAL_LIBCPP17_MAP_TRY_EMPLACE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_MAP_TRY_EMPLACE
 
 #if LBAL_LIBCPP17_MATH_SPECIAL_FUNCTIONS
   #if LBAL_HAS_HEADER_CMATH != 1
@@ -4047,8 +4044,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_MATH_SPECIAL_FUNCTIONS: <cmath> not found"
 )
-  #endif  // LBAL_HAS_HEADER_CMATH
-#endif    // LBAL_LIBCPP17_MATH_SPECIAL_FUNCTIONS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_MATH_SPECIAL_FUNCTIONS
 
 #if LBAL_LIBCPP17_MEMORY_RESOURCE
   #if LBAL_HAS_HEADER_MEMORY_RESOURCE != 1
@@ -4058,8 +4055,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_MEMORY_RESOURCE: <memory_resource> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY_RESOURCE
-#endif    // LBAL_LIBCPP17_MEMORY_RESOURCE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_MEMORY_RESOURCE
 
 #if LBAL_LIBCPP17_NODE_EXTRACT
   #if LBAL_HAS_HEADER_MAP != 1                                                 \
@@ -4069,11 +4066,11 @@ LBAL_CPP_WARNING(
     #undef LBAL_LIBCPP17_NODE_EXTRACT
     #define LBAL_LIBCPP17_NODE_EXTRACT 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP17_NODE_EXTRACT: at least one of "
-    "{<map>,<set>,<unordered_map>,<unordered_set>} not found"
+    "Unable to validate LBAL_LIBCPP17_NODE_EXTRACT: at least one of {<map>, "
+    "<set>, <unordered_map>, <unordered_set>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP17_NODE_EXTRACT
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_NODE_EXTRACT
 
 #if LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
   #if LBAL_HAS_HEADER_ARRAY != 1                                               \
@@ -4081,15 +4078,22 @@ LBAL_CPP_WARNING(
       || LBAL_HAS_HEADER_FORWARD_LIST != 1                                     \
       || LBAL_HAS_HEADER_ITERATOR != 1                                         \
       || LBAL_HAS_HEADER_LIST != 1                                             \
-      || LBAL_HAS_HEADER_MAP != 1
+      || LBAL_HAS_HEADER_MAP != 1                                              \
+      || LBAL_HAS_HEADER_REGEX != 1                                            \
+      || LBAL_HAS_HEADER_SET != 1                                              \
+      || LBAL_HAS_HEADER_STRING != 1                                           \
+      || LBAL_HAS_HEADER_UNORDERED_MAP != 1                                    \
+      || LBAL_HAS_HEADER_UNORDERED_SET != 1                                    \
+      || LBAL_HAS_HEADER_VECTOR != 1
     #undef LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
     #define LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS: at least one "
-    "of {<array>,<deque>,<forward_list>,<iterator>,<list>,<map>} not found"
+    "of {<array>, <deque>, <forward_list>, <iterator>, <list>, <map>, <regex>, "
+    "<set>, <string>, <unordered_map>, <unordered_set>, <vector>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
 
 #if LBAL_LIBCPP17_NOT_FN
   #if LBAL_HAS_HEADER_FUNCTIONAL != 1
@@ -4098,8 +4102,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_NOT_FN: <functional> not found"
 )
-  #endif  // LBAL_HAS_HEADER_FUNCTIONAL
-#endif    // LBAL_LIBCPP17_NOT_FN
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_NOT_FN
 
 #if LBAL_LIBCPP17_OPTIONAL
   #if LBAL_HAS_HEADER_OPTIONAL != 1
@@ -4108,8 +4112,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_OPTIONAL: <optional> not found"
 )
-  #endif  // LBAL_HAS_HEADER_OPTIONAL
-#endif    // LBAL_LIBCPP17_OPTIONAL
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_OPTIONAL
 
 #if LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL
   #if LBAL_HAS_HEADER_OPTIONAL != 1
@@ -4119,8 +4123,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL: <optional> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_OPTIONAL
-#endif    // LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL
 
 #if LBAL_LIBCPP17_OPTIONAL_INTERFACE
   #if LBAL_HAS_HEADER_OPTIONAL != 1
@@ -4129,8 +4133,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_OPTIONAL_INTERFACE: <optional> not found"
 )
-  #endif  // LBAL_HAS_HEADER_OPTIONAL
-#endif    // LBAL_LIBCPP17_OPTIONAL_INTERFACE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_OPTIONAL_INTERFACE
 
 #if LBAL_LIBCPP17_PARALLEL_ALGORITHM
   #if LBAL_HAS_HEADER_ALGORITHM != 1 || LBAL_HAS_HEADER_NUMERIC != 1
@@ -4138,10 +4142,10 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP17_PARALLEL_ALGORITHM 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_PARALLEL_ALGORITHM: at least one of "
-    "{<algorithm>,<numeric>} not found"
+    "{<algorithm>, <numeric>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP17_PARALLEL_ALGORITHM
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_PARALLEL_ALGORITHM
 
 #if LBAL_LIBCPP17_RAW_MEMORY_ALGORITHMS
   #if LBAL_HAS_HEADER_MEMORY != 1
@@ -4150,21 +4154,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_RAW_MEMORY_ALGORITHMS: <memory> not found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP17_RAW_MEMORY_ALGORITHMS
-
-#if LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
-  #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
-      || LBAL_HAS_HEADER_EXECUTION != 1                                        \
-      || LBAL_HAS_HEADER_NUMERIC != 1
-    #undef LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
-    #define LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS: at "
-    "least one of {<algorithm>,<execution>,<numeric>} not found"
-)
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_RAW_MEMORY_ALGORITHMS
 
 #if LBAL_LIBCPP17_SAMPLE
   #if LBAL_HAS_HEADER_ALGORITHM != 1
@@ -4173,8 +4164,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_SAMPLE: <algorithm> not found"
 )
-  #endif  // LBAL_HAS_HEADER_ALGORITHM
-#endif    // LBAL_LIBCPP17_SAMPLE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_SAMPLE
 
 #if LBAL_LIBCPP17_SCOPED_LOCK
   #if LBAL_HAS_HEADER_MUTEX != 1
@@ -4183,8 +4174,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_SCOPED_LOCK: <mutex> not found"
 )
-  #endif  // LBAL_HAS_HEADER_MUTEX
-#endif    // LBAL_LIBCPP17_SCOPED_LOCK
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_SCOPED_LOCK
 
 #if LBAL_LIBCPP17_SHARED_MUTEX
   #if LBAL_HAS_HEADER_SHARED_MUTEX != 1
@@ -4193,8 +4184,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_SHARED_MUTEX: <shared_mutex> not found"
 )
-  #endif  // LBAL_HAS_HEADER_SHARED_MUTEX
-#endif    // LBAL_LIBCPP17_SHARED_MUTEX
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_SHARED_MUTEX
 
 #if LBAL_LIBCPP17_SHARED_PTR_ARRAYS
   #if LBAL_HAS_HEADER_MEMORY != 1
@@ -4203,8 +4194,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_SHARED_PTR_ARRAYS: <memory> not found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP17_SHARED_PTR_ARRAYS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_SHARED_PTR_ARRAYS
 
 #if LBAL_LIBCPP17_SHARED_PTR_WEAK_TYPE
   #if LBAL_HAS_HEADER_MEMORY != 1
@@ -4213,19 +4204,19 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_SHARED_PTR_WEAK_TYPE: <memory> not found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP17_SHARED_PTR_WEAK_TYPE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_SHARED_PTR_WEAK_TYPE
 
 #if LBAL_LIBCPP17_STRING_VIEW
   #if LBAL_HAS_HEADER_STRING != 1 || LBAL_HAS_HEADER_STRING_VIEW != 1
     #undef LBAL_LIBCPP17_STRING_VIEW
     #define LBAL_LIBCPP17_STRING_VIEW 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP17_STRING_VIEW: at least one of "
-    "{<string>,<string_view>} not found"
+    "Unable to validate LBAL_LIBCPP17_STRING_VIEW: at least one of {<string>, "
+    "<string_view>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP17_STRING_VIEW
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_STRING_VIEW
 
 #if LBAL_LIBCPP17_STRING_VIEW_INTERFACE
   #if LBAL_HAS_HEADER_STRING != 1 || LBAL_HAS_HEADER_STRING_VIEW != 1
@@ -4233,10 +4224,10 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP17_STRING_VIEW_INTERFACE 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_STRING_VIEW_INTERFACE: at least one of "
-    "{<string>,<string_view>} not found"
+    "{<string>, <string_view>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP17_STRING_VIEW_INTERFACE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_STRING_VIEW_INTERFACE
 
 #if LBAL_LIBCPP17_TO_CHARS
   #if LBAL_HAS_HEADER_CHARCONV != 1
@@ -4245,8 +4236,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_TO_CHARS: <charconv> not found"
 )
-  #endif  // LBAL_HAS_HEADER_CHARCONV
-#endif    // LBAL_LIBCPP17_TO_CHARS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_TO_CHARS
 
 #if LBAL_LIBCPP17_TO_CHARS_FP
   #if LBAL_HAS_HEADER_CHARCONV != 1
@@ -4255,8 +4246,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_TO_CHARS_FP: <charconv> not found"
 )
-  #endif  // LBAL_HAS_HEADER_CHARCONV
-#endif    // LBAL_LIBCPP17_TO_CHARS_FP
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_TO_CHARS_FP
 
 #if LBAL_LIBCPP17_TO_CHARS_INTEGER
   #if LBAL_HAS_HEADER_CHARCONV != 1
@@ -4265,8 +4256,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_TO_CHARS_INTEGER: <charconv> not found"
 )
-  #endif  // LBAL_HAS_HEADER_CHARCONV
-#endif    // LBAL_LIBCPP17_TO_CHARS_INTEGER
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_TO_CHARS_INTEGER
 
 #if LBAL_LIBCPP17_TRANSPARENT_OPERATORS
   #if LBAL_HAS_HEADER_FUNCTIONAL != 1 || LBAL_HAS_HEADER_MEMORY != 1
@@ -4274,10 +4265,10 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP17_TRANSPARENT_OPERATORS 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_TRANSPARENT_OPERATORS: at least one of "
-    "{<functional>,<memory>} not found"
+    "{<functional>, <memory>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP17_TRANSPARENT_OPERATORS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_TRANSPARENT_OPERATORS
 
 #if LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -4287,8 +4278,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES: "
     "<type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES
 
 #if LBAL_LIBCPP17_UNCAUGHT_EXCEPTIONS
   #if LBAL_HAS_HEADER_EXCEPTION != 1
@@ -4298,8 +4289,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_UNCAUGHT_EXCEPTIONS: <exception> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_EXCEPTION
-#endif    // LBAL_LIBCPP17_UNCAUGHT_EXCEPTIONS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_UNCAUGHT_EXCEPTIONS
 
 #if LBAL_LIBCPP17_UNORDERED_MAP_TRY_EMPLACE
   #if LBAL_HAS_HEADER_UNORDERED_MAP != 1
@@ -4309,8 +4300,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_UNORDERED_MAP_TRY_EMPLACE: "
     "<unordered_map> not found"
 )
-  #endif  // LBAL_HAS_HEADER_UNORDERED_MAP
-#endif    // LBAL_LIBCPP17_UNORDERED_MAP_TRY_EMPLACE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_UNORDERED_MAP_TRY_EMPLACE
 
 #if LBAL_LIBCPP17_VARIANT
   #if LBAL_HAS_HEADER_VARIANT != 1
@@ -4319,8 +4310,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_VARIANT: <variant> not found"
 )
-  #endif  // LBAL_HAS_HEADER_VARIANT
-#endif    // LBAL_LIBCPP17_VARIANT
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_VARIANT
 
 #if LBAL_LIBCPP17_VOID_T
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -4329,19 +4320,10 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_VOID_T: <type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP17_VOID_T
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP17_VOID_T
 
-#if LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
-  #if LBAL_HAS_HEADER_ARRAY != 1 || LBAL_HAS_HEADER_ITERATOR != 1
-    #undef LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
-    #define LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR: at least one "
-    "of {<array>,<iterator>} not found"
-)
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
+// C++20
 
 #if LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS
   #if LBAL_HAS_HEADER_ARRAY != 1 || LBAL_HAS_HEADER_ITERATOR != 1
@@ -4349,10 +4331,21 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS: at least "
-    "one of {<array>,<iterator>} not found"
+    "one of {<array>, <iterator>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS
+
+#if LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
+  #if LBAL_HAS_HEADER_ARRAY != 1 || LBAL_HAS_HEADER_ITERATOR != 1
+    #undef LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
+    #define LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR: at least one "
+    "of {<array>, <iterator>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
 
 #if LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES
   #if LBAL_HAS_HEADER_ARRAY != 1 || LBAL_HAS_HEADER_ITERATOR != 1
@@ -4360,10 +4353,10 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES: at least one "
-    "of {<array>,<iterator>} not found"
+    "of {<array>, <iterator>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES
 
 #if LBAL_LIBCPP20_ASSUME_ALIGNED
   #if LBAL_HAS_HEADER_MEMORY != 1
@@ -4372,8 +4365,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_ASSUME_ALIGNED: <memory> not found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP20_ASSUME_ALIGNED
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ASSUME_ALIGNED
 
 #if LBAL_LIBCPP20_ATOMIC_FLAG_TEST
   #if LBAL_HAS_HEADER_ATOMIC != 1
@@ -4382,8 +4375,9 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_ATOMIC_FLAG_TEST: <atomic> not found"
 )
-  #endif  // LBAL_HAS_HEADER_ATOMIC
-#endif    // LBAL_LIBCPP20_ATOMIC_FLAG_TEST
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ATOMIC_FLAG_TEST
+
 #if LBAL_LIBCPP20_ATOMIC_FLOAT
   #if LBAL_HAS_HEADER_ATOMIC != 1
     #undef LBAL_LIBCPP20_ATOMIC_FLOAT
@@ -4391,8 +4385,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_ATOMIC_FLOAT: <atomic> not found"
 )
-  #endif  // LBAL_HAS_HEADER_ATOMIC
-#endif    // LBAL_LIBCPP20_ATOMIC_FLOAT
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ATOMIC_FLOAT
 
 #if LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES
   #if LBAL_HAS_HEADER_ATOMIC != 1
@@ -4402,8 +4396,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES: <atomic> "
     "not found"
 )
-  #endif  // LBAL_HAS_HEADER_ATOMIC
-#endif    // LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ATOMIC_LOCK_FREE_TYPE_ALIASES
 
 #if LBAL_LIBCPP20_ATOMIC_REF
   #if LBAL_HAS_HEADER_ATOMIC != 1
@@ -4412,8 +4406,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_ATOMIC_REF: <atomic> not found"
 )
-  #endif  // LBAL_HAS_HEADER_ATOMIC
-#endif    // LBAL_LIBCPP20_ATOMIC_REF
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ATOMIC_REF
 
 #if LBAL_LIBCPP20_ATOMIC_SHARED_PTR
   #if LBAL_HAS_HEADER_MEMORY != 1
@@ -4422,8 +4416,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_ATOMIC_SHARED_PTR: <memory> not found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP20_ATOMIC_SHARED_PTR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ATOMIC_SHARED_PTR
 
 #if LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION
   #if LBAL_HAS_HEADER_ATOMIC != 1 || LBAL_HAS_HEADER_MEMORY != 1
@@ -4431,10 +4425,10 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION: at least "
-    "one of {<atomic>,<memory>} not found"
+    "one of {<atomic>, <memory>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION
 
 #if LBAL_LIBCPP20_ATOMIC_WAIT
   #if LBAL_HAS_HEADER_ATOMIC != 1
@@ -4443,8 +4437,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_ATOMIC_WAIT: <atomic> not found"
 )
-  #endif  // LBAL_HAS_HEADER_ATOMIC
-#endif    // LBAL_LIBCPP20_ATOMIC_WAIT
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ATOMIC_WAIT
 
 #if LBAL_LIBCPP20_BARRIER
   #if LBAL_HAS_HEADER_BARRIER != 1
@@ -4453,8 +4447,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_BARRIER: <barrier> not found"
 )
-  #endif  // LBAL_HAS_HEADER_BARRIER
-#endif    // LBAL_LIBCPP20_BARRIER
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_BARRIER
 
 #if LBAL_LIBCPP20_BIND_FRONT
   #if LBAL_HAS_HEADER_FUNCTIONAL != 1
@@ -4463,8 +4457,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_BIND_FRONT: <functional> not found"
 )
-  #endif  // LBAL_HAS_HEADER_FUNCTIONAL
-#endif    // LBAL_LIBCPP20_BIND_FRONT
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_BIND_FRONT
 
 #if LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP
   #if LBAL_HAS_HEADER_FUNCTIONAL != 1
@@ -4474,24 +4468,24 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP: <functional> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_FUNCTIONAL
-#endif    // LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP
-
-#if LBAL_LIBCPP20_BIT_CAST
-  #if LBAL_HAS_HEADER_BIT != 1
-    #undef LBAL_LIBCPP20_BIT_CAST
-    #define LBAL_LIBCPP20_BIT_CAST 0
-LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_BIT_CAST: <bit> not found")
-  #endif  // LBAL_HAS_HEADER_BIT
-#endif    // LBAL_LIBCPP20_BIT_CAST
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP
 
 #if LBAL_LIBCPP20_BITOPS
   #if LBAL_HAS_HEADER_BIT != 1
     #undef LBAL_LIBCPP20_BITOPS
     #define LBAL_LIBCPP20_BITOPS 0
 LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_BITOPS: <bit> not found")
-  #endif  // LBAL_HAS_HEADER_BIT
-#endif    // LBAL_LIBCPP20_BITOPS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_BITOPS
+
+#if LBAL_LIBCPP20_BIT_CAST
+  #if LBAL_HAS_HEADER_BIT != 1
+    #undef LBAL_LIBCPP20_BIT_CAST
+    #define LBAL_LIBCPP20_BIT_CAST 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_BIT_CAST: <bit> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_BIT_CAST
 
 #if LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -4501,8 +4495,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS: <type_traits> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS
 
 #if LBAL_LIBCPP20_CHAR8_T
   #if LBAL_HAS_HEADER_ATOMIC != 1                                              \
@@ -4510,15 +4504,18 @@ LBAL_CPP_WARNING(
       || LBAL_HAS_HEADER_ISTREAM != 1                                          \
       || LBAL_HAS_HEADER_LIMITS != 1                                           \
       || LBAL_HAS_HEADER_LOCALE != 1                                           \
-      || LBAL_HAS_HEADER_OSTREAM != 1
+      || LBAL_HAS_HEADER_OSTREAM != 1                                          \
+      || LBAL_HAS_HEADER_STRING != 1                                           \
+      || LBAL_HAS_HEADER_STRING_VIEW != 1
     #undef LBAL_LIBCPP20_CHAR8_T
     #define LBAL_LIBCPP20_CHAR8_T 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_CHAR8_T: at least one of "
-    "{<atomic>,<filesystem>,<istream>,<limits>,<locale>,<ostream>} not found"
+    "Unable to validate LBAL_LIBCPP20_CHAR8_T: at least one of {<atomic>, "
+    "<filesystem>, <istream>, <limits>, <locale>, <ostream>, <string>, "
+    "<string_view>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_CHAR8_T
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CHAR8_T
 
 #if LBAL_LIBCPP20_CHAR8_T_COMPAT
   #if LBAL_HAS_HEADER_ATOMIC != 1                                              \
@@ -4526,15 +4523,18 @@ LBAL_CPP_WARNING(
       || LBAL_HAS_HEADER_ISTREAM != 1                                          \
       || LBAL_HAS_HEADER_LIMITS != 1                                           \
       || LBAL_HAS_HEADER_LOCALE != 1                                           \
-      || LBAL_HAS_HEADER_OSTREAM != 1
+      || LBAL_HAS_HEADER_OSTREAM != 1                                          \
+      || LBAL_HAS_HEADER_STRING != 1                                           \
+      || LBAL_HAS_HEADER_STRING_VIEW != 1
     #undef LBAL_LIBCPP20_CHAR8_T_COMPAT
     #define LBAL_LIBCPP20_CHAR8_T_COMPAT 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CHAR8_T_COMPAT: at least one of "
-    "{<atomic>,<filesystem>,<istream>,<limits>,<locale>,<ostream>} not found"
+    "{<atomic>, <filesystem>, <istream>, <limits>, <locale>, <ostream>, "
+    "<string>, <string_view>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_CHAR8_T_COMPAT
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CHAR8_T_COMPAT
 
 #if LBAL_LIBCPP20_CHRONO_CALENDAR
   #if LBAL_HAS_HEADER_CHRONO != 1
@@ -4543,8 +4543,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CHRONO_CALENDAR: <chrono> not found"
 )
-  #endif  // LBAL_HAS_HEADER_CHRONO
-#endif    // LBAL_LIBCPP20_CHRONO_CALENDAR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CHRONO_CALENDAR
 
 #if LBAL_LIBCPP20_CHRONO_FIXES
   #if LBAL_HAS_HEADER_CHRONO != 1
@@ -4553,73 +4553,63 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CHRONO_FIXES: <chrono> not found"
 )
-  #endif  // LBAL_HAS_HEADER_CHRONO
-#endif    // LBAL_LIBCPP20_CHRONO_FIXES
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CHRONO_FIXES
 
 #if LBAL_LIBCPP20_CONCEPTS
-  #if LBAL_HAS_HEADER_CONCEPTS != 1
+  #if LBAL_HAS_HEADER_COMPARE != 1 || LBAL_HAS_HEADER_CONCEPTS != 1
     #undef LBAL_LIBCPP20_CONCEPTS
     #define LBAL_LIBCPP20_CONCEPTS 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_CONCEPTS: <concepts> not found"
+    "Unable to validate LBAL_LIBCPP20_CONCEPTS: at least one of {<compare>, "
+    "<concepts>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_CONCEPTS
-#endif    // LBAL_LIBCPP20_CONCEPTS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONCEPTS
 
 #if LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE
-  #if LBAL_HAS_HEADER_CONCEPTS != 1
+  #if LBAL_HAS_HEADER_COMPARE != 1 || LBAL_HAS_HEADER_CONCEPTS != 1
     #undef LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE
     #define LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE: <concepts> "
-    "not found"
+    "Unable to validate LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE: at least one "
+    "of {<compare>, <concepts>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_CONCEPTS
-#endif    // LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE
-
-#if LBAL_LIBCPP20_CONCEPTS_EXP
-  #if LBAL_HAS_HEADER_EXPERIMENTAL_CONCEPTS != 1
-    #undef LBAL_LIBCPP20_CONCEPTS_EXP
-    #define LBAL_LIBCPP20_CONCEPTS_EXP 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_CONCEPTS_EXP: <experimental/concepts> "
-    "not found"
-)
-  #endif  // LBAL_HAS_HEADER_EXPERIMENTAL_CONCEPTS
-#endif    // LBAL_LIBCPP20_CONCEPTS_EXP
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE
 
 #if LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE
-  #if LBAL_HAS_HEADER_CONCEPTS != 1
+  #if LBAL_HAS_HEADER_COMPARE != 1 || LBAL_HAS_HEADER_CONCEPTS != 1
     #undef LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE
     #define LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE: <concepts> not "
-    "found"
+    "Unable to validate LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE: at least one of "
+    "{<compare>, <concepts>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_CONCEPTS
-#endif    // LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE
 
 #if LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS
-  #if LBAL_HAS_HEADER_ALGORITHM != 1
+  #if LBAL_HAS_HEADER_ALGORITHM != 1 || LBAL_HAS_HEADER_UTILITY != 1
     #undef LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS
     #define LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS: <algorithm> not "
-    "found"
+    "Unable to validate LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS: at least one of "
+    "{<algorithm>, <utility>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ALGORITHM
-#endif    // LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS
 
 #if LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP
-  #if LBAL_HAS_HEADER_ALGORITHM != 1
+  #if LBAL_HAS_HEADER_ALGORITHM != 1 || LBAL_HAS_HEADER_UTILITY != 1
     #undef LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP
     #define LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP: <algorithm> "
-    "not found"
+    "Unable to validate LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP: at least one "
+    "of {<algorithm>, <utility>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ALGORITHM
-#endif    // LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS_SWAP
 
 #if LBAL_LIBCPP20_CONSTEXPR_COMPLEX
   #if LBAL_HAS_HEADER_COMPLEX != 1
@@ -4628,8 +4618,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CONSTEXPR_COMPLEX: <complex> not found"
 )
-  #endif  // LBAL_HAS_HEADER_COMPLEX
-#endif    // LBAL_LIBCPP20_CONSTEXPR_COMPLEX
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_COMPLEX
 
 #if LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC
   #if LBAL_HAS_HEADER_MEMORY != 1
@@ -4639,8 +4629,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC: <memory> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_DYNAMIC_ALLOC
 
 #if LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL
   #if LBAL_HAS_HEADER_FUNCTIONAL != 1
@@ -4650,8 +4640,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL: <functional> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_FUNCTIONAL
-#endif    // LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL
 
 #if LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE
   #if LBAL_HAS_HEADER_FUNCTIONAL != 1
@@ -4661,8 +4651,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE: "
     "<functional> not found"
 )
-  #endif  // LBAL_HAS_HEADER_FUNCTIONAL
-#endif    // LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE
 
 #if LBAL_LIBCPP20_CONSTEXPR_ITERATOR
   #if LBAL_HAS_HEADER_ITERATOR != 1
@@ -4671,8 +4661,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CONSTEXPR_ITERATOR: <iterator> not found"
 )
-  #endif  // LBAL_HAS_HEADER_ITERATOR
-#endif    // LBAL_LIBCPP20_CONSTEXPR_ITERATOR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_ITERATOR
 
 #if LBAL_LIBCPP20_CONSTEXPR_MEMORY
   #if LBAL_HAS_HEADER_MEMORY != 1
@@ -4681,8 +4671,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CONSTEXPR_MEMORY: <memory> not found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP20_CONSTEXPR_MEMORY
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_MEMORY
 
 #if LBAL_LIBCPP20_CONSTEXPR_NUMERIC
   #if LBAL_HAS_HEADER_NUMERIC != 1
@@ -4691,8 +4681,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CONSTEXPR_NUMERIC: <numeric> not found"
 )
-  #endif  // LBAL_HAS_HEADER_NUMERIC
-#endif    // LBAL_LIBCPP20_CONSTEXPR_NUMERIC
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_NUMERIC
 
 #if LBAL_LIBCPP20_CONSTEXPR_STRING
   #if LBAL_HAS_HEADER_STRING != 1
@@ -4701,8 +4691,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CONSTEXPR_STRING: <string> not found"
 )
-  #endif  // LBAL_HAS_HEADER_STRING
-#endif    // LBAL_LIBCPP20_CONSTEXPR_STRING
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_STRING
 
 #if LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL
   #if LBAL_HAS_HEADER_STRING != 1
@@ -4712,8 +4702,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL: <string> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_STRING
-#endif    // LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_STRING_PARTIAL
 
 #if LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW
   #if LBAL_HAS_HEADER_STRING_VIEW != 1
@@ -4723,8 +4713,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW: <string_view> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_STRING_VIEW
-#endif    // LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_STRING_VIEW
 
 #if LBAL_LIBCPP20_CONSTEXPR_TUPLE
   #if LBAL_HAS_HEADER_TUPLE != 1
@@ -4733,8 +4723,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CONSTEXPR_TUPLE: <tuple> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TUPLE
-#endif    // LBAL_LIBCPP20_CONSTEXPR_TUPLE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_TUPLE
 
 #if LBAL_LIBCPP20_CONSTEXPR_UTILITY
   #if LBAL_HAS_HEADER_UTILITY != 1
@@ -4743,8 +4733,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CONSTEXPR_UTILITY: <utility> not found"
 )
-  #endif  // LBAL_HAS_HEADER_UTILITY
-#endif    // LBAL_LIBCPP20_CONSTEXPR_UTILITY
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_UTILITY
 
 #if LBAL_LIBCPP20_CONSTEXPR_VECTOR
   #if LBAL_HAS_HEADER_VECTOR != 1
@@ -4753,8 +4743,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CONSTEXPR_VECTOR: <vector> not found"
 )
-  #endif  // LBAL_HAS_HEADER_VECTOR
-#endif    // LBAL_LIBCPP20_CONSTEXPR_VECTOR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_CONSTEXPR_VECTOR
 
 #if LBAL_LIBCPP20_COROUTINE
   #if LBAL_HAS_HEADER_COROUTINE != 1
@@ -4763,19 +4753,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_COROUTINE: <coroutine> not found"
 )
-  #endif  // LBAL_HAS_HEADER_COROUTINE
-#endif    // LBAL_LIBCPP20_COROUTINE
-
-#if LBAL_LIBCPP20_COROUTINE_EXP
-  #if LBAL_HAS_HEADER_EXPERIMENTAL_COROUTINE != 1
-    #undef LBAL_LIBCPP20_COROUTINE_EXP
-    #define LBAL_LIBCPP20_COROUTINE_EXP 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_COROUTINE_EXP: <experimental/coroutine> "
-    "not found"
-)
-  #endif  // LBAL_HAS_HEADER_EXPERIMENTAL_COROUTINE
-#endif    // LBAL_LIBCPP20_COROUTINE_EXP
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_COROUTINE
 
 #if LBAL_LIBCPP20_DESTROYING_DELETE
   #if LBAL_HAS_HEADER_NEW != 1
@@ -4784,24 +4763,24 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_DESTROYING_DELETE: <new> not found"
 )
-  #endif  // LBAL_HAS_HEADER_NEW
-#endif    // LBAL_LIBCPP20_DESTROYING_DELETE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_DESTROYING_DELETE
 
 #if LBAL_LIBCPP20_ENDIAN
   #if LBAL_HAS_HEADER_BIT != 1
     #undef LBAL_LIBCPP20_ENDIAN
     #define LBAL_LIBCPP20_ENDIAN 0
 LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_ENDIAN: <bit> not found")
-  #endif  // LBAL_HAS_HEADER_BIT
-#endif    // LBAL_LIBCPP20_ENDIAN
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ENDIAN
 
 #if LBAL_LIBCPP20_ENDIAN_BIT
   #if LBAL_HAS_HEADER_BIT != 1
     #undef LBAL_LIBCPP20_ENDIAN_BIT
     #define LBAL_LIBCPP20_ENDIAN_BIT 0
 LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_ENDIAN_BIT: <bit> not found")
-  #endif  // LBAL_HAS_HEADER_BIT
-#endif    // LBAL_LIBCPP20_ENDIAN_BIT
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ENDIAN_BIT
 
 #if LBAL_LIBCPP20_ERASE_IF
   #if LBAL_HAS_HEADER_DEQUE != 1                                               \
@@ -4809,15 +4788,19 @@ LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_ENDIAN_BIT: <bit> not found")
       || LBAL_HAS_HEADER_LIST != 1                                             \
       || LBAL_HAS_HEADER_MAP != 1                                              \
       || LBAL_HAS_HEADER_SET != 1                                              \
-      || LBAL_HAS_HEADER_STRING != 1
+      || LBAL_HAS_HEADER_STRING != 1                                           \
+      || LBAL_HAS_HEADER_UNORDERED_MAP != 1                                    \
+      || LBAL_HAS_HEADER_UNORDERED_SET != 1                                    \
+      || LBAL_HAS_HEADER_VECTOR != 1
     #undef LBAL_LIBCPP20_ERASE_IF
     #define LBAL_LIBCPP20_ERASE_IF 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_ERASE_IF: at least one of "
-    "{<deque>,<forward_list>,<list>,<map>,<set>,<string>} not found"
+    "Unable to validate LBAL_LIBCPP20_ERASE_IF: at least one of {<deque>, "
+    "<forward_list>, <list>, <map>, <set>, <string>, <unordered_map>, "
+    "<unordered_set>, <vector>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_ERASE_IF
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ERASE_IF
 
 #if LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
   #if LBAL_HAS_HEADER_DEQUE != 1                                               \
@@ -4825,15 +4808,19 @@ LBAL_CPP_WARNING(
       || LBAL_HAS_HEADER_LIST != 1                                             \
       || LBAL_HAS_HEADER_MAP != 1                                              \
       || LBAL_HAS_HEADER_SET != 1                                              \
-      || LBAL_HAS_HEADER_STRING != 1
+      || LBAL_HAS_HEADER_STRING != 1                                           \
+      || LBAL_HAS_HEADER_UNORDERED_MAP != 1                                    \
+      || LBAL_HAS_HEADER_UNORDERED_SET != 1                                    \
+      || LBAL_HAS_HEADER_VECTOR != 1
     #undef LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
     #define LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS: at least one of "
-    "{<deque>,<forward_list>,<list>,<map>,<set>,<string>} not found"
+    "{<deque>, <forward_list>, <list>, <map>, <set>, <string>, "
+    "<unordered_map>, <unordered_set>, <vector>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_ERASE_IF_FREE_FUNCTIONS
 
 #if LBAL_LIBCPP20_EXECUTION_VECTORIZATION
   #if LBAL_HAS_HEADER_EXECUTION != 1
@@ -4843,16 +4830,16 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_EXECUTION_VECTORIZATION: <execution> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_EXECUTION
-#endif    // LBAL_LIBCPP20_EXECUTION_VECTORIZATION
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_EXECUTION_VECTORIZATION
 
 #if LBAL_LIBCPP20_FORMAT
   #if LBAL_HAS_HEADER_FORMAT != 1
     #undef LBAL_LIBCPP20_FORMAT
     #define LBAL_LIBCPP20_FORMAT 0
 LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_FORMAT: <format> not found")
-  #endif  // LBAL_HAS_HEADER_FORMAT
-#endif    // LBAL_LIBCPP20_FORMAT
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_FORMAT
 
 #if LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP
   #if LBAL_HAS_HEADER_UNORDERED_MAP != 1 || LBAL_HAS_HEADER_UNORDERED_SET != 1
@@ -4860,10 +4847,10 @@ LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_FORMAT: <format> not found")
     #define LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP: at least "
-    "one of {<unordered_map>,<unordered_set>} not found"
+    "one of {<unordered_map>, <unordered_set>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP
 
 #if LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP
   #if LBAL_HAS_HEADER_UNORDERED_MAP != 1 || LBAL_HAS_HEADER_UNORDERED_SET != 1
@@ -4871,28 +4858,10 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP: at least one "
-    "of {<unordered_map>,<unordered_set>} not found"
+    "of {<unordered_map>, <unordered_set>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP
-
-#if LBAL_LIBCPP20_INT_POW2
-  #if LBAL_HAS_HEADER_BIT != 1
-    #undef LBAL_LIBCPP20_INT_POW2
-    #define LBAL_LIBCPP20_INT_POW2 0
-LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_INT_POW2: <bit> not found")
-  #endif  // LBAL_HAS_HEADER_BIT
-#endif    // LBAL_LIBCPP20_INT_POW2
-
-#if LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME
-  #if LBAL_HAS_HEADER_BIT != 1
-    #undef LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME
-    #define LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME: <bit> not found"
-)
-  #endif  // LBAL_HAS_HEADER_BIT
-#endif    // LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP
 
 #if LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS
   #if LBAL_HAS_HEADER_UTILITY != 1
@@ -4902,19 +4871,37 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS: <utility> "
     "not found"
 )
-  #endif  // LBAL_HAS_HEADER_UTILITY
-#endif    // LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS
 
 #if LBAL_LIBCPP20_INTERPOLATE
   #if LBAL_HAS_HEADER_CMATH != 1 || LBAL_HAS_HEADER_NUMERIC != 1
     #undef LBAL_LIBCPP20_INTERPOLATE
     #define LBAL_LIBCPP20_INTERPOLATE 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_INTERPOLATE: at least one of "
-    "{<cmath>,<numeric>} not found"
+    "Unable to validate LBAL_LIBCPP20_INTERPOLATE: at least one of {<cmath>, "
+    "<numeric>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_INTERPOLATE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_INTERPOLATE
+
+#if LBAL_LIBCPP20_INT_POW2
+  #if LBAL_HAS_HEADER_BIT != 1
+    #undef LBAL_LIBCPP20_INT_POW2
+    #define LBAL_LIBCPP20_INT_POW2 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_INT_POW2: <bit> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_INT_POW2
+
+#if LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME
+  #if LBAL_HAS_HEADER_BIT != 1
+    #undef LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME
+    #define LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME: <bit> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME
 
 #if LBAL_LIBCPP20_IS_CONSTANT_EVALUATED
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -4924,8 +4911,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_IS_CONSTANT_EVALUATED: <type_traits> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP20_IS_CONSTANT_EVALUATED
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_IS_CONSTANT_EVALUATED
 
 #if LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -4935,70 +4922,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE: <type_traits> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE
-
-#if LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
-  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
-    #undef LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
-    #define LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE: "
-    "<type_traits> not found"
-)
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
-
-#if LBAL_LIBCPP20_JTHREAD
-  #if LBAL_HAS_HEADER_STOP_TOKEN != 1 || LBAL_HAS_HEADER_THREAD != 1
-    #undef LBAL_LIBCPP20_JTHREAD
-    #define LBAL_LIBCPP20_JTHREAD 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_JTHREAD: at least one of "
-    "{<stop_token>,<thread>} not found"
-)
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_JTHREAD
-
-#if LBAL_LIBCPP20_JTHREAD_CV
-  #if LBAL_HAS_HEADER_STOP_TOKEN != 1 || LBAL_HAS_HEADER_THREAD != 1
-    #undef LBAL_LIBCPP20_JTHREAD_CV
-    #define LBAL_LIBCPP20_JTHREAD_CV 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_JTHREAD_CV: at least one of "
-    "{<stop_token>,<thread>} not found"
-)
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_JTHREAD_CV
-
-#if LBAL_LIBCPP20_LATCH
-  #if LBAL_HAS_HEADER_LATCH != 1
-    #undef LBAL_LIBCPP20_LATCH
-    #define LBAL_LIBCPP20_LATCH 0
-LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_LATCH: <latch> not found")
-  #endif  // LBAL_HAS_HEADER_LATCH
-#endif    // LBAL_LIBCPP20_LATCH
-
-#if LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE
-  #if LBAL_HAS_HEADER_FORWARD_LIST != 1 || LBAL_HAS_HEADER_LIST != 1
-    #undef LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE
-    #define LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE: at least one of "
-    "{<forward_list>,<list>} not found"
-)
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE
-
-#if LBAL_LIBCPP20_MATH_CONSTANTS
-  #if LBAL_HAS_HEADER_NUMBERS != 1
-    #undef LBAL_LIBCPP20_MATH_CONSTANTS
-    #define LBAL_LIBCPP20_MATH_CONSTANTS 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_MATH_CONSTANTS: <numbers> not found"
-)
-  #endif  // LBAL_HAS_HEADER_NUMBERS
-#endif    // LBAL_LIBCPP20_MATH_CONSTANTS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE
 
 #if LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -5008,8 +4933,70 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE: <type_traits> "
     "not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE
+
+#if LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
+    #define LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE: "
+    "<type_traits> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
+
+#if LBAL_LIBCPP20_JTHREAD
+  #if LBAL_HAS_HEADER_STOP_TOKEN != 1 || LBAL_HAS_HEADER_THREAD != 1
+    #undef LBAL_LIBCPP20_JTHREAD
+    #define LBAL_LIBCPP20_JTHREAD 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP20_JTHREAD: at least one of {<stop_token>, "
+    "<thread>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_JTHREAD
+
+#if LBAL_LIBCPP20_JTHREAD_CV
+  #if LBAL_HAS_HEADER_STOP_TOKEN != 1 || LBAL_HAS_HEADER_THREAD != 1
+    #undef LBAL_LIBCPP20_JTHREAD_CV
+    #define LBAL_LIBCPP20_JTHREAD_CV 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP20_JTHREAD_CV: at least one of "
+    "{<stop_token>, <thread>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_JTHREAD_CV
+
+#if LBAL_LIBCPP20_LATCH
+  #if LBAL_HAS_HEADER_LATCH != 1
+    #undef LBAL_LIBCPP20_LATCH
+    #define LBAL_LIBCPP20_LATCH 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_LATCH: <latch> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_LATCH
+
+#if LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE
+  #if LBAL_HAS_HEADER_FORWARD_LIST != 1 || LBAL_HAS_HEADER_LIST != 1
+    #undef LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE
+    #define LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE: at least one of "
+    "{<forward_list>, <list>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_LIST_REMOVE_RETURN_TYPE
+
+#if LBAL_LIBCPP20_MATH_CONSTANTS
+  #if LBAL_HAS_HEADER_NUMBERS != 1
+    #undef LBAL_LIBCPP20_MATH_CONSTANTS
+    #define LBAL_LIBCPP20_MATH_CONSTANTS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP20_MATH_CONSTANTS: <numbers> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_MATH_CONSTANTS
 
 #if LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR
   #if LBAL_HAS_HEADER_MEMORY_RESOURCE != 1
@@ -5019,8 +5006,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR: <memory_resource> "
     "not found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY_RESOURCE
-#endif    // LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_POLYMORPHIC_ALLOCATOR
 
 #if LBAL_LIBCPP20_RANGES
   #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
@@ -5031,11 +5018,11 @@ LBAL_CPP_WARNING(
     #undef LBAL_LIBCPP20_RANGES
     #define LBAL_LIBCPP20_RANGES 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_RANGES: at least one of "
-    "{<algorithm>,<functional>,<iterator>,<memory>,<ranges>} not found"
+    "Unable to validate LBAL_LIBCPP20_RANGES: at least one of {<algorithm>, "
+    "<functional>, <iterator>, <memory>, <ranges>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_RANGES
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_RANGES
 
 #if LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
   #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
@@ -5047,10 +5034,10 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS: at least one of "
-    "{<algorithm>,<functional>,<iterator>,<memory>,<ranges>} not found"
+    "{<algorithm>, <functional>, <iterator>, <memory>, <ranges>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_RANGES_INPUT_ADAPTORS
 
 #if LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE
   #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
@@ -5062,10 +5049,10 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE: at least one of "
-    "{<algorithm>,<functional>,<iterator>,<memory>,<ranges>} not found"
+    "{<algorithm>, <functional>, <iterator>, <memory>, <ranges>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_RANGES_LOOSENED_COMPARE
 
 #if LBAL_LIBCPP20_REMOVE_CVREF
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -5074,8 +5061,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_REMOVE_CVREF: <type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP20_REMOVE_CVREF
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_REMOVE_CVREF
 
 #if LBAL_LIBCPP20_SEMAPHORE
   #if LBAL_HAS_HEADER_SEMAPHORE != 1
@@ -5084,8 +5071,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_SEMAPHORE: <semaphore> not found"
 )
-  #endif  // LBAL_HAS_HEADER_SEMAPHORE
-#endif    // LBAL_LIBCPP20_SEMAPHORE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_SEMAPHORE
 
 #if LBAL_LIBCPP20_SHARED_PTR_ARRAYS
   #if LBAL_HAS_HEADER_MEMORY != 1
@@ -5094,8 +5081,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_SHARED_PTR_ARRAYS: <memory> not found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP20_SHARED_PTR_ARRAYS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_SHARED_PTR_ARRAYS
 
 #if LBAL_LIBCPP20_SHIFT
   #if LBAL_HAS_HEADER_ALGORITHM != 1
@@ -5104,8 +5091,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_SHIFT: <algorithm> not found"
 )
-  #endif  // LBAL_HAS_HEADER_ALGORITHM
-#endif    // LBAL_LIBCPP20_SHIFT
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_SHIFT
 
 #if LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE
   #if LBAL_HAS_HEADER_MEMORY != 1
@@ -5115,8 +5102,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE: <memory> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_SMART_PTR_FOR_OVERWRITE
 
 #if LBAL_LIBCPP20_SOURCE_LOCATION
   #if LBAL_HAS_HEADER_SOURCE_LOCATION != 1
@@ -5126,26 +5113,16 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_SOURCE_LOCATION: <source_location> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_SOURCE_LOCATION
-#endif    // LBAL_LIBCPP20_SOURCE_LOCATION
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_SOURCE_LOCATION
 
 #if LBAL_LIBCPP20_SPAN
   #if LBAL_HAS_HEADER_SPAN != 1
     #undef LBAL_LIBCPP20_SPAN
     #define LBAL_LIBCPP20_SPAN 0
 LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_SPAN: <span> not found")
-  #endif  // LBAL_HAS_HEADER_SPAN
-#endif    // LBAL_LIBCPP20_SPAN
-
-#if LBAL_LIBCPP20_SPAN_USABILITY
-  #if LBAL_HAS_HEADER_SPAN != 1
-    #undef LBAL_LIBCPP20_SPAN_USABILITY
-    #define LBAL_LIBCPP20_SPAN_USABILITY 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_SPAN_USABILITY: <span> not found"
-)
-  #endif  // LBAL_HAS_HEADER_SPAN
-#endif    // LBAL_LIBCPP20_SPAN_USABILITY
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_SPAN
 
 #if LBAL_LIBCPP20_SPAN_FIXED_SIZE
   #if LBAL_HAS_HEADER_SPAN != 1
@@ -5154,19 +5131,26 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_SPAN_FIXED_SIZE: <span> not found"
 )
-  #endif  // LBAL_HAS_HEADER_SPAN
-#endif    // LBAL_LIBCPP20_SPAN_FIXED_SIZE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_SPAN_FIXED_SIZE
+
+#if LBAL_LIBCPP20_SPAN_USABILITY
+  #if LBAL_HAS_HEADER_SPAN != 1
+    #undef LBAL_LIBCPP20_SPAN_USABILITY
+    #define LBAL_LIBCPP20_SPAN_USABILITY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP20_SPAN_USABILITY: <span> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_SPAN_USABILITY
 
 #if LBAL_LIBCPP20_SSIZE
-  #if LBAL_HAS_HEADER_ITERATOR != 1 || LBAL_HAS_HEADER_SPAN != 1
+  #if LBAL_HAS_HEADER_ITERATOR != 1
     #undef LBAL_LIBCPP20_SSIZE
     #define LBAL_LIBCPP20_SSIZE 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_SSIZE: at least one of "
-    "{<iterator>,<span>} not found"
-)
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_SSIZE
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_SSIZE: <iterator> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_SSIZE
 
 #if LBAL_LIBCPP20_STARTS_ENDS_WITH
   #if LBAL_HAS_HEADER_STRING != 1 || LBAL_HAS_HEADER_STRING_VIEW != 1
@@ -5174,10 +5158,10 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP20_STARTS_ENDS_WITH 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_STARTS_ENDS_WITH: at least one of "
-    "{<string>,<string_view>} not found"
+    "{<string>, <string_view>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_STARTS_ENDS_WITH
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_STARTS_ENDS_WITH
 
 #if LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR
   #if LBAL_HAS_HEADER_STRING != 1 || LBAL_HAS_HEADER_STRING_VIEW != 1
@@ -5185,10 +5169,10 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR: at least "
-    "one of {<string>,<string_view>} not found"
+    "one of {<string>, <string_view>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR
 
 #if LBAL_LIBCPP20_SYNCBUF
   #if LBAL_HAS_HEADER_SYNCSTREAM != 1
@@ -5197,8 +5181,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_SYNCBUF: <syncstream> not found"
 )
-  #endif  // LBAL_HAS_HEADER_SYNCSTREAM
-#endif    // LBAL_LIBCPP20_SYNCBUF
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_SYNCBUF
 
 #if LBAL_LIBCPP20_SYNCBUF_MANIPULATORS
   #if LBAL_HAS_HEADER_SYNCSTREAM != 1
@@ -5208,8 +5192,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_SYNCBUF_MANIPULATORS: <syncstream> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_SYNCSTREAM
-#endif    // LBAL_LIBCPP20_SYNCBUF_MANIPULATORS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_SYNCBUF_MANIPULATORS
 
 #if LBAL_LIBCPP20_THREE_WAY_COMPARISON
   #if LBAL_HAS_HEADER_COMPARE != 1
@@ -5218,8 +5202,8 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_THREE_WAY_COMPARISON: <compare> not found"
 )
-  #endif  // LBAL_HAS_HEADER_COMPARE
-#endif    // LBAL_LIBCPP20_THREE_WAY_COMPARISON
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_THREE_WAY_COMPARISON
 
 #if LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY
   #if LBAL_HAS_HEADER_COMPARE != 1
@@ -5229,8 +5213,8 @@ LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY: <compare> "
     "not found"
 )
-  #endif  // LBAL_HAS_HEADER_COMPARE
-#endif    // LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY
 
 #if LBAL_LIBCPP20_TO_ADDRESS
   #if LBAL_HAS_HEADER_MEMORY != 1
@@ -5239,16 +5223,16 @@ LBAL_CPP_WARNING(
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_TO_ADDRESS: <memory> not found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP20_TO_ADDRESS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_TO_ADDRESS
 
 #if LBAL_LIBCPP20_TO_ARRAY
   #if LBAL_HAS_HEADER_ARRAY != 1
     #undef LBAL_LIBCPP20_TO_ARRAY
     #define LBAL_LIBCPP20_TO_ARRAY 0
 LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_TO_ARRAY: <array> not found")
-  #endif  // LBAL_HAS_HEADER_ARRAY
-#endif    // LBAL_LIBCPP20_TO_ARRAY
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_TO_ARRAY
 
 #if LBAL_LIBCPP20_TYPE_IDENTITY
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -5257,18 +5241,20 @@ LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP20_TO_ARRAY: <array> not found")
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_TYPE_IDENTITY: <type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP20_TYPE_IDENTITY
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_TYPE_IDENTITY
 
 #if LBAL_LIBCPP20_UNWRAP_REF
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
     #undef LBAL_LIBCPP20_UNWRAP_REF
     #define LBAL_LIBCPP20_UNWRAP_REF 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_UNWRAP_REF: `<type_traits>` not found"
+    "Unable to validate LBAL_LIBCPP20_UNWRAP_REF: <type_traits> not found"
 )
-  #endif  // LBAL_HAS_HEADER_TYPE_TRAITS
-#endif    // LBAL_LIBCPP20_UNWRAP_REF
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP20_UNWRAP_REF
+
+// C++23
 
 #if LBAL_LIBCPP23_ADAPTOR_ITERATOR_PAIR_CONSTRUCTOR
   #if LBAL_HAS_HEADER_QUEUE != 1 || LBAL_HAS_HEADER_STACK != 1
@@ -5276,10 +5262,10 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP23_ADAPTOR_ITERATOR_PAIR_CONSTRUCTOR 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP23_ADAPTOR_ITERATOR_PAIR_CONSTRUCTOR: at "
-    "least one of {`<queue>`,`<stack>`} not found"
+    "least one of {<queue>, <stack>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP23_ADAPTOR_ITERATOR_PAIR_CONSTRUCTOR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_ADAPTOR_ITERATOR_PAIR_CONSTRUCTOR
 
 #if LBAL_LIBCPP23_ALGORITHM_ITERATOR_REQUIREMENTS
   #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
@@ -5289,177 +5275,940 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP23_ALGORITHM_ITERATOR_REQUIREMENTS 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP23_ALGORITHM_ITERATOR_REQUIREMENTS: at "
-    "least one of {`<algorithm>`,`<memory>`,`<numeric>`} not found"
+    "least one of {<algorithm>, <memory>, <numeric>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP23_ALGORITHM_ITERATOR_REQUIREMENTS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_ALGORITHM_ITERATOR_REQUIREMENTS
+
+#if LBAL_LIBCPP23_ALLOCATE_AT_LEAST
+  #if LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP23_ALLOCATE_AT_LEAST
+    #define LBAL_LIBCPP23_ALLOCATE_AT_LEAST 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_ALLOCATE_AT_LEAST: <memory> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_ALLOCATE_AT_LEAST
+
+#if LBAL_LIBCPP23_ALLOCATE_AT_LEAST_DISALLOW_USER_SPEC
+  #if LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP23_ALLOCATE_AT_LEAST_DISALLOW_USER_SPEC
+    #define LBAL_LIBCPP23_ALLOCATE_AT_LEAST_DISALLOW_USER_SPEC 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_ALLOCATE_AT_LEAST_DISALLOW_USER_SPEC: "
+    "<memory> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_ALLOCATE_AT_LEAST_DISALLOW_USER_SPEC
+
+#if LBAL_LIBCPP23_ASSOCIATIVE_HETEROGENEOUS_ERASURE
+  #if LBAL_HAS_HEADER_MAP != 1                                                 \
+      || LBAL_HAS_HEADER_SET != 1                                              \
+      || LBAL_HAS_HEADER_UNORDERED_MAP != 1                                    \
+      || LBAL_HAS_HEADER_UNORDERED_SET != 1
+    #undef LBAL_LIBCPP23_ASSOCIATIVE_HETEROGENEOUS_ERASURE
+    #define LBAL_LIBCPP23_ASSOCIATIVE_HETEROGENEOUS_ERASURE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_ASSOCIATIVE_HETEROGENEOUS_ERASURE: at "
+    "least one of {<map>, <set>, <unordered_map>, <unordered_set>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_ASSOCIATIVE_HETEROGENEOUS_ERASURE
 
 #if LBAL_LIBCPP23_BARRIER_RELAXED_COMPLETION
   #if LBAL_HAS_HEADER_BARRIER != 1
     #undef LBAL_LIBCPP23_BARRIER_RELAXED_COMPLETION
     #define LBAL_LIBCPP23_BARRIER_RELAXED_COMPLETION 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP23_BARRIER_RELAXED_COMPLETION: `<barrier>` "
+    "Unable to validate LBAL_LIBCPP23_BARRIER_RELAXED_COMPLETION: <barrier> "
     "not found"
 )
-  #endif  // LBAL_HAS_HEADER_BARRIER test
-#endif    // LBAL_LIBCPP23_BARRIER_RELAXED_COMPLETION
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_BARRIER_RELAXED_COMPLETION
+
+#if LBAL_LIBCPP23_BIND_BACK
+  #if LBAL_HAS_HEADER_FUNCTIONAL != 1
+    #undef LBAL_LIBCPP23_BIND_BACK
+    #define LBAL_LIBCPP23_BIND_BACK 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_BIND_BACK: <functional> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_BIND_BACK
+
+#if LBAL_LIBCPP23_BYTESWAP
+  #if LBAL_HAS_HEADER_BIT != 1
+    #undef LBAL_LIBCPP23_BYTESWAP
+    #define LBAL_LIBCPP23_BYTESWAP 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP23_BYTESWAP: <bit> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_BYTESWAP
+
+#if LBAL_LIBCPP23_COMMON_REFERENCE
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP23_COMMON_REFERENCE
+    #define LBAL_LIBCPP23_COMMON_REFERENCE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_COMMON_REFERENCE: <type_traits> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_COMMON_REFERENCE
+
+#if LBAL_LIBCPP23_COMMON_REFERENCE_WRAPPER
+  #if LBAL_HAS_HEADER_FUNCTIONAL != 1
+    #undef LBAL_LIBCPP23_COMMON_REFERENCE_WRAPPER
+    #define LBAL_LIBCPP23_COMMON_REFERENCE_WRAPPER 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_COMMON_REFERENCE_WRAPPER: <functional> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_COMMON_REFERENCE_WRAPPER
 
 #if LBAL_LIBCPP23_CONCEPTS_MOVE_ONLY
   #if LBAL_HAS_HEADER_COMPARE != 1 || LBAL_HAS_HEADER_CONCEPTS != 1
     #undef LBAL_LIBCPP23_CONCEPTS_MOVE_ONLY
     #define LBAL_LIBCPP23_CONCEPTS_MOVE_ONLY 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP23_CONCEPTS_MOVE_ONLY: at "
-    "least one of {`<compare>`,`<concepts>`} not found"
+    "Unable to validate LBAL_LIBCPP23_CONCEPTS_MOVE_ONLY: at least one of "
+    "{<compare>, <concepts>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP23_CONCEPTS_MOVE_ONLY
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_CONCEPTS_MOVE_ONLY
+
+#if LBAL_LIBCPP23_CONSTEXPR_BITSET
+  #if LBAL_HAS_HEADER_BITSET != 1
+    #undef LBAL_LIBCPP23_CONSTEXPR_BITSET
+    #define LBAL_LIBCPP23_CONSTEXPR_BITSET 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_CONSTEXPR_BITSET: <bitset> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_CONSTEXPR_BITSET
+
+#if LBAL_LIBCPP23_CONSTEXPR_CHARCONV
+  #if LBAL_HAS_HEADER_CHARCONV != 1
+    #undef LBAL_LIBCPP23_CONSTEXPR_CHARCONV
+    #define LBAL_LIBCPP23_CONSTEXPR_CHARCONV 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_CONSTEXPR_CHARCONV: <charconv> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_CONSTEXPR_CHARCONV
+
+#if LBAL_LIBCPP23_CONSTEXPR_CMATH
+  #if LBAL_HAS_HEADER_CMATH != 1 || LBAL_HAS_HEADER_CSTDLIB != 1
+    #undef LBAL_LIBCPP23_CONSTEXPR_CMATH
+    #define LBAL_LIBCPP23_CONSTEXPR_CMATH 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_CONSTEXPR_CMATH: at least one of "
+    "{<cmath>, <cstdlib>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_CONSTEXPR_CMATH
 
 #if LBAL_LIBCPP23_CONSTEXPR_MEMORY_UNIQUE_PTR
   #if LBAL_HAS_HEADER_MEMORY != 1
     #undef LBAL_LIBCPP23_CONSTEXPR_MEMORY_UNIQUE_PTR
     #define LBAL_LIBCPP23_CONSTEXPR_MEMORY_UNIQUE_PTR 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP23_CONSTEXPR_MEMORY_UNIQUE_PTR: `<memory>` "
+    "Unable to validate LBAL_LIBCPP23_CONSTEXPR_MEMORY_UNIQUE_PTR: <memory> "
     "not found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY test
-#endif    // LBAL_LIBCPP23_CONSTEXPR_MEMORY_UNIQUE_PTR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_CONSTEXPR_MEMORY_UNIQUE_PTR
+
+#if LBAL_LIBCPP23_CONSTEXPR_TYPEINFO
+  #if LBAL_HAS_HEADER_TYPEINFO != 1
+    #undef LBAL_LIBCPP23_CONSTEXPR_TYPEINFO
+    #define LBAL_LIBCPP23_CONSTEXPR_TYPEINFO 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_CONSTEXPR_TYPEINFO: <typeinfo> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_CONSTEXPR_TYPEINFO
+
+#if LBAL_LIBCPP23_CONTAINERS_RANGES
+  #if LBAL_HAS_HEADER_DEQUE != 1                                               \
+      || LBAL_HAS_HEADER_FORWARD_LIST != 1                                     \
+      || LBAL_HAS_HEADER_LIST != 1                                             \
+      || LBAL_HAS_HEADER_MAP != 1                                              \
+      || LBAL_HAS_HEADER_QUEUE != 1                                            \
+      || LBAL_HAS_HEADER_SET != 1                                              \
+      || LBAL_HAS_HEADER_STACK != 1                                            \
+      || LBAL_HAS_HEADER_STRING != 1                                           \
+      || LBAL_HAS_HEADER_UNORDERED_MAP != 1                                    \
+      || LBAL_HAS_HEADER_UNORDERED_SET != 1                                    \
+      || LBAL_HAS_HEADER_VECTOR != 1
+    #undef LBAL_LIBCPP23_CONTAINERS_RANGES
+    #define LBAL_LIBCPP23_CONTAINERS_RANGES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_CONTAINERS_RANGES: at least one of "
+    "{<deque>, <forward_list>, <list>, <map>, <queue>, <set>, <stack>, "
+    "<string>, <unordered_map>, <unordered_set>, <vector>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_CONTAINERS_RANGES
+
+#if LBAL_LIBCPP23_EXPECTED
+  #if LBAL_HAS_HEADER_EXPECTED != 1
+    #undef LBAL_LIBCPP23_EXPECTED
+    #define LBAL_LIBCPP23_EXPECTED 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_EXPECTED: <expected> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_EXPECTED
+
+#if LBAL_LIBCPP23_EXPECTED_MONADIC
+  #if LBAL_HAS_HEADER_EXPECTED != 1
+    #undef LBAL_LIBCPP23_EXPECTED_MONADIC
+    #define LBAL_LIBCPP23_EXPECTED_MONADIC 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_EXPECTED_MONADIC: <expected> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_EXPECTED_MONADIC
+
+#if LBAL_LIBCPP23_FLAT_MAP
+  #if LBAL_HAS_HEADER_FLAT_MAP != 1
+    #undef LBAL_LIBCPP23_FLAT_MAP
+    #define LBAL_LIBCPP23_FLAT_MAP 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_FLAT_MAP: <flat_map> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_FLAT_MAP
+
+#if LBAL_LIBCPP23_FLAT_SET
+  #if LBAL_HAS_HEADER_FLAT_SET != 1
+    #undef LBAL_LIBCPP23_FLAT_SET
+    #define LBAL_LIBCPP23_FLAT_SET 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_FLAT_SET: <flat_set> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_FLAT_SET
 
 #if LBAL_LIBCPP23_FORMAT
   #if LBAL_HAS_HEADER_FORMAT != 1
     #undef LBAL_LIBCPP23_FORMAT
     #define LBAL_LIBCPP23_FORMAT 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP23_FORMAT: `<format>` not found"
-)
-  #endif  // LBAL_HAS_HEADER_FORMAT test
-#endif    // LBAL_LIBCPP23_FORMAT
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP23_FORMAT: <format> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_FORMAT
 
-#if LBAL_LIBCPP23_FORMAT_LOCALE
-  #if LBAL_HAS_HEADER_FORMAT != 1
-    #undef LBAL_LIBCPP23_FORMAT_LOCALE
-    #define LBAL_LIBCPP23_FORMAT_LOCALE 0
+#if LBAL_LIBCPP23_FORMATTERS
+  #if LBAL_HAS_HEADER_STACKTRACE != 1 || LBAL_HAS_HEADER_THREAD != 1
+    #undef LBAL_LIBCPP23_FORMATTERS
+    #define LBAL_LIBCPP23_FORMATTERS 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP23_FORMAT_LOCALE: `<format>` not found"
+    "Unable to validate LBAL_LIBCPP23_FORMATTERS: at least one of "
+    "{<stacktrace>, <thread>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_FORMAT test
-#endif    // LBAL_LIBCPP23_FORMAT_LOCALE
-
-#if LBAL_LIBCPP23_FORMAT_GENERATOR
-  #if LBAL_HAS_HEADER_FORMAT != 1
-    #undef LBAL_LIBCPP23_FORMAT_GENERATOR
-    #define LBAL_LIBCPP23_FORMAT_GENERATOR 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP23_FORMAT_GENERATOR: `<format>` not found"
-)
-  #endif  // LBAL_HAS_HEADER_FORMAT test
-#endif    // LBAL_LIBCPP23_FORMAT_GENERATOR
-
-#if LBAL_LIBCPP23_FORMAT_ENCODINGS
-  #if LBAL_HAS_HEADER_FORMAT != 1
-    #undef LBAL_LIBCPP23_FORMAT_ENCODINGS
-    #define LBAL_LIBCPP23_FORMAT_ENCODINGS 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP23_FORMAT_ENCODINGS: `<format>` not found"
-)
-  #endif  // LBAL_HAS_HEADER_FORMAT test
-#endif    // LBAL_LIBCPP23_FORMAT_ENCODINGS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_FORMATTERS
 
 #if LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING
   #if LBAL_HAS_HEADER_FORMAT != 1
     #undef LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING
     #define LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING: `<format>` "
-    "not found"
+    "Unable to validate LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING: <format> not "
+    "found"
 )
-  #endif  // LBAL_HAS_HEADER_FORMAT test
-#endif    // LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING
+
+#if LBAL_LIBCPP23_FORMAT_ENCODINGS
+  #if LBAL_HAS_HEADER_FORMAT != 1
+    #undef LBAL_LIBCPP23_FORMAT_ENCODINGS
+    #define LBAL_LIBCPP23_FORMAT_ENCODINGS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_FORMAT_ENCODINGS: <format> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_FORMAT_ENCODINGS
+
+#if LBAL_LIBCPP23_FORMAT_GENERATOR
+  #if LBAL_HAS_HEADER_FORMAT != 1
+    #undef LBAL_LIBCPP23_FORMAT_GENERATOR
+    #define LBAL_LIBCPP23_FORMAT_GENERATOR 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_FORMAT_GENERATOR: <format> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_FORMAT_GENERATOR
+
+#if LBAL_LIBCPP23_FORMAT_LOCALE
+  #if LBAL_HAS_HEADER_FORMAT != 1
+    #undef LBAL_LIBCPP23_FORMAT_LOCALE
+    #define LBAL_LIBCPP23_FORMAT_LOCALE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_FORMAT_LOCALE: <format> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_FORMAT_LOCALE
+
+#if LBAL_LIBCPP23_FORMAT_RANGES
+  #if LBAL_HAS_HEADER_FORMAT != 1
+    #undef LBAL_LIBCPP23_FORMAT_RANGES
+    #define LBAL_LIBCPP23_FORMAT_RANGES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_FORMAT_RANGES: <format> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_FORMAT_RANGES
+
+#if LBAL_LIBCPP23_FORWARD_LIKE
+  #if LBAL_HAS_HEADER_UTILITY != 1
+    #undef LBAL_LIBCPP23_FORWARD_LIKE
+    #define LBAL_LIBCPP23_FORWARD_LIKE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_FORWARD_LIKE: <utility> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_FORWARD_LIKE
+
+#if LBAL_LIBCPP23_GENERATOR
+  #if LBAL_HAS_HEADER_GENERATOR != 1
+    #undef LBAL_LIBCPP23_GENERATOR
+    #define LBAL_LIBCPP23_GENERATOR 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_GENERATOR: <generator> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_GENERATOR
+
+#if LBAL_LIBCPP23_INVOKE_R
+  #if LBAL_HAS_HEADER_FUNCTIONAL != 1
+    #undef LBAL_LIBCPP23_INVOKE_R
+    #define LBAL_LIBCPP23_INVOKE_R 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_INVOKE_R: <functional> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_INVOKE_R
+
+#if LBAL_LIBCPP23_IOS_NOREPLACE
+  #if LBAL_HAS_HEADER_IOS != 1
+    #undef LBAL_LIBCPP23_IOS_NOREPLACE
+    #define LBAL_LIBCPP23_IOS_NOREPLACE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_IOS_NOREPLACE: <ios> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_IOS_NOREPLACE
+
+#if LBAL_LIBCPP23_IS_IMPLICIT_LIFETIME
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP23_IS_IMPLICIT_LIFETIME
+    #define LBAL_LIBCPP23_IS_IMPLICIT_LIFETIME 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_IS_IMPLICIT_LIFETIME: <type_traits> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_IS_IMPLICIT_LIFETIME
+
+#if LBAL_LIBCPP23_IS_SCOPED_ENUM
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP23_IS_SCOPED_ENUM
+    #define LBAL_LIBCPP23_IS_SCOPED_ENUM 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_IS_SCOPED_ENUM: <type_traits> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_IS_SCOPED_ENUM
+
+#if LBAL_LIBCPP23_MDSPAN
+  #if LBAL_HAS_HEADER_MDSPAN != 1
+    #undef LBAL_LIBCPP23_MDSPAN
+    #define LBAL_LIBCPP23_MDSPAN 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP23_MDSPAN: <mdspan> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_MDSPAN
+
+#if LBAL_LIBCPP23_MOVE_ITERATOR_CONCEPT
+  #if LBAL_HAS_HEADER_ITERATOR != 1
+    #undef LBAL_LIBCPP23_MOVE_ITERATOR_CONCEPT
+    #define LBAL_LIBCPP23_MOVE_ITERATOR_CONCEPT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_MOVE_ITERATOR_CONCEPT: <iterator> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_MOVE_ITERATOR_CONCEPT
+
+#if LBAL_LIBCPP23_MOVE_ONLY_FUNCTION
+  #if LBAL_HAS_HEADER_FUNCTIONAL != 1
+    #undef LBAL_LIBCPP23_MOVE_ONLY_FUNCTION
+    #define LBAL_LIBCPP23_MOVE_ONLY_FUNCTION 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_MOVE_ONLY_FUNCTION: <functional> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_MOVE_ONLY_FUNCTION
 
 #if LBAL_LIBCPP23_OPTIONAL_CONSTEXPR
   #if LBAL_HAS_HEADER_OPTIONAL != 1
     #undef LBAL_LIBCPP23_OPTIONAL_CONSTEXPR
     #define LBAL_LIBCPP23_OPTIONAL_CONSTEXPR 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP23_OPTIONAL_CONSTEXPR: `<optional>` not "
-    "found"
+    "Unable to validate LBAL_LIBCPP23_OPTIONAL_CONSTEXPR: <optional> not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP23_OPTIONAL_CONSTEXPR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_OPTIONAL_CONSTEXPR
 
 #if LBAL_LIBCPP23_OPTIONAL_MONADIC
   #if LBAL_HAS_HEADER_OPTIONAL != 1
     #undef LBAL_LIBCPP23_OPTIONAL_MONADIC
     #define LBAL_LIBCPP23_OPTIONAL_MONADIC 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP23_OPTIONAL_MONADIC: `<optional>` not found"
+    "Unable to validate LBAL_LIBCPP23_OPTIONAL_MONADIC: <optional> not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP23_OPTIONAL_MONADIC
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_OPTIONAL_MONADIC
 
-#if LBAL_LIBCPP23_VARIANT_INHERITANCE
-  #if LBAL_HAS_HEADER_VARIANT != 1
-    #undef LBAL_LIBCPP23_VARIANT_INHERITANCE
-    #define LBAL_LIBCPP23_VARIANT_INHERITANCE 0
+#if LBAL_LIBCPP23_OUT_PTR
+  #if LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP23_OUT_PTR
+    #define LBAL_LIBCPP23_OUT_PTR 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP23_OUT_PTR: <memory> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_OUT_PTR
+
+#if LBAL_LIBCPP23_PRINT
+  #if LBAL_HAS_HEADER_OSTREAM != 1 || LBAL_HAS_HEADER_PRINT != 1
+    #undef LBAL_LIBCPP23_PRINT
+    #define LBAL_LIBCPP23_PRINT 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP23_VARIANT_INHERITANCE: `<variant>` not "
+    "Unable to validate LBAL_LIBCPP23_PRINT: at least one of {<ostream>, "
+    "<print>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_PRINT
+
+#if LBAL_LIBCPP23_RANGES_AS_CONST
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_AS_CONST
+    #define LBAL_LIBCPP23_RANGES_AS_CONST 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_AS_CONST: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_AS_CONST
+
+#if LBAL_LIBCPP23_RANGES_AS_RVALUE
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_AS_RVALUE
+    #define LBAL_LIBCPP23_RANGES_AS_RVALUE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_AS_RVALUE: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_AS_RVALUE
+
+#if LBAL_LIBCPP23_RANGES_CARTESIAN_PRODUCT
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_CARTESIAN_PRODUCT
+    #define LBAL_LIBCPP23_RANGES_CARTESIAN_PRODUCT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_CARTESIAN_PRODUCT: <ranges> not "
     "found"
 )
-  #endif  // LBAL_HAS_HEADER_VARIANT test
-#endif    // LBAL_LIBCPP23_VARIANT_INHERITANCE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_CARTESIAN_PRODUCT
+
+#if LBAL_LIBCPP23_RANGES_CARTESIAN_PRODUCT_EMPTY
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_CARTESIAN_PRODUCT_EMPTY
+    #define LBAL_LIBCPP23_RANGES_CARTESIAN_PRODUCT_EMPTY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_CARTESIAN_PRODUCT_EMPTY: <ranges> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_CARTESIAN_PRODUCT_EMPTY
+
+#if LBAL_LIBCPP23_RANGES_CHUNK
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_CHUNK
+    #define LBAL_LIBCPP23_RANGES_CHUNK 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_CHUNK: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_CHUNK
+
+#if LBAL_LIBCPP23_RANGES_CHUNK_BY
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_CHUNK_BY
+    #define LBAL_LIBCPP23_RANGES_CHUNK_BY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_CHUNK_BY: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_CHUNK_BY
+
+#if LBAL_LIBCPP23_RANGES_CONTAINS
+  #if LBAL_HAS_HEADER_ALGORITHM != 1
+    #undef LBAL_LIBCPP23_RANGES_CONTAINS
+    #define LBAL_LIBCPP23_RANGES_CONTAINS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_CONTAINS: <algorithm> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_CONTAINS
+
+#if LBAL_LIBCPP23_RANGES_ENUMERATE
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_ENUMERATE
+    #define LBAL_LIBCPP23_RANGES_ENUMERATE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_ENUMERATE: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_ENUMERATE
+
+#if LBAL_LIBCPP23_RANGES_FIND_LAST
+  #if LBAL_HAS_HEADER_ALGORITHM != 1
+    #undef LBAL_LIBCPP23_RANGES_FIND_LAST
+    #define LBAL_LIBCPP23_RANGES_FIND_LAST 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_FIND_LAST: <algorithm> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_FIND_LAST
+
+#if LBAL_LIBCPP23_RANGES_FOLD
+  #if LBAL_HAS_HEADER_ALGORITHM != 1
+    #undef LBAL_LIBCPP23_RANGES_FOLD
+    #define LBAL_LIBCPP23_RANGES_FOLD 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_FOLD: <algorithm> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_FOLD
+
+#if LBAL_LIBCPP23_RANGES_FORMALIZED_VIEW
+  #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
+      || LBAL_HAS_HEADER_FUNCTIONAL != 1                                       \
+      || LBAL_HAS_HEADER_ITERATOR != 1                                         \
+      || LBAL_HAS_HEADER_MEMORY != 1                                           \
+      || LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_FORMALIZED_VIEW
+    #define LBAL_LIBCPP23_RANGES_FORMALIZED_VIEW 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_FORMALIZED_VIEW: at least one of "
+    "{<algorithm>, <functional>, <iterator>, <memory>, <ranges>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_FORMALIZED_VIEW
+
+#if LBAL_LIBCPP23_RANGES_IOTA
+  #if LBAL_HAS_HEADER_NUMERIC != 1
+    #undef LBAL_LIBCPP23_RANGES_IOTA
+    #define LBAL_LIBCPP23_RANGES_IOTA 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_IOTA: <numeric> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_IOTA
+
+#if LBAL_LIBCPP23_RANGES_JOIN_WITH
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_JOIN_WITH
+    #define LBAL_LIBCPP23_RANGES_JOIN_WITH 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_JOIN_WITH: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_JOIN_WITH
+
+#if LBAL_LIBCPP23_RANGES_NON_DEFAULT_CONSTRUCTIBLE
+  #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
+      || LBAL_HAS_HEADER_FUNCTIONAL != 1                                       \
+      || LBAL_HAS_HEADER_ITERATOR != 1                                         \
+      || LBAL_HAS_HEADER_MEMORY != 1                                           \
+      || LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_NON_DEFAULT_CONSTRUCTIBLE
+    #define LBAL_LIBCPP23_RANGES_NON_DEFAULT_CONSTRUCTIBLE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_NON_DEFAULT_CONSTRUCTIBLE: at "
+    "least one of {<algorithm>, <functional>, <iterator>, <memory>, <ranges>} "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_NON_DEFAULT_CONSTRUCTIBLE
+
+#if LBAL_LIBCPP23_RANGES_RELAXED
+  #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
+      || LBAL_HAS_HEADER_FUNCTIONAL != 1                                       \
+      || LBAL_HAS_HEADER_ITERATOR != 1                                         \
+      || LBAL_HAS_HEADER_MEMORY != 1                                           \
+      || LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_RELAXED
+    #define LBAL_LIBCPP23_RANGES_RELAXED 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_RELAXED: at least one of "
+    "{<algorithm>, <functional>, <iterator>, <memory>, <ranges>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_RELAXED
+
+#if LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS
+  #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
+      || LBAL_HAS_HEADER_FUNCTIONAL != 1                                       \
+      || LBAL_HAS_HEADER_ITERATOR != 1                                         \
+      || LBAL_HAS_HEADER_MEMORY != 1                                           \
+      || LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS
+    #define LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS: at least one "
+    "of {<algorithm>, <functional>, <iterator>, <memory>, <ranges>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS
+
+#if LBAL_LIBCPP23_RANGES_REPEAT
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_REPEAT
+    #define LBAL_LIBCPP23_RANGES_REPEAT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_REPEAT: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_REPEAT
+
+#if LBAL_LIBCPP23_RANGES_SLIDE
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_SLIDE
+    #define LBAL_LIBCPP23_RANGES_SLIDE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_SLIDE: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_SLIDE
+
+#if LBAL_LIBCPP23_RANGES_STARTS_ENDS_WITH
+  #if LBAL_HAS_HEADER_ALGORITHM != 1
+    #undef LBAL_LIBCPP23_RANGES_STARTS_ENDS_WITH
+    #define LBAL_LIBCPP23_RANGES_STARTS_ENDS_WITH 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_STARTS_ENDS_WITH: <algorithm> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_STARTS_ENDS_WITH
+
+#if LBAL_LIBCPP23_RANGES_STRIDE
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_STRIDE
+    #define LBAL_LIBCPP23_RANGES_STRIDE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_STRIDE: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_STRIDE
+
+#if LBAL_LIBCPP23_RANGES_SUPPORT_MOVE_ONLY_TYPES
+  #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
+      || LBAL_HAS_HEADER_FUNCTIONAL != 1                                       \
+      || LBAL_HAS_HEADER_ITERATOR != 1                                         \
+      || LBAL_HAS_HEADER_MEMORY != 1                                           \
+      || LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_SUPPORT_MOVE_ONLY_TYPES
+    #define LBAL_LIBCPP23_RANGES_SUPPORT_MOVE_ONLY_TYPES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_SUPPORT_MOVE_ONLY_TYPES: at least "
+    "one of {<algorithm>, <functional>, <iterator>, <memory>, <ranges>} not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_SUPPORT_MOVE_ONLY_TYPES
+
+#if LBAL_LIBCPP23_RANGES_TO_CONTAINER
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_TO_CONTAINER
+    #define LBAL_LIBCPP23_RANGES_TO_CONTAINER 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_TO_CONTAINER: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_TO_CONTAINER
+
+#if LBAL_LIBCPP23_RANGES_USER_ADAPTOR_PIPES
+  #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
+      || LBAL_HAS_HEADER_FUNCTIONAL != 1                                       \
+      || LBAL_HAS_HEADER_ITERATOR != 1                                         \
+      || LBAL_HAS_HEADER_MEMORY != 1                                           \
+      || LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP23_RANGES_USER_ADAPTOR_PIPES
+    #define LBAL_LIBCPP23_RANGES_USER_ADAPTOR_PIPES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_USER_ADAPTOR_PIPES: at least one "
+    "of {<algorithm>, <functional>, <iterator>, <memory>, <ranges>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_USER_ADAPTOR_PIPES
+
+#if LBAL_LIBCPP23_RANGES_ZIP
+  #if LBAL_HAS_HEADER_RANGES != 1                                              \
+      || LBAL_HAS_HEADER_TUPLE != 1                                            \
+      || LBAL_HAS_HEADER_UTILITY != 1
+    #undef LBAL_LIBCPP23_RANGES_ZIP
+    #define LBAL_LIBCPP23_RANGES_ZIP 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_RANGES_ZIP: at least one of {<ranges>, "
+    "<tuple>, <utility>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_RANGES_ZIP
+
+#if LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY
+    #define LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY: <type_traits> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY
+
+#if LBAL_LIBCPP23_SHIFT_RANGES
+  #if LBAL_HAS_HEADER_ALGORITHM != 1
+    #undef LBAL_LIBCPP23_SHIFT_RANGES
+    #define LBAL_LIBCPP23_SHIFT_RANGES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_SHIFT_RANGES: <algorithm> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_SHIFT_RANGES
+
+#if LBAL_LIBCPP23_SPANSTREAM
+  #if LBAL_HAS_HEADER_SPANSTREAM != 1
+    #undef LBAL_LIBCPP23_SPANSTREAM
+    #define LBAL_LIBCPP23_SPANSTREAM 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_SPANSTREAM: <spanstream> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_SPANSTREAM
+
+#if LBAL_LIBCPP23_STACKTRACE
+  #if LBAL_HAS_HEADER_STACKTRACE != 1
+    #undef LBAL_LIBCPP23_STACKTRACE
+    #define LBAL_LIBCPP23_STACKTRACE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_STACKTRACE: <stacktrace> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_STACKTRACE
+
+#if LBAL_LIBCPP23_START_LIFETIME_AS
+  #if LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP23_START_LIFETIME_AS
+    #define LBAL_LIBCPP23_START_LIFETIME_AS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_START_LIFETIME_AS: <memory> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_START_LIFETIME_AS
+
+#if LBAL_LIBCPP23_STDATOMIC_H
+  #if LBAL_HAS_HEADER_STDATOMIC_H != 1
+    #undef LBAL_LIBCPP23_STDATOMIC_H
+    #define LBAL_LIBCPP23_STDATOMIC_H 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_STDATOMIC_H: <stdatomic.h> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_STDATOMIC_H
+
+#if LBAL_LIBCPP23_STRING_CONTAINS
+  #if LBAL_HAS_HEADER_STRING != 1 || LBAL_HAS_HEADER_STRING_VIEW != 1
+    #undef LBAL_LIBCPP23_STRING_CONTAINS
+    #define LBAL_LIBCPP23_STRING_CONTAINS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_STRING_CONTAINS: at least one of "
+    "{<string>, <string_view>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_STRING_CONTAINS
+
+#if LBAL_LIBCPP23_STRING_RESIZE_AND_OVERWRITE
+  #if LBAL_HAS_HEADER_STRING != 1
+    #undef LBAL_LIBCPP23_STRING_RESIZE_AND_OVERWRITE
+    #define LBAL_LIBCPP23_STRING_RESIZE_AND_OVERWRITE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_STRING_RESIZE_AND_OVERWRITE: <string> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_STRING_RESIZE_AND_OVERWRITE
+
+#if LBAL_LIBCPP23_TO_UNDERLYING
+  #if LBAL_HAS_HEADER_UTILITY != 1
+    #undef LBAL_LIBCPP23_TO_UNDERLYING
+    #define LBAL_LIBCPP23_TO_UNDERLYING 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_TO_UNDERLYING: <utility> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_TO_UNDERLYING
+
+#if LBAL_LIBCPP23_TUPLE_LIKE
+  #if LBAL_HAS_HEADER_MAP != 1                                                 \
+      || LBAL_HAS_HEADER_TUPLE != 1                                            \
+      || LBAL_HAS_HEADER_UNORDERED_MAP != 1                                    \
+      || LBAL_HAS_HEADER_UTILITY != 1
+    #undef LBAL_LIBCPP23_TUPLE_LIKE
+    #define LBAL_LIBCPP23_TUPLE_LIKE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_TUPLE_LIKE: at least one of {<map>, "
+    "<tuple>, <unordered_map>, <utility>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_TUPLE_LIKE
+
+#if LBAL_LIBCPP23_UNREACHABLE
+  #if LBAL_HAS_HEADER_UTILITY != 1
+    #undef LBAL_LIBCPP23_UNREACHABLE
+    #define LBAL_LIBCPP23_UNREACHABLE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_UNREACHABLE: <utility> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_UNREACHABLE
 
 #if LBAL_LIBCPP23_VARIANT_CONSTEXPR
   #if LBAL_HAS_HEADER_VARIANT != 1
     #undef LBAL_LIBCPP23_VARIANT_CONSTEXPR
     #define LBAL_LIBCPP23_VARIANT_CONSTEXPR 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP23_VARIANT_CONSTEXPR: `<variant>` not found"
+    "Unable to validate LBAL_LIBCPP23_VARIANT_CONSTEXPR: <variant> not found"
 )
-  #endif  // LBAL_HAS_HEADER_VARIANT test
-#endif    // LBAL_LIBCPP23_VARIANT_CONSTEXPR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_VARIANT_CONSTEXPR
+
+#if LBAL_LIBCPP23_VARIANT_INHERITANCE
+  #if LBAL_HAS_HEADER_VARIANT != 1
+    #undef LBAL_LIBCPP23_VARIANT_INHERITANCE
+    #define LBAL_LIBCPP23_VARIANT_INHERITANCE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_VARIANT_INHERITANCE: <variant> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_VARIANT_INHERITANCE
+
+// C++26
 
 #if LBAL_LIBCPP26_ALIGNED_ACCESSOR
   #if LBAL_HAS_HEADER_MDSPAN != 1
     #undef LBAL_LIBCPP26_ALIGNED_ACCESSOR
     #define LBAL_LIBCPP26_ALIGNED_ACCESSOR 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_ALIGNED_ACCESSOR: `<mdspan>` not found"
+    "Unable to validate LBAL_LIBCPP26_ALIGNED_ACCESSOR: <mdspan> not found"
 )
-  #endif  // LBAL_HAS_HEADER_MDSPAN
-#endif    // LBAL_LIBCPP26_ALIGNED_ACCESSOR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_ALIGNED_ACCESSOR
+
+#if LBAL_LIBCPP26_ASSOCIATIVE_HETEROGENEOUS_INSERTION
+  #if LBAL_HAS_HEADER_MAP != 1                                                 \
+      || LBAL_HAS_HEADER_SET != 1                                              \
+      || LBAL_HAS_HEADER_UNORDERED_MAP != 1                                    \
+      || LBAL_HAS_HEADER_UNORDERED_SET != 1
+    #undef LBAL_LIBCPP26_ASSOCIATIVE_HETEROGENEOUS_INSERTION
+    #define LBAL_LIBCPP26_ASSOCIATIVE_HETEROGENEOUS_INSERTION 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_ASSOCIATIVE_HETEROGENEOUS_INSERTION: at "
+    "least one of {<map>, <set>, <unordered_map>, <unordered_set>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_ASSOCIATIVE_HETEROGENEOUS_INSERTION
+
+#if LBAL_LIBCPP26_ATOMIC_MIN_MAX
+  #if LBAL_HAS_HEADER_ATOMIC != 1
+    #undef LBAL_LIBCPP26_ATOMIC_MIN_MAX
+    #define LBAL_LIBCPP26_ATOMIC_MIN_MAX 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_ATOMIC_MIN_MAX: <atomic> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_ATOMIC_MIN_MAX
+
+#if LBAL_LIBCPP26_ATOMIC_MIN_MAX_FLOAT
+  #if LBAL_HAS_HEADER_ATOMIC != 1
+    #undef LBAL_LIBCPP26_ATOMIC_MIN_MAX_FLOAT
+    #define LBAL_LIBCPP26_ATOMIC_MIN_MAX_FLOAT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_ATOMIC_MIN_MAX_FLOAT: <atomic> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_ATOMIC_MIN_MAX_FLOAT
+
+#if LBAL_LIBCPP26_ATOMIC_REDUCTIONS
+  #if LBAL_HAS_HEADER_ATOMIC != 1
+    #undef LBAL_LIBCPP26_ATOMIC_REDUCTIONS
+    #define LBAL_LIBCPP26_ATOMIC_REDUCTIONS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_ATOMIC_REDUCTIONS: <atomic> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_ATOMIC_REDUCTIONS
 
 #if LBAL_LIBCPP26_ATOMIC_REF_ADDRESS
   #if LBAL_HAS_HEADER_ATOMIC != 1
     #undef LBAL_LIBCPP26_ATOMIC_REF_ADDRESS
     #define LBAL_LIBCPP26_ATOMIC_REF_ADDRESS 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_ATOMIC_REF_ADDRESS: `<atomic>` not found"
+    "Unable to validate LBAL_LIBCPP26_ATOMIC_REF_ADDRESS: <atomic> not found"
 )
-  #endif  // LBAL_HAS_HEADER_ATOMIC
-#endif    // LBAL_LIBCPP26_ATOMIC_REF_ADDRESS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_ATOMIC_REF_ADDRESS
 
 #if LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES
   #if LBAL_HAS_HEADER_FUNCTIONAL != 1
     #undef LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES
     #define LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES: "
-    "`<functional>` not found"
+    "Unable to validate LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES: <functional> "
+    "not found"
 )
-  #endif  // LBAL_HAS_HEADER_FUNCTIONAL
-#endif    // LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES
+
+#if LBAL_LIBCPP26_BITSET
+  #if LBAL_HAS_HEADER_BITSET != 1
+    #undef LBAL_LIBCPP26_BITSET
+    #define LBAL_LIBCPP26_BITSET 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP26_BITSET: <bitset> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_BITSET
 
 #if LBAL_LIBCPP26_CHRONO_HASHING
   #if LBAL_HAS_HEADER_CHRONO != 1
     #undef LBAL_LIBCPP26_CHRONO_HASHING
     #define LBAL_LIBCPP26_CHRONO_HASHING 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_CHRONO_HASHING: `<chrono>` not found"
+    "Unable to validate LBAL_LIBCPP26_CHRONO_HASHING: <chrono> not found"
 )
-  #endif  // LBAL_HAS_HEADER_CHRONO
-#endif    // LBAL_LIBCPP26_CHRONO_HASHING
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CHRONO_HASHING
+
+#if LBAL_LIBCPP26_CONSTANT_WRAPPER
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP26_CONSTANT_WRAPPER
+    #define LBAL_LIBCPP26_CONSTANT_WRAPPER 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTANT_WRAPPER: <type_traits> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTANT_WRAPPER
 
 #if LBAL_LIBCPP26_CONSTEXPR_ALGORITHMS_STABLE_SORT
   #if LBAL_HAS_HEADER_ALGORITHM != 1 || LBAL_HAS_HEADER_UTILITY != 1
@@ -5467,71 +6216,968 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP26_CONSTEXPR_ALGORITHMS_STABLE_SORT 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP26_CONSTEXPR_ALGORITHMS_STABLE_SORT: at "
-    "least one of {`<algorithm>`,`<utility>`} not found"
+    "least one of {<algorithm>, <utility>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP26_CONSTEXPR_ALGORITHMS_STABLE_SORT
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_ALGORITHMS_STABLE_SORT
+
+#if LBAL_LIBCPP26_CONSTEXPR_ATOMIC
+  #if LBAL_HAS_HEADER_ATOMIC != 1
+    #undef LBAL_LIBCPP26_CONSTEXPR_ATOMIC
+    #define LBAL_LIBCPP26_CONSTEXPR_ATOMIC 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_ATOMIC: <atomic> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_ATOMIC
 
 #if LBAL_LIBCPP26_CONSTEXPR_COMPLEX
   #if LBAL_HAS_HEADER_COMPLEX != 1
     #undef LBAL_LIBCPP26_CONSTEXPR_COMPLEX
     #define LBAL_LIBCPP26_CONSTEXPR_COMPLEX 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_COMPLEX: `<complex>` not found"
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_COMPLEX: <complex> not found"
 )
-  #endif  // LBAL_HAS_HEADER_COMPLEX
-#endif    // LBAL_LIBCPP26_CONSTEXPR_COMPLEX
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_COMPLEX
+
+#if LBAL_LIBCPP26_CONSTEXPR_DEQUE
+  #if LBAL_HAS_HEADER_DEQUE != 1
+    #undef LBAL_LIBCPP26_CONSTEXPR_DEQUE
+    #define LBAL_LIBCPP26_CONSTEXPR_DEQUE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_DEQUE: <deque> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_DEQUE
+
+#if LBAL_LIBCPP26_CONSTEXPR_EXCEPTIONS
+  #if LBAL_HAS_HEADER_EXCEPTION != 1                                           \
+      || LBAL_HAS_HEADER_EXPECTED != 1                                         \
+      || LBAL_HAS_HEADER_FORMAT != 1                                           \
+      || LBAL_HAS_HEADER_OPTIONAL != 1                                         \
+      || LBAL_HAS_HEADER_STDEXCEPT != 1                                        \
+      || LBAL_HAS_HEADER_VARIANT != 1
+    #undef LBAL_LIBCPP26_CONSTEXPR_EXCEPTIONS
+    #define LBAL_LIBCPP26_CONSTEXPR_EXCEPTIONS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_EXCEPTIONS: at least one of "
+    "{<exception>, <expected>, <format>, <optional>, <stdexcept>, <variant>} "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_EXCEPTIONS
+
+#if LBAL_LIBCPP26_CONSTEXPR_FLAT_MAP
+  #if LBAL_HAS_HEADER_FLAT_MAP != 1
+    #undef LBAL_LIBCPP26_CONSTEXPR_FLAT_MAP
+    #define LBAL_LIBCPP26_CONSTEXPR_FLAT_MAP 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_FLAT_MAP: <flat_map> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_FLAT_MAP
+
+#if LBAL_LIBCPP26_CONSTEXPR_FLAT_SET
+  #if LBAL_HAS_HEADER_FLAT_SET != 1
+    #undef LBAL_LIBCPP26_CONSTEXPR_FLAT_SET
+    #define LBAL_LIBCPP26_CONSTEXPR_FLAT_SET 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_FLAT_SET: <flat_set> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_FLAT_SET
+
+#if LBAL_LIBCPP26_CONSTEXPR_FORMAT
+  #if LBAL_HAS_HEADER_FORMAT != 1
+    #undef LBAL_LIBCPP26_CONSTEXPR_FORMAT
+    #define LBAL_LIBCPP26_CONSTEXPR_FORMAT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_FORMAT: <format> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_FORMAT
+
+#if LBAL_LIBCPP26_CONSTEXPR_FORWARD_LIST
+  #if LBAL_HAS_HEADER_FORWARD_LIST != 1
+    #undef LBAL_LIBCPP26_CONSTEXPR_FORWARD_LIST
+    #define LBAL_LIBCPP26_CONSTEXPR_FORWARD_LIST 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_FORWARD_LIST: <forward_list> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_FORWARD_LIST
+
+#if LBAL_LIBCPP26_CONSTEXPR_LIST
+  #if LBAL_HAS_HEADER_LIST != 1
+    #undef LBAL_LIBCPP26_CONSTEXPR_LIST
+    #define LBAL_LIBCPP26_CONSTEXPR_LIST 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_LIST: <list> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_LIST
+
+#if LBAL_LIBCPP26_CONSTEXPR_MAP
+  #if LBAL_HAS_HEADER_MAP != 1
+    #undef LBAL_LIBCPP26_CONSTEXPR_MAP
+    #define LBAL_LIBCPP26_CONSTEXPR_MAP 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_MAP: <map> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_MAP
 
 #if LBAL_LIBCPP26_CONSTEXPR_MEMORY_SHARED_PTR
   #if LBAL_HAS_HEADER_MEMORY != 1
     #undef LBAL_LIBCPP26_CONSTEXPR_MEMORY_SHARED_PTR
     #define LBAL_LIBCPP26_CONSTEXPR_MEMORY_SHARED_PTR 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_MEMORY_SHARED_PTR: `<memory>` "
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_MEMORY_SHARED_PTR: <memory> "
     "not found"
 )
-  #endif  // LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP26_CONSTEXPR_MEMORY_SHARED_PTR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_MEMORY_SHARED_PTR
 
-#if LBAL_LIBCPP26_FORMAT_POINTERS
-  #if LBAL_HAS_HEADER_FORMAT != 1
-    #undef LBAL_LIBCPP26_FORMAT_POINTERS
-    #define LBAL_LIBCPP26_FORMAT_POINTERS 0
+#if LBAL_LIBCPP26_CONSTEXPR_QUEUE
+  #if LBAL_HAS_HEADER_QUEUE != 1
+    #undef LBAL_LIBCPP26_CONSTEXPR_QUEUE
+    #define LBAL_LIBCPP26_CONSTEXPR_QUEUE 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_FORMAT_POINTERS: `<format>` not found"
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_QUEUE: <queue> not found"
 )
-  #endif  // LBAL_HAS_HEADER_FORMAT
-#endif    // LBAL_LIBCPP26_FORMAT_POINTERS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_QUEUE
 
-#if LBAL_LIBCPP26_FORMAT_TYPE_CHECK
-  #if LBAL_HAS_HEADER_FORMAT != 1
-    #undef LBAL_LIBCPP26_FORMAT_TYPE_CHECK
-    #define LBAL_LIBCPP26_FORMAT_TYPE_CHECK 0
+#if LBAL_LIBCPP26_CONSTEXPR_SET
+  #if LBAL_HAS_HEADER_SET != 1
+    #undef LBAL_LIBCPP26_CONSTEXPR_SET
+    #define LBAL_LIBCPP26_CONSTEXPR_SET 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_FORMAT_TYPE_CHECK: `<format>` not found"
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_SET: <set> not found"
 )
-  #endif  // LBAL_HAS_HEADER_FORMAT
-#endif    // LBAL_LIBCPP26_FORMAT_TYPE_CHECK
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_SET
+
+#if LBAL_LIBCPP26_CONSTEXPR_STACK
+  #if LBAL_HAS_HEADER_STACK != 1
+    #undef LBAL_LIBCPP26_CONSTEXPR_STACK
+    #define LBAL_LIBCPP26_CONSTEXPR_STACK 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_STACK: <stack> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_STACK
+
+#if LBAL_LIBCPP26_CONSTEXPR_UNORDERED_MAP
+  #if LBAL_HAS_HEADER_UNORDERED_MAP != 1
+    #undef LBAL_LIBCPP26_CONSTEXPR_UNORDERED_MAP
+    #define LBAL_LIBCPP26_CONSTEXPR_UNORDERED_MAP 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_UNORDERED_MAP: <unordered_map> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_UNORDERED_MAP
+
+#if LBAL_LIBCPP26_CONSTEXPR_UNORDERED_SET
+  #if LBAL_HAS_HEADER_UNORDERED_SET != 1
+    #undef LBAL_LIBCPP26_CONSTEXPR_UNORDERED_SET
+    #define LBAL_LIBCPP26_CONSTEXPR_UNORDERED_SET 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTEXPR_UNORDERED_SET: <unordered_set> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTEXPR_UNORDERED_SET
+
+#if LBAL_LIBCPP26_CONSTRAINED_EQUALITY
+  #if LBAL_HAS_HEADER_EXPECTED != 1                                            \
+      || LBAL_HAS_HEADER_OPTIONAL != 1                                         \
+      || LBAL_HAS_HEADER_TUPLE != 1                                            \
+      || LBAL_HAS_HEADER_UTILITY != 1                                          \
+      || LBAL_HAS_HEADER_VARIANT != 1
+    #undef LBAL_LIBCPP26_CONSTRAINED_EQUALITY
+    #define LBAL_LIBCPP26_CONSTRAINED_EQUALITY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTRAINED_EQUALITY: at least one of "
+    "{<expected>, <optional>, <tuple>, <utility>, <variant>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTRAINED_EQUALITY
+
+#if LBAL_LIBCPP26_CONSTRAINED_EQUALITY_EXPECTED
+  #if LBAL_HAS_HEADER_EXPECTED != 1                                            \
+      || LBAL_HAS_HEADER_OPTIONAL != 1                                         \
+      || LBAL_HAS_HEADER_TUPLE != 1                                            \
+      || LBAL_HAS_HEADER_UTILITY != 1                                          \
+      || LBAL_HAS_HEADER_VARIANT != 1
+    #undef LBAL_LIBCPP26_CONSTRAINED_EQUALITY_EXPECTED
+    #define LBAL_LIBCPP26_CONSTRAINED_EQUALITY_EXPECTED 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTRAINED_EQUALITY_EXPECTED: at least "
+    "one of {<expected>, <optional>, <tuple>, <utility>, <variant>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTRAINED_EQUALITY_EXPECTED
+
+#if LBAL_LIBCPP26_COPYABLE_FUNCTION
+  #if LBAL_HAS_HEADER_FUNCTIONAL != 1
+    #undef LBAL_LIBCPP26_COPYABLE_FUNCTION
+    #define LBAL_LIBCPP26_COPYABLE_FUNCTION 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_COPYABLE_FUNCTION: <functional> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_COPYABLE_FUNCTION
+
+#if LBAL_LIBCPP26_COUNTING_SCOPE
+  #if LBAL_HAS_HEADER_EXECUTION != 1
+    #undef LBAL_LIBCPP26_COUNTING_SCOPE
+    #define LBAL_LIBCPP26_COUNTING_SCOPE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_COUNTING_SCOPE: <execution> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_COUNTING_SCOPE
+
+#if LBAL_LIBCPP26_DEBUGGING
+  #if LBAL_HAS_HEADER_DEBUGGING != 1
+    #undef LBAL_LIBCPP26_DEBUGGING
+    #define LBAL_LIBCPP26_DEBUGGING 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_DEBUGGING: <debugging> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_DEBUGGING
+
+#if LBAL_LIBCPP26_DEBUGGING_UTILITIES
+  #if LBAL_HAS_HEADER_DEBUGGING != 1
+    #undef LBAL_LIBCPP26_DEBUGGING_UTILITIES
+    #define LBAL_LIBCPP26_DEBUGGING_UTILITIES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_DEBUGGING_UTILITIES: <debugging> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_DEBUGGING_UTILITIES
+
+#if LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES
+  #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
+      || LBAL_HAS_HEADER_DEQUE != 1                                            \
+      || LBAL_HAS_HEADER_FORWARD_LIST != 1                                     \
+      || LBAL_HAS_HEADER_LIST != 1                                             \
+      || LBAL_HAS_HEADER_RANGES != 1                                           \
+      || LBAL_HAS_HEADER_STRING != 1                                           \
+      || LBAL_HAS_HEADER_VECTOR != 1
+    #undef LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES
+    #define LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES 0
+LBAL_CPP_WARNING(
+    "Unable to validate "
+    "LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES: at least one of "
+    "{<algorithm>, <deque>, <forward_list>, <list>, <ranges>, <string>, "
+    "<vector>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES
+
+#if LBAL_LIBCPP26_DEFINE_STATIC
+  #if LBAL_HAS_HEADER_META != 1
+    #undef LBAL_LIBCPP26_DEFINE_STATIC
+    #define LBAL_LIBCPP26_DEFINE_STATIC 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_DEFINE_STATIC: <meta> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_DEFINE_STATIC
+
+#if LBAL_LIBCPP26_EXCEPTION_PTR_CAST
+  #if LBAL_HAS_HEADER_EXCEPTION != 1
+    #undef LBAL_LIBCPP26_EXCEPTION_PTR_CAST
+    #define LBAL_LIBCPP26_EXCEPTION_PTR_CAST 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_EXCEPTION_PTR_CAST: <exception> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_EXCEPTION_PTR_CAST
+
+#if LBAL_LIBCPP26_EXCEPTION_PTR_CAST_CONSTEXPR
+  #if LBAL_HAS_HEADER_EXCEPTION != 1
+    #undef LBAL_LIBCPP26_EXCEPTION_PTR_CAST_CONSTEXPR
+    #define LBAL_LIBCPP26_EXCEPTION_PTR_CAST_CONSTEXPR 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_EXCEPTION_PTR_CAST_CONSTEXPR: "
+    "<exception> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_EXCEPTION_PTR_CAST_CONSTEXPR
+
+#if LBAL_LIBCPP26_FLAT_MAP_FIXES
+  #if LBAL_HAS_HEADER_FLAT_MAP != 1
+    #undef LBAL_LIBCPP26_FLAT_MAP_FIXES
+    #define LBAL_LIBCPP26_FLAT_MAP_FIXES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FLAT_MAP_FIXES: <flat_map> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FLAT_MAP_FIXES
+
+#if LBAL_LIBCPP26_FLAT_SET_FIXES
+  #if LBAL_HAS_HEADER_FLAT_SET != 1
+    #undef LBAL_LIBCPP26_FLAT_SET_FIXES
+    #define LBAL_LIBCPP26_FLAT_SET_FIXES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FLAT_SET_FIXES: <flat_set> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FLAT_SET_FIXES
 
 #if LBAL_LIBCPP26_FORMAT_MEMBER_VISIT
   #if LBAL_HAS_HEADER_FORMAT != 1
     #undef LBAL_LIBCPP26_FORMAT_MEMBER_VISIT
     #define LBAL_LIBCPP26_FORMAT_MEMBER_VISIT 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_FORMAT_MEMBER_VISIT: `<format>` not found"
+    "Unable to validate LBAL_LIBCPP26_FORMAT_MEMBER_VISIT: <format> not found"
 )
-  #endif  // LBAL_HAS_HEADER_FORMAT
-#endif    // LBAL_LIBCPP26_FORMAT_MEMBER_VISIT
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FORMAT_MEMBER_VISIT
+
+#if LBAL_LIBCPP26_FORMAT_PATH
+  #if LBAL_HAS_HEADER_FILESYSTEM != 1
+    #undef LBAL_LIBCPP26_FORMAT_PATH
+    #define LBAL_LIBCPP26_FORMAT_PATH 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FORMAT_PATH: <filesystem> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FORMAT_PATH
+
+#if LBAL_LIBCPP26_FORMAT_PATH_FIXES
+  #if LBAL_HAS_HEADER_FILESYSTEM != 1
+    #undef LBAL_LIBCPP26_FORMAT_PATH_FIXES
+    #define LBAL_LIBCPP26_FORMAT_PATH_FIXES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FORMAT_PATH_FIXES: <filesystem> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FORMAT_PATH_FIXES
+
+#if LBAL_LIBCPP26_FORMAT_POINTERS
+  #if LBAL_HAS_HEADER_FORMAT != 1
+    #undef LBAL_LIBCPP26_FORMAT_POINTERS
+    #define LBAL_LIBCPP26_FORMAT_POINTERS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FORMAT_POINTERS: <format> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FORMAT_POINTERS
 
 #if LBAL_LIBCPP26_FORMAT_RUNTIME
   #if LBAL_HAS_HEADER_FORMAT != 1
     #undef LBAL_LIBCPP26_FORMAT_RUNTIME
     #define LBAL_LIBCPP26_FORMAT_RUNTIME 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_FORMAT_RUNTIME: `<format>` not found"
+    "Unable to validate LBAL_LIBCPP26_FORMAT_RUNTIME: <format> not found"
 )
-  #endif  // LBAL_HAS_HEADER_FORMAT
-#endif    // LBAL_LIBCPP26_FORMAT_RUNTIME
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FORMAT_RUNTIME
+
+#if LBAL_LIBCPP26_FORMAT_TYPE_CHECK
+  #if LBAL_HAS_HEADER_FORMAT != 1
+    #undef LBAL_LIBCPP26_FORMAT_TYPE_CHECK
+    #define LBAL_LIBCPP26_FORMAT_TYPE_CHECK 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FORMAT_TYPE_CHECK: <format> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FORMAT_TYPE_CHECK
+
+#if LBAL_LIBCPP26_FORMAT_UCHAR
+  #if LBAL_HAS_HEADER_FORMAT != 1
+    #undef LBAL_LIBCPP26_FORMAT_UCHAR
+    #define LBAL_LIBCPP26_FORMAT_UCHAR 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FORMAT_UCHAR: <format> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FORMAT_UCHAR
+
+#if LBAL_LIBCPP26_FREESTANDING_ALGORITHM
+  #if LBAL_HAS_HEADER_ALGORITHM != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_ALGORITHM
+    #define LBAL_LIBCPP26_FREESTANDING_ALGORITHM 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_ALGORITHM: <algorithm> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_ALGORITHM
+
+#if LBAL_LIBCPP26_FREESTANDING_ALGORITHM_MORE
+  #if LBAL_HAS_HEADER_ALGORITHM != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_ALGORITHM_MORE
+    #define LBAL_LIBCPP26_FREESTANDING_ALGORITHM_MORE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_ALGORITHM_MORE: <algorithm> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_ALGORITHM_MORE
+
+#if LBAL_LIBCPP26_FREESTANDING_ARRAY
+  #if LBAL_HAS_HEADER_ARRAY != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_ARRAY
+    #define LBAL_LIBCPP26_FREESTANDING_ARRAY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_ARRAY: <array> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_ARRAY
+
+#if LBAL_LIBCPP26_FREESTANDING_CHARCONV
+  #if LBAL_HAS_HEADER_CHARCONV != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_CHARCONV
+    #define LBAL_LIBCPP26_FREESTANDING_CHARCONV 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_CHARCONV: <charconv> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_CHARCONV
+
+#if LBAL_LIBCPP26_FREESTANDING_CHAR_TRAITS
+  #if LBAL_HAS_HEADER_STRING != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_CHAR_TRAITS
+    #define LBAL_LIBCPP26_FREESTANDING_CHAR_TRAITS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_CHAR_TRAITS: <string> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_CHAR_TRAITS
+
+#if LBAL_LIBCPP26_FREESTANDING_CSTDLIB
+  #if LBAL_HAS_HEADER_CMATH != 1 || LBAL_HAS_HEADER_CSTDLIB != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_CSTDLIB
+    #define LBAL_LIBCPP26_FREESTANDING_CSTDLIB 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_CSTDLIB: at least one of "
+    "{<cmath>, <cstdlib>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_CSTDLIB
+
+#if LBAL_LIBCPP26_FREESTANDING_CSTRING
+  #if LBAL_HAS_HEADER_CSTRING != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_CSTRING
+    #define LBAL_LIBCPP26_FREESTANDING_CSTRING 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_CSTRING: <cstring> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_CSTRING
+
+#if LBAL_LIBCPP26_FREESTANDING_CSTRING_REMOVE_STRTOK
+  #if LBAL_HAS_HEADER_CSTRING != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_CSTRING_REMOVE_STRTOK
+    #define LBAL_LIBCPP26_FREESTANDING_CSTRING_REMOVE_STRTOK 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_CSTRING_REMOVE_STRTOK: "
+    "<cstring> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_CSTRING_REMOVE_STRTOK
+
+#if LBAL_LIBCPP26_FREESTANDING_CWCHAR
+  #if LBAL_HAS_HEADER_CWCHAR != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_CWCHAR
+    #define LBAL_LIBCPP26_FREESTANDING_CWCHAR 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_CWCHAR: <cwchar> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_CWCHAR
+
+#if LBAL_LIBCPP26_FREESTANDING_ERRC
+  #if LBAL_HAS_HEADER_CERRNO != 1 || LBAL_HAS_HEADER_SYSTEM_ERROR != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_ERRC
+    #define LBAL_LIBCPP26_FREESTANDING_ERRC 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_ERRC: at least one of "
+    "{<cerrno>, <system_error>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_ERRC
+
+#if LBAL_LIBCPP26_FREESTANDING_EXECUTION
+  #if LBAL_HAS_HEADER_EXECUTION != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_EXECUTION
+    #define LBAL_LIBCPP26_FREESTANDING_EXECUTION 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_EXECUTION: <execution> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_EXECUTION
+
+#if LBAL_LIBCPP26_FREESTANDING_EXPECTED
+  #if LBAL_HAS_HEADER_EXPECTED != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_EXPECTED
+    #define LBAL_LIBCPP26_FREESTANDING_EXPECTED 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_EXPECTED: <expected> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_EXPECTED
+
+#if LBAL_LIBCPP26_FREESTANDING_FUNCTIONAL
+  #if LBAL_HAS_HEADER_FUNCTIONAL != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_FUNCTIONAL
+    #define LBAL_LIBCPP26_FREESTANDING_FUNCTIONAL 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_FUNCTIONAL: <functional> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_FUNCTIONAL
+
+#if LBAL_LIBCPP26_FREESTANDING_ITERATOR
+  #if LBAL_HAS_HEADER_ITERATOR != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_ITERATOR
+    #define LBAL_LIBCPP26_FREESTANDING_ITERATOR 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_ITERATOR: <iterator> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_ITERATOR
+
+#if LBAL_LIBCPP26_FREESTANDING_MDSPAN
+  #if LBAL_HAS_HEADER_MDSPAN != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_MDSPAN
+    #define LBAL_LIBCPP26_FREESTANDING_MDSPAN 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_MDSPAN: <mdspan> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_MDSPAN
+
+#if LBAL_LIBCPP26_FREESTANDING_MEMORY
+  #if LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_MEMORY
+    #define LBAL_LIBCPP26_FREESTANDING_MEMORY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_MEMORY: <memory> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_MEMORY
+
+#if LBAL_LIBCPP26_FREESTANDING_MEMORY_MORE
+  #if LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_MEMORY_MORE
+    #define LBAL_LIBCPP26_FREESTANDING_MEMORY_MORE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_MEMORY_MORE: <memory> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_MEMORY_MORE
+
+#if LBAL_LIBCPP26_FREESTANDING_NUMERIC
+  #if LBAL_HAS_HEADER_NUMERIC != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_NUMERIC
+    #define LBAL_LIBCPP26_FREESTANDING_NUMERIC 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_NUMERIC: <numeric> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_NUMERIC
+
+#if LBAL_LIBCPP26_FREESTANDING_OPERATOR_NEW
+  #if LBAL_HAS_HEADER_NEW != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_OPERATOR_NEW
+    #define LBAL_LIBCPP26_FREESTANDING_OPERATOR_NEW 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_OPERATOR_NEW: <new> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_OPERATOR_NEW
+
+#if LBAL_LIBCPP26_FREESTANDING_OPTIONAL
+  #if LBAL_HAS_HEADER_OPTIONAL != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_OPTIONAL
+    #define LBAL_LIBCPP26_FREESTANDING_OPTIONAL 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_OPTIONAL: <optional> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_OPTIONAL
+
+#if LBAL_LIBCPP26_FREESTANDING_RANDOM
+  #if LBAL_HAS_HEADER_RANDOM != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_RANDOM
+    #define LBAL_LIBCPP26_FREESTANDING_RANDOM 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_RANDOM: <random> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_RANDOM
+
+#if LBAL_LIBCPP26_FREESTANDING_RANGES
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_RANGES
+    #define LBAL_LIBCPP26_FREESTANDING_RANGES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_RANGES: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_RANGES
+
+#if LBAL_LIBCPP26_FREESTANDING_RATIO
+  #if LBAL_HAS_HEADER_RATIO != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_RATIO
+    #define LBAL_LIBCPP26_FREESTANDING_RATIO 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_RATIO: <ratio> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_RATIO
+
+#if LBAL_LIBCPP26_FREESTANDING_STRING_VIEW
+  #if LBAL_HAS_HEADER_STRING_VIEW != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_STRING_VIEW
+    #define LBAL_LIBCPP26_FREESTANDING_STRING_VIEW 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_STRING_VIEW: <string_view> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_STRING_VIEW
+
+#if LBAL_LIBCPP26_FREESTANDING_TUPLE
+  #if LBAL_HAS_HEADER_TUPLE != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_TUPLE
+    #define LBAL_LIBCPP26_FREESTANDING_TUPLE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_TUPLE: <tuple> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_TUPLE
+
+#if LBAL_LIBCPP26_FREESTANDING_UTILITY
+  #if LBAL_HAS_HEADER_UTILITY != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_UTILITY
+    #define LBAL_LIBCPP26_FREESTANDING_UTILITY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_UTILITY: <utility> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_UTILITY
+
+#if LBAL_LIBCPP26_FREESTANDING_VARIANT
+  #if LBAL_HAS_HEADER_VARIANT != 1
+    #undef LBAL_LIBCPP26_FREESTANDING_VARIANT
+    #define LBAL_LIBCPP26_FREESTANDING_VARIANT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FREESTANDING_VARIANT: <variant> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FREESTANDING_VARIANT
+
+#if LBAL_LIBCPP26_FSTREAM_NATIVE_HANDLE
+  #if LBAL_HAS_HEADER_FSTREAM != 1
+    #undef LBAL_LIBCPP26_FSTREAM_NATIVE_HANDLE
+    #define LBAL_LIBCPP26_FSTREAM_NATIVE_HANDLE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FSTREAM_NATIVE_HANDLE: <fstream> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FSTREAM_NATIVE_HANDLE
+
+#if LBAL_LIBCPP26_FUNCTION_REF
+  #if LBAL_HAS_HEADER_FUNCTIONAL != 1
+    #undef LBAL_LIBCPP26_FUNCTION_REF
+    #define LBAL_LIBCPP26_FUNCTION_REF 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FUNCTION_REF: <functional> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FUNCTION_REF
+
+#if LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE
+  #if LBAL_HAS_HEADER_FUNCTIONAL != 1
+    #undef LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE
+    #define LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE: "
+    "<functional> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE
+
+#if LBAL_LIBCPP26_GENERATE_RANDOM
+  #if LBAL_HAS_HEADER_RANDOM != 1
+    #undef LBAL_LIBCPP26_GENERATE_RANDOM
+    #define LBAL_LIBCPP26_GENERATE_RANDOM 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_GENERATE_RANDOM: <random> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_GENERATE_RANDOM
+
+#if LBAL_LIBCPP26_HARDENED_ARRAY
+  #if LBAL_HAS_HEADER_ARRAY != 1
+    #undef LBAL_LIBCPP26_HARDENED_ARRAY
+    #define LBAL_LIBCPP26_HARDENED_ARRAY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_ARRAY: <array> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_ARRAY
+
+#if LBAL_LIBCPP26_HARDENED_BASIC_STACKTRACE
+  #if LBAL_HAS_HEADER_STACKTRACE != 1
+    #undef LBAL_LIBCPP26_HARDENED_BASIC_STACKTRACE
+    #define LBAL_LIBCPP26_HARDENED_BASIC_STACKTRACE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_BASIC_STACKTRACE: <stacktrace> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_BASIC_STACKTRACE
+
+#if LBAL_LIBCPP26_HARDENED_BASIC_STRING
+  #if LBAL_HAS_HEADER_STRING != 1
+    #undef LBAL_LIBCPP26_HARDENED_BASIC_STRING
+    #define LBAL_LIBCPP26_HARDENED_BASIC_STRING 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_BASIC_STRING: <string> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_BASIC_STRING
+
+#if LBAL_LIBCPP26_HARDENED_BASIC_STRING_VIEW
+  #if LBAL_HAS_HEADER_STRING_VIEW != 1
+    #undef LBAL_LIBCPP26_HARDENED_BASIC_STRING_VIEW
+    #define LBAL_LIBCPP26_HARDENED_BASIC_STRING_VIEW 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_BASIC_STRING_VIEW: "
+    "<string_view> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_BASIC_STRING_VIEW
+
+#if LBAL_LIBCPP26_HARDENED_BITSET
+  #if LBAL_HAS_HEADER_BITSET != 1
+    #undef LBAL_LIBCPP26_HARDENED_BITSET
+    #define LBAL_LIBCPP26_HARDENED_BITSET 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_BITSET: <bitset> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_BITSET
+
+#if LBAL_LIBCPP26_HARDENED_COMMON_ITERATOR
+  #if LBAL_HAS_HEADER_ITERATOR != 1
+    #undef LBAL_LIBCPP26_HARDENED_COMMON_ITERATOR
+    #define LBAL_LIBCPP26_HARDENED_COMMON_ITERATOR 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_COMMON_ITERATOR: <iterator> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_COMMON_ITERATOR
+
+#if LBAL_LIBCPP26_HARDENED_COUNTED_ITERATOR
+  #if LBAL_HAS_HEADER_ITERATOR != 1
+    #undef LBAL_LIBCPP26_HARDENED_COUNTED_ITERATOR
+    #define LBAL_LIBCPP26_HARDENED_COUNTED_ITERATOR 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_COUNTED_ITERATOR: <iterator> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_COUNTED_ITERATOR
+
+#if LBAL_LIBCPP26_HARDENED_DEQUE
+  #if LBAL_HAS_HEADER_DEQUE != 1
+    #undef LBAL_LIBCPP26_HARDENED_DEQUE
+    #define LBAL_LIBCPP26_HARDENED_DEQUE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_DEQUE: <deque> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_DEQUE
+
+#if LBAL_LIBCPP26_HARDENED_EXPECTED
+  #if LBAL_HAS_HEADER_EXPECTED != 1
+    #undef LBAL_LIBCPP26_HARDENED_EXPECTED
+    #define LBAL_LIBCPP26_HARDENED_EXPECTED 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_EXPECTED: <expected> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_EXPECTED
+
+#if LBAL_LIBCPP26_HARDENED_FORWARD_LIST
+  #if LBAL_HAS_HEADER_FORWARD_LIST != 1
+    #undef LBAL_LIBCPP26_HARDENED_FORWARD_LIST
+    #define LBAL_LIBCPP26_HARDENED_FORWARD_LIST 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_FORWARD_LIST: <forward_list> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_FORWARD_LIST
+
+#if LBAL_LIBCPP26_HARDENED_INPLACE_VECTOR
+  #if LBAL_HAS_HEADER_INPLACE_VECTOR != 1
+    #undef LBAL_LIBCPP26_HARDENED_INPLACE_VECTOR
+    #define LBAL_LIBCPP26_HARDENED_INPLACE_VECTOR 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_INPLACE_VECTOR: "
+    "<inplace_vector> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_INPLACE_VECTOR
+
+#if LBAL_LIBCPP26_HARDENED_LIST
+  #if LBAL_HAS_HEADER_LIST != 1
+    #undef LBAL_LIBCPP26_HARDENED_LIST
+    #define LBAL_LIBCPP26_HARDENED_LIST 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_LIST: <list> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_LIST
+
+#if LBAL_LIBCPP26_HARDENED_MDSPAN
+  #if LBAL_HAS_HEADER_MDSPAN != 1
+    #undef LBAL_LIBCPP26_HARDENED_MDSPAN
+    #define LBAL_LIBCPP26_HARDENED_MDSPAN 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_MDSPAN: <mdspan> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_MDSPAN
+
+#if LBAL_LIBCPP26_HARDENED_OPTIONAL
+  #if LBAL_HAS_HEADER_OPTIONAL != 1
+    #undef LBAL_LIBCPP26_HARDENED_OPTIONAL
+    #define LBAL_LIBCPP26_HARDENED_OPTIONAL 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_OPTIONAL: <optional> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_OPTIONAL
+
+#if LBAL_LIBCPP26_HARDENED_SHARED_PTR_ARRAY
+  #if LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP26_HARDENED_SHARED_PTR_ARRAY
+    #define LBAL_LIBCPP26_HARDENED_SHARED_PTR_ARRAY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_SHARED_PTR_ARRAY: <memory> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_SHARED_PTR_ARRAY
+
+#if LBAL_LIBCPP26_HARDENED_SPAN
+  #if LBAL_HAS_HEADER_SPAN != 1
+    #undef LBAL_LIBCPP26_HARDENED_SPAN
+    #define LBAL_LIBCPP26_HARDENED_SPAN 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_SPAN: <span> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_SPAN
+
+#if LBAL_LIBCPP26_HARDENED_VALARRAY
+  #if LBAL_HAS_HEADER_VALARRAY != 1
+    #undef LBAL_LIBCPP26_HARDENED_VALARRAY
+    #define LBAL_LIBCPP26_HARDENED_VALARRAY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_VALARRAY: <valarray> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_VALARRAY
+
+#if LBAL_LIBCPP26_HARDENED_VECTOR
+  #if LBAL_HAS_HEADER_VECTOR != 1
+    #undef LBAL_LIBCPP26_HARDENED_VECTOR
+    #define LBAL_LIBCPP26_HARDENED_VECTOR 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_VECTOR: <vector> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_VECTOR
+
+#if LBAL_LIBCPP26_HARDENED_VIEW_INTERFACE
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP26_HARDENED_VIEW_INTERFACE
+    #define LBAL_LIBCPP26_HARDENED_VIEW_INTERFACE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HARDENED_VIEW_INTERFACE: <ranges> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HARDENED_VIEW_INTERFACE
+
+#if LBAL_LIBCPP26_HAZARD_POINTER
+  #if LBAL_HAS_HEADER_HAZARD_POINTER != 1
+    #undef LBAL_LIBCPP26_HAZARD_POINTER
+    #define LBAL_LIBCPP26_HAZARD_POINTER 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_HAZARD_POINTER: <hazard_pointer> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HAZARD_POINTER
+
+#if LBAL_LIBCPP26_HIVE
+  #if LBAL_HAS_HEADER_HIVE != 1
+    #undef LBAL_LIBCPP26_HIVE
+    #define LBAL_LIBCPP26_HIVE 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP26_HIVE: <hive> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_HIVE
+
+#if LBAL_LIBCPP26_INDIRECT
+  #if LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP26_INDIRECT
+    #define LBAL_LIBCPP26_INDIRECT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_INDIRECT: <memory> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_INDIRECT
+
+#if LBAL_LIBCPP26_INITIALIZER_LIST
+  #if LBAL_HAS_HEADER_INITIALIZER_LIST != 1
+    #undef LBAL_LIBCPP26_INITIALIZER_LIST
+    #define LBAL_LIBCPP26_INITIALIZER_LIST 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_INITIALIZER_LIST: <initializer_list> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_INITIALIZER_LIST
+
+#if LBAL_LIBCPP26_INPLACE_VECTOR
+  #if LBAL_HAS_HEADER_INPLACE_VECTOR != 1
+    #undef LBAL_LIBCPP26_INPLACE_VECTOR
+    #define LBAL_LIBCPP26_INPLACE_VECTOR 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_INPLACE_VECTOR: <inplace_vector> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_INPLACE_VECTOR
 
 #if LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS
   #if LBAL_HAS_HEADER_UTILITY != 1
@@ -5539,43 +7185,282 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS: "
-    "`<utility>` not found"
+    "<utility> not found"
 )
-  #endif  // LBAL_HAS_HEADER_UTILITY
-#endif    // LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS
+
+#if LBAL_LIBCPP26_IS_VIRTUAL_BASE_OF
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP26_IS_VIRTUAL_BASE_OF
+    #define LBAL_LIBCPP26_IS_VIRTUAL_BASE_OF 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_IS_VIRTUAL_BASE_OF: <type_traits> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_IS_VIRTUAL_BASE_OF
+
+#if LBAL_LIBCPP26_IS_WITHIN_LIFETIME
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP26_IS_WITHIN_LIFETIME
+    #define LBAL_LIBCPP26_IS_WITHIN_LIFETIME 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_IS_WITHIN_LIFETIME: <type_traits> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_IS_WITHIN_LIFETIME
+
+#if LBAL_LIBCPP26_LINALG
+  #if LBAL_HAS_HEADER_LINALG != 1
+    #undef LBAL_LIBCPP26_LINALG
+    #define LBAL_LIBCPP26_LINALG 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP26_LINALG: <linalg> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_LINALG
+
+#if LBAL_LIBCPP26_LINALG_BLAS_RANK
+  #if LBAL_HAS_HEADER_LINALG != 1
+    #undef LBAL_LIBCPP26_LINALG_BLAS_RANK
+    #define LBAL_LIBCPP26_LINALG_BLAS_RANK 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_LINALG_BLAS_RANK: <linalg> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_LINALG_BLAS_RANK
+
+#if LBAL_LIBCPP26_LINALG_FIX_TRANSPOSED
+  #if LBAL_HAS_HEADER_LINALG != 1
+    #undef LBAL_LIBCPP26_LINALG_FIX_TRANSPOSED
+    #define LBAL_LIBCPP26_LINALG_FIX_TRANSPOSED 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_LINALG_FIX_TRANSPOSED: <linalg> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_LINALG_FIX_TRANSPOSED
+
+#if LBAL_LIBCPP26_LINALG_OPTIMIZE_CONJUGATED
+  #if LBAL_HAS_HEADER_LINALG != 1
+    #undef LBAL_LIBCPP26_LINALG_OPTIMIZE_CONJUGATED
+    #define LBAL_LIBCPP26_LINALG_OPTIMIZE_CONJUGATED 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_LINALG_OPTIMIZE_CONJUGATED: <linalg> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_LINALG_OPTIMIZE_CONJUGATED
+
+#if LBAL_LIBCPP26_MDSPAN_DEXTENTS
+  #if LBAL_HAS_HEADER_MDSPAN != 1
+    #undef LBAL_LIBCPP26_MDSPAN_DEXTENTS
+    #define LBAL_LIBCPP26_MDSPAN_DEXTENTS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_MDSPAN_DEXTENTS: <mdspan> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_MDSPAN_DEXTENTS
 
 #if LBAL_LIBCPP26_NOT_FN_NTTP_CALLABLES
   #if LBAL_HAS_HEADER_FUNCTIONAL != 1
     #undef LBAL_LIBCPP26_NOT_FN_NTTP_CALLABLES
     #define LBAL_LIBCPP26_NOT_FN_NTTP_CALLABLES 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_NOT_FN_NTTP_CALLABLES: `<functional>` "
-    "not found"
+    "Unable to validate LBAL_LIBCPP26_NOT_FN_NTTP_CALLABLES: <functional> not "
+    "found"
 )
-  #endif  // LBAL_HAS_HEADER_FUNCTIONAL
-#endif    // LBAL_LIBCPP26_NOT_FN_NTTP_CALLABLES
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_NOT_FN_NTTP_CALLABLES
+
+#if LBAL_LIBCPP26_OBSERVABLE_CHECKPOINT
+  #if LBAL_HAS_HEADER_UTILITY != 1
+    #undef LBAL_LIBCPP26_OBSERVABLE_CHECKPOINT
+    #define LBAL_LIBCPP26_OBSERVABLE_CHECKPOINT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_OBSERVABLE_CHECKPOINT: <utility> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_OBSERVABLE_CHECKPOINT
+
+#if LBAL_LIBCPP26_OPTIONAL_RANGE_SUPPORT
+  #if LBAL_HAS_HEADER_OPTIONAL != 1
+    #undef LBAL_LIBCPP26_OPTIONAL_RANGE_SUPPORT
+    #define LBAL_LIBCPP26_OPTIONAL_RANGE_SUPPORT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_OPTIONAL_RANGE_SUPPORT: <optional> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_OPTIONAL_RANGE_SUPPORT
 
 #if LBAL_LIBCPP26_OPTIONAL_REFERENCE
   #if LBAL_HAS_HEADER_OPTIONAL != 1
     #undef LBAL_LIBCPP26_OPTIONAL_REFERENCE
     #define LBAL_LIBCPP26_OPTIONAL_REFERENCE 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_OPTIONAL_REFERENCE: `<optional>` not "
-    "found"
+    "Unable to validate LBAL_LIBCPP26_OPTIONAL_REFERENCE: <optional> not found"
 )
-  #endif  // LBAL_HAS_HEADER_OPTIONAL
-#endif    // LBAL_LIBCPP26_OPTIONAL_REFERENCE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_OPTIONAL_REFERENCE
+
+#if LBAL_LIBCPP26_OUT_PTR_MORE
+  #if LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP26_OUT_PTR_MORE
+    #define LBAL_LIBCPP26_OUT_PTR_MORE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_OUT_PTR_MORE: <memory> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_OUT_PTR_MORE
 
 #if LBAL_LIBCPP26_PARALLEL_ALGORITHM_RANGE
   #if LBAL_HAS_HEADER_ALGORITHM != 1 || LBAL_HAS_HEADER_NUMERIC != 1
     #undef LBAL_LIBCPP26_PARALLEL_ALGORITHM_RANGE
     #define LBAL_LIBCPP26_PARALLEL_ALGORITHM_RANGE 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_PARALLEL_ALGORITHM_RANGE: at "
-    "least one of {`<algorithm>`,`<numeric>`} not found"
+    "Unable to validate LBAL_LIBCPP26_PARALLEL_ALGORITHM_RANGE: at least one "
+    "of {<algorithm>, <numeric>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP26_PARALLEL_ALGORITHM_RANGE
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_PARALLEL_ALGORITHM_RANGE
+
+#if LBAL_LIBCPP26_PARALLEL_SCHEDULER
+  #if LBAL_HAS_HEADER_EXECUTION != 1
+    #undef LBAL_LIBCPP26_PARALLEL_SCHEDULER
+    #define LBAL_LIBCPP26_PARALLEL_SCHEDULER 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_PARALLEL_SCHEDULER: <execution> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_PARALLEL_SCHEDULER
+
+#if LBAL_LIBCPP26_PHILOX_ENGINE
+  #if LBAL_HAS_HEADER_RANDOM != 1
+    #undef LBAL_LIBCPP26_PHILOX_ENGINE
+    #define LBAL_LIBCPP26_PHILOX_ENGINE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_PHILOX_ENGINE: <random> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_PHILOX_ENGINE
+
+#if LBAL_LIBCPP26_POLYMORPHIC
+  #if LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP26_POLYMORPHIC
+    #define LBAL_LIBCPP26_POLYMORPHIC 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_POLYMORPHIC: <memory> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_POLYMORPHIC
+
+#if LBAL_LIBCPP26_PRINT_EFFICIENT
+  #if LBAL_HAS_HEADER_OSTREAM != 1 || LBAL_HAS_HEADER_PRINT != 1
+    #undef LBAL_LIBCPP26_PRINT_EFFICIENT
+    #define LBAL_LIBCPP26_PRINT_EFFICIENT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_PRINT_EFFICIENT: at least one of "
+    "{<ostream>, <print>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_PRINT_EFFICIENT
+
+#if LBAL_LIBCPP26_PRINT_MORE_EFFICIENT
+  #if LBAL_HAS_HEADER_OSTREAM != 1 || LBAL_HAS_HEADER_PRINT != 1
+    #undef LBAL_LIBCPP26_PRINT_MORE_EFFICIENT
+    #define LBAL_LIBCPP26_PRINT_MORE_EFFICIENT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_PRINT_MORE_EFFICIENT: at least one of "
+    "{<ostream>, <print>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_PRINT_MORE_EFFICIENT
+
+#if LBAL_LIBCPP26_RANGES_AS_CONST_FIX_CONVERTIBILITY
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP26_RANGES_AS_CONST_FIX_CONVERTIBILITY
+    #define LBAL_LIBCPP26_RANGES_AS_CONST_FIX_CONVERTIBILITY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_RANGES_AS_CONST_FIX_CONVERTIBILITY: "
+    "<ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_RANGES_AS_CONST_FIX_CONVERTIBILITY
+
+#if LBAL_LIBCPP26_RANGES_CACHE_LATEST
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP26_RANGES_CACHE_LATEST
+    #define LBAL_LIBCPP26_RANGES_CACHE_LATEST 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_RANGES_CACHE_LATEST: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_RANGES_CACHE_LATEST
+
+#if LBAL_LIBCPP26_RANGES_CONCAT
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP26_RANGES_CONCAT
+    #define LBAL_LIBCPP26_RANGES_CONCAT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_RANGES_CONCAT: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_RANGES_CONCAT
+
+#if LBAL_LIBCPP26_RANGES_INDICES
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP26_RANGES_INDICES
+    #define LBAL_LIBCPP26_RANGES_INDICES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_RANGES_INDICES: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_RANGES_INDICES
+
+#if LBAL_LIBCPP26_RANGES_REMOVE_COMMON_REF_REQ
+  #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
+      || LBAL_HAS_HEADER_FUNCTIONAL != 1                                       \
+      || LBAL_HAS_HEADER_ITERATOR != 1                                         \
+      || LBAL_HAS_HEADER_MEMORY != 1                                           \
+      || LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP26_RANGES_REMOVE_COMMON_REF_REQ
+    #define LBAL_LIBCPP26_RANGES_REMOVE_COMMON_REF_REQ 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_RANGES_REMOVE_COMMON_REF_REQ: at least "
+    "one of {<algorithm>, <functional>, <iterator>, <memory>, <ranges>} not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_RANGES_REMOVE_COMMON_REF_REQ
+
+#if LBAL_LIBCPP26_RANGES_RESERVE_HINT
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP26_RANGES_RESERVE_HINT
+    #define LBAL_LIBCPP26_RANGES_RESERVE_HINT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_RANGES_RESERVE_HINT: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_RANGES_RESERVE_HINT
+
+#if LBAL_LIBCPP26_RANGES_TO_INPUT
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP26_RANGES_TO_INPUT
+    #define LBAL_LIBCPP26_RANGES_TO_INPUT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_RANGES_TO_INPUT: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_RANGES_TO_INPUT
+
+#if LBAL_LIBCPP26_RATIO
+  #if LBAL_HAS_HEADER_RATIO != 1
+    #undef LBAL_LIBCPP26_RATIO
+    #define LBAL_LIBCPP26_RATIO 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP26_RATIO: <ratio> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_RATIO
 
 #if LBAL_LIBCPP26_RAW_MEMORY_ALGORITHMS_CONSTEXPR
   #if LBAL_HAS_HEADER_MEMORY != 1
@@ -5583,39 +7468,372 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP26_RAW_MEMORY_ALGORITHMS_CONSTEXPR 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP26_RAW_MEMORY_ALGORITHMS_CONSTEXPR: "
-    "`<memory>` not found"
+    "<memory> not found"
 )
-  #endif  // LBAL_HAS_HEADER_ LBAL_HAS_HEADER_MEMORY
-#endif    // LBAL_LIBCPP26_RAW_MEMORY_ALGORITHMS_CONSTEXPR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_RAW_MEMORY_ALGORITHMS_CONSTEXPR
+
+#if LBAL_LIBCPP26_RCU
+  #if LBAL_HAS_HEADER_RCU != 1
+    #undef LBAL_LIBCPP26_RCU
+    #define LBAL_LIBCPP26_RCU 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP26_RCU: <rcu> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_RCU
+
+#if LBAL_LIBCPP26_REFERENCE_WRAPPER
+  #if LBAL_HAS_HEADER_FUNCTIONAL != 1
+    #undef LBAL_LIBCPP26_REFERENCE_WRAPPER
+    #define LBAL_LIBCPP26_REFERENCE_WRAPPER 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_REFERENCE_WRAPPER: <functional> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_REFERENCE_WRAPPER
+
+#if LBAL_LIBCPP26_REFLECTION
+  #if LBAL_HAS_HEADER_META != 1
+    #undef LBAL_LIBCPP26_REFLECTION
+    #define LBAL_LIBCPP26_REFLECTION 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_REFLECTION: <meta> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_REFLECTION
+
+#if LBAL_LIBCPP26_SATURATION_ARITHMETIC
+  #if LBAL_HAS_HEADER_NUMERIC != 1
+    #undef LBAL_LIBCPP26_SATURATION_ARITHMETIC
+    #define LBAL_LIBCPP26_SATURATION_ARITHMETIC 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SATURATION_ARITHMETIC: <numeric> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SATURATION_ARITHMETIC
+
+#if LBAL_LIBCPP26_SENDERS
+  #if LBAL_HAS_HEADER_EXECUTION != 1
+    #undef LBAL_LIBCPP26_SENDERS
+    #define LBAL_LIBCPP26_SENDERS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SENDERS: <execution> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SENDERS
+
+#if LBAL_LIBCPP26_SENDERS_OPTIONAL
+  #if LBAL_HAS_HEADER_EXECUTION != 1
+    #undef LBAL_LIBCPP26_SENDERS_OPTIONAL
+    #define LBAL_LIBCPP26_SENDERS_OPTIONAL 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SENDERS_OPTIONAL: <execution> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SENDERS_OPTIONAL
+
+#if LBAL_LIBCPP26_SIMD
+  #if LBAL_HAS_HEADER_SIMD != 1
+    #undef LBAL_LIBCPP26_SIMD
+    #define LBAL_LIBCPP26_SIMD 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP26_SIMD: <simd> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SIMD
+
+#if LBAL_LIBCPP26_SIMD_BIT
+  #if LBAL_HAS_HEADER_SIMD != 1
+    #undef LBAL_LIBCPP26_SIMD_BIT
+    #define LBAL_LIBCPP26_SIMD_BIT 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP26_SIMD_BIT: <simd> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SIMD_BIT
+
+#if LBAL_LIBCPP26_SIMD_CHUNK
+  #if LBAL_HAS_HEADER_SIMD != 1
+    #undef LBAL_LIBCPP26_SIMD_CHUNK
+    #define LBAL_LIBCPP26_SIMD_CHUNK 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SIMD_CHUNK: <simd> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SIMD_CHUNK
+
+#if LBAL_LIBCPP26_SIMD_COMPLEX
+  #if LBAL_HAS_HEADER_SIMD != 1
+    #undef LBAL_LIBCPP26_SIMD_COMPLEX
+    #define LBAL_LIBCPP26_SIMD_COMPLEX 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SIMD_COMPLEX: <simd> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SIMD_COMPLEX
+
+#if LBAL_LIBCPP26_SIMD_DEDUCTION_GUIDES
+  #if LBAL_HAS_HEADER_SIMD != 1
+    #undef LBAL_LIBCPP26_SIMD_DEDUCTION_GUIDES
+    #define LBAL_LIBCPP26_SIMD_DEDUCTION_GUIDES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SIMD_DEDUCTION_GUIDES: <simd> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SIMD_DEDUCTION_GUIDES
+
+#if LBAL_LIBCPP26_SIMD_EXTEND
+  #if LBAL_HAS_HEADER_SIMD != 1
+    #undef LBAL_LIBCPP26_SIMD_EXTEND
+    #define LBAL_LIBCPP26_SIMD_EXTEND 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SIMD_EXTEND: <simd> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SIMD_EXTEND
+
+#if LBAL_LIBCPP26_SIMD_NAMESPACES
+  #if LBAL_HAS_HEADER_SIMD != 1
+    #undef LBAL_LIBCPP26_SIMD_NAMESPACES
+    #define LBAL_LIBCPP26_SIMD_NAMESPACES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SIMD_NAMESPACES: <simd> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SIMD_NAMESPACES
+
+#if LBAL_LIBCPP26_SIMD_PERMUTATIONS
+  #if LBAL_HAS_HEADER_SIMD != 1
+    #undef LBAL_LIBCPP26_SIMD_PERMUTATIONS
+    #define LBAL_LIBCPP26_SIMD_PERMUTATIONS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SIMD_PERMUTATIONS: <simd> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SIMD_PERMUTATIONS
+
+#if LBAL_LIBCPP26_SIMD_RANGE
+  #if LBAL_HAS_HEADER_SIMD != 1
+    #undef LBAL_LIBCPP26_SIMD_RANGE
+    #define LBAL_LIBCPP26_SIMD_RANGE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SIMD_RANGE: <simd> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SIMD_RANGE
+
+#if LBAL_LIBCPP26_SMART_POINTER_OWNER_EQUALITY
+  #if LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP26_SMART_POINTER_OWNER_EQUALITY
+    #define LBAL_LIBCPP26_SMART_POINTER_OWNER_EQUALITY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SMART_POINTER_OWNER_EQUALITY: <memory> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SMART_POINTER_OWNER_EQUALITY
+
+#if LBAL_LIBCPP26_SMART_PTR_OWNER_EQUALITY
+  #if LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP26_SMART_PTR_OWNER_EQUALITY
+    #define LBAL_LIBCPP26_SMART_PTR_OWNER_EQUALITY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SMART_PTR_OWNER_EQUALITY: <memory> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SMART_PTR_OWNER_EQUALITY
+
+#if LBAL_LIBCPP26_SPAN_AT
+  #if LBAL_HAS_HEADER_SPAN != 1
+    #undef LBAL_LIBCPP26_SPAN_AT
+    #define LBAL_LIBCPP26_SPAN_AT 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP26_SPAN_AT: <span> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SPAN_AT
+
+#if LBAL_LIBCPP26_SPAN_INITIALIZER_LIST
+  #if LBAL_HAS_HEADER_SPAN != 1
+    #undef LBAL_LIBCPP26_SPAN_INITIALIZER_LIST
+    #define LBAL_LIBCPP26_SPAN_INITIALIZER_LIST 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SPAN_INITIALIZER_LIST: <span> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SPAN_INITIALIZER_LIST
+
+#if LBAL_LIBCPP26_SPAN_MORE
+  #if LBAL_HAS_HEADER_SPAN != 1
+    #undef LBAL_LIBCPP26_SPAN_MORE
+    #define LBAL_LIBCPP26_SPAN_MORE 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP26_SPAN_MORE: <span> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SPAN_MORE
+
+#if LBAL_LIBCPP26_SSTREAM_FROM_STRING_VIEW
+  #if LBAL_HAS_HEADER_SSTREAM != 1
+    #undef LBAL_LIBCPP26_SSTREAM_FROM_STRING_VIEW
+    #define LBAL_LIBCPP26_SSTREAM_FROM_STRING_VIEW 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SSTREAM_FROM_STRING_VIEW: <sstream> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SSTREAM_FROM_STRING_VIEW
+
+#if LBAL_LIBCPP26_STRING_SUBVIEW
+  #if LBAL_HAS_HEADER_STRING != 1 || LBAL_HAS_HEADER_STRING_VIEW != 1
+    #undef LBAL_LIBCPP26_STRING_SUBVIEW
+    #define LBAL_LIBCPP26_STRING_SUBVIEW 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_STRING_SUBVIEW: at least one of "
+    "{<string>, <string_view>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_STRING_SUBVIEW
 
 #if LBAL_LIBCPP26_STRING_VIEW_CONCAT
   #if LBAL_HAS_HEADER_STRING != 1 || LBAL_HAS_HEADER_STRING_VIEW != 1
     #undef LBAL_LIBCPP26_STRING_VIEW_CONCAT
     #define LBAL_LIBCPP26_STRING_VIEW_CONCAT 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_STRING_VIEW_CONCAT: at "
-    "least one of {`<string>`,`<string_view>`} not found"
+    "Unable to validate LBAL_LIBCPP26_STRING_VIEW_CONCAT: at least one of "
+    "{<string>, <string_view>} not found"
 )
-  #endif  // LBAL_HAS_HEADER_ test
-#endif    // LBAL_LIBCPP26_STRING_VIEW_CONCAT
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_STRING_VIEW_CONCAT
+
+#if LBAL_LIBCPP26_SUBMDSPAN
+  #if LBAL_HAS_HEADER_MDSPAN != 1
+    #undef LBAL_LIBCPP26_SUBMDSPAN
+    #define LBAL_LIBCPP26_SUBMDSPAN 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SUBMDSPAN: <mdspan> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SUBMDSPAN
+
+#if LBAL_LIBCPP26_SUBMDSPAN_FIX
+  #if LBAL_HAS_HEADER_MDSPAN != 1
+    #undef LBAL_LIBCPP26_SUBMDSPAN_FIX
+    #define LBAL_LIBCPP26_SUBMDSPAN_FIX 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SUBMDSPAN_FIX: <mdspan> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SUBMDSPAN_FIX
+
+#if LBAL_LIBCPP26_SUBMDSPAN_FUTURE_PROOF
+  #if LBAL_HAS_HEADER_MDSPAN != 1
+    #undef LBAL_LIBCPP26_SUBMDSPAN_FUTURE_PROOF
+    #define LBAL_LIBCPP26_SUBMDSPAN_FUTURE_PROOF 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SUBMDSPAN_FUTURE_PROOF: <mdspan> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SUBMDSPAN_FUTURE_PROOF
+
+#if LBAL_LIBCPP26_SUBMDSPAN_PADDED
+  #if LBAL_HAS_HEADER_MDSPAN != 1
+    #undef LBAL_LIBCPP26_SUBMDSPAN_PADDED
+    #define LBAL_LIBCPP26_SUBMDSPAN_PADDED 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SUBMDSPAN_PADDED: <mdspan> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SUBMDSPAN_PADDED
+
+#if LBAL_LIBCPP26_TASK
+  #if LBAL_HAS_HEADER_EXECUTION != 1
+    #undef LBAL_LIBCPP26_TASK
+    #define LBAL_LIBCPP26_TASK 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP26_TASK: <execution> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_TASK
+
+#if LBAL_LIBCPP26_TEXT_ENCODING
+  #if LBAL_HAS_HEADER_TEXT_ENCODING != 1
+    #undef LBAL_LIBCPP26_TEXT_ENCODING
+    #define LBAL_LIBCPP26_TEXT_ENCODING 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_TEXT_ENCODING: <text_encoding> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_TEXT_ENCODING
 
 #if LBAL_LIBCPP26_TO_CHARS_BOOL_TEST
   #if LBAL_HAS_HEADER_CHARCONV != 1
     #undef LBAL_LIBCPP26_TO_CHARS_BOOL_TEST
     #define LBAL_LIBCPP26_TO_CHARS_BOOL_TEST 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_TO_CHARS_BOOL_TEST: `<charconv>` not "
-    "found"
+    "Unable to validate LBAL_LIBCPP26_TO_CHARS_BOOL_TEST: <charconv> not found"
 )
-  #endif  // LBAL_HAS_HEADER_CHARCONV test
-#endif    // LBAL_LIBCPP26_TO_CHARS_BOOL_TEST
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_TO_CHARS_BOOL_TEST
+
+#if LBAL_LIBCPP26_TO_STRING
+  #if LBAL_HAS_HEADER_STRING != 1
+    #undef LBAL_LIBCPP26_TO_STRING
+    #define LBAL_LIBCPP26_TO_STRING 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_TO_STRING: <string> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_TO_STRING
+
+#if LBAL_LIBCPP26_TUPLE_LIKE_COMPLEX
+  #if LBAL_HAS_HEADER_MAP != 1                                                 \
+      || LBAL_HAS_HEADER_TUPLE != 1                                            \
+      || LBAL_HAS_HEADER_UNORDERED_MAP != 1                                    \
+      || LBAL_HAS_HEADER_UTILITY != 1
+    #undef LBAL_LIBCPP26_TUPLE_LIKE_COMPLEX
+    #define LBAL_LIBCPP26_TUPLE_LIKE_COMPLEX 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_TUPLE_LIKE_COMPLEX: at least one of "
+    "{<map>, <tuple>, <unordered_map>, <utility>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_TUPLE_LIKE_COMPLEX
+
+#if LBAL_LIBCPP26_TYPE_ORDER
+  #if LBAL_HAS_HEADER_COMPARE != 1
+    #undef LBAL_LIBCPP26_TYPE_ORDER
+    #define LBAL_LIBCPP26_TYPE_ORDER 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_TYPE_ORDER: <compare> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_TYPE_ORDER
+
+#if LBAL_LIBCPP26_VALARRAY
+  #if LBAL_HAS_HEADER_VALARRAY != 1
+    #undef LBAL_LIBCPP26_VALARRAY
+    #define LBAL_LIBCPP26_VALARRAY 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_VALARRAY: <valarray> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_VALARRAY
 
 #if LBAL_LIBCPP26_VARIANT_VISITOR
   #if LBAL_HAS_HEADER_VARIANT != 1
     #undef LBAL_LIBCPP26_VARIANT_VISITOR
     #define LBAL_LIBCPP26_VARIANT_VISITOR 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_VARIANT_VISITOR: `<variant>` not found"
+    "Unable to validate LBAL_LIBCPP26_VARIANT_VISITOR: <variant> not found"
 )
-  #endif  // LBAL_HAS_HEADER_VARIANT test
-#endif    // LBAL_LIBCPP26_VARIANT_VISITOR
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_VARIANT_VISITOR
+
+/*------------------------------------------------------------------------------
+  Aggregates
+
+  These are convenience macros that combine multiple other macros. They must be
+  validated after all their constituent parts have been fully validated.
+*/
+
+//	This is an aggregate that tracks two different SD-6 macros for the purpose
+//	of establishing Standard compliance. There is no single corresponding SD-6
+//	macro. Note that we do not track experimental versions of the components.
+#if !defined(LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS)
+  #if LBAL_LIBCPP17_EXECUTION && LBAL_LIBCPP17_PARALLEL_ALGORITHM
+    #define LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS 1L
+  #endif
+#endif  //	LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
