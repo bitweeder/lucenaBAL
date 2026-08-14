@@ -2729,6 +2729,12 @@ LBAL_CPP_WARNING(
   #define LBAL_HAS_HEADER_CCTYPE 0
 #endif
 
+#if !defined(__has_include) || __has_include(<cerrno>)
+  #define LBAL_HAS_HEADER_CERRNO 1
+#else
+  #define LBAL_HAS_HEADER_CERRNO 0
+#endif
+
 #if !defined(__has_include) || __has_include(<cfloat>)
   #define LBAL_HAS_HEADER_CFLOAT 1
 #else
@@ -2771,10 +2777,26 @@ LBAL_CPP_WARNING(
   #define LBAL_HAS_HEADER_CSIGNAL 0
 #endif
 
+//  This was technically removed in C++20, but the file may still be there for
+//  backwards compatibility.
+#if !defined(__has_include) || __has_include(<cstdalign>)
+  #define LBAL_HAS_HEADER_CSTDALIGN 1
+#else
+  #define LBAL_HAS_HEADER_CSTDALIGN 0
+#endif
+
 #if !defined(__has_include) || __has_include(<cstdarg>)
   #define LBAL_HAS_HEADER_CSTDARG 1
 #else
   #define LBAL_HAS_HEADER_CSTDARG 0
+#endif
+
+//  This was technically removed in C++20, but the file may still be there for
+//  backwards compatibility.
+#if !defined(__has_include) || __has_include(<cstdbool>)
+  #define LBAL_HAS_HEADER_CSTDBOOL 1
+#else
+  #define LBAL_HAS_HEADER_CSTDBOOL 0
 #endif
 
 #if !defined(__has_include) || __has_include(<cstddef>)
@@ -2805,6 +2827,12 @@ LBAL_CPP_WARNING(
   #define LBAL_HAS_HEADER_CTIME 1
 #else
   #define LBAL_HAS_HEADER_CTIME 0
+#endif
+
+#if !defined(__has_include) || __has_include(<cwchar>)
+  #define LBAL_HAS_HEADER_CWCHAR 1
+#else
+  #define LBAL_HAS_HEADER_CWCHAR 0
 #endif
 
 #if !defined(__has_include) || __has_include(<deque>)
@@ -2897,6 +2925,12 @@ LBAL_CPP_WARNING(
   #define LBAL_HAS_HEADER_MEMORY 0
 #endif
 
+#if !defined(__has_include) || __has_include(<meta>)
+  #define LBAL_HAS_HEADER_META 1
+#else
+  #define LBAL_HAS_HEADER_META 0
+#endif
+
 #if !defined(__has_include) || __has_include(<new>)
   #define LBAL_HAS_HEADER_NEW 1
 #else
@@ -2955,6 +2989,12 @@ LBAL_CPP_WARNING(
   #define LBAL_HAS_HEADER_STRING 1
 #else
   #define LBAL_HAS_HEADER_STRING 0
+#endif
+
+#if !defined(__has_include) || __has_include(<typeinfo>)
+  #define LBAL_HAS_HEADER_TYPEINFO 1
+#else
+  #define LBAL_HAS_HEADER_TYPEINFO 0
 #endif
 
 #if !defined(__has_include) || __has_include(<utility>)
@@ -3121,22 +3161,6 @@ LBAL_CPP_WARNING(
   #define LBAL_HAS_HEADER_UNORDERED_SET 0
 #endif
 
-//  This was technically removed in C++20, but the file may still be there for
-//  backwards compatibility.
-#if !defined(__has_include) || __has_include(<cstdalign>)
-  #define LBAL_HAS_HEADER_CSTDALIGN 1
-#else
-  #define LBAL_HAS_HEADER_CSTDALIGN 0
-#endif
-
-//  This was technically removed in C++20, but the file may still be there for
-//  backwards compatibility.
-#if !defined(__has_include) || __has_include(<cstdbool>)
-  #define LBAL_HAS_HEADER_CSTDBOOL 1
-#else
-  #define LBAL_HAS_HEADER_CSTDBOOL 0
-#endif
-
 /*
   C++14 Headers
 
@@ -3178,16 +3202,18 @@ LBAL_CPP_WARNING(
   #define LBAL_HAS_HEADER_EXECUTION 0
 #endif
 
-#if defined(__has_include) && __has_include(<filesystem>)
-  #define LBAL_HAS_HEADER_FILESYSTEM 1
-#else
-  #define LBAL_HAS_HEADER_FILESYSTEM 0
-#endif
-
+//  This was technically removed in C++17, but the file may still be there for
+//  backwards compatibility.
 #if defined(__has_include) && __has_include(<experimental/filesystem>)
   #define LBAL_HAS_HEADER_EXPERIMENTAL_FILESYSTEM 1
 #else
   #define LBAL_HAS_HEADER_EXPERIMENTAL_FILESYSTEM 0
+#endif
+
+#if defined(__has_include) && __has_include(<filesystem>)
+  #define LBAL_HAS_HEADER_FILESYSTEM 1
+#else
+  #define LBAL_HAS_HEADER_FILESYSTEM 0
 #endif
 
 #if defined(__has_include) && __has_include(<memory_resource>)
@@ -3244,18 +3270,22 @@ LBAL_CPP_WARNING(
   #define LBAL_HAS_HEADER_CONCEPTS 0
 #endif
 
-#if defined(__has_include) && __has_include(<experimental/concepts>)
-  #define LBAL_HAS_HEADER_EXPERIMENTAL_CONCEPTS 1
-#else
-  #define LBAL_HAS_HEADER_EXPERIMENTAL_CONCEPTS 0
-#endif
-
 #if defined(__has_include) && __has_include(<coroutine>)
   #define LBAL_HAS_HEADER_COROUTINE 1
 #else
   #define LBAL_HAS_HEADER_COROUTINE 0
 #endif
 
+//  This was technically removed in C++20, but the file may still be there for
+//  backwards compatibility.
+#if defined(__has_include) && __has_include(<experimental/concepts>)
+  #define LBAL_HAS_HEADER_EXPERIMENTAL_CONCEPTS 1
+#else
+  #define LBAL_HAS_HEADER_EXPERIMENTAL_CONCEPTS 0
+#endif
+
+//  This was technically removed in C++20, but the file may still be there for
+//  backwards compatibility.
 #if defined(__has_include) && __has_include(<experimental/coroutine>)
   #define LBAL_HAS_HEADER_EXPERIMENTAL_COROUTINE 1
 #else
@@ -3394,6 +3424,12 @@ LBAL_CPP_WARNING(
   We “fail off” if we have no header detection method available.
 */
 
+#if defined(__has_include) && __has_include(<contracts>)
+  #define LBAL_HAS_HEADER_CONTRACTS 1
+#else
+  #define LBAL_HAS_HEADER_CONTRACTS 0
+#endif
+
 #if defined(__has_include) && __has_include(<debugging>)
   #define LBAL_HAS_HEADER_DEBUGGING 1
 #else
@@ -3434,11 +3470,6 @@ LBAL_CPP_WARNING(
   #define LBAL_HAS_HEADER_SIMD 1
 #else
   #define LBAL_HAS_HEADER_SIMD 0
-#endif
-#if defined(__has_include) && __has_include(<contracts>)
-  #define LBAL_HAS_HEADER_CONTRACTS 1
-#else
-  #define LBAL_HAS_HEADER_CONTRACTS 0
 #endif
 
 #if defined(__has_include) && __has_include(<text_encoding>)
