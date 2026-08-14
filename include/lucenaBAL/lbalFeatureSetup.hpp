@@ -7557,7 +7557,8 @@
 /**
   @def LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES
   @brief Enabling list-initialization for algorithms
-  @details SD-6 equivalent: `__cpp_lib_default_template_type_for_algorithm_values
+  @details SD-6 equivalent:
+  `__cpp_lib_default_template_type_for_algorithm_values
   >= 202403L`. This token will have a value of `0` if the proposal described
   here is not supported.
   - `202403L` [P2248R8](https://wg21.link/P2248R8) Enabling list-initialization
