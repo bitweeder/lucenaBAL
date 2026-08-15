@@ -34,7 +34,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "examples.html",
-"group__lbal__library.html#ga2c18f3f887c1de1d43acf983a8557e92"
+"group__lbal__library.html#ga00d1755e6b746bb0a0846b0269f2ad68",
+"group__lbal__library.html#gaa726d21881996f31394cbaf39bb82ff8"
 ];
 
 const SYNCONMSG = 'click to disable panel synchronization';
