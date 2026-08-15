@@ -63,12 +63,12 @@
 //	C++98 features
 //	These can be conditionally disabled.
 
-#if !defined(LBAL_CPP98_EXCEPTIONS) && (__cpp_exceptions >= 199711L)
-  #define LBAL_CPP98_EXCEPTIONS __cpp_exceptions
+#if !defined(LBAL_CPP03_EXCEPTIONS) && (__cpp_exceptions >= 199711L)
+  #define LBAL_CPP03_EXCEPTIONS __cpp_exceptions
 #endif
 
-#if !defined(LBAL_CPP98_RTTI) && (__cpp_rtti >= 199711L)
-  #define LBAL_CPP98_RTTI __cpp_rtti
+#if !defined(LBAL_CPP03_RTTI) && (__cpp_rtti >= 199711L)
+  #define LBAL_CPP03_RTTI __cpp_rtti
 #endif
 
 //	C++11 features.
@@ -413,6 +413,13 @@
   #define LBAL_CPP20_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS __cpp_concepts
 #endif
 
+#if !defined(                                                                  \
+    LBAL_CPP20_CONCEPTS_CONDITIONALLY_TRIVIAL_SPECIAL_MEMBER_FUNCTIONS         \
+) && (__cpp_concepts >= 202002L)
+  #define LBAL_CPP20_CONCEPTS_CONDITIONALLY_TRIVIAL_SPECIAL_MEMBER_FUNCTIONS   \
+    __cpp_concepts
+#endif
+
 #if !defined(LBAL_CPP20_CONDITIONAL_EXPLICIT)                                  \
     && (__cpp_conditional_explicit >= 201806L)
   #define LBAL_CPP20_CONDITIONAL_EXPLICIT __cpp_conditional_explicit
@@ -422,9 +429,14 @@
   #define LBAL_CPP20_CONSTEVAL __cpp_consteval
 #endif
 
-#if !defined(LBAL_CPP20_CONSTEXPR_VIRTUAL_FUNCTION)                            \
-    && (__cpp_constexpr >= 201806L)
-  #define LBAL_CPP20_CONSTEXPR_VIRTUAL_FUNCTION __cpp_constexpr
+#if !defined(LBAL_CPP20_CONSTEXPR_CHANGE_ACTIVE_UNION_MEMBER)                  \
+    && (__cpp_constexpr >= 202002L)
+  #define LBAL_CPP20_CONSTEXPR_CHANGE_ACTIVE_UNION_MEMBER __cpp_constexpr
+#endif
+
+#if !defined(LBAL_CPP20_CONSTEXPR_DYNAMIC_ALLOC)                               \
+    && (__cpp_constexpr_dynamic_alloc >= 201907L)
+  #define LBAL_CPP20_CONSTEXPR_DYNAMIC_ALLOC __cpp_constexpr_dynamic_alloc
 #endif
 
 #if !defined(LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM)                        \
@@ -432,13 +444,9 @@
   #define LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM __cpp_constexpr
 #endif
 
-#if !defined(LBAL_CPP20_CONSTEXPR_TRY_CATCH) && (__cpp_constexpr >= 201811L)
-  #define LBAL_CPP20_CONSTEXPR_TRY_CATCH __cpp_constexpr
-#endif
-
-#if !defined(LBAL_CPP20_CONSTEXPR_UNION_ALTERATION)                            \
-    && (__cpp_constexpr >= 201811L)
-  #define LBAL_CPP20_CONSTEXPR_UNION_ALTERATION __cpp_constexpr
+#if !defined(LBAL_CPP20_CONSTEXPR_IN_DECLTYPE)                                 \
+    && (__cpp_constexpr_in_decltype >= 201711L)
+  #define LBAL_CPP20_CONSTEXPR_IN_DECLTYPE __cpp_constexpr_in_decltype
 #endif
 
 #if !defined(LBAL_CPP20_CONSTEXPR_INTRINSICS) && (__cpp_constexpr >= 201907L)
@@ -450,14 +458,18 @@
   #define LBAL_CPP20_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION __cpp_constexpr
 #endif
 
-#if !defined(LBAL_CPP20_CONSTEXPR_DYNAMIC_ALLOC)                               \
-    && (__cpp_constexpr_dynamic_alloc >= 201907L)
-  #define LBAL_CPP20_CONSTEXPR_DYNAMIC_ALLOC __cpp_constexpr_dynamic_alloc
+#if !defined(LBAL_CPP20_CONSTEXPR_TRY_CATCH) && (__cpp_constexpr >= 201811L)
+  #define LBAL_CPP20_CONSTEXPR_TRY_CATCH __cpp_constexpr
 #endif
 
-#if !defined(LBAL_CPP20_CONSTEXPR_IN_DECLTYPE)                                 \
-    && (__cpp_constexpr_in_decltype >= 201711L)
-  #define LBAL_CPP20_CONSTEXPR_IN_DECLTYPE __cpp_constexpr_in_decltype
+#if !defined(LBAL_CPP20_CONSTEXPR_UNION_ALTERATION)                            \
+    && (__cpp_constexpr >= 201811L)
+  #define LBAL_CPP20_CONSTEXPR_UNION_ALTERATION __cpp_constexpr
+#endif
+
+#if !defined(LBAL_CPP20_CONSTEXPR_VIRTUAL_FUNCTION)                            \
+    && (__cpp_constexpr >= 201806L)
+  #define LBAL_CPP20_CONSTEXPR_VIRTUAL_FUNCTION __cpp_constexpr
 #endif
 
 #if !defined(LBAL_CPP20_CONSTINIT) && (__cpp_constinit >= 201907L)
@@ -530,6 +542,165 @@
 #if !defined(LBAL_CPP20_USING_ENUM) && (__cpp_using_enum >= 201907L)
   #define LBAL_CPP20_USING_ENUM __cpp_using_enum
 #endif
+
+//	C++23 features
+
+#if !defined(LBAL_CPP23_AUTO_CAST) && (__cpp_auto_cast >= 202110L)
+  #define LBAL_CPP23_AUTO_CAST __cpp_auto_cast
+#endif
+
+#if !defined(LBAL_CPP23_CHAR8_T_COMPATIBILITY) && (__cpp_char8_t >= 202207L)
+  #define LBAL_CPP23_CHAR8_T_COMPATIBILITY __cpp_char8_t
+#endif
+
+#if !defined(LBAL_CPP23_CONSTEVAL_PROPAGATE_UP) && (__cpp_consteval >= 202211L)
+  #define LBAL_CPP23_CONSTEVAL_PROPAGATE_UP __cpp_consteval
+#endif
+
+#if !defined(LBAL_CPP23_CONSTEXPR_NON_LITERAL_VARIABLES)                       \
+    && (__cpp_constexpr >= 202110L)
+  #define LBAL_CPP23_CONSTEXPR_NON_LITERAL_VARIABLES __cpp_constexpr
+#endif
+
+#if !defined(LBAL_CPP23_CONSTEXPR_PERMIT_STATIC_CONSTEXPR)                     \
+    && (__cpp_constexpr >= 202211L)
+  #define LBAL_CPP23_CONSTEXPR_PERMIT_STATIC_CONSTEXPR __cpp_constexpr
+#endif
+
+#if !defined(LBAL_CPP23_CONSTEXPR_RELAX_RESTRICTIONS)                          \
+    && (__cpp_constexpr >= 202207L)
+  #define LBAL_CPP23_CONSTEXPR_RELAX_RESTRICTIONS __cpp_constexpr
+#endif
+
+#if !defined(LBAL_CPP23_DEDUCTION_GUIDES_FROM_INHERITED_CONSTRUCTORS)          \
+    && (__cpp_deduction_guides >= 202207L)
+  #define LBAL_CPP23_DEDUCTION_GUIDES_FROM_INHERITED_CONSTRUCTORS              \
+    __cpp_deduction_guides
+#endif
+
+#if !defined(LBAL_CPP23_EXPLICIT_THIS_PARAMETER)                               \
+    && (__cpp_explicit_this_parameter >= 202110L)
+  #define LBAL_CPP23_EXPLICIT_THIS_PARAMETER __cpp_explicit_this_parameter
+#endif
+
+#if !defined(LBAL_CPP23_IF_CONSTEVAL) && (__cpp_if_consteval >= 202106L)
+  #define LBAL_CPP23_IF_CONSTEVAL __cpp_if_consteval
+#endif
+
+#if !defined(LBAL_CPP23_IMPLICIT_MOVE) && (__cpp_implicit_move >= 202207L)
+  #define LBAL_CPP23_IMPLICIT_MOVE __cpp_implicit_move
+#endif
+
+#if !defined(LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT)                            \
+    && (__cpp_multidimensional_subscript >= 202211L)
+  #define LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT __cpp_multidimensional_subscript
+#endif
+
+#if !defined(LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT_STATIC)                     \
+    && (__cpp_multidimensional_subscript >= 202211L)
+  #define LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT_STATIC                         \
+    __cpp_multidimensional_subscript
+#endif
+
+#if !defined(LBAL_CPP23_NAMED_CHARACTER_ESCAPES)                               \
+    && (__cpp_named_character_escapes >= 202207L)
+  #define LBAL_CPP23_NAMED_CHARACTER_ESCAPES __cpp_named_character_escapes
+#endif
+
+#if !defined(LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES)                           \
+    && (__cpp_range_based_for >= 202211L)
+  #define LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES __cpp_range_based_for
+#endif
+
+#if !defined(LBAL_CPP23_SIZE_T_SUFFIX) && (__cpp_size_t_suffix >= 202011L)
+  #define LBAL_CPP23_SIZE_T_SUFFIX __cpp_size_t_suffix
+#endif
+
+#if !defined(LBAL_CPP23_STATIC_CALL_OPERATOR)                                  \
+    && (__cpp_static_call_operator >= 202207L)
+  #define LBAL_CPP23_STATIC_CALL_OPERATOR __cpp_static_call_operator
+#endif
+
+//	C++26 features
+
+#if !defined(LBAL_CPP26_CONSTEXPR_CAST_FROM_VOID_STAR)                         \
+    && (__cpp_constexpr >= 202306L)
+  #define LBAL_CPP26_CONSTEXPR_CAST_FROM_VOID_STAR __cpp_constexpr
+#endif
+
+#if !defined(LBAL_CPP26_CONSTEXPR_EXCEPTIONS)                                  \
+    && (__cpp_constexpr_exceptions >= 202411L)
+  #define LBAL_CPP26_CONSTEXPR_EXCEPTIONS __cpp_constexpr_exceptions
+#endif
+
+#if !defined(LBAL_CPP26_CONSTEXPR_PLACEMENT_NEW) && (__cpp_constexpr >= 202406L)
+  #define LBAL_CPP26_CONSTEXPR_PLACEMENT_NEW __cpp_constexpr
+#endif
+
+#if !defined(LBAL_CPP26_CONSTEXPR_VIRTUAL_INHERITANCE)                         \
+    && (__cpp_constexpr_virtual_inheritance >= 202506L)
+  #define LBAL_CPP26_CONSTEXPR_VIRTUAL_INHERITANCE                             \
+    __cpp_constexpr_virtual_inheritance
+#endif
+
+#if !defined(LBAL_CPP26_CONTRACTS) && (__cpp_contracts >= 202502L)
+  #define LBAL_CPP26_CONTRACTS __cpp_contracts
+#endif
+
+#if !defined(LBAL_CPP26_DELETED_FUNCTION) && (__cpp_deleted_function >= 202403L)
+  #define LBAL_CPP26_DELETED_FUNCTION __cpp_deleted_function
+#endif
+
+#if !defined(LBAL_CPP26_EXPANSION_STATEMENTS)                                  \
+    && (__cpp_expansion_statements >= 202506L)
+  #define LBAL_CPP26_EXPANSION_STATEMENTS __cpp_expansion_statements
+#endif
+
+#if !defined(LBAL_CPP26_IMPL_REFLECTION) && (_cpp_impl_reflection >= 202506L)
+  #define LBAL_CPP26_IMPL_REFLECTION _cpp_impl_reflection
+#endif
+
+#if !defined(LBAL_CPP26_PACK_INDEXING) && (__cpp_pack_indexing >= 202311L)
+  #define LBAL_CPP26_PACK_INDEXING __cpp_pack_indexing
+#endif
+
+#if !defined(LBAL_CPP26_PLACEHOLDER_VARIABLES)                                 \
+    && (__cpp_placeholder_variables >= 202306L)
+  #define LBAL_CPP26_PLACEHOLDER_VARIABLES __cpp_placeholder_variables
+#endif
+
+#if !defined(LBAL_CPP26_STATIC_ASSERT_USER_MESSAGE)                            \
+    && (__cpp_static_assert >= 202306L)
+  #define LBAL_CPP26_STATIC_ASSERT_USER_MESSAGE __cpp_static_assert
+#endif
+
+#if !defined(LBAL_CPP26_STRUCTURED_BINDINGS_ATTRIBUTES)                        \
+    && (__cpp_structured_bindings >= 202403L)
+  #define LBAL_CPP26_STRUCTURED_BINDINGS_ATTRIBUTES __cpp_structured_bindings
+#endif
+
+#if !defined(LBAL_CPP26_STRUCTURED_BINDINGS_PACK)                              \
+    && (__cpp_structured_bindings >= 202411L)
+  #define LBAL_CPP26_STRUCTURED_BINDINGS_PACK __cpp_structured_bindings
+#endif
+
+#if !defined(LBAL_CPP26_TEMPLATE_PARAMETERS)                                   \
+    && (__cpp_template_parameters >= 202502L)
+  #define LBAL_CPP26_TEMPLATE_PARAMETERS __cpp_template_parameters
+#endif
+
+#if !defined(LBAL_CPP26_TRIVIAL_UNION) && (__cpp_trivial_union >= 202502L)
+  #define LBAL_CPP26_TRIVIAL_UNION __cpp_trivial_union
+#endif
+
+#if !defined(LBAL_CPP26_VARIADIC_FRIEND) && (__cpp_variadic_friend >= 202403L)
+  #define LBAL_CPP26_VARIADIC_FRIEND __cpp_variadic_friend
+#endif
+
+//	C++2d features
+
+//  (FIXME - bitweeder) These are on hold till the associated proposals
+//  are published publicly.
 
 //	C++ Attributes
 //
@@ -620,6 +791,14 @@
     && defined(__has_cpp_attribute)                                            \
     && (__has_cpp_attribute(unlikely) >= 201803L)
   #define LBAL_CPP20_ATTRIBUTE_UNLIKELY 201803L
+#endif
+
+//	C++23 attributes
+
+#if !defined(LBAL_CPP23_ATTRIBUTE_ASSUME)                                      \
+    && defined(__has_cpp_attribute)                                            \
+    && (__has_cpp_attribute(assume) >= 202207L)
+  #define LBAL_CPP23_ATTRIBUTE_ASSUME 202207L
 #endif
 
 /*------------------------------------------------------------------------------

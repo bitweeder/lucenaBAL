@@ -385,8 +385,11 @@
     #endif    //	gcc 9.1
 
     #if (LBAL_GCC_VERSION >= 100100)
-    #endif  //	gcc 10.1
-  #endif    //	LBAL_CPP20_VERSION
+      #if !defined(LBAL_LIBCPP20_SHARED_PTR_ARRAYS_MAKE_SHARED)
+        #define LBAL_LIBCPP20_SHARED_PTR_ARRAYS_MAKE_SHARED 201707L
+      #endif  //	LBAL_LIBCPP20_SHARED_PTR_ARRAYS_MAKE_SHARED
+    #endif    //	gcc 10.1
+  #endif      //	LBAL_CPP20_VERSION
 
   #if !defined(LBAL_LIBCPP17_TO_CHARS)                                         \
       && LBAL_LIBCPP17_TO_CHARS_INTEGER                                        \

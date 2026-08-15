@@ -2,13 +2,10 @@
 .DS_Store
 .python-venv
 /build/
-/tools/proj/
-
 
 # CMake stuff; only intended to catch accidental spills
 /CMakeFiles/
 CMakeCache.txt
-
 
 # Visual Studio build data and per-user settings
 MSVS/*.asm
@@ -22,7 +19,6 @@ MSVS/Build/
 MSVS/ipch/
 .vs
 
-
 # CodeLite per-user settings
 CodeLite/**/tags
 CodeLite/**/workspace.*
@@ -31,16 +27,13 @@ CodeLite/**/.clang
 CodeLite/**/.build*
 CodeLite/**/compilation.db
 
-
 # Netbeans build data and per-user settings
 nbproject/private/
 nbproject/**/*.bash
 nbproject/**/.dep.inc
 
-
 # VS Code per-user settings
 .vscode/
-
 
 # Xcode build data and per-user settings
 Xcode/**/*.mode1v3
@@ -48,7 +41,6 @@ Xcode/**/*.mode2
 Xcode/**/*.mode2v3
 Xcode/**/*.pbxuser
 xcuserdata/
-
 
 # Generated code
 /include/lucenaBAL/lbalGenerated.hpp

@@ -45,12 +45,12 @@
 //	SEEME - bitweeder
 //	`_CPPUNWIND` is not an exact analog, but seems to serve.
 
-  #if !defined(LBAL_CPP98_EXCEPTIONS) && _CPPUNWIND
-    #define LBAL_CPP98_EXCEPTIONS 199711L
+  #if !defined(LBAL_CPP03_EXCEPTIONS) && _CPPUNWIND
+    #define LBAL_CPP03_EXCEPTIONS 199711L
   #endif
 
-  #if !defined(LBAL_CPP98_RTTI) && _CPPRTTI
-    #define LBAL_CPP98_RTTI 199711L
+  #if !defined(LBAL_CPP03_RTTI) && _CPPRTTI
+    #define LBAL_CPP03_RTTI 199711L
   #endif
 
   //	C++11 features

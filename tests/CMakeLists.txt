@@ -44,7 +44,7 @@ set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 
 # For macOS: build fat binaries; this is only done for re-usability with non-
 # CMake project tooling.
-set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE INTERNAL "" FORCE)
+# set(CMAKE_OSX_ARCHITECTURES "x86_64;arm64" CACHE INTERNAL "" FORCE)
 
 FetchContent_MakeAvailable(googletest)
 
@@ -71,23 +71,30 @@ target_include_directories (
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
 )
 
-# target_compile_features (
-# 	lbalTest
-#     PRIVATE
-#         cxx_std_26
-# )
-
 # FIXME - bitweeder
 # Needs refinement. Or elimination.
-target_compile_options (
-  lbalTest
-  PRIVATE
-  	$<$<CXX_COMPILER_ID:MSVC>:/std:c++26>
-  	$<$<CXX_COMPILER_ID:MSVC>:/Zc:__cplusplus>
-	$<$<CXX_COMPILER_ID:MSVC>:/W4>
-	$<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-Wall>
-	$<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-pedantic>
-)
+if(MSVC)
+  target_compile_options (
+    lbalTest
+    PRIVATE
+      $<$<CXX_COMPILER_ID:MSVC>:/std:c++latest>
+      $<$<CXX_COMPILER_ID:MSVC>:/Zc:__cplusplus>
+      $<$<CXX_COMPILER_ID:MSVC>:/W4>
+  )
+else()
+  target_compile_features (
+    lbalTest
+      PRIVATE
+          cxx_std_26
+  )
+
+  target_compile_options (
+    lbalTest
+    PRIVATE
+      $<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-Wall>
+      $<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-pedantic>
+  )
+endif()
 
 target_compile_definitions (
 	lbalTest

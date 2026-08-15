@@ -38,7 +38,7 @@
   //	all C++17 extensions. Note that libc++ is still broken due to runtime
   //	issues, as described below, as well as other things.
   #if (__clang_major__ < 10)
-    #error "Xcode 10.0 is th earliest supported version"
+    #error "Xcode 10.0 is the earliest supported version"
   #else
   //	Tested with a minimum of Xcode 10.0; the bundled compiler and
   //	Standard Library are roughly compatible with clang 6 and libc++,
