@@ -4,6 +4,8 @@
 
 The purpose of the Lucena Build Abstraction Library (**lucenaBAL**) is to provide tools to smooth over the differences between build environments when working with C++11 and later Standards (currently up thru the entirety of C++26 and proposals adopted into C++2d). It’s a foundational tool that allows code built upon it to remain agnostic to compilers, C++ Standard Library variants, and aspects of the runtime. Note that lucenaBAL is **not** a build system, but rather a C++ header library with a collection of build system support scripts.
 
+**COMPILER, LIBRARY, AND PLATFORM FIXES SPECIFIC TO C++23 AND C++26 HAVE NOT YET BEEN INTEGRATED!** Currently, we rely on self-reporting by `<version>` and the compiler for determining feature availability for these Standards, but that is guaranteed to have false negatives and occasional false positives (e.g., Xcode reports `__cpp_lib_to_chars` is never available, when it’s actually gated on the current SDK, which is testable). The library will be updated with this data once testing is complete.
+
 ## Motivating Example
 
 Imagine that you are working on a project that would benefit from using the C++17 parallelized algorithm for `std::sort`, and you would like to use it conditionally based on availability.
