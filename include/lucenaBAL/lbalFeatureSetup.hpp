@@ -3615,6 +3615,20 @@
 #endif
 
 /**
+  @def LBAL_LIBCPP17_DEDUCTION_GUIDES
+  @brief Toward a resolution of US7 and US14: Integrating template deduction for
+  class templates into the standard library
+  @details SD-6 equivalent: `__cpp_lib_deduction_guides >= 201703L`. This token
+  will have a value of `0` if the proposal described here is not supported.
+  - `201703L` [P0433R2](https://wg21.link/P0433R2) Toward a resolution of US7
+  and US14: Integrating template deduction for class templates into the standard
+  library
+*/
+#ifndef LBAL_LIBCPP17_DEDUCTION_GUIDES
+  #define LBAL_LIBCPP17_DEDUCTION_GUIDES 0
+#endif
+
+/**
   @def LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS
   @brief Re-enable `std::shared_from_this`
   @details SD-6 equivalent: `__cpp_lib_enable_shared_from_this >= 201603L`.
@@ -3726,6 +3740,21 @@
 */
 #ifndef LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED
   #define LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED 0
+#endif
+
+/**
+  @def LBAL_LIBCPP17_FILESYSTEM_RELATIVE_PATHS
+  @brief Relative Paths for Filesystem
+  @details SD-6 equivalent: `__cpp_lib_filesystem >= 201606L`. Note that
+  `__cpp_lib_filesystem` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `201606L` [P0219R1](https://wg21.link/P0219R1) Relative Paths for Filesystem
+
+  @sa `<filesystem>`
+*/
+#ifndef LBAL_LIBCPP17_FILESYSTEM_RELATIVE_PATHS
+  #define LBAL_LIBCPP17_FILESYSTEM_RELATIVE_PATHS 0
 #endif
 
 /**
