@@ -2,7 +2,11 @@
 
 # Lucena Build Abstraction Library
 
-The purpose of the Lucena Build Abstraction Library (**lucenaBAL**) is to provide tools to smooth over the differences between build environments when working with C++11 and later Standards (currently up thru the entirety of C++26 and proposals adopted into C++2d). It’s a foundational tool that allows code built upon it to remain agnostic to compilers, C++ Standard Library variants, and aspects of the runtime. Note that lucenaBAL is **not** a build system, but rather a C++ header library with a collection of build system support scripts.
+The purpose of the Lucena Build Abstraction Library (**lucenaBAL**) is to provide tools to smooth over the differences between build environments when working with C++11 and later Standards (currently up thru the entirety of C++26 and proposals adopted into C++2d). It’s a foundational tool that allows code built upon it to remain agnostic to compilers, C++ Standard Library variants, and aspects of the runtime. 
+
+**lucenaBAL** is _not_ a build system, but rather a C++ header library with a collection of build system support scripts.
+
+Also, note that we don’t track every accepted proposal to the Standard—as represented by [WG21 papers](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/)—but rather mostly just those that have been assigned an [SD-6 token value](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations) (i.e., features which will ultimately appear in the Standard under `tab:cpp.predefined.ft`, `tab:cpp.cond.ha`, or `version.syn`). There are exceptions for features that probably _should_ have official tokens; additionally, there are a few meta-features that bundle related tokens together—typically Language+Library—when they are useless without each other (though the components may still be tested individually).)
 
 **COMPILER, LIBRARY, AND PLATFORM FIXES SPECIFIC TO C++23 AND C++26 HAVE NOT YET BEEN INTEGRATED!** Currently, we rely on self-reporting by `<version>` and the compiler for determining feature availability for these Standards, but that is guaranteed to have false negatives and occasional false positives (e.g., Xcode reports `__cpp_lib_to_chars` is never available, when it’s actually gated on the current SDK, which is testable). The library will be updated with this data once testing is complete.
 
@@ -98,6 +102,7 @@ Docs can also be generated, if desired, and are left in `build/docs`.
 
 ## To-Do
 _Roughly in order of precedence:_
+- update false negatives/positives for C++23 and up
 - add more examples
 - flesh out the unit tests
 - generate nicer-looking IDE project files

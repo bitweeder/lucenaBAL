@@ -753,7 +753,7 @@
 #endif  //  LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE
 
 #if !defined(LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS)
-  #if __cpp_lib_constexpr_algorithms >= 201703L
+  #if __cpp_lib_constexpr_algorithms >= 201806L
     #define LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS __cpp_lib_constexpr_algorithms
   #endif
 #endif  //  LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS
@@ -1364,6 +1364,12 @@
   #endif
 #endif  //  LBAL_LIBCPP23_MODULES
 
+#if !defined(LBAL_LIBCPP23_MONADIC_OPTIONAL)
+  #if __cpp_lib_monadic_optional >= 202110L
+    #define LBAL_LIBCPP23_MONADIC_OPTIONAL __cpp_lib_monadic_optional
+  #endif
+#endif  //  LBAL_LIBCPP23_MONADIC_OPTIONAL
+
 #if !defined(LBAL_LIBCPP23_MOVE_ITERATOR_CONCEPT)
   #if __cpp_lib_move_iterator_concept >= 202207L
     #define LBAL_LIBCPP23_MOVE_ITERATOR_CONCEPT __cpp_lib_move_iterator_concept
@@ -1629,6 +1635,13 @@
 
 // C++26
 
+#if !defined(LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE)
+  #if __cpp_lib_algorithm_default_value_type >= 202603L
+    #define LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE                         \
+      __cpp_lib_algorithm_default_value_type
+  #endif
+#endif  //  LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE
+
 #if !defined(LBAL_LIBCPP26_ALIGNED_ACCESSOR)
   #if __cpp_lib_aligned_accessor >= 202411L
     #define LBAL_LIBCPP26_ALIGNED_ACCESSOR __cpp_lib_aligned_accessor
@@ -1666,6 +1679,12 @@
   #endif
 #endif  //  LBAL_LIBCPP26_ATOMIC_REF_ADDRESS
 
+#if !defined(LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS)
+  #if __cpp_lib_atomic_ref >= 202603L
+    #define LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS __cpp_lib_atomic_ref
+  #endif
+#endif  //  LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS
+
 #if !defined(LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES)
   #if __cpp_lib_bind_front >= 202306L
     #define LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES __cpp_lib_bind_front
@@ -1689,6 +1708,13 @@
     #define LBAL_LIBCPP26_CONSTANT_WRAPPER __cpp_lib_constant_wrapper
   #endif
 #endif  //  LBAL_LIBCPP26_CONSTANT_WRAPPER
+
+#if !defined(LBAL_LIBCPP26_CONSTANT_WRAPPER_UNWRAP_ON_CALL)
+  #if __cpp_lib_constant_wrapper >= 202603L
+    #define LBAL_LIBCPP26_CONSTANT_WRAPPER_UNWRAP_ON_CALL                      \
+      __cpp_lib_constant_wrapper
+  #endif
+#endif  //  LBAL_LIBCPP26_CONSTANT_WRAPPER_UNWRAP_ON_CALL
 
 #if !defined(LBAL_LIBCPP26_CONSTEXPR_ALGORITHMS_STABLE_SORT)
   #if __cpp_lib_constexpr_algorithms >= 202306L
@@ -1851,6 +1877,13 @@
     #define LBAL_LIBCPP26_EXCEPTION_PTR_CAST __cpp_lib_exception_ptr_cast
   #endif
 #endif  //  LBAL_LIBCPP26_EXCEPTION_PTR_CAST
+
+#if !defined(LBAL_LIBCPP26_EXCEPTION_PTR_CAST_BETTER_RETURN_TYPES)
+  #if __cpp_lib_exception_ptr_cast >= 202603L
+    #define LBAL_LIBCPP26_EXCEPTION_PTR_CAST_BETTER_RETURN_TYPES               \
+      __cpp_lib_exception_ptr_cast
+  #endif
+#endif  //  LBAL_LIBCPP26_EXCEPTION_PTR_CAST_BETTER_RETURN_TYPES
 
 #if !defined(LBAL_LIBCPP26_EXCEPTION_PTR_CAST_CONSTEXPR)
   #if __cpp_lib_exception_ptr_cast >= 202506L
@@ -2102,6 +2135,13 @@
   #endif
 #endif  //  LBAL_LIBCPP26_FUNCTION_REF
 
+#if !defined(LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION)
+  #if __cpp_lib_function_ref >= 202603L
+    #define LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION                 \
+      __cpp_lib_function_ref
+  #endif
+#endif  //  LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION
+
 #if !defined(LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE)
   #if __cpp_lib_function_ref >= 202511L
     #define LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE __cpp_lib_function_ref
@@ -2265,12 +2305,32 @@
   #endif
 #endif  //  LBAL_LIBCPP26_INPLACE_VECTOR
 
+#if !defined(LBAL_LIBCPP26_INPLACE_VECTOR_BETTER_RETURN_TYPES)
+  #if __cpp_lib_inplace_vector >= 202603L
+    #define LBAL_LIBCPP26_INPLACE_VECTOR_BETTER_RETURN_TYPES                   \
+      __cpp_lib_inplace_vector
+  #endif
+#endif  //  LBAL_LIBCPP26_INPLACE_VECTOR_BETTER_RETURN_TYPES
+
+#if !defined(LBAL_LIBCPP26_INPLACE_VECTOR_REMOVE_TRY_APPEND_RANGE)
+  #if __cpp_lib_inplace_vector >= 202603L
+    #define LBAL_LIBCPP26_INPLACE_VECTOR_REMOVE_TRY_APPEND_RANGE               \
+      __cpp_lib_inplace_vector
+  #endif
+#endif  //  LBAL_LIBCPP26_INPLACE_VECTOR_REMOVE_TRY_APPEND_RANGE
+
 #if !defined(LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS)
   #if __cpp_lib_integer_sequence >= 202511L
     #define LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS                \
       __cpp_lib_integer_sequence
   #endif
 #endif  //  LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS
+
+#if !defined(LBAL_LIBCPP26_IS_STRUCTURAL)
+  #if __cpp_lib_is_structural >= 202603L
+    #define LBAL_LIBCPP26_IS_STRUCTURAL __cpp_lib_is_structural
+  #endif
+#endif  //  LBAL_LIBCPP26_IS_STRUCTURAL
 
 #if !defined(LBAL_LIBCPP26_IS_VIRTUAL_BASE_OF)
   #if __cpp_lib_is_virtual_base_of >= 202406L
@@ -2283,6 +2343,12 @@
     #define LBAL_LIBCPP26_IS_WITHIN_LIFETIME __cpp_lib_is_within_lifetime
   #endif
 #endif  //  LBAL_LIBCPP26_IS_WITHIN_LIFETIME
+
+#if !defined(LBAL_LIBCPP26_IS_WITHIN_LIFETIME_EXTEND)
+  #if __cpp_lib_is_within_lifetime >= 202603L
+    #define LBAL_LIBCPP26_IS_WITHIN_LIFETIME_EXTEND __cpp_lib_is_within_lifetime
+  #endif
+#endif  //  LBAL_LIBCPP26_IS_WITHIN_LIFETIME_EXTEND
 
 #if !defined(LBAL_LIBCPP26_LINALG)
   #if __cpp_lib_linalg >= 202311L
@@ -2388,6 +2454,18 @@
   #endif
 #endif  //  LBAL_LIBCPP26_RANGES_AS_CONST_FIX_CONVERTIBILITY
 
+#if !defined(LBAL_LIBCPP26_RANGES_AS_INPUT)
+  #if __cpp_lib_ranges_as_input >= 202502L
+    #define LBAL_LIBCPP26_RANGES_AS_INPUT __cpp_lib_ranges_as_input
+  #endif
+#endif  //  LBAL_LIBCPP26_RANGES_AS_INPUT
+
+#if !defined(LBAL_LIBCPP26_RANGES_AS_INPUT_RENAME)
+  #if __cpp_lib_ranges_as_input >= 202603L
+    #define LBAL_LIBCPP26_RANGES_AS_INPUT_RENAME __cpp_lib_ranges_as_input
+  #endif
+#endif  //  LBAL_LIBCPP26_RANGES_AS_INPUT_RENAME
+
 #if !defined(LBAL_LIBCPP26_RANGES_CACHE_LATEST)
   #if __cpp_lib_ranges_cache_latest >= 202411L
     #define LBAL_LIBCPP26_RANGES_CACHE_LATEST __cpp_lib_ranges_cache_latest
@@ -2399,6 +2477,12 @@
     #define LBAL_LIBCPP26_RANGES_CONCAT __cpp_lib_ranges_concat
   #endif
 #endif  //  LBAL_LIBCPP26_RANGES_CONCAT
+
+#if !defined(LBAL_LIBCPP26_RANGES_FILTER)
+  #if __cpp_lib_ranges_filter >= 202603L
+    #define LBAL_LIBCPP26_RANGES_FILTER __cpp_lib_ranges_filter
+  #endif
+#endif  //  LBAL_LIBCPP26_RANGES_FILTER
 
 #if !defined(LBAL_LIBCPP26_RANGES_INDICES)
   #if __cpp_lib_ranges_indices >= 202506L
@@ -2417,12 +2501,6 @@
     #define LBAL_LIBCPP26_RANGES_RESERVE_HINT __cpp_lib_ranges_reserve_hint
   #endif
 #endif  //  LBAL_LIBCPP26_RANGES_RESERVE_HINT
-
-#if !defined(LBAL_LIBCPP26_RANGES_TO_INPUT)
-  #if __cpp_lib_ranges_to_input >= 202502L
-    #define LBAL_LIBCPP26_RANGES_TO_INPUT __cpp_lib_ranges_to_input
-  #endif
-#endif  //  LBAL_LIBCPP26_RANGES_TO_INPUT
 
 #if !defined(LBAL_LIBCPP26_RATIO)
   #if __cpp_lib_ratio >= 202306L
@@ -2455,11 +2533,38 @@
   #endif
 #endif  //  LBAL_LIBCPP26_REFLECTION
 
+#if !defined(LBAL_LIBCPP26_REFLECTION_CLEANUP)
+  #if __cpp_lib_reflection >= 202603L
+    #define LBAL_LIBCPP26_REFLECTION_CLEANUP __cpp_lib_reflection
+  #endif
+#endif  //  LBAL_LIBCPP26_REFLECTION_CLEANUP
+
+#if !defined(LBAL_LIBCPP26_REFLECTION_RENAME_TO_IS_VARARG_FUNCTION)
+  #if __cpp_lib_reflection >= 202603L
+    #define LBAL_LIBCPP26_REFLECTION_RENAME_TO_IS_VARARG_FUNCTION              \
+      __cpp_lib_reflection
+  #endif
+#endif  //  LBAL_LIBCPP26_REFLECTION_RENAME_TO_IS_VARARG_FUNCTION
+
+#if !defined(LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER)
+  #if __cpp_lib_replaceable_contract_violation_handler >= 202306L
+    #define LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER               \
+      __cpp_lib_replaceable_contract_violation_handler
+  #endif
+#endif  //  LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER
+
 #if !defined(LBAL_LIBCPP26_SATURATION_ARITHMETIC)
   #if __cpp_lib_saturation_arithmetic >= 202311L
     #define LBAL_LIBCPP26_SATURATION_ARITHMETIC __cpp_lib_saturation_arithmetic
   #endif
 #endif  //  LBAL_LIBCPP26_SATURATION_ARITHMETIC
+
+#if !defined(LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING)
+  #if __cpp_lib_saturation_arithmetic >= 202603L
+    #define LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING                       \
+      __cpp_lib_saturation_arithmetic
+  #endif
+#endif  //  LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING
 
 #if !defined(LBAL_LIBCPP26_SENDERS)
   #if __cpp_lib_senders >= 202406L
@@ -2508,6 +2613,12 @@
     #define LBAL_LIBCPP26_SIMD_EXTEND __cpp_lib_simd
   #endif
 #endif  //  LBAL_LIBCPP26_SIMD_EXTEND
+
+#if !defined(LBAL_LIBCPP26_SIMD_IOTA)
+  #if __cpp_lib_simd >= 202603L
+    #define LBAL_LIBCPP26_SIMD_IOTA __cpp_lib_simd
+  #endif
+#endif  //  LBAL_LIBCPP26_SIMD_IOTA
 
 #if !defined(LBAL_LIBCPP26_SIMD_NAMESPACES)
   #if __cpp_lib_simd >= 202502L
@@ -2566,6 +2677,24 @@
   #endif
 #endif  //  LBAL_LIBCPP26_SSTREAM_FROM_STRING_VIEW
 
+#if !defined(LBAL_LIBCPP26_START_LIFETIME)
+  #if __cpp_lib_start_lifetime >= 202603L
+    #define LBAL_LIBCPP26_START_LIFETIME __cpp_lib_start_lifetime
+  #endif
+#endif  //  LBAL_LIBCPP26_START_LIFETIME
+
+#if !defined(LBAL_LIBCPP26_STDBIT_H)
+  #if __cpp_lib_stdbit_h >= 202603L
+    #define LBAL_LIBCPP26_STDBIT_H __cpp_lib_stdbit_h
+  #endif
+#endif  //  LBAL_LIBCPP26_STDBIT_H
+
+#if !defined(LBAL_LIBCPP26_STDCKDINT_H)
+  #if __cpp_lib_stdckdint_h >= 202603L
+    #define LBAL_LIBCPP26_STDCKDINT_H __cpp_lib_stdckdint_h
+  #endif
+#endif  //  LBAL_LIBCPP26_STDCKDINT_H
+
 #if !defined(LBAL_LIBCPP26_STRING_SUBVIEW)
   #if __cpp_lib_string_subview >= 202506L
     #define LBAL_LIBCPP26_STRING_SUBVIEW __cpp_lib_string_subview
@@ -2601,6 +2730,12 @@
     #define LBAL_LIBCPP26_SUBMDSPAN_PADDED __cpp_lib_submdspan
   #endif
 #endif  //  LBAL_LIBCPP26_SUBMDSPAN_PADDED
+
+#if !defined(LBAL_LIBCPP26_SUBMDSPAN_UPDATE)
+  #if __cpp_lib_submdspan >= 202603L
+    #define LBAL_LIBCPP26_SUBMDSPAN_UPDATE __cpp_lib_submdspan
+  #endif
+#endif  //  LBAL_LIBCPP26_SUBMDSPAN_UPDATE
 
 #if !defined(LBAL_LIBCPP26_TASK)
   #if __cpp_lib_task >= 202506L
@@ -2649,6 +2784,87 @@
     #define LBAL_LIBCPP26_VARIANT_VISITOR __cpp_lib_variant
   #endif
 #endif  //  LBAL_LIBCPP26_VARIANT_VISITOR
+
+// C++2d
+
+#if !defined(LBAL_LIBCPP2D_BITOPS_BETTER_SHIFTING)
+  #if __cpp_lib_bitops >= 202607L
+    #define LBAL_LIBCPP2D_BITOPS_BETTER_SHIFTING __cpp_lib_bitops
+  #endif
+#endif  //  LBAL_LIBCPP2D_BITOPS_BETTER_SHIFTING
+
+#if !defined(LBAL_LIBCPP2D_BITOPS_PERMUTATIONS)
+  #if __cpp_lib_bitops >= 202607L
+    #define LBAL_LIBCPP2D_BITOPS_PERMUTATIONS __cpp_lib_bitops
+  #endif
+#endif  //  LBAL_LIBCPP2D_BITOPS_PERMUTATIONS
+
+#if !defined(LBAL_LIBCPP2D_CONSTANT_WRAPPER_REVERT_STRING)
+  #if __cpp_lib_constant_wrapper >= 202606L
+    #define LBAL_LIBCPP2D_CONSTANT_WRAPPER_REVERT_STRING                       \
+      __cpp_lib_constant_wrapper
+  #endif
+#endif  //  LBAL_LIBCPP2D_CONSTANT_WRAPPER_REVERT_STRING
+
+#if !defined(LBAL_LIBCPP2D_EXPECTED_UEXPECTED)
+  #if __cpp_lib_expected >= 202606L
+    #define LBAL_LIBCPP2D_EXPECTED_UEXPECTED __cpp_lib_expected
+  #endif
+#endif  //  LBAL_LIBCPP2D_EXPECTED_UEXPECTED
+
+#if !defined(LBAL_LIBCPP2D_HAZARD_POINTER_BATCHES)
+  #if __cpp_lib_hazard_pointer >= 202606L
+    #define LBAL_LIBCPP2D_HAZARD_POINTER_BATCHES __cpp_lib_hazard_pointer
+  #endif
+#endif  //  LBAL_LIBCPP2D_HAZARD_POINTER_BATCHES
+
+#if !defined(LBAL_LIBCPP2D_MAP_LOOKUP)
+  #if __cpp_lib_map_lookup >= 202606L
+    #define LBAL_LIBCPP2D_MAP_LOOKUP __cpp_lib_map_lookup
+  #endif
+#endif  //  LBAL_LIBCPP2D_MAP_LOOKUP
+
+#if !defined(LBAL_LIBCPP2D_MDSPAN_COPY)
+  #if __cpp_lib_mdspan_copy >= 202606L
+    #define LBAL_LIBCPP2D_MDSPAN_COPY __cpp_lib_mdspan_copy
+  #endif
+#endif  //  LBAL_LIBCPP2D_MDSPAN_COPY
+
+#if !defined(LBAL_LIBCPP2D_POINTER_TAG_PAIR)
+  #if __cpp_lib_pointer_tag_pair >= 202606L
+    #define LBAL_LIBCPP2D_POINTER_TAG_PAIR __cpp_lib_pointer_tag_pair
+  #endif
+#endif  //  LBAL_LIBCPP2D_POINTER_TAG_PAIR
+
+#if !defined(LBAL_LIBCPP2D_SIMD_BITOPS)
+  #if __cpp_lib_simd_bitops >= 202607L
+    #define LBAL_LIBCPP2D_SIMD_BITOPS __cpp_lib_simd_bitops
+  #endif
+#endif  //  LBAL_LIBCPP2D_SIMD_BITOPS
+
+#if !defined(LBAL_LIBCPP2D_SIMD_BITOPS_BETTER_SHIFTING)
+  #if __cpp_lib_simd_bitops >= 202607L
+    #define LBAL_LIBCPP2D_SIMD_BITOPS_BETTER_SHIFTING __cpp_lib_simd_bitops
+  #endif
+#endif  //  LBAL_LIBCPP2D_SIMD_BITOPS_BETTER_SHIFTING
+
+#if !defined(LBAL_LIBCPP2D_THREAD_ATTRIBUTES)
+  #if __cpp_lib_thread_attributes >= 202606L
+    #define LBAL_LIBCPP2D_THREAD_ATTRIBUTES __cpp_lib_thread_attributes
+  #endif
+#endif  //  LBAL_LIBCPP2D_THREAD_ATTRIBUTES
+
+#if !defined(LBAL_LIBCPP2D_TO_CHARS_FIX_FLOAT)
+  #if __cpp_lib_to_chars >= 202606L
+    #define LBAL_LIBCPP2D_TO_CHARS_FIX_FLOAT __cpp_lib_to_chars
+  #endif
+#endif  //  LBAL_LIBCPP2D_TO_CHARS_FIX_FLOAT
+
+#if !defined(LBAL_LIBCPP2D_VIEW_INTERFACE)
+  #if __cpp_lib_view_interface >= 202606L
+    #define LBAL_LIBCPP2D_VIEW_INTERFACE __cpp_lib_view_interface
+  #endif
+#endif  //  LBAL_LIBCPP2D_VIEW_INTERFACE
 
 //	Technical Specifications
 
@@ -3756,10 +3972,13 @@ LBAL_CPP_WARNING(
 #endif    //  LBAL_LIBCPP17_ANY_INTERFACE
 
 #if LBAL_LIBCPP17_APPLY
-  #if LBAL_HAS_HEADER_TUPLE != 1
+  #if LBAL_HAS_HEADER_TUPLE != 1 || LBAL_HAS_HEADER_TYPE_TRAITS != 1
     #undef LBAL_LIBCPP17_APPLY
     #define LBAL_LIBCPP17_APPLY 0
-LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP17_APPLY: <tuple> not found")
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP17_APPLY: at least one of {<tuple>, "
+    "<type_traits>} not found"
+)
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP17_APPLY
 
@@ -4168,12 +4387,14 @@ LBAL_CPP_WARNING(
 #endif    //  LBAL_LIBCPP17_OPTIONAL_INTERFACE
 
 #if LBAL_LIBCPP17_PARALLEL_ALGORITHM
-  #if LBAL_HAS_HEADER_ALGORITHM != 1 || LBAL_HAS_HEADER_NUMERIC != 1
+  #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
+      || LBAL_HAS_HEADER_MEMORY != 1                                           \
+      || LBAL_HAS_HEADER_NUMERIC != 1
     #undef LBAL_LIBCPP17_PARALLEL_ALGORITHM
     #define LBAL_LIBCPP17_PARALLEL_ALGORITHM 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP17_PARALLEL_ALGORITHM: at least one of "
-    "{<algorithm>, <numeric>} not found"
+    "{<algorithm>, <memory>, <numeric>} not found"
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP17_PARALLEL_ALGORITHM
@@ -4532,6 +4753,7 @@ LBAL_CPP_WARNING(
 #if LBAL_LIBCPP20_CHAR8_T
   #if LBAL_HAS_HEADER_ATOMIC != 1                                              \
       || LBAL_HAS_HEADER_FILESYSTEM != 1                                       \
+      || LBAL_HAS_HEADER_IOSFWD != 1                                           \
       || LBAL_HAS_HEADER_ISTREAM != 1                                          \
       || LBAL_HAS_HEADER_LIMITS != 1                                           \
       || LBAL_HAS_HEADER_LOCALE != 1                                           \
@@ -4542,8 +4764,8 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP20_CHAR8_T 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CHAR8_T: at least one of {<atomic>, "
-    "<filesystem>, <istream>, <limits>, <locale>, <ostream>, <string>, "
-    "<string_view>} not found"
+    "<filesystem>, <iosfwd>, <istream>, <limits>, <locale>, <ostream>, "
+    "<string>, <string_view>} not found"
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP20_CHAR8_T
@@ -4551,6 +4773,7 @@ LBAL_CPP_WARNING(
 #if LBAL_LIBCPP20_CHAR8_T_COMPAT
   #if LBAL_HAS_HEADER_ATOMIC != 1                                              \
       || LBAL_HAS_HEADER_FILESYSTEM != 1                                       \
+      || LBAL_HAS_HEADER_IOSFWD != 1                                           \
       || LBAL_HAS_HEADER_ISTREAM != 1                                          \
       || LBAL_HAS_HEADER_LIMITS != 1                                           \
       || LBAL_HAS_HEADER_LOCALE != 1                                           \
@@ -4561,8 +4784,8 @@ LBAL_CPP_WARNING(
     #define LBAL_LIBCPP20_CHAR8_T_COMPAT 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP20_CHAR8_T_COMPAT: at least one of "
-    "{<atomic>, <filesystem>, <istream>, <limits>, <locale>, <ostream>, "
-    "<string>, <string_view>} not found"
+    "{<atomic>, <filesystem>, <iosfwd>, <istream>, <limits>, <locale>, "
+    "<ostream>, <string>, <string_view>} not found"
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP20_CHAR8_T_COMPAT
@@ -5206,22 +5429,23 @@ LBAL_CPP_WARNING(
 #endif    //  LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR
 
 #if LBAL_LIBCPP20_SYNCBUF
-  #if LBAL_HAS_HEADER_SYNCSTREAM != 1
+  #if LBAL_HAS_HEADER_IOSFWD != 1 || LBAL_HAS_HEADER_SYNCSTREAM != 1
     #undef LBAL_LIBCPP20_SYNCBUF
     #define LBAL_LIBCPP20_SYNCBUF 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_SYNCBUF: <syncstream> not found"
+    "Unable to validate LBAL_LIBCPP20_SYNCBUF: at least one of {<iosfwd>, "
+    "<syncstream>} not found"
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP20_SYNCBUF
 
 #if LBAL_LIBCPP20_SYNCBUF_MANIPULATORS
-  #if LBAL_HAS_HEADER_SYNCSTREAM != 1
+  #if LBAL_HAS_HEADER_IOSFWD != 1 || LBAL_HAS_HEADER_SYNCSTREAM != 1
     #undef LBAL_LIBCPP20_SYNCBUF_MANIPULATORS
     #define LBAL_LIBCPP20_SYNCBUF_MANIPULATORS 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP20_SYNCBUF_MANIPULATORS: <syncstream> not "
-    "found"
+    "Unable to validate LBAL_LIBCPP20_SYNCBUF_MANIPULATORS: at least one of "
+    "{<iosfwd>, <syncstream>} not found"
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP20_SYNCBUF_MANIPULATORS
@@ -5660,6 +5884,16 @@ LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP23_MDSPAN: <mdspan> not found")
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP23_MDSPAN
 
+#if LBAL_LIBCPP23_MONADIC_OPTIONAL
+  #if LBAL_HAS_HEADER_OPTIONAL != 1
+    #undef LBAL_LIBCPP23_MONADIC_OPTIONAL
+    #define LBAL_LIBCPP23_MONADIC_OPTIONAL 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP23_MONADIC_OPTIONAL: <optional> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP23_MONADIC_OPTIONAL
+
 #if LBAL_LIBCPP23_MOVE_ITERATOR_CONCEPT
   #if LBAL_HAS_HEADER_ITERATOR != 1
     #undef LBAL_LIBCPP23_MOVE_ITERATOR_CONCEPT
@@ -6021,11 +6255,12 @@ LBAL_CPP_WARNING(
 #endif    //  LBAL_LIBCPP23_SHIFT_RANGES
 
 #if LBAL_LIBCPP23_SPANSTREAM
-  #if LBAL_HAS_HEADER_SPANSTREAM != 1
+  #if LBAL_HAS_HEADER_IOSFWD != 1 || LBAL_HAS_HEADER_SPANSTREAM != 1
     #undef LBAL_LIBCPP23_SPANSTREAM
     #define LBAL_LIBCPP23_SPANSTREAM 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP23_SPANSTREAM: <spanstream> not found"
+    "Unable to validate LBAL_LIBCPP23_SPANSTREAM: at least one of {<iosfwd>, "
+    "<spanstream>} not found"
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP23_SPANSTREAM
@@ -6138,6 +6373,25 @@ LBAL_CPP_WARNING(
 
 // C++26
 
+#if LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE
+  #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
+      || LBAL_HAS_HEADER_DEQUE != 1                                            \
+      || LBAL_HAS_HEADER_FORWARD_LIST != 1                                     \
+      || LBAL_HAS_HEADER_LIST != 1                                             \
+      || LBAL_HAS_HEADER_MEMORY != 1                                           \
+      || LBAL_HAS_HEADER_RANGES != 1                                           \
+      || LBAL_HAS_HEADER_STRING != 1                                           \
+      || LBAL_HAS_HEADER_VECTOR != 1
+    #undef LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE
+    #define LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE: at least "
+    "one of {<algorithm>, <deque>, <forward_list>, <list>, <memory>, <ranges>, "
+    "<string>, <vector>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE
+
 #if LBAL_LIBCPP26_ALIGNED_ACCESSOR
   #if LBAL_HAS_HEADER_MDSPAN != 1
     #undef LBAL_LIBCPP26_ALIGNED_ACCESSOR
@@ -6202,6 +6456,17 @@ LBAL_CPP_WARNING(
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_ATOMIC_REF_ADDRESS
 
+#if LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS
+  #if LBAL_HAS_HEADER_ATOMIC != 1
+    #undef LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS
+    #define LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS: <atomic> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS
+
 #if LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES
   #if LBAL_HAS_HEADER_FUNCTIONAL != 1
     #undef LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES
@@ -6232,14 +6497,26 @@ LBAL_CPP_WARNING(
 #endif    //  LBAL_LIBCPP26_CHRONO_HASHING
 
 #if LBAL_LIBCPP26_CONSTANT_WRAPPER
-  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1 || LBAL_HAS_HEADER_UTILITY != 1
     #undef LBAL_LIBCPP26_CONSTANT_WRAPPER
     #define LBAL_LIBCPP26_CONSTANT_WRAPPER 0
 LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_CONSTANT_WRAPPER: <type_traits> not found"
+    "Unable to validate LBAL_LIBCPP26_CONSTANT_WRAPPER: at least one of "
+    "{<type_traits>, <utility>} not found"
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_CONSTANT_WRAPPER
+
+#if LBAL_LIBCPP26_CONSTANT_WRAPPER_UNWRAP_ON_CALL
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1 || LBAL_HAS_HEADER_UTILITY != 1
+    #undef LBAL_LIBCPP26_CONSTANT_WRAPPER_UNWRAP_ON_CALL
+    #define LBAL_LIBCPP26_CONSTANT_WRAPPER_UNWRAP_ON_CALL 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_CONSTANT_WRAPPER_UNWRAP_ON_CALL: at "
+    "least one of {<type_traits>, <utility>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_CONSTANT_WRAPPER_UNWRAP_ON_CALL
 
 #if LBAL_LIBCPP26_CONSTEXPR_ALGORITHMS_STABLE_SORT
   #if LBAL_HAS_HEADER_ALGORITHM != 1 || LBAL_HAS_HEADER_UTILITY != 1
@@ -6532,6 +6809,17 @@ LBAL_CPP_WARNING(
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_EXCEPTION_PTR_CAST
+
+#if LBAL_LIBCPP26_EXCEPTION_PTR_CAST_BETTER_RETURN_TYPES
+  #if LBAL_HAS_HEADER_EXCEPTION != 1
+    #undef LBAL_LIBCPP26_EXCEPTION_PTR_CAST_BETTER_RETURN_TYPES
+    #define LBAL_LIBCPP26_EXCEPTION_PTR_CAST_BETTER_RETURN_TYPES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_EXCEPTION_PTR_CAST_BETTER_RETURN_TYPES: "
+    "<exception> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_EXCEPTION_PTR_CAST_BETTER_RETURN_TYPES
 
 #if LBAL_LIBCPP26_EXCEPTION_PTR_CAST_CONSTEXPR
   #if LBAL_HAS_HEADER_EXCEPTION != 1
@@ -6940,6 +7228,17 @@ LBAL_CPP_WARNING(
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_FUNCTION_REF
 
+#if LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION
+  #if LBAL_HAS_HEADER_FUNCTIONAL != 1
+    #undef LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION
+    #define LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION: "
+    "<functional> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION
+
 #if LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE
   #if LBAL_HAS_HEADER_FUNCTIONAL != 1
     #undef LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE
@@ -7210,6 +7509,28 @@ LBAL_CPP_WARNING(
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_INPLACE_VECTOR
 
+#if LBAL_LIBCPP26_INPLACE_VECTOR_BETTER_RETURN_TYPES
+  #if LBAL_HAS_HEADER_INPLACE_VECTOR != 1
+    #undef LBAL_LIBCPP26_INPLACE_VECTOR_BETTER_RETURN_TYPES
+    #define LBAL_LIBCPP26_INPLACE_VECTOR_BETTER_RETURN_TYPES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_INPLACE_VECTOR_BETTER_RETURN_TYPES: "
+    "<inplace_vector> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_INPLACE_VECTOR_BETTER_RETURN_TYPES
+
+#if LBAL_LIBCPP26_INPLACE_VECTOR_REMOVE_TRY_APPEND_RANGE
+  #if LBAL_HAS_HEADER_INPLACE_VECTOR != 1
+    #undef LBAL_LIBCPP26_INPLACE_VECTOR_REMOVE_TRY_APPEND_RANGE
+    #define LBAL_LIBCPP26_INPLACE_VECTOR_REMOVE_TRY_APPEND_RANGE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_INPLACE_VECTOR_REMOVE_TRY_APPEND_RANGE: "
+    "<inplace_vector> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_INPLACE_VECTOR_REMOVE_TRY_APPEND_RANGE
+
 #if LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS
   #if LBAL_HAS_HEADER_UTILITY != 1
     #undef LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS
@@ -7220,6 +7541,17 @@ LBAL_CPP_WARNING(
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS
+
+#if LBAL_LIBCPP26_IS_STRUCTURAL
+  #if LBAL_HAS_HEADER_META != 1 || LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP26_IS_STRUCTURAL
+    #define LBAL_LIBCPP26_IS_STRUCTURAL 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_IS_STRUCTURAL: at least one of {<meta>, "
+    "<type_traits>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_IS_STRUCTURAL
 
 #if LBAL_LIBCPP26_IS_VIRTUAL_BASE_OF
   #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
@@ -7242,6 +7574,17 @@ LBAL_CPP_WARNING(
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_IS_WITHIN_LIFETIME
+
+#if LBAL_LIBCPP26_IS_WITHIN_LIFETIME_EXTEND
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP26_IS_WITHIN_LIFETIME_EXTEND
+    #define LBAL_LIBCPP26_IS_WITHIN_LIFETIME_EXTEND 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_IS_WITHIN_LIFETIME_EXTEND: <type_traits> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_IS_WITHIN_LIFETIME_EXTEND
 
 #if LBAL_LIBCPP26_LINALG
   #if LBAL_HAS_HEADER_LINALG != 1
@@ -7346,12 +7689,14 @@ LBAL_CPP_WARNING(
 #endif    //  LBAL_LIBCPP26_OUT_PTR_MORE
 
 #if LBAL_LIBCPP26_PARALLEL_ALGORITHM_RANGE
-  #if LBAL_HAS_HEADER_ALGORITHM != 1 || LBAL_HAS_HEADER_NUMERIC != 1
+  #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
+      || LBAL_HAS_HEADER_MEMORY != 1                                           \
+      || LBAL_HAS_HEADER_NUMERIC != 1
     #undef LBAL_LIBCPP26_PARALLEL_ALGORITHM_RANGE
     #define LBAL_LIBCPP26_PARALLEL_ALGORITHM_RANGE 0
 LBAL_CPP_WARNING(
     "Unable to validate LBAL_LIBCPP26_PARALLEL_ALGORITHM_RANGE: at least one "
-    "of {<algorithm>, <numeric>} not found"
+    "of {<algorithm>, <memory>, <numeric>} not found"
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_PARALLEL_ALGORITHM_RANGE
@@ -7419,6 +7764,27 @@ LBAL_CPP_WARNING(
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_RANGES_AS_CONST_FIX_CONVERTIBILITY
 
+#if LBAL_LIBCPP26_RANGES_AS_INPUT
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP26_RANGES_AS_INPUT
+    #define LBAL_LIBCPP26_RANGES_AS_INPUT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_RANGES_AS_INPUT: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_RANGES_AS_INPUT
+
+#if LBAL_LIBCPP26_RANGES_AS_INPUT_RENAME
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP26_RANGES_AS_INPUT_RENAME
+    #define LBAL_LIBCPP26_RANGES_AS_INPUT_RENAME 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_RANGES_AS_INPUT_RENAME: <ranges> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_RANGES_AS_INPUT_RENAME
+
 #if LBAL_LIBCPP26_RANGES_CACHE_LATEST
   #if LBAL_HAS_HEADER_RANGES != 1
     #undef LBAL_LIBCPP26_RANGES_CACHE_LATEST
@@ -7438,6 +7804,16 @@ LBAL_CPP_WARNING(
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_RANGES_CONCAT
+
+#if LBAL_LIBCPP26_RANGES_FILTER
+  #if LBAL_HAS_HEADER_RANGES != 1
+    #undef LBAL_LIBCPP26_RANGES_FILTER
+    #define LBAL_LIBCPP26_RANGES_FILTER 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_RANGES_FILTER: <ranges> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_RANGES_FILTER
 
 #if LBAL_LIBCPP26_RANGES_INDICES
   #if LBAL_HAS_HEADER_RANGES != 1
@@ -7474,16 +7850,6 @@ LBAL_CPP_WARNING(
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_RANGES_RESERVE_HINT
-
-#if LBAL_LIBCPP26_RANGES_TO_INPUT
-  #if LBAL_HAS_HEADER_RANGES != 1
-    #undef LBAL_LIBCPP26_RANGES_TO_INPUT
-    #define LBAL_LIBCPP26_RANGES_TO_INPUT 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_RANGES_TO_INPUT: <ranges> not found"
-)
-  #endif  //  LBAL_HAS_HEADER_ test
-#endif    //  LBAL_LIBCPP26_RANGES_TO_INPUT
 
 #if LBAL_LIBCPP26_RATIO
   #if LBAL_HAS_HEADER_RATIO != 1
@@ -7532,6 +7898,38 @@ LBAL_CPP_WARNING(
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_REFLECTION
 
+#if LBAL_LIBCPP26_REFLECTION_CLEANUP
+  #if LBAL_HAS_HEADER_META != 1
+    #undef LBAL_LIBCPP26_REFLECTION_CLEANUP
+    #define LBAL_LIBCPP26_REFLECTION_CLEANUP 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_REFLECTION_CLEANUP: <meta> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_REFLECTION_CLEANUP
+
+#if LBAL_LIBCPP26_REFLECTION_RENAME_TO_IS_VARARG_FUNCTION
+  #if LBAL_HAS_HEADER_META != 1
+    #undef LBAL_LIBCPP26_REFLECTION_RENAME_TO_IS_VARARG_FUNCTION
+    #define LBAL_LIBCPP26_REFLECTION_RENAME_TO_IS_VARARG_FUNCTION 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_REFLECTION_RENAME_TO_IS_VARARG_FUNCTION: "
+    "<meta> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_REFLECTION_RENAME_TO_IS_VARARG_FUNCTION
+
+#if LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER
+  #if LBAL_HAS_HEADER_CONTRACTS != 1
+    #undef LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER
+    #define LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER: "
+    "<contracts> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER
+
 #if LBAL_LIBCPP26_SATURATION_ARITHMETIC
   #if LBAL_HAS_HEADER_NUMERIC != 1
     #undef LBAL_LIBCPP26_SATURATION_ARITHMETIC
@@ -7542,6 +7940,17 @@ LBAL_CPP_WARNING(
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_SATURATION_ARITHMETIC
+
+#if LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING
+  #if LBAL_HAS_HEADER_NUMERIC != 1
+    #undef LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING
+    #define LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING: "
+    "<numeric> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING
 
 #if LBAL_LIBCPP26_SENDERS
   #if LBAL_HAS_HEADER_EXECUTION != 1
@@ -7618,6 +8027,14 @@ LBAL_CPP_WARNING(
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_SIMD_EXTEND
+
+#if LBAL_LIBCPP26_SIMD_IOTA
+  #if LBAL_HAS_HEADER_SIMD != 1
+    #undef LBAL_LIBCPP26_SIMD_IOTA
+    #define LBAL_LIBCPP26_SIMD_IOTA 0
+LBAL_CPP_WARNING("Unable to validate LBAL_LIBCPP26_SIMD_IOTA: <simd> not found")
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SIMD_IOTA
 
 #if LBAL_LIBCPP26_SIMD_NAMESPACES
   #if LBAL_HAS_HEADER_SIMD != 1
@@ -7708,6 +8125,36 @@ LBAL_CPP_WARNING(
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_SSTREAM_FROM_STRING_VIEW
 
+#if LBAL_LIBCPP26_START_LIFETIME
+  #if LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP26_START_LIFETIME
+    #define LBAL_LIBCPP26_START_LIFETIME 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_START_LIFETIME: <memory> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_START_LIFETIME
+
+#if LBAL_LIBCPP26_STDBIT_H
+  #if LBAL_HAS_HEADER_STDBIT_H != 1
+    #undef LBAL_LIBCPP26_STDBIT_H
+    #define LBAL_LIBCPP26_STDBIT_H 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_STDBIT_H: <stdbit.h> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_STDBIT_H
+
+#if LBAL_LIBCPP26_STDCKDINT_H
+  #if LBAL_HAS_HEADER_STDCKDINT_H != 1
+    #undef LBAL_LIBCPP26_STDCKDINT_H
+    #define LBAL_LIBCPP26_STDCKDINT_H 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_STDCKDINT_H: <stdckdint.h> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_STDCKDINT_H
+
 #if LBAL_LIBCPP26_STRING_SUBVIEW
   #if LBAL_HAS_HEADER_STRING != 1 || LBAL_HAS_HEADER_STRING_VIEW != 1
     #undef LBAL_LIBCPP26_STRING_SUBVIEW
@@ -7770,6 +8217,16 @@ LBAL_CPP_WARNING(
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_SUBMDSPAN_PADDED
+
+#if LBAL_LIBCPP26_SUBMDSPAN_UPDATE
+  #if LBAL_HAS_HEADER_MDSPAN != 1
+    #undef LBAL_LIBCPP26_SUBMDSPAN_UPDATE
+    #define LBAL_LIBCPP26_SUBMDSPAN_UPDATE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_SUBMDSPAN_UPDATE: <mdspan> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_SUBMDSPAN_UPDATE
 
 #if LBAL_LIBCPP26_TASK
   #if LBAL_HAS_HEADER_EXECUTION != 1
@@ -7852,6 +8309,70 @@ LBAL_CPP_WARNING(
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_VARIANT_VISITOR
+
+// C++2d
+
+#if LBAL_LIBCPP2D_BITOPS_BETTER_SHIFTING
+  #if LBAL_HAS_HEADER_BIT != 1
+    #undef LBAL_LIBCPP2D_BITOPS_BETTER_SHIFTING
+    #define LBAL_LIBCPP2D_BITOPS_BETTER_SHIFTING 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP2D_BITOPS_BETTER_SHIFTING: <bit> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP2D_BITOPS_BETTER_SHIFTING
+
+#if LBAL_LIBCPP2D_BITOPS_PERMUTATIONS
+  #if LBAL_HAS_HEADER_BIT != 1
+    #undef LBAL_LIBCPP2D_BITOPS_PERMUTATIONS
+    #define LBAL_LIBCPP2D_BITOPS_PERMUTATIONS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP2D_BITOPS_PERMUTATIONS: <bit> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP2D_BITOPS_PERMUTATIONS
+
+#if LBAL_LIBCPP2D_CONSTANT_WRAPPER_REVERT_STRING
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1 || LBAL_HAS_HEADER_UTILITY != 1
+    #undef LBAL_LIBCPP2D_CONSTANT_WRAPPER_REVERT_STRING
+    #define LBAL_LIBCPP2D_CONSTANT_WRAPPER_REVERT_STRING 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP2D_CONSTANT_WRAPPER_REVERT_STRING: at least "
+    "one of {<type_traits>, <utility>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP2D_CONSTANT_WRAPPER_REVERT_STRING
+
+#if LBAL_LIBCPP2D_EXPECTED_UEXPECTED
+  #if LBAL_HAS_HEADER_EXPECTED != 1
+    #undef LBAL_LIBCPP2D_EXPECTED_UEXPECTED
+    #define LBAL_LIBCPP2D_EXPECTED_UEXPECTED 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP2D_EXPECTED_UEXPECTED: <expected> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP2D_EXPECTED_UEXPECTED
+
+#if LBAL_LIBCPP2D_HAZARD_POINTER_BATCHES
+  #if LBAL_HAS_HEADER_HAZARD_POINTER != 1
+    #undef LBAL_LIBCPP2D_HAZARD_POINTER_BATCHES
+    #define LBAL_LIBCPP2D_HAZARD_POINTER_BATCHES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP2D_HAZARD_POINTER_BATCHES: <hazard_pointer> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP2D_HAZARD_POINTER_BATCHES
+
+#if LBAL_LIBCPP2D_TO_CHARS_FIX_FLOAT
+  #if LBAL_HAS_HEADER_CHARCONV != 1
+    #undef LBAL_LIBCPP2D_TO_CHARS_FIX_FLOAT
+    #define LBAL_LIBCPP2D_TO_CHARS_FIX_FLOAT 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP2D_TO_CHARS_FIX_FLOAT: <charconv> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP2D_TO_CHARS_FIX_FLOAT
 
 /*------------------------------------------------------------------------------
   Aggregates

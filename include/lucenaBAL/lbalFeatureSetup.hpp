@@ -968,6 +968,11 @@
   SD-6 equivalent: `__cpp_exceptions >= 199711L`. This token will have a value
   of `0` if the proposal described here is not supported.
   - `199711L` [N1146](https://wg21.link/N1146) C++98 Final Working Draft
+
+  @remark This is based on the non-existent `__cpp_exceptions` SD-6 token, which
+  does not appear in any Standard document but which everyone agrees exists.
+  Despite being a de facto language extension, it’s safe to rely on since all
+  compilers appear to support it.
 */
 #ifndef LBAL_CPP03_EXCEPTIONS
   #define LBAL_CPP03_EXCEPTIONS 0
@@ -982,6 +987,11 @@
   SD-6 equivalent: `__cpp_rtti >= 199711L`. This token will have a value of `0`
   if the proposal described here is not supported.
   - `199711L` [N1146](https://wg21.link/N1146) C++98 Final Working Draft
+
+  @remark This is based on the non-existent `__cpp_rtti` SD-6 token, which does
+  not appear in any Standard document but which everyone agrees exists. Despite
+  being a de facto language extension, it’s safe to rely on since all compilers
+  appear to support it.
 */
 #ifndef LBAL_CPP03_RTTI
   #define LBAL_CPP03_RTTI 0
@@ -2207,8 +2217,10 @@
 /**
   @def LBAL_CPP20_DESIGNATED_INITIALIZERS
   @brief Add designated initializers
-  @details SD-6 equivalent: `__cpp_designated_initializers >= 201707L`.
-  This token will have a value of `0` if the proposal described here is not
+  @details SD-6 equivalent: `__cpp_designated_initializers >= 201707L`. Note
+  that `__cpp_designated_initializers` has multiple values associated with it
+  from a number of different proposals, so this token will have the value of
+  the latest supported proposal, or `0` if the proposal described here is not
   supported.
   - `201707L` [P0329R4 __PDF__](https://wg21.link/P0329R4) Designated
   Initialization Wording
@@ -2247,8 +2259,10 @@
 /**
   @def LBAL_CPP20_IMPL_COROUTINE
   @brief Add necessary language support for the `<coroutine>` library feature
-  @details SD-6 equivalent: `__cpp_impl_coroutine >= 201902L`. This token will
-  have a value of `0` if the proposal described here is not supported.
+  @details SD-6 equivalent: `__cpp_impl_coroutine >= 201902L`. Note that
+  `__cpp_impl_coroutine` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
   - `201902L` [LWG3393](https://wg21.link/LWG3393) Missing/incorrect feature
   test macro for coroutines
   - `201902L` [P0912R5](https://wg21.link/P0912R5) Merge Coroutines TS into C+
@@ -2676,6 +2690,20 @@
 */
 
 /**
+  @def LBAL_CPP26_ATTRIBUTE_INDETERMINATE
+  @brief Erroneous behaviour for uninitialized reads
+  @details
+
+  SD-6 equivalent: `__has_cpp_attribute(indeterminate) >= 202403L`. This token
+  will have a value of `0` if the proposal described here is not supported.
+  - `202403L` [P2795R5](https://wg21.link/P2795R5) Erroneous behaviour for
+  uninitialized reads
+*/
+#ifndef LBAL_CPP26_ATTRIBUTE_INDETERMINATE
+  #define LBAL_CPP26_ATTRIBUTE_INDETERMINATE 0
+#endif
+
+/**
   @def LBAL_CPP26_CONSTEXPR_CAST_FROM_VOID_STAR
   @brief All `constexpr` cast from `void *`
   @details SD-6 equivalent: `__cpp_constexpr >= 202306L`. Note that
@@ -2729,8 +2757,10 @@
 /**
   @def LBAL_CPP26_CONTRACTS
   @brief Contracts for C++
-  @details SD-6 equivalent: `__cpp_contracts >= 202502L`. This token will have a
-  value of `0` if the proposal described here is not supported.
+  @details SD-6 equivalent: `__cpp_contracts >= 202502L`. Note that
+  `__cpp_contracts` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
   - `202502L` [P2900R14 __PDF__](https://wg21.link/P2900R14) Contracts for C++
 */
 #ifndef LBAL_CPP26_CONTRACTS
@@ -2763,8 +2793,10 @@
 /**
   @def LBAL_CPP26_IMPL_REFLECTION
   @brief Reflection for C++26
-  @details SD-6 equivalent: `__cpp_impl_reflection >= 202506L`. This token will
-  have a value of `0` if the proposal described here is not supported.
+  @details SD-6 equivalent: `__cpp_impl_reflection >= 202506L`. Note that
+  `__cpp_impl_reflection` has multiple values associated with it from a number
+  of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202506L` [P2996R13](https://wg21.link/P2996R13) Reflection for C++26
   - `202506L` [P3096R12 __PDF__](https://wg21.link/P3096R12) Function Parameter
   Reflection in Reflection for C++26
@@ -2777,10 +2809,28 @@
 #endif
 
 /**
+  @def LBAL_CPP26_IMPL_REFLECTION_CLEANUP
+  @brief Miscellaneous Reflection Cleanup
+  @details
+
+  SD-6 equivalent: `__cpp_impl_reflection >= 202603L`. Note that
+  `__cpp_impl_reflection` has multiple values associated with it from a number
+  of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P3795R2](https://wg21.link/P3795R2) Miscellaneous Reflection
+  Cleanup
+*/
+#ifndef LBAL_CPP26_IMPL_REFLECTION_CLEANUP
+  #define LBAL_CPP26_IMPL_REFLECTION_CLEANUP 0
+#endif
+
+/**
   @def LBAL_CPP26_PACK_INDEXING
   @brief Pack Indexing
-  @details SD-6 equivalent: `__cpp_pack_indexing >= 202311L`. This token will
-  have a value of `0` if the proposal described here is not supported.
+  @details SD-6 equivalent: `__cpp_pack_indexing >= 202311L`. Note that
+  `__cpp_pack_indexing` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
   - `202311L` [P2662R3 __PDF__](https://wg21.link/P2662R3) Pack Indexing
 */
 #ifndef LBAL_CPP26_PACK_INDEXING
@@ -2797,6 +2847,23 @@
 */
 #ifndef LBAL_CPP26_PLACEHOLDER_VARIABLES
   #define LBAL_CPP26_PLACEHOLDER_VARIABLES 0
+#endif
+
+/**
+  @def LBAL_CPP26_PP_EMBED
+  @brief `#embed` - a scannable, tooling-friendly binary resource inclusion
+  mechanism
+  @details
+
+  SD-6 equivalent: `__cpp_pp_embed >= 202502L`. Note that `__cpp_pp_embed` has
+  multiple values associated with it from a number of different proposals, so
+  this token will have the value of the latest supported proposal, or `0` if the
+  proposal described here is not supported.
+  - `202502L` [P1967R14](https://wg21.link/P1967R14) `#embed` - a scannable,
+  tooling-friendly binary resource inclusion mechanism
+*/
+#ifndef LBAL_CPP26_PP_EMBED
+  #define LBAL_CPP26_PP_EMBED 0
 #endif
 
 /**
@@ -2856,13 +2923,33 @@
 /**
   @def LBAL_CPP26_TRIVIAL_UNION
   @brief Allow trivial `unions`
-  @details SD-6 equivalent: `__cpp_trivial_union >= 202502L`. This token will
-  have a value of `0` if the proposal described here is not supported.
+  @details SD-6 equivalent: `__cpp_trivial_union >= 202502L`. Note that
+  `__cpp_trivial_union` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
   - `202502L` [P3074R7](https://wg21.link/P3074R7) trivial unions (was
+  std::uninitialized<T>)
+  - `202603L` [P3074R7](https://wg21.link/P3074R7) trivial unions (was
   std::uninitialized<T>)
 */
 #ifndef LBAL_CPP26_TRIVIAL_UNION
   #define LBAL_CPP26_TRIVIAL_UNION 0
+#endif
+
+/**
+  @def LBAL_CPP26_TRIVIAL_UNION_LIFETIME
+  @brief Adjustments to `union` Lifetime Rules
+  @details
+
+  SD-6 equivalent: `__cpp_trivial_union >= 202603L`. Note that
+  `__cpp_trivial_union` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P3726R2](https://wg21.link/P3726R2) Adjustments to `union`
+  Lifetime Rules
+*/
+#ifndef LBAL_CPP26_TRIVIAL_UNION_LIFETIME
+  #define LBAL_CPP26_TRIVIAL_UNION_LIFETIME 0
 #endif
 
 /**
@@ -2893,11 +2980,119 @@
   we’ll make one up. Once official tokens are created, we will synchronize with
   them it and deprecate the speculative ones.
 
-  @remarks (FIXME - bitweeder) These are on hold till the associated proposals
-  are published publicly.
-
   @{
 */
+
+/**
+  @def LBAL_CPP2D_CONCEPTS_CONDITIONAL_NOEXCEPT
+  @brief Conditional `noexcept` specifiers in compound requirements
+  @details
+
+  SD-6 equivalent: `__cpp_concepts >= 202606L`. Note that `__cpp_concepts` has
+  multiple values associated with it from a number of different proposals, so
+  this token will have the value of the latest supported proposal, or `0` if the
+  proposal described here is not supported.
+  - `202606L` [P3822R2](https://wg21.link/P3822R2) Conditional `noexcept`
+  specifiers in compound requirements
+*/
+#ifndef LBAL_CPP2D_CONCEPTS_CONDITIONAL_NOEXCEPT
+  #define LBAL_CPP2D_CONCEPTS_CONDITIONAL_NOEXCEPT 0
+#endif
+
+/**
+  @def LBAL_CPP2D_CONSTEVAL_ONLY
+  @brief `consteval`-only Values for C++26
+  @details
+
+  SD-6 equivalent: `__cpp_consteval >= 202606L`. Note that `__cpp_consteval` has
+  multiple values associated with it from a number of different proposals, so
+  this token will have the value of the latest supported proposal, or `0` if the
+  proposal described here is not supported.
+  - `202606L` [P4101R1](https://wg21.link/P4101R1) `consteval`-only Values for
+  C++26
+*/
+#ifndef LBAL_CPP2D_CONSTEVAL_ONLY
+  #define LBAL_CPP2D_CONSTEVAL_ONLY 0
+#endif
+
+/**
+  @def LBAL_CPP2D_CONTRACTS_VIRTUAL
+  @brief Contracts for C++: Virtual functions
+  @details
+
+  SD-6 equivalent: `__cpp_contracts >= 202606L`. Note that `__cpp_contracts` has
+  multiple values associated with it from a number of different proposals, so
+  this token will have the value of the latest supported proposal, or `0` if the
+  proposal described here is not supported.
+  - `202606L` [P3097R3](https://wg21.link/P3097R3) Contracts for C++: Virtual
+  functions
+*/
+#ifndef LBAL_CPP2D_CONTRACTS_VIRTUAL
+  #define LBAL_CPP2D_CONTRACTS_VIRTUAL 0
+#endif
+
+/**
+  @def LBAL_CPP2D_DESIGNATED_INITIALIZERS_BASE_CLASSES
+  @brief Designated-initializers for Base Classes
+  @details
+
+  SD-6 equivalent: `__cpp_designated_initializers >= 202606L`. Note that
+  `__cpp_designated_initializers` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202606L` [P2287R6](https://wg21.link/P2287R6) Designated-initializers for
+  Base Classes
+*/
+#ifndef LBAL_CPP2D_DESIGNATED_INITIALIZERS_BASE_CLASSES
+  #define LBAL_CPP2D_DESIGNATED_INITIALIZERS_BASE_CLASSES 0
+#endif
+
+/**
+  @def LBAL_CPP2D_IMPL_COROUTINE_RETURN
+  @brief `return_value` & `return_void` Are Not Mutually Exclusive
+  @details
+
+  SD-6 equivalent: `__cpp_impl_coroutine >= 202606L`. Note that
+  `__cpp_impl_coroutine` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `202606L` [P3950R1](https://wg21.link/P3950R1) `return_value` &
+  `return_void` Are Not Mutually Exclusive
+*/
+#ifndef LBAL_CPP2D_IMPL_COROUTINE_RETURN
+  #define LBAL_CPP2D_IMPL_COROUTINE_RETURN 0
+#endif
+
+/**
+  @def LBAL_CPP2D_PACK_INDEXING_TEMPLATE_NAMES
+  @brief Pack Indexing for Template Names
+  @details
+
+  SD-6 equivalent: `__cpp_pack_indexing >= 202606L`. Note that
+  `__cpp_pack_indexing` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `202606L` [P3670R4](https://wg21.link/P3670R4) Pack Indexing for Template
+  Names
+*/
+#ifndef LBAL_CPP2D_PACK_INDEXING_TEMPLATE_NAMES
+  #define LBAL_CPP2D_PACK_INDEXING_TEMPLATE_NAMES 0
+#endif
+
+/**
+  @def LBAL_CPP2D_PP_EMBED_OFFSET
+  @brief `#embed` offset parameter
+  @details
+
+  SD-6 equivalent: `__cpp_pp_embed >= 202606L`. Note that `__cpp_pp_embed` has
+  multiple values associated with it from a number of different proposals, so
+  this token will have the value of the latest supported proposal, or `0` if the
+  proposal described here is not supported.
+  - `202606L` [P3540R3](https://wg21.link/P3540R3) `#embed` offset parameter
+*/
+#ifndef LBAL_CPP2D_PP_EMBED_OFFSET
+  #define LBAL_CPP2D_PP_EMBED_OFFSET 0
+#endif
 
 ///	@}	LBAL_CPP2D
 
@@ -3102,7 +3297,7 @@
   - `201304L` [N3668](https://wg21.link/N3668) exchange() utility function,
   revision 3
 
-  @sa `<utility>`
+  @sa `freestanding` `<utility>`
 */
 #ifndef LBAL_LIBCPP14_EXCHANGE_FUNCTION
   #define LBAL_LIBCPP14_EXCHANGE_FUNCTION 0
@@ -3132,7 +3327,7 @@
   supported proposal, or `0` if the proposal described here is not supported.
   - `201304L` [N3658](https://wg21.link/N3658) Compile-time integer sequences
 
-  @sa `<utility>`
+  @sa `freestanding` `<utility>`
 */
 #ifndef LBAL_LIBCPP14_INTEGER_SEQUENCE
   #define LBAL_LIBCPP14_INTEGER_SEQUENCE 0
@@ -3147,7 +3342,7 @@
   - `201304L` [N3545 __PDF__](https://wg21.link/N3545) An Incremental
   Improvement to integral_constant
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE
   #define LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE 0
@@ -3161,7 +3356,7 @@
   - `201402L` [LWG2112](https://wg21.link/LWG2112) User-defined classes that
   cannot be derived from
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP14_IS_FINAL
   #define LBAL_LIBCPP14_IS_FINAL 0
@@ -3175,7 +3370,7 @@
   - `201309L` [LWG2247](https://wg21.link/LWG2247) Type traits and
   std::nullptr_t
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP14_IS_NULL_POINTER
   #define LBAL_LIBCPP14_IS_NULL_POINTER 0
@@ -3189,7 +3384,7 @@
   supported.
   - `201402L` [LWG2285](https://wg21.link/LWG2285) make_reverse_iterator
 
-  @sa `<iterator>`
+  @sa `freestanding` `<iterator>`
 */
 #ifndef LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR
   #define LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR 0
@@ -3215,7 +3410,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `201304L` [N3644 __PDF__](https://wg21.link/N3644) Null Forward Iterators
 
-  @sa `<iterator>`
+  @sa `freestanding` `<iterator>`
 */
 #ifndef LBAL_LIBCPP14_NULL_ITERATORS
   #define LBAL_LIBCPP14_NULL_ITERATORS 0
@@ -3242,7 +3437,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `201210L` [N3462](https://wg21.link/N3462) std::result_of and SFINAE
 
-  @sa `<functional>` `<type_traits>`
+  @sa `freestanding` `<functional>` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP14_RESULT_OF_SFINAE
   #define LBAL_LIBCPP14_RESULT_OF_SFINAE 0
@@ -3257,7 +3452,7 @@
   - `201304L` [N3671](https://wg21.link/N3671) Making non-modifying sequence
   operations more robust: Revision 2
 
-  @sa `<algorithm>`
+  @sa `<algorithm>` `freestanding`
 */
 #ifndef LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS
   #define LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS 0
@@ -3301,7 +3496,7 @@
   - `201304L` [N3655 __PDF__](https://wg21.link/N3655) TransformationTraits
   Redux, v2
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES
   #define LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES 0
@@ -3319,7 +3514,7 @@
   - `201210L` [N3421](https://wg21.link/N3421) Making Operator Functors
   greater<>
 
-  @sa `<functional>` `<memory>`
+  @sa `freestanding` `<functional>` `<memory>`
 */
 #ifndef LBAL_LIBCPP14_TRANSPARENT_OPERATORS
   #define LBAL_LIBCPP14_TRANSPARENT_OPERATORS 0
@@ -3333,7 +3528,7 @@
   - `201304L` [N3670 __PDF__](https://wg21.link/N3670) Wording for Addressing
   Tuples by Type: Revision 2
 
-  @sa `<tuple>` `<utility>`
+  @sa `freestanding` `<tuple>` `<utility>`
 */
 #ifndef LBAL_LIBCPP14_TUPLES_BY_TYPE
   #define LBAL_LIBCPP14_TUPLES_BY_TYPE 0
@@ -3347,7 +3542,7 @@
   - `201402L` [N3887 __PDF__](https://wg21.link/N3887) Consistent Metafunction
   Aliases
 
-  @sa `<tuple>`
+  @sa `freestanding` `<tuple>`
 */
 #ifndef LBAL_LIBCPP14_TUPLE_ELEMENT_T
   #define LBAL_LIBCPP14_TUPLE_ELEMENT_T 0
@@ -3375,7 +3570,7 @@
   - `201603L` [LWG2296](https://wg21.link/LWG2296) std::addressof should be
   constexpr
 
-  @sa `<memory>`
+  @sa `freestanding` `<memory>`
 */
 #ifndef LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR
   #define LBAL_LIBCPP17_ADDRESSOF_CONSTEXPR 0
@@ -3390,7 +3585,7 @@
   - `201411L` [N4258 __PDF__](https://wg21.link/N4258) Cleaning up noexcept in
   the Library (Rev 3)
 
-  @sa `<deque>` `<forward_list>` `<list>` `<map>` `<memory>`
+  @sa `<deque>` `<forward_list>` `freestanding` `<list>` `<map>` `<memory>`
   `<scoped_allocator>` `<set>` `<string>` `<unordered_map>` `<unordered_set>`
   `<vector>`
 */
@@ -3438,12 +3633,14 @@
 /**
   @def LBAL_LIBCPP17_APPLY
   @brief `std::apply` component from Library Fundamentals V1 TS
-  @details SD-6 equivalent: `__cpp_lib_apply >= 201603L`. This token will have a
-  value of `0` if the proposal described here is not supported.
+  @details SD-6 equivalent: `__cpp_lib_apply >= 201603L`. Note that
+  `__cpp_lib_apply` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
   - `201603L` [P0220R1](https://wg21.link/P0220R1) Adopt Library Fundamentals V1
   TS Components for C++17 (R1)
 
-  @sa `<tuple>`
+  @sa `freestanding` `<tuple>` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP17_APPLY
   #define LBAL_LIBCPP17_APPLY 0
@@ -3460,7 +3657,7 @@
   - `201603L` [P0031R0](https://wg21.link/P0031R0) A Proposal to Add Constexpr
   Modifiers to reverse_iterator, move_iterator, array and Range Access
 
-  @sa `<array>` `<iterator>`
+  @sa `<array>` `freestanding` `<iterator>`
 */
 #ifndef LBAL_LIBCPP17_ARRAY_CONSTEXPR
   #define LBAL_LIBCPP17_ARRAY_CONSTEXPR 0
@@ -3474,7 +3671,7 @@
   - `201510L` [P0007R1](https://wg21.link/P0007R1) Constant View: A proposal for
   a std::as_const helper function template
 
-  @sa `<utility>`
+  @sa `freestanding` `<utility>`
 */
 #ifndef LBAL_LIBCPP17_AS_CONST
   #define LBAL_LIBCPP17_AS_CONST 0
@@ -3489,7 +3686,7 @@
   - `201603L` [P0152R1](https://wg21.link/P0152R1) constexpr
   atomic<T>::is_always_lock_free
 
-  @sa `<atomic>`
+  @sa `<atomic>` `freestanding`
 */
 #ifndef LBAL_LIBCPP17_ATOMIC_IS_ALWAYS_LOCK_FREE
   #define LBAL_LIBCPP17_ATOMIC_IS_ALWAYS_LOCK_FREE 0
@@ -3503,7 +3700,7 @@
   - `201505L` [N4389](https://wg21.link/N4389) Wording for bool_constant,
   revision 1
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP17_BOOL_CONSTANT
   #define LBAL_LIBCPP17_BOOL_CONSTANT 0
@@ -3531,7 +3728,7 @@
   value of `0` if the proposal described here is not supported.
   - `201603L` [P0298R3](https://wg21.link/P0298R3) A byte type definition
 
-  @sa `<cstddef>`
+  @sa `<cstddef>` `freestanding`
 */
 #ifndef LBAL_LIBCPP17_BYTE
   #define LBAL_LIBCPP17_BYTE 0
@@ -3575,7 +3772,7 @@
   - `201603L` [P0025R0](https://wg21.link/P0025R0) An algorithm to “clamp” a
   value between a pair of boundary values
 
-  @sa `<algorithm>`
+  @sa `<algorithm>` `freestanding`
 */
 #ifndef LBAL_LIBCPP17_CLAMP
   #define LBAL_LIBCPP17_CLAMP 0
@@ -3623,6 +3820,10 @@
   - `201703L` [P0433R2](https://wg21.link/P0433R2) Toward a resolution of US7
   and US14: Integrating template deduction for class templates into the standard
   library
+
+  @remark The Standard Committee opted not to formally vote in
+  `__cpp_lib_deduction_guides` after they determined all implementations de
+  facto already implemented it, so no test was needed.
 */
 #ifndef LBAL_LIBCPP17_DEDUCTION_GUIDES
   #define LBAL_LIBCPP17_DEDUCTION_GUIDES 0
@@ -3765,7 +3966,7 @@
   - `201606L` [P0295R0](https://wg21.link/P0295R0) Adopt Selected Library
   Fundamentals V2 Components for C++17
 
-  @sa `<numeric>`
+  @sa `freestanding` `<numeric>`
 */
 #ifndef LBAL_LIBCPP17_GCD_LCM
   #define LBAL_LIBCPP17_GCD_LCM 0
@@ -3780,7 +3981,7 @@
   - `201703L` [P0154R1](https://wg21.link/P0154R1) constexpr
   std::thread::hardware_{true,false}_sharing_size
 
-  @sa `<new>`
+  @sa `freestanding` `<new>`
 */
 #ifndef LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
   #define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE 0
@@ -3799,7 +4000,7 @@
   - `201606L` [P0258R2](https://wg21.link/P0258R2)
   has_unique_object_representations - wording
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS
   #define LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS 0
@@ -3845,7 +4046,7 @@
   - `201411L` [N4169](https://wg21.link/N4169) A proposal to add invoke function
   template (Revision 1)
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP17_INVOKE
   #define LBAL_LIBCPP17_INVOKE 0
@@ -3859,7 +4060,7 @@
   - `201703L` [LWG2911](https://wg21.link/LWG2911) An is_aggregate type trait
   is needed
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP17_IS_AGGREGATE
   #define LBAL_LIBCPP17_IS_AGGREGATE 0
@@ -3873,7 +4074,7 @@
   - `201703L` [P0604R0](https://wg21.link/P0604R0) Resolving GB 55, US 84, US
   85, US 86
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP17_IS_INVOCABLE
   #define LBAL_LIBCPP17_IS_INVOCABLE 0
@@ -3887,7 +4088,7 @@
   - `201603L` [P0185R1](https://wg21.link/P0185R1) Adding [nothrow-]swappable
   traits, revision 3
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP17_IS_SWAPPABLE
   #define LBAL_LIBCPP17_IS_SWAPPABLE 0
@@ -3901,7 +4102,7 @@
   - `201606L` [P0137R1](https://wg21.link/P0137R1) Core Issue 1776: Replacement
   of class objects containing reference members
 
-  @sa `<new>`
+  @sa `freestanding` `<new>`
 */
 #ifndef LBAL_LIBCPP17_LAUNDER
   #define LBAL_LIBCPP17_LAUNDER 0
@@ -3915,7 +4116,7 @@
   - `201510L` [P0013R1](https://wg21.link/P0013R1) Logical Operator Type Traits
   (revison 1)
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP17_LOGICAL_TRAITS
   #define LBAL_LIBCPP17_LOGICAL_TRAITS 0
@@ -3929,7 +4130,7 @@
   - `201606L` [P0209R2 __PDF__](https://wg21.link/P0209R2) make_from_tuple:
   apply for construction
 
-  @sa `<tuple>`
+  @sa `freestanding` `<tuple>`
 */
 #ifndef LBAL_LIBCPP17_MAKE_FROM_TUPLE
   #define LBAL_LIBCPP17_MAKE_FROM_TUPLE 0
@@ -4003,8 +4204,9 @@
   - `201411L` [N4280](https://wg21.link/N4280) Non-member size() and more
   (Revison 2)
 
-  @sa `<array>` `<deque>` `<forward_list>` `<iterator>` `<list>` `<map>`
-  `<regex>` `<set>` `<string>` `<unordered_map>` `<unordered_set>` `<vector>`
+  @sa `<array>` `<deque>` `<forward_list>` `freestanding` `<iterator>`
+  `<list>` `<map>` `<regex>` `<set>` `<string>` `<unordered_map>`
+  `<unordered_set>` `<vector>`
 */
 #ifndef LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
   #define LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS 0
@@ -4020,7 +4222,7 @@
   - `201603L` [P0005R4 __PDF__](https://wg21.link/P0005R4) Adopt not_fn from
   Library Fundamentals 2 for C++17
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP17_NOT_FN
   #define LBAL_LIBCPP17_NOT_FN 0
@@ -4104,7 +4306,7 @@
   with the original Working Group paper; for that, use
   LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS.
 
-  @sa `<algorithm>` `<numeric>`
+  @sa `<algorithm>` `<memory>` `<numeric>`
 */
 #ifndef LBAL_LIBCPP17_PARALLEL_ALGORITHM
   #define LBAL_LIBCPP17_PARALLEL_ALGORITHM 0
@@ -4135,7 +4337,7 @@
   - `201603L` [P0220R1](https://wg21.link/P0220R1) Adopt Library Fundamentals V1
   TS Components for C++17 (R1)
 
-  @sa `<algorithm>`
+  @sa `<algorithm>` `freestanding`
 */
 #ifndef LBAL_LIBCPP17_SAMPLE
   #define LBAL_LIBCPP17_SAMPLE 0
@@ -4373,7 +4575,7 @@
   contains an error wherein this proposal and functionality are mistakenly tied
   to `__cpp_lib_enable_shared_from_this`.
 
-  @sa `<functional>` `<memory>`
+  @sa `freestanding` `<functional>` `<memory>`
 */
 #ifndef LBAL_LIBCPP17_TRANSPARENT_OPERATORS
   #define LBAL_LIBCPP17_TRANSPARENT_OPERATORS 0
@@ -4389,7 +4591,7 @@
   - `201510L` [P0006R0](https://wg21.link/P0006R0) Adopt Type Traits Variable
   Templates from Library Fundamentals TS for C++17
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES
   #define LBAL_LIBCPP17_TYPE_TRAIT_VARIABLE_TEMPLATES 0
@@ -4404,7 +4606,7 @@
   - `201411L` [N4259](https://wg21.link/N4259) Wording for
   std::uncaught_exceptions
 
-  @sa `<exception>`
+  @sa `<exception>` `freestanding`
 */
 #ifndef LBAL_LIBCPP17_UNCAUGHT_EXCEPTIONS
   #define LBAL_LIBCPP17_UNCAUGHT_EXCEPTIONS 0
@@ -4456,7 +4658,7 @@
   a value of `0` if the proposal described here is not supported.
   - `201411L` [N3911](https://wg21.link/N3911) TransformationTrait Alias void_t
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP17_VOID_T
   #define LBAL_LIBCPP17_VOID_T 0
@@ -4483,7 +4685,7 @@
   - `201806L` [P1023R0](https://wg21.link/P1023R0) constexpr comparison
   operators for std::array
 
-  @sa `<array>` `<iterator>`
+  @sa `<array>` `freestanding` `<iterator>`
 */
 #ifndef LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS
   #define LBAL_LIBCPP20_ARRAY_CONSTEXPR_COMPARISONS 0
@@ -4505,7 +4707,7 @@
   that the SD-6 macro update voted in with [201803L](https://wg21.link/P0858R0)
   had not been applied.
 
-  @sa `<array>` `<iterator>`
+  @sa `<array>` `freestanding` `<iterator>`
 */
 #ifndef LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR
   #define LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR 0
@@ -4520,7 +4722,7 @@
   supported proposal, or `0` if the proposal described here is not supported.
   - `201811L` [P1032R1](https://wg21.link/P1032R1) Misc constexpr bits
 
-  @sa `<array>` `<iterator>`
+  @sa `<array>` `freestanding` `<iterator>`
 */
 #ifndef LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES
   #define LBAL_LIBCPP20_ARRAY_CONSTEXPR_UTILITIES 0
@@ -4533,7 +4735,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `201811L` [P1007R3](https://wg21.link/P1007R3) std::assume_aligned
 
-  @sa `<memory>`
+  @sa `freestanding` `<memory>`
 */
 #ifndef LBAL_LIBCPP20_ASSUME_ALIGNED
   #define LBAL_LIBCPP20_ASSUME_ALIGNED 0
@@ -4547,7 +4749,7 @@
   - `201907L` [P1135R6](https://wg21.link/P1135R6) The C++20 Synchronization
   Library
 
-  @sa `<atomic>`
+  @sa `<atomic>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_ATOMIC_FLAG_TEST
   #define LBAL_LIBCPP20_ATOMIC_FLAG_TEST 0
@@ -4560,7 +4762,7 @@
   have a value of `0` if the proposal described here is not supported.
   - `201711L` [P0020R6](https://wg21.link/P0020R6) Floating Point Atomic
 
-  @sa `<atomic>`
+  @sa `<atomic>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_ATOMIC_FLOAT
   #define LBAL_LIBCPP20_ATOMIC_FLOAT 0
@@ -4590,7 +4792,7 @@
   proposal, or `0` if the proposal described here is not supported.
   - `201806L` [P0019R8](https://wg21.link/P0019R8) Atomic Ref
 
-  @sa `<atomic>`
+  @sa `<atomic>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_ATOMIC_REF
   #define LBAL_LIBCPP20_ATOMIC_REF 0
@@ -4618,7 +4820,7 @@
   supported.
   - `201911L` [P0883R2](https://wg21.link/P0883R2) Fixing Atomic Initialization
 
-  @sa `<atomic>` `<memory>`
+  @sa `<atomic>` `freestanding` `<memory>`
 */
 #ifndef LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION
   #define LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION 0
@@ -4632,7 +4834,7 @@
   - `201907L` [P1135R6](https://wg21.link/P1135R6) The C++20 Synchronization
   Library
 
-  @sa `<atomic>`
+  @sa `<atomic>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_ATOMIC_WAIT
   #define LBAL_LIBCPP20_ATOMIC_WAIT 0
@@ -4664,7 +4866,7 @@
   - `201811L` [P0356R5](https://wg21.link/P0356R5) Simplified partial function
   application
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP20_BIND_FRONT
   #define LBAL_LIBCPP20_BIND_FRONT 0
@@ -4680,7 +4882,7 @@
   - `201907L` [P1651R0](https://wg21.link/P1651R0) bind_front should not unwrap
   reference_wrapper
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP
   #define LBAL_LIBCPP20_BIND_FRONT_NO_UNWRAP 0
@@ -4689,11 +4891,13 @@
 /**
   @def LBAL_LIBCPP20_BITOPS
   @brief Introduce support for hardware-level bit operations
-  @details SD-6 equivalent: `__cpp_lib_bitops >= 201907L`. This token will have
-  a value of `0` if the proposal described here is not supported.
+  @details SD-6 equivalent: `__cpp_lib_bitops >= 201907L`. Note that
+  `__cpp_lib_bitops` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P0553R4](https://wg21.link/P0553R4) Bit operations
 
-  @sa `<bit>`
+  @sa `<bit>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_BITOPS
   #define LBAL_LIBCPP20_BITOPS 0
@@ -4707,7 +4911,7 @@
   - `201806L` [P0476R2](https://wg21.link/P0476R2) Bit-casting object
   representations
 
-  @sa `<bit>`
+  @sa `<bit>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_BIT_CAST
   #define LBAL_LIBCPP20_BIT_CAST 0
@@ -4721,7 +4925,7 @@
   supported.
   - `201902L` [P1357R1](https://wg21.link/P1357R1) Traits for [Un]bounded Arrays
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS
   #define LBAL_LIBCPP20_BOUNDED_ARRAY_TRAITS 0
@@ -4737,8 +4941,8 @@
   - `201811L` [P0482R6](https://wg21.link/P0482R6) char8_t: A type for UTF-8
   characters and strings (Revision 6)
 
-  @sa `<atomic>` `<filesystem>` `<istream>` `<limits>` `<locale>` `<ostream>`
-  `<string>` `<string_view>`
+  @sa `<atomic>` `<filesystem>` `freestanding` `<iosfwd>` `<istream>`
+  `<limits>` `<locale>` `<ostream>` `<string>` `<string_view>`
 */
 #ifndef LBAL_LIBCPP20_CHAR8_T
   #define LBAL_LIBCPP20_CHAR8_T 0
@@ -4754,8 +4958,8 @@
   - `201907L` [P1423R3](https://wg21.link/P1423R3) char8_t backward
   compatibility remediation
 
-  @sa `<atomic>` `<filesystem>` `<istream>` `<limits>` `<locale>` `<ostream>`
-  `<string>` `<string_view>`
+  @sa `<atomic>` `<filesystem>` `freestanding` `<iosfwd>` `<istream>`
+  `<limits>` `<locale>` `<ostream>` `<string>` `<string_view>`
 */
 #ifndef LBAL_LIBCPP20_CHAR8_T_COMPAT
   #define LBAL_LIBCPP20_CHAR8_T_COMPAT 0
@@ -4803,7 +5007,7 @@
   - `201806L` [P0898R3 __PDF__](https://wg21.link/P0898R3) Standard Library
   Concepts
 
-  @sa `<compare>` `<concepts>`
+  @sa `<compare>` `<concepts>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_CONCEPTS
   #define LBAL_LIBCPP20_CONCEPTS 0
@@ -4818,7 +5022,7 @@
   proposal, or `0` if the proposal described here is not supported.
   - `202002L` [P1964R2](https://wg21.link/P1964R2) Wording for boolean-testable
 
-  @sa `<compare>` `<concepts>`
+  @sa `<compare>` `<concepts>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE
   #define LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE 0
@@ -4845,7 +5049,7 @@
   - `201907L` [P1754R1 __PDF__](https://wg21.link/P1754R1) Rename concepts to
   standard_case for C++20, while we still can
 
-  @sa `<compare>` `<concepts>`
+  @sa `<compare>` `<concepts>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE
   #define LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE 0
@@ -4854,12 +5058,12 @@
 /**
   @def LBAL_LIBCPP20_CONSTEXPR_ALGORITHMS
   @brief Add `constexpr` to `<algorithm>` and `<utility>` functions
-  @details SD-6 equivalent: `__cpp_lib_constexpr_algorithms >= 201703L`. Note
+  @details SD-6 equivalent: `__cpp_lib_constexpr_algorithms >= 201806L`. Note
   that `__cpp_lib_constexpr_algorithms` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
   supported.
-  - `201703L` [P0202R3](https://wg21.link/P0202R3) Add Constexpr Modifiers to
+  - `201806L` [P0202R3](https://wg21.link/P0202R3) Add Constexpr Modifiers to
   Functions in `<algorithm>` and `<utility>` Headers
 
   @sa `<algorithm>` `<utility>`
@@ -4929,7 +5133,7 @@
   supported.
   - `201811L` [P1032R1](https://wg21.link/P1032R1) Misc constexpr bits
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL
   #define LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL 0
@@ -4945,7 +5149,7 @@
   supported.
   - `201907L` [P1065R2](https://wg21.link/P1065R2) constexpr INVOKE
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE
   #define LBAL_LIBCPP20_CONSTEXPR_FUNCTIONAL_INVOKE 0
@@ -4959,7 +5163,7 @@
   supported.
   - `201811L` [P1032R1](https://wg21.link/P1032R1) Misc constexpr bits
 
-  @sa `<iterator>`
+  @sa `freestanding` `<iterator>`
 */
 #ifndef LBAL_LIBCPP20_CONSTEXPR_ITERATOR
   #define LBAL_LIBCPP20_CONSTEXPR_ITERATOR 0
@@ -4975,7 +5179,7 @@
   - `201811L` [P1006R1](https://wg21.link/P1006R1) Constexpr in
   std::pointer_traits
 
-  @sa `<memory>`
+  @sa `freestanding` `<memory>`
 */
 #ifndef LBAL_LIBCPP20_CONSTEXPR_MEMORY
   #define LBAL_LIBCPP20_CONSTEXPR_MEMORY 0
@@ -4989,7 +5193,7 @@
   - `201911L` [P1645R1](https://wg21.link/P1645R1) constexpr for numeric
   algorithms
 
-  @sa `<numeric>`
+  @sa `freestanding` `<numeric>`
 */
 #ifndef LBAL_LIBCPP20_CONSTEXPR_NUMERIC
   #define LBAL_LIBCPP20_CONSTEXPR_NUMERIC 0
@@ -5048,7 +5252,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `201811L` [P1032R1](https://wg21.link/P1032R1) Misc constexpr bits
 
-  @sa `<tuple>`
+  @sa `freestanding` `<tuple>`
 */
 #ifndef LBAL_LIBCPP20_CONSTEXPR_TUPLE
   #define LBAL_LIBCPP20_CONSTEXPR_TUPLE 0
@@ -5061,7 +5265,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `201811L` [P1032R1](https://wg21.link/P1032R1) Misc constexpr bits
 
-  @sa `<utility>`
+  @sa `freestanding` `<utility>`
 */
 #ifndef LBAL_LIBCPP20_CONSTEXPR_UTILITY
   #define LBAL_LIBCPP20_CONSTEXPR_UTILITY 0
@@ -5093,7 +5297,7 @@
 
   @remark Note that `<coroutine>` requires language support.
 
-  @sa `<coroutine>`
+  @sa `<coroutine>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_COROUTINE
   #define LBAL_LIBCPP20_COROUTINE 0
@@ -5123,7 +5327,7 @@
   - `201806L` [P0722R3](https://wg21.link/P0722R3) Efficient sized delete for
   variable sized classes
 
-  @sa `<new>`
+  @sa `freestanding` `<new>`
 */
 #ifndef LBAL_LIBCPP20_DESTROYING_DELETE
   #define LBAL_LIBCPP20_DESTROYING_DELETE 0
@@ -5136,7 +5340,7 @@
   a value of `0` if the proposal described here is not supported.
   - `201907L` [P0463R1](https://wg21.link/P0463R1) endian, Just endian
 
-  @sa `<bit>`
+  @sa `<bit>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_ENDIAN
   #define LBAL_LIBCPP20_ENDIAN 0
@@ -5150,7 +5354,7 @@
   - `201907L` [P1612R1 __PDF__](https://wg21.link/P1612R1) Relocate Endian’s
   Specification
 
-  @sa `<bit>`
+  @sa `<bit>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_ENDIAN_BIT
   #define LBAL_LIBCPP20_ENDIAN_BIT 0
@@ -5271,7 +5475,7 @@
   supported.
   - `202002L` [P0586R2](https://wg21.link/P0586R2) Safe integral comparisons
 
-  @sa `<utility>`
+  @sa `freestanding` `<utility>`
 */
 #ifndef LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS
   #define LBAL_LIBCPP20_INTEGER_COMPARISON_FUNCTIONS 0
@@ -5301,7 +5505,7 @@
   - `201806L` [P0556R3](https://wg21.link/P0556R3) Integral power-of-
   2 operations
 
-  @sa `<bit>`
+  @sa `<bit>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_INT_POW2
   #define LBAL_LIBCPP20_INT_POW2 0
@@ -5317,7 +5521,7 @@
   - `202002L` [P1956R1](https://wg21.link/P1956R1) On the naming of low-level
   bit manipulation functions
 
-  @sa `<bit>`
+  @sa `<bit>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME
   #define LBAL_LIBCPP20_INT_POW2_FUNCTION_RENAME 0
@@ -5331,7 +5535,7 @@
   supported.
   - `201811L` [P0595R2](https://wg21.link/P0595R2) std::is_constant_evaluated
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP20_IS_CONSTANT_EVALUATED
   #define LBAL_LIBCPP20_IS_CONSTANT_EVALUATED 0
@@ -5346,7 +5550,7 @@
   - `201907L` [P0466R5](https://wg21.link/P0466R5) Layout-compatibility and
   Pointer-interconvertibility Traits
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE
   #define LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE 0
@@ -5367,7 +5571,7 @@
   value; the argument against that is that it was a defect corrected prior to
   Standardization.
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE
   #define LBAL_LIBCPP20_IS_NOTHROW_CONVERTIBLE 0
@@ -5382,7 +5586,7 @@
   - `201907L` [P0466R5](https://wg21.link/P0466R5) Layout-compatibility and
   Pointer-interconvertibility Traits
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE
   #define LBAL_LIBCPP20_IS_POINTER_INTERCONVERTIBLE 0
@@ -5534,7 +5738,7 @@
   - `201711L` [P0550R2 __PDF__](https://wg21.link/P0550R2) Transformation Trait
   remove_cvref
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP20_REMOVE_CVREF
   #define LBAL_LIBCPP20_REMOVE_CVREF 0
@@ -5613,7 +5817,7 @@
   - `201907L` [P1208R6](https://wg21.link/P1208R6) Adopt source location from
   Library Fundamentals V3 for C++20
 
-  @sa `<source_location>`
+  @sa `freestanding` `<source_location>`
 */
 #ifndef LBAL_LIBCPP20_SOURCE_LOCATION
   #define LBAL_LIBCPP20_SOURCE_LOCATION 0
@@ -5635,7 +5839,7 @@
   that [P0122R7](https://wg21.link/P0122R7) had been voted in without specifying
   an SD-6 macro.
 
-  @sa `<span>`
+  @sa `freestanding` `<span>`
 */
 #ifndef LBAL_LIBCPP20_SPAN
   #define LBAL_LIBCPP20_SPAN 0
@@ -5651,7 +5855,7 @@
   - `202002L` [P1976R2](https://wg21.link/P1976R2) Fixed-size span construction
   from dynamic range
 
-  @sa `<span>`
+  @sa `freestanding` `<span>`
 */
 #ifndef LBAL_LIBCPP20_SPAN_FIXED_SIZE
   #define LBAL_LIBCPP20_SPAN_FIXED_SIZE 0
@@ -5667,7 +5871,7 @@
   - `201902L` [P1024R3](https://wg21.link/P1024R3) Usability Enhancements for
   std::span
 
-  @sa `<span>`
+  @sa `freestanding` `<span>`
 */
 #ifndef LBAL_LIBCPP20_SPAN_USABILITY
   #define LBAL_LIBCPP20_SPAN_USABILITY 0
@@ -5684,7 +5888,7 @@
   @remark It’s conceivable that the `<span>`-affecting portions of this will be
   shifted to the `__cpp_lib_span` token.
 
-  @sa `<iterator>`
+  @sa `freestanding` `<iterator>`
 */
 #ifndef LBAL_LIBCPP20_SSIZE
   #define LBAL_LIBCPP20_SSIZE 0
@@ -5736,7 +5940,7 @@
   - `201711L` [P0053R7 __PDF__](https://wg21.link/P0053R7) C++ Synchronized
   Buffered Ostream
 
-  @sa `<syncstream>`
+  @sa `<iosfwd>` `<syncstream>`
 */
 #ifndef LBAL_LIBCPP20_SYNCBUF
   #define LBAL_LIBCPP20_SYNCBUF 0
@@ -5752,7 +5956,7 @@
   - `201803L` [P0753R2 __PDF__](https://wg21.link/P0753R2) Manipulators for C++
   Synchronized Buffered Ostream
 
-  @sa `<syncstream>`
+  @sa `<iosfwd>` `<syncstream>`
 */
 #ifndef LBAL_LIBCPP20_SYNCBUF_MANIPULATORS
   #define LBAL_LIBCPP20_SYNCBUF_MANIPULATORS 0
@@ -5769,7 +5973,7 @@
   - `201711L` [P0768R1 __PDF__](https://wg21.link/P0768R1) Library Support for
   the Spaceship (Comparison) Operator
 
-  @sa `<compare>`
+  @sa `<compare>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_THREE_WAY_COMPARISON
   #define LBAL_LIBCPP20_THREE_WAY_COMPARISON 0
@@ -5786,7 +5990,7 @@
   - `201907L` [P1614R2](https://wg21.link/P1614R2) The Mothership Has Landed:
   Adding <=> to the Library
 
-  @sa `<compare>`
+  @sa `<compare>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY
   #define LBAL_LIBCPP20_THREE_WAY_COMPARISON_LIBRARY 0
@@ -5800,7 +6004,7 @@
   - `201711L` [P0653R2 __PDF__](https://wg21.link/P0653R2) Utility to convert a
   pointer to a raw pointer
 
-  @sa `<memory>`
+  @sa `freestanding` `<memory>`
 */
 #ifndef LBAL_LIBCPP20_TO_ADDRESS
   #define LBAL_LIBCPP20_TO_ADDRESS 0
@@ -5814,7 +6018,7 @@
   - `201907L` [P0325R4](https://wg21.link/P0325R4) to_array from LFTS with
   updates
 
-  @sa `<array>`
+  @sa `<array>` `freestanding`
 */
 #ifndef LBAL_LIBCPP20_TO_ARRAY
   #define LBAL_LIBCPP20_TO_ARRAY 0
@@ -5828,7 +6032,7 @@
   - `201806L` [P0887R1 __PDF__](https://wg21.link/P0887R1) The identity
   metafunction
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP20_TYPE_IDENTITY
   #define LBAL_LIBCPP20_TYPE_IDENTITY 0
@@ -5846,7 +6050,7 @@
 
   @remark Originally, this was in `<type_traits>`.
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP20_UNWRAP_REF
   #define LBAL_LIBCPP20_UNWRAP_REF 0
@@ -5991,7 +6195,7 @@
   - `202202L` [P2387R3](https://wg21.link/P2387R3) Pipe support for user-defined
   range adaptors
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP23_BIND_BACK
   #define LBAL_LIBCPP23_BIND_BACK 0
@@ -6004,7 +6208,7 @@
   have a value of `0` if the proposal described here is not supported.
   - `202110L` [P1272R4](https://wg21.link/P1272R4) Byteswapping for fun&&nuf
 
-  @sa `<bit>`
+  @sa `<bit>` `freestanding`
 */
 #ifndef LBAL_LIBCPP23_BYTESWAP
   #define LBAL_LIBCPP23_BYTESWAP 0
@@ -6018,7 +6222,7 @@
   - `202302L` [P2655R3](https://wg21.link/P2655R3) common_reference_t of
   reference_wrapper Should Be a Reference Type
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP23_COMMON_REFERENCE
   #define LBAL_LIBCPP23_COMMON_REFERENCE 0
@@ -6033,7 +6237,7 @@
   - `202302L` [P2655R3](https://wg21.link/P2655R3) common_reference_t of
   reference_wrapper Should Be a Reference Type
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP23_COMMON_REFERENCE_WRAPPER
   #define LBAL_LIBCPP23_COMMON_REFERENCE_WRAPPER 0
@@ -6050,7 +6254,7 @@
   - `202207L` [P2404R3](https://wg21.link/P2404R3) Move-only types for
   equality_comparable_with, totally_ordered_with, and three_way_comparable_with
 
-  @sa `<compare>` `<concepts>`
+  @sa `<compare>` `<concepts>` `freestanding`
 */
 #ifndef LBAL_LIBCPP23_CONCEPTS_MOVE_ONLY
   #define LBAL_LIBCPP23_CONCEPTS_MOVE_ONLY 0
@@ -6079,7 +6283,7 @@
   - `202207L` [P2291R3](https://wg21.link/P2291R3) Add Constexpr Modifiers to
   Functions to_chars and from_chars for Integral Types in Header
 
-  @sa `<charconv>`
+  @sa `<charconv>` `freestanding`
 */
 #ifndef LBAL_LIBCPP23_CONSTEXPR_CHARCONV
   #define LBAL_LIBCPP23_CONSTEXPR_CHARCONV 0
@@ -6111,7 +6315,7 @@
   - `202202L` [P2273R3](https://wg21.link/P2273R3) Making std::unique_ptr
   constexpr
 
-  @sa `<memory>`
+  @sa `freestanding` `<memory>`
 */
 #ifndef LBAL_LIBCPP23_CONSTEXPR_MEMORY_UNIQUE_PTR
   #define LBAL_LIBCPP23_CONSTEXPR_MEMORY_UNIQUE_PTR 0
@@ -6126,7 +6330,7 @@
   - `202106L` [P1328R1](https://wg21.link/P1328R1) Making
   std::type_info::operator== constexpr
 
-  @sa `<typeinfo>`
+  @sa `freestanding` `<typeinfo>`
 */
 #ifndef LBAL_LIBCPP23_CONSTEXPR_TYPEINFO
   #define LBAL_LIBCPP23_CONSTEXPR_TYPEINFO 0
@@ -6343,7 +6547,7 @@
   have a value of `0` if the proposal described here is not supported.
   - `202207L` [P2445R1](https://wg21.link/P2445R1) forward_like
 
-  @sa `<utility>`
+  @sa `freestanding` `<utility>`
 */
 #ifndef LBAL_LIBCPP23_FORWARD_LIKE
   #define LBAL_LIBCPP23_FORWARD_LIKE 0
@@ -6370,7 +6574,7 @@
   have a value of `0` if the proposal described here is not supported.
   - `202106L` [P2136R3](https://wg21.link/P2136R3) invoke_r
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP23_INVOKE_R
   #define LBAL_LIBCPP23_INVOKE_R 0
@@ -6399,7 +6603,7 @@
   - `202302L` [P2674R1](https://wg21.link/P2674R1) A trait for implicit lifetime
   types
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP23_IS_IMPLICIT_LIFETIME
   #define LBAL_LIBCPP23_IS_IMPLICIT_LIFETIME 0
@@ -6413,7 +6617,7 @@
   - `202011L` [P1048R1](https://wg21.link/P1048R1) A proposal for a type trait
   to detect scoped enumerations
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP23_IS_SCOPED_ENUM
   #define LBAL_LIBCPP23_IS_SCOPED_ENUM 0
@@ -6434,7 +6638,7 @@
   - `202207L` [P2613R1](https://wg21.link/P2613R1) Add the missing empty to
   mdspan
 
-  @sa `<mdspan>`
+  @sa `freestanding` `<mdspan>`
 */
 #ifndef LBAL_LIBCPP23_MDSPAN
   #define LBAL_LIBCPP23_MDSPAN 0
@@ -6447,9 +6651,25 @@
   a value of `0` if the proposal described here is not supported.
   - `202207L` [P2465R3](https://wg21.link/P2465R3) Standard Library Modules std
   and std.compat
+
+  @sa `freestanding`
 */
 #ifndef LBAL_LIBCPP23_MODULES
   #define LBAL_LIBCPP23_MODULES 0
+#endif
+
+/**
+  @def LBAL_LIBCPP23_MONADIC_OPTIONAL
+  @brief Add monadic operations for `std::optional`
+  @details SD-6 equivalent: `__cpp_lib_monadic_optional >= 202110L`. This token
+  will have a value of `0` if the proposal described here is not supported.
+  - `202110L` [P0798R8](https://wg21.link/P0798R8) Monadic operations for
+  std::optional
+
+  @sa `<optional>`
+*/
+#ifndef LBAL_LIBCPP23_MONADIC_OPTIONAL
+  #define LBAL_LIBCPP23_MONADIC_OPTIONAL 0
 #endif
 
 /**
@@ -6461,7 +6681,7 @@
   - `202207L` [P2520R0](https://wg21.link/P2520R0) move_iterator should be a
   random access iterator
 
-  @sa `<iterator>`
+  @sa `freestanding` `<iterator>`
 */
 #ifndef LBAL_LIBCPP23_MOVE_ITERATOR_CONCEPT
   #define LBAL_LIBCPP23_MOVE_ITERATOR_CONCEPT 0
@@ -6530,7 +6750,7 @@
   - `202106L` [P1132R7](https://wg21.link/P1132R7) out_ptr - a scalable output
   pointer abstraction
 
-  @sa `<memory>`
+  @sa `freestanding` `<memory>`
 */
 #ifndef LBAL_LIBCPP23_OUT_PTR
   #define LBAL_LIBCPP23_OUT_PTR 0
@@ -6561,7 +6781,7 @@
   - `202207L` [P2278R4](https://wg21.link/P2278R4) cbegin should always return a
   constant iterator
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP23_RANGES_AS_CONST
   #define LBAL_LIBCPP23_RANGES_AS_CONST 0
@@ -6574,7 +6794,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `202207L` [P2446R2](https://wg21.link/P2446R2) views::as_rvalue
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP23_RANGES_AS_RVALUE
   #define LBAL_LIBCPP23_RANGES_AS_RVALUE 0
@@ -6588,7 +6808,7 @@
   supported.
   - `202207L` [P2374R4](https://wg21.link/P2374R4) views::cartesian_product
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP23_RANGES_CARTESIAN_PRODUCT
   #define LBAL_LIBCPP23_RANGES_CARTESIAN_PRODUCT 0
@@ -6603,7 +6823,7 @@
   - `202207L` [P2540R1](https://wg21.link/P2540R1) Empty Product for certain
   Views
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP23_RANGES_CARTESIAN_PRODUCT_EMPTY
   #define LBAL_LIBCPP23_RANGES_CARTESIAN_PRODUCT_EMPTY 0
@@ -6617,7 +6837,7 @@
   - `202202L` [P2442R1](https://wg21.link/P2442R1) Windowing range adaptors:
   views::chunk and views::slide
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP23_RANGES_CHUNK
   #define LBAL_LIBCPP23_RANGES_CHUNK 0
@@ -6630,7 +6850,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `202202L` [P2443R1](https://wg21.link/P2443R1) views::chunk_by
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP23_RANGES_CHUNK_BY
   #define LBAL_LIBCPP23_RANGES_CHUNK_BY 0
@@ -6643,7 +6863,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `202207L` [P2302R4](https://wg21.link/P2302R4) std::ranges::contains
 
-  @sa `<algorithm>`
+  @sa `<algorithm>` `freestanding`
 */
 #ifndef LBAL_LIBCPP23_RANGES_CONTAINS
   #define LBAL_LIBCPP23_RANGES_CONTAINS 0
@@ -6656,7 +6876,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `202302L` [P2164R9](https://wg21.link/P2164R9) views::enumerate
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP23_RANGES_ENUMERATE
   #define LBAL_LIBCPP23_RANGES_ENUMERATE 0
@@ -6671,7 +6891,7 @@
   ranges::find_last should be renamed
   - `202207L` [P1223R5](https://wg21.link/P1223R5) find_last
 
-  @sa `<algorithm>`
+  @sa `<algorithm>` `freestanding`
 */
 #ifndef LBAL_LIBCPP23_RANGES_FIND_LAST
   #define LBAL_LIBCPP23_RANGES_FIND_LAST 0
@@ -6684,7 +6904,7 @@
   have a value of `0` if the proposal described here is not supported.
   - `202207L` [P2322R6](https://wg21.link/P2322R6) ranges::fold
 
-  @sa `<algorithm>`
+  @sa `<algorithm>` `freestanding`
 */
 #ifndef LBAL_LIBCPP23_RANGES_FOLD
   #define LBAL_LIBCPP23_RANGES_FOLD 0
@@ -6713,7 +6933,7 @@
   - `202202L` [P2440R1](https://wg21.link/P2440R1) ranges::iota,
   ranges::shift_left, and ranges::shift_right
 
-  @sa `<numeric>`
+  @sa `freestanding` `<numeric>`
 */
 #ifndef LBAL_LIBCPP23_RANGES_IOTA
   #define LBAL_LIBCPP23_RANGES_IOTA 0
@@ -6726,7 +6946,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `202202L` [P2441R2](https://wg21.link/P2441R2) views::join_with
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP23_RANGES_JOIN_WITH
   #define LBAL_LIBCPP23_RANGES_JOIN_WITH 0
@@ -6785,7 +7005,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `202207L` [P2474R2](https://wg21.link/P2474R2) views::repeat
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP23_RANGES_REPEAT
   #define LBAL_LIBCPP23_RANGES_REPEAT 0
@@ -6799,7 +7019,7 @@
   - `202202L` [P2442R1](https://wg21.link/P2442R1) Windowing range adaptors:
   views::chunk and views::slide
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP23_RANGES_SLIDE
   #define LBAL_LIBCPP23_RANGES_SLIDE 0
@@ -6813,7 +7033,7 @@
   supported.
   - `202106L` [P1659R3](https://wg21.link/P1659R3) starts_with and ends_with
 
-  @sa `<algorithm>`
+  @sa `<algorithm>` `freestanding`
 */
 #ifndef LBAL_LIBCPP23_RANGES_STARTS_ENDS_WITH
   #define LBAL_LIBCPP23_RANGES_STARTS_ENDS_WITH 0
@@ -6826,7 +7046,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `202207L` [P1899R3](https://wg21.link/P1899R3) stride_view
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP23_RANGES_STRIDE
   #define LBAL_LIBCPP23_RANGES_STRIDE 0
@@ -6857,7 +7077,7 @@
   - `202202L` [P1206R7](https://wg21.link/P1206R7) Conversions from ranges to
   containers
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP23_RANGES_TO_CONTAINER
   #define LBAL_LIBCPP23_RANGES_TO_CONTAINER 0
@@ -6886,7 +7106,7 @@
   have a value of `0` if the proposal described here is not supported.
   - `202110L` [P2321R2](https://wg21.link/P2321R2) zip
 
-  @sa `<ranges>` `<tuple>` `<utility>`
+  @sa `freestanding` `<ranges>` `<tuple>` `<utility>`
 */
 #ifndef LBAL_LIBCPP23_RANGES_ZIP
   #define LBAL_LIBCPP23_RANGES_ZIP 0
@@ -6901,7 +7121,7 @@
   - `202202L` [P2255R2](https://wg21.link/P2255R2) A type trait to detect
   reference binding to temporary
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY
   #define LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY 0
@@ -6931,7 +7151,7 @@
   - `202106L` [P0448R4](https://wg21.link/P0448R4) A strstream replacement using
   span as buffer
 
-  @sa `<spanstream>`
+  @sa `<iosfwd>` `<spanstream>`
 */
 #ifndef LBAL_LIBCPP23_SPANSTREAM
   #define LBAL_LIBCPP23_SPANSTREAM 0
@@ -6958,7 +7178,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `202207L` [P2590R2](https://wg21.link/P2590R2) Explicit lifetime management
 
-  @sa `<memory>`
+  @sa `freestanding` `<memory>`
 */
 #ifndef LBAL_LIBCPP23_START_LIFETIME_AS
   #define LBAL_LIBCPP23_START_LIFETIME_AS 0
@@ -7012,7 +7232,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `202102L` [P1682R2](https://wg21.link/P1682R2) std::to_underlying
 
-  @sa `<utility>`
+  @sa `freestanding` `<utility>`
 */
 #ifndef LBAL_LIBCPP23_TO_UNDERLYING
   #define LBAL_LIBCPP23_TO_UNDERLYING 0
@@ -7042,7 +7262,7 @@
   - `202202L` [P0627R6](https://wg21.link/P0627R6) Function to mark unreachable
   code
 
-  @sa `<utility>`
+  @sa `freestanding` `<utility>`
 */
 #ifndef LBAL_LIBCPP23_UNREACHABLE
   #define LBAL_LIBCPP23_UNREACHABLE 0
@@ -7092,6 +7312,27 @@
 */
 
 /**
+  @def LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE
+  @brief Adjoints to 'Enabling list-initialization for algorithms': `find_last`
+  and `uninitialized_fill`
+  @details
+
+  SD-6 equivalent: `__cpp_lib_algorithm_default_value_type >= 202603L`.
+  This token will have a value of `0` if the proposal described here is not
+  supported.
+  - `202603L` [P3217R0](https://wg21.link/P3217R0) Adjoints to "Enabling list-
+  initialization for algorithms": `find_last`
+  - `202603L` [P3787R2](https://wg21.link/P3787R2) Adjoints to "Enabling list-
+  initialization for algorithms": `uninitialized_fill`
+
+  @sa `<algorithm>` `<deque>` `<forward_list>` `<list>` `<memory>` `<ranges>`
+  `<string>` `<vector>`
+*/
+#ifndef LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE
+  #define LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE 0
+#endif
+
+/**
   @def LBAL_LIBCPP26_ALIGNED_ACCESSOR
   @brief An `mdspan` accessor expressing pointer overalignment
   @details SD-6 equivalent: `__cpp_lib_aligned_accessor >= 202411L`. This token
@@ -7099,7 +7340,7 @@
   - `202411L` [P2897R7](https://wg21.link/P2897R7) aligned_accessor: An mdspan
   accessor expressing pointer overalignment
 
-  @sa `<mdspan>`
+  @sa `freestanding` `<mdspan>`
 */
 #ifndef LBAL_LIBCPP26_ALIGNED_ACCESSOR
   #define LBAL_LIBCPP26_ALIGNED_ACCESSOR 0
@@ -7130,7 +7371,7 @@
   supported proposal, or `0` if the proposal described here is not supported.
   - `202403L` [P0493R5](https://wg21.link/P0493R5) Atomic maximum/minimum
 
-  @sa `<atomic>`
+  @sa `<atomic>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_ATOMIC_MIN_MAX
   #define LBAL_LIBCPP26_ATOMIC_MIN_MAX 0
@@ -7145,7 +7386,7 @@
   supported proposal, or `0` if the proposal described here is not supported.
   - `202506L` [P3008R6](https://wg21.link/P3008R6) Atomic floating-point min/max
 
-  @sa `<atomic>`
+  @sa `<atomic>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_ATOMIC_MIN_MAX_FLOAT
   #define LBAL_LIBCPP26_ATOMIC_MIN_MAX_FLOAT 0
@@ -7158,7 +7399,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `202506L` [P3111R8](https://wg21.link/P3111R8) Atomic Reduction Operations
 
-  @sa `<atomic>`
+  @sa `<atomic>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_ATOMIC_REDUCTIONS
   #define LBAL_LIBCPP26_ATOMIC_REDUCTIONS 0
@@ -7173,11 +7414,30 @@
   proposal, or `0` if the proposal described here is not supported.
   - `202411L` [P2835R7](https://wg21.link/P2835R7) Expose std::atomic_ref’s
   object address
+  - `202603L` [P2835R7](https://wg21.link/P2835R7) Expose std::atomic_ref’s
+  object address
 
-  @sa `<atomic>`
+  @sa `<atomic>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_ATOMIC_REF_ADDRESS
   #define LBAL_LIBCPP26_ATOMIC_REF_ADDRESS 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS
+  @brief Safer `atomic_ref::address`
+  @details
+
+  SD-6 equivalent: `__cpp_lib_atomic_ref >= 202603L`. Note that
+  `__cpp_lib_atomic_ref` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P3936R1](https://wg21.link/P3936R1) Safer `atomic_ref::address`
+
+  @sa `<atomic>` `freestanding`
+*/
+#ifndef LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS
+  #define LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS 0
 #endif
 
 /**
@@ -7190,7 +7450,7 @@
   - `202306L` [P2714R1](https://wg21.link/P2714R1) Bind front and back to NTTP
   callables
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES
   #define LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES 0
@@ -7229,14 +7489,34 @@
 /**
   @def LBAL_LIBCPP26_CONSTANT_WRAPPER
   @brief std::constexpr_wrapper
-  @details SD-6 equivalent: `__cpp_lib_constant_wrapper >= 202506L`. This token
-  will have a value of `0` if the proposal described here is not supported.
+  @details SD-6 equivalent: `__cpp_lib_constant_wrapper >= 202506L`. Note that
+  `__cpp_lib_constant_wrapper` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202506L` [P2781R9](https://wg21.link/P2781R9) std::constexpr_wrapper
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>` `<utility>`
 */
 #ifndef LBAL_LIBCPP26_CONSTANT_WRAPPER
   #define LBAL_LIBCPP26_CONSTANT_WRAPPER 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_CONSTANT_WRAPPER_UNWRAP_ON_CALL
+  @brief `constant_wrapper` should unwrap on call and subscript
+  @details
+
+  SD-6 equivalent: `__cpp_lib_constant_wrapper >= 202603L`. Note that
+  `__cpp_lib_constant_wrapper` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P3978R3](https://wg21.link/P3978R3) `constant_wrapper` should
+  unwrap on call and subscript
+
+  @sa `freestanding` `<type_traits>` `<utility>`
+*/
+#ifndef LBAL_LIBCPP26_CONSTANT_WRAPPER_UNWRAP_ON_CALL
+  #define LBAL_LIBCPP26_CONSTANT_WRAPPER_UNWRAP_ON_CALL 0
 #endif
 
 /**
@@ -7413,7 +7693,7 @@
   - `202506L` [P3037R6](https://wg21.link/P3037R6) constexpr std::shared_ptr
   and friends
 
-  @sa `<memory>`
+  @sa `freestanding` `<memory>`
 */
 #ifndef LBAL_LIBCPP26_CONSTEXPR_MEMORY_SHARED_PTR
   #define LBAL_LIBCPP26_CONSTEXPR_MEMORY_SHARED_PTR 0
@@ -7504,7 +7784,8 @@
   - `202411L` [P3379R0](https://wg21.link/P3379R0) Constrain std::expected
   equality operators
 
-  @sa `<expected>` `<optional>` `<tuple>` `<utility>` `<variant>`
+  @sa `<expected>` `freestanding` `<optional>` `<tuple>` `<utility>`
+  `<variant>`
 */
 #ifndef LBAL_LIBCPP26_CONSTRAINED_EQUALITY
   #define LBAL_LIBCPP26_CONSTRAINED_EQUALITY 0
@@ -7519,7 +7800,8 @@
   the latest supported proposal, or `0` if the proposal described here is not
   supported.
 
-  @sa `<expected>` `<optional>` `<tuple>` `<utility>` `<variant>`
+  @sa `<expected>` `freestanding` `<optional>` `<tuple>` `<utility>`
+  `<variant>`
 */
 #ifndef LBAL_LIBCPP26_CONSTRAINED_EQUALITY_EXPECTED
   #define LBAL_LIBCPP26_CONSTRAINED_EQUALITY_EXPECTED 0
@@ -7561,7 +7843,7 @@
   proposal, or `0` if the proposal described here is not supported.
   - `202311L` [P2546R5](https://wg21.link/P2546R5) Debugging Support
 
-  @sa `<debugging>`
+  @sa `<debugging>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_DEBUGGING
   #define LBAL_LIBCPP26_DEBUGGING 0
@@ -7577,7 +7859,7 @@
   - `202403L` [P2810R4](https://wg21.link/P2810R4) is_debugger_present
   is_replaceable
 
-  @sa `<debugging>`
+  @sa `<debugging>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_DEBUGGING_UTILITIES
   #define LBAL_LIBCPP26_DEBUGGING_UTILITIES 0
@@ -7608,7 +7890,7 @@
   - `202506L` [P3491R3](https://wg21.link/P3491R3)
   define_static_{string,object,array}
 
-  @sa `<meta>`
+  @sa `freestanding` `<meta>`
 */
 #ifndef LBAL_LIBCPP26_DEFINE_STATIC
   #define LBAL_LIBCPP26_DEFINE_STATIC 0
@@ -7617,9 +7899,10 @@
 /**
   @def LBAL_LIBCPP26_EXCEPTION_PTR_CAST
   @brief Observing exceptions stored in exception_ptr
-  @details SD-6 equivalent: `__cpp_lib_exception_ptr_cast >= 202506L`.
-  This token will have a value of `0` if the proposal described here is not
-  supported.
+  @details SD-6 equivalent: `__cpp_lib_exception_ptr_cast >= 202506L`. Note that
+  `__cpp_lib_exception_ptr_cast` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202506L` [P2927R3](https://wg21.link/P2927R3) Observing exceptions stored
   in exception_ptr
 
@@ -7630,11 +7913,31 @@
 #endif
 
 /**
+  @def LBAL_LIBCPP26_EXCEPTION_PTR_CAST_BETTER_RETURN_TYPES
+  @brief Better return types in `std::inplace_vector` and
+  `std::exception_ptr_cast`
+  @details
+
+  SD-6 equivalent: `__cpp_lib_exception_ptr_cast >= 202603L`. Note that
+  `__cpp_lib_exception_ptr_cast` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P3981R2](https://wg21.link/P3981R2) Better return types in
+  `std::inplace_vector` and `std::exception_ptr_cast`
+
+  @sa `<exception>`
+*/
+#ifndef LBAL_LIBCPP26_EXCEPTION_PTR_CAST_BETTER_RETURN_TYPES
+  #define LBAL_LIBCPP26_EXCEPTION_PTR_CAST_BETTER_RETURN_TYPES 0
+#endif
+
+/**
   @def LBAL_LIBCPP26_EXCEPTION_PTR_CAST_CONSTEXPR
   @brief Inspecting exception_ptr works should be constexpr.
-  @details SD-6 equivalent: `__cpp_lib_exception_ptr_cast >= 202506L`.
-  This token will have a value of `0` if the proposal described here is not
-  supported.
+  @details SD-6 equivalent: `__cpp_lib_exception_ptr_cast >= 202506L`. Note that
+  `__cpp_lib_exception_ptr_cast` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202506L` [P3748R0](https://wg21.link/P3748R0) Inspecting exception_ptr
   works should be constexpr.
 
@@ -7744,6 +8047,7 @@
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
   - `202311L` [P2918R2](https://wg21.link/P2918R2) Runtime format strings II
+  - `202603L` [P2918R2](https://wg21.link/P2918R2) Runtime format strings II
 
   @sa `<format>`
 */
@@ -7791,7 +8095,7 @@
   - `202311L` [P2407R5](https://wg21.link/P2407R5) Freestanding Library: Partial
   Classes
 
-  @sa `<algorithm>`
+  @sa `<algorithm>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_ALGORITHM
   #define LBAL_LIBCPP26_FREESTANDING_ALGORITHM 0
@@ -7808,7 +8112,7 @@
   - `202502L` [P2976R1](https://wg21.link/P2976R1) Freestanding Library:
   algorithm, numeric, and random
 
-  @sa `<algorithm>`
+  @sa `<algorithm>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_ALGORITHM_MORE
   #define LBAL_LIBCPP26_FREESTANDING_ALGORITHM_MORE 0
@@ -7823,7 +8127,7 @@
   - `202311L` [P2407R5](https://wg21.link/P2407R5) Freestanding Library: Partial
   Classes
 
-  @sa `<array>`
+  @sa `<array>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_ARRAY
   #define LBAL_LIBCPP26_FREESTANDING_ARRAY 0
@@ -7838,7 +8142,7 @@
   - `202306L` [P2338R4](https://wg21.link/P2338R4) Freestanding Library:
   Character primitives and the C library
 
-  @sa `<charconv>`
+  @sa `<charconv>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_CHARCONV
   #define LBAL_LIBCPP26_FREESTANDING_CHARCONV 0
@@ -7853,7 +8157,7 @@
   - `202306L` [P2338R4](https://wg21.link/P2338R4) Freestanding Library:
   Character primitives and the C library
 
-  @sa `<string>`
+  @sa `freestanding` `<string>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_CHAR_TRAITS
   #define LBAL_LIBCPP26_FREESTANDING_CHAR_TRAITS 0
@@ -7868,7 +8172,7 @@
   - `202306L` [P2338R4](https://wg21.link/P2338R4) Freestanding Library:
   Character primitives and the C library
 
-  @sa `<cmath>` `<cstdlib>`
+  @sa `<cmath>` `<cstdlib>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_CSTDLIB
   #define LBAL_LIBCPP26_FREESTANDING_CSTDLIB 0
@@ -7885,7 +8189,7 @@
   - `202306L` [P2338R4](https://wg21.link/P2338R4) Freestanding Library:
   Character primitives and the C library
 
-  @sa `<cstring>`
+  @sa `<cstring>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_CSTRING
   #define LBAL_LIBCPP26_FREESTANDING_CSTRING 0
@@ -7901,7 +8205,7 @@
   supported.
   - `202311L` [P2937R0](https://wg21.link/P2937R0) Freestanding: Remove strtok
 
-  @sa `<cstring>`
+  @sa `<cstring>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_CSTRING_REMOVE_STRTOK
   #define LBAL_LIBCPP26_FREESTANDING_CSTRING_REMOVE_STRTOK 0
@@ -7916,7 +8220,7 @@
   - `202306L` [P2338R4](https://wg21.link/P2338R4) Freestanding Library:
   Character primitives and the C library
 
-  @sa `<cwchar>`
+  @sa `<cwchar>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_CWCHAR
   #define LBAL_LIBCPP26_FREESTANDING_CWCHAR 0
@@ -7930,7 +8234,7 @@
   - `202306L` [P2338R4](https://wg21.link/P2338R4) Freestanding Library:
   Character primitives and the C library
 
-  @sa `<cerrno>` `<system_error>`
+  @sa `<cerrno>` `freestanding` `<system_error>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_ERRC
   #define LBAL_LIBCPP26_FREESTANDING_ERRC 0
@@ -7945,7 +8249,7 @@
   - `202502L` [P2976R1](https://wg21.link/P2976R1) Freestanding Library:
   algorithm, numeric, and random
 
-  @sa `<execution>`
+  @sa `<execution>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_EXECUTION
   #define LBAL_LIBCPP26_FREESTANDING_EXECUTION 0
@@ -7960,7 +8264,7 @@
   - `202311L` [P2833R2](https://wg21.link/P2833R2) Freestanding Library: inout
   expected span
 
-  @sa `<expected>`
+  @sa `<expected>` `freestanding`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_EXPECTED
   #define LBAL_LIBCPP26_FREESTANDING_EXPECTED 0
@@ -7974,6 +8278,8 @@
   is not supported.
   - `202306L` [P2198R7](https://wg21.link/P2198R7) Freestanding Feature-Test
   Macros and Implementation-Defined Extensions
+
+  @sa `freestanding`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_FEATURE_TEST_MACROS
   #define LBAL_LIBCPP26_FREESTANDING_FEATURE_TEST_MACROS 0
@@ -7988,7 +8294,7 @@
   - `202306L` [P2198R7](https://wg21.link/P2198R7) Freestanding Feature-Test
   Macros and Implementation-Defined Extensions
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_FUNCTIONAL
   #define LBAL_LIBCPP26_FREESTANDING_FUNCTIONAL 0
@@ -8003,7 +8309,7 @@
   - `202306L` [P2198R7](https://wg21.link/P2198R7) Freestanding Feature-Test
   Macros and Implementation-Defined Extensions
 
-  @sa `<iterator>`
+  @sa `freestanding` `<iterator>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_ITERATOR
   #define LBAL_LIBCPP26_FREESTANDING_ITERATOR 0
@@ -8018,7 +8324,7 @@
   - `202311L` [P2833R2](https://wg21.link/P2833R2) Freestanding Library: inout
   expected span
 
-  @sa `<mdspan>`
+  @sa `freestanding` `<mdspan>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_MDSPAN
   #define LBAL_LIBCPP26_FREESTANDING_MDSPAN 0
@@ -8035,7 +8341,7 @@
   - `202306L` [P2198R7](https://wg21.link/P2198R7) Freestanding Feature-Test
   Macros and Implementation-Defined Extensions
 
-  @sa `<memory>`
+  @sa `freestanding` `<memory>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_MEMORY
   #define LBAL_LIBCPP26_FREESTANDING_MEMORY 0
@@ -8052,7 +8358,7 @@
   - `202502L` [P2976R1](https://wg21.link/P2976R1) Freestanding Library:
   algorithm, numeric, and random
 
-  @sa `<memory>`
+  @sa `freestanding` `<memory>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_MEMORY_MORE
   #define LBAL_LIBCPP26_FREESTANDING_MEMORY_MORE 0
@@ -8067,7 +8373,7 @@
   - `202502L` [P2976R1](https://wg21.link/P2976R1) Freestanding Library:
   algorithm, numeric, and random
 
-  @sa `<numeric>`
+  @sa `freestanding` `<numeric>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_NUMERIC
   #define LBAL_LIBCPP26_FREESTANDING_NUMERIC 0
@@ -8082,7 +8388,7 @@
   - `202306L` [P2198R7](https://wg21.link/P2198R7) Freestanding Feature-Test
   Macros and Implementation-Defined Extensions
 
-  @sa `<new>`
+  @sa `freestanding` `<new>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_OPERATOR_NEW
   #define LBAL_LIBCPP26_FREESTANDING_OPERATOR_NEW 0
@@ -8099,7 +8405,7 @@
   - `202311L` [P2407R5](https://wg21.link/P2407R5) Freestanding Library: Partial
   Classes
 
-  @sa `<optional>`
+  @sa `freestanding` `<optional>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_OPTIONAL
   #define LBAL_LIBCPP26_FREESTANDING_OPTIONAL 0
@@ -8114,7 +8420,7 @@
   - `202502L` [P2976R1](https://wg21.link/P2976R1) Freestanding Library:
   algorithm, numeric, and random
 
-  @sa `<random>`
+  @sa `freestanding` `<random>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_RANDOM
   #define LBAL_LIBCPP26_FREESTANDING_RANDOM 0
@@ -8129,7 +8435,7 @@
   - `202306L` [P2198R7](https://wg21.link/P2198R7) Freestanding Feature-Test
   Macros and Implementation-Defined Extensions
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_RANGES
   #define LBAL_LIBCPP26_FREESTANDING_RANGES 0
@@ -8144,7 +8450,7 @@
   - `202306L` [P2198R7](https://wg21.link/P2198R7) Freestanding Feature-Test
   Macros and Implementation-Defined Extensions
 
-  @sa `<ratio>`
+  @sa `freestanding` `<ratio>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_RATIO
   #define LBAL_LIBCPP26_FREESTANDING_RATIO 0
@@ -8159,7 +8465,7 @@
   - `202311L` [P2407R5](https://wg21.link/P2407R5) Freestanding Library: Partial
   Classes
 
-  @sa `<string_view>`
+  @sa `freestanding` `<string_view>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_STRING_VIEW
   #define LBAL_LIBCPP26_FREESTANDING_STRING_VIEW 0
@@ -8174,7 +8480,7 @@
   - `202306L` [P2198R7](https://wg21.link/P2198R7) Freestanding Feature-Test
   Macros and Implementation-Defined Extensions
 
-  @sa `<tuple>`
+  @sa `freestanding` `<tuple>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_TUPLE
   #define LBAL_LIBCPP26_FREESTANDING_TUPLE 0
@@ -8189,7 +8495,7 @@
   - `202306L` [P2198R7](https://wg21.link/P2198R7) Freestanding Feature-Test
   Macros and Implementation-Defined Extensions
 
-  @sa `<utility>`
+  @sa `freestanding` `<utility>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_UTILITY
   #define LBAL_LIBCPP26_FREESTANDING_UTILITY 0
@@ -8204,7 +8510,7 @@
   - `202311L` [P2407R5](https://wg21.link/P2407R5) Freestanding Library: Partial
   Classes
 
-  @sa `<variant>`
+  @sa `freestanding` `<variant>`
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_VARIANT
   #define LBAL_LIBCPP26_FREESTANDING_VARIANT 0
@@ -8235,10 +8541,31 @@
   - `202306L` [P0792R14](https://wg21.link/P0792R14) function_ref: a non-owning
   reference to a Callable
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP26_FUNCTION_REF
   #define LBAL_LIBCPP26_FUNCTION_REF 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION
+  @brief Less double indirection in `function_ref`
+  @details
+
+  SD-6 equivalent: `__cpp_lib_function_ref >= 202603L`. Note that
+  `__cpp_lib_function_ref` has multiple values associated with it from a number
+  of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P3961R1](https://wg21.link/P3961R1) Less double indirection in
+  `function_ref`
+
+  @remark The C++26 FDIS erroneously gives `__cpp_lib_function_ref` a value of
+  `202604L` for this, but it’s a C++26 feature.
+
+  @sa `freestanding` `<functional>`
+*/
+#ifndef LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION
+  #define LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION 0
 #endif
 
 /**
@@ -8251,7 +8578,7 @@
   - `202511L` [P3774R1](https://wg21.link/P3774R1) Rename std::nontype, and make
   it broadly useful
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE
   #define LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE 0
@@ -8535,8 +8862,10 @@
 /**
   @def LBAL_LIBCPP26_HAZARD_POINTER
   @brief Hazard Pointers for C++26
-  @details SD-6 equivalent: `__cpp_lib_hazard_pointer >= 202306L`. This token
-  will have a value of `0` if the proposal described here is not supported.
+  @details SD-6 equivalent: `__cpp_lib_hazard_pointer >= 202306L`. Note that
+  `__cpp_lib_hazard_pointer` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202306L` [P2530R3](https://wg21.link/P2530R3) Hazard Pointers for C++26
 
   @sa `<hazard_pointer>`
@@ -8582,7 +8911,7 @@
   - `202511L` [P3016R6](https://wg21.link/P3016R6) Resolve inconsistencies in
   begin/end for valarray and braced initializer lists
 
-  @sa `<initializer_list>`
+  @sa `freestanding` `<initializer_list>`
 */
 #ifndef LBAL_LIBCPP26_INITIALIZER_LIST
   #define LBAL_LIBCPP26_INITIALIZER_LIST 0
@@ -8591,14 +8920,53 @@
 /**
   @def LBAL_LIBCPP26_INPLACE_VECTOR
   @brief inplace_vector
-  @details SD-6 equivalent: `__cpp_lib_inplace_vector >= 202406L`. This token
-  will have a value of `0` if the proposal described here is not supported.
+  @details SD-6 equivalent: `__cpp_lib_inplace_vector >= 202406L`. Note that
+  `__cpp_lib_inplace_vector` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202406L` [P0843R14](https://wg21.link/P0843R14) inplace_vector
 
   @sa `<inplace_vector>`
 */
 #ifndef LBAL_LIBCPP26_INPLACE_VECTOR
   #define LBAL_LIBCPP26_INPLACE_VECTOR 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_INPLACE_VECTOR_BETTER_RETURN_TYPES
+  @brief Better return types in `std::inplace_vector` and
+  `std::exception_ptr_cast`
+  @details
+
+  SD-6 equivalent: `__cpp_lib_inplace_vector >= 202603L`. Note that
+  `__cpp_lib_inplace_vector` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P3981R2](https://wg21.link/P3981R2) Better return types in
+  `std::inplace_vector` and `std::exception_ptr_cast`
+
+  @sa `<inplace_vector>`
+*/
+#ifndef LBAL_LIBCPP26_INPLACE_VECTOR_BETTER_RETURN_TYPES
+  #define LBAL_LIBCPP26_INPLACE_VECTOR_BETTER_RETURN_TYPES 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_INPLACE_VECTOR_REMOVE_TRY_APPEND_RANGE
+  @brief Remove `try_append_range` from `inplace_vector` for now
+  @details
+
+  SD-6 equivalent: `__cpp_lib_inplace_vector >= 202603L`. Note that
+  `__cpp_lib_inplace_vector` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P4022R0](https://wg21.link/P4022R0) Remove `try_append_range`
+  from `inplace_vector` for now
+
+  @sa `<inplace_vector>`
+*/
+#ifndef LBAL_LIBCPP26_INPLACE_VECTOR_REMOVE_TRY_APPEND_RANGE
+  #define LBAL_LIBCPP26_INPLACE_VECTOR_REMOVE_TRY_APPEND_RANGE 0
 #endif
 
 /**
@@ -8611,10 +8979,25 @@
   - `202511L` [P1789R3](https://wg21.link/P1789R3) Library Support for Expansion
   Statements
 
-  @sa `<utility>`
+  @sa `freestanding` `<utility>`
 */
 #ifndef LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS
   #define LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_IS_STRUCTURAL
+  @brief New reflection metafunction—
+  @details
+
+  SD-6 equivalent: `__cpp_lib_is_structural >= 202603L`. This token will have a
+  value of `0` if the proposal described here is not supported.
+  - `202603L` [P3856R8](https://wg21.link/P3856R8) New reflection metafunction—
+
+  @sa `freestanding` `<meta>` `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP26_IS_STRUCTURAL
+  #define LBAL_LIBCPP26_IS_STRUCTURAL 0
 #endif
 
 /**
@@ -8626,7 +9009,7 @@
   - `202406L` [P2985R0](https://wg21.link/P2985R0) A type trait for detecting
   virtual base classes
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP26_IS_VIRTUAL_BASE_OF
   #define LBAL_LIBCPP26_IS_VIRTUAL_BASE_OF 0
@@ -8635,16 +9018,35 @@
 /**
   @def LBAL_LIBCPP26_IS_WITHIN_LIFETIME
   @brief Checking if a union alternative is active
-  @details SD-6 equivalent: `__cpp_lib_is_within_lifetime >= 202306L`.
-  This token will have a value of `0` if the proposal described here is not
-  supported.
+  @details SD-6 equivalent: `__cpp_lib_is_within_lifetime >= 202306L`. Note that
+  `__cpp_lib_is_within_lifetime` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202306L` [P2641R4](https://wg21.link/P2641R4) Checking if a union
   alternative is active
 
-  @sa `<type_traits>`
+  @sa `freestanding` `<type_traits>`
 */
 #ifndef LBAL_LIBCPP26_IS_WITHIN_LIFETIME
   #define LBAL_LIBCPP26_IS_WITHIN_LIFETIME 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_IS_WITHIN_LIFETIME_EXTEND
+  @brief Extend `std::is_within_lifetime`
+  @details
+
+  SD-6 equivalent: `__cpp_lib_is_within_lifetime >= 202603L`. Note that
+  `__cpp_lib_is_within_lifetime` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P3450R1](https://wg21.link/P3450R1) Extend
+  `std::is_within_lifetime`
+
+  @sa `freestanding` `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP26_IS_WITHIN_LIFETIME_EXTEND
+  #define LBAL_LIBCPP26_IS_WITHIN_LIFETIME_EXTEND 0
 #endif
 
 /**
@@ -8721,7 +9123,7 @@
   proposal, or `0` if the proposal described here is not supported.
   - `202406L` [P2389R2](https://wg21.link/P2389R2) dextents Index Type Parameter
 
-  @sa `<mdspan>`
+  @sa `freestanding` `<mdspan>`
 */
 #ifndef LBAL_LIBCPP26_MDSPAN_DEXTENTS
   #define LBAL_LIBCPP26_MDSPAN_DEXTENTS 0
@@ -8737,7 +9139,7 @@
   - `202306L` [P2714R1](https://wg21.link/P2714R1) Bind front and back to NTTP
   callables
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP26_NOT_FN_NTTP_CALLABLES
   #define LBAL_LIBCPP26_NOT_FN_NTTP_CALLABLES 0
@@ -8753,7 +9155,7 @@
   - `202506L` [P3641R0](https://wg21.link/P3641R0) Rename std::observable to
   std::observable_checkpoint, and add a feature-test macro
 
-  @sa `<utility>`
+  @sa `freestanding` `<utility>`
 */
 #ifndef LBAL_LIBCPP26_OBSERVABLE_CHECKPOINT
   #define LBAL_LIBCPP26_OBSERVABLE_CHECKPOINT 0
@@ -8768,7 +9170,7 @@
   - `202406L` [P3168R2](https://wg21.link/P3168R2) Give std::optional Range
   Support
 
-  @sa `<optional>`
+  @sa `freestanding` `<optional>`
 */
 #ifndef LBAL_LIBCPP26_OPTIONAL_RANGE_SUPPORT
   #define LBAL_LIBCPP26_OPTIONAL_RANGE_SUPPORT 0
@@ -8799,7 +9201,7 @@
   - `202311L` [P2833R2](https://wg21.link/P2833R2) Freestanding Library: inout
   expected span
 
-  @sa `<memory>`
+  @sa `freestanding` `<memory>`
 */
 #ifndef LBAL_LIBCPP26_OUT_PTR_MORE
   #define LBAL_LIBCPP26_OUT_PTR_MORE 0
@@ -8814,7 +9216,7 @@
   supported proposal, or `0` if the proposal described here is not supported.
   - `202506L` [P3179R9](https://wg21.link/P3179R9) C++ parallel range algorithms
 
-  @sa `<algorithm>` `<numeric>`
+  @sa `<algorithm>` `<memory>` `<numeric>`
 */
 #ifndef LBAL_LIBCPP26_PARALLEL_ALGORITHM_RANGE
   #define LBAL_LIBCPP26_PARALLEL_ALGORITHM_RANGE 0
@@ -8905,10 +9307,41 @@
   - `202311L` [P2836R1](https://wg21.link/P2836R1) std::basic_const_iterator
   should follow its underlying type’s convertibility
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP26_RANGES_AS_CONST_FIX_CONVERTIBILITY
   #define LBAL_LIBCPP26_RANGES_AS_CONST_FIX_CONVERTIBILITY 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_RANGES_AS_INPUT
+  @brief `views::to_input`
+  @details SD-6 equivalent: `__cpp_lib_ranges_as_input >= 202502L`. Note that
+  `__cpp_lib_ranges_as_input` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202502L` [P3137R3](https://wg21.link/P3137R3) views::to_input
+
+  @sa `freestanding` `<ranges>`
+*/
+#ifndef LBAL_LIBCPP26_RANGES_AS_INPUT
+  #define LBAL_LIBCPP26_RANGES_AS_INPUT 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_RANGES_AS_INPUT_RENAME
+  @brief Rename the `to_input` view to `as_input`
+  @details SD-6 equivalent: `__cpp_lib_ranges_as_input >= 202603L`. Note that
+  `__cpp_lib_ranges_as_input` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P3828R1 __PDF__](https://wg21.link/P3828R1) Rename the `to_input`
+  view to `as_input`
+
+  @sa `freestanding` `<ranges>`
+*/
+#ifndef LBAL_LIBCPP26_RANGES_AS_INPUT_RENAME
+  #define LBAL_LIBCPP26_RANGES_AS_INPUT_RENAME 0
 #endif
 
 /**
@@ -8919,7 +9352,7 @@
   supported.
   - `202411L` [P3138R5](https://wg21.link/P3138R5) views::cache_latest
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP26_RANGES_CACHE_LATEST
   #define LBAL_LIBCPP26_RANGES_CACHE_LATEST 0
@@ -8932,10 +9365,26 @@
   will have a value of `0` if the proposal described here is not supported.
   - `202403L` [P2542R8](https://wg21.link/P2542R8) views::concat
 
-  @sa `<ranges>`
+  @sa `freestanding` `<ranges>`
 */
 #ifndef LBAL_LIBCPP26_RANGES_CONCAT
   #define LBAL_LIBCPP26_RANGES_CONCAT 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_RANGES_FILTER
+  @brief Filter View Extensions for Safer Use, Rev 3
+  @details
+
+  SD-6 equivalent: `__cpp_lib_ranges_filter >= 202603L`. This token will have a
+  value of `0` if the proposal described here is not supported.
+  - `202603L` [P3725R3](https://wg21.link/P3725R3) Filter View Extensions for
+  Safer Use, Rev 3
+
+  @sa `freestanding` `<ranges>`
+*/
+#ifndef LBAL_LIBCPP26_RANGES_FILTER
+  #define LBAL_LIBCPP26_RANGES_FILTER 0
 #endif
 
 /**
@@ -8984,19 +9433,6 @@
 #endif
 
 /**
-  @def LBAL_LIBCPP26_RANGES_TO_INPUT
-  @brief views::to_input
-  @details SD-6 equivalent: `__cpp_lib_ranges_to_input >= 202502L`. This token
-  will have a value of `0` if the proposal described here is not supported.
-  - `202502L` [P3137R3](https://wg21.link/P3137R3) views::to_input
-
-  @sa `<ranges>`
-*/
-#ifndef LBAL_LIBCPP26_RANGES_TO_INPUT
-  #define LBAL_LIBCPP26_RANGES_TO_INPUT 0
-#endif
-
-/**
   @def LBAL_LIBCPP26_RATIO
   @brief Adding the new 2022 SI prefixes
   @details SD-6 equivalent: `__cpp_lib_ratio >= 202306L`. This token will have a
@@ -9004,7 +9440,7 @@
   - `202306L` [P2734R0](https://wg21.link/P2734R0) Adding the new 2022 SI
   prefixes
 
-  @sa `<ratio>`
+  @sa `freestanding` `<ratio>`
 */
 #ifndef LBAL_LIBCPP26_RATIO
   #define LBAL_LIBCPP26_RATIO 0
@@ -9050,7 +9486,7 @@
   - `202403L` [P2944R3](https://wg21.link/P2944R3) Comparisons for
   reference_wrapper
 
-  @sa `<functional>`
+  @sa `freestanding` `<functional>`
 */
 #ifndef LBAL_LIBCPP26_REFERENCE_WRAPPER
   #define LBAL_LIBCPP26_REFERENCE_WRAPPER 0
@@ -9059,8 +9495,10 @@
 /**
   @def LBAL_LIBCPP26_REFLECTION
   @brief Error Handling in Reflection
-  @details SD-6 equivalent: `__cpp_lib_reflection >= 202506L`. This token will
-  have a value of `0` if the proposal described here is not supported.
+  @details SD-6 equivalent: `__cpp_lib_reflection >= 202506L`. Note that
+  `__cpp_lib_reflection` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
   - `202506L` [P3560R2](https://wg21.link/P3560R2) Error Handling in Reflection
 
   @sa `<meta>`
@@ -9070,17 +9508,90 @@
 #endif
 
 /**
+  @def LBAL_LIBCPP26_REFLECTION_CLEANUP
+  @brief Miscellaneous Reflection Cleanup
+  @details
+
+  SD-6 equivalent: `__cpp_lib_reflection >= 202603L`. Note that
+  `__cpp_lib_reflection` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P3795R2](https://wg21.link/P3795R2) Miscellaneous Reflection
+  Cleanup
+
+  @sa `<meta>`
+*/
+#ifndef LBAL_LIBCPP26_REFLECTION_CLEANUP
+  #define LBAL_LIBCPP26_REFLECTION_CLEANUP 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_REFLECTION_RENAME_TO_IS_VARARG_FUNCTION
+  @brief Rename `meta::has_ellipsis_parameter` to `meta::is_vararg_function`
+  @details
+
+  SD-6 equivalent: `__cpp_lib_reflection >= 202603L`. Note that
+  `__cpp_lib_reflection` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P4156R0](https://wg21.link/P4156R0) Rename
+  `meta::has_ellipsis_parameter` to `meta::is_vararg_function`
+
+  @sa `<meta>`
+*/
+#ifndef LBAL_LIBCPP26_REFLECTION_RENAME_TO_IS_VARARG_FUNCTION
+  #define LBAL_LIBCPP26_REFLECTION_RENAME_TO_IS_VARARG_FUNCTION 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER
+  @brief Wording for AT1-057
+  @details
+
+  SD-6 equivalent: `__cpp_lib_replaceable_contract_violation_handler >=
+  202306L`. This token will have a value of `0` if the proposal described here
+  is not supported.
+  - `202306L` [P3886R0](https://wg21.link/P3886R0) Wording for AT1-057
+
+  @sa `<contracts>` `freestanding`
+*/
+#ifndef LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER
+  #define LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER 0
+#endif
+
+/**
   @def LBAL_LIBCPP26_SATURATION_ARITHMETIC
   @brief Saturation arithmetic
-  @details SD-6 equivalent: `__cpp_lib_saturation_arithmetic >= 202311L`.
-  This token will have a value of `0` if the proposal described here is not
-  supported.
+  @details SD-6 equivalent: `__cpp_lib_saturation_arithmetic >= 202311L`. Note
+  that `__cpp_lib_saturation_arithmetic` has multiple values associated with
+  it from a number of different proposals, so this token will have the value
+  of the latest supported proposal, or `0` if the proposal described here is
+  not supported.
   - `202311L` [P0543R3](https://wg21.link/P0543R3) Saturation arithmetic
 
-  @sa `<numeric>`
+  @sa `freestanding` `<numeric>`
 */
 #ifndef LBAL_LIBCPP26_SATURATION_ARITHMETIC
   #define LBAL_LIBCPP26_SATURATION_ARITHMETIC 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING
+  @brief Renaming saturation arithmetic functions
+  @details
+
+  SD-6 equivalent: `__cpp_lib_saturation_arithmetic >= 202603L`. Note that
+  `__cpp_lib_saturation_arithmetic` has multiple values associated with it
+  from a number of different proposals, so this token will have the value of
+  the latest supported proposal, or `0` if the proposal described here is not
+  supported.
+  - `202603L` [P4052R0](https://wg21.link/P4052R0) Renaming saturation
+  arithmetic functions
+
+  @sa `freestanding` `<numeric>`
+*/
+#ifndef LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING
+  #define LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING 0
 #endif
 
 /**
@@ -9209,6 +9720,24 @@
 #endif
 
 /**
+  @def LBAL_LIBCPP26_SIMD_IOTA
+  @brief Add an `iota` object for `simd` (and more)
+  @details
+
+  SD-6 equivalent: `__cpp_lib_simd >= 202603L`. Note that `__cpp_lib_simd` has
+  multiple values associated with it from a number of different proposals, so
+  this token will have the value of the latest supported proposal, or `0` if the
+  proposal described here is not supported.
+  - `202603L` [P3319R6](https://wg21.link/P3319R6) Add an `iota` object for
+  `simd` (and more)
+
+  @sa `<simd>`
+*/
+#ifndef LBAL_LIBCPP26_SIMD_IOTA
+  #define LBAL_LIBCPP26_SIMD_IOTA 0
+#endif
+
+/**
   @def LBAL_LIBCPP26_SIMD_NAMESPACES
   @brief Exploration of namespaces for std::simd
   @details SD-6 equivalent: `__cpp_lib_simd >= 202502L`. Note that
@@ -9294,7 +9823,7 @@
   proposal, or `0` if the proposal described here is not supported.
   - `202311L` [P2821R5](https://wg21.link/P2821R5) span.at()
 
-  @sa `<span>`
+  @sa `freestanding` `<span>`
 */
 #ifndef LBAL_LIBCPP26_SPAN_AT
   #define LBAL_LIBCPP26_SPAN_AT 0
@@ -9303,11 +9832,18 @@
 /**
   @def LBAL_LIBCPP26_SPAN_INITIALIZER_LIST
   @brief std::span over an initializer list
-  @details SD-6 equivalent: `__cpp_lib_span_initializer_list >= 202311L`.
-  This token will have a value of `0` if the proposal described here is not
-  supported.
+  @details SD-6 equivalent: `__cpp_lib_span_initializer_list >= 202311L`. Note
+  that `__cpp_lib_span_initializer_list` has multiple values associated with
+  it from a number of different proposals, so this token will have the value
+  of the latest supported proposal, or `0` if the proposal described here is
+  not supported.
   - `202311L` [P2447R6](https://wg21.link/P2447R6) std::span over an initializer
   list
+  - `202603L` [P4144R1](https://wg21.link/P4144R1) Remove `span`’s
+  `initializer_list` constructor for C++26
+
+  @remark This is based on `__cpp_lib_span_initializer_list`, which was removed
+  during the finalization of C++26.
 
   @sa `<span>`
 */
@@ -9325,7 +9861,7 @@
   - `202311L` [P2833R2](https://wg21.link/P2833R2) Freestanding Library: inout
   expected span
 
-  @sa `<span>`
+  @sa `freestanding` `<span>`
 */
 #ifndef LBAL_LIBCPP26_SPAN_MORE
   #define LBAL_LIBCPP26_SPAN_MORE 0
@@ -9344,6 +9880,54 @@
 */
 #ifndef LBAL_LIBCPP26_SSTREAM_FROM_STRING_VIEW
   #define LBAL_LIBCPP26_SSTREAM_FROM_STRING_VIEW 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_START_LIFETIME
+  @brief Adjustments to `union` Lifetime Rules
+  @details
+
+  SD-6 equivalent: `__cpp_lib_start_lifetime >= 202603L`. This token will have a
+  value of `0` if the proposal described here is not supported.
+  - `202603L` [P3726R2](https://wg21.link/P3726R2) Adjustments to `union`
+  Lifetime Rules
+
+  @sa `freestanding` `<memory>`
+*/
+#ifndef LBAL_LIBCPP26_START_LIFETIME
+  #define LBAL_LIBCPP26_START_LIFETIME 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_STDBIT_H
+  @brief Add new library headers from C23
+  @details
+
+  SD-6 equivalent: `__cpp_lib_stdbit_h >= 202603L`. This token will have a value
+  of `0` if the proposal described here is not supported.
+  - `202603L` [P3370R1](https://wg21.link/P3370R1) Add new library headers from
+  C23
+
+  @sa `<stdbit.h>`
+*/
+#ifndef LBAL_LIBCPP26_STDBIT_H
+  #define LBAL_LIBCPP26_STDBIT_H 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_STDCKDINT_H
+  @brief Add new library headers from C23
+  @details
+
+  SD-6 equivalent: `__cpp_lib_stdckdint_h >= 202603L`. This token will have a
+  value of `0` if the proposal described here is not supported.
+  - `202603L` [P3370R1](https://wg21.link/P3370R1) Add new library headers from
+  C23
+
+  @sa `<stdckdint.h>`
+*/
+#ifndef LBAL_LIBCPP26_STDCKDINT_H
+  #define LBAL_LIBCPP26_STDCKDINT_H 0
 #endif
 
 /**
@@ -9384,7 +9968,7 @@
   proposal, or `0` if the proposal described here is not supported.
   - `202306L` [P2630R4](https://wg21.link/P2630R4) Submdspan
 
-  @sa `<mdspan>`
+  @sa `freestanding` `<mdspan>`
 */
 #ifndef LBAL_LIBCPP26_SUBMDSPAN
   #define LBAL_LIBCPP26_SUBMDSPAN 0
@@ -9399,7 +9983,7 @@
   proposal, or `0` if the proposal described here is not supported.
   - `202411L` [P3355R1](https://wg21.link/P3355R1) Fix submdspan for C++26
 
-  @sa `<mdspan>`
+  @sa `freestanding` `<mdspan>`
 */
 #ifndef LBAL_LIBCPP26_SUBMDSPAN_FIX
   #define LBAL_LIBCPP26_SUBMDSPAN_FIX 0
@@ -9415,7 +9999,7 @@
   - `202511L` [P3663R3](https://wg21.link/P3663R3) Future-proof submdspan-
   mapping
 
-  @sa `<mdspan>`
+  @sa `freestanding` `<mdspan>`
 */
 #ifndef LBAL_LIBCPP26_SUBMDSPAN_FUTURE_PROOF
   #define LBAL_LIBCPP26_SUBMDSPAN_FUTURE_PROOF 0
@@ -9430,10 +10014,28 @@
   proposal, or `0` if the proposal described here is not supported.
   - `202403L` [P2642R6](https://wg21.link/P2642R6) Padded mdspan layouts
 
-  @sa `<mdspan>`
+  @sa `freestanding` `<mdspan>`
 */
 #ifndef LBAL_LIBCPP26_SUBMDSPAN_PADDED
   #define LBAL_LIBCPP26_SUBMDSPAN_PADDED 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_SUBMDSPAN_UPDATE
+  @brief Working Draft: Programming Languages—C++
+  @details
+
+  SD-6 equivalent: `__cpp_lib_submdspan >= 202603L`. Note that
+  `__cpp_lib_submdspan` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [N5050](https://wg21.link/N5050) Working Draft: Programming
+  Languages—C++
+
+  @sa `freestanding` `<mdspan>`
+*/
+#ifndef LBAL_LIBCPP26_SUBMDSPAN_UPDATE
+  #define LBAL_LIBCPP26_SUBMDSPAN_UPDATE 0
 #endif
 
 /**
@@ -9564,6 +10166,204 @@
 
   @{
 */
+
+/**
+  @def LBAL_LIBCPP2D_BITOPS_BETTER_SHIFTING
+  @brief Better Shifting
+  @details
+
+  SD-6 equivalent: `__cpp_lib_bitops >= 202607L`. Note that `__cpp_lib_bitops`
+  has multiple values associated with it from a number of different proposals,
+  so this token will have the value of the latest supported proposal, or `0` if
+  the proposal described here is not supported.
+  - `202607L` [P3793R2](https://wg21.link/P3793R2) Better Shifting
+
+  @sa `<bit>` `freestanding`
+*/
+#ifndef LBAL_LIBCPP2D_BITOPS_BETTER_SHIFTING
+  #define LBAL_LIBCPP2D_BITOPS_BETTER_SHIFTING 0
+#endif
+
+/**
+  @def LBAL_LIBCPP2D_BITOPS_PERMUTATIONS
+  @brief Bit permutations
+  @details
+
+  SD-6 equivalent: `__cpp_lib_bitops >= 202607L`. Note that `__cpp_lib_bitops`
+  has multiple values associated with it from a number of different proposals,
+  so this token will have the value of the latest supported proposal, or `0` if
+  the proposal described here is not supported.
+  - `202607L` [P3104R6](https://wg21.link/P3104R6) Bit permutations
+
+  @sa `<bit>` `freestanding`
+*/
+#ifndef LBAL_LIBCPP2D_BITOPS_PERMUTATIONS
+  #define LBAL_LIBCPP2D_BITOPS_PERMUTATIONS 0
+#endif
+
+/**
+  @def LBAL_LIBCPP2D_CONSTANT_WRAPPER_REVERT_STRING
+  @brief Revert string support in `std::constant_wrapper`
+  @details
+
+  SD-6 equivalent: `__cpp_lib_constant_wrapper >= 202606L`. Note that
+  `__cpp_lib_constant_wrapper` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202606L` [P4206R0](https://wg21.link/P4206R0) Revert string support in
+  `std::constant_wrapper`
+
+  @sa `freestanding` `<type_traits>` `<utility>`
+*/
+#ifndef LBAL_LIBCPP2D_CONSTANT_WRAPPER_REVERT_STRING
+  #define LBAL_LIBCPP2D_CONSTANT_WRAPPER_REVERT_STRING 0
+#endif
+
+/**
+  @def LBAL_LIBCPP2D_EXPECTED_UEXPECTED
+  @brief The unexpected in `std::expected`
+  @details
+
+  SD-6 equivalent: `__cpp_lib_expected >= 202606L`. Note that
+  `__cpp_lib_expected` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `202606L` [P3798R1](https://wg21.link/P3798R1) The unexpected in
+  `std::expected`
+
+  @sa `<expected>`
+*/
+#ifndef LBAL_LIBCPP2D_EXPECTED_UEXPECTED
+  #define LBAL_LIBCPP2D_EXPECTED_UEXPECTED 0
+#endif
+
+/**
+  @def LBAL_LIBCPP2D_HAZARD_POINTER_BATCHES
+  @brief Hazard Pointer Batches
+  @details
+
+  SD-6 equivalent: `__cpp_lib_hazard_pointer >= 202606L`. Note that
+  `__cpp_lib_hazard_pointer` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202606L` [P3428R4](https://wg21.link/P3428R4) Hazard Pointer Batches
+
+  @sa `<hazard_pointer>`
+*/
+#ifndef LBAL_LIBCPP2D_HAZARD_POINTER_BATCHES
+  #define LBAL_LIBCPP2D_HAZARD_POINTER_BATCHES 0
+#endif
+
+/**
+  @def LBAL_LIBCPP2D_MAP_LOOKUP
+  @brief Better Lookups for `map`, `unordered_map`, and `flat_map`
+  @details
+
+  SD-6 equivalent: `__cpp_lib_map_lookup >= 202606L`. This token will have a
+  value of `0` if the proposal described here is not supported.
+  - `202606L` [P3091R6](https://wg21.link/P3091R6) Better Lookups for `map`,
+  `unordered_map`, and `flat_map`
+*/
+#ifndef LBAL_LIBCPP2D_MAP_LOOKUP
+  #define LBAL_LIBCPP2D_MAP_LOOKUP 0
+#endif
+
+/**
+  @def LBAL_LIBCPP2D_MDSPAN_COPY
+  @brief Copy and fill for `mdspan`
+  @details
+
+  SD-6 equivalent: `__cpp_lib_mdspan_copy >= 202606L`. This token will have a
+  value of `0` if the proposal described here is not supported.
+  - `202606L` [P3242R4](https://wg21.link/P3242R4) Copy and fill for `mdspan`
+*/
+#ifndef LBAL_LIBCPP2D_MDSPAN_COPY
+  #define LBAL_LIBCPP2D_MDSPAN_COPY 0
+#endif
+
+/**
+  @def LBAL_LIBCPP2D_POINTER_TAG_PAIR
+  @brief `constexpr` pointer tagging
+  @details
+
+  SD-6 equivalent: `__cpp_lib_pointer_tag_pair >= 202606L`. This token will have
+  a value of `0` if the proposal described here is not supported.
+  - `202606L` [P3125R6](https://wg21.link/P3125R6) `constexpr` pointer tagging
+*/
+#ifndef LBAL_LIBCPP2D_POINTER_TAG_PAIR
+  #define LBAL_LIBCPP2D_POINTER_TAG_PAIR 0
+#endif
+
+/**
+  @def LBAL_LIBCPP2D_SIMD_BITOPS
+  @brief `std::simd` overloads for `bit` permutations
+  @details
+
+  SD-6 equivalent: `__cpp_lib_simd_bitops >= 202607L`. This token will have a
+  value of `0` if the proposal described here is not supported.
+  - `202607L` [P3772R2](https://wg21.link/P3772R2) `std::simd` overloads for
+  `bit` permutations
+*/
+#ifndef LBAL_LIBCPP2D_SIMD_BITOPS
+  #define LBAL_LIBCPP2D_SIMD_BITOPS 0
+#endif
+
+/**
+  @def LBAL_LIBCPP2D_SIMD_BITOPS_BETTER_SHIFTING
+  @brief Better Shifting
+  @details
+
+  SD-6 equivalent: `__cpp_lib_simd_bitops >= 202607L`. This token will have a
+  value of `0` if the proposal described here is not supported.
+  - `202607L` [P3793R2](https://wg21.link/P3793R2) Better Shifting
+*/
+#ifndef LBAL_LIBCPP2D_SIMD_BITOPS_BETTER_SHIFTING
+  #define LBAL_LIBCPP2D_SIMD_BITOPS_BETTER_SHIFTING 0
+#endif
+
+/**
+  @def LBAL_LIBCPP2D_THREAD_ATTRIBUTES
+  @brief Thread attributes
+  @details
+
+  SD-6 equivalent: `__cpp_lib_thread_attributes >= 202606L`. This token will
+  have a value of `0` if the proposal described here is not supported.
+  - `202606L` [P2019R9](https://wg21.link/P2019R9) Thread attributes
+*/
+#ifndef LBAL_LIBCPP2D_THREAD_ATTRIBUTES
+  #define LBAL_LIBCPP2D_THREAD_ATTRIBUTES 0
+#endif
+
+/**
+  @def LBAL_LIBCPP2D_TO_CHARS_FIX_FLOAT
+  @brief Fix the default floating-point representation in `std::format`
+  @details
+
+  SD-6 equivalent: `__cpp_lib_to_chars >= 202606L`. Note that
+  `__cpp_lib_to_chars` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `202606L` [P3505R4](https://wg21.link/P3505R4) Fix the default floating-
+  point representation in `std::format`
+
+  @sa `<charconv>`
+*/
+#ifndef LBAL_LIBCPP2D_TO_CHARS_FIX_FLOAT
+  #define LBAL_LIBCPP2D_TO_CHARS_FIX_FLOAT 0
+#endif
+
+/**
+  @def LBAL_LIBCPP2D_VIEW_INTERFACE
+  @brief `view_interface::at()`
+  @details
+
+  SD-6 equivalent: `__cpp_lib_view_interface >= 202606L`. This token will have a
+  value of `0` if the proposal described here is not supported.
+  - `202606L` [P3052R2](https://wg21.link/P3052R2) `view_interface::at()`
+*/
+#ifndef LBAL_LIBCPP2D_VIEW_INTERFACE
+  #define LBAL_LIBCPP2D_VIEW_INTERFACE 0
+#endif
 
 ///	@}	LBAL_LIBCPP2D
 
