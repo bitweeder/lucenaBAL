@@ -16,16 +16,12 @@
 
 find_package(Doxygen REQUIRED)
 
-get_target_property (
-	LBAL_PUBLIC_HEADER_DIR
-		lucenaBAL
-	INTERFACE_INCLUDE_DIRECTORIES
-)
-
 file (
 	GLOB_RECURSE
 		LBAL_PUBLIC_HEADERS
-			"${LBAL_PUBLIC_HEADER_DIR}/*.h"
+	CONFIGURE_DEPENDS
+		"${PROJECT_SOURCE_DIR}/include/lucenaBAL/*.hpp"
+		"${PROJECT_SOURCE_DIR}/include/lucenaBAL/*.inc"
 )
 
 set (DOXYGEN_INPUT_PATHS "${PROJECT_SOURCE_DIR}/include")

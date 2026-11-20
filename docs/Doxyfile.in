@@ -48,7 +48,7 @@ OPTIMIZE_OUTPUT_JAVA   = NO
 OPTIMIZE_FOR_FORTRAN   = NO
 OPTIMIZE_OUTPUT_VHDL   = NO
 OPTIMIZE_OUTPUT_SLICE  = NO
-EXTENSION_MAPPING      =
+EXTENSION_MAPPING      = inc=C++
 MARKDOWN_SUPPORT       = YES
 MARKDOWN_STRICT        = YES
 TOC_INCLUDE_HEADINGS   = 6
@@ -153,6 +153,7 @@ FILE_PATTERNS          = *.c \
                          *.ixx \
                          *.ipp \
                          *.i++ \
+                         *.inc \
                          *.inl \
                          *.idl \
                          *.ddl \
