@@ -338,6 +338,7 @@ if(CLANG_FORMAT_EXE)
 			include/**/*.inc
 			tests/*.cpp
 			tests/*.hpp
+			tests/*.inc
 	)
 
 	# FIXME

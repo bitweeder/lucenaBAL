@@ -957,35 +957,35 @@
   `LBAL_DIAGNOSTIC_PUSH`) as an include guard and drop its documentation.
 */
 ///	@cond LBAL_INTERNAL
-#include <lucenaBAL/details/lbalFeatureSetup-overview-cpp03.inc>
+#include <lucenaBAL/details/fragments/lbalFeatureSetup-overview-cpp03.inc>
 ///	@endcond
 
 ///	@cond LBAL_INTERNAL
-#include <lucenaBAL/details/lbalFeatureSetup-overview-cpp11.inc>
+#include <lucenaBAL/details/fragments/lbalFeatureSetup-overview-cpp11.inc>
 ///	@endcond
 
 ///	@cond LBAL_INTERNAL
-#include <lucenaBAL/details/lbalFeatureSetup-overview-cpp14.inc>
+#include <lucenaBAL/details/fragments/lbalFeatureSetup-overview-cpp14.inc>
 ///	@endcond
 
 ///	@cond LBAL_INTERNAL
-#include <lucenaBAL/details/lbalFeatureSetup-overview-cpp17.inc>
+#include <lucenaBAL/details/fragments/lbalFeatureSetup-overview-cpp17.inc>
 ///	@endcond
 
 ///	@cond LBAL_INTERNAL
-#include <lucenaBAL/details/lbalFeatureSetup-overview-cpp20.inc>
+#include <lucenaBAL/details/fragments/lbalFeatureSetup-overview-cpp20.inc>
 ///	@endcond
 
 ///	@cond LBAL_INTERNAL
-#include <lucenaBAL/details/lbalFeatureSetup-overview-cpp23.inc>
+#include <lucenaBAL/details/fragments/lbalFeatureSetup-overview-cpp23.inc>
 ///	@endcond
 
 ///	@cond LBAL_INTERNAL
-#include <lucenaBAL/details/lbalFeatureSetup-overview-cpp26.inc>
+#include <lucenaBAL/details/fragments/lbalFeatureSetup-overview-cpp26.inc>
 ///	@endcond
 
 ///	@cond LBAL_INTERNAL
-#include <lucenaBAL/details/lbalFeatureSetup-overview-cpp2d.inc>
+#include <lucenaBAL/details/fragments/lbalFeatureSetup-overview-cpp2d.inc>
 ///	@endcond
 
 /**
@@ -1149,27 +1149,27 @@
   includes from Doxygen.
 */
 ///	@cond LBAL_INTERNAL
-#include <lucenaBAL/details/lbalFeatureSetup-overview-libcpp14.inc>
+#include <lucenaBAL/details/fragments/lbalFeatureSetup-overview-libcpp14.inc>
 ///	@endcond
 
 ///	@cond LBAL_INTERNAL
-#include <lucenaBAL/details/lbalFeatureSetup-overview-libcpp17.inc>
+#include <lucenaBAL/details/fragments/lbalFeatureSetup-overview-libcpp17.inc>
 ///	@endcond
 
 ///	@cond LBAL_INTERNAL
-#include <lucenaBAL/details/lbalFeatureSetup-overview-libcpp20.inc>
+#include <lucenaBAL/details/fragments/lbalFeatureSetup-overview-libcpp20.inc>
 ///	@endcond
 
 ///	@cond LBAL_INTERNAL
-#include <lucenaBAL/details/lbalFeatureSetup-overview-libcpp23.inc>
+#include <lucenaBAL/details/fragments/lbalFeatureSetup-overview-libcpp23.inc>
 ///	@endcond
 
 ///	@cond LBAL_INTERNAL
-#include <lucenaBAL/details/lbalFeatureSetup-overview-libcpp26.inc>
+#include <lucenaBAL/details/fragments/lbalFeatureSetup-overview-libcpp26.inc>
 ///	@endcond
 
 ///	@cond LBAL_INTERNAL
-#include <lucenaBAL/details/lbalFeatureSetup-overview-libcpp2d.inc>
+#include <lucenaBAL/details/fragments/lbalFeatureSetup-overview-libcpp2d.inc>
 ///	@endcond
 
 /**

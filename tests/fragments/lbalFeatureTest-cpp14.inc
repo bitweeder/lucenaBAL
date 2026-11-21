@@ -1,0 +1,22 @@
+/*------------------------------------------------------------------------------
+
+  Lucena Build Abstraction Library
+  “lbalFeatureTest-cpp14.inc”
+  Copyright © 2026 Lucena
+  All Rights Reserved
+
+  This file is distributed under the University of Illinois Open Source
+  License. See LICENSE.md for details.
+
+------------------------------------------------------------------------------*/
+
+LBAL_DIAGNOSTIC_TEST(LBAL_CPP14_AGGREGATE_NSDMI);
+LBAL_DIAGNOSTIC_TEST(LBAL_CPP14_ATTRIBUTE_DEPRECATED);
+LBAL_DIAGNOSTIC_TEST(LBAL_CPP14_BINARY_LITERALS);
+LBAL_DIAGNOSTIC_TEST(LBAL_CPP14_CONSTEXPR_RELAXED_CONSTRAINTS);
+LBAL_DIAGNOSTIC_TEST(LBAL_CPP14_DECLTYPE_AUTO);
+LBAL_DIAGNOSTIC_TEST(LBAL_CPP14_GENERIC_LAMBDAS);
+LBAL_DIAGNOSTIC_TEST(LBAL_CPP14_INIT_CAPTURES);
+LBAL_DIAGNOSTIC_TEST(LBAL_CPP14_RETURN_TYPE_DEDUCTION);
+LBAL_DIAGNOSTIC_TEST(LBAL_CPP14_SIZED_DEALLOCATION);
+LBAL_DIAGNOSTIC_TEST(LBAL_CPP14_VARIABLE_TEMPLATES);

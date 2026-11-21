@@ -1,0 +1,220 @@
+/*------------------------------------------------------------------------------
+
+  Lucena Build Abstraction Library
+  “lbalLibrarySetup-header-tests-libcpp14.inc”
+  Copyright © 2026 Lucena
+  All Rights Reserved
+
+  This file is distributed under the University of Illinois Open Source
+  License. See LICENSE.md for details.
+
+------------------------------------------------------------------------------*/
+
+#if LBAL_LIBCPP14_CHRONO_UDLS
+  #if LBAL_HAS_HEADER_CHRONO != 1
+    #undef LBAL_LIBCPP14_CHRONO_UDLS
+    #define LBAL_LIBCPP14_CHRONO_UDLS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_CHRONO_UDLS: <chrono> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_CHRONO_UDLS
+
+#if LBAL_LIBCPP14_COMPLEX_UDLS
+  #if LBAL_HAS_HEADER_COMPLEX != 1
+    #undef LBAL_LIBCPP14_COMPLEX_UDLS
+    #define LBAL_LIBCPP14_COMPLEX_UDLS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_COMPLEX_UDLS: <complex> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_COMPLEX_UDLS
+
+#if LBAL_LIBCPP14_EXCHANGE_FUNCTION
+  #if LBAL_HAS_HEADER_UTILITY != 1
+    #undef LBAL_LIBCPP14_EXCHANGE_FUNCTION
+    #define LBAL_LIBCPP14_EXCHANGE_FUNCTION 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_EXCHANGE_FUNCTION: <utility> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_EXCHANGE_FUNCTION
+
+#if LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP
+  #if LBAL_HAS_HEADER_MAP != 1 || LBAL_HAS_HEADER_SET != 1
+    #undef LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP
+    #define LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP: at least one "
+    "of {<map>, <set>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_GENERIC_ASSOCIATIVE_LOOKUP
+
+#if LBAL_LIBCPP14_INTEGER_SEQUENCE
+  #if LBAL_HAS_HEADER_UTILITY != 1
+    #undef LBAL_LIBCPP14_INTEGER_SEQUENCE
+    #define LBAL_LIBCPP14_INTEGER_SEQUENCE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_INTEGER_SEQUENCE: <utility> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_INTEGER_SEQUENCE
+
+#if LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE
+    #define LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE: "
+    "<type_traits> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_INTEGRAL_CONSTANT_CALLABLE
+
+#if LBAL_LIBCPP14_IS_FINAL
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP14_IS_FINAL
+    #define LBAL_LIBCPP14_IS_FINAL 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_IS_FINAL: <type_traits> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_IS_FINAL
+
+#if LBAL_LIBCPP14_IS_NULL_POINTER
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP14_IS_NULL_POINTER
+    #define LBAL_LIBCPP14_IS_NULL_POINTER 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_IS_NULL_POINTER: <type_traits> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_IS_NULL_POINTER
+
+#if LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR
+  #if LBAL_HAS_HEADER_ITERATOR != 1
+    #undef LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR
+    #define LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR: <iterator> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_MAKE_REVERSE_ITERATOR
+
+#if LBAL_LIBCPP14_MAKE_UNIQUE
+  #if LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP14_MAKE_UNIQUE
+    #define LBAL_LIBCPP14_MAKE_UNIQUE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_MAKE_UNIQUE: <memory> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_MAKE_UNIQUE
+
+#if LBAL_LIBCPP14_NULL_ITERATORS
+  #if LBAL_HAS_HEADER_ITERATOR != 1
+    #undef LBAL_LIBCPP14_NULL_ITERATORS
+    #define LBAL_LIBCPP14_NULL_ITERATORS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_NULL_ITERATORS: <iterator> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_NULL_ITERATORS
+
+#if LBAL_LIBCPP14_QUOTED_STRING_IO
+  #if LBAL_HAS_HEADER_IOMANIP != 1
+    #undef LBAL_LIBCPP14_QUOTED_STRING_IO
+    #define LBAL_LIBCPP14_QUOTED_STRING_IO 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_QUOTED_STRING_IO: <iomanip> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_QUOTED_STRING_IO
+
+#if LBAL_LIBCPP14_RESULT_OF_SFINAE
+  #if LBAL_HAS_HEADER_FUNCTIONAL != 1 || LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP14_RESULT_OF_SFINAE
+    #define LBAL_LIBCPP14_RESULT_OF_SFINAE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_RESULT_OF_SFINAE: at least one of "
+    "{<functional>, <type_traits>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_RESULT_OF_SFINAE
+
+#if LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS
+  #if LBAL_HAS_HEADER_ALGORITHM != 1
+    #undef LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS
+    #define LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS: <algorithm> "
+    "not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_ROBUST_NONMODIFYING_SEQ_OPS
+
+#if LBAL_LIBCPP14_SHARED_TIMED_MUTEX
+  #if LBAL_HAS_HEADER_SHARED_MUTEX != 1
+    #undef LBAL_LIBCPP14_SHARED_TIMED_MUTEX
+    #define LBAL_LIBCPP14_SHARED_TIMED_MUTEX 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_SHARED_TIMED_MUTEX: <shared_mutex> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_SHARED_TIMED_MUTEX
+
+#if LBAL_LIBCPP14_STRING_UDLS
+  #if LBAL_HAS_HEADER_STRING != 1
+    #undef LBAL_LIBCPP14_STRING_UDLS
+    #define LBAL_LIBCPP14_STRING_UDLS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_STRING_UDLS: <string> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_STRING_UDLS
+
+#if LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES
+  #if LBAL_HAS_HEADER_TYPE_TRAITS != 1
+    #undef LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES
+    #define LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES: "
+    "<type_traits> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_TRANSFORMATION_TRAIT_ALIASES
+
+#if LBAL_LIBCPP14_TRANSPARENT_OPERATORS
+  #if LBAL_HAS_HEADER_FUNCTIONAL != 1 || LBAL_HAS_HEADER_MEMORY != 1
+    #undef LBAL_LIBCPP14_TRANSPARENT_OPERATORS
+    #define LBAL_LIBCPP14_TRANSPARENT_OPERATORS 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_TRANSPARENT_OPERATORS: at least one of "
+    "{<functional>, <memory>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_TRANSPARENT_OPERATORS
+
+#if LBAL_LIBCPP14_TUPLES_BY_TYPE
+  #if LBAL_HAS_HEADER_TUPLE != 1 || LBAL_HAS_HEADER_UTILITY != 1
+    #undef LBAL_LIBCPP14_TUPLES_BY_TYPE
+    #define LBAL_LIBCPP14_TUPLES_BY_TYPE 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_TUPLES_BY_TYPE: at least one of "
+    "{<tuple>, <utility>} not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_TUPLES_BY_TYPE
+
+#if LBAL_LIBCPP14_TUPLE_ELEMENT_T
+  #if LBAL_HAS_HEADER_TUPLE != 1
+    #undef LBAL_LIBCPP14_TUPLE_ELEMENT_T
+    #define LBAL_LIBCPP14_TUPLE_ELEMENT_T 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP14_TUPLE_ELEMENT_T: <tuple> not found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP14_TUPLE_ELEMENT_T
