@@ -18,7 +18,7 @@ cmake --build build                                  # builds tests/lbalTest (fe
 ctest --test-dir build                               # or: cmake --build build --target test
 ctest --test-dir build -R <regex>                    # single test (gtest_discover_tests names, e.g. lbalTest.Validation)
 ./build/tests/lbalTest --gtest_filter='lbalTest.*'   # run the gtest binary directly
-cmake --build build --target format                  # clang-format all include/**/*.hpp and tests/*.{cpp,hpp}
+cmake --build build --target format                  # clang-format all include/**/*.{hpp,inc} and tests/*.{cpp,hpp}
 cmake --build build --target format-dry              # show the clang-format diff without applying it
 cmake --build build --target install                 # install headers + CMake config
 ```
@@ -35,7 +35,12 @@ The include chain is `lucenaBAL.hpp` → `lbalConfig.hpp` + `lbalFeatureSetup.hp
 2. **`details/lbalCompilerSetup.hpp`**: does detection (`lbalDetectCompiler.hpp`), then includes `compilers/lbal<Compiler>Initialization.hpp`. It maps SD-6 language macros to `LBAL_CPPxx_*`, then includes `compilers/lbal<Compiler>PostInitialization.hpp`. Version-gated per-compiler overrides and fixups live in the Initialization and PostInitialization files, e.g. `LBAL_GCC_VERSION >= 40900`.
 3. **`details/lbalLibrarySetup.hpp`** (large): applies the same pattern to Standard Library tokens (`LBAL_LIBCPPxx_*`), using `lbalDetectStandardLibrary.hpp` and `libraries/lbalStandardLibrary<Impl>{,Post}Initialization.hpp`.
 4. **`details/lbalPlatformSetup.hpp`**: includes `platforms/lbalPlatform{Apple,POSIX,WinAPI}.hpp`.
-5. **`lbalFeatureSetup.hpp`**: the documented public surface. It holds the Doxygen `@name` groups and includes `details/lbalFeatureSetup-overview-{cpp,libcpp}NN.inc`, one per Standard. Each `.inc` holds a token's Doxygen `@def` docs (the SD-6 equivalent, proposal papers and values) and the fallback `#ifndef TOKEN / #define TOKEN 0`. Doxygen is configured to scan `*.inc`.
+5. **`lbalFeatureSetup.hpp`**: the documented public surface. It holds the Doxygen group docs and the non-feature tokens: build environment, platform, compiler control (`LBAL_DIAGNOSTIC_*`), builtins and decorators (`LBAL_VIS_*` etc.). It also includes one `details/lbalFeatureSetup-overview-{cpp,libcpp}NN.inc` per Standard. Each `.inc` is self-contained for Doxygen. It has:
+   - the license header
+   - an `@addtogroup lbal_compiler` wrapper, or `lbal_library` for `libcpp*`
+   - its own `@name LBAL_CPPxx` / `LBAL_LIBCPPxx` member group, holding each token's `@def` docs (the SD-6 equivalent, proposal papers and values) and its fallback `#ifndef TOKEN / #define TOKEN 0`
+
+   See "Docs (Doxygen)" below.
 
 Token values are the SD-6 date value (e.g. `201707L`) when the feature is available and `0` otherwise. A few meta-tokens aggregate related tokens, e.g. `LBAL_CPP20_ATTRIBUTES_LIKELY_AND_UNLIKELY`.
 
@@ -43,7 +48,7 @@ Token values are the SD-6 date value (e.g. `201707L`) when the feature is availa
 - the SD-6 mapping in `lbalCompilerSetup.hpp` or `lbalLibrarySetup.hpp`
 - any per-compiler or per-library overrides
 - the external-definition guard in `lbalDefinitionTests.hpp`
-- the docs and `0`-default in the matching `overview-*.inc`
+- the docs (a `@def` inside the file's `@name` group) and `0`-default in the matching `overview-*.inc`
 - a `LBAL_DIAGNOSTIC_TEST(...)` line in `tests/lbalFeatureTest.cpp`
 
 Other headers:
@@ -54,7 +59,21 @@ Other headers:
 
 ## Tests
 
-`tests/lbalFeatureTest.cpp` compiles every token and logs any that are unsupported; it is mostly a compile-time validity check. `tests/lbalFormattingTest.*` exercises the formatting and decorator macros. `tests/reference/` is excluded from `format` and must be maintained by hand.
+`tests/lbalFeatureTest.cpp` compiles every token and logs any that are unsupported; it is mostly a compile-time validity check. `tests/lbalFormattingTest.*` exercises the formatting and decorator macros.
+
+## Docs (Doxygen)
+
+- `docs/Doxyfile.in` scans `*.inc`. It needs `EXTENSION_MAPPING = inc=C++`, or Doxygen won't parse the `.inc` files as C++.
+- `docs/CMakeLists.txt` globs `*.hpp` and `*.inc` under `${PROJECT_SOURCE_DIR}/include/lucenaBAL`. Don't derive the glob from the target's `INTERFACE_INCLUDE_DIRECTORIES`: that property holds generator expressions, which break the glob.
+- Doxygen assigns groups per file and doesn't carry a group across `#include`. That's why each `.inc` has its own `@addtogroup` and `@name` wrappers. A new `.inc` must follow the same pattern. The root `CMakeLists.txt` lint glob includes `include/**/*.inc`, so the `format` and `format-dry` targets cover `.inc` files too.
+- In `lbalFeatureSetup.hpp`, every `.inc` `#include` is wrapped in `///	@cond LBAL_INTERNAL` … `///	@endcond`, with a SEEME comment explaining why. Keep this wrapping.
+  - Doxygen guesses include guards: it treats an `#ifndef X` / `#define X` pair with an empty body (or `1`) as a guard and drops that define.
+  - Every `#include` Doxygen resolves restarts that guessing.
+  - Without the wrapping, the next empty fallback after the last `.inc` (`LBAL_DIAGNOSTIC_PUSH`, then POP, then `LBAL_VIS_*` and so on) loses its docs, and Doxygen reports "documentation for unknown define".
+  - Fallbacks with value `0` don't trigger the guess.
+  - Giving individual macros a placeholder body only moves the problem to the next empty fallback.
+  - `ENABLED_SECTIONS` is empty, so `@cond LBAL_INTERNAL` content (including the TS section) is hidden from the docs on purpose.
+- To debug what Doxygen's preprocessor sees, run `doxygen -d preprocessor`.
 
 ## Conventions
 

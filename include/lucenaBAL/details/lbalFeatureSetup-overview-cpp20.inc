@@ -184,8 +184,8 @@
   `__cpp_concepts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201811L` [P1084R2 __PDF__](https://wg21.link/P1084R2) Today’s return-type-
-  requirements Are Insufficient
+  - `201811L` [P1084R2 __PDF__](https://wg21.link/P1084R2) Today’s
+  return-type-requirements Are Insufficient
 */
 #ifndef LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS
   #define LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS 0
@@ -254,10 +254,10 @@
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201811L` [P1002R1](https://wg21.link/P1002R1) Try-catch blocks in constexpr
-  functions
-  - `201811L` [P1327R1](https://wg21.link/P1327R1) Allowing dynamic_cast,
-  polymorphic typeid in Constant Expressions
+  - `201811L` [P1002R1 __PDF__](https://wg21.link/P1002R1) Try-catch blocks in
+  constexpr functions
+  - `201811L` [P1327R1](https://wg21.link/P1327R1) Allowing `dynamic_cast`,
+  polymorphic `typeid` in Constant Expressions
 
   @remark This and the `LBAL_CPP20_CONSTEXPR_TRY_CATCH` and
   `LBAL_CPP20_CONSTEXPR_UNION_ALTERATION` tokens are aliases for each other.
@@ -305,8 +305,8 @@
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201907L` [P1331R2](https://wg21.link/P1331R2) Permitting trivial default
-  initialization in constexpr contexts
+  - `201907L` [P1331R2 __PDF__](https://wg21.link/P1331R2) Permitting trivial
+  default initialization in constexpr contexts
 
   @remark This and the `LBAL_CPP20_CONSTEXPR_INTRINSICS` token are aliases for
   each other.
@@ -322,8 +322,8 @@
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201811L` [P1002R1](https://wg21.link/P1002R1) Try-catch blocks in constexpr
-  functions
+  - `201811L` [P1002R1 __PDF__](https://wg21.link/P1002R1) Try-catch blocks in
+  constexpr functions
 
   @remark This and the `LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM` and
   `LBAL_CPP20_CONSTEXPR_UNION_ALTERATION` tokens are aliases for each other.
@@ -372,10 +372,11 @@
 
   SD-6 equivalent: `__cpp_constinit >= 201907L`. This token will have a value of
   `0` if the proposal described here is not supported.
-  - `201907L` [P1143R2](https://wg21.link/P1143R2) Adding the constinit keyword
+  - `201907L` [P1143R2](https://wg21.link/P1143R2) Adding the `constinit`
+  keyword
 
-  @remark This feature is broadly intended to be back-portable to older C+
-  + dialects; in certain circumstances it’s conceivable that `__cpp_constinit`
+  @remark This feature is broadly intended to be back-portable to older C++
+  dialects; in certain circumstances it’s conceivable that `__cpp_constinit`
   will be set even if the dialect is older than C++20.
 */
 #ifndef LBAL_CPP20_CONSTINIT
@@ -457,8 +458,8 @@
   `__cpp_generic_lambdas` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `201707L` [P0428R2](https://wg21.link/P0428R2) Familiar template syntax for
-  generic lambdas
+  - `201707L` [P0428R2 __PDF__](https://wg21.link/P0428R2) Familiar template
+  syntax for generic lambdas
 */
 #ifndef LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST
   #define LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST 0
@@ -473,8 +474,8 @@
   proposal, or `0` if the proposal described here is not supported.
   - `201902L` [LWG3393](https://wg21.link/LWG3393) Missing/incorrect feature
   test macro for coroutines
-  - `201902L` [P0912R5](https://wg21.link/P0912R5) Merge Coroutines TS into C+
-  +20 working draft
+  - `201902L` [P0912R5](https://wg21.link/P0912R5) Merge Coroutines TS into
+  C++20 working draft
 
   @remark Technically, the proposal this is from only directs that the
   Coroutines TS be merged into the Standard.
@@ -554,8 +555,8 @@
   @details SD-6 equivalent: `__cpp_nontype_template_parameter_class >= 201806L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201806L` [P0732R2 __PDF__](https://wg21.link/P0732R2) Class Types in Non-
-  Type Template Parameters
+  - `201806L` [P0732R2 __PDF__](https://wg21.link/P0732R2) Class Types in
+  Non-Type Template Parameters
 */
 #ifndef LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS
   #define LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS 0

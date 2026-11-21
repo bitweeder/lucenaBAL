@@ -54,8 +54,8 @@
   @brief Add binary literal support.
   @details SD-6 equivalent: `__cpp_binary_literals >= 201304L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `201304L` [N3472 __PDF__](https://wg21.link/N3472) Binary Literals in the C+
-  + Core Language
+  - `201304L` [N3472 __PDF__](https://wg21.link/N3472) Binary Literals in the
+  C++ Core Language
 */
 #ifndef LBAL_CPP14_BINARY_LITERALS
   #define LBAL_CPP14_BINARY_LITERALS 0

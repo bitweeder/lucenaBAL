@@ -332,17 +332,13 @@ if(CLANG_FORMAT_EXE)
 	# must be separately maintained.
 	file(
 		GLOB_RECURSE
-		ALL_LINTABLE_FILES 
+		ALL_LINTABLE_FILES
+		CONFIGURE_DEPENDS
 			include/**/*.hpp
+			include/**/*.inc
 			tests/*.cpp
 			tests/*.hpp
 	)
-
-	list(
-		FILTER
-		ALL_LINTABLE_FILES
-		EXCLUDE REGEX
-			".*/tests/reference/.*")
 
 	# FIXME
 	# Should probably be a shell script that tests inputs and generates sensible

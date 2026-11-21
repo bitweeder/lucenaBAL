@@ -36,7 +36,7 @@
   @details SD-6 equivalent: `__has_cpp_attribute(assume) >= 202207L`. This token
   will have a value of `0` if the proposal described here is not supported.
   - `202207L` [CWG2615](https://wg21.link/CWG2615) Missing
-  __has_cpp_attribute(assume)
+  `__has_cpp_attribute(assume)`
   - `202207L` [P1774R8 __PDF__](https://wg21.link/P1774R8) Portable assumptions
 */
 #ifndef LBAL_CPP23_ATTRIBUTE_ASSUME
@@ -62,7 +62,7 @@
   `__cpp_char8_t` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202207L` [P2513R3](https://wg21.link/P2513R3) char8_t Compatibility and
+  - `202207L` [P2513R4](https://wg21.link/P2513R4) `char8_t` Compatibility and
   Portability Fix
 */
 #ifndef LBAL_CPP23_CHAR8_T_COMPATIBILITY
@@ -76,8 +76,8 @@
   `__cpp_consteval` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202211L` [P2564R3](https://wg21.link/P2564R3) consteval needs to propagate
-  up
+  - `202211L` [P2564R3](https://wg21.link/P2564R3) `consteval` needs to
+  propagate up
 */
 #ifndef LBAL_CPP23_CONSTEVAL_PROPAGATE_UP
   #define LBAL_CPP23_CONSTEVAL_PROPAGATE_UP 0
@@ -104,8 +104,8 @@
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202211L` [P2647R1](https://wg21.link/P2647R1) Permitting static constexpr
-  variables in constexpr functions
+  - `202211L` [P2647R1](https://wg21.link/P2647R1) Permitting `static constexpr`
+  variables in `constexpr` functions
 */
 #ifndef LBAL_CPP23_CONSTEXPR_PERMIT_STATIC_CONSTEXPR
   #define LBAL_CPP23_CONSTEXPR_PERMIT_STATIC_CONSTEXPR 0
@@ -118,7 +118,7 @@
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202207L` [P2448R2](https://wg21.link/P2448R2) Relaxing some constexpr
+  - `202207L` [P2448R2](https://wg21.link/P2448R2) Relaxing some `constexpr`
   restrictions
 */
 #ifndef LBAL_CPP23_CONSTEXPR_RELAX_RESTRICTIONS
@@ -156,7 +156,7 @@
   @brief `if consteval`
   @details SD-6 equivalent: `__cpp_if_consteval >= 202106L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `202106L` [P1938R3](https://wg21.link/P1938R3) if consteval
+  - `202106L` [P1938R3](https://wg21.link/P1938R3) `if consteval`
 */
 #ifndef LBAL_CPP23_IF_CONSTEVAL
   #define LBAL_CPP23_IF_CONSTEVAL 0
@@ -196,7 +196,7 @@
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
   not supported.
-  - `202211L` [P2589R1 __PDF__](https://wg21.link/P2589R1) static operator[]
+  - `202211L` [P2589R1 __PDF__](https://wg21.link/P2589R1) `static operator[]`
 */
 #ifndef LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT_STATIC
   #define LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT_STATIC 0
@@ -226,8 +226,8 @@
   for lifetime extension in range-for loop
   - `202211L` [P2644R1 __PDF__](https://wg21.link/P2644R1) Final Fix of Broken
   Range based for Loop Rev 1
-  - `202211L` [P2718R0 __PDF__](https://wg21.link/P2718R0) Wording for P2644R1
-  Fix for Range-based for Loop
+  - `202211L` [P2718R0](https://wg21.link/P2718R0) Wording for P2644R1 Fix for
+  Range-based for Loop
 */
 #ifndef LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES
   #define LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES 0
@@ -250,7 +250,7 @@
   @brief Static `operator ()`
   @details SD-6 equivalent: `__cpp_static_call_operator >= 202207L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202207L` [P1169R4](https://wg21.link/P1169R4) static operator()
+  - `202207L` [P1169R4](https://wg21.link/P1169R4) static `operator()`
 */
 #ifndef LBAL_CPP23_STATIC_CALL_OPERATOR
   #define LBAL_CPP23_STATIC_CALL_OPERATOR 0

@@ -74,8 +74,8 @@
   multiple values associated with it from a number of different proposals, so
   this token will have the value of the latest supported proposal, or `0` if the
   proposal described here is not supported.
-  - `202606L` [P3097R3](https://wg21.link/P3097R3) Contracts for C++: Virtual
-  functions
+  - `202606L` [P3097R3 __PDF__](https://wg21.link/P3097R3) Contracts for C++:
+  Virtual functions
 */
 #ifndef LBAL_CPP2D_CONTRACTS_VIRTUAL
   #define LBAL_CPP2D_CONTRACTS_VIRTUAL 0
@@ -106,7 +106,7 @@
   `__cpp_impl_coroutine` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202606L` [P3950R1](https://wg21.link/P3950R1) `return_value` &
+  - `202606L` [P3950R1 __PDF__](https://wg21.link/P3950R1) `return_value` &
   `return_void` Are Not Mutually Exclusive
 */
 #ifndef LBAL_CPP2D_IMPL_COROUTINE_RETURN
@@ -122,8 +122,8 @@
   `__cpp_pack_indexing` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202606L` [P3670R4](https://wg21.link/P3670R4) Pack Indexing for Template
-  Names
+  - `202606L` [P3670R4 __PDF__](https://wg21.link/P3670R4) Pack Indexing for
+  Template Names
 */
 #ifndef LBAL_CPP2D_PACK_INDEXING_TEMPLATE_NAMES
   #define LBAL_CPP2D_PACK_INDEXING_TEMPLATE_NAMES 0

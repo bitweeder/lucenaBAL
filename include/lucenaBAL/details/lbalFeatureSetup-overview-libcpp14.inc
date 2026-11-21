@@ -57,7 +57,7 @@
   @brief Add `std::exchange` utility function
   @details SD-6 equivalent: `__cpp_lib_exchange_function >= 201304L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `201304L` [N3668](https://wg21.link/N3668) exchange() utility function,
+  - `201304L` [N3668](https://wg21.link/N3668) `exchange()` utility function,
   revision 3
 
   @sa `freestanding` `<utility>`
@@ -131,7 +131,7 @@
   @details SD-6 equivalent: `__cpp_lib_is_null_pointer >= 201309L`. This token
   will have a value of `0` if the proposal described here is not supported.
   - `201309L` [LWG2247](https://wg21.link/LWG2247) Type traits and
-  std::nullptr_t
+  `std::nullptr_t`
 
   @sa `freestanding` `<type_traits>`
 */
@@ -145,7 +145,7 @@
   @details SD-6 equivalent: `__cpp_lib_make_reverse_iterator >= 201402L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201402L` [LWG2285](https://wg21.link/LWG2285) make_reverse_iterator
+  - `201402L` [LWG2285](https://wg21.link/LWG2285) `make_reverse_iterator`
 
   @sa `freestanding` `<iterator>`
 */
@@ -288,8 +288,8 @@
   @brief Allow addressing `std::tuple`s by type
   @details SD-6 equivalent: `__cpp_lib_tuples_by_type >= 201304L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `201304L` [N3670 __PDF__](https://wg21.link/N3670) Wording for Addressing
-  Tuples by Type: Revision 2
+  - `201304L` [N3670](https://wg21.link/N3670) Wording for Addressing Tuples by
+  Type: Revision 2
 
   @sa `freestanding` `<tuple>` `<utility>`
 */

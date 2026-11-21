@@ -33,10 +33,10 @@
   SD-6 equivalent: `__cpp_lib_algorithm_default_value_type >= 202603L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `202603L` [P3217R0](https://wg21.link/P3217R0) Adjoints to "Enabling list-
-  initialization for algorithms": `find_last`
-  - `202603L` [P3787R2](https://wg21.link/P3787R2) Adjoints to "Enabling list-
-  initialization for algorithms": `uninitialized_fill`
+  - `202603L` [P3217R0](https://wg21.link/P3217R0) Adjoints to "Enabling
+  list-initialization for algorithms": `find_last`
+  - `202603L` [P3787R2](https://wg21.link/P3787R2) Adjoints to "Enabling
+  list-initialization for algorithms": `uninitialized_fill`
 
   @sa `<algorithm>` `<deque>` `<forward_list>` `<list>` `<memory>` `<ranges>`
   `<string>` `<vector>`
@@ -57,6 +57,21 @@
 */
 #ifndef LBAL_LIBCPP26_ALIGNED_ACCESSOR
   #define LBAL_LIBCPP26_ALIGNED_ACCESSOR 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_APPLY_RESULT
+  @brief `std::apply` result
+  @details SD-6 equivalent: `__cpp_lib_apply >= 202506L`. Note that
+  `__cpp_lib_apply` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `202506L` [P1317R2 __PDF__](https://wg21.link/P1317R2) 3 `std::apply result`
+
+  @sa `freestanding` `<tuple>` `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP26_APPLY_RESULT
+  #define LBAL_LIBCPP26_APPLY_RESULT 0
 #endif
 
 /**
@@ -82,7 +97,8 @@
   `__cpp_lib_atomic_min_max` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202403L` [P0493R5](https://wg21.link/P0493R5) Atomic maximum/minimum
+  - `202403L` [P0493R5 __PDF__](https://wg21.link/P0493R5) Atomic
+  maximum/minimum
 
   @sa `<atomic>` `freestanding`
 */
@@ -145,7 +161,8 @@
   `__cpp_lib_atomic_ref` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202603L` [P3936R1](https://wg21.link/P3936R1) Safer `atomic_ref::address`
+  - `202603L` [P3936R1 __PDF__](https://wg21.link/P3936R1) Safer
+  `atomic_ref::address`
 
   @sa `<atomic>` `freestanding`
 */
@@ -174,8 +191,8 @@
   @brief Interfacing bitset with string_view
   @details SD-6 equivalent: `__cpp_lib_bitset >= 202306L`. This token will have
   a value of `0` if the proposal described here is not supported.
-  - `202306L` [P2697R1](https://wg21.link/P2697R1) Interfacing bitset with
-  string_view
+  - `202306L` [P2697R1 __PDF__](https://wg21.link/P2697R1) Interfacing bitset
+  with string_view
 
   @sa `<bitset>`
 */
@@ -223,8 +240,8 @@
   `__cpp_lib_constant_wrapper` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202603L` [P3978R3](https://wg21.link/P3978R3) `constant_wrapper` should
-  unwrap on call and subscript
+  - `202603L` [P3978R3 __PDF__](https://wg21.link/P3978R3) `constant_wrapper`
+  should unwrap on call and subscript
 
   @sa `freestanding` `<type_traits>` `<utility>`
 */
@@ -240,7 +257,7 @@
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
   supported.
-  - `202306L` [P2562R1 __PDF__](https://wg21.link/P2562R1) constexpr Stable
+  - `202306L` [P2562R1 __PDF__](https://wg21.link/P2562R1) `constexpr` Stable
   Sorting
 
   @sa `<algorithm>` `<utility>`
@@ -270,8 +287,8 @@
   `__cpp_lib_constexpr_complex` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202306L` [P1383R2](https://wg21.link/P1383R2) More constexpr for cmath
-  and complex
+  - `202306L` [P1383R2 __PDF__](https://wg21.link/P1383R2) More `constexpr` for
+  `<cmath>` and `<complex>`
 
   @sa `<complex>`
 */
@@ -345,7 +362,7 @@
   @brief constexpr std::format
   @details SD-6 equivalent: `__cpp_lib_constexpr_format >= 202511L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202511L` [P3391R2](https://wg21.link/P3391R2) constexpr std::format
+  - `202511L` [P3391R2](https://wg21.link/P3391R2) `constexpr std::format`
 
   @sa `<format>`
 */
@@ -403,8 +420,8 @@
   `__cpp_lib_constexpr_memory` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202506L` [P3037R6](https://wg21.link/P3037R6) constexpr std::shared_ptr
-  and friends
+  - `202506L` [P3037R6 __PDF__](https://wg21.link/P3037R6) `constexpr
+  std::shared_ptr` and friends
 
   @sa `freestanding` `<memory>`
 */
@@ -493,12 +510,11 @@
   the latest supported proposal, or `0` if the proposal described here is not
   supported.
   - `202403L` [P2944R3](https://wg21.link/P2944R3) Comparisons for
-  reference_wrapper
+  `reference_wrapper`
   - `202411L` [P3379R0](https://wg21.link/P3379R0) Constrain std::expected
   equality operators
 
-  @sa `<expected>` `freestanding` `<optional>` `<tuple>` `<utility>`
-  `<variant>`
+  @sa `<expected>` `freestanding` `<optional>` `<tuple>` `<utility>` `<variant>`
 */
 #ifndef LBAL_LIBCPP26_CONSTRAINED_EQUALITY
   #define LBAL_LIBCPP26_CONSTRAINED_EQUALITY 0
@@ -513,8 +529,7 @@
   the latest supported proposal, or `0` if the proposal described here is not
   supported.
 
-  @sa `<expected>` `freestanding` `<optional>` `<tuple>` `<utility>`
-  `<variant>`
+  @sa `<expected>` `freestanding` `<optional>` `<tuple>` `<utility>` `<variant>`
 */
 #ifndef LBAL_LIBCPP26_CONSTRAINED_EQUALITY_EXPECTED
   #define LBAL_LIBCPP26_CONSTRAINED_EQUALITY_EXPECTED 0
@@ -525,7 +540,7 @@
   @brief copyable_function
   @details SD-6 equivalent: `__cpp_lib_copyable_function >= 202306L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202306L` [P2548R6](https://wg21.link/P2548R6) copyable_function
+  - `202306L` [P2548R6 __PDF__](https://wg21.link/P2548R6) copyable_function
 
   @sa `<functional>`
 */
@@ -540,6 +555,8 @@
   will have a value of `0` if the proposal described here is not supported.
   - `202506L` [P3149R11](https://wg21.link/P3149R11) async_scope — Creating
   scopes for non-sequential concurrency
+  - `202506L` [P3815R1](https://wg21.link/P3815R1) Add `scope_association`
+  concept to P3149
 
   @sa `<execution>`
 */
@@ -569,8 +586,8 @@
   `__cpp_lib_debugging` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202403L` [P2810R4](https://wg21.link/P2810R4) is_debugger_present
-  is_replaceable
+  - `202403L` [P2810R4](https://wg21.link/P2810R4) `is_debugger_present`
+  `is_replaceable`
 
   @sa `<debugging>` `freestanding`
 */
@@ -582,9 +599,8 @@
   @def LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES
   @brief Enabling list-initialization for algorithms
   @details SD-6 equivalent:
-  `__cpp_lib_default_template_type_for_algorithm_values
-  >= 202403L`. This token will have a value of `0` if the proposal described
-  here is not supported.
+  `__cpp_lib_default_template_type_for_algorithm_values >= 202403L`. This token
+  will have a value of `0` if the proposal described here is not supported.
   - `202403L` [P2248R8](https://wg21.link/P2248R8) Enabling list-initialization
   for algorithms
 
@@ -601,7 +617,7 @@
   @details SD-6 equivalent: `__cpp_lib_define_static >= 202506L`. This token
   will have a value of `0` if the proposal described here is not supported.
   - `202506L` [P3491R3](https://wg21.link/P3491R3)
-  define_static_{string,object,array}
+  `define_static_{string,object,array}`
 
   @sa `freestanding` `<meta>`
 */
@@ -697,7 +713,7 @@
   `__cpp_lib_format` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202306L` [P2637R3](https://wg21.link/P2637R3) Member visit
+  - `202306L` [P2637R3](https://wg21.link/P2637R3) Member `visit`
 
   @sa `<format>`
 */
@@ -744,7 +760,7 @@
   `__cpp_lib_format` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202304L` [P2510R3](https://wg21.link/P2510R3) Formatting pointers
+  - `202304L` [P2510R3 __PDF__](https://wg21.link/P2510R3) Formatting pointers
 
   @sa `<format>`
 */
@@ -916,7 +932,7 @@
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
   supported.
-  - `202311L` [P2937R0](https://wg21.link/P2937R0) Freestanding: Remove strtok
+  - `202311L` [P2937R0](https://wg21.link/P2937R0) Freestanding: Remove `strtok`
 
   @sa `<cstring>` `freestanding`
 */
@@ -1080,8 +1096,10 @@
 /**
   @def LBAL_LIBCPP26_FREESTANDING_NUMERIC
   @brief Freestanding Library: algorithm, numeric, and random
-  @details SD-6 equivalent: `__cpp_lib_freestanding_numeric >= 202502L`.
-  This token will have a value of `0` if the proposal described here is not
+  @details SD-6 equivalent: `__cpp_lib_freestanding_numeric >= 202502L`. Note
+  that `__cpp_lib_freestanding_numeric` has multiple values associated with it
+  from a number of different proposals, so this token will have the value of
+  the latest supported proposal, or `0` if the proposal described here is not
   supported.
   - `202502L` [P2976R1](https://wg21.link/P2976R1) Freestanding Library:
   algorithm, numeric, and random
@@ -1288,8 +1306,8 @@
   `__cpp_lib_function_ref` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202511L` [P3774R1](https://wg21.link/P3774R1) Rename std::nontype, and make
-  it broadly useful
+  - `202511L` [P3774R1](https://wg21.link/P3774R1) Rename `std::nontype`, and
+  make it broadly useful
 
   @sa `freestanding` `<functional>`
 */
@@ -1302,8 +1320,8 @@
   @brief Vector API for random number generation
   @details SD-6 equivalent: `__cpp_lib_generate_random >= 202403L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202403L` [P1068R11](https://wg21.link/P1068R11) Vector API for random
-  number generation
+  - `202403L` [P1068R11 __PDF__](https://wg21.link/P1068R11) Vector API for
+  random number generation
 
   @sa `<random>`
 */
@@ -1579,7 +1597,8 @@
   `__cpp_lib_hazard_pointer` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202306L` [P2530R3](https://wg21.link/P2530R3) Hazard Pointers for C++26
+  - `202306L` [P2530R3 __PDF__](https://wg21.link/P2530R3) Hazard Pointers for
+  C++26
 
   @sa `<hazard_pointer>`
 */
@@ -1606,8 +1625,8 @@
   @brief Vocabulary Types for Composite Class Design
   @details SD-6 equivalent: `__cpp_lib_indirect >= 202502L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `202502L` [P3019R11](https://wg21.link/P3019R11) Vocabulary Types for
-  Composite Class Design
+  - `202502L` [P3019R14 __PDF__](https://wg21.link/P3019R14) `indirect` and
+  `polymorphic`: Vocabulary Types for Composite Class Design
 
   @sa `<memory>`
 */
@@ -1622,7 +1641,7 @@
   @details SD-6 equivalent: `__cpp_lib_initializer_list >= 202511L`. This token
   will have a value of `0` if the proposal described here is not supported.
   - `202511L` [P3016R6](https://wg21.link/P3016R6) Resolve inconsistencies in
-  begin/end for valarray and braced initializer lists
+  begin/end for `valarray` and braced initializer lists
 
   @sa `freestanding` `<initializer_list>`
 */
@@ -1637,7 +1656,7 @@
   `__cpp_lib_inplace_vector` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202406L` [P0843R14](https://wg21.link/P0843R14) inplace_vector
+  - `202406L` [P0843R14](https://wg21.link/P0843R14) `inplace_vector`
 
   @sa `<inplace_vector>`
 */
@@ -1689,8 +1708,8 @@
   `__cpp_lib_integer_sequence` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202511L` [P1789R3](https://wg21.link/P1789R3) Library Support for Expansion
-  Statements
+  - `202511L` [P1789R3 __PDF__](https://wg21.link/P1789R3) Library Support for
+  Expansion Statements
 
   @sa `freestanding` `<utility>`
 */
@@ -1705,7 +1724,8 @@
 
   SD-6 equivalent: `__cpp_lib_is_structural >= 202603L`. This token will have a
   value of `0` if the proposal described here is not supported.
-  - `202603L` [P3856R8](https://wg21.link/P3856R8) New reflection metafunction—
+  - `202603L` [P3856R8 __PDF__](https://wg21.link/P3856R8) New reflection
+  metafunction—
 
   @sa `freestanding` `<meta>` `<type_traits>`
 */
@@ -1786,8 +1806,8 @@
   `__cpp_lib_linalg` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202511L` [P3371R5](https://wg21.link/P3371R5) Fix C++26 by making the rank-
-  1, rank-2, rank-k, and rank-2k updates consistent with the BLAS
+  - `202511L` [P3371R5](https://wg21.link/P3371R5) Fix C++26 by making the
+  rank-1, rank-2, rank-k, and rank-2k updates consistent with the BLAS
 
   @sa `<linalg>`
 */
@@ -1834,7 +1854,8 @@
   `__cpp_lib_mdspan` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202406L` [P2389R2](https://wg21.link/P2389R2) dextents Index Type Parameter
+  - `202406L` [P2389R2](https://wg21.link/P2389R2) `dextents` Index Type
+  Parameter
 
   @sa `freestanding` `<mdspan>`
 */
@@ -1865,8 +1886,9 @@
   @details SD-6 equivalent: `__cpp_lib_observable_checkpoint >= 202506L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `202506L` [P3641R0](https://wg21.link/P3641R0) Rename std::observable to
-  std::observable_checkpoint, and add a feature-test macro
+  - `202506L` [P1494R5](https://wg21.link/P1494R5) Partial program correctness
+  - `202506L` [P3641R0](https://wg21.link/P3641R0) Rename `std::observable` to
+  `std::observable_checkpoint`, and add a feature-test macro
 
   @sa `freestanding` `<utility>`
 */
@@ -1896,7 +1918,7 @@
   `__cpp_lib_optional` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202506L` [P2988R12](https://wg21.link/P2988R12) std::optional<T&>
+  - `202506L` [P2988R12 __PDF__](https://wg21.link/P2988R12) std::optional<T&>
 
   @sa `<optional>`
 */
@@ -1928,6 +1950,8 @@
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
   - `202506L` [P3179R9](https://wg21.link/P3179R9) C++ parallel range algorithms
+  - `202506L` [P3709R2](https://wg21.link/P3709R2) Reconsider parallel
+  `ranges::rotate_copy` and `ranges::reverse_copy`
 
   @sa `<algorithm>` `<memory>` `<numeric>`
 */
@@ -1942,6 +1966,8 @@
   This token will have a value of `0` if the proposal described here is not
   supported.
   - `202506L` [P2079R10](https://wg21.link/P2079R10) Parallel Scheduler
+  - `202506L` [P3804R2](https://wg21.link/P3804R2) Iterating on
+  `parallel_scheduler`
 
   @sa `<execution>`
 */
@@ -1954,8 +1980,8 @@
   @brief Philox as an extension of the C++ RNG engines
   @details SD-6 equivalent: `__cpp_lib_philox_engine >= 202406L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202406L` [P2075R6](https://wg21.link/P2075R6) Philox as an extension of the
-  C++ RNG engines
+  - `202406L` [P2075R6 __PDF__](https://wg21.link/P2075R6) Philox as an
+  extension of the C++ RNG engines
 
   @sa `<random>`
 */
@@ -1968,8 +1994,8 @@
   @brief Vocabulary Types for Composite Class Design
   @details SD-6 equivalent: `__cpp_lib_polymorphic >= 202502L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `202502L` [P3019R11](https://wg21.link/P3019R11) Vocabulary Types for
-  Composite Class Design
+  - `202502L` [P3019R14 __PDF__](https://wg21.link/P3019R14) `indirect` and
+  `polymorphic`: Vocabulary Types for Composite Class Design
 
   @sa `<memory>`
 */
@@ -2017,7 +2043,7 @@
   `__cpp_lib_ranges_as_const` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202311L` [P2836R1](https://wg21.link/P2836R1) std::basic_const_iterator
+  - `202311L` [P2836R1](https://wg21.link/P2836R1) `std::basic_const_iterator`
   should follow its underlying type’s convertibility
 
   @sa `freestanding` `<ranges>`
@@ -2029,10 +2055,8 @@
 /**
   @def LBAL_LIBCPP26_RANGES_AS_INPUT
   @brief `views::to_input`
-  @details SD-6 equivalent: `__cpp_lib_ranges_as_input >= 202502L`. Note that
-  `__cpp_lib_ranges_as_input` has multiple values associated with it from a
-  number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.
+  @details SD-6 equivalent: `__cpp_lib_ranges_as_input >= 202502L`. This token
+  will have a value of `0` if the proposal described here is not supported.
   - `202502L` [P3137R3](https://wg21.link/P3137R3) views::to_input
 
   @sa `freestanding` `<ranges>`
@@ -2044,11 +2068,9 @@
 /**
   @def LBAL_LIBCPP26_RANGES_AS_INPUT_RENAME
   @brief Rename the `to_input` view to `as_input`
-  @details SD-6 equivalent: `__cpp_lib_ranges_as_input >= 202603L`. Note that
-  `__cpp_lib_ranges_as_input` has multiple values associated with it from a
-  number of different proposals, so this token will have the value of the latest
-  supported proposal, or `0` if the proposal described here is not supported.
-  - `202603L` [P3828R1 __PDF__](https://wg21.link/P3828R1) Rename the `to_input`
+  @details SD-6 equivalent: `__cpp_lib_ranges_as_input >= 202502L`. This token
+  will have a value of `0` if the proposal described here is not supported.
+  - `202502L` [P3828R1 __PDF__](https://wg21.link/P3828R1) Rename the `to_input`
   view to `as_input`
 
   @sa `freestanding` `<ranges>`
@@ -2063,7 +2085,7 @@
   @details SD-6 equivalent: `__cpp_lib_ranges_cache_latest >= 202411L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `202411L` [P3138R5](https://wg21.link/P3138R5) views::cache_latest
+  - `202411L` [P3138R5](https://wg21.link/P3138R5) `views::cache_latest`
 
   @sa `freestanding` `<ranges>`
 */
@@ -2076,7 +2098,7 @@
   @brief views::concat
   @details SD-6 equivalent: `__cpp_lib_ranges_concat >= 202403L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202403L` [P2542R8](https://wg21.link/P2542R8) views::concat
+  - `202403L` [P2542R8](https://wg21.link/P2542R8) `views::concat`
 
   @sa `freestanding` `<ranges>`
 */
@@ -2091,8 +2113,8 @@
 
   SD-6 equivalent: `__cpp_lib_ranges_filter >= 202603L`. This token will have a
   value of `0` if the proposal described here is not supported.
-  - `202603L` [P3725R3](https://wg21.link/P3725R3) Filter View Extensions for
-  Safer Use, Rev 3
+  - `202603L` [P3725R3 __PDF__](https://wg21.link/P3725R3) Filter View
+  Extensions for Safer Use, Rev 3
 
   @sa `freestanding` `<ranges>`
 */
@@ -2136,8 +2158,8 @@
   @details SD-6 equivalent: `__cpp_lib_ranges_reserve_hint >= 202502L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `202502L` [P2846R6](https://wg21.link/P2846R6) reserve_hint: Eagerly
-  reserving memory for not-quite-sized lazy ranges
+  - `202502L` [P2846R6 __PDF__](https://wg21.link/P2846R6) `reserve_hint`:
+  Eagerly reserving memory for not-quite-sized lazy ranges
 
   @sa `<ranges>`
 */
@@ -2150,8 +2172,8 @@
   @brief Adding the new 2022 SI prefixes
   @details SD-6 equivalent: `__cpp_lib_ratio >= 202306L`. This token will have a
   value of `0` if the proposal described here is not supported.
-  - `202306L` [P2734R0](https://wg21.link/P2734R0) Adding the new 2022 SI
-  prefixes
+  - `202306L` [P2734R0 __PDF__](https://wg21.link/P2734R0) Adding the new 2022
+  SI prefixes
 
   @sa `freestanding` `<ratio>`
 */
@@ -2183,7 +2205,8 @@
   @brief Read-Copy Update (RCU)
   @details SD-6 equivalent: `__cpp_lib_rcu >= 202306L`. This token will have a
   value of `0` if the proposal described here is not supported.
-  - `202306L` [P2545R4](https://wg21.link/P2545R4) Read-Copy Update (RCU)
+  - `202306L` [P2545R4 __PDF__](https://wg21.link/P2545R4) Read-Copy Update
+  (RCU)
 
   @sa `<rcu>`
 */
@@ -2197,7 +2220,7 @@
   @details SD-6 equivalent: `__cpp_lib_reference_wrapper >= 202403L`. This token
   will have a value of `0` if the proposal described here is not supported.
   - `202403L` [P2944R3](https://wg21.link/P2944R3) Comparisons for
-  reference_wrapper
+  `reference_wrapper`
 
   @sa `freestanding` `<functional>`
 */
@@ -2229,6 +2252,8 @@
   `__cpp_lib_reflection` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
+  - `202506L` [P3795R2](https://wg21.link/P3795R2) Miscellaneous Reflection
+  Cleanup
   - `202603L` [P3795R2](https://wg21.link/P3795R2) Miscellaneous Reflection
   Cleanup
 
@@ -2247,6 +2272,8 @@
   `__cpp_lib_reflection` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
+  - `202506L` [P4156R0](https://wg21.link/P4156R0) Rename
+  `meta::has_ellipsis_parameter` to `meta::is_vararg_function`
   - `202603L` [P4156R0](https://wg21.link/P4156R0) Rename
   `meta::has_ellipsis_parameter` to `meta::is_vararg_function`
 
@@ -2262,9 +2289,12 @@
   @details
 
   SD-6 equivalent: `__cpp_lib_replaceable_contract_violation_handler >=
-  202306L`. This token will have a value of `0` if the proposal described here
-  is not supported.
-  - `202306L` [P3886R0](https://wg21.link/P3886R0) Wording for AT1-057
+  202306L`. Note that `__cpp_lib_replaceable_contract_violation_handler` has
+  multiple values associated with it from a number of different proposals, so
+  this token will have the value of the latest supported proposal, or `0` if the
+  proposal described here is not supported.
+  - `202306L` [P3886R0 __PDF__](https://wg21.link/P3886R0) Wording for AT1-057
+  - `202603L` [P3886R0 __PDF__](https://wg21.link/P3886R0) Wording for AT1-057
 
   @sa `<contracts>` `freestanding`
 */
@@ -2314,7 +2344,7 @@
   `__cpp_lib_senders` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202406L` [P2300R10](https://wg21.link/P2300R10) std::execution
+  - `202406L` [P2300R10](https://wg21.link/P2300R10) `std::execution`
 
   @sa `<execution>`
 */
@@ -2329,8 +2359,8 @@
   `__cpp_lib_senders` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202506L` [P3570R2](https://wg21.link/P3570R2) optional variants in sender/
-  receiver
+  - `202506L` [P3570R2](https://wg21.link/P3570R2) optional variants in
+  sender/receiver
 
   @sa `<execution>`
 */
@@ -2345,8 +2375,8 @@
   `__cpp_lib_simd` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202411L` [P1928R15](https://wg21.link/P1928R15) std::simd - Merge data-
-  parallel types from the Parallelism TS 2
+  - `202411L` [P1928R15 __PDF__](https://wg21.link/P1928R15) std::simd - Merge
+  data-parallel types from the Parallelism TS 2
 
   @sa `<simd>`
 */
@@ -2407,8 +2437,8 @@
   `__cpp_lib_simd` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202511L` [P3922R1](https://wg21.link/P3922R1) Missing deduction guide from
-  simd::mask to simd::vec
+  - `202511L` [P3922R1 __PDF__](https://wg21.link/P3922R1) Missing deduction
+  guide from `simd::mask` to `simd::vec`
 
   @sa `<simd>`
 */
@@ -2423,8 +2453,8 @@
   `__cpp_lib_simd` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202506L` [P2876R3](https://wg21.link/P2876R3) Proposal to extend std::simd
-  with more constructors and accessors
+  - `202506L` [P2876R3](https://wg21.link/P2876R3) Proposal to extend
+  `std::simd` with more constructors and accessors
 
   @sa `<simd>`
 */
@@ -2441,8 +2471,10 @@
   multiple values associated with it from a number of different proposals, so
   this token will have the value of the latest supported proposal, or `0` if the
   proposal described here is not supported.
-  - `202603L` [P3319R6](https://wg21.link/P3319R6) Add an `iota` object for
-  `simd` (and more)
+  - `202603L` [P3319R6 __PDF__](https://wg21.link/P3319R6) Add an `iota` object
+  for `simd` (and more)
+  - `202606L` [P3319R6 __PDF__](https://wg21.link/P3319R6) Add an `iota` object
+  for `simd` (and more)
 
   @sa `<simd>`
 */
@@ -2487,7 +2519,7 @@
   `__cpp_lib_simd` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202506L` [P3480R6](https://wg21.link/P3480R6) std::simd is a range
+  - `202506L` [P3480R6 __PDF__](https://wg21.link/P3480R6) std::simd is a range
 
   @sa `<simd>`
 */
@@ -2502,8 +2534,8 @@
   @details SD-6 equivalent: `__cpp_lib_smart_pointer_owner_equality >= 202306L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `202306L` [P1901R2](https://wg21.link/P1901R2) Enabling the Use of weak_ptr
-  as Keys in Unordered Associative Containers
+  - `202306L` [P1901R2](https://wg21.link/P1901R2) Enabling the Use of
+  `weak_ptr` as Keys in Unordered Associative Containers
 
   @sa `<memory>`
 */
@@ -2518,8 +2550,8 @@
   @details SD-6 equivalent: `__cpp_lib_smart_ptr_owner_equality >= 202306L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `202306L` [P1901R2](https://wg21.link/P1901R2) Enabling the Use of weak_ptr
-  as Keys in Unordered Associative Containers
+  - `202306L` [P1901R2](https://wg21.link/P1901R2) Enabling the Use of
+  `weak_ptr` as Keys in Unordered Associative Containers
 
   @sa `<memory>`
 */
@@ -2550,8 +2582,8 @@
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
   not supported.
-  - `202311L` [P2447R6](https://wg21.link/P2447R6) std::span over an initializer
-  list
+  - `202311L` [P2447R6](https://wg21.link/P2447R6) `std::span` over an
+  initializer list
   - `202603L` [P4144R1](https://wg21.link/P4144R1) Remove `span`’s
   `initializer_list` constructor for C++26
 
@@ -2586,8 +2618,8 @@
   @details SD-6 equivalent: `__cpp_lib_sstream_from_string_view >= 202306L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `202306L` [P2495R3](https://wg21.link/P2495R3) Interfacing stringstreams
-  with string_view
+  - `202306L` [P2495R3 __PDF__](https://wg21.link/P2495R3) Interfacing
+  stringstreams with string_view
 
   @sa `<sstream>`
 */
@@ -2648,7 +2680,8 @@
   @brief sub-string_view from string
   @details SD-6 equivalent: `__cpp_lib_string_subview >= 202506L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202506L` [P3044R2](https://wg21.link/P3044R2) sub-string_view from string
+  - `202506L` [P3044R2 __PDF__](https://wg21.link/P3044R2) sub-`string_view`
+  from `string`
 
   @sa `<string>` `<string_view>`
 */
@@ -2679,7 +2712,7 @@
   `__cpp_lib_submdspan` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202306L` [P2630R4](https://wg21.link/P2630R4) Submdspan
+  - `202306L` [P2630R4](https://wg21.link/P2630R4) `Submdspan`
 
   @sa `freestanding` `<mdspan>`
 */
@@ -2709,8 +2742,8 @@
   `__cpp_lib_submdspan` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202511L` [P3663R3](https://wg21.link/P3663R3) Future-proof submdspan-
-  mapping
+  - `202511L` [P3663R3](https://wg21.link/P3663R3) Future-proof
+  submdspan-mapping
 
   @sa `freestanding` `<mdspan>`
 */
@@ -2725,7 +2758,7 @@
   `__cpp_lib_submdspan` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202403L` [P2642R6](https://wg21.link/P2642R6) Padded mdspan layouts
+  - `202403L` [P2642R6 __PDF__](https://wg21.link/P2642R6) Padded mdspan layouts
 
   @sa `freestanding` `<mdspan>`
 */
@@ -2757,6 +2790,11 @@
   @details SD-6 equivalent: `__cpp_lib_task >= 202506L`. This token will have a
   value of `0` if the proposal described here is not supported.
   - `202506L` [P3552R3](https://wg21.link/P3552R3) Add a Coroutine Task Type
+  - `202506L` [P3927R2](https://wg21.link/P3927R2) `task_scheduler` support for
+  parallel `bulk` execution
+  - `202506L` [P3941R4](https://wg21.link/P3941R4) Scheduler Affinity
+  - `202506L` [P3980R1](https://wg21.link/P3980R1) Task's Allocator Use
+  - `202506L` [P4151R1 __PDF__](https://wg21.link/P4151R1) Rename `affine_on`
 
   @sa `<execution>`
 */
@@ -2769,8 +2807,8 @@
   @brief Naming Text Encodings to Demystify Them
   @details SD-6 equivalent: `__cpp_lib_text_encoding >= 202306L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202306L` [P1885R12](https://wg21.link/P1885R12) Naming Text Encodings to
-  Demystify Them
+  - `202306L` [P1885R12 __PDF__](https://wg21.link/P1885R12) Naming Text
+  Encodings to Demystify Them
 
   @sa `<text_encoding>`
 */
@@ -2786,7 +2824,7 @@
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
   - `202306L` [P2497R0](https://wg21.link/P2497R0) Testing for success or
-  failure of charconv functions
+  failure of `<charconv>` functions
 
   @sa `<charconv>`
 */
@@ -2799,7 +2837,8 @@
   @brief to_string or not to_string
   @details SD-6 equivalent: `__cpp_lib_to_string >= 202306L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `202306L` [P2587R3](https://wg21.link/P2587R3) to_string or not to_string
+  - `202306L` [P2587R3](https://wg21.link/P2587R3) `to_string` or not
+  `to_string`
 
   @sa `<string>`
 */
@@ -2814,7 +2853,8 @@
   `__cpp_lib_tuple_like` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202311L` [P2819R2](https://wg21.link/P2819R2) Add tuple protocol to complex
+  - `202311L` [P2819R2 __PDF__](https://wg21.link/P2819R2) Add tuple protocol
+  to complex
 
   @sa `<map>` `<tuple>` `<unordered_map>` `<utility>`
 */
@@ -2829,6 +2869,10 @@
   have a value of `0` if the proposal described here is not supported.
   - `202506L` [P2830R10](https://wg21.link/P2830R10) Standardized Constexpr
   Type Ordering
+  - `202506L` [P3778R0](https://wg21.link/P3778R0) Fix for `type_order` template
+  definition
+  - `202506L` [P4140R0](https://wg21.link/P4140R0) Proposed resolution for
+  US70-126: allow incomplete types in type_order
 
   @sa `<compare>`
 */
@@ -2843,7 +2887,7 @@
   @details SD-6 equivalent: `__cpp_lib_valarray >= 202511L`. This token will
   have a value of `0` if the proposal described here is not supported.
   - `202511L` [P3016R6](https://wg21.link/P3016R6) Resolve inconsistencies in
-  begin/end for valarray and braced initializer lists
+  begin/end for `valarray` and braced initializer lists
 
   @sa `<valarray>`
 */
@@ -2858,7 +2902,7 @@
   `__cpp_lib_variant` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202306L` [P2637R3](https://wg21.link/P2637R3) Member visit
+  - `202306L` [P2637R3](https://wg21.link/P2637R3) Member `visit`
 
   @sa `<variant>`
 */

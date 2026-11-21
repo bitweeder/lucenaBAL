@@ -32,8 +32,8 @@
   @details SD-6 equivalent: `__cpp_lib_addressof_constexpr >= 201603L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201603L` [LWG2296](https://wg21.link/LWG2296) std::addressof should be
-  constexpr
+  - `201603L` [LWG2296](https://wg21.link/LWG2296) `std::addressof` should be
+  `constexpr`
 
   @sa `freestanding` `<memory>`
 */
@@ -85,7 +85,7 @@
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
   - `201606L` [P0032R3 __PDF__](https://wg21.link/P0032R3) Homogeneous interface
-  for variant, any and optional (Revision 3)
+  for `variant`, `any` and `optional` (Revision 3)
 
   @remark (APIME) We do not track experimental versions of this.
 
@@ -134,7 +134,7 @@
   @details SD-6 equivalent: `__cpp_lib_as_const >= 201510L`. This token will
   have a value of `0` if the proposal described here is not supported.
   - `201510L` [P0007R1](https://wg21.link/P0007R1) Constant View: A proposal for
-  a std::as_const helper function template
+  a `std::as_const` helper function template
 
   @sa `freestanding` `<utility>`
 */
@@ -148,8 +148,8 @@
   @details SD-6 equivalent: `__cpp_lib_atomic_is_always_lock_free >= 201603L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201603L` [P0152R1](https://wg21.link/P0152R1) constexpr
-  atomic<T>::is_always_lock_free
+  - `201603L` [P0152R1](https://wg21.link/P0152R1) `constexpr
+  atomic<T>::is_always_lock_free`
 
   @sa `<atomic>` `freestanding`
 */
@@ -191,7 +191,8 @@
   @brief Define `std::byte` type
   @details SD-6 equivalent: `__cpp_lib_byte >= 201603L`. This token will have a
   value of `0` if the proposal described here is not supported.
-  - `201603L` [P0298R3](https://wg21.link/P0298R3) A byte type definition
+  - `201603L` [P0298R3 __PDF__](https://wg21.link/P0298R3) A byte type
+  definition
 
   @sa `<cstddef>` `freestanding`
 */
@@ -234,8 +235,8 @@
   @brief Standard clamping algorithm
   @details SD-6 equivalent: `__cpp_lib_clamp >= 201603L`. This token will have a
   value of `0` if the proposal described here is not supported.
-  - `201603L` [P0025R0](https://wg21.link/P0025R0) An algorithm to “clamp” a
-  value between a pair of boundary values
+  - `201603L` [P0025R1](https://wg21.link/P0025R1) An algorithm to "clamp" a
+  value between a pair of boundary values (revision 2)
 
   @sa `<algorithm>` `freestanding`
 */
@@ -300,8 +301,8 @@
   @details SD-6 equivalent: `__cpp_lib_enable_shared_from_this >= 201603L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201603L` [P0033R1](https://wg21.link/P0033R1) Re-enabling shared_from_this
-  (revision 1)
+  - `201603L` [P0033R1](https://wg21.link/P0033R1) Re-enabling
+  `shared_from_this` (revision 1)
 
   @remark (SEEME - bitweeder) Prior to the December 2019 release, the
   official SD-6 doc contains an error wherein this token is mistakenly tied
@@ -322,8 +323,8 @@
   `__cpp_lib_execution` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201603L` [P0024R2 __PDF__](https://wg21.link/P0024R2) The Parallelism TS
-  Should be Standardized
+  - `201603L` [P0024R2](https://wg21.link/P0024R2) The Parallelism TS Should
+  be Standardized
 
   @remark (APIME) We do not track experimental versions of this.
 
@@ -396,8 +397,8 @@
   `__cpp_lib_filesystem` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201606L` [P0392R0](https://wg21.link/P0392R0) Adapting string_view by
-  filesystem paths
+  - `201606L` [P0392R0 __PDF__](https://wg21.link/P0392R0) Adapting string_view
+  by filesystem paths
 
   @remark (SEEME - bitweeder) Full implementation missing on Apple platforms
   prior to macOS 10.15.
@@ -428,8 +429,8 @@
   @brief Add `std::gcd` and `std::lcm`
   @details SD-6 equivalent: `__cpp_lib_gcd_lcm >= 201606L`. This token will have
   a value of `0` if the proposal described here is not supported.
-  - `201606L` [P0295R0](https://wg21.link/P0295R0) Adopt Selected Library
-  Fundamentals V2 Components for C++17
+  - `201606L` [P0295R0 __PDF__](https://wg21.link/P0295R0) Adopt Selected
+  Library Fundamentals V2 Components for C++17
 
   @sa `freestanding` `<numeric>`
 */
@@ -474,13 +475,13 @@
 /**
   @def LBAL_LIBCPP17_HYPOT
   @brief Introduce a 3-argument overload to `std::hypot`
-  @details This standardizes finding 3-dimensional distance as well as 2-
-  dimensional distance.
+  @details This standardizes finding 3-dimensional distance as well as
+  2-dimensional distance.
 
   SD-6 equivalent: `__cpp_lib_hypot >= 201603L`. This token will have a value of
   `0` if the proposal described here is not supported.
-  - `201603L` [P0030R1](https://wg21.link/P0030R1) Proposal to Introduce a 3-
-  Argument Overload to std::hypot
+  - `201603L` [P0030R1 __PDF__](https://wg21.link/P0030R1) Proposal to Introduce
+  a 3-Argument Overload to `std::hypot`
 
   @sa `<cmath>`
 */
@@ -522,7 +523,7 @@
   @brief Add `std::is_aggregate` type trait
   @details SD-6 equivalent: `__cpp_lib_is_aggregate >= 201703L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `201703L` [LWG2911](https://wg21.link/LWG2911) An is_aggregate type trait
+  - `201703L` [LWG2911](https://wg21.link/LWG2911) An `is_aggregate` type trait
   is needed
 
   @sa `freestanding` `<type_traits>`
@@ -592,8 +593,8 @@
   @brief Introduce `std::make_from_tuple` to unpack a tuple into arguments
   @details SD-6 equivalent: `__cpp_lib_make_from_tuple >= 201606L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `201606L` [P0209R2 __PDF__](https://wg21.link/P0209R2) make_from_tuple:
-  apply for construction
+  - `201606L` [P0209R2 __PDF__](https://wg21.link/P0209R2) `make_from_tuple`:
+  `apply` for construction
 
   @sa `freestanding` `<tuple>`
 */
@@ -666,12 +667,12 @@
   @details SD-6 equivalent: `__cpp_lib_nonmember_container_access >= 201411L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201411L` [N4280](https://wg21.link/N4280) Non-member size() and more
-  (Revison 2)
+  - `201411L` [N4280 __PDF__](https://wg21.link/N4280) Non-member size() and
+  more (Revison 2)
 
-  @sa `<array>` `<deque>` `<forward_list>` `freestanding` `<iterator>`
-  `<list>` `<map>` `<regex>` `<set>` `<string>` `<unordered_map>`
-  `<unordered_set>` `<vector>`
+  @sa `<array>` `<deque>` `<forward_list>` `freestanding` `<iterator>` `<list>`
+  `<map>` `<regex>` `<set>` `<string>` `<unordered_map>` `<unordered_set>`
+  `<vector>`
 */
 #ifndef LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS
   #define LBAL_LIBCPP17_NONMEMBER_CONTAINER_ACCESS 0
@@ -684,8 +685,8 @@
   `__cpp_lib_not_fn` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201603L` [P0005R4 __PDF__](https://wg21.link/P0005R4) Adopt not_fn from
-  Library Fundamentals 2 for C++17
+  - `201603L` [P0005R4](https://wg21.link/P0005R4) Adopt `not_fn` from Library
+  Fundamentals 2 for C++17
 
   @sa `freestanding` `<functional>`
 */
@@ -717,11 +718,11 @@
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
   - `201606L` [P0032R3 __PDF__](https://wg21.link/P0032R3) Homogeneous interface
-  for variant, any and optional (Revision 3)
+  for `variant`, `any` and `optional` (Revision 3)
 
-  @remark Note that the [`P0032R3`](https://wg21.link/P0032R3) and [`P0307R2`]
-  (https://wg21.link/P0307R2) proposals were approved at the same time,
-  and hence shared a token value. While we provide separate features for
+  @remark Note that the [`P0032R3`](https://wg21.link/P0032R3) and
+  [`P0307R2`](https://wg21.link/P0307R2) proposals were approved at the same
+  time, and hence shared a token value. While we provide separate features for
   `LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL` and `LBAL_LIBCPP17_OPTIONAL_INTERFACE`,
   they’re not actually differentiated by the SD-6 rules (though they might be at
   the platform level).
@@ -742,9 +743,9 @@
   - `201606L` [P0307R2 __PDF__](https://wg21.link/P0307R2) Making Optional
   Greater Equal Again
 
-  @remark Note that the [`P0032R3`](https://wg21.link/P0032R3) and [`P0307R2`]
-  (https://wg21.link/P0307R2) proposals were approved at the same time,
-  and hence shared a token value. While we provide separate features for
+  @remark Note that the [`P0032R3`](https://wg21.link/P0032R3) and
+  [`P0307R2`](https://wg21.link/P0307R2) proposals were approved at the same
+  time, and hence shared a token value. While we provide separate features for
   `LBAL_LIBCPP17_OPTIONAL_GREATER_EQUAL` and `LBAL_LIBCPP17_OPTIONAL_INTERFACE`,
   they’re not actually differentiated by the SD-6 rules (though they might be at
   the platform level).
@@ -762,8 +763,8 @@
   `__cpp_lib_parallel_algorithm` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `201603L` [P0024R2 __PDF__](https://wg21.link/P0024R2) The Parallelism TS
-  Should be Standardized
+  - `201603L` [P0024R2](https://wg21.link/P0024R2) The Parallelism TS Should
+  be Standardized
 
   @remark (APIME) We do not track experimental versions of this.
 
@@ -890,8 +891,8 @@
   @remark (SEEME - bitweeder) We do not check compliance with iterations on the
   constituent components (e.g., `LBAL_LIBCPP20_EXECUTION_VECTORIZATION`), only
   that we have met the base requirements for supporting Parallelism. Extending
-  tracking is one option; another is to eliminate this meta-token to avoid over-
-  complicating things.
+  tracking is one option; another is to eliminate this meta-token to avoid
+  over-complicating things.
 */
 #ifndef LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS
   #define LBAL_LIBCPP17_STANDARDIZATION_OF_PARALLELISM_TS 0
@@ -921,7 +922,7 @@
   of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
   - `201606L` [P0254R2 __PDF__](https://wg21.link/P0254R2) Integrating
-  std::string_view and std::string
+  `std::string_view` and `std::string`
 
   @sa `<string>` `<string_view>`
 */
@@ -939,7 +940,8 @@
   `__cpp_lib_to_chars` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201611L` [LWG3137](https://wg21.link/LWG3137) Header for __cpp_lib_to_chars
+  - `201611L` [LWG3137](https://wg21.link/LWG3137) Header for
+  `__cpp_lib_to_chars`
   - `201611L` [P0067R5](https://wg21.link/P0067R5) Elementary string
   conversions, revision 5
   - `201611L` [P0682R1](https://wg21.link/P0682R1) Repairing elementary string
@@ -971,7 +973,8 @@
   `__cpp_lib_to_chars` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201611L` [LWG3137](https://wg21.link/LWG3137) Header for __cpp_lib_to_chars
+  - `201611L` [LWG3137](https://wg21.link/LWG3137) Header for
+  `__cpp_lib_to_chars`
   - `201611L` [P0067R5](https://wg21.link/P0067R5) Elementary string
   conversions, revision 5
   - `201611L` [P0682R1](https://wg21.link/P0682R1) Repairing elementary string
@@ -1003,7 +1006,8 @@
   `__cpp_lib_to_chars` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201611L` [LWG3137](https://wg21.link/LWG3137) Header for __cpp_lib_to_chars
+  - `201611L` [LWG3137](https://wg21.link/LWG3137) Header for
+  `__cpp_lib_to_chars`
   - `201611L` [P0067R5](https://wg21.link/P0067R5) Elementary string
   conversions, revision 5
   - `201611L` [P0682R1](https://wg21.link/P0682R1) Repairing elementary string
@@ -1068,7 +1072,7 @@
   @details SD-6 equivalent: `__cpp_lib_uncaught_exceptions >= 201411L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201411L` [N4259](https://wg21.link/N4259) Wording for
+  - `201411L` [N4259 __PDF__](https://wg21.link/N4259) Wording for
   std::uncaught_exceptions
 
   @sa `<exception>` `freestanding`
@@ -1100,11 +1104,10 @@
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
   - `201606L` [P0032R3 __PDF__](https://wg21.link/P0032R3) Homogeneous interface
-  for variant, any and optional (Revision 3)
+  for `variant`, `any` and `optional` (Revision 3)
   - `201606L` [P0088R3](https://wg21.link/P0088R3) Variant: a type-safe union
   for C++17 (v8)
-  - `201606L` [P0393R3 __PDF__](https://wg21.link/P0393R3) Making Variant
-  Greater Equal
+  - `201606L` [P0393R3](https://wg21.link/P0393R3) Making Variant Greater Equal
 
   @remark We track all three `202106L` proposals with one token, as they
   were all voted in at the same time, and no implementation we’re aware of
@@ -1121,7 +1124,8 @@
   @brief Add `std::void_t` as a transformation type trait
   @details SD-6 equivalent: `__cpp_lib_void_t >= 201411L`. This token will have
   a value of `0` if the proposal described here is not supported.
-  - `201411L` [N3911](https://wg21.link/N3911) TransformationTrait Alias void_t
+  - `201411L` [N3911 __PDF__](https://wg21.link/N3911) TransformationTrait Alias
+  void_t
 
   @sa `freestanding` `<type_traits>`
 */

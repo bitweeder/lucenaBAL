@@ -95,8 +95,8 @@
   @brief Allow lambda capture of `*this` by value as `as [=,*this]`.
   @details SD-6 equivalent: `__cpp_capture_star_this >= 201603L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `201603L` [P0018R3](https://wg21.link/P0018R3) Lambda Capture of *this by
-  Value as [=,*this]
+  - `201603L` [P0018R3](https://wg21.link/P0018R3) Lambda Capture of `*this` by
+  Value as `[=,*this]`
 */
 #ifndef LBAL_CPP17_CAPTURE_STAR_THIS
   #define LBAL_CPP17_CAPTURE_STAR_THIS 0
@@ -335,7 +335,8 @@
   `__cpp_static_assert` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201411L` [N3928](https://wg21.link/N3928) Extending static_assert, v2
+  - `201411L` [N3928 __PDF__](https://wg21.link/N3928) Extending static_assert,
+  v2
 */
 #ifndef LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE
   #define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE 0
@@ -378,8 +379,8 @@
   @brief Add support for pack expansions in using-declarations
   @details SD-6 equivalent: `__cpp_variadic_using >= 201611L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `201611L` [P0195R2](https://wg21.link/P0195R2) Pack expansions in using-
-  declarations
+  - `201611L` [P0195R2](https://wg21.link/P0195R2) Pack expansions in
+  using-declarations
 */
 #ifndef LBAL_CPP17_VARIADIC_USING
   #define LBAL_CPP17_VARIADIC_USING 0
