@@ -111,6 +111,16 @@ target_link_libraries (
 
 gtest_discover_tests (lbalTest)
 
+# Make sure every documented feature token has its test line and, for language
+# tokens, its external-definition guard.
+add_test (
+	NAME lbalTokenCoverage
+	COMMAND
+		${CMAKE_COMMAND}
+			-DLBAL_SOURCE_DIR=${PROJECT_SOURCE_DIR}
+			-P ${CMAKE_CURRENT_LIST_DIR}/lbalTokenCoverage.cmake
+)
+
 
 #[[#############################################################################
   clean up

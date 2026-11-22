@@ -144,12 +144,12 @@
       #define LBAL_CPP17_GUARANTEED_COPY_ELISION 201606L
     #endif
 
-    #if !defined(LBAL_CPP17_HEX_FLOAT) && (LBAL_GCC_VERSION >= 201603L)
-      #define LBAL_CPP17_HEX_FLOAT 30000
+    #if !defined(LBAL_CPP17_HEX_FLOAT) && (LBAL_GCC_VERSION >= 30000)
+      #define LBAL_CPP17_HEX_FLOAT 201603L
     #endif
 
-    #if !defined(LBAL_CPP17_IF_CONSTEXPR) && (LBAL_GCC_VERSION >= 201606L)
-      #define LBAL_CPP17_IF_CONSTEXPR 70000
+    #if !defined(LBAL_CPP17_IF_CONSTEXPR) && (LBAL_GCC_VERSION >= 70000)
+      #define LBAL_CPP17_IF_CONSTEXPR 201606L
     #endif
 
     #if !defined(LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED)                   \

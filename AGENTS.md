@@ -31,8 +31,8 @@ CI (`.github/workflows/main.yml`) runs configure/build/ctest on macOS/Xcode, Ubu
 
 The include chain is `lucenaBAL.hpp` → `lbalConfig.hpp` + `lbalFeatureSetup.hpp`. Feature resolution is layered, and **every layer guards with `#if !defined(TOKEN)`, so the first definition wins**:
 
-1. **`details/lbalDefinitionTests.hpp`**: `#error`s if any `LBAL_*` token was defined externally. The exceptions are `LBAL_TARGET_OS_*` and `LBAL_TARGET_API_*`, which the build system supplies. Every new token must be added to this list.
-2. **`details/lbalCompilerSetup.hpp`**: does detection (`lbalDetectCompiler.hpp`), then includes `compilers/lbal<Compiler>Initialization.hpp`. It maps SD-6 language macros to `LBAL_CPPxx_*`, then includes `compilers/lbal<Compiler>PostInitialization.hpp`. Version-gated per-compiler overrides and fixups live in the Initialization and PostInitialization files, e.g. `LBAL_GCC_VERSION >= 40900`.
+1. **`details/lbalDefinitionTests.hpp`**: `#error`s if any `LBAL_*` token was defined externally. The exceptions are `LBAL_TARGET_OS_*` and `LBAL_TARGET_API_*`, which the build system supplies. Every new token must be added to this list. The per-Standard checks live in `details/fragments/`: `lbalDefinitionTests-cppNN.inc` for `LBAL_CPPNN_*` and `lbalDefinitionTests-headers-cppNN.inc` for `LBAL_HAS_HEADER_*`. Tokens that aren't tied to a Standard (`LBAL_TARGET_*`, `LBAL_CPPTS_*`, `LBAL_DIAGNOSTIC_*` etc.) stay in the `.hpp`. `LBAL_LIBCPP*` tokens are deliberately not checked, because platform and compiler code may set them.
+2. **`details/lbalCompilerSetup.hpp`**: does detection (`lbalDetectCompiler.hpp`), then includes `compilers/lbal<Compiler>Initialization.hpp`. It maps SD-6 language macros, and `__has_cpp_attribute` results, to `LBAL_CPPxx_*` through one fragment per Standard, `details/fragments/lbalCompilerSetup-definitions-cppNN.inc`. Each fragment holds that Standard's features followed by its attributes. It then includes `compilers/lbal<Compiler>PostInitialization.hpp`. Version-gated per-compiler overrides and fixups live in the Initialization and PostInitialization files, e.g. `LBAL_GCC_VERSION >= 40900`.
 3. **`details/lbalLibrarySetup.hpp`** (large): applies the same pattern to Standard Library tokens (`LBAL_LIBCPPxx_*`), using `lbalDetectStandardLibrary.hpp` and `libraries/lbalStandardLibrary<Impl>{,Post}Initialization.hpp`. Most of its content lives in per-Standard fragments in `details/fragments/`, included in this order:
    - `lbalLibrarySetup-definitions-libcppNN.inc`: maps SD-6 library macros to `LBAL_LIBCPPxx_*`. Included before the PostInitialization overrides.
    - `lbalLibrarySetup-headers-cppNN.inc`: sets `LBAL_HAS_HEADER_*` with `__has_include`.
@@ -48,12 +48,14 @@ The include chain is `lucenaBAL.hpp` → `lbalConfig.hpp` + `lbalFeatureSetup.hp
 Token values are the SD-6 date value (e.g. `201707L`) when the feature is available and `0` otherwise. A few meta-tokens aggregate related tokens, e.g. `LBAL_CPP20_ATTRIBUTES_LIKELY_AND_UNLIKELY`.
 
 **Adding or updating a feature token** usually touches several places:
-- the SD-6 mapping in `lbalCompilerSetup.hpp`, or for library tokens in `fragments/lbalLibrarySetup-definitions-libcppNN.inc`
+- the SD-6 mapping in `fragments/lbalCompilerSetup-definitions-cppNN.inc`, or for library tokens in `fragments/lbalLibrarySetup-definitions-libcppNN.inc`
 - for library tokens that need specific headers, a check in `fragments/lbalLibrarySetup-header-tests-libcppNN.inc` (plus a `LBAL_HAS_HEADER_*` in `fragments/lbalLibrarySetup-headers-cppNN.inc` if the header is new)
 - any per-compiler or per-library overrides
-- the external-definition guard in `lbalDefinitionTests.hpp`
+- the external-definition guard in `fragments/lbalDefinitionTests-cppNN.inc` for language tokens, and in `fragments/lbalDefinitionTests-headers-cppNN.inc` for any new `LBAL_HAS_HEADER_*`
 - the docs (a `@def` inside the file's `@name` group) and `0`-default in the matching `fragments/lbalFeatureSetup-overview-*.inc`
 - a `LBAL_DIAGNOSTIC_TEST(...)` line in `tests/fragments/lbalFeatureTest-{cpp,libcpp}NN.inc`
+
+The `lbalTokenCoverage` test fails if a token declared in an `overview-*.inc` is missing its `LBAL_DIAGNOSTIC_TEST` line or, for a language token, its external-definition guard. It doesn't check SD-6 mappings, because some tokens legitimately have none.
 
 Fragments under `include/` are included as `<lucenaBAL/details/fragments/…>`, the same way as other headers. Never use `<include/lucenaBAL/…>`: it only resolves when the repository root is on the include path, so the CMake build and installed copies fail.
 
@@ -65,7 +67,7 @@ Other headers:
 
 ## Tests
 
-`tests/lbalFeatureTest.cpp` compiles every token and logs any that are unsupported; it is mostly a compile-time validity check. The per-Standard `LBAL_DIAGNOSTIC_TEST(...)` lines live in `tests/fragments/lbalFeatureTest-{cpp,libcpp}NN.inc`, included as `"fragments/…"`. They're kept out of `include/` so they aren't installed or scanned by Doxygen. `tests/lbalFormattingTest.*` exercises the formatting and decorator macros.
+`tests/lbalFeatureTest.cpp` compiles every token and logs any that are unsupported; it is mostly a compile-time validity check. The per-Standard `LBAL_DIAGNOSTIC_TEST(...)` lines live in `tests/fragments/lbalFeatureTest-{cpp,libcpp}NN.inc`, included as `"fragments/…"`. They're kept out of `include/` so they aren't installed or scanned by Doxygen. `tests/lbalFormattingTest.*` exercises the formatting and decorator macros. `tests/lbalTokenCoverage.cmake` is a CMake `-P` script registered as the `lbalTokenCoverage` CTest. It checks that every overview token has its test line and, for `cpp*` tokens, its guard in `lbalDefinitionTests-<std>.inc`. Run it on its own with `ctest --test-dir build -R lbalTokenCoverage`.
 
 ## Docs (Doxygen)
 
