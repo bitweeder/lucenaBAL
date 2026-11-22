@@ -10,11 +10,13 @@
 
 ------------------------------------------------------------------------------*/
 
+//	C++11 Language
 //
-//	We check for “C++11 or greater” (as opposed to “greater than C++98”)
-//	since our earliest supported dialect is C++11; these should (mostly) always
-//	be available, though we still go through the formality of checking.
-//	Individual compilers may still override, of course.
+//	We check for “C++11 or greater” (as opposed to “greater than C++98”) since
+//	our earliest supported dialect is C++11; these should (mostly) always be
+//	available, though we still go through the formality of checking. Individual
+//	compilers may still override, of course.
+
 #if LBAL_cpp_version >= LBAL_CPP11_VERSION
   #if !defined(LBAL_CPP11_ALIAS_TEMPLATES)
     #if (__cpp_alias_templates >= 200704L)
@@ -41,10 +43,10 @@
   #endif
 
   #if !defined(LBAL_CPP11_DECLTYPE)
-    #if (__cpp_decltype >= 200704L)
+    #if (__cpp_decltype >= 200707L)
       #define LBAL_CPP11_DECLTYPE __cpp_decltype
     #else
-      #define LBAL_CPP11_DECLTYPE 200704L
+      #define LBAL_CPP11_DECLTYPE 200707L
     #endif
   #endif
 
@@ -171,10 +173,10 @@
 
 //	C++11 Attributes
 //
-//	We check for “C++11 or greater” (as opposed to “greater than C++98”)
-//	since our earliest supported dialect is C++11; these should (mostly) always
-//	be available, though we still go through the formality of checking. We also
-//	go through the motions of explicitly checking the SD-6 macro results as a
+//	We check for “C++11 or greater” (as opposed to “greater than C++98”) since
+//	our earliest supported dialect is C++11; these should (mostly) always be
+//	available, though we still go through the formality of checking. We also go
+//	through the motions of explicitly checking the SD-6 macro results as a
 //	placeholder. Individual compilers may still override these, of course.
 
 #if LBAL_cpp_version >= LBAL_CPP11_VERSION

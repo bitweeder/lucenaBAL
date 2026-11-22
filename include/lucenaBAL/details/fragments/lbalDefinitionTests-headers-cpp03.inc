@@ -14,6 +14,7 @@
     || defined(LBAL_HAS_HEADER_BITSET)                                         \
     || defined(LBAL_HAS_HEADER_CASSERT)                                        \
     || defined(LBAL_HAS_HEADER_CCTYPE)                                         \
+    || defined(LBAL_HAS_HEADER_CERRNO)                                         \
     || defined(LBAL_HAS_HEADER_CFLOAT)                                         \
     || defined(LBAL_HAS_HEADER_CLIMITS)                                        \
     || defined(LBAL_HAS_HEADER_CLOCALE)                                        \
@@ -27,6 +28,7 @@
     || defined(LBAL_HAS_HEADER_CSTDLIB)                                        \
     || defined(LBAL_HAS_HEADER_CSTRING)                                        \
     || defined(LBAL_HAS_HEADER_CTIME)                                          \
+    || defined(LBAL_HAS_HEADER_CWCHAR)                                         \
     || defined(LBAL_HAS_HEADER_DEQUE)                                          \
     || defined(LBAL_HAS_HEADER_EXCEPTION)                                      \
     || defined(LBAL_HAS_HEADER_FSTREAM)                                        \
@@ -52,8 +54,9 @@
     || defined(LBAL_HAS_HEADER_STDEXCEPT)                                      \
     || defined(LBAL_HAS_HEADER_STREAMBUF)                                      \
     || defined(LBAL_HAS_HEADER_STRING)                                         \
+    || defined(LBAL_HAS_HEADER_TYPEINFO)                                       \
     || defined(LBAL_HAS_HEADER_UTILITY)                                        \
     || defined(LBAL_HAS_HEADER_VALARRAY)                                       \
     || defined(LBAL_HAS_HEADER_VECTOR)
   #error "Don’t define LBAL_HAS_HEADER_xxx externally."
-#endif  //	LBAL_HAS_HEADER_xxx C++98/03 check
+#endif  //	LBAL_HAS_HEADER_xxx C++03 check

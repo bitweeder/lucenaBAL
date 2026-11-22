@@ -14,8 +14,8 @@
     || defined(LBAL_HAS_HEADER_BIT)                                            \
     || defined(LBAL_HAS_HEADER_COMPARE)                                        \
     || defined(LBAL_HAS_HEADER_CONCEPTS)                                       \
-    || defined(LBAL_HAS_HEADER_EXPERIMENTAL_CONCEPTS)                          \
     || defined(LBAL_HAS_HEADER_COROUTINE)                                      \
+    || defined(LBAL_HAS_HEADER_EXPERIMENTAL_CONCEPTS)                          \
     || defined(LBAL_HAS_HEADER_EXPERIMENTAL_COROUTINE)                         \
     || defined(LBAL_HAS_HEADER_FORMAT)                                         \
     || defined(LBAL_HAS_HEADER_LATCH)                                          \

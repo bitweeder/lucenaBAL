@@ -11,6 +11,5 @@
 ------------------------------------------------------------------------------*/
 
 #if defined(LBAL_CPP03_EXCEPTIONS) || defined(LBAL_CPP03_RTTI)
-
   #error "Don’t define LBAL_CPP03_xxx externally."
 #endif  //	LBAL_CPP03 check

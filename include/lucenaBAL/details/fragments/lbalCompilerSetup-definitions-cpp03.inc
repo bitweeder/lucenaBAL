@@ -10,6 +10,8 @@
 
 ------------------------------------------------------------------------------*/
 
+//	C++03 Language
+//
 //	These can be conditionally disabled.
 
 #if !defined(LBAL_CPP03_EXCEPTIONS) && (__cpp_exceptions >= 199711L)

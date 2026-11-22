@@ -10,11 +10,13 @@
 
 ------------------------------------------------------------------------------*/
 
+//	C++17 Language
+
 #if !defined(LBAL_CPP17_AGGREGATE_BASES) && (__cpp_aggregate_bases >= 201603L)
   #define LBAL_CPP17_AGGREGATE_BASES __cpp_aggregate_bases
 #endif
 
-#if !defined(LBAL_CPP17_ALIGNED_NEW) && (__cpp_aligned_new >= 201603L)
+#if !defined(LBAL_CPP17_ALIGNED_NEW) && (__cpp_aligned_new >= 201606L)
   #define LBAL_CPP17_ALIGNED_NEW __cpp_aligned_new
 #endif
 
@@ -31,14 +33,14 @@
   #define LBAL_CPP17_DEDUCTION_GUIDES __cpp_deduction_guides
 #endif
 
-#if !defined(LBAL_CPP17_DEDUCTION_GUIDES_NB)                                   \
-    && (__cpp_deduction_guides >= 201611L)
-  #define LBAL_CPP17_DEDUCTION_GUIDES_NB __cpp_deduction_guides
-#endif
-
 #if !defined(LBAL_CPP17_DEDUCTION_GUIDES_DR)                                   \
     && (__cpp_deduction_guides >= 201703L)
   #define LBAL_CPP17_DEDUCTION_GUIDES_DR __cpp_deduction_guides
+#endif
+
+#if !defined(LBAL_CPP17_DEDUCTION_GUIDES_NB)                                   \
+    && (__cpp_deduction_guides >= 201611L)
+  #define LBAL_CPP17_DEDUCTION_GUIDES_NB __cpp_deduction_guides
 #endif
 
 #if !defined(LBAL_CPP17_ENUMERATOR_ATTRIBUTES)                                 \

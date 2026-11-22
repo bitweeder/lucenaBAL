@@ -10,6 +10,8 @@
 
 ------------------------------------------------------------------------------*/
 
+//	C++14 Language
+
 #if !defined(LBAL_CPP14_AGGREGATE_NSDMI) && (__cpp_aggregate_nsdmi >= 201304L)
   #define LBAL_CPP14_AGGREGATE_NSDMI __cpp_aggregate_nsdmi
 #endif

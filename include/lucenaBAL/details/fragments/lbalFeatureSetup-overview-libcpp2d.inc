@@ -36,6 +36,7 @@
   has multiple values associated with it from a number of different proposals,
   so this token will have the value of the latest supported proposal, or `0` if
   the proposal described here is not supported.
+  - `202606L` [P3793R2](https://wg21.link/P3793R2) Better Shifting
   - `202607L` [P3793R2](https://wg21.link/P3793R2) Better Shifting
 
   @sa `<bit>` `freestanding`
@@ -160,8 +161,10 @@
   @brief `std::simd` overloads for `bit` permutations
   @details
 
-  SD-6 equivalent: `__cpp_lib_simd_bitops >= 202607L`. This token will have a
-  value of `0` if the proposal described here is not supported.
+  SD-6 equivalent: `__cpp_lib_simd_bitops >= 202607L`. Note that
+  `__cpp_lib_simd_bitops` has multiple values associated with it from a number
+  of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
   - `202607L` [P3772R2](https://wg21.link/P3772R2) `std::simd` overloads for
   `bit` permutations
 */
@@ -174,8 +177,11 @@
   @brief Better Shifting
   @details
 
-  SD-6 equivalent: `__cpp_lib_simd_bitops >= 202607L`. This token will have a
-  value of `0` if the proposal described here is not supported.
+  SD-6 equivalent: `__cpp_lib_simd_bitops >= 202607L`. Note that
+  `__cpp_lib_simd_bitops` has multiple values associated with it from a number
+  of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202606L` [P3793R2](https://wg21.link/P3793R2) Better Shifting
   - `202607L` [P3793R2](https://wg21.link/P3793R2) Better Shifting
 */
 #ifndef LBAL_LIBCPP2D_SIMD_BITOPS_BETTER_SHIFTING

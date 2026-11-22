@@ -10,6 +10,8 @@
 
 ------------------------------------------------------------------------------*/
 
+//	C++23 Language
+
 #if !defined(LBAL_CPP23_AUTO_CAST) && (__cpp_auto_cast >= 202110L)
   #define LBAL_CPP23_AUTO_CAST __cpp_auto_cast
 #endif
@@ -57,7 +59,7 @@
 #endif
 
 #if !defined(LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT)                            \
-    && (__cpp_multidimensional_subscript >= 202211L)
+    && (__cpp_multidimensional_subscript >= 202110L)
   #define LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT __cpp_multidimensional_subscript
 #endif
 
@@ -86,7 +88,7 @@
   #define LBAL_CPP23_STATIC_CALL_OPERATOR __cpp_static_call_operator
 #endif
 
-//	C++23 attributes
+//	C++23 Attributes
 
 #if !defined(LBAL_CPP23_ATTRIBUTE_ASSUME)                                      \
     && defined(__has_cpp_attribute)                                            \

@@ -31,6 +31,5 @@
     || defined(LBAL_CPP26_TRIVIAL_UNION)                                       \
     || defined(LBAL_CPP26_TRIVIAL_UNION_LIFETIME)                              \
     || defined(LBAL_CPP26_VARIADIC_FRIEND)
-
   #error "Don’t define LBAL_CPP26_xxx externally."
 #endif  //	LBAL_CPP26 check

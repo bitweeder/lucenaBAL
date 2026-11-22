@@ -10,6 +10,8 @@
 
 ------------------------------------------------------------------------------*/
 
+//	C++26 Language
+
 #if !defined(LBAL_CPP26_CONSTEXPR_CAST_FROM_VOID_STAR)                         \
     && (__cpp_constexpr >= 202306L)
   #define LBAL_CPP26_CONSTEXPR_CAST_FROM_VOID_STAR __cpp_constexpr

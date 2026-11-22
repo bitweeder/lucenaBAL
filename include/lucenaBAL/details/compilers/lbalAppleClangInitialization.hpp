@@ -185,9 +185,9 @@
   //	and take advanatge of our minimum Xcode requirement to know we’ll only
   //	ever deal with Apple LLVM versions with support for SD-6 macros.
 
-  //	As of vanilla clang 8, this is disabled by default in order to avoid
-  //	ABI-breaking changes. It’s unclear when it will be enabled by default (it
-  //  has not been re-enabled by default as of clang 18).
+  //	As of clang 8, this is disabled by default (`-no-fsized-deallocation`) in
+  //	order to avoid ABI-breaking changes. It’s unclear when it will be enabled
+  //	by default (it has not been re-enabled by default as of Xcode 27.2).
   //
   //	SEEME - bitweeder
   //	This explicit test is here for documentation, but could actually be

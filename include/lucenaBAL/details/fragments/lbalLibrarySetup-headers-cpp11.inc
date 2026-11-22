@@ -46,6 +46,22 @@
   #define LBAL_HAS_HEADER_CONDITION_VARIABLE 0
 #endif
 
+//  This was technically removed in C++20, but the file may still be there for
+//  backwards compatibility.
+#if !defined(__has_include) || __has_include(<cstdalign>)
+  #define LBAL_HAS_HEADER_CSTDALIGN 1
+#else
+  #define LBAL_HAS_HEADER_CSTDALIGN 0
+#endif
+
+//  This was technically removed in C++20, but the file may still be there for
+//  backwards compatibility.
+#if !defined(__has_include) || __has_include(<cstdbool>)
+  #define LBAL_HAS_HEADER_CSTDBOOL 1
+#else
+  #define LBAL_HAS_HEADER_CSTDBOOL 0
+#endif
+
 #if !defined(__has_include) || __has_include(<cstdint>)
   #define LBAL_HAS_HEADER_CSTDINT 1
 #else

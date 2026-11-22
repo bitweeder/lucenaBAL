@@ -10,6 +10,8 @@
 
 ------------------------------------------------------------------------------*/
 
+//	C++20 Language
+
 #if !defined(LBAL_CPP20_AGGREGATE_PAREN_INIT)                                  \
     && (__cpp_aggregate_paren_init >= 201902L)
   #define LBAL_CPP20_AGGREGATE_PAREN_INIT __cpp_aggregate_paren_init
@@ -23,9 +25,11 @@
   #define LBAL_CPP20_CONCEPTS __cpp_concepts
 #endif
 
-#if !defined(LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS)           \
-    && (__cpp_concepts >= 201811L)
-  #define LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS __cpp_concepts
+#if !defined(                                                                  \
+    LBAL_CPP20_CONCEPTS_CONDITIONALLY_TRIVIAL_SPECIAL_MEMBER_FUNCTIONS         \
+) && (__cpp_concepts >= 202002L)
+  #define LBAL_CPP20_CONCEPTS_CONDITIONALLY_TRIVIAL_SPECIAL_MEMBER_FUNCTIONS   \
+    __cpp_concepts
 #endif
 
 #if !defined(LBAL_CPP20_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS)              \
@@ -33,11 +37,9 @@
   #define LBAL_CPP20_CONCEPTS_REFINE_RETURN_TYPE_REQUIREMENTS __cpp_concepts
 #endif
 
-#if !defined(                                                                  \
-    LBAL_CPP20_CONCEPTS_CONDITIONALLY_TRIVIAL_SPECIAL_MEMBER_FUNCTIONS         \
-) && (__cpp_concepts >= 202002L)
-  #define LBAL_CPP20_CONCEPTS_CONDITIONALLY_TRIVIAL_SPECIAL_MEMBER_FUNCTIONS   \
-    __cpp_concepts
+#if !defined(LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS)           \
+    && (__cpp_concepts >= 201811L)
+  #define LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS __cpp_concepts
 #endif
 
 #if !defined(LBAL_CPP20_CONDITIONAL_EXPLICIT)                                  \
@@ -64,13 +66,13 @@
   #define LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM __cpp_constexpr
 #endif
 
+#if !defined(LBAL_CPP20_CONSTEXPR_INTRINSICS) && (__cpp_constexpr >= 201907L)
+  #define LBAL_CPP20_CONSTEXPR_INTRINSICS __cpp_constexpr
+#endif
+
 #if !defined(LBAL_CPP20_CONSTEXPR_IN_DECLTYPE)                                 \
     && (__cpp_constexpr_in_decltype >= 201711L)
   #define LBAL_CPP20_CONSTEXPR_IN_DECLTYPE __cpp_constexpr_in_decltype
-#endif
-
-#if !defined(LBAL_CPP20_CONSTEXPR_INTRINSICS) && (__cpp_constexpr >= 201907L)
-  #define LBAL_CPP20_CONSTEXPR_INTRINSICS __cpp_constexpr
 #endif
 
 #if !defined(LBAL_CPP20_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION)              \
@@ -96,10 +98,6 @@
   #define LBAL_CPP20_CONSTINIT __cpp_constinit
 #endif
 
-#if !defined(LBAL_CPP20_IMPL_COROUTINE) && (__cpp_impl_coroutine >= 201902L)
-  #define LBAL_CPP20_IMPL_COROUTINE __cpp_impl_coroutine
-#endif
-
 #if !defined(LBAL_CPP20_DEDUCTION_GUIDES_FOR_AGGREGATES)                       \
     && (__cpp_deduction_guides >= 201907L)
   #define LBAL_CPP20_DEDUCTION_GUIDES_FOR_AGGREGATES __cpp_deduction_guides
@@ -119,6 +117,10 @@
     && (__cpp_generic_lambdas >= 201707L)
   #define LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST                   \
     __cpp_generic_lambdas
+#endif
+
+#if !defined(LBAL_CPP20_IMPL_COROUTINE) && (__cpp_impl_coroutine >= 201902L)
+  #define LBAL_CPP20_IMPL_COROUTINE __cpp_impl_coroutine
 #endif
 
 #if !defined(LBAL_CPP20_INIT_CAPTURES_PACK_EXPANSION)                          \
@@ -163,7 +165,7 @@
   #define LBAL_CPP20_USING_ENUM __cpp_using_enum
 #endif
 
-//	C++20 attributes
+//	C++20 Attributes
 
 #if !defined(LBAL_CPP20_ATTRIBUTE_LIKELY)                                      \
     && defined(__has_cpp_attribute)                                            \

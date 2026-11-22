@@ -37,6 +37,5 @@
     || defined(LBAL_CPP17_STRUCTURED_BINDINGS)                                 \
     || defined(LBAL_CPP17_TEMPLATE_TEMPLATE_ARGS)                              \
     || defined(LBAL_CPP17_VARIADIC_USING)
-
   #error "Don’t define LBAL_CPP17_xxx externally."
 #endif  //	LBAL_CPP17 check

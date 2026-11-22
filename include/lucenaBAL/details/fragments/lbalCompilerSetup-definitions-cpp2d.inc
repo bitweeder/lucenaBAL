@@ -10,6 +10,8 @@
 
 ------------------------------------------------------------------------------*/
 
+//	C++2d Language
+
 #if !defined(LBAL_CPP2D_CONCEPTS_CONDITIONAL_NOEXCEPT)                         \
     && (__cpp_concepts >= 202606L)
   #define LBAL_CPP2D_CONCEPTS_CONDITIONAL_NOEXCEPT __cpp_concepts

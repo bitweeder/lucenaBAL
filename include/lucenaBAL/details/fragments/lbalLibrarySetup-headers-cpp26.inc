@@ -46,6 +46,12 @@
   #define LBAL_HAS_HEADER_LINALG 0
 #endif
 
+#if defined(__has_include) && __has_include(<meta>)
+  #define LBAL_HAS_HEADER_META 1
+#else
+  #define LBAL_HAS_HEADER_META 0
+#endif
+
 #if defined(__has_include) && __has_include(<rcu>)
   #define LBAL_HAS_HEADER_RCU 1
 #else

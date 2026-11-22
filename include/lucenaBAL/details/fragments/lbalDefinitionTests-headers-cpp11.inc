@@ -16,6 +16,8 @@
     || defined(LBAL_HAS_HEADER_CHRONO)                                         \
     || defined(LBAL_HAS_HEADER_CINTTYPES)                                      \
     || defined(LBAL_HAS_HEADER_CONDITION_VARIABLE)                             \
+    || defined(LBAL_HAS_HEADER_CSTDALIGN)                                      \
+    || defined(LBAL_HAS_HEADER_CSTDBOOL)                                       \
     || defined(LBAL_HAS_HEADER_CSTDINT)                                        \
     || defined(LBAL_HAS_HEADER_CUCHAR)                                         \
     || defined(LBAL_HAS_HEADER_FORWARD_LIST)                                   \
@@ -32,8 +34,6 @@
     || defined(LBAL_HAS_HEADER_TYPE_TRAITS)                                    \
     || defined(LBAL_HAS_HEADER_TYPEINDEX)                                      \
     || defined(LBAL_HAS_HEADER_UNORDERED_MAP)                                  \
-    || defined(LBAL_HAS_HEADER_UNORDERED_SET)                                  \
-    || defined(LBAL_HAS_HEADER_CSTDALIGN)                                      \
-    || defined(LBAL_HAS_HEADER_CSTDBOOL)
+    || defined(LBAL_HAS_HEADER_UNORDERED_SET)
   #error "Don’t define LBAL_HAS_HEADER_xxx externally."
 #endif  //	LBAL_HAS_HEADER_xxx C++11 check

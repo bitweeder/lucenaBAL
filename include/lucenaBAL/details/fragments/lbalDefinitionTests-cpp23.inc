@@ -27,6 +27,5 @@
     || defined(LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES)                         \
     || defined(LBAL_CPP23_SIZE_T_SUFFIX)                                       \
     || defined(LBAL_CPP23_STATIC_CALL_OPERATOR)
-
   #error "Don’t define LBAL_CPP23_xxx externally."
 #endif  //	LBAL_CPP23 check

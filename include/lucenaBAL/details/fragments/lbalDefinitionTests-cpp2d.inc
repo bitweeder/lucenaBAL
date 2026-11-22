@@ -17,6 +17,5 @@
     || defined(LBAL_CPP2D_IMPL_COROUTINE_RETURN)                               \
     || defined(LBAL_CPP2D_PACK_INDEXING_TEMPLATE_NAMES)                        \
     || defined(LBAL_CPP2D_PP_EMBED_OFFSET)
-
   #error "Don’t define LBAL_CPP2D_xxx externally."
 #endif  //	LBAL_CPP2D check

@@ -32,6 +32,5 @@
     || defined(LBAL_CPP11_UNICODE_LITERALS)                                    \
     || defined(LBAL_CPP11_USER_DEFINED_LITERALS)                               \
     || defined(LBAL_CPP11_VARIADIC_TEMPLATES)
-
   #error "Don’t define LBAL_CPP11_xxx externally."
 #endif  //	LBAL_CPP11 check

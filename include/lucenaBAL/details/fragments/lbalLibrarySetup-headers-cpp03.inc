@@ -82,26 +82,10 @@
   #define LBAL_HAS_HEADER_CSIGNAL 0
 #endif
 
-//  This was technically removed in C++20, but the file may still be there for
-//  backwards compatibility.
-#if !defined(__has_include) || __has_include(<cstdalign>)
-  #define LBAL_HAS_HEADER_CSTDALIGN 1
-#else
-  #define LBAL_HAS_HEADER_CSTDALIGN 0
-#endif
-
 #if !defined(__has_include) || __has_include(<cstdarg>)
   #define LBAL_HAS_HEADER_CSTDARG 1
 #else
   #define LBAL_HAS_HEADER_CSTDARG 0
-#endif
-
-//  This was technically removed in C++20, but the file may still be there for
-//  backwards compatibility.
-#if !defined(__has_include) || __has_include(<cstdbool>)
-  #define LBAL_HAS_HEADER_CSTDBOOL 1
-#else
-  #define LBAL_HAS_HEADER_CSTDBOOL 0
 #endif
 
 #if !defined(__has_include) || __has_include(<cstddef>)
@@ -234,12 +218,6 @@
   #define LBAL_HAS_HEADER_MEMORY 1
 #else
   #define LBAL_HAS_HEADER_MEMORY 0
-#endif
-
-#if !defined(__has_include) || __has_include(<meta>)
-  #define LBAL_HAS_HEADER_META 1
-#else
-  #define LBAL_HAS_HEADER_META 0
 #endif
 
 #if !defined(__has_include) || __has_include(<new>)

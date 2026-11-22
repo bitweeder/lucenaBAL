@@ -244,8 +244,8 @@
   `__cpp_structured_bindings` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202411L` [P1061R10](https://wg21.link/P1061R10) Structured Bindings can
-  introduce a Pack
+  - `202403L` [P0609R3 __PDF__](https://wg21.link/P0609R3) Attributes for
+  Structured Bindings
 */
 #ifndef LBAL_CPP26_STRUCTURED_BINDINGS_ATTRIBUTES
   #define LBAL_CPP26_STRUCTURED_BINDINGS_ATTRIBUTES 0
@@ -254,12 +254,12 @@
 /**
   @def LBAL_CPP26_STRUCTURED_BINDINGS_PACK
   @brief Structured Bindings can introduce a Pack
-  @details SD-6 equivalent: `__cpp_structured_bindings >= 202403L`. Note that
+  @details SD-6 equivalent: `__cpp_structured_bindings >= 202411L`. Note that
   `__cpp_structured_bindings` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202403L` [P0609R3 __PDF__](https://wg21.link/P0609R3) Attributes for
-  Structured Bindings
+  - `202411L` [P1061R10](https://wg21.link/P1061R10) Structured Bindings can
+  introduce a Pack
 */
 #ifndef LBAL_CPP26_STRUCTURED_BINDINGS_PACK
   #define LBAL_CPP26_STRUCTURED_BINDINGS_PACK 0
