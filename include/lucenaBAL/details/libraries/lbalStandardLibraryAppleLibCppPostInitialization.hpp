@@ -310,20 +310,35 @@
       #if !defined(LBAL_LIBCPP17_NODE_EXTRACT)
         #define LBAL_LIBCPP17_NODE_EXTRACT 201606L
       #endif  //	LBAL_LIBCPP17_NODE_EXTRACT
-    #endif    //	76000
+    #endif    //	8000
   #endif      //	LBAL_CPP17_VERSION
 
-  //	SEEME - bitweeder
+  #if (_LIBCPP_VERSION < 230000)
+    //  This was erroneously reported as implemented in previous versions.
+    #if defined(LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES)
+      #undef LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES
+      #define LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES 0
+    #endif  //	LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES
+  #endif    //  230000
+
+  #if (_LIBCPP_VERSION < 240000)
+    //  `libc++` actually splits this between `std::priority_queue` (via
+    //  `std::vector`) and `std::queue` (via `std::deque`) implementations, and
+    //  at least as of Clng 23, only supports the former, which is split out
+    //  into a proxy value as `LBAL_LIBCPP26_CONSTEXPR_QUEUE_PRIORITY_QUEUE`.
+    #if defined(LBAL_LIBCPP26_CONSTEXPR_QUEUE)
+      #undef LBAL_LIBCPP26_CONSTEXPR_QUEUE
+      #define LBAL_LIBCPP26_CONSTEXPR_QUEUE 0
+    #endif  //  LBAL_LIBCPP26_CONSTEXPR_QUEUE
+  #endif    //  240000
+
   //	There appear to be no C++20 Standard Library features that aren’t
   //	advertised in the `<version> header already. Notably, this includes
   //	`<span>`, which has a functional header, but no official support; this
   //	might be because it only supports the `201803L` variants, but not the
   //	`201902L` variant, but I have not verified full conformance with the
   //	earlier variants, so I don’t include it here.
-  #if LBAL_cpp_version > LBAL_CPP17_VERSION
-  #endif  //	LBAL_CPP20_VERSION
 
-  //	SEEME
   //	`std::result_of` was removed in C++20 (P0619R4), but
   //	`__cpp_lib_result_of_sfinae` is still advertised. libc++ only keeps
   //	it when `_LIBCPP_ENABLE_CXX20_REMOVED_TYPE_TRAITS` is defined.

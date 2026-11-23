@@ -173,6 +173,13 @@ if (LBAL_BUILD_FALSE_POSITIVE_TESTS)
 	endforeach ()
 
 	list (REMOVE_DUPLICATES LBAL_FP_STANDARDS)
+
+	# libstdc++ keeps some facilities, such as `<stacktrace>`, in a separate
+	# `stdc++exp` library; link it when it’s there.
+	include (CheckCXXSourceCompiles)
+	set (CMAKE_REQUIRED_LIBRARIES stdc++exp)
+	check_cxx_source_compiles ("int main() { return 0; }" LBAL_HAVE_STDCXXEXP)
+	unset (CMAKE_REQUIRED_LIBRARIES)
 	list (JOIN LBAL_FP_STANDARDS ", C++" LBAL_FP_STANDARDS_TEXT)
 	message (STATUS "False-positive tests: C++${LBAL_FP_STANDARDS_TEXT}")
 
@@ -228,6 +235,10 @@ if (LBAL_BUILD_FALSE_POSITIVE_TESTS)
 		endforeach ()
 
 		target_link_libraries (${LBAL_FP_TEST} PRIVATE gtest_main)
+
+		if (LBAL_HAVE_STDCXXEXP)
+			target_link_libraries (${LBAL_FP_TEST} PRIVATE stdc++exp)
+		endif ()
 
 		# Make ignored attributes and extensions errors, so they count as false
 		# positives; lucenaBAL’s own diagnostics are turned off so they don’t.

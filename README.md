@@ -128,7 +128,6 @@ CI always runs the suite on every platform at `latest`, and a false positive fai
 ## To-Do
 _Roughly in order of precedence:_
 - update false negatives/positives for C++23 and up
-- add false-positive tests for the C++20 and later Standard Library tokens
 - confirm the false-positive tests written ahead of compiler support (marked `SEEME`) once compilers implement those features
 - triage false-positive test results for MSVC and Apple Clang
 - add more examples

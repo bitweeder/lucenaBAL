@@ -1,0 +1,33 @@
+/*------------------------------------------------------------------------------
+
+  Lucena Build Abstraction Library
+  “CONSTEXPR_COMPLEX.cpp”
+  Copyright © 2026 Lucena
+  All Rights Reserved
+
+  This file is distributed under the University of Illinois Open Source
+  License. See LICENSE.md for details.
+
+  Hard false-positive probe for `LBAL_LIBCPP26_CONSTEXPR_COMPLEX`, from
+  P1383R2. It only needs to compile; see `lbalFalsePositiveTest.cpp`.
+
+  SEEME: written from the paper; not yet compiled against a library that
+  reports this feature.
+
+------------------------------------------------------------------------------*/
+
+//	lbal
+#include <lucenaBAL/lucenaBAL.hpp>
+
+#if LBAL_LIBCPP26_CONSTEXPR_COMPLEX
+  //	std
+  #include <cmath>
+  #include <complex>
+
+namespace lbal_fp {
+
+static_assert(std::fmod(5.0, 3.0) == 2.0);
+static_assert(std::abs(std::complex<double>(3.0, 4.0)) == 5.0);
+
+}  // namespace lbal_fp
+#endif

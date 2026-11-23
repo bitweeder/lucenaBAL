@@ -177,6 +177,13 @@
   #endif
 #endif  //  LBAL_LIBCPP26_CONSTEXPR_QUEUE
 
+#if !defined(LBAL_LIBCPP26_CONSTEXPR_QUEUE_PRIORITY_QUEUE)
+  #if __cpp_lib_constexpr_queue >= 202502L
+    #define LBAL_LIBCPP26_CONSTEXPR_QUEUE_PRIORITY_QUEUE                       \
+      __cpp_lib_constexpr_queue
+  #endif
+#endif  //  LBAL_LIBCPP26_CONSTEXPR_QUEUE_PRIORITY_QUEUE
+
 #if !defined(LBAL_LIBCPP26_CONSTEXPR_SET)
   #if __cpp_lib_constexpr_set >= 202502L
     #define LBAL_LIBCPP26_CONSTEXPR_SET __cpp_lib_constexpr_set

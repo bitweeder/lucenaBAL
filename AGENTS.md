@@ -71,7 +71,7 @@ Token values are the SD-6 date value (e.g. `201707L`) when the feature is availa
 - the external-definition guard in `fragments/lbalDefinitionTests-cppNN.inc` for language tokens, and in `fragments/lbalDefinitionTests-headers-cppNN.inc` for any new `LBAL_HAS_HEADER_*`
 - the docs (a `@def` inside the file's `@name` group) and `0`-default in the matching `fragments/lbalFeatureSetup-overview-*.inc`
 - a `LBAL_DIAGNOSTIC_TEST(...)` line in `tests/fragments/lbalFeatureTest-{cpp,libcpp}NN.inc`
-- a false-positive probe (expected for language and attribute tokens, optional for library tokens until those fragments are filled in): an `LBAL_FP_TEST` in `tests/fragments/lbalFalsePositiveTest-{cpp,libcpp}NN.inc` and/or a file in `tests/probes/{cpp,libcpp}NN/`. See Tests.
+- a false-positive probe: an `LBAL_FP_TEST` in `tests/fragments/lbalFalsePositiveTest-{cpp,libcpp}NN.inc` and/or a file in `tests/probes/{cpp,libcpp}NN/`. See Tests.
 
 The `lbalTokenCoverage` test fails if a token declared in an `overview-*.inc` is missing its `LBAL_DIAGNOSTIC_TEST` line or, for a language token, its external-definition guard. It doesn't check SD-6 mappings, because some tokens legitimately have none.
 
@@ -96,7 +96,7 @@ Other headers:
 
 Run the soft probes with `ctest --test-dir build -R '^cxx'`.
 
-CI always enables these tests on every platform at `latest`: the soft probes run in the Test step, and the `False-Positive Probes` step builds `lbalFalsePositiveProbes` with keep-going. A false positive of either kind fails the job. To also test older Standards in CI, set the GitHub repository variable `LBAL_FALSE_POSITIVE_TEST_STANDARDS` (e.g. `17;20;23;latest`), which is passed straight to CMake. The library fragments are populated for libcpp14 and libcpp17 only; libcpp20 to libcpp2d are stubs. `LBAL_CPP20_MODULES` isn't probed, because it needs a module-aware build. Probes marked SEEME were written from the paper and haven't yet been compiled by a compiler that implements the feature.
+CI always enables these tests on every platform at `latest`: the soft probes run in the Test step, and the `False-Positive Probes` step builds `lbalFalsePositiveProbes` with keep-going. A false positive of either kind fails the job. To also test older Standards in CI, set the GitHub repository variable `LBAL_FALSE_POSITIVE_TEST_STANDARDS` (e.g. `17;20;23;latest`), which is passed straight to CMake. Every language, attribute and library token has a probe, except `LBAL_CPP20_MODULES` and `LBAL_LIBCPP23_MODULES`, which need a module-aware build. Library tokens follow the libcpp17 pattern: gtest probes first, and compile-only probes only for `constexpr`/`consteval`-only tokens and for facilities a later Standard removes. Probes marked SEEME were written from the paper and haven't yet been run against an implementation that reports the feature; a failure there may be a mistake in the probe. The `HARDENED_*` library probes are gtest death tests, using `LBAL_FP_EXPECT_HARDENED` in `lbalFalsePositiveTest-libcpp26.inc`. libstdc++ keeps `<stacktrace>` and some other facilities in `libstdc++exp`, so `tests/CMakeLists.txt` links `stdc++exp` into the gtest targets when it's available.
 
 ## Docs (Doxygen)
 

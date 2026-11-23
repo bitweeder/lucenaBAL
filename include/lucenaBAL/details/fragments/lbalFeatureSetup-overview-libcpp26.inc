@@ -444,6 +444,24 @@
 #endif
 
 /**
+  @def LBAL_LIBCPP26_CONSTEXPR_QUEUE_PRIORITY_QUEUE
+  @brief `constexpr std::priority_queue`
+  @details SD-6 equivalent: `__cpp_lib_constexpr_queue >= 202502L`. This token
+  will have a value of `0` if the proposal described here is not supported.
+  - `202502L` [P3372R3](https://wg21.link/P3372R3) constexpr containers and
+  adapters
+
+  @remark This is a proxy for just `std::priority_queue` support for
+  `__cpp_lib_constexpr_queue`, vs. `LBAL_LIBCPP26_CONSTEXPR_QUEUE` which
+  implements the full feature.
+
+  @sa `<queue>`
+*/
+#ifndef LBAL_LIBCPP26_CONSTEXPR_QUEUE_PRIORITY_QUEUE
+  #define LBAL_LIBCPP26_CONSTEXPR_QUEUE_PRIORITY_QUEUE 0
+#endif
+
+/**
   @def LBAL_LIBCPP26_CONSTEXPR_SET
   @brief constexpr containers and adapters
   @details SD-6 equivalent: `__cpp_lib_constexpr_set >= 202502L`. This token
