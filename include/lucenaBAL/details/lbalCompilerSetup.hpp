@@ -107,3 +107,16 @@
 #elif LBAL_TARGET_CPU_X86
   #define LBAL_NAME_TARGET_CPU u8"i386"
 #endif
+
+/*------------------------------------------------------------------------------
+  Aggregates
+
+  These are convenience macros that combine multiple other macros. They must be
+  validated after all their constituent parts have been fully validated.
+*/
+
+#if !defined(LBAL_CPP20_ATTRIBUTES_LIKELY_AND_UNLIKELY)
+  #if LBAL_CPP20_ATTRIBUTE_LIKELY && LBAL_CPP20_ATTRIBUTE_UNLIKELY
+    #define LBAL_CPP20_ATTRIBUTES_LIKELY_AND_UNLIKELY 1L
+  #endif
+#endif  //	LBAL_CPP20_ATTRIBUTES_LIKELY_AND_UNLIKELY

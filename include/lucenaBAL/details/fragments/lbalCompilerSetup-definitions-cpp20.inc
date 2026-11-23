@@ -137,10 +137,9 @@
   #define LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FIXES __cpp_nontype_template_args
 #endif
 
-#if !defined(LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS)                      \
-    && (__cpp_nontype_template_parameter_class >= 201806L)
-  #define LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS                          \
-    __cpp_nontype_template_parameter_class
+#if !defined(LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FLOATS)                          \
+    && (__cpp_nontype_template_args >= 201911L)
+  #define LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FLOATS __cpp_nontype_template_args
 #endif
 
 #if !defined(LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR)                         \

@@ -231,12 +231,6 @@
   #endif
 #endif  //  LBAL_LIBCPP23_MODULES
 
-#if !defined(LBAL_LIBCPP23_MONADIC_OPTIONAL)
-  #if __cpp_lib_monadic_optional >= 202110L
-    #define LBAL_LIBCPP23_MONADIC_OPTIONAL __cpp_lib_monadic_optional
-  #endif
-#endif  //  LBAL_LIBCPP23_MONADIC_OPTIONAL
-
 #if !defined(LBAL_LIBCPP23_MOVE_ITERATOR_CONCEPT)
   #if __cpp_lib_move_iterator_concept >= 202207L
     #define LBAL_LIBCPP23_MOVE_ITERATOR_CONCEPT __cpp_lib_move_iterator_concept

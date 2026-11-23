@@ -61,9 +61,13 @@
     #endif
   #endif
 
-  //	Explicitly disabled charconv support for floats to avoid it getting
-  //	mistakenly set later.
-  #if !defined(LBAL_LIBCPP17_TO_CHARS_FP)
+  //	SEEME - bitweeder
+  //	libstdc++ only defines `__cpp_lib_to_chars` once floating-point support
+  //	is in place (gcc 11), so we let the common SD-6 test set
+  //	`LBAL_LIBCPP17_TO_CHARS_FP` in that case. Earlier versions shipped
+  //	integer-only `<charconv>` support, so we explicitly disable the
+  //	floating-point token there to avoid it getting mistakenly set later.
+  #if !defined(LBAL_LIBCPP17_TO_CHARS_FP) && !(__cpp_lib_to_chars >= 201611L)
     #define LBAL_LIBCPP17_TO_CHARS_FP 0
   #endif
 #else

@@ -1039,12 +1039,6 @@
   #endif
 #endif  //  LBAL_LIBCPP26_SPAN_AT
 
-#if !defined(LBAL_LIBCPP26_SPAN_INITIALIZER_LIST)
-  #if __cpp_lib_span_initializer_list >= 202311L
-    #define LBAL_LIBCPP26_SPAN_INITIALIZER_LIST __cpp_lib_span_initializer_list
-  #endif
-#endif  //  LBAL_LIBCPP26_SPAN_INITIALIZER_LIST
-
 #if !defined(LBAL_LIBCPP26_SPAN_MORE)
   #if __cpp_lib_span >= 202311L
     #define LBAL_LIBCPP26_SPAN_MORE __cpp_lib_span

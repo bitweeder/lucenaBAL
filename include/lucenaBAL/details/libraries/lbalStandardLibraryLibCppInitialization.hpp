@@ -26,27 +26,20 @@
 */
 
 #if LBAL_TARGET_STANDARD_LIBRARY_LIBCPP
-  /*
-    Note that `<version>` is available if we’re using libc++ 7+, but we
-    won’t necessarily have access to `__has_include` unless we’re using
-    clang; in particular, MSVS didn’t support `__has_include` until 15.3.
-    We consider this sufficiently fringe-y to not warrant a workaround.
+/*
+  Note that `<version>` is available if we’re using libc++ 7+, but we
+  won’t necessarily have access to `__has_include` unless we’re using
+  clang; in particular, MSVS didn’t support `__has_include` until 15.3.
+  We consider this sufficiently fringe-y to not warrant a workaround.
 
-    SEEME - bitweeder
-    While `<version>` appeared in libc++ 7; the first meaningful iteration
-    didn’t appear until libc++ 8. That iteration was out of sync with the SD-6
-    doc, however, and has gotten even more out-of-sync. One upshot is that we
-    can’t fully trust the `<version>` bundled with any libc++ until version 10,
-    or so, e.g., some of the token names have drifted from the official ones,
-    and some of the token values have changed (and not just been updated).
-  */
-
-  //	SEEME - bitweeder
-  //	The clangs all have this set incorrectly in `<version>`, so we
-  //	preemptively disable it. Eventually, this will need a version guard.
-  #if !defined(LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE)
-    #define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE 0
-  #endif  //	LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
+  SEEME - bitweeder
+  While `<version>` appeared in libc++ 7; the first meaningful iteration
+  didn’t appear until libc++ 8. That iteration was out of sync with the SD-6
+  doc, however, and has gotten even more out-of-sync. One upshot is that we
+  can’t fully trust the `<version>` bundled with any libc++ until version 10,
+  or so, e.g., some of the token names have drifted from the official ones,
+  and some of the token values have changed (and not just been updated).
+*/
 
   #if (_LIBCPP_VERSION >= 7000)
     //	SEEME - bitweeder

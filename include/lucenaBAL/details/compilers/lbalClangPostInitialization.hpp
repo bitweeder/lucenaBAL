@@ -136,6 +136,13 @@
       #endif
     #endif
   #endif
+
+  #if (__clang_major__ >= 16) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
+    //	SEEME (bitweeder) There is no SD-6 token for this.
+    #if !defined(LBAL_CPP20_TYPENAME_OPTIONAL)
+      #define LBAL_CPP20_TYPENAME_OPTIONAL 1L
+    #endif
+  #endif
 #else
   #error                                                                       \
       "lbalClangPostInitialization.hpp was directly included while using the wrong compiler"

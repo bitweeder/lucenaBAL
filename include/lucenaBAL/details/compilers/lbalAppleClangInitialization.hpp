@@ -240,6 +240,19 @@
   //	oversight or if an update has been held back.
   #define LBAL_CPP20_INTEGRATING_OUR_FEATURE_TEST_MACROS 1L
 
+  // Newer `clang`s support this, including for `float`-type arguments, but
+  // there is no “partial support” value to qualify their “experimental”
+  // support. Specifically, in the case of the `clang`s, reference-type
+  // template arguments referring to instantiation-dependent objects and
+  // subobjects (declared inside a template, but neither type- nor
+  // value-dependent) are not yet fully supported. Since `float` types are
+  // useful on their own, we provide a proxy to detect support.
+  #if !(__cpp_nontype_template_args >= 201911L)                                \
+      && __has_extension(cxx_generalized_nttp)
+    #undef LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FLOATS
+    #define LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FLOATS 1
+  #endif
+
   //	intrinsic functions
   #define LBAL_HINT_likely(LBAL_expr_) __builtin_expect(LBAL_expr_, true)
   #define LBAL_HINT_unlikely(LBAL_expr_) __builtin_expect(LBAL_expr_, false)

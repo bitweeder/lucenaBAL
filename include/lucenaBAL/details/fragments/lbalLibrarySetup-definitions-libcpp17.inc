@@ -108,12 +108,6 @@
   #endif
 #endif  //  LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW
 
-#if !defined(LBAL_LIBCPP17_DEDUCTION_GUIDES)
-  #if __cpp_lib_deduction_guides >= 201703L
-    #define LBAL_LIBCPP17_DEDUCTION_GUIDES __cpp_lib_deduction_guides
-  #endif
-#endif  //  LBAL_LIBCPP17_DEDUCTION_GUIDES
-
 #if !defined(LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS)
   #if __cpp_lib_enable_shared_from_this >= 201603L
     #define LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS                              \
@@ -139,12 +133,6 @@
       __cpp_lib_filesystem
   #endif
 #endif  //  LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING
-
-#if !defined(LBAL_LIBCPP17_FILESYSTEM_EXP)
-  #if __cpp_lib_experimental_filesystem >= 201603L
-    #define LBAL_LIBCPP17_FILESYSTEM_EXP __cpp_lib_experimental_filesystem
-  #endif
-#endif  //  LBAL_LIBCPP17_FILESYSTEM_EXP
 
 #if !defined(LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED)
   #if __cpp_lib_filesystem >= 201606L

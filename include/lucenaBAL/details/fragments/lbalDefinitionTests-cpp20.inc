@@ -51,6 +51,7 @@
     || defined(LBAL_CPP20_INTEGRATING_OUR_FEATURE_TEST_MACROS)                 \
     || defined(LBAL_CPP20_MODULES)                                             \
     || defined(LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FIXES)                         \
+    || defined(LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FLOATS)                        \
     || defined(LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS)                    \
     || defined(LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR)                       \
     || defined(LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX)          \

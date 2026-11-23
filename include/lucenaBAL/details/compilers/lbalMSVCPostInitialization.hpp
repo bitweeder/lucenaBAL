@@ -380,6 +380,13 @@
         #endif
       #endif
     #endif
+
+    #if (_MSC_VER >= 1929)
+      //	SEEME (bitweeder) There is no SD-6 token for this.
+      #if !defined(LBAL_CPP20_TYPENAME_OPTIONAL)
+        #define LBAL_CPP20_TYPENAME_OPTIONAL 1L
+      #endif
+    #endif
   #endif  //	LBAL_CPP20_VERSION
 
 //	C++11 attributes

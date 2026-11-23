@@ -544,9 +544,34 @@
   arguments, but there is no “partial support” value to qualify this. The latest
   versions of some compilers even support `floats` “experimentally”, but have
   not yet updated the macro value.
+
+  @remark Newer `clang`s mostly support this, including for `float`-type
+  arguments, but there is no “partial support” value to qualify their
+  “experimental” support. Specifically, in the case of the `clang`s,
+  reference-type template arguments referring to instantiation-dependent
+  objects and subobjects (declared inside a template, but neither type- nor
+  value-dependent) are not yet fully supported.
 */
 #ifndef LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FIXES
   #define LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FIXES 0
+#endif
+
+/**
+  @def LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FLOATS
+  @brief Handle `float` types as non-type template arguments
+  @details SD-6 equivalent: `__cpp_nontype_template_args >= 201911L`. Note that
+  `__cpp_nontype_template_args` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `201911L` [P1907R1](https://wg21.link/P1907R1) Inconsistencies with non-type
+  template parameters
+
+  @remark This is a proxy for support for everything in
+  `LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FIXES` _except_ for certain types of
+  references, as noted in the remakrs for that token.
+*/
+#ifndef LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FLOATS
+  #define LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FLOATS 0
 #endif
 
 /**

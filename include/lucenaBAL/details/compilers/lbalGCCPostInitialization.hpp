@@ -263,13 +263,9 @@
         #endif
       #endif
 
-    //	FIXME - bitweeder
-    //	gcc hasn’t yet shipped a fully functioning version of this feature.
-    //	In particular, the latest one from gcc 8 fails when it encounters
-    //	`#__VA_OPT__`. We treat this as unavailable, but it’s actually a good
-    //	candidate for a new “partial implementation” value, or a special
-    //	token (`LBAL_OOPS_xxx`?).
-    //			#define LBAL_CPP20_VA_OPT 1L
+    //	SEEME - bitweeder
+    //	gcc 8–11 shipped an incomplete `__VA_OPT__`; in particular, they fail
+    //	when they encounter `#__VA_OPT__`. See the gcc 12 block below.
     #endif
 
     #if (LBAL_GCC_VERSION >= 90000)
@@ -305,6 +301,16 @@
       #endif
 
       #define LBAL_CPP20_TYPENAME_OPTIONAL 1L
+    #endif
+
+    #if (LBAL_GCC_VERSION >= 120000)
+      //	SEEME - bitweeder
+      //	There is no SD-6 macro for this. gcc 12 completed `__VA_OPT__` by
+      //	implementing P1042R1 (PR 92319), which fixed `#__VA_OPT__` and its
+      //	interaction with `##`.
+      #if !defined(LBAL_CPP20_VA_OPT)
+        #define LBAL_CPP20_VA_OPT 1L
+      #endif
     #endif
   #endif  //	LBAL_CPP17_VERSION
 

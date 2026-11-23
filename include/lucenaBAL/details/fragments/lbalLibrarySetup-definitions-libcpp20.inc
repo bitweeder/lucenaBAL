@@ -150,12 +150,6 @@
   #endif
 #endif  //  LBAL_LIBCPP20_CONCEPTS_BOOLEAN_TESTABLE
 
-#if !defined(LBAL_LIBCPP20_CONCEPTS_EXP)
-  #if __cpp_lib_experimental_concepts >= 201806L
-    #define LBAL_LIBCPP20_CONCEPTS_EXP __cpp_lib_experimental_concepts
-  #endif
-#endif  //  LBAL_LIBCPP20_CONCEPTS_EXP
-
 #if !defined(LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE)
   #if __cpp_lib_concepts >= 201907L
     #define LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE __cpp_lib_concepts
@@ -261,12 +255,6 @@
   #endif
 #endif  //  LBAL_LIBCPP20_COROUTINE
 
-#if !defined(LBAL_LIBCPP20_COROUTINE_EXP)
-  #if __cpp_lib_experimental_coroutine >= 201902L
-    #define LBAL_LIBCPP20_COROUTINE_EXP __cpp_lib_experimental_coroutine
-  #endif
-#endif  //  LBAL_LIBCPP20_COROUTINE_EXP
-
 #if !defined(LBAL_LIBCPP20_DESTROYING_DELETE)
   #if __cpp_lib_destroying_delete >= 201806L
     #define LBAL_LIBCPP20_DESTROYING_DELETE __cpp_lib_destroying_delete
@@ -308,13 +296,6 @@
     #define LBAL_LIBCPP20_FORMAT __cpp_lib_format
   #endif
 #endif  //  LBAL_LIBCPP20_FORMAT
-
-#if !defined(LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP)
-  #if __cpp_lib_generic_unordered_hash_lookup >= 201902L
-    #define LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP                        \
-      __cpp_lib_generic_unordered_hash_lookup
-  #endif
-#endif  //  LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP
 
 #if !defined(LBAL_LIBCPP20_GENERIC_UNORDERED_LOOKUP)
   #if __cpp_lib_generic_unordered_lookup >= 201811L

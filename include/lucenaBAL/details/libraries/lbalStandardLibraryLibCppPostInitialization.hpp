@@ -364,6 +364,15 @@
       && LBAL_LIBCPP17_TO_CHARS_FP
     #define LBAL_LIBCPP17_TO_CHARS LBAL_LIBCPP17_TO_CHARS_FP
   #endif
+
+  //	SEEME (bitweeder) Older clangs may have this set incorrectly in
+  //	`<version>`, so we preemptively disable it.
+  #if (_LIBCPP_VERSION < 190000)
+    #if defined(LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE)
+      #undef LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
+      #define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE 0
+    #endif
+  #endif  //	LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
 #else
   #error                                                                       \
       "lbalStandardLibraryLibCppPostInitialization.hpp was directly included with the incorrect Standard Library implementation"
