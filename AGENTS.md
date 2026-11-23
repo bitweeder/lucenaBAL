@@ -23,6 +23,8 @@ cmake --build build --target format-dry              # show the clang-format dif
 cmake --build build --target install                 # install headers + CMake config
 ```
 
+With a multi-config generator (Visual Studio, Xcode, Ninja Multi-Config), pass the configuration to both steps, e.g. `cmake --build build --config Release` and `ctest --test-dir build -C Release`. Without `-C`, `ctest` reports `lbalTokenCoverage` as "not available without configuration" and `gtest_discover_tests` registers no tests at all. CI passes `-C` on every platform.
+
 Configure options: `LBAL_BUILD_DOCS`, `LBAL_CONFIG_DISABLE_PEDANTIC_WARNINGS`, `LBAL_CONFIG_TREAT_UNCERTAINTY_AS_FAILURE`. The library interface requires `cxx_std_26` (MSVC gets `/std:c++latest`). The build sets `LBAL_TARGET_OS_*` from `CMAKE_SYSTEM_NAME`. Non-CMake consumers must define one themselves, or `lbalDefinitionTests.hpp` will `#error`.
 
 CI (`.github/workflows/main.yml`) runs configure/build/ctest on macOS/Xcode, Ubuntu/gcc-15 and Windows/MSVC. `doxygen.yml` publishes the docs.

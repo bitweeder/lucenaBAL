@@ -170,9 +170,17 @@ jobs:
         include(ProcessorCount)
         ProcessorCount(N)
 
+        # `-C` is required with multi-config generators (MSVS); without it,
+        # `add_test` tests are reported as unavailable and
+        # `gtest_discover_tests` registers nothing. Single-config generators
+        # ignore it. `--no-tests=error` keeps an empty test run from passing.
         execute_process(
           COMMAND
-            ctest -j ${N}
+            ctest
+              -j ${N}
+              -C ${{ matrix.config.build_type }}
+              --output-on-failure
+              --no-tests=error
           WORKING_DIRECTORY
             build
           RESULT_VARIABLE
