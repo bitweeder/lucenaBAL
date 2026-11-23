@@ -393,10 +393,6 @@
 
   #if (LBAL_cpp_version >= LBAL_CPP11_VERSION)
     #if (_MSC_VER >= 1900)
-      #if !defined(LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY)
-        #define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY 200809L
-      #endif
-
       #if !defined(LBAL_CPP11_ATTRIBUTE_NORETURN)
         #define LBAL_CPP11_ATTRIBUTE_NORETURN 200809L
       #endif

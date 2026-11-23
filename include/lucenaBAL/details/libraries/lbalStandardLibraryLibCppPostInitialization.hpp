@@ -373,6 +373,18 @@
       #define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE 0
     #endif
   #endif  //	LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
+
+  //	SEEME
+  //	`std::result_of` was removed in C++20 (P0619R4), but
+  //	`__cpp_lib_result_of_sfinae` is still advertised. libc++ only keeps
+  //	it when `_LIBCPP_ENABLE_CXX20_REMOVED_TYPE_TRAITS` is defined.
+  #if (LBAL_cpp_version > LBAL_CPP17_VERSION)                                  \
+      && !defined(_LIBCPP_ENABLE_CXX20_REMOVED_TYPE_TRAITS)
+    #if LBAL_LIBCPP14_RESULT_OF_SFINAE
+      #undef LBAL_LIBCPP14_RESULT_OF_SFINAE
+      #define LBAL_LIBCPP14_RESULT_OF_SFINAE 0
+    #endif
+  #endif
 #else
   #error                                                                       \
       "lbalStandardLibraryLibCppPostInitialization.hpp was directly included with the incorrect Standard Library implementation"

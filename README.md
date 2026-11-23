@@ -6,9 +6,9 @@ The purpose of the Lucena Build Abstraction Library (**lucenaBAL**) is to provid
 
 **lucenaBAL** is _not_ a build system, but rather a C++ header library with a collection of build system support scripts.
 
-Also, note that we don’t track every accepted proposal to the Standard—as represented by [WG21 papers](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/)—but rather mostly just those that have been assigned an [SD-6 token value](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations) (i.e., features which will ultimately appear in the Standard under `tab:cpp.predefined.ft`, `tab:cpp.cond.ha`, or `version.syn`). There are exceptions for features that probably _should_ have official tokens; additionally, there are a few meta-features that bundle related tokens together—typically Language+Library—when they are useless without each other (though the components may still be tested individually).)
+Also, note that we don’t track every accepted proposal to the Standard—as represented by [WG21 papers](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/)—but rather mostly just those that have been assigned an [SD-6 token value](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations) (i.e., features which will ultimately appear in the Standard under `tab:cpp.predefined.ft`, `tab:cpp.cond.ha`, or `version.syn`). There are exceptions for features that probably _should_ have official tokens; additionally, there are a few meta-features that bundle related tokens together—typically Language+Library—when they are useless without each other (though the components may still be tested individually).
 
-**COMPILER, LIBRARY, AND PLATFORM FIXES SPECIFIC TO C++23 AND C++26 HAVE NOT YET BEEN INTEGRATED!** Currently, we rely on self-reporting by `<version>` and the compiler for determining feature availability for these Standards, but that is guaranteed to have false negatives and occasional false positives (e.g., Xcode reports `__cpp_lib_to_chars` is never available, when it’s actually gated on the current SDK, which is testable). The library will be updated with this data once testing is complete.
+**COMPILER, LIBRARY, AND PLATFORM FIXES SPECIFIC TO C++23 AND C++26 HAVE NOT YET BEEN INTEGRATED!** Currently, we rely on self-reporting by `<version>` and the compiler for determining feature availability for these Standards, but that is guaranteed to have false negatives and occasional false positives (e.g., Xcode reports `__cpp_lib_to_chars` is never available, when it’s actually gated on the current SDK, which is testable). The library will be updated with this data once testing is complete. To help find these cases, there is an optional suite of [false-positive tests](#false-positive-tests), which CI runs on every platform. One class of false positive is already handled: when compiling with `-pedantic-errors`, Clang and Apple Clang no longer report features from a later Standard that they only accept as extensions in the current mode.
 
 ## Motivating Example
 
@@ -62,18 +62,29 @@ cmake --build build
 cmake --build build --target install
 ```
 
-This will generate headers, test binaries, and docs in the build directory, then
+This will generate headers and test binaries in the build directory (docs too, if you add `-DLBAL_BUILD_DOCS=ON`; see below), then
 install to subdirectories in an optionally-specified directory (the default is `/usr/local` if `-DCMAKE_INSTALL_PREFIX` is _not_ provided):
 - headers will go to `include`
-- CMake configs will got to `share`
+- CMake configs will go to `share`
 
 Note that if installing to `/usr/local`, you may need to replace the last line with `cd build && sudo make install`; tests and docs will always remain in the `build` directory.
 
-Since lucenaBAL is a header-only library, it is not necessary to link to it; simply `#include <lucenaBAL/lucenaBAL.hpp>` where you need feature tests once the headers are installed. Usage information is available in the [online docs](https://bitweeder.github.io/lucenaBAL/html/index.html), as well as in the headers themselves (primarily in  `<lucenaBAL/lbalFeatureSetup.hpp>`).
+Since lucenaBAL is a header-only library, it is not necessary to link to it; simply `#include <lucenaBAL/lucenaBAL.hpp>` where you need feature tests once the headers are installed. Usage information is available in the [online docs](https://bitweeder.github.io/lucenaBAL/html/index.html), as well as in the headers themselves (primarily in `<lucenaBAL/lbalFeatureSetup.hpp>`).
+
+If you link against the installed CMake target (`lucenaBAL::lucenaBAL`), the target platform is set for you, based on the `CMAKE_SYSTEM_NAME` that was in effect when lucenaBAL was configured. If you use the headers some other way, you must define exactly one of the following to `1` yourself, or `lbalDefinitionTests.hpp` will stop the build with an `#error`:
+
+| Platform | Token |
+| :- | :- |
+| macOS | `LBAL_TARGET_OS_MACOS` |
+| iOS | `LBAL_TARGET_OS_IOS` |
+| tvOS | `LBAL_TARGET_OS_TVOS` |
+| watchOS | `LBAL_TARGET_OS_WATCHOS` |
+| Windows | `LBAL_TARGET_OS_WINAPI` |
+| Linux, FreeBSD, NetBSD, OpenBSD | `LBAL_TARGET_OS_X11` |
 
 ## Prerequisites
 
-lucenaBAL requires compiler support for C++11 or later. It has been tested with many versions of **gcc**, **Microsoft Visual Studio**, **Xcode**, and **llvm/clang**. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
+The lucenaBAL headers require compiler support for C++11 or later. Note, however, that the CMake target requests C++26 (`cxx_std_26`, or `/std:c++latest` under MSVC), and building the tests requires a compiler that supports it. It has been tested with many versions of **gcc**, **Microsoft Visual Studio**, **Xcode**, and **llvm/clang**. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
 
 ## Building, Installing, and Testing
 
@@ -94,17 +105,33 @@ Also in line 2, the `-DCMAKE_INSTALL_PREFIX` switch can be left out if the defau
 
 Additionally in line 2, the build type may be chosen from the usual set with the usual meanings for CMake: Debug, Release, RelWithDebInfo and MinSizeRel.
 
-Line 4 can be replaced by `cd build && sudo make install` when installing to a system dir such as `/usr/local`. Tests are generated by default and left in `build/tests`. They can be run in situ by changing line 4 to `cmake --build build --target test`. Tests can be scripted in the usual way for CMake and CTest, for example in order to only install the library if testing succeeds.
+Line 4 can be replaced by `cd build && sudo make install` when installing to a system dir such as `/usr/local`. Tests are generated by default and left in `build/tests`. They can be run in situ by changing line 4 to `ctest --test-dir build` (or `cmake --build build --target test`). With a multi-config generator such as Visual Studio or Xcode, pass the configuration to both the build and the tests, e.g. `cmake --build build --config Release` and `ctest --test-dir build -C Release`; without `-C`, no tests will run. Tests can be scripted in the usual way for CMake and CTest, for example in order to only install the library if testing succeeds.
 
-Linting is possible by changing line 4 to `cmake --build build --target format` to run `clang-format` against all source files, which is handy if you’re not using `git` prehooks or some code editor facility to lint as you go. Relatedly, using `format-dry` instead of `format` will preview the changes instead of simply applying them.
+The default tests are:
+- `lbalTest.Validation`, which compiles every feature token and logs those that are unsupported, along with tests of the formatting and decorator macros
+- `lbalTokenCoverage`, which checks that every documented token has a test and, for language tokens, a guard against being defined outside the library
 
-Docs can also be generated, if desired, and are left in `build/docs`.
+Linting is possible by changing line 4 to `cmake --build build --target format` to run `clang-format` against all source files under `include` and `tests`, which is handy if you’re not using `git` prehooks or some code editor facility to lint as you go. Relatedly, using `format-dry` instead of `format` will preview the changes instead of simply applying them.
+
+Docs can also be generated, if desired, by adding `-DLBAL_BUILD_DOCS=ON` to line 2 and building the `Doxygen` target. This requires [Doxygen](https://www.doxygen.nl/), and the docs are left in `build/docs/doxygen/html`.
+
+### False-positive tests
+
+A token that claims a feature is available when it isn’t, or isn’t usable as specified, is a false positive. An optional test suite checks for these. Enable it by adding `-DLBAL_BUILD_FALSE_POSITIVE_TESTS=ON` to line 2. `LBAL_FALSE_POSITIVE_TEST_STANDARDS` chooses the C++ Standard modes to test in: `latest` (the default) means the newest Standard the compiler supports, and you can list others with it, e.g. `-DLBAL_FALSE_POSITIVE_TEST_STANDARDS="17;20;latest"` (C++17 is the minimum, as required by Google Test).
+
+The suite has two parts:
+- Tests of behavior and library interfaces, which run with the other tests under CTest and are named `cxx<NN>.lbalFalsePositive.<token>`. A token that is `0` is reported as skipped.
+- Compile-only probes, for syntax that can only fail to compile. These aren’t part of the default build, so a failure can’t stop the other tests from building. Build them with `cmake --build build --target lbalFalsePositiveProbes -- -k` (use `-k 0` with Ninja) to see every failure at once.
+
+CI always runs the suite on every platform at `latest`, and a false positive fails the build. To test older Standards in CI as well, set the GitHub repository variable `LBAL_FALSE_POSITIVE_TEST_STANDARDS`, e.g. to `17;20;23;latest`.
 
 ## To-Do
 _Roughly in order of precedence:_
 - update false negatives/positives for C++23 and up
+- add false-positive tests for the C++20 and later Standard Library tokens
+- confirm the false-positive tests written ahead of compiler support (marked `SEEME`) once compilers implement those features
+- triage false-positive test results for MSVC and Apple Clang
 - add more examples
-- flesh out the unit tests
 - generate nicer-looking IDE project files
 
 A more formal action items list will be maintained on our [GitHub issues page](https://github.com/bitweeder/lucenaBAL/issues).

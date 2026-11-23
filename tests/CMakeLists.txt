@@ -123,6 +123,130 @@ add_test (
 
 
 #[[#############################################################################
+  optional false-positive tests
+
+  `LBAL_FALSE_POSITIVE_TEST_STANDARDS` lists Standard numbers (17 or later)
+  and/or `latest`, the newest Standard the compiler supports. For each, build
+    - `lbalFalsePositiveTest-cxx<NN>`: gtest soft probes, registered with the
+      prefix `cxx<NN>.`
+    - `lbalFalsePositiveProbes-cxx<NN>`: an object library of hard probes, one
+      token per file; it’s never linked, so it only needs to compile. It’s
+      excluded from the default build, so a hard false positive can’t stop the
+      tests from building; build the `lbalFalsePositiveProbes` target instead.
+
+  Neither target links `lucenaBAL`, as its interface requires C++26; they take
+  its include directories and definitions instead.
+#]]
+
+if (LBAL_BUILD_FALSE_POSITIVE_TESTS)
+	file (
+		GLOB_RECURSE LBAL_FALSE_POSITIVE_PROBES
+		CONFIGURE_DEPENDS
+			${CMAKE_CURRENT_LIST_DIR}/probes/*.cpp
+	)
+
+	# Resolve `latest` to the newest Standard the compiler is known to support.
+	# Add new Standards to the front of the candidate list as CMake learns them.
+	set (LBAL_FP_STANDARDS)
+
+	foreach (LBAL_STD IN LISTS LBAL_FALSE_POSITIVE_TEST_STANDARDS)
+		if (LBAL_STD STREQUAL "latest")
+			set (LBAL_STD)
+
+			foreach (LBAL_CANDIDATE IN ITEMS 26 23 20 17)
+				if ("cxx_std_${LBAL_CANDIDATE}" IN_LIST CMAKE_CXX_COMPILE_FEATURES)
+					set (LBAL_STD ${LBAL_CANDIDATE})
+					break ()
+				endif ()
+			endforeach ()
+
+			if (NOT LBAL_STD)
+				message (FATAL_ERROR "LBAL_FALSE_POSITIVE_TEST_STANDARDS: the compiler doesn’t support C++17, the minimum for GoogleTest")
+			endif ()
+		elseif (NOT LBAL_STD MATCHES "^[0-9]+$" OR LBAL_STD LESS 17)
+			message (FATAL_ERROR "LBAL_FALSE_POSITIVE_TEST_STANDARDS: `${LBAL_STD}` must be `latest` or a Standard of at least 17, the minimum for GoogleTest")
+		endif ()
+
+		list (APPEND LBAL_FP_STANDARDS ${LBAL_STD})
+	endforeach ()
+
+	list (REMOVE_DUPLICATES LBAL_FP_STANDARDS)
+	list (JOIN LBAL_FP_STANDARDS ", C++" LBAL_FP_STANDARDS_TEXT)
+	message (STATUS "False-positive tests: C++${LBAL_FP_STANDARDS_TEXT}")
+
+	add_custom_target (lbalFalsePositiveProbes)
+
+	foreach (LBAL_STD IN LISTS LBAL_FP_STANDARDS)
+		set (LBAL_FP_TEST lbalFalsePositiveTest-cxx${LBAL_STD})
+		set (LBAL_FP_PROBES lbalFalsePositiveProbes-cxx${LBAL_STD})
+
+		add_executable (${LBAL_FP_TEST} lbalFalsePositiveTest.cpp)
+		add_library (
+			${LBAL_FP_PROBES}
+			OBJECT
+			EXCLUDE_FROM_ALL
+				${LBAL_FALSE_POSITIVE_PROBES}
+		)
+		add_dependencies (lbalFalsePositiveProbes ${LBAL_FP_PROBES})
+
+		foreach (LBAL_TARGET IN ITEMS ${LBAL_FP_TEST} ${LBAL_FP_PROBES})
+			target_include_directories (
+				${LBAL_TARGET}
+					PRIVATE
+						${PROJECT_SOURCE_DIR}/include
+						${CMAKE_CURRENT_LIST_DIR}
+						$<TARGET_PROPERTY:lucenaBAL,INTERFACE_INCLUDE_DIRECTORIES>
+			)
+
+			target_compile_definitions (
+				${LBAL_TARGET}
+					PRIVATE
+						$<TARGET_PROPERTY:lucenaBAL,INTERFACE_COMPILE_DEFINITIONS>
+						LBAL_CONFIG_unit=1
+			)
+
+			set_target_properties (
+				${LBAL_TARGET}
+					PROPERTIES
+						CXX_STANDARD ${LBAL_STD}
+						CXX_STANDARD_REQUIRED ON
+						CXX_EXTENSIONS OFF
+						FOLDER "false-positive"
+			)
+
+			if (MSVC)
+				if (LBAL_STD GREATER 20)
+					target_compile_options (${LBAL_TARGET} PRIVATE /std:c++latest)
+				endif ()
+
+				target_compile_options (${LBAL_TARGET} PRIVATE /Zc:__cplusplus)
+			endif ()
+		endforeach ()
+
+		target_link_libraries (${LBAL_FP_TEST} PRIVATE gtest_main)
+
+		# Make ignored attributes and extensions errors, so they count as false
+		# positives; lucenaBAL’s own diagnostics are turned off so they don’t.
+		target_compile_definitions (
+			${LBAL_FP_PROBES}
+				PRIVATE
+					LBAL_CONFIG_enable_pedantic_warnings=0
+		)
+
+		target_compile_options (
+			${LBAL_FP_PROBES}
+				PRIVATE
+					$<$<CXX_COMPILER_ID:GNU>:-pedantic-errors -Werror=attributes>
+					$<$<CXX_COMPILER_ID:Clang,AppleClang>:-pedantic-errors -Werror=unknown-attributes -Werror=ignored-attributes>
+					$<$<CXX_COMPILER_ID:MSVC>:/we5030>
+		)
+
+		gtest_discover_tests (${LBAL_FP_TEST} TEST_PREFIX "cxx${LBAL_STD}.")
+	endforeach ()
+endif ()
+
+
+#[[#############################################################################
   clean up
 #]]
 

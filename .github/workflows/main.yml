@@ -20,6 +20,9 @@ jobs:
   build:
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
+    env:
+      # Make every `ctest` invocation print the output of failing tests.
+      CTEST_OUTPUT_ON_FAILURE: 1
     strategy:
       fail-fast: false
       matrix:
@@ -124,6 +127,11 @@ jobs:
               -S .
               -B build
               -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }}
+              -DLBAL_BUILD_FALSE_POSITIVE_TESTS=ON
+              # The newest Standard the compiler supports, unless the
+              # `LBAL_FALSE_POSITIVE_TEST_STANDARDS` repository variable asks
+              # for more, e.g. `17;20;23;latest`. Quoted to keep a list intact.
+              "-DLBAL_FALSE_POSITIVE_TEST_STANDARDS=${{ vars.LBAL_FALSE_POSITIVE_TEST_STANDARDS || 'latest' }}"
           RESULT_VARIABLE
             result
         )
@@ -133,6 +141,7 @@ jobs:
         endif()
 
     - name: Build
+      id: build
       shell: cmake -P {0}
       run: |
         # Manually set up the shell environment for MSVS since we’re not coming
@@ -165,6 +174,7 @@ jobs:
 
 
     - name: Test
+      id: test
       shell: cmake -P {0}
       run: |
         include(ProcessorCount)
@@ -188,6 +198,81 @@ jobs:
         )
         if (NOT result EQUAL 0)
           message(FATAL_ERROR "Running tests failed: ${result}")
+        endif()
+
+
+    - name: Failed Test Output
+      if: failure() && steps.test.outcome == 'failure'
+      shell: cmake -P {0}
+      run: |
+        # Rerun only the tests that failed, serially, so their complete output
+        # is grouped together at the end of the log. The job has already
+        # failed, so the result is deliberately ignored.
+        execute_process(
+          COMMAND
+            ctest
+              -C ${{ matrix.config.build_type }}
+              --rerun-failed
+              --output-on-failure
+          WORKING_DIRECTORY
+            build
+        )
+
+
+    - name: Upload Test Log
+      if: failure() && steps.test.outcome == 'failure'
+      uses: actions/upload-artifact@v7
+      with:
+        # Keyed by runner, as matrix names contain `/`, which artifact names
+        # can’t.
+        name: test-log-${{ matrix.config.os }}
+        path: build/Testing/Temporary/LastTest*.log
+
+
+    # The hard false-positive probes are excluded from the default build so a
+    # failing one can’t stop the tests from being built and run; this builds
+    # them all, keeping going after errors so every false positive is listed.
+    - name: False-Positive Probes
+      if: ${{ !cancelled() && steps.build.outcome == 'success' }}
+      shell: cmake -P {0}
+      run: |
+        # Manually set up the shell environment for MSVS since we’re not coming
+        # in through the Developer Command Prompt.
+        if ("${{ runner.os }}" STREQUAL "Windows"
+            AND NOT "x${{ matrix.config.environment_script }}" STREQUAL "x")
+          file(
+            STRINGS
+              environment_script_output.txt output_lines)
+
+          foreach(line IN LISTS output_lines)
+            if (line MATCHES "^([a-zA-Z0-9_-]+)=(.*)$")
+              set(ENV{${CMAKE_MATCH_1}} "${CMAKE_MATCH_2}")
+            endif()
+          endforeach()
+        endif()
+
+        # MSBuild and Xcode already report every failing source in a target.
+        load_cache(build READ_WITH_PREFIX "" CMAKE_GENERATOR)
+        set(keep_going)
+        if (CMAKE_GENERATOR STREQUAL "Unix Makefiles")
+          set(keep_going -- -k)
+        elseif (CMAKE_GENERATOR MATCHES "^Ninja")
+          set(keep_going -- -k 0)
+        endif()
+
+        execute_process(
+          COMMAND
+            cmake
+              --build build
+              --config ${{ matrix.config.build_type }}
+              --target lbalFalsePositiveProbes
+              ${keep_going}
+          RESULT_VARIABLE
+            result
+        )
+
+        if (NOT result EQUAL 0)
+          message(FATAL_ERROR "False-positive probes failed to compile: ${result}")
         endif()
 
 

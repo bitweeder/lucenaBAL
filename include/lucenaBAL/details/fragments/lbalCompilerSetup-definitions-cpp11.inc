@@ -180,15 +180,6 @@
 //	placeholder. Individual compilers may still override these, of course.
 
 #if LBAL_cpp_version >= LBAL_CPP11_VERSION
-  #if !defined(LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY)
-    #if defined(__has_cpp_attribute)                                           \
-        && (__has_cpp_attribute(carries_dependency) >= 200809L)
-      #define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY 200809L
-    #else
-      #define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY 200809L
-    #endif
-  #endif
-
   #if !defined(LBAL_CPP11_ATTRIBUTE_NORETURN)
     #if defined(__has_cpp_attribute)                                           \
         && (__has_cpp_attribute(noreturn) >= 200809L)

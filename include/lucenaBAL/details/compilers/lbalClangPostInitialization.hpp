@@ -125,8 +125,8 @@
   #endif
 
   #if (__clang_major__ >= 10) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
-    //	SEEME - bitweeder
-    //	This did not have a proper SD-6 token value until Dec 2019.
+    //	SEEME (bitweeder) This did not have a proper SD-6 token value until Dec
+    //	2019.
     #if !defined(LBAL_CPP20_DESIGNATED_INITIALIZERS)
       #if defined(__cpp_designated_initializers)                               \
           && (__cpp_designated_initializers >= 201707L)
@@ -141,6 +141,103 @@
     //	SEEME (bitweeder) There is no SD-6 token for this.
     #if !defined(LBAL_CPP20_TYPENAME_OPTIONAL)
       #define LBAL_CPP20_TYPENAME_OPTIONAL 1L
+    #endif
+  #endif
+
+  #if (LBAL_cpp_version < LBAL_CPP20_VERSION)
+    //  This can be erroneously defined for C++17.
+    #if LBAL_CPP20_DESTROYING_DELETE
+      #undef LBAL_CPP20_DESTROYING_DELETE
+      #define LBAL_CPP20_DESTROYING_DELETE 0
+    #endif
+  #endif
+
+//	SEEME
+//	Clang accepts many later-Standard features in earlier modes as
+//	extensions, and predefines their SD-6 macros and `__has_cpp_attribute`
+//	values regardless of mode. When extensions are errors, those features
+//	aren’t usable, so we turn the tokens off. `-pedantic-errors` is the only
+//	such case the preprocessor can see: it makes `__has_extension` match
+//	`__has_feature`, and `c_static_assert` is only ever an extension in C++.
+//	Narrower flags such as `-Werror=c++26-extensions` can’t be detected.
+//
+//	The version checks use “at most the previous Standard” since a
+//	preview mode reports a `__cplusplus` value below the final one.
+
+  #if (LBAL_cpp_version <= LBAL_CPP17_VERSION)                                 \
+      && !__has_extension(c_static_assert)
+    //	C++20 features offered as extensions
+    #if LBAL_CPP20_ATTRIBUTE_LIKELY
+      #undef LBAL_CPP20_ATTRIBUTE_LIKELY
+      #define LBAL_CPP20_ATTRIBUTE_LIKELY 0
+    #endif
+
+    #if LBAL_CPP20_ATTRIBUTE_UNLIKELY
+      #undef LBAL_CPP20_ATTRIBUTE_UNLIKELY
+      #define LBAL_CPP20_ATTRIBUTE_UNLIKELY 0
+    #endif
+
+    #if LBAL_CPP20_ATTRIBUTE_NODISCARD_EXPANDED
+      #undef LBAL_CPP20_ATTRIBUTE_NODISCARD_EXPANDED
+      #define LBAL_CPP20_ATTRIBUTE_NODISCARD_EXPANDED 0
+    #endif
+  #endif
+
+  #if (LBAL_cpp_version <= LBAL_CPP20_VERSION)                                 \
+      && !__has_extension(c_static_assert)
+    //	C++23 features offered as extensions
+    #if LBAL_CPP23_ATTRIBUTE_ASSUME
+      #undef LBAL_CPP23_ATTRIBUTE_ASSUME
+      #define LBAL_CPP23_ATTRIBUTE_ASSUME 0
+    #endif
+
+    #if LBAL_CPP23_NAMED_CHARACTER_ESCAPES
+      #undef LBAL_CPP23_NAMED_CHARACTER_ESCAPES
+      #define LBAL_CPP23_NAMED_CHARACTER_ESCAPES 0
+    #endif
+
+    #if LBAL_CPP23_STATIC_CALL_OPERATOR
+      #undef LBAL_CPP23_STATIC_CALL_OPERATOR
+      #define LBAL_CPP23_STATIC_CALL_OPERATOR 0
+    #endif
+  #endif
+
+  #if (LBAL_cpp_version <= LBAL_CPP23_VERSION)                                 \
+      && !__has_extension(c_static_assert)
+    //	C++26 features offered as extensions
+    #if LBAL_CPP26_DELETED_FUNCTION
+      #undef LBAL_CPP26_DELETED_FUNCTION
+      #define LBAL_CPP26_DELETED_FUNCTION 0
+    #endif
+
+    #if LBAL_CPP26_PACK_INDEXING
+      #undef LBAL_CPP26_PACK_INDEXING
+      #define LBAL_CPP26_PACK_INDEXING 0
+    #endif
+
+    #if LBAL_CPP26_PLACEHOLDER_VARIABLES
+      #undef LBAL_CPP26_PLACEHOLDER_VARIABLES
+      #define LBAL_CPP26_PLACEHOLDER_VARIABLES 0
+    #endif
+
+    #if LBAL_CPP26_STATIC_ASSERT_USER_MESSAGE
+      #undef LBAL_CPP26_STATIC_ASSERT_USER_MESSAGE
+      #define LBAL_CPP26_STATIC_ASSERT_USER_MESSAGE 0
+    #endif
+
+    #if LBAL_CPP26_STRUCTURED_BINDINGS_ATTRIBUTES
+      #undef LBAL_CPP26_STRUCTURED_BINDINGS_ATTRIBUTES
+      #define LBAL_CPP26_STRUCTURED_BINDINGS_ATTRIBUTES 0
+    #endif
+
+    #if LBAL_CPP26_STRUCTURED_BINDINGS_PACK
+      #undef LBAL_CPP26_STRUCTURED_BINDINGS_PACK
+      #define LBAL_CPP26_STRUCTURED_BINDINGS_PACK 0
+    #endif
+
+    #if LBAL_CPP26_VARIADIC_FRIEND
+      #undef LBAL_CPP26_VARIADIC_FRIEND
+      #define LBAL_CPP26_VARIADIC_FRIEND 0
     #endif
   #endif
 #else

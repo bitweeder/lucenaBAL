@@ -114,6 +114,19 @@ option (
 	"Build documentation"
 	OFF)
 
+cmake_dependent_option (
+	LBAL_BUILD_FALSE_POSITIVE_TESTS
+	"Build optional tests that check feature tokens for false positives"
+	OFF
+	"BUILD_TESTING"
+	OFF)
+
+set (
+	LBAL_FALSE_POSITIVE_TEST_STANDARDS
+	"latest"
+	CACHE STRING
+	"C++ Standard modes in which to build the false-positive tests: numbers (17 or later) and/or `latest`, the newest the compiler supports")
+
 option (
 	LBAL_CONFIG_DISABLE_PEDANTIC_WARNINGS
 	"Control whether to generate warnings from the Library when anything unusual happens"
@@ -330,12 +343,16 @@ if(CLANG_FORMAT_EXE)
 	# SEEME
 	# Note that files used for diff comparisons will not be formatted, so they
 	# must be separately maintained.
+	#
+	# `GLOB_RECURSE` applies each pattern to its directory and every
+	# subdirectory, so these also pick up `details/fragments/`,
+	# `tests/fragments/` and `tests/probes/`.
 	file(
 		GLOB_RECURSE
 		ALL_LINTABLE_FILES
 		CONFIGURE_DEPENDS
-			include/**/*.hpp
-			include/**/*.inc
+			include/*.hpp
+			include/*.inc
 			tests/*.cpp
 			tests/*.hpp
 			tests/*.inc

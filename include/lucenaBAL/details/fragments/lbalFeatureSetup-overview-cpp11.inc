@@ -60,25 +60,6 @@
 #endif
 
 /**
-  @def LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY
-  @brief Optimization hint when compiling with certain memory models
-  @details SD-6 equivalent: `__has_cpp_attribute(carries_dependency) >=
-  200809L`. This token will have a value of `0` if the proposal described here
-  is not supported.
-  - `200809L` [N2556](https://wg21.link/N2556) C++ Data-Dependency Ordering:
-  Atomics and Memory Model
-  - `200809L` [N2643](https://wg21.link/N2643) C++ Data-Dependency Ordering:
-  Function Annotation
-  - `200809L` [N2782](https://wg21.link/N2782) C++ Data-Dependency Ordering:
-  Function Annotation
-  - `200809L` [P3475R2 __PDF__](https://wg21.link/P3475R2) Defang and deprecate
-  memory_order::consume
-*/
-#ifndef LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY
-  #define LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY 0
-#endif
-
-/**
   @def LBAL_CPP11_ATTRIBUTE_NORETURN
   @brief Indicate that a function does not return
   @details SD-6 equivalent: `__has_cpp_attribute(noreturn) >= 200809L`.

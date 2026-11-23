@@ -596,22 +596,6 @@
 #endif
 
 /**
-  @def LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES
-  @brief Enabling list-initialization for algorithms
-  @details SD-6 equivalent:
-  `__cpp_lib_default_template_type_for_algorithm_values >= 202403L`. This token
-  will have a value of `0` if the proposal described here is not supported.
-  - `202403L` [P2248R8](https://wg21.link/P2248R8) Enabling list-initialization
-  for algorithms
-
-  @sa `<algorithm>` `<deque>` `<forward_list>` `<list>` `<ranges>` `<string>`
-  `<vector>`
-*/
-#ifndef LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES
-  #define LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES 0
-#endif
-
-/**
   @def LBAL_LIBCPP26_DEFINE_STATIC
   @brief define_static_{string,object,array}
   @details SD-6 equivalent: `__cpp_lib_define_static >= 202506L`. This token
@@ -1313,20 +1297,6 @@
 */
 #ifndef LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE
   #define LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE 0
-#endif
-
-/**
-  @def LBAL_LIBCPP26_GENERATE_RANDOM
-  @brief Vector API for random number generation
-  @details SD-6 equivalent: `__cpp_lib_generate_random >= 202403L`. This token
-  will have a value of `0` if the proposal described here is not supported.
-  - `202403L` [P1068R11 __PDF__](https://wg21.link/P1068R11) Vector API for
-  random number generation
-
-  @sa `<random>`
-*/
-#ifndef LBAL_LIBCPP26_GENERATE_RANDOM
-  #define LBAL_LIBCPP26_GENERATE_RANDOM 0
 #endif
 
 /**
@@ -2120,6 +2090,21 @@
 */
 #ifndef LBAL_LIBCPP26_RANGES_FILTER
   #define LBAL_LIBCPP26_RANGES_FILTER 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_RANGES_GENERATE_RANDOM
+  @brief Vector API for random number generation
+  @details SD-6 equivalent: `__cpp_lib_ranges_generate_random >= 202403L`.
+  This token will have a value of `0` if the proposal described here is not
+  supported.
+  - `202403L` [P1068R11 __PDF__](https://wg21.link/P1068R11) Vector API for
+  random number generation
+
+  @sa `<random>`
+*/
+#ifndef LBAL_LIBCPP26_RANGES_GENERATE_RANDOM
+  #define LBAL_LIBCPP26_RANGES_GENERATE_RANDOM 0
 #endif
 
 /**

@@ -240,13 +240,6 @@
   #endif
 #endif  //  LBAL_LIBCPP26_DEBUGGING_UTILITIES
 
-#if !defined(LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES)
-  #if __cpp_lib_default_template_type_for_algorithm_values >= 202403L
-    #define LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES           \
-      __cpp_lib_default_template_type_for_algorithm_values
-  #endif
-#endif  //  LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES
-
 #if !defined(LBAL_LIBCPP26_DEFINE_STATIC)
   #if __cpp_lib_define_static >= 202506L
     #define LBAL_LIBCPP26_DEFINE_STATIC __cpp_lib_define_static
@@ -528,12 +521,6 @@
     #define LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE __cpp_lib_function_ref
   #endif
 #endif  //  LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE
-
-#if !defined(LBAL_LIBCPP26_GENERATE_RANDOM)
-  #if __cpp_lib_generate_random >= 202403L
-    #define LBAL_LIBCPP26_GENERATE_RANDOM __cpp_lib_generate_random
-  #endif
-#endif  //  LBAL_LIBCPP26_GENERATE_RANDOM
 
 #if !defined(LBAL_LIBCPP26_HARDENED_ARRAY)
   #if __cpp_lib_hardened_array >= 202502L
@@ -864,6 +851,13 @@
     #define LBAL_LIBCPP26_RANGES_FILTER __cpp_lib_ranges_filter
   #endif
 #endif  //  LBAL_LIBCPP26_RANGES_FILTER
+
+#if !defined(LBAL_LIBCPP26_RANGES_GENERATE_RANDOM)
+  #if __cpp_lib_ranges_generate_random >= 202403L
+    #define LBAL_LIBCPP26_RANGES_GENERATE_RANDOM                               \
+      __cpp_lib_ranges_generate_random
+  #endif
+#endif  //  LBAL_LIBCPP26_RANGES_GENERATE_RANDOM
 
 #if !defined(LBAL_LIBCPP26_RANGES_INDICES)
   #if __cpp_lib_ranges_indices >= 202506L

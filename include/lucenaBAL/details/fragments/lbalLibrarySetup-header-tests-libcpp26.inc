@@ -419,25 +419,6 @@ LBAL_CPP_WARNING(
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_DEBUGGING_UTILITIES
 
-#if LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES
-  #if LBAL_HAS_HEADER_ALGORITHM != 1                                           \
-      || LBAL_HAS_HEADER_DEQUE != 1                                            \
-      || LBAL_HAS_HEADER_FORWARD_LIST != 1                                     \
-      || LBAL_HAS_HEADER_LIST != 1                                             \
-      || LBAL_HAS_HEADER_RANGES != 1                                           \
-      || LBAL_HAS_HEADER_STRING != 1                                           \
-      || LBAL_HAS_HEADER_VECTOR != 1
-    #undef LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES
-    #define LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES 0
-LBAL_CPP_WARNING(
-    "Unable to validate "
-    "LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES: at least one of "
-    "{<algorithm>, <deque>, <forward_list>, <list>, <ranges>, <string>, "
-    "<vector>} not found"
-)
-  #endif  //  LBAL_HAS_HEADER_ test
-#endif    //  LBAL_LIBCPP26_DEFAULT_TEMPLATE_TYPE_FOR_ALGORITHM_VALUES
-
 #if LBAL_LIBCPP26_DEFINE_STATIC
   #if LBAL_HAS_HEADER_META != 1
     #undef LBAL_LIBCPP26_DEFINE_STATIC
@@ -897,16 +878,6 @@ LBAL_CPP_WARNING(
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_FUNCTION_REF_RENAME_NONTYPE
-
-#if LBAL_LIBCPP26_GENERATE_RANDOM
-  #if LBAL_HAS_HEADER_RANDOM != 1
-    #undef LBAL_LIBCPP26_GENERATE_RANDOM
-    #define LBAL_LIBCPP26_GENERATE_RANDOM 0
-LBAL_CPP_WARNING(
-    "Unable to validate LBAL_LIBCPP26_GENERATE_RANDOM: <random> not found"
-)
-  #endif  //  LBAL_HAS_HEADER_ test
-#endif    //  LBAL_LIBCPP26_GENERATE_RANDOM
 
 #if LBAL_LIBCPP26_HARDENED_ARRAY
   #if LBAL_HAS_HEADER_ARRAY != 1
@@ -1462,6 +1433,17 @@ LBAL_CPP_WARNING(
 )
   #endif  //  LBAL_HAS_HEADER_ test
 #endif    //  LBAL_LIBCPP26_RANGES_FILTER
+
+#if LBAL_LIBCPP26_RANGES_GENERATE_RANDOM
+  #if LBAL_HAS_HEADER_RANDOM != 1
+    #undef LBAL_LIBCPP26_RANGES_GENERATE_RANDOM
+    #define LBAL_LIBCPP26_RANGES_GENERATE_RANDOM 0
+LBAL_CPP_WARNING(
+    "Unable to validate LBAL_LIBCPP26_RANGES_GENERATE_RANDOM: <random> not "
+    "found"
+)
+  #endif  //  LBAL_HAS_HEADER_ test
+#endif    //  LBAL_LIBCPP26_RANGES_GENERATE_RANDOM
 
 #if LBAL_LIBCPP26_RANGES_INDICES
   #if LBAL_HAS_HEADER_RANGES != 1

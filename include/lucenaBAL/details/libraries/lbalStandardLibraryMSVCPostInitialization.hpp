@@ -461,6 +461,19 @@
       && LBAL_LIBCPP17_TO_CHARS_FP
     #define LBAL_LIBCPP17_TO_CHARS LBAL_LIBCPP17_TO_CHARS_FP
   #endif
+
+  //	SEEME
+  //	`std::result_of` was removed in C++20 (P0619R4), but
+  //	`__cpp_lib_result_of_sfinae` is still advertised. The MSVC STL only
+  //	keeps it when `_HAS_DEPRECATED_RESULT_OF` is nonzero.
+  #if (LBAL_cpp_version > LBAL_CPP17_VERSION)                                  \
+      && defined(_HAS_DEPRECATED_RESULT_OF)                                    \
+      && !_HAS_DEPRECATED_RESULT_OF
+    #if LBAL_LIBCPP14_RESULT_OF_SFINAE
+      #undef LBAL_LIBCPP14_RESULT_OF_SFINAE
+      #define LBAL_LIBCPP14_RESULT_OF_SFINAE 0
+    #endif
+  #endif
 #else
   #error                                                                       \
       "lbalStandardLibraryMSVCPostInitialization.hpp was directly included with the incorrect Standard Library implementation"
