@@ -594,20 +594,6 @@
 #endif
 
 /**
-  @def LBAL_LIBCPP23_MONADIC_OPTIONAL
-  @brief Add monadic operations for `std::optional`
-  @details SD-6 equivalent: `__cpp_lib_monadic_optional >= 202110L`. This token
-  will have a value of `0` if the proposal described here is not supported.
-  - `202110L` [P0798R8](https://wg21.link/P0798R8) Monadic operations for
-  std::optional
-
-  @sa `<optional>`
-*/
-#ifndef LBAL_LIBCPP23_MONADIC_OPTIONAL
-  #define LBAL_LIBCPP23_MONADIC_OPTIONAL 0
-#endif
-
-/**
   @def LBAL_LIBCPP23_MOVE_ITERATOR_CONCEPT
   @brief move_iterator should be a random access iterator
   @details SD-6 equivalent: `__cpp_lib_move_iterator_concept >= 202207L`.

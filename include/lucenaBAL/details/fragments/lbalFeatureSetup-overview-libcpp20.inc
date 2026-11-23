@@ -381,17 +381,6 @@
 #endif
 
 /**
-  @def LBAL_LIBCPP20_CONCEPTS_EXP
-  @brief Experimental version of Standard Library Concepts
-  @details SD-6 equivalent: `__cpp_lib_experimental_concepts >= 201806L`.
-  This token will have a value of `0` if the proposal described here is not
-  supported.
-*/
-#ifndef LBAL_LIBCPP20_CONCEPTS_EXP
-  #define LBAL_LIBCPP20_CONCEPTS_EXP 0
-#endif
-
-/**
   @def LBAL_LIBCPP20_CONCEPTS_STANDARD_CASE
   @brief Rename C++ Concepts to use standard_case
   @details SD-6 equivalent: `__cpp_lib_concepts >= 201907L`. Note that
@@ -656,22 +645,6 @@
 #endif
 
 /**
-  @def LBAL_LIBCPP20_COROUTINE_EXP
-  @brief Experimental Standard Library coroutines
-  @details SD-6 equivalent: `__cpp_lib_experimental_coroutine >= 201902L`.
-  This token will have a value of `0` if the proposal described here is not
-  supported.
-
-  @remark Note that `<coroutine>` requires language support.
-
-  @remark This was dropped in favor of `__cpp_lib_coroutine`
-  (`LBAL_LIBCPP20_COROUTINE`) once acceptance into C++20 was formalized.
-*/
-#ifndef LBAL_LIBCPP20_COROUTINE_EXP
-  #define LBAL_LIBCPP20_COROUTINE_EXP 0
-#endif
-
-/**
   @def LBAL_LIBCPP20_DESTROYING_DELETE
   @brief Efficient sized `delete` for variable-sized classes
   @details SD-6 equivalent: `__cpp_lib_destroying_delete >= 201806L`. This token
@@ -781,27 +754,6 @@
 */
 #ifndef LBAL_LIBCPP20_FORMAT
   #define LBAL_LIBCPP20_FORMAT 0
-#endif
-
-/**
-  @def LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP
-  @brief The feature was removed prior to Standardization
-  @details SD-6 equivalent: `__cpp_lib_generic_unordered_hash_lookup >=
-  201902L`. This token will have a value of `0` if the proposal described here
-  is not supported.
-  - `201902L` [P0920R2](https://wg21.link/P0920R2) Precalculated hash values
-  in lookup
-
-  @remark This is an unusual example of a feature that was voted into the
-  Standard and then promptly voted out.
-
-  @remark `LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP` will always evaluate to
-  `0`; it is only here by way of documentation.
-
-  @sa `<unordered_map>` `<unordered_set>`
-*/
-#ifndef LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP
-  #define LBAL_LIBCPP20_GENERIC_UNORDERED_HASH_LOOKUP 0
 #endif
 
 /**

@@ -278,24 +278,6 @@
 #endif
 
 /**
-  @def LBAL_LIBCPP17_DEDUCTION_GUIDES
-  @brief Toward a resolution of US7 and US14: Integrating template deduction for
-  class templates into the standard library
-  @details SD-6 equivalent: `__cpp_lib_deduction_guides >= 201703L`. This token
-  will have a value of `0` if the proposal described here is not supported.
-  - `201703L` [P0433R2](https://wg21.link/P0433R2) Toward a resolution of US7
-  and US14: Integrating template deduction for class templates into the standard
-  library
-
-  @remark The Standard Committee opted not to formally vote in
-  `__cpp_lib_deduction_guides` after they determined all implementations de
-  facto already implemented it, so no test was needed.
-*/
-#ifndef LBAL_LIBCPP17_DEDUCTION_GUIDES
-  #define LBAL_LIBCPP17_DEDUCTION_GUIDES 0
-#endif
-
-/**
   @def LBAL_LIBCPP17_ENABLE_SHARED_FROM_THIS
   @brief Re-enable `std::shared_from_this`
   @details SD-6 equivalent: `__cpp_lib_enable_shared_from_this >= 201603L`.
@@ -373,21 +355,6 @@
 */
 #ifndef LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING
   #define LBAL_LIBCPP17_FILESYSTEM_DIRECTORY_ENTRY_CACHING 0
-#endif
-
-/**
-  @def LBAL_LIBCPP17_FILESYSTEM_EXP
-  @brief Experimental implementation of the Filesystem TS
-  @details SD-6 equivalent: `__cpp_lib_experimental_filesystem >= 201603L`.
-  This token will have a value of `0` if the proposal described here is not
-  supported.
-
-  @remark (SEEME - bitweeder) The experimental version differs in many ways
-  from the final version, but it’s all that is offered until gcc 8 and clang 7.
-  Generally, no one should use this, and it has been dropped from SD-6.
-*/
-#ifndef LBAL_LIBCPP17_FILESYSTEM_EXP
-  #define LBAL_LIBCPP17_FILESYSTEM_EXP 0
 #endif
 
 /**

@@ -2575,28 +2575,6 @@
 #endif
 
 /**
-  @def LBAL_LIBCPP26_SPAN_INITIALIZER_LIST
-  @brief std::span over an initializer list
-  @details SD-6 equivalent: `__cpp_lib_span_initializer_list >= 202311L`. Note
-  that `__cpp_lib_span_initializer_list` has multiple values associated with
-  it from a number of different proposals, so this token will have the value
-  of the latest supported proposal, or `0` if the proposal described here is
-  not supported.
-  - `202311L` [P2447R6](https://wg21.link/P2447R6) `std::span` over an
-  initializer list
-  - `202603L` [P4144R1](https://wg21.link/P4144R1) Remove `span`’s
-  `initializer_list` constructor for C++26
-
-  @remark This is based on `__cpp_lib_span_initializer_list`, which was removed
-  during the finalization of C++26.
-
-  @sa `<span>`
-*/
-#ifndef LBAL_LIBCPP26_SPAN_INITIALIZER_LIST
-  #define LBAL_LIBCPP26_SPAN_INITIALIZER_LIST 0
-#endif
-
-/**
   @def LBAL_LIBCPP26_SPAN_MORE
   @brief Freestanding Library: inout expected span
   @details SD-6 equivalent: `__cpp_lib_span >= 202311L`. Note that

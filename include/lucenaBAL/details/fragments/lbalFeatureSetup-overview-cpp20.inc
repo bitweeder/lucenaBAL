@@ -575,19 +575,6 @@
 #endif
 
 /**
-  @def LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS
-  @brief Class Types in Non-Type Template Parameters
-  @details SD-6 equivalent: `__cpp_nontype_template_parameter_class >= 201806L`.
-  This token will have a value of `0` if the proposal described here is not
-  supported.
-  - `201806L` [P0732R2 __PDF__](https://wg21.link/P0732R2) Class Types in
-  Non-Type Template Parameters
-*/
-#ifndef LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS
-  #define LBAL_CPP20_NONTYPE_TEMPLATE_PARAMETER_CLASS 0
-#endif
-
-/**
   @def LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR
   @brief This is the original three-way comparison operator
   @details SD-6 equivalent: `__cpp_impl_three_way_comparison >= 201711L`. Note
