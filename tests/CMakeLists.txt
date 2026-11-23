@@ -80,6 +80,8 @@ if(MSVC)
       $<$<CXX_COMPILER_ID:MSVC>:/std:c++latest>
       $<$<CXX_COMPILER_ID:MSVC>:/Zc:__cplusplus>
       $<$<CXX_COMPILER_ID:MSVC>:/W4>
+      # Sources are UTF-8; without this, MSVC reads them in the system code page.
+      $<$<CXX_COMPILER_ID:MSVC>:/utf-8>
   )
 else()
   target_compile_features (
@@ -219,7 +221,9 @@ if (LBAL_BUILD_FALSE_POSITIVE_TESTS)
 					target_compile_options (${LBAL_TARGET} PRIVATE /std:c++latest)
 				endif ()
 
-				target_compile_options (${LBAL_TARGET} PRIVATE /Zc:__cplusplus)
+				# Sources are UTF-8; without `/utf-8`, MSVC reads them in the system
+				# code page, which breaks probes with non-ASCII literals.
+				target_compile_options (${LBAL_TARGET} PRIVATE /Zc:__cplusplus /utf-8)
 			endif ()
 		endforeach ()
 

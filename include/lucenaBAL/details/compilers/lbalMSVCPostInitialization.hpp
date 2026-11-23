@@ -428,6 +428,20 @@
       #endif
     #endif  //	1911
   #endif    //	LBAL_CPP17_VERSION
+
+  //	C++23 features
+
+  //	VERME
+  //	MSVC advertises `__cpp_range_based_for >= 202211L`, but doesn’t extend
+  //	the lifetime of temporaries in the range-initializer (P2718R0); the
+  //	false-positive tests catch this. Raise the version bound once a release
+  //	actually implements it.
+  #if (_MSC_VER < 1960)
+    #if LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES
+      #undef LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES
+      #define LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES 0
+    #endif
+  #endif
 #else
   #error                                                                       \
       "lbalMSVCPostInitialization.hpp was directly included while using the wrong compiler"

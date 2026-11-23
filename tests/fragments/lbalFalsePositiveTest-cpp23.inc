@@ -16,13 +16,16 @@
 #if LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES
 namespace lbal_fp_cpp23 {
 
+//	The range lives outside the temporary, so iterating stays valid even if
+//	the temporary is destroyed early; only the destructor’s timing is measured.
+inline constexpr int values[3] = {1, 2, 3};
+
 struct Tracker {
   bool* alive;
-  int data[3]{1, 2, 3};
 
   ~Tracker() { *alive = false; }
 
-  const int (&items() const &)[3] { return data; }
+  const int (&items() const &)[3] { return values; }
 };
 
 }  // namespace lbal_fp_cpp23
@@ -33,9 +36,8 @@ LBAL_FP_TEST(CPP23, RANGE_BASED_FOR_TEMPORARIES) {
 #if LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES
   using namespace lbal_fp_cpp23;
 
-  //	The temporary `Tracker` must live until the end of the loop (P2718R0).
-  //	If it doesn’t, the loop reads a dead object, but `alive` still reports
-  //	the failure.
+  //	The temporary `Tracker` must live until the end of the loop (P2718R0);
+  //	`alive` turns false as soon as it is destroyed.
   bool alive = true;
   bool alive_throughout = true;
   int sum = 0;
