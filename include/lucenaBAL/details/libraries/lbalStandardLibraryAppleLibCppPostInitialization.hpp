@@ -313,6 +313,62 @@
     #endif    //	8000
   #endif      //	LBAL_CPP17_VERSION
 
+  //	SEEME libc++ only provides `std::hardware_destructive_interference_size`
+  //	and `std::hardware_constructive_interference_size` when the compiler
+  //	predefines `__GCC_DESTRUCTIVE_SIZE` and `__GCC_CONSTRUCTIVE_SIZE` (LLVM
+  //	19+, so Apple clang 17+). Older `<version>` headers claimed the feature
+  //	without providing it, but those Apple clangs don’t predefine the macros,
+  //	so checking the macros is enough, whatever the library version.
+  #if (!defined(__GCC_DESTRUCTIVE_SIZE) || !defined(__GCC_CONSTRUCTIVE_SIZE))  \
+      && LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
+    #undef LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
+    #define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE 0
+  #endif
+
+  //	SEEME `<charconv>` partly lives in the OS’s libc++ dylib, so these
+  //	depend on the deployment target, not the SDK. libc++ never defines
+  //	`__cpp_lib_to_chars` (it has no long double `from_chars`), so
+  //	`LBAL_LIBCPP17_TO_CHARS`, the full feature, stays `0`. These haven’t
+  //	been tested against Apple’s libc++.
+  //
+  //	Integer `to_chars` has been in libc++ since 7, but until LLVM 16 Apple’s
+  //	called helpers in the dylib, available from macOS 10.15, iOS and tvOS 13
+  //	and watchOS 6. Headers new enough to have the floating-point
+  //	availability macro (LLVM 19+) are header-only for integers, so only
+  //	older ones need the deployment target check.
+  #if !defined(LBAL_LIBCPP17_TO_CHARS_INTEGER)                                 \
+      && (LBAL_cpp_version > LBAL_CPP14_VERSION)
+    #if __has_include(<charconv>)
+      #if defined(_LIBCPP_AVAILABILITY_HAS_TO_CHARS_FLOATING_POINT)            \
+          || !(                                                                \
+              (defined(__MAC_OS_X_VERSION_MIN_REQUIRED)                        \
+                  && (__MAC_OS_X_VERSION_MIN_REQUIRED < 101500))               \
+              || (defined(__IPHONE_OS_VERSION_MIN_REQUIRED)                    \
+                  && (__IPHONE_OS_VERSION_MIN_REQUIRED < 130000))              \
+              || (defined(__TV_OS_VERSION_MIN_REQUIRED)                        \
+                  && (__TV_OS_VERSION_MIN_REQUIRED < 130000))                  \
+              || (defined(__WATCH_OS_VERSION_MIN_REQUIRED)                     \
+                  && (__WATCH_OS_VERSION_MIN_REQUIRED < 60000))                \
+          )
+        #define LBAL_LIBCPP17_TO_CHARS_INTEGER 201611L
+      #endif
+    #endif
+  #endif
+
+  //	Floating-point `to_chars` (libc++ 14) and `from_chars` (libc++ 20) are
+  //	in the dylib, and libc++’s availability macros, which `<version>` pulls
+  //	in, say whether the deployment target has them: macOS 13.3 and macOS
+  //	26 respectively, on current headers. The `from_chars` macro only exists
+  //	from libc++ 20.
+  #if !defined(LBAL_LIBCPP17_TO_CHARS_FP)                                      \
+      && (LBAL_cpp_version > LBAL_CPP14_VERSION)                               \
+      && defined(_LIBCPP_AVAILABILITY_HAS_FROM_CHARS_FLOATING_POINT)
+    #if _LIBCPP_AVAILABILITY_HAS_TO_CHARS_FLOATING_POINT                       \
+        && _LIBCPP_AVAILABILITY_HAS_FROM_CHARS_FLOATING_POINT
+      #define LBAL_LIBCPP17_TO_CHARS_FP 201611L
+    #endif
+  #endif
+
   #if (_LIBCPP_VERSION < 230000)
     //  This was erroneously reported as implemented in previous versions.
     #if defined(LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES)

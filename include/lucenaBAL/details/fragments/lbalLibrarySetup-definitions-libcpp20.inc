@@ -132,6 +132,12 @@
   #endif
 #endif  //  LBAL_LIBCPP20_CHRONO_CALENDAR
 
+#if !defined(LBAL_LIBCPP20_CHRONO_CALENDAR_TYPES)
+  #if __cpp_lib_chrono >= 201803L
+    #define LBAL_LIBCPP20_CHRONO_CALENDAR_TYPES __cpp_lib_chrono
+  #endif
+#endif  //  LBAL_LIBCPP20_CHRONO_CALENDAR_TYPES
+
 #if !defined(LBAL_LIBCPP20_CHRONO_FIXES)
   #if __cpp_lib_chrono >= 201907L
     #define LBAL_LIBCPP20_CHRONO_FIXES __cpp_lib_chrono

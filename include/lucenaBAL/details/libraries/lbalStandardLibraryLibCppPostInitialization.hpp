@@ -359,20 +359,41 @@
     #endif    //	8000
   #endif      //	LBAL_CPP20_VERSION
 
-  #if !defined(LBAL_LIBCPP17_TO_CHARS)                                         \
-      && LBAL_LIBCPP17_TO_CHARS_INTEGER                                        \
-      && LBAL_LIBCPP17_TO_CHARS_FP
-    #define LBAL_LIBCPP17_TO_CHARS LBAL_LIBCPP17_TO_CHARS_FP
+  //	SEEME libc++ has float and double `to_chars` from 14 and `from_chars`
+  //	from 20, but never defines `__cpp_lib_to_chars`, as it has no long
+  //	double `from_chars`. Its availability macros, which `<version>` pulls
+  //	in, say whether both work for the deployment target: on Apple
+  //	platforms they live in the OS’s dylib. The `from_chars` macro only
+  //	exists from libc++ 20.
+  #if !defined(LBAL_LIBCPP17_TO_CHARS_FP)                                      \
+      && (LBAL_cpp_version > LBAL_CPP14_VERSION)                               \
+      && defined(_LIBCPP_AVAILABILITY_HAS_FROM_CHARS_FLOATING_POINT)
+    #if _LIBCPP_AVAILABILITY_HAS_TO_CHARS_FLOATING_POINT                       \
+        && _LIBCPP_AVAILABILITY_HAS_FROM_CHARS_FLOATING_POINT
+      #define LBAL_LIBCPP17_TO_CHARS_FP 201611L
+    #endif
   #endif
 
-  //	Older clangs may have this set incorrectly in `<version>`, so we
-  //	preemptively disable it.
-  #if (_LIBCPP_VERSION < 190000)
-    #if defined(LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE)
-      #undef LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
-      #define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE 0
-    #endif  //	LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
-  #endif    //  190000
+  //	SEEME `LBAL_LIBCPP17_TO_CHARS` is the full feature, which includes long
+  //	double. libc++ lacks long double `from_chars`, so the token is only set
+  //	if libc++ defines `__cpp_lib_to_chars` itself.
+
+  //	SEEME libc++ only provides `std::hardware_destructive_interference_size`
+  //	and `std::hardware_constructive_interference_size` when the compiler
+  //	predefines `__GCC_DESTRUCTIVE_SIZE` and `__GCC_CONSTRUCTIVE_SIZE` (gcc
+  //	12+, clang 19+). libc++ 17–19 define the feature macro under the same
+  //	condition; newer versions use the macros unconditionally, and versions
+  //	before 15 could claim the feature without providing it. So the
+  //	compiler’s macros, not the library version, decide; gcc 12+ with
+  //	libc++ 17 or 18 does have the feature.
+  #if (                                                                        \
+      (_LIBCPP_VERSION < 15000)                                                \
+      || !defined(__GCC_DESTRUCTIVE_SIZE)                                      \
+      || !defined(__GCC_CONSTRUCTIVE_SIZE)                                     \
+  ) && LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
+    #undef LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
+    #define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE 0
+  #endif
 
   //  This was erroneously reported as implemented in previous versions.
   #if (_LIBCPP_VERSION < 230000)

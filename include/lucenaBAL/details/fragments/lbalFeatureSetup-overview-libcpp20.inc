@@ -333,6 +333,27 @@
 #endif
 
 /**
+  @def LBAL_LIBCPP20_CHRONO_CALENDAR_TYPES
+  @brief Proxy to indicate support for just the types associated with
+  `__cpp_lib_chrono>=201803`
+  @details SD-6 equivalent: `__cpp_lib_chrono >= 201803L`. Note that
+  `__cpp_lib_chrono` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `201803L` [P0355R7](https://wg21.link/P0355R7) Extending `<chrono>` to
+  Calendars and Time Zones
+
+  @remark Older Apple Clangs don’t support the entirety of `__cpp_lib_chrono`,
+  but they do support the types associated with that token, which are useful on
+  their own.
+
+  @sa `<chrono>`
+*/
+#ifndef LBAL_LIBCPP20_CHRONO_CALENDAR_TYPES
+  #define LBAL_LIBCPP20_CHRONO_CALENDAR_TYPES 0
+#endif
+
+/**
   @def LBAL_LIBCPP20_CHRONO_FIXES
   @brief Miscellaneous minor fixes for `<chrono>`
   @details SD-6 equivalent: `__cpp_lib_chrono >= 201907L`. Note that

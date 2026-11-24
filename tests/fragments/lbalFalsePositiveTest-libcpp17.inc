@@ -382,18 +382,6 @@ LBAL_FP_TEST(LIBCPP17, GCD_LCM) {
 #endif
 }
 
-LBAL_FP_TEST(LIBCPP17, HARDWARE_INTERFERENCE_SIZE) {
-  LBAL_FP_REQUIRE(LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE);
-#if LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
-  EXPECT_GE(
-      std::hardware_destructive_interference_size, alignof(std::max_align_t)
-  );
-  EXPECT_GE(
-      std::hardware_constructive_interference_size, alignof(std::max_align_t)
-  );
-#endif
-}
-
 LBAL_FP_TEST(LIBCPP17, HAS_UNIQUE_OBJECT_REPRESENTATIONS) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS);
 #if LBAL_LIBCPP17_HAS_UNIQUE_OBJECT_REPRESENTATIONS
@@ -889,10 +877,12 @@ LBAL_FP_TEST(LIBCPP17, TO_CHARS) {
 #if LBAL_LIBCPP17_TO_CHARS
   using namespace lbal_fp_libcpp17;
 
-  //	The full feature includes floating-point support.
+  //	The full feature includes floating-point support, long double included.
   EXPECT_TRUE(to_chars_accepts<int>::value);
   EXPECT_TRUE(to_chars_accepts<double>::value);
   EXPECT_TRUE(from_chars_accepts<double>::value);
+  EXPECT_TRUE(to_chars_accepts<long double>::value);
+  EXPECT_TRUE(from_chars_accepts<long double>::value);
 #endif
 }
 

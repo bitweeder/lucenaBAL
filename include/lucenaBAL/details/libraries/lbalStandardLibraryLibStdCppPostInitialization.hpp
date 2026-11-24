@@ -398,6 +398,18 @@
     #endif    //	gcc 10.1
   #endif      //	LBAL_CPP20_VERSION
 
+  //	SEEME `LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE` needs no fixup: libstdc++
+  //	(gcc 12+) defines `__cpp_lib_hardware_interference_size` and the two
+  //	constants only when the compiler predefines `__GCC_DESTRUCTIVE_SIZE`,
+  //	which gcc 12+ and clang 19+ do, so its report is right with either.
+  //
+  //	The values depend on the target and on `-mtune`/`-mcpu`, and change
+  //	between compilers and versions, so they aren’t ABI-stable. gcc warns
+  //	(`-Winterference-size`) when the destructive size is used outside the
+  //	main source file; pin it with `--param destructive-interference-size=N`
+  //	or silence it with `-Wno-interference-size`. clang doesn’t warn, but its
+  //	documentation gives the same advice against using them in headers.
+
   //	C++23 Library Features
   //	libstdc++ implements P2417R2, but reports it as `202202L` (the value
   //	from an earlier revision) rather than `202207L`.

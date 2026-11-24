@@ -60,11 +60,8 @@
     #endif
   #endif
 
-  //	Explicitly disabled charconv support for floats to avoid it getting
-  //	mistakenly set later.
-  #if !defined(LBAL_LIBCPP17_TO_CHARS_FP)
-    #define LBAL_LIBCPP17_TO_CHARS_FP 0
-  #endif
+//	`LBAL_LIBCPP17_TO_CHARS_FP` is set in the PostInitialization header,
+//	from libc++’s availability macros.
 #else
   #error                                                                       \
       "lbalStandardLibraryLibCppInitialization.hpp was directly included with the incorrect Standard Library implementation"
