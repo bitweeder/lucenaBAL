@@ -327,24 +327,21 @@ LBAL_FP_TEST(LIBCPP20, CHAR8_T_COMPAT) {
 #endif
 }
 
-LBAL_FP_TEST(LIBCPP20, CHRONO_CALENDAR) {
-  LBAL_FP_REQUIRE(LBAL_LIBCPP20_CHRONO_CALENDAR);
-#if LBAL_LIBCPP20_CHRONO_CALENDAR
+//	`LBAL_LIBCPP20_CHRONO_CALENDAR` and `LBAL_LIBCPP20_CHRONO_FIXES` have
+//	compile-only probes in `probes/libcpp20/`: what sets them apart from the
+//	calendar types is names that libc++ lacks.
+
+LBAL_FP_TEST(LIBCPP20, CHRONO_CALENDAR_TYPES) {
+  LBAL_FP_REQUIRE(LBAL_LIBCPP20_CHRONO_CALENDAR_TYPES);
+#if LBAL_LIBCPP20_CHRONO_CALENDAR_TYPES
   using namespace std::chrono;
 
+  //	The calendar types from P0355R7, without time zones or parsing.
   constexpr year_month_day ymd{year{2024}, month{2}, day{29}};
   EXPECT_TRUE(ymd.ok());
   EXPECT_EQ(weekday{sys_days{ymd}}, Thursday);
   EXPECT_FALSE((year_month_day{year{2023}, month{2}, day{29}}.ok()));
-#endif
-}
 
-LBAL_FP_TEST(LIBCPP20, CHRONO_FIXES) {
-  LBAL_FP_REQUIRE(LBAL_LIBCPP20_CHRONO_FIXES);
-#if LBAL_LIBCPP20_CHRONO_FIXES
-  using namespace std::chrono;
-
-  //	`std::chrono::days`, `weeks` and the calendar literals (P1466R3).
   EXPECT_EQ(duration_cast<hours>(days{1}).count(), 24);
   EXPECT_EQ(duration_cast<days>(weeks{1}).count(), 7);
   EXPECT_EQ(static_cast<int>(2024y), 2024);

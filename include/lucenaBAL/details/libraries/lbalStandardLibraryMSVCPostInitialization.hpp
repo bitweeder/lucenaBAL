@@ -456,6 +456,17 @@
     #endif    //	1923
   #endif      //	LBAL_CPP20_VERSION
 
+  //	SEEME `LBAL_LIBCPP23_FORMATTERS_THREAD_ID` has no generated SD-6
+  //	mapping. The MSVC STL implements both parts of P2693R1 and reports them
+  //	together through `__cpp_lib_formatters`, so the token follows that
+  //	macro. This hasn’t been tested against MSVC.
+  #if !defined(LBAL_LIBCPP23_FORMATTERS_THREAD_ID)                             \
+      && (__cpp_lib_formatters >= 202302L)
+    #if __has_include(<format>) && __has_include(<thread>)
+      #define LBAL_LIBCPP23_FORMATTERS_THREAD_ID 202302L
+    #endif
+  #endif
+
   #if !defined(LBAL_LIBCPP17_TO_CHARS)                                         \
       && LBAL_LIBCPP17_TO_CHARS_INTEGER                                        \
       && LBAL_LIBCPP17_TO_CHARS_FP

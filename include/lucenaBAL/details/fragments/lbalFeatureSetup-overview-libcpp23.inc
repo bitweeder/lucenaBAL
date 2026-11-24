@@ -379,6 +379,18 @@
 #endif
 
 /**
+  @def LBAL_LIBCPP23_FORMATTERS_THREAD_ID
+  @brief Formatting thread::id
+
+  @remark This token is a proxy indicating support for the `std::thread::id`
+  portion of `__cpp_lib_formatters`, unlike `LBAL_LIBCPP23_FORMATTERS_THREAD_ID`
+  which indicates support for both that and `std::stacktrace`.
+*/
+#ifndef LBAL_LIBCPP23_FORMATTERS_THREAD_ID
+  #define LBAL_LIBCPP23_FORMATTERS_THREAD_ID 0
+#endif
+
+/**
   @def LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING
   @brief Exposing `std::basic_format_string`
   @details SD-6 equivalent: `__cpp_lib_format >= 202207L`. Note that
@@ -1046,6 +1058,27 @@
 */
 #ifndef LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY
   #define LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY 0
+#endif
+
+/**
+  @def LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY_TRAITS
+  @brief Just the type traits implementation part of
+  `__cpp_lib_reference_from_temporary`
+  @details SD-6 equivalent: `__cpp_lib_reference_from_temporary >= 202202L`.
+  This token will have a value of `0` if the proposal described here is not
+  supported.
+  - `202202L` [P2255R2](https://wg21.link/P2255R2) A type trait to detect
+  reference binding to temporary
+
+  @remark This token is a proxy indicating partial support for
+  `__cpp_lib_reference_from_temporary`; it reflects a state where a given
+  Standard Librray implementation claims to have full support, but may not
+  actually have it.
+
+  @sa `freestanding` `<type_traits>`
+*/
+#ifndef LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY_TRAITS
+  #define LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY_TRAITS 0
 #endif
 
 /**

@@ -421,6 +421,13 @@
   #endif
 #endif  //  LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY
 
+#if !defined(LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY_TRAITS)
+  #if __cpp_lib_reference_from_temporary >= 202202L
+    #define LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY_TRAITS                      \
+      __cpp_lib_reference_from_temporary
+  #endif
+#endif  //  LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY_TRAITS
+
 #if !defined(LBAL_LIBCPP23_SHIFT_RANGES)
   #if __cpp_lib_shift >= 202202L
     #define LBAL_LIBCPP23_SHIFT_RANGES __cpp_lib_shift

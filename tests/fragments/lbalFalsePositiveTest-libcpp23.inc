@@ -67,6 +67,7 @@
 
 #if LBAL_LIBCPP23_FORMAT                                                       \
     || LBAL_LIBCPP23_FORMATTERS                                                \
+    || LBAL_LIBCPP23_FORMATTERS_THREAD_ID                                      \
     || LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING                                \
     || LBAL_LIBCPP23_FORMAT_ENCODINGS                                          \
     || LBAL_LIBCPP23_FORMAT_GENERATOR                                          \
@@ -74,6 +75,10 @@
     || LBAL_LIBCPP23_FORMAT_RANGES
   #include <chrono>
   #include <format>
+#endif
+
+#if LBAL_LIBCPP23_FORMATTERS_THREAD_ID
+  #include <sstream>
 #endif
 
 #if LBAL_LIBCPP23_GENERATOR
@@ -427,18 +432,37 @@ LBAL_FP_TEST(LIBCPP23, FORMAT) {
 #endif
 }
 
-LBAL_FP_TEST(LIBCPP23, FORMATTERS) {
-  LBAL_FP_REQUIRE(LBAL_LIBCPP23_FORMATTERS);
-#if LBAL_LIBCPP23_FORMATTERS
-  EXPECT_FALSE(std::format("{}", std::this_thread::get_id()).empty());
+//	`LBAL_LIBCPP23_FORMATTERS` has a compile-only probe in `probes/libcpp23/`:
+//	what sets it apart from `thread::id` alone is `<stacktrace>`.
+
+LBAL_FP_TEST(LIBCPP23, FORMATTERS_THREAD_ID) {
+  LBAL_FP_REQUIRE(LBAL_LIBCPP23_FORMATTERS_THREAD_ID);
+#if LBAL_LIBCPP23_FORMATTERS_THREAD_ID
+  //	P2693R1: the formatted form matches `operator<<`, and the standard
+  //	fill, alignment and width are honoured.
+  auto const id = std::this_thread::get_id();
+  std::ostringstream stream;
+  stream << id;
+  auto const plain = std::format("{}", id);
+
+  EXPECT_EQ(plain, stream.str());
+
+  auto const padded = std::format("{:*>40}", id);
+
+  ASSERT_EQ(padded.size(), 40u);
+  EXPECT_TRUE(padded.ends_with(plain));
+  EXPECT_EQ(padded.front(), '*');
 #endif
 }
 
 LBAL_FP_TEST(LIBCPP23, FORMAT_BASIC_FORMAT_STRING) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING);
 #if LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING
+  //	P2508R1 exposes the class template itself, and its `get()`.
+  std::basic_format_string<char, int> bfs = "{}?";
   std::format_string<int> fs = "{}!";
 
+  EXPECT_EQ(bfs.get(), "{}?");
   EXPECT_EQ(fs.get(), "{}!");
   EXPECT_EQ(std::format(fs, 1), "1!");
 #endif
@@ -1016,12 +1040,17 @@ LBAL_FP_TEST(LIBCPP23, RANGES_ZIP) {
 #endif
 }
 
-LBAL_FP_TEST(LIBCPP23, REFERENCE_FROM_TEMPORARY) {
-  LBAL_FP_REQUIRE(LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY);
-#if LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY
+//	`LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY` has a compile-only probe in
+//	`probes/libcpp23/`: the full feature also changes `pair`, `tuple` and
+//	`INVOKE<R>`.
+
+LBAL_FP_TEST(LIBCPP23, REFERENCE_FROM_TEMPORARY_TRAITS) {
+  LBAL_FP_REQUIRE(LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY_TRAITS);
+#if LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY_TRAITS
   EXPECT_TRUE((std::reference_constructs_from_temporary_v<const int&, long>));
   EXPECT_FALSE((std::reference_constructs_from_temporary_v<const int&, int&>));
   EXPECT_TRUE((std::reference_converts_from_temporary_v<const int&, long>));
+  EXPECT_FALSE((std::reference_converts_from_temporary_v<const int&, int&>));
 #endif
 }
 

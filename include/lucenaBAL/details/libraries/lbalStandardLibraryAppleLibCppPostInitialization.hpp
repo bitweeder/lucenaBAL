@@ -325,6 +325,19 @@
     #define LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE 0
   #endif
 
+  //	SEEME Apple’s libc++, like upstream’s, has the P0355R7 calendar types
+  //	but not the rest of P0355R7 or P1466R3 (no `parse`/`from_stream` or
+  //	`clock_cast`, and the time zone database only from macOS 15.4 on current
+  //	headers). It reports `__cpp_lib_chrono` as `201611L`, so
+  //	`LBAL_LIBCPP20_CHRONO_CALENDAR` and `LBAL_LIBCPP20_CHRONO_FIXES` stay
+  //	`0`; the types are header-only and get their own token.
+  #if !defined(LBAL_LIBCPP20_CHRONO_CALENDAR_TYPES)                            \
+      && (LBAL_cpp_version > LBAL_CPP17_VERSION)
+    #if __has_include(<chrono>)
+      #define LBAL_LIBCPP20_CHRONO_CALENDAR_TYPES 201611L
+    #endif
+  #endif
+
   //	SEEME `<charconv>` partly lives in the OS’s libc++ dylib, so these
   //	depend on the deployment target, not the SDK. libc++ never defines
   //	`__cpp_lib_to_chars` (it has no long double `from_chars`), so
@@ -367,6 +380,50 @@
         && _LIBCPP_AVAILABILITY_HAS_FROM_CHARS_FLOATING_POINT
       #define LBAL_LIBCPP17_TO_CHARS_FP 201611L
     #endif
+  #endif
+
+  //	SEEME libc++ only partly implements P2693R1: `thread::id` has a
+  //	formatter from libc++ 17, but there is no `<stacktrace>`, so it never
+  //	defines `__cpp_lib_formatters` and `LBAL_LIBCPP23_FORMATTERS` stays `0`.
+  //	The `thread::id` part gets its own token. It needs a usable `<format>`,
+  //	which `LBAL_LIBCPP20_FORMAT` reflects (it depends on the deployment
+  //	target), and thread support. Apple’s `_LIBCPP_VERSION` tracks the LLVM
+  //	release (e.g., `170006`). No generated SD-6 mapping or header check
+  //	covers this token, so we check the headers here too. This hasn’t been
+  //	tested against Apple’s libc++.
+  #if !defined(LBAL_LIBCPP23_FORMATTERS_THREAD_ID)                             \
+      && (LBAL_cpp_version > LBAL_CPP20_VERSION)                               \
+      && (_LIBCPP_VERSION >= 170000)                                           \
+      && LBAL_LIBCPP20_FORMAT                                                  \
+      && !defined(_LIBCPP_HAS_NO_THREADS)                                      \
+      && (!defined(_LIBCPP_HAS_THREADS) || _LIBCPP_HAS_THREADS)
+    #if __has_include(<format>) && __has_include(<thread>)
+      #define LBAL_LIBCPP23_FORMATTERS_THREAD_ID 202302L
+    #endif
+  #endif
+
+  //	SEEME libc++ implements P2508R1 (`basic_format_string`) from 15, in C++20
+  //	and later, but holds `__cpp_lib_format` at `202110L` because P2419R2,
+  //	which shares `202207L`, isn’t done. `LBAL_LIBCPP20_FORMAT` says
+  //	`<format>` is usable: libc++ only reports it when floating-point
+  //	`to_chars` is available for the deployment target (macOS 13.3 on current
+  //	headers), since `std::format` doesn’t compile otherwise. This hasn’t
+  //	been tested against Apple’s libc++.
+  #if !defined(LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING) && LBAL_LIBCPP20_FORMAT
+    #define LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING 202207L
+  #endif
+
+  //	SEEME libc++ implements only the type traits from P2255R2 (from 21, when
+  //	the compiler has both builtins), not the `pair`, `tuple` and `INVOKE<R>`
+  //	changes, so it never defines `__cpp_lib_reference_from_temporary` and
+  //	`LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY` stays `0`. This hasn’t been
+  //	tested against Apple’s libc++.
+  #if !defined(LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY_TRAITS)                  \
+      && (LBAL_cpp_version > LBAL_CPP20_VERSION)                               \
+      && (_LIBCPP_VERSION >= 210000)                                           \
+      && __has_builtin(__reference_constructs_from_temporary)                  \
+      && __has_builtin(__reference_converts_from_temporary)
+    #define LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY_TRAITS 202202L
   #endif
 
   #if (_LIBCPP_VERSION < 230000)

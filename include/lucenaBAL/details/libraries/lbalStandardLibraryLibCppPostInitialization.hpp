@@ -347,9 +347,15 @@
         #define LBAL_LIBCPP20_STD_ENDIAN 201907L
       #endif  //	LBAL_LIBCPP20_STD_ENDIAN
 
-      #if !defined(LBAL_LIBCPP20_CHRONO_CALENDAR)
-        #define LBAL_LIBCPP20_CHRONO_CALENDAR 201803L
-      #endif  //	LBAL_LIBCPP20_CHRONO_CALENDAR
+      //	SEEME libc++ has had the P0355R7 calendar types since 7, but not
+      //	the whole paper: as of LLVM 21 it has no `parse`/`from_stream` or
+      //	`clock_cast`, and its time zone database is experimental. It
+      //	reports `__cpp_lib_chrono` as `201611L`, so
+      //	`LBAL_LIBCPP20_CHRONO_CALENDAR` and `LBAL_LIBCPP20_CHRONO_FIXES`
+      //	stay `0`; the types get their own token.
+      #if !defined(LBAL_LIBCPP20_CHRONO_CALENDAR_TYPES)
+        #define LBAL_LIBCPP20_CHRONO_CALENDAR_TYPES 201611L
+      #endif  //	LBAL_LIBCPP20_CHRONO_CALENDAR_TYPES
     #endif    //	7000
 
     #if (_LIBCPP_VERSION >= 8000)
@@ -377,6 +383,45 @@
   //	SEEME `LBAL_LIBCPP17_TO_CHARS` is the full feature, which includes long
   //	double. libc++ lacks long double `from_chars`, so the token is only set
   //	if libc++ defines `__cpp_lib_to_chars` itself.
+
+  //	SEEME libc++ only partly implements P2693R1: `thread::id` has a
+  //	formatter from libc++ 17, but there is no `<stacktrace>`, so it never
+  //	defines `__cpp_lib_formatters` and `LBAL_LIBCPP23_FORMATTERS` stays `0`.
+  //	The `thread::id` part gets its own token. It needs a usable `<format>`,
+  //	which `LBAL_LIBCPP20_FORMAT` reflects, and thread support. No generated
+  //	SD-6 mapping or header check covers this token, so we check the headers
+  //	here too.
+  #if !defined(LBAL_LIBCPP23_FORMATTERS_THREAD_ID)                             \
+      && (LBAL_cpp_version > LBAL_CPP20_VERSION)                               \
+      && (_LIBCPP_VERSION >= 170000)                                           \
+      && LBAL_LIBCPP20_FORMAT                                                  \
+      && !defined(_LIBCPP_HAS_NO_THREADS)                                      \
+      && (!defined(_LIBCPP_HAS_THREADS) || _LIBCPP_HAS_THREADS)
+    #if __has_include(<format>) && __has_include(<thread>)
+      #define LBAL_LIBCPP23_FORMATTERS_THREAD_ID 202302L
+    #endif
+  #endif
+
+  //	SEEME libc++ implements P2508R1 (`basic_format_string`) from 15, in C++20
+  //	and later, but holds `__cpp_lib_format` at `202110L` because P2419R2,
+  //	which shares `202207L`, isn’t done. `LBAL_LIBCPP20_FORMAT` says
+  //	`<format>` is usable: libc++ only reports it when floating-point
+  //	`to_chars` is available, since `std::format` doesn’t compile otherwise.
+  #if !defined(LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING) && LBAL_LIBCPP20_FORMAT
+    #define LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING 202207L
+  #endif
+
+  //	SEEME libc++ implements only the type traits from P2255R2 (from 21, when
+  //	the compiler has both builtins), not the `pair`, `tuple` and `INVOKE<R>`
+  //	changes, so it never defines `__cpp_lib_reference_from_temporary` and
+  //	`LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY` stays `0`.
+  #if !defined(LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY_TRAITS)                  \
+      && (LBAL_cpp_version > LBAL_CPP20_VERSION)                               \
+      && (_LIBCPP_VERSION >= 210000)                                           \
+      && __has_builtin(__reference_constructs_from_temporary)                  \
+      && __has_builtin(__reference_converts_from_temporary)
+    #define LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY_TRAITS 202202L
+  #endif
 
   //	SEEME libc++ only provides `std::hardware_destructive_interference_size`
   //	and `std::hardware_constructive_interference_size` when the compiler

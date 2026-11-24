@@ -418,6 +418,25 @@
     #define LBAL_LIBCPP23_CONSTEXPR_BITSET 202207L
   #endif
 
+  //	SEEME `LBAL_LIBCPP23_FORMATTERS_THREAD_ID` has no generated SD-6
+  //	mapping. libstdc++ (gcc 14+) declares `formatter<thread::id>` only
+  //	`#ifdef __cpp_lib_formatters`, and implements both parts of P2693R1
+  //	together, so the token follows that macro.
+  #if !defined(LBAL_LIBCPP23_FORMATTERS_THREAD_ID)                             \
+      && (__cpp_lib_formatters >= 202302L)
+    #if __has_include(<format>) && __has_include(<thread>)
+      #define LBAL_LIBCPP23_FORMATTERS_THREAD_ID 202302L
+    #endif
+  #endif
+
+  //	SEEME libstdc++ 13 defines `__cpp_lib_reference_from_temporary` without
+  //	the `std::tuple` changes from P2255R2; 14 completes it. The traits token,
+  //	`LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY_TRAITS`, keeps its value.
+  #if (LBAL_GCC_VERSION < 140000) && LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY
+    #undef LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY
+    #define LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY 0
+  #endif
+
   #if !defined(LBAL_LIBCPP17_TO_CHARS)                                         \
       && LBAL_LIBCPP17_TO_CHARS_INTEGER                                        \
       && LBAL_LIBCPP17_TO_CHARS_FP
