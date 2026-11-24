@@ -148,6 +148,10 @@
     #error "Don’t define LBAL_CLASS_xxx externally."
   #endif  //	LBAL_CLASS_xxx check
 
+  #if defined(LBAL_NO_UNIQUE_ADDRESS)
+    #error "Don’t define LBAL_NO_UNIQUE_ADDRESS externally."
+  #endif  //	LBAL_NO_UNIQUE_ADDRESS check
+
   #if defined(LBAL_FUNC_CALL_C)                                                \
       || defined(LBAL_FUNC_CALL_STD)                                           \
       || defined(LBAL_FUNC_CALLBACK_C)                                         \

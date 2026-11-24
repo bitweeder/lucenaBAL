@@ -1862,6 +1862,32 @@
   #define LBAL_CLASS_FORCE_EBCO
 #endif
 
+/**
+  @def LBAL_NO_UNIQUE_ADDRESS
+  Allow a non-static data member to share its address with other members,
+  so that an empty member takes up no space. The decorator precedes the
+  member declaration. For example:
+
+    struct Empty { };
+    struct S {
+      int value;
+      LBAL_NO_UNIQUE_ADDRESS Empty empty;
+    };
+
+  This expands to `[[msvc::no_unique_address]]` for the MSVC ABI (MSVC and
+  clang-cl), which accept `[[no_unique_address]]` but ignore it to keep their
+  ABI stable; to `[[no_unique_address]]` where that attribute is available
+  (see @ref LBAL_CPP20_ATTRIBUTE_NO_UNIQUE_ADDRESS); and otherwise to nothing,
+  which still compiles but has no effect.
+*/
+#ifndef LBAL_NO_UNIQUE_ADDRESS
+  #if LBAL_CPP20_ATTRIBUTE_NO_UNIQUE_ADDRESS
+    #define LBAL_NO_UNIQUE_ADDRESS [[no_unique_address]]
+  #else
+    #define LBAL_NO_UNIQUE_ADDRESS
+  #endif
+#endif
+
 ///	@}	LBAL_CLASS
 
 /**

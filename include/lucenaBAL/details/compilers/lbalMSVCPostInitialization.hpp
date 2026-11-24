@@ -381,6 +381,18 @@
       #endif
     #endif
 
+    #if (_MSC_VER >= 1925)
+      //	SEEME There are no SD-6 macros for these; MSVC has both from VS 2019
+      //	16.5 (P0683R1, P0614R1).
+      #if !defined(LBAL_CPP20_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS)
+        #define LBAL_CPP20_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 1L
+      #endif
+
+      #if !defined(LBAL_CPP20_INIT_STATEMENTS_FOR_RANGE_BASED_FOR)
+        #define LBAL_CPP20_INIT_STATEMENTS_FOR_RANGE_BASED_FOR 1L
+      #endif
+    #endif  //	1925
+
     #if (_MSC_VER >= 1929)
       //	SEEME (bitweeder) There is no SD-6 token for this.
       #if !defined(LBAL_CPP20_TYPENAME_OPTIONAL)
@@ -388,6 +400,13 @@
       #endif
     #endif
   #endif  //	LBAL_CPP20_VERSION
+
+  //	SEEME P0859R0 resolves CWG 1581, which MSVC fully implements from VS 2022
+  //	17.1 and applies in every mode, without defining
+  //	`__cpp_constexpr_in_decltype`.
+  #if !defined(LBAL_CPP20_CONSTEXPR_IN_DECLTYPE) && (_MSC_VER >= 1931)
+    #define LBAL_CPP20_CONSTEXPR_IN_DECLTYPE 201711L
+  #endif
 
 //	C++11 attributes
 
@@ -430,6 +449,39 @@
   #endif    //	LBAL_CPP17_VERSION
 
   //	C++23 features
+
+  //	SEEME MSVC implements these without the SD-6 values: it defines no
+  //	`__cpp_auto_cast` or `__cpp_named_character_escapes`, and holds
+  //	`__cpp_constexpr` below the values the three `constexpr` papers share.
+  //	Versions are from Microsoft’s conformance page where it lists them, and
+  //	otherwise from cppreference’s compiler-support table.
+  #if LBAL_cpp_version > LBAL_CPP20_VERSION
+    //	P2242R3: VS 2022 17.14.
+    #if !defined(LBAL_CPP23_CONSTEXPR_NON_LITERAL_VARIABLES)                   \
+        && (_MSC_VER >= 1944)
+      #define LBAL_CPP23_CONSTEXPR_NON_LITERAL_VARIABLES 202110L
+    #endif
+
+    //	P0849R8: MSVC Build Tools 14.50.
+    #if !defined(LBAL_CPP23_AUTO_CAST) && (_MSC_VER >= 1950)
+      #define LBAL_CPP23_AUTO_CAST 202110L
+    #endif
+
+    #if (_MSC_VER >= 1951)
+      //	P2647R1, P2448R2 and P2071R2: 19.51, per cppreference.
+      #if !defined(LBAL_CPP23_CONSTEXPR_PERMIT_STATIC_CONSTEXPR)
+        #define LBAL_CPP23_CONSTEXPR_PERMIT_STATIC_CONSTEXPR 202211L
+      #endif
+
+      #if !defined(LBAL_CPP23_CONSTEXPR_RELAX_RESTRICTIONS)
+        #define LBAL_CPP23_CONSTEXPR_RELAX_RESTRICTIONS 202207L
+      #endif
+
+      #if !defined(LBAL_CPP23_NAMED_CHARACTER_ESCAPES)
+        #define LBAL_CPP23_NAMED_CHARACTER_ESCAPES 202207L
+      #endif
+    #endif  //	1951
+  #endif    //	LBAL_CPP20_VERSION
 
   //	VERME
   //	MSVC advertises `__cpp_range_based_for >= 202211L`, but doesn’t extend

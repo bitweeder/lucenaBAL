@@ -58,6 +58,27 @@
 using namespace LBAL_;
 
 /*------------------------------------------------------------------------------
+  `LBAL_NO_UNIQUE_ADDRESS` always compiles; where it has an effect, an empty
+  member takes up no space.
+*/
+
+namespace lbal_test {
+
+struct Empty { };
+
+struct Packed {
+  int value;
+  LBAL_NO_UNIQUE_ADDRESS Empty empty;
+};
+
+#if LBAL_CPP20_ATTRIBUTE_NO_UNIQUE_ADDRESS                                     \
+    || (defined(_MSC_VER) && (_MSC_VER >= 1929))
+static_assert(sizeof(Packed) == sizeof(int));
+#endif
+
+}  // namespace lbal_test
+
+/*------------------------------------------------------------------------------
  */
 
 GTEST_TEST(lbalTest, Validation) {

@@ -227,6 +227,12 @@
   //	Class decorators
   #define LBAL_CLASS_FORCE_EBCO __declspec(empty_bases)
 
+  //	MSVC accepts `[[no_unique_address]]` but ignores it, to keep its ABI
+  //	stable; `[[msvc::no_unique_address]]` (VS 2019 16.10+) has the effect.
+  #if (_MSC_VER >= 1929)
+    #define LBAL_NO_UNIQUE_ADDRESS [[msvc::no_unique_address]]
+  #endif
+
   //	Function calling conventions
   #define LBAL_FUNC_CALL_C(LBAL_func_name_) __cdecl LBAL_func_name_
   #define LBAL_FUNC_CALL_STD(LBAL_func_name_) __stdcall LBAL_func_name_

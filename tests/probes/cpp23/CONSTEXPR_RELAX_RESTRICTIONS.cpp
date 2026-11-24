@@ -31,5 +31,22 @@ never_constant() {
   return runtime_only();
 }
 
+//	That rule needed no diagnostic in C++20, so compilers accept it either
+//	way. P2448R2 also lifts the requirement that a `constexpr` function’s
+//	parameter and return types be literal, which C++20 does diagnose.
+struct NonLiteral {
+  NonLiteral() { }
+
+  ~NonLiteral() { }
+};
+
+constexpr void
+take(NonLiteral) { }
+
+constexpr NonLiteral
+make() {
+  return {};
+}
+
 }  // namespace lbal_fp
 #endif

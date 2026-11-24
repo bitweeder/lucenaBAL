@@ -205,6 +205,13 @@
     #define LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FLOATS 1
   #endif
 
+  //	Like MSVC, clang targeting the MSVC ABI (clang-cl) ignores
+  //	`[[no_unique_address]]` and honours `[[msvc::no_unique_address]]`,
+  //	which it only reports for those targets.
+  #if defined(_MSC_VER) && __has_cpp_attribute(msvc::no_unique_address)
+    #define LBAL_NO_UNIQUE_ADDRESS [[msvc::no_unique_address]]
+  #endif
+
   //	intrinsic functions
   #define LBAL_HINT_likely(LBAL_expr_) __builtin_expect(LBAL_expr_, true)
   #define LBAL_HINT_unlikely(LBAL_expr_) __builtin_expect(LBAL_expr_, false)
