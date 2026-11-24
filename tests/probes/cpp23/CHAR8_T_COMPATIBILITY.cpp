@@ -17,7 +17,17 @@
 #include <lucenaBAL/lucenaBAL.hpp>
 
 #if LBAL_CPP23_CHAR8_T_COMPATIBILITY
+  //	std
+  #include <type_traits>
+
 namespace lbal_fp {
+
+//	Only meaningful where `u8` literals are `char8_t` (P0482R6); before that,
+//	initializing a `char` array from one always worked.
+static_assert(std::is_same_v<
+    std::remove_const_t<std::remove_reference_t<decltype(u8"a"[0])>>,
+    char8_t
+>);
 
 constexpr char narrow[] = u8"abc";
 constexpr unsigned char bytes[] = u8"abc";

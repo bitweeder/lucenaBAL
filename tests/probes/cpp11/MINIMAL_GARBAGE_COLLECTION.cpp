@@ -13,6 +13,11 @@
 
   The garbage collection API was removed in C++23 (P2186R2).
 
+  LBAL_FP_SMOKE: the token means the implementation actually offers garbage
+  collection (strict pointer safety), which none does, so it is always `0`.
+  This probe only shows that the functions exist, and every pre-C++23
+  library ships them as do-nothing stubs.
+
 ------------------------------------------------------------------------------*/
 
 //	lbal

@@ -28,10 +28,10 @@
   One source of aggravation in libstdc++ is that there is no simple way to
   figure out what version of the library you are using. `__GLIBCXX__` is a
   release date, which can be interleaved across versions of the library
-  depending on whether there are minor releases and bug fixes. We are forced to
-  use `__GNUC__` as a proxy, which is not totally unreasonable, as long as the
-  user hasn’t done something pathological like using an old libstdc++
-  implementation with a new compiler.
+  depending on whether there are minor releases and bug fixes. Since gcc 7,
+  `_GLIBCXX_RELEASE` gives the library’s major version, which is correct
+  whichever compiler is in use; clang, in particular, reports `__GNUC__` as
+  4.2.1. Older libraries fall back to `__GNUC__` as a proxy.
 */
 
 #if LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP
@@ -42,7 +42,7 @@
   of libstdc++ that would actually have it.
 */
 
-  #if (__GNUC__ >= 8)
+  #if (_GLIBCXX_RELEASE >= 8)
     //	SEEME - bitweeder
     //	Only ints are supported; floats are forthcoming. libstdc++ might be a
     //	little too optimistic about its level of support.

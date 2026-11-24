@@ -108,6 +108,39 @@
     #endif
   #endif
 
+//	SEEME These version checks map LLVM releases to Apple clang ones:
+//	Apple clang 13 is based on LLVM 12, 16 on LLVM 17 and 17 on LLVM 19.
+//	They haven’t been tested against Apple clang.
+
+  #if (__clang_major__ >= 16) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
+    //	SEEME clang implements P1816R0 and P2082R1 (CTAD for aggregates) as of
+    //	LLVM 17, but doesn’t raise `__cpp_deduction_guides` to `201907L`, since
+    //	that value also covers P1814R0 (CTAD for alias templates).
+    #if !defined(LBAL_CPP20_DEDUCTION_GUIDES_FOR_AGGREGATES)
+      #define LBAL_CPP20_DEDUCTION_GUIDES_FOR_AGGREGATES 201907L
+    #endif
+  #endif
+
+  #if (__clang_major__ >= 17) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
+    //	SEEME The `cxx_generalized_nttp` proxy in the Initialization header
+    //	fails under `-pedantic-errors`, which makes `__has_extension` match
+    //	`__has_feature`, and there is no matching feature check. See that
+    //	header for why only the `float` part is reported (LLVM 18+).
+    #if !LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FLOATS
+      #undef LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FLOATS
+      #define LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FLOATS 1
+    #endif
+  #endif
+
+  #if (__clang_major__ >= 13)
+    //	SEEME There is no SD-6 token for this. clang accepts `__VA_OPT__`,
+    //	including `#__VA_OPT__` (P1042R1, LLVM 12), in every language mode
+    //	without a diagnostic, even under `-pedantic-errors`.
+    #if !defined(LBAL_CPP20_VA_OPT)
+      #define LBAL_CPP20_VA_OPT 1L
+    #endif
+  #endif
+
   #if (LBAL_cpp_version < LBAL_CPP20_VERSION)
     //  This can be erroneously defined for C++17.
     #if LBAL_CPP20_DESTROYING_DELETE

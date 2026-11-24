@@ -14,6 +14,9 @@
   SEEME: exercises the P0136R1 model, but doesn’t isolate every change it
   made.
 
+  LBAL_FP_SMOKE: it also compiles with the original inheriting-constructor
+  rules, so it can’t detect a false negative.
+
 ------------------------------------------------------------------------------*/
 
 //	lbal

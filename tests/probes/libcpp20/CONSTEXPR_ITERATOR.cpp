@@ -22,18 +22,29 @@
 
 namespace lbal_fp {
 
+//	P1032R1 made the insert iterators `constexpr`; a minimal container keeps
+//	this independent of `constexpr` `std::vector`.
+struct Sink {
+  using value_type = int;
+  int total = 0;
+
+  constexpr void
+  push_back(int v) {
+    total += v;
+  }
+};
+
 constexpr int
-walk() {
-  int a[] = {1, 2, 3};
-  auto it = std::begin(a);
-  std::advance(it, 1);
-  auto r = std::make_reverse_iterator(std::end(a));
-  return *it * 10
-       + *r
-       + static_cast<int>(std::distance(std::begin(a), std::end(a)));
+insert() {
+  Sink sink;
+  auto it = std::back_inserter(sink);
+  *it = 2;
+  ++it;
+  *it = 3;
+  return sink.total;
 }
 
-static_assert(walk() == 26);
+static_assert(insert() == 5);
 
 }  // namespace lbal_fp
 #endif

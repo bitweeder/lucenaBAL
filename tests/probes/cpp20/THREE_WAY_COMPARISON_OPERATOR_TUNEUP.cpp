@@ -15,6 +15,9 @@
   SEEME: checks P1186R3 synthesis, one of the C++20 refinements tracked by
   this value; P1630R1 itself is mostly wording.
 
+  LBAL_FP_SMOKE: it doesn’t isolate P1630R1, so it can’t detect a false
+  negative.
+
 ------------------------------------------------------------------------------*/
 
 //	lbal

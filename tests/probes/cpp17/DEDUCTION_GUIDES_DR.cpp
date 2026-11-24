@@ -13,6 +13,9 @@
 
   SEEME: checks P0702R1-style copy deduction; P0620R0 is mostly wording.
 
+  LBAL_FP_SMOKE: it also passes with the C++17 deduction rules, so it can’t
+  detect a false negative.
+
 ------------------------------------------------------------------------------*/
 
 //	lbal

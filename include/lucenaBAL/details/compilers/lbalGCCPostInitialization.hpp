@@ -314,6 +314,25 @@
     #endif
   #endif  //	LBAL_CPP17_VERSION
 
+//	SEEME P0859R0 resolves CWG 1581, and gcc 9+ applies it retroactively in
+//	every language mode, but only defines `__cpp_constexpr_in_decltype` for
+//	C++20 and later.
+  #if !defined(LBAL_CPP20_CONSTEXPR_IN_DECLTYPE) && (LBAL_GCC_VERSION >= 90000)
+    #define LBAL_CPP20_CONSTEXPR_IN_DECLTYPE 201711L
+  #endif
+
+//	C++23 features
+
+  #if LBAL_cpp_version > LBAL_CPP20_VERSION
+    //	SEEME gcc 14 implements P2582R1 (CTAD from inherited constructors,
+    //	PR 106653), but leaves `__cpp_deduction_guides` at `201907L`. gcc notes
+    //	that some forms, such as `using C::B::B`, aren’t handled yet.
+    #if !defined(LBAL_CPP23_DEDUCTION_GUIDES_FROM_INHERITED_CONSTRUCTORS)      \
+        && (LBAL_GCC_VERSION >= 140000)
+      #define LBAL_CPP23_DEDUCTION_GUIDES_FROM_INHERITED_CONSTRUCTORS 202207L
+    #endif
+  #endif  //	LBAL_CPP20_VERSION
+
 //	C++14 Attributes
 //	Note that SD-6 macros didn’t appear until gcc 7.3, so we have to rely
 //	on compiler and language version checks in earlier iterations. We check

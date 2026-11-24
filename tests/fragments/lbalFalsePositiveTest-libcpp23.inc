@@ -177,6 +177,7 @@ LBAL_FP_TEST(LIBCPP23, ADAPTOR_ITERATOR_PAIR_CONSTRUCTOR) {
 LBAL_FP_TEST(LIBCPP23, ALGORITHM_ITERATOR_REQUIREMENTS) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_ALGORITHM_ITERATOR_REQUIREMENTS);
 #if LBAL_LIBCPP23_ALGORITHM_ITERATOR_REQUIREMENTS
+  //	LBAL_FP_SMOKE: can’t detect a false negative.
   //	SEEME
   //	Classic algorithms accept C++20 iterators whose category understates
   //	what they model (P2408R5).
@@ -258,6 +259,7 @@ LBAL_FP_TEST(LIBCPP23, ASSOCIATIVE_HETEROGENEOUS_ERASURE) {
 LBAL_FP_TEST(LIBCPP23, BARRIER_RELAXED_COMPLETION) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_BARRIER_RELAXED_COMPLETION);
 #if LBAL_LIBCPP23_BARRIER_RELAXED_COMPLETION
+  //	LBAL_FP_SMOKE: can’t detect a false negative.
   //	SEEME
   //	P2588R3 relaxes where the completion step runs, which isn’t observable
   //	portably; this checks the completion still runs once per phase.
@@ -298,6 +300,7 @@ LBAL_FP_TEST(LIBCPP23, BYTESWAP) {
 LBAL_FP_TEST(LIBCPP23, COMMON_REFERENCE) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_COMMON_REFERENCE);
 #if LBAL_LIBCPP23_COMMON_REFERENCE
+  //	LBAL_FP_SMOKE: can’t detect a false negative.
   //	SEEME
   //	P2655R3 has two parts. This token covers the change to how
   //	`common_reference` treats reference types, which only applies in corner
@@ -444,6 +447,7 @@ LBAL_FP_TEST(LIBCPP23, FORMAT_BASIC_FORMAT_STRING) {
 LBAL_FP_TEST(LIBCPP23, FORMAT_ENCODINGS) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_FORMAT_ENCODINGS);
 #if LBAL_LIBCPP23_FORMAT_ENCODINGS
+  //	LBAL_FP_SMOKE: can’t detect a false negative.
   //	SEEME
   //	P2419R2 is about the encoding of localized output, which isn’t portably
   //	observable; this checks localized chrono formatting works.
@@ -873,6 +877,7 @@ LBAL_FP_TEST(LIBCPP23, RANGES_NON_DEFAULT_CONSTRUCTIBLE) {
 LBAL_FP_TEST(LIBCPP23, RANGES_RELAXED) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_RANGES_RELAXED);
 #if LBAL_LIBCPP23_RANGES_RELAXED
+  //	LBAL_FP_SMOKE: can’t detect a false negative.
   //	SEEME
   //	Projections returning prvalues are accepted by indirect algorithms
   //	(P2609R3); this is a smoke test.
@@ -888,6 +893,7 @@ LBAL_FP_TEST(LIBCPP23, RANGES_RELAXED) {
 LBAL_FP_TEST(LIBCPP23, RANGES_REMOVE_POISON_PILLS) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS);
 #if LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS
+  //	LBAL_FP_SMOKE: can’t detect a false negative.
   //	SEEME
   //	P2602R2 changes how customization points look up non-member functions;
   //	this is a smoke test.

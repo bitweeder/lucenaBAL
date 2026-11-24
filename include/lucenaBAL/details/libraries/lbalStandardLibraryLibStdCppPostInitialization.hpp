@@ -27,10 +27,10 @@
   One source of aggravation in libstdc++ is that there is no simple way to
   figure out what version of the library you are using. `__GLIBCXX__` is a
   release date, which can be interleaved across versions of the library
-  depending on whether there are minor releases and bug fixes. We are forced to
-  use `__GNUC__` as a proxy, which is not totally unreasonable, as long as the
-  user hasn’t done something pathological like using an old libstdc++
-  implementation with a new compiler.
+  depending on whether there are minor releases and bug fixes. Since gcc 7,
+  `_GLIBCXX_RELEASE` gives the library’s major version, which is correct
+  whichever compiler is in use; clang, in particular, reports `__GNUC__` as
+  4.2.1. Older libraries fall back to `__GNUC__` as a proxy.
 */
 
 #if LBAL_TARGET_STANDARD_LIBRARY_LIBSTDCPP
@@ -39,8 +39,15 @@
     #error "Don’t define LBAL_GCC_VERSION outside of this header"
   #endif
 
-  #define LBAL_GCC_VERSION                                                     \
-    (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
+  //	The minor version isn’t available from the library, so we assume x.1,
+  //	the first release of each major version; every check below is written
+  //	against an x.0 or x.1 release.
+  #if defined(_GLIBCXX_RELEASE)
+    #define LBAL_GCC_VERSION (_GLIBCXX_RELEASE * 10000 + 100)
+  #else
+    #define LBAL_GCC_VERSION                                                   \
+      (__GNUC__ * 10000 + __GNUC_MINOR__ * 100 + __GNUC_PATCHLEVEL__)
+  #endif
 
   //	C++14 Library Features
   #if LBAL_cpp_version > LBAL_CPP11_VERSION
@@ -346,7 +353,7 @@
           #undef LBAL_LIBCPP17_FILESYSTEM_EXP
         #endif  //	LBAL_LIBCPP17_FILESYSTEM_EXP
 
-        #define LBAL_LIBCPP17_FILESYSTEM 0
+        #define LBAL_LIBCPP17_FILESYSTEM_EXP 0
       #endif  //	LBAL_LIBCPP17_FILESYSTEM
 
       #if !defined(LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED)
@@ -390,6 +397,14 @@
       #endif  //	LBAL_LIBCPP20_SHARED_PTR_ARRAYS_MAKE_SHARED
     #endif    //	gcc 10.1
   #endif      //	LBAL_CPP20_VERSION
+
+  //	C++23 Library Features
+  //	libstdc++ implements P2417R2, but reports it as `202202L` (the value
+  //	from an earlier revision) rather than `202207L`.
+  #if !defined(LBAL_LIBCPP23_CONSTEXPR_BITSET)                                 \
+      && (__cpp_lib_constexpr_bitset >= 202202L)
+    #define LBAL_LIBCPP23_CONSTEXPR_BITSET 202207L
+  #endif
 
   #if !defined(LBAL_LIBCPP17_TO_CHARS)                                         \
       && LBAL_LIBCPP17_TO_CHARS_INTEGER                                        \

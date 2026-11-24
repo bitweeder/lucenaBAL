@@ -127,6 +127,26 @@ set (
 	CACHE STRING
 	"C++ Standard modes in which to build the false-positive tests: numbers (17 or later) and/or `latest`, the newest the compiler supports")
 
+cmake_dependent_option (
+	LBAL_BUILD_FALSE_NEGATIVE_TESTS
+	"Build optional tests that check feature tokens for false negatives (through C++23)"
+	OFF
+	"BUILD_TESTING"
+	OFF)
+
+set (
+	LBAL_FALSE_NEGATIVE_TEST_STANDARDS
+	"latest"
+	CACHE STRING
+	"C++ Standard modes in which to build the false-negative tests: numbers (17 or later) and/or `latest`, the newest the compiler supports")
+
+cmake_dependent_option (
+	LBAL_BUILD_ALL_FEATURE_TESTS
+	"Build both the false-positive and the false-negative tests"
+	OFF
+	"BUILD_TESTING"
+	OFF)
+
 option (
 	LBAL_CONFIG_DISABLE_PEDANTIC_WARNINGS
 	"Control whether to generate warnings from the Library when anything unusual happens"

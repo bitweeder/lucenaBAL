@@ -115,7 +115,11 @@ Linting is possible by changing line 4 to `cmake --build build --target format` 
 
 Docs can also be generated, if desired, by adding `-DLBAL_BUILD_DOCS=ON` to line 2 and building the `Doxygen` target. This requires [Doxygen](https://www.doxygen.nl/), and the docs are left in `build/docs/doxygen/html`.
 
-### False-positive tests
+### Feature-detection tests
+
+Two optional test suites check that feature tokens tell the truth. Add `-DLBAL_BUILD_ALL_FEATURE_TESTS=ON` to line 2 to build both, or enable them separately as described below.
+
+#### False positives
 
 A token that claims a feature is available when it isn’t, or isn’t usable as specified, is a false positive. An optional test suite checks for these. Enable it by adding `-DLBAL_BUILD_FALSE_POSITIVE_TESTS=ON` to line 2. `LBAL_FALSE_POSITIVE_TEST_STANDARDS` chooses the C++ Standard modes to test in: `latest` (the default) means the newest Standard the compiler supports, and you can list others with it, e.g. `-DLBAL_FALSE_POSITIVE_TEST_STANDARDS="17;20;latest"` (C++17 is the minimum, as required by Google Test).
 
@@ -124,6 +128,16 @@ The suite has two parts:
 - Compile-only probes, for syntax that can only fail to compile. These aren’t part of the default build, so a failure can’t stop the other tests from building. Build them with `cmake --build build --target lbalFalsePositiveProbes -- -k` (use `-k 0` with Ninja) to see every failure at once.
 
 CI always runs the suite on every platform at `latest`, and a false positive fails the build. To test older Standards in CI as well, set the GitHub repository variable `LBAL_FALSE_POSITIVE_TEST_STANDARDS`, e.g. to `17;20;23;latest`.
+
+#### False negatives
+
+A token that is `0` although its feature works is a false negative. A second optional suite checks for these, for every language, attribute and library token up through C++23, by reusing the false-positive tests: each zero-valued token’s probe is compiled with the token forced on, and if the probe compiles (and, for a behavioral test, passes), the token is wrong. Enable it by adding `-DLBAL_BUILD_FALSE_NEGATIVE_TESTS=ON` to line 2; `LBAL_FALSE_NEGATIVE_TEST_STANDARDS` chooses the Standard modes, in the same way as for false positives.
+
+The forced compiles happen when CMake configures the project, since failing to compile is the expected result. This adds a few seconds for the newest Standard, and a few minutes for each older Standard requested, as more tokens are `0` there. Results are cached, so reconfiguring only redoes what changed. The results are reported under CTest as `cxx<NN>.lbalFalseNegative.<token>`: a nonzero token is skipped, as the false-positive suite covers it.
+
+CI always runs this suite too, at `latest`; set the repository variable `LBAL_FALSE_NEGATIVE_TEST_STANDARDS` to add older Standards.
+
+Both suites need to run their test programs, so when cross-compiling, either turn them off or set `CMAKE_CROSSCOMPILING_EMULATOR`.
 
 ## To-Do
 _Roughly in order of precedence:_

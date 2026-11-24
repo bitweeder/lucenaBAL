@@ -32,5 +32,10 @@ static_assert(std::copysign(1.0, -2.0) == -1.0);
 static_assert(!std::isnan(1.0));
 static_assert(std::abs(-3) == 3);
 
+//	gcc evaluates many `<cmath>` functions at compile time as built-ins, in
+//	every mode, so these alone can’t show that a library implements P0533R9.
+//	`div` is part of the paper too, and isn’t a built-in.
+static_assert(std::div(7, 2).quot == 3);
+
 }  // namespace lbal_fp
 #endif

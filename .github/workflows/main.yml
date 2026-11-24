@@ -132,6 +132,10 @@ jobs:
               # `LBAL_FALSE_POSITIVE_TEST_STANDARDS` repository variable asks
               # for more, e.g. `17;20;23;latest`. Quoted to keep a list intact.
               "-DLBAL_FALSE_POSITIVE_TEST_STANDARDS=${{ vars.LBAL_FALSE_POSITIVE_TEST_STANDARDS || 'latest' }}"
+              -DLBAL_BUILD_FALSE_NEGATIVE_TESTS=ON
+              # Likewise for the false-negative tests (which cover up through
+              # C++23), via the `LBAL_FALSE_NEGATIVE_TEST_STANDARDS` variable.
+              "-DLBAL_FALSE_NEGATIVE_TEST_STANDARDS=${{ vars.LBAL_FALSE_NEGATIVE_TEST_STANDARDS || 'latest' }}"
           RESULT_VARIABLE
             result
         )

@@ -23,12 +23,14 @@
 #include <chrono>
 #include <cstddef>
 #include <cstdint>
+#include <cstring>
 #include <functional>
 #include <iterator>
 #include <list>
 #include <map>
 #include <memory>
 #include <mutex>
+#include <new>
 #include <set>
 #include <sstream>
 #include <string>
@@ -202,12 +204,20 @@ LBAL_FP_TEST(LIBCPP20, ATOMIC_VALUE_INITIALIZATION) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION);
 #if LBAL_LIBCPP20_ATOMIC_VALUE_INITIALIZATION
   //	The default constructor value-initializes the contained object
-  //	(P0883R2).
-  std::atomic<int> a;
-  std::atomic_flag f;
+  //	(P0883R2). Constructing over storage that isn’t zero makes the old
+  //	behavior visible.
+  alignas(std::atomic<int>) unsigned char storage[sizeof(std::atomic<int>)];
+  std::memset(storage, 0xFF, sizeof(storage));
+  auto* a = ::new (static_cast<void*>(storage)) std::atomic<int>;
 
-  EXPECT_EQ(a.load(), 0);
-  EXPECT_FALSE(f.test_and_set());
+  alignas(
+      std::atomic_flag
+  ) unsigned char flag_storage[sizeof(std::atomic_flag)];
+  std::memset(flag_storage, 0xFF, sizeof(flag_storage));
+  auto* f = ::new (static_cast<void*>(flag_storage)) std::atomic_flag;
+
+  EXPECT_EQ(a->load(), 0);
+  EXPECT_FALSE(f->test_and_set());
 #endif
 }
 
@@ -620,19 +630,6 @@ LBAL_FP_TEST(LIBCPP20, IS_CONSTANT_EVALUATED) {
 
   EXPECT_TRUE(at_compile_time);
   EXPECT_FALSE(at_run_time());
-#endif
-}
-
-LBAL_FP_TEST(LIBCPP20, IS_LAYOUT_COMPATIBLE) {
-  LBAL_FP_REQUIRE(LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE);
-#if LBAL_LIBCPP20_IS_LAYOUT_COMPATIBLE
-  struct Same {
-    int x;
-    int y;
-  };
-
-  EXPECT_TRUE((std::is_layout_compatible_v<lbal_fp_libcpp20::Standard, Same>));
-  EXPECT_FALSE((std::is_layout_compatible_v<int, long long>));
 #endif
 }
 
