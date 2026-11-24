@@ -1072,6 +1072,11 @@
 
   @remark This token is a proxy indicating partial support for
   `__cpp_lib_reference_from_temporary`; it reflects a state where a given
+  Standard Library implementation claims to have full support, but may not
+  actually have it.
+
+  @remark This token is a proxy indicating partial support for
+  `__cpp_lib_reference_from_temporary`; it reflects a state where a given
   Standard Librray implementation claims to have full support, but may not
   actually have it.
 

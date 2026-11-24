@@ -2,23 +2,28 @@
 
 # Lucena Build Abstraction Library
 
-The purpose of the Lucena Build Abstraction Library (**lucenaBAL**) is to provide tools to smooth over the differences between build environments when working with C++11 and later Standards (currently up thru the entirety of C++26 and proposals adopted into C++2d). It’s a foundational tool that allows code built upon it to remain agnostic to compilers, C++ Standard Library variants, and aspects of the runtime. 
+The purpose of the Lucena Build Abstraction Library (**lucenaBAL**) is to provide tools to smooth over the differences between build environments when working with C++11 and later Standards (currently up thru the entirety of C++26 and proposals adopted into C++2d). It’s a foundational header-only library that allows code built upon it to remain agnostic to compilers, C++ Standard Library variants, and aspects of the runtime. 
 
-**lucenaBAL** is _not_ a build system, but rather a C++ header library with a collection of build system support scripts.
+**lucenaBAL** is _not_ a build system; when deployed, it’s just a C++ header library which can be managed by CMake. This repo additionally includes a substantial number of buildable tests and associated scripts, but none of that is needed at build-time unless you’re modifying the library or validating against a particular build environment.
 
-Also, note that we don’t track every accepted proposal to the Standard—as represented by [WG21 papers](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/)—but rather mostly just those that have been assigned an [SD-6 token value](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations) (i.e., features which will ultimately appear in the Standard under `tab:cpp.predefined.ft`, `tab:cpp.cond.ha`, or `version.syn`). There are exceptions for features that probably _should_ have official tokens; additionally, there are a few meta-features that bundle related tokens together—typically Language+Library—when they are useless without each other (though the components may still be tested individually).
+We don’t track every accepted proposal to the Standard—as represented by [WG21 papers](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/)—but rather mostly only those that have been assigned an [SD-6 token value](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations) (i.e., features which will ultimately appear in the Standard under `tab:cpp.predefined.ft`, `tab:cpp.cond.ha`, or `version.syn`). There are some exceptions:
+- Features that probably _should_ have official tokens.
+- Meta-features that bundle related tokens together—typically Language+Library—when they are useless without each other; these will still have per-component tokens.
+- Proxy tokens representing partial implmentation of a given feature when that implementation is useful on its own and the token would represent the shipping state of a major compiler or Standard library implementation.
 
-**COMPILER, LIBRARY, AND PLATFORM FIXES SPECIFIC TO C++23 AND C++26 HAVE NOT YET BEEN INTEGRATED!** Currently, we rely on self-reporting by `<version>` and the compiler for determining feature availability for these Standards, but that is guaranteed to have false negatives and occasional false positives (e.g., Xcode reports `__cpp_lib_to_chars` is never available, when it’s actually gated on the current SDK, which is testable). The library will be updated with this data once testing is complete. To help find these cases, there is an optional suite of [false-positive tests](#false-positive-tests), which CI runs on every platform. One class of false positive is already handled: when compiling with `-pedantic-errors`, Clang and Apple Clang no longer report features from a later Standard that they only accept as extensions in the current mode.
+In addition to the feature detection tokens, there are a number of decorator symbols and preprocessor functions defined which provide abstractions around common concepts that are useful, e.g., ABI control.
+
+Note that token definitions only reflect the build environment as it exists at build-time, including as a result of specific arguments passed to the compiler, etc. In other words, they do not represent _what might be possible_, only _what is going to work right now_.
 
 ## Motivating Example
 
 Imagine that you are working on a project that would benefit from using the C++17 parallelized algorithm for `std::sort`, and you would like to use it conditionally based on availability.
-- Simply querying `__cplusplus` won't tell you if the parallelized algorithms are available, as they are part of the Standard Library.
+- Simply querying `__cplusplus` won’t tell you if the parallelized algorithms are available, as they are part of the Standard Library.
 - Ignoring that will get you into trouble since 2 out of the 3 major Standard Library implementations did not include the parallelized algorithms for most of their post-C++17-release existence.
--  Checking for the presence of a header won't work since the parallelized versions of the Standard Library algorithms are part of the existing `<algorithm>` header.
-- Even though you _could_ check for the `<execution>` header, that will only tell you that Execution Policies are _probably_ available—it specifically won't tell you about the availability of the algorithm implementations themselves.
-- Checking the values of both `__cpp_lib_execution` and `__cpp_lib_parallel_algorithm` would probably work, but those are only guaranteed to be defined if the [SD-6 macros](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations) are defined, and those weren't formally integrated into the Standard until C++20 and the introduction of the `<version>` header.
-- Of course, the `<version>` header might be available, anyway, as a vendor extension, but at least one major IDE vendor shipped such a header for multiple releases that didn't actually include SD-6 macro definitions.
+-  Checking for the presence of a header won’t work since the parallelized versions of the Standard Library algorithms are part of the existing `<algorithm>` header.
+- Even though you _could_ check for the `<execution>` header, that will only tell you that Execution Policies are _probably_ available—it specifically won’t tell you about the availability of the algorithm implementations themselves.
+- Checking the values of both `__cpp_lib_execution` and `__cpp_lib_parallel_algorithm` would probably work, but those are only guaranteed to be defined if the [SD-6 macros](https://isocpp.org/std/standing-documents/sd-6-sg10-feature-test-recommendations) are defined, and those weren’t formally integrated into the Standard until C++20 and the introduction of the `<version>` header.
+- Of course, the `<version>` header might be available, anyway, as a vendor extension, but at least one major IDE vendor shipped such a header for multiple releases that didn’t actually include SD-6 macro definitions.
 
 Enter **lucenaBAL**:
 ```cpp
@@ -51,7 +56,7 @@ sort_vector (
 
 ## Getting Started
 
-[CMake](https://cmake.org/) scripts are provided which will install the library itself, build and run test applications, and generate documentation. We require at least CMake 3.30, so that will need to be [installed first](https://cmake.org/download/).
+[CMake](https://cmake.org/) scripts are provided which will install the library itself, build and run test applications, and generate documentation. We require at least CMake 3.30 to use the scripts, so that will need to be [installed first](https://cmake.org/download/).
 
 More detailed instructions are provided below, but for a quick start, simply clone the repository, open up a terminal window, change to the local repo directory, and execute the following:
 
@@ -62,14 +67,13 @@ cmake --build build
 cmake --build build --target install
 ```
 
-This will generate headers and test binaries in the build directory (docs too, if you add `-DLBAL_BUILD_DOCS=ON`; see below), then
-install to subdirectories in an optionally-specified directory (the default is `/usr/local` if `-DCMAKE_INSTALL_PREFIX` is _not_ provided):
-- headers will go to `include`
-- CMake configs will go to `share`
+This will generate headers and test binaries in the build directory (docs too, if you add `-DLBAL_BUILD_DOCS=ON`; see below), then install to subdirectories in an optionally-specified directory (the default is `/usr/local` if `-DCMAKE_INSTALL_PREFIX` is not provided):
+- headers will go into `include/`
+- CMake configs will go into `share/`
 
 Note that if installing to `/usr/local`, you may need to replace the last line with `cd build && sudo make install`; tests and docs will always remain in the `build` directory.
 
-Since lucenaBAL is a header-only library, it is not necessary to link to it; simply `#include <lucenaBAL/lucenaBAL.hpp>` where you need feature tests once the headers are installed. Usage information is available in the [online docs](https://bitweeder.github.io/lucenaBAL/html/index.html), as well as in the headers themselves (primarily in `<lucenaBAL/lbalFeatureSetup.hpp>`).
+Since lucenaBAL is a header-only library, it is not necessary to link to it; simply `#include <lucenaBAL/lucenaBAL.hpp>` where you need feature tests once the headers are installed. Usage information is available in the [online docs](https://bitweeder.github.io/lucenaBAL/html/index.html), which are sourced from headers themselves (primarily in `<lucenaBAL/lbalFeatureSetup.hpp>` and its included fragments).
 
 If you link against the installed CMake target (`lucenaBAL::lucenaBAL`), the target platform is set for you, based on the `CMAKE_SYSTEM_NAME` that was in effect when lucenaBAL was configured. If you use the headers some other way, you must define exactly one of the following to `1` yourself, or `lbalDefinitionTests.hpp` will stop the build with an `#error`:
 
@@ -80,15 +84,17 @@ If you link against the installed CMake target (`lucenaBAL::lucenaBAL`), the tar
 | tvOS | `LBAL_TARGET_OS_TVOS` |
 | watchOS | `LBAL_TARGET_OS_WATCHOS` |
 | Windows | `LBAL_TARGET_OS_WINAPI` |
-| Linux, FreeBSD, NetBSD, OpenBSD | `LBAL_TARGET_OS_X11` |
+| Linux, FreeBSD, NetBSD, OpenBSD | `LBAL_TARGET_OS_X11`* |
+
+* Note that `LBAL_TARGET_OS_X11` doesn’t imply an X Windows requirement; it’s named that way for historical reasons.
 
 ## Prerequisites
 
-The lucenaBAL headers require compiler support for C++11 or later. Note, however, that the CMake target requests C++26 (`cxx_std_26`, or `/std:c++latest` under MSVC), and building the tests requires a compiler that supports it. It has been tested with many versions of **gcc**, **Microsoft Visual Studio**, **Xcode**, and **llvm/clang**. All testing thus far has been with the compilers’ bundled Standard Library implementations, although lucenaBAL should support mixing them.
+The lucenaBAL headers require compiler support for C++11 or later. By default, the CMake target assumes C++26 (`cxx_std_26`, or `/std:c++latest` under MSVC); building the tests requires a minimum of C++17. The library has been tested with many versions of **gcc**, **Microsoft Visual Studio**, **Xcode**, and **llvm/clang**, both with the compilers’ bundled Standard Library implementations, as well as with others. Support for pre-C++17 compilers should be considered spotty, and generally we only actively maintain compatibility with the 2 most recent major macOS family versions when it comes to Xcode.
 
 ## Building, Installing, and Testing
 
-The project uses **CMake** as its primary build system. Originally, hand-built project files for a number of different IDEs were used, but they were dependent on a particular folder hierarchy and also didn’t lend themselves very well to automation.
+The project uses **CMake** as its base build system. Originally, hand-built project files for a number of different IDEs were used, but they were dependent on a particular folder hierarchy and also didn’t lend themselves very well to automation.
 
 lucenaBAL is a header-only library. The basic build instructions are provided above under **Getting Started**.  We give two different methods since, by default, **macOS** and **Linux** installs are to `/usr/local`, which requires sudo or root access, while **Windows** uses a different model. Ignoring these differences, we have the following:
 
@@ -113,11 +119,11 @@ The default tests are:
 
 Linting is possible by changing line 4 to `cmake --build build --target format` to run `clang-format` against all source files under `include` and `tests`, which is handy if you’re not using `git` prehooks or some code editor facility to lint as you go. Relatedly, using `format-dry` instead of `format` will preview the changes instead of simply applying them.
 
-Docs can also be generated, if desired, by adding `-DLBAL_BUILD_DOCS=ON` to line 2 and building the `Doxygen` target. This requires [Doxygen](https://www.doxygen.nl/), and the docs are left in `build/docs/doxygen/html`.
+Docs can also be generated, if desired, by adding `-DLBAL_BUILD_DOCS=ON` to line 2 and building normally. This requires [Doxygen](https://www.doxygen.nl/), and the docs are left in `build/docs/doxygen/html`.
 
 ### Feature-detection tests
 
-Two optional test suites check that feature tokens tell the truth. Add `-DLBAL_BUILD_ALL_FEATURE_TESTS=ON` to line 2 to build both, or enable them separately as described below.
+Two optional test suites check that feature tokens tell the truth. Add `-DLBAL_BUILD_ALL_FEATURE_TESTS=ON` to line 2 to build both, or enable them separately as described below. Both suites need to actually _run_ their test programs, so when cross-compiling, either turn them off or set `CMAKE_CROSSCOMPILING_EMULATOR`, depending on whether you have emulation on hand.
 
 #### False positives
 
@@ -133,25 +139,24 @@ CI always runs the suite on every platform at `latest`, and a false positive fai
 
 A token that is `0` although its feature works is a false negative. A second optional suite checks for these, for every language, attribute and library token up through C++23, by reusing the false-positive tests: each zero-valued token’s probe is compiled with the token forced on, and if the probe compiles (and, for a behavioral test, passes), the token is wrong. Enable it by adding `-DLBAL_BUILD_FALSE_NEGATIVE_TESTS=ON` to line 2; `LBAL_FALSE_NEGATIVE_TEST_STANDARDS` chooses the Standard modes, in the same way as for false positives.
 
-The forced compiles happen when CMake configures the project, since failing to compile is the expected result. This adds a few seconds for the newest Standard, and a few minutes for each older Standard requested, as more tokens are `0` there. Results are cached, so reconfiguring only redoes what changed. The results are reported under CTest as `cxx<NN>.lbalFalseNegative.<token>`: a nonzero token is skipped, as the false-positive suite covers it.
+The forced compiles happen when CMake configures the project, since failing to compile is the expected result. This adds a few seconds for the newest Standard, and a few minutes for each older Standard requested, as more tokens are `0` there. Results are cached, so reconfiguring only re-runs what changed. The results are reported under CTest as `cxx<NN>.lbalFalseNegative.<token>`: a nonzero token is skipped, as the false-positive suite covers it.
 
 CI always runs this suite too, at `latest`; set the repository variable `LBAL_FALSE_NEGATIVE_TEST_STANDARDS` to add older Standards.
 
-Both suites need to run their test programs, so when cross-compiling, either turn them off or set `CMAKE_CROSSCOMPILING_EMULATOR`.
+As indicated above, we do _not_ currently perform false-negative tests for tokens specific to C++26 and later. This is a work-in-progress.
 
 ## To-Do
 _Roughly in order of precedence:_
-- update false negatives/positives for C++23 and up
 - confirm the false-positive tests written ahead of compiler support (marked `SEEME`) once compilers implement those features
-- triage false-positive test results for MSVC and Apple Clang
 - add more examples
+- update the false-negative tests for C++26 and later
 - generate nicer-looking IDE project files
 
 A more formal action items list will be maintained on our [GitHub issues page](https://github.com/bitweeder/lucenaBAL/issues).
 
 ## Support
 
-lucenaBAL aggressively tracks the latest tools and standards, but maintaining support for older tools in new releases is unlikely to happen. The cold reality is that we do not have the bandwidth to pay the interest on anyone else’s technical debt. If an older release does what you need, use it. If you find a bug in any release, we greatly appreciate patches, though we strongly encourage you to at least [open an issue](https://github.com/bitweeder/lucenaBAL/issues) even if you can’t [submit a pull request](https://github.com/bitweeder/lucenaBAL/pulls). Feature requests will be considered, but requests to increase our maintenance surface are unlikely to be carried out.
+lucenaBAL aggressively tracks the latest tools and standards, but maintaining support for older tools in new releases is unlikely to happen. The cold reality is that we do not have the bandwidth to pay the interest on anyone else’s technical debt. If you’re stuck with older tooling and an older release of lucenaBAL does what you need, use that one. If you find a bug in any release, we greatly appreciate patches, though we strongly encourage you to at least [open an issue](https://github.com/bitweeder/lucenaBAL/issues) even if you can’t [submit a pull request](https://github.com/bitweeder/lucenaBAL/pulls). Feature requests will be considered, but requests to increase our maintenance surface are unlikely to be carried out.
 
 ## Contributing
 
