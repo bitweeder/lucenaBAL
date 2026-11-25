@@ -171,8 +171,24 @@
 #endif
 
 /**
+  @def LBAL_LIBCPP26_BIND_BACK_NTTP_CALLABLES
+  @brief Bind `back` to NTTP callables
+  @details SD-6 equivalent: `__cpp_lib_bind_back >= 202306L`. Note that
+  `__cpp_lib_bind_back` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `202306L` [P2714R1](https://wg21.link/P2714R1) Bind front and back to NTTP
+  callables
+
+  @sa `freestanding` `<functional>`
+*/
+#ifndef LBAL_LIBCPP26_BIND_BACK_NTTP_CALLABLES
+  #define LBAL_LIBCPP26_BIND_BACK_NTTP_CALLABLES 0
+#endif
+
+/**
   @def LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES
-  @brief Bind `front` and `back` to NTTP callables
+  @brief Bind `front` to NTTP callables
   @details SD-6 equivalent: `__cpp_lib_bind_front >= 202306L`. Note that
   `__cpp_lib_bind_front` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
@@ -2314,6 +2330,10 @@
   of the latest supported proposal, or `0` if the proposal described here is
   not supported.
   - `202311L` [P0543R3](https://wg21.link/P0543R3) Saturation arithmetic
+
+  @remark The functions introduced by this were all renamed
+  before C++26 was finalized; the new names are introduced by
+  `LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING`.
 
   @sa `freestanding` `<numeric>`
 */

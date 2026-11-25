@@ -66,6 +66,12 @@
   #endif
 #endif  //  LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS
 
+#if !defined(LBAL_LIBCPP26_BIND_BACK_NTTP_CALLABLES)
+  #if __cpp_lib_bind_back >= 202306L
+    #define LBAL_LIBCPP26_BIND_BACK_NTTP_CALLABLES __cpp_lib_bind_back
+  #endif
+#endif  //  LBAL_LIBCPP26_BIND_BACK_NTTP_CALLABLES
+
 #if !defined(LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES)
   #if __cpp_lib_bind_front >= 202306L
     #define LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES __cpp_lib_bind_front

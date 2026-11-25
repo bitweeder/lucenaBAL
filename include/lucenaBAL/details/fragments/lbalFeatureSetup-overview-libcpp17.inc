@@ -928,7 +928,7 @@
   reflected by the creation of two tokens that feed into this one, despite there
   only being one underlying SD-6 macro.
 
-  @remark Effectivey, this is a superset of `LBAL_LIBCPP17_TO_CHARS_INTEGER`,
+  @remark Effectively, this is a superset of `LBAL_LIBCPP17_TO_CHARS_INTEGER`,
   `LBAL_LIBCPP17_TO_CHARS_FP`, and support for outputting `long double`s.
 
   @sa `<charconv>`
