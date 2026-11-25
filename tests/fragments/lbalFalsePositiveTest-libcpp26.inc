@@ -262,14 +262,40 @@ out_of_range_index() {
   return index;
 }
 
+#if GTEST_HAS_DEATH_TEST
+//	The statement is compiled in a lambda at the call site and run here, so a
+//	diagnostic in it isn’t followed by a chain of notes through gtest’s
+//	death-test macros. `LBAL_FP_EXPECT_HARDENED` adds a trace that points at
+//	the call site, since a failure is reported against this line.
+template <typename F>
+void
+expect_hardened(F statement) {
+  EXPECT_DEATH(statement(), "");
+}
+#endif
+
 }  // namespace lbal_fp_libcpp26
 
+//	The statement is variadic, since it may contain commas that aren’t inside
+//	parentheses (e.g. `m[std::array{i, j}]`). Without death tests, it’s still
+//	compiled and uses the probe’s variables, so the probe builds the same way
+//	either way.
 #if GTEST_HAS_DEATH_TEST
-  #define LBAL_FP_EXPECT_HARDENED(LBAL_FP_statement_)                          \
-    EXPECT_DEATH({ LBAL_FP_statement_; }, "")
+  #define LBAL_FP_EXPECT_HARDENED(...)                                         \
+    do {                                                                       \
+      SCOPED_TRACE(#__VA_ARGS__);                                              \
+      ::lbal_fp_libcpp26::expect_hardened([&] {                                \
+        __VA_ARGS__;                                                           \
+      });                                                                      \
+    } while (false)
 #else
-  #define LBAL_FP_EXPECT_HARDENED(LBAL_FP_statement_)                          \
-    GTEST_SKIP() << "Death tests aren’t available"
+  #define LBAL_FP_EXPECT_HARDENED(...)                                         \
+    do {                                                                       \
+      (void)[&] {                                                              \
+        __VA_ARGS__;                                                           \
+      };                                                                       \
+      GTEST_SKIP() << "Death tests aren’t available";                          \
+    } while (false)
 #endif
 
 LBAL_FP_TEST(LIBCPP26, ALGORITHM_DEFAULT_VALUE_TYPE) {
@@ -380,17 +406,37 @@ LBAL_FP_TEST(LIBCPP26, ATOMIC_REF_ADDRESS) {
 #endif
 }
 
+#if LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS
+namespace lbal_fp_libcpp26 {
+
+LBAL_FP_DETECT(
+    has_void_address,
+    T,
+    std::enable_if_t<
+        std::is_same_v<decltype(std::declval<const T&>().address()), void*>
+    >()
+)
+
+}  // namespace lbal_fp_libcpp26
+#endif
+
 LBAL_FP_TEST(LIBCPP26, ATOMIC_REF_SAFER_ADDRESS) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS);
 #if LBAL_LIBCPP26_ATOMIC_REF_SAFER_ADDRESS
-  //	SEEME
-  //	Smoke test; it doesn’t isolate the P3936R1 changes.
-  int value = 0;
-  std::atomic_ref<int> ref(value);
+  //	P2835R7’s `address()` returns `T*`; P3936R1 makes it return `cv void*`.
+  //	Checked against libc++ 23 with Clang 23 (C++26).
+  EXPECT_TRUE(lbal_fp_libcpp26::has_void_address<std::atomic_ref<int>>::value);
+#endif
+}
 
-  EXPECT_EQ(
-      static_cast<const void*>(ref.address()), static_cast<const void*>(&value)
-  );
+LBAL_FP_TEST(LIBCPP26, BIND_BACK_NTTP_CALLABLES) {
+  LBAL_FP_REQUIRE(LBAL_LIBCPP26_BIND_BACK_NTTP_CALLABLES);
+#if LBAL_LIBCPP26_BIND_BACK_NTTP_CALLABLES
+  //	SEEME
+  //	The `bind_back` part of P2714R1; the bound argument goes last.
+  auto minus_ten = std::bind_back<std::minus<>{}>(10);
+
+  EXPECT_EQ(minus_ten(3), -7);
 #endif
 }
 
@@ -398,8 +444,7 @@ LBAL_FP_TEST(LIBCPP26, BIND_FRONT_NTTP_CALLABLES) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES);
 #if LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES
   //	The token follows `__cpp_lib_bind_front`, so only `bind_front` is checked.
-  //	P2714R1 also adds NTTP overloads of `bind_back` and `not_fn`, but those
-  //	are reported by `__cpp_lib_bind_back` and `__cpp_lib_not_fn`; libc++ 23,
+  //	P2714R1's `bind_back` and `not_fn` parts have their own tokens; libc++ 23,
   //	for one, has the `bind_front` and `not_fn` overloads but not `bind_back`.
   auto from_ten = std::bind_front<std::minus<>{}>(10);
 
@@ -1131,10 +1176,8 @@ LBAL_FP_TEST(LIBCPP26, HARDENED_COMMON_ITERATOR) {
       std::default_sentinel_t
   >;
   It end_it(std::default_sentinel);
-  [[maybe_unused]]
-  std::size_t i = lbal_fp_libcpp26::out_of_range_index();
 
-  LBAL_FP_EXPECT_HARDENED((void)(i, *end_it));
+  LBAL_FP_EXPECT_HARDENED((void)*end_it);
 #endif
 }
 
@@ -1144,10 +1187,8 @@ LBAL_FP_TEST(LIBCPP26, HARDENED_COUNTED_ITERATOR) {
   //	SEEME
   std::vector<int> v{1};
   std::counted_iterator<std::vector<int>::iterator> it(v.begin(), 0);
-  [[maybe_unused]]
-  std::size_t i = lbal_fp_libcpp26::out_of_range_index();
 
-  LBAL_FP_EXPECT_HARDENED((void)(i, *it));
+  LBAL_FP_EXPECT_HARDENED((void)*it);
 #endif
 }
 
@@ -1168,10 +1209,8 @@ LBAL_FP_TEST(LIBCPP26, HARDENED_EXPECTED) {
 #if LBAL_LIBCPP26_HARDENED_EXPECTED
   //	SEEME
   std::expected<int, int> e = 1;
-  [[maybe_unused]]
-  std::size_t i = lbal_fp_libcpp26::out_of_range_index();
 
-  LBAL_FP_EXPECT_HARDENED((void)(i, e.error()));
+  LBAL_FP_EXPECT_HARDENED((void)e.error());
 #endif
 }
 
@@ -1180,10 +1219,8 @@ LBAL_FP_TEST(LIBCPP26, HARDENED_FORWARD_LIST) {
 #if LBAL_LIBCPP26_HARDENED_FORWARD_LIST
   //	SEEME
   std::forward_list<int> l;
-  [[maybe_unused]]
-  std::size_t i = lbal_fp_libcpp26::out_of_range_index();
 
-  LBAL_FP_EXPECT_HARDENED((void)(i, l.front()));
+  LBAL_FP_EXPECT_HARDENED((void)l.front());
 #endif
 }
 
@@ -1204,10 +1241,8 @@ LBAL_FP_TEST(LIBCPP26, HARDENED_LIST) {
 #if LBAL_LIBCPP26_HARDENED_LIST
   //	SEEME
   std::list<int> l;
-  [[maybe_unused]]
-  std::size_t i = lbal_fp_libcpp26::out_of_range_index();
 
-  LBAL_FP_EXPECT_HARDENED((void)(i, l.front()));
+  LBAL_FP_EXPECT_HARDENED((void)l.front());
 #endif
 }
 
@@ -1229,10 +1264,8 @@ LBAL_FP_TEST(LIBCPP26, HARDENED_OPTIONAL) {
 #if LBAL_LIBCPP26_HARDENED_OPTIONAL
   //	SEEME
   std::optional<int> o;
-  [[maybe_unused]]
-  std::size_t i = lbal_fp_libcpp26::out_of_range_index();
 
-  LBAL_FP_EXPECT_HARDENED((void)(i, *o));
+  LBAL_FP_EXPECT_HARDENED((void)*o);
 #endif
 }
 
@@ -1291,10 +1324,8 @@ LBAL_FP_TEST(LIBCPP26, HARDENED_VIEW_INTERFACE) {
   //	SEEME
   std::vector<int> v;
   auto view = std::views::all(v);
-  [[maybe_unused]]
-  std::size_t i = lbal_fp_libcpp26::out_of_range_index();
 
-  LBAL_FP_EXPECT_HARDENED((void)(i, view.front()));
+  LBAL_FP_EXPECT_HARDENED((void)view.front());
 #endif
 }
 
@@ -2204,7 +2235,7 @@ LBAL_FP_TEST(LIBCPP26, SUBMDSPAN_FUTURE_PROOF) {
   int data[4] = {0, 1, 2, 3};
   std::mdspan m(data, 2, 2);
 
-  EXPECT_EQ(std::submdspan(m, 1, 1)[std::array<std::size_t, 0>{}], 3);
+  EXPECT_EQ((std::submdspan(m, 1, 1)[std::array<std::size_t, 0>{}]), 3);
 #endif
 }
 

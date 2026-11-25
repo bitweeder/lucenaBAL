@@ -146,6 +146,8 @@ CI always enables these tests on every platform at `latest`: the soft probes run
 
 With GCC 15, Clang 23 with libstdc++ 15, and Clang 23 with libc++ 23 (`-stdlib=libc++`, with `CMAKE_C_COMPILER=clang` so the flag doesn't reach GCC) on Linux, both suites pass in every mode, and every compile-only probe builds. Clang with libstdc++ used to fail `LIBCPP20_CONSTEXPR_COMPLEX` and `LIBCPP26_FORMAT_TYPE_CHECK`; those tokens are now `0` there (see the VERME fixups in `lbalStandardLibraryLibStdCppPostInitialization.hpp`).
 
+The maintainer also reports no failures, warnings or notes from lucenaBAL under Xcode 27.2 (Apple Clang 21 with Apple libc++). Those results aren't local; they're the reference for Apple.
+
 ## Checking platforms you don't have
 
 MSVC, libc++ and Apple aren't usually available locally. These techniques check the preprocessor logic only; say so when reporting, and leave confirmation to CI.
