@@ -80,8 +80,8 @@ jobs:
               "Found vswhere at: ${vswhere_exec}"
           )
 
-          # FIXME
-          # `latest` should be replaced with an appropriate version string.
+          # FIXME (bitweeder) `latest` should be replaced with an appropriate
+          # version string.
           execute_process(
             COMMAND
               "${vswhere_exec}" -products * -latest -prerelease -property installationPath

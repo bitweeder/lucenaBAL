@@ -43,8 +43,9 @@ jobs:
           temp_dir="$(mktemp -d "doxygen.XXXXXX")"
           trap 'rm -rf "${temp_dir}"' EXIT
 
-          # FIXME Possible supply-chain attack vector; archive should be cached 
-          # in a safe location. Even just adding a hash check would be better.
+          # FIXME (bitweeder) Possible supply-chain attack vector; archive
+          # should be cached in a safe location. Even just adding a hash check
+          # would be better.
           pushd "${temp_dir}" >/dev/null || exit 31
             wget "https://github.com/doxygen/doxygen/releases/download/Release_${doxygen_dir_version}/doxygen-${doxygen_version}.linux.bin.tar.gz" \
             || exit 32

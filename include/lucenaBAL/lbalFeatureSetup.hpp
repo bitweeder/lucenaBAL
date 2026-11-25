@@ -342,15 +342,15 @@
 
   @details At most one of these is 1, the rest are 0.
 
-  @remarks (SEEME - bitweeder) There used to be more of these, but they’ve been
+  @remarks SEEME (bitweeder) There used to be more of these, but they’ve been
   largely mooted. Candidates for additions include console-specific processors
   and explicit differentiation for AMD processors.
 
-  @remarks (SEEME - bitweeder) More granular responses are possible, though
+  @remarks SEEME (bitweeder) More granular responses are possible, though
   it’s been viewed as more useful to differentiate on feature sets, instead
   (e.g., AVX2 availability).
 
-  @remarks ((FIXME - bitweeder)) Testing for specific non-SIMD instruction
+  @remarks FIXME (bitweeder) Testing for specific non-SIMD instruction
   availability, and additionally providing instrinsics, would be very helpful.
   Specifically, generic ways to invoke POPCNT and LZCNT would be helpful.
 

@@ -291,11 +291,6 @@
       //	7, Apple stripped that support out until the version that shipped
       //	with Xcode 11.
       #if defined(LBAL_LIBCPP17_FILESYSTEM)
-        #if LBAL_LIBCPP17_FILESYSTEM_EXP
-          #undef LBAL_LIBCPP17_FILESYSTEM_EXP
-          #define LBAL_LIBCPP17_FILESYSTEM_EXP 0
-        #endif
-
         #if !defined(LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED)
           #define LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED 201606L
         #endif  //	LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED

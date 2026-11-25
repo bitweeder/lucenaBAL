@@ -308,18 +308,6 @@
       #endif
     #endif  //	1900
 
-    #if (_MSC_VER >= 1914)
-      //	SEEME - bitweeder
-      //	None of these have SD-6 macros, so we rely on a compiler version
-      //	check and a language test.
-      #if !defined(                                                                     \
-          LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION \
-      )
-        #define LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION \
-          1L
-      #endif
-    #endif  //	1914
-
     #if (_MSC_VER >= 1920)
       //	SEEME - bitweeder
       //	None of these have SD-6 macros, so we rely on a compiler version

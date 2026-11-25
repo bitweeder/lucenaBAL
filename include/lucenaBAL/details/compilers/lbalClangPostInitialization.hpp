@@ -58,13 +58,6 @@
     #if !defined(LBAL_CPP20_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS)
       #define LBAL_CPP20_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 1L
     #endif
-
-    #if !defined(                                                                     \
-        LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION \
-    )
-      #define LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION \
-        1L
-    #endif
   #endif
 
   #if (__clang_major__ >= 8) && (LBAL_cpp_version > LBAL_CPP17_VERSION)

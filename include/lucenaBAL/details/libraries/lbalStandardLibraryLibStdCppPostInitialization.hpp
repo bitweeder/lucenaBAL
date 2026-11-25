@@ -348,12 +348,6 @@
 
       #if !defined(LBAL_LIBCPP17_FILESYSTEM)
         #define LBAL_LIBCPP17_FILESYSTEM 201603L
-
-        #if defined(LBAL_LIBCPP17_FILESYSTEM_EXP)
-          #undef LBAL_LIBCPP17_FILESYSTEM_EXP
-        #endif  //	LBAL_LIBCPP17_FILESYSTEM_EXP
-
-        #define LBAL_LIBCPP17_FILESYSTEM_EXP 0
       #endif  //	LBAL_LIBCPP17_FILESYSTEM
 
       #if !defined(LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED)
@@ -376,9 +370,9 @@
   //	correctly in at least one shipping version of gcc.
   #if LBAL_cpp_version > LBAL_CPP17_VERSION
     #if (LBAL_GCC_VERSION >= 80100)
-      #if !defined(LBAL_LIBCPP20_STD_ENDIAN)
-        #define LBAL_LIBCPP20_STD_ENDIAN 201907L
-      #endif  //	LBAL_LIBCPP20_STD_ENDIAN
+      #if !defined(LBAL_LIBCPP20_ENDIAN)
+        #define LBAL_LIBCPP20_ENDIAN 201907L
+      #endif  //	LBAL_LIBCPP20_ENDIAN
 
       #if !defined(LBAL_LIBCPP20_TO_ADDRESS)
         #define LBAL_LIBCPP20_TO_ADDRESS 201711L
@@ -392,9 +386,9 @@
     #endif    //	gcc 9.1
 
     #if (LBAL_GCC_VERSION >= 100100)
-      #if !defined(LBAL_LIBCPP20_SHARED_PTR_ARRAYS_MAKE_SHARED)
-        #define LBAL_LIBCPP20_SHARED_PTR_ARRAYS_MAKE_SHARED 201707L
-      #endif  //	LBAL_LIBCPP20_SHARED_PTR_ARRAYS_MAKE_SHARED
+      #if !defined(LBAL_LIBCPP20_SHARED_PTR_ARRAYS)
+        #define LBAL_LIBCPP20_SHARED_PTR_ARRAYS 201707L
+      #endif  //	LBAL_LIBCPP20_SHARED_PTR_ARRAYS
     #endif    //	gcc 10.1
   #endif      //	LBAL_CPP20_VERSION
 

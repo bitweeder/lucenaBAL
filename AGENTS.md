@@ -90,7 +90,7 @@ Token values are the SD-6 date value (e.g. `201707L`) when the feature is availa
 - a `LBAL_DIAGNOSTIC_TEST(...)` line in `tests/fragments/lbalFeatureTest-{cpp,libcpp}NN.inc`
 - a false-positive probe, which should fail when the feature is missing so the false-negative tests can use it (otherwise tag it `LBAL_FP_SMOKE`): an `LBAL_FP_TEST` in `tests/fragments/lbalFalsePositiveTest-{cpp,libcpp}NN.inc` and/or a file in `tests/probes/{cpp,libcpp}NN/`. See Tests.
 
-The `lbalTokenCoverage` test fails if a token declared in an `overview-*.inc` is missing its `LBAL_DIAGNOSTIC_TEST` line or, for a language token, its external-definition guard. It doesn't check SD-6 mappings, because some tokens legitimately have none.
+The `lbalTokenCoverage` test fails if a token declared in an `overview-*.inc` is missing its `LBAL_DIAGNOSTIC_TEST` line, its false-positive probe or, for a language token, its external-definition guard. It also fails if a header uses a `LBAL_(LIB)CPPnn_*` name that no overview declares (see Tests). It doesn't check SD-6 mappings, because some tokens legitimately have none.
 
 Fragments under `include/` are included as `<lucenaBAL/details/fragments/…>`, the same way as other headers. Never use `<include/lucenaBAL/…>`: it only resolves when the repository root is on the include path, so the CMake build and installed copies fail.
 
@@ -102,7 +102,13 @@ Other headers:
 
 ## Tests
 
-`tests/lbalFeatureTest.cpp` compiles every token and logs any that are unsupported; it is mostly a compile-time validity check. The per-Standard `LBAL_DIAGNOSTIC_TEST(...)` lines live in `tests/fragments/lbalFeatureTest-{cpp,libcpp}NN.inc`, included as `"fragments/…"`. They're kept out of `include/` so they aren't installed or scanned by Doxygen. `tests/lbalFormattingTest.*` exercises the formatting and decorator macros. `tests/lbalTokenCoverage.cmake` is a CMake `-P` script registered as the `lbalTokenCoverage` CTest. It checks that every overview token has its test line and, for `cpp*` tokens, its guard in `lbalDefinitionTests-<std>.inc`. Run it on its own with `ctest --test-dir build -R lbalTokenCoverage`. It doesn't check that a token has a false-positive probe.
+`tests/lbalFeatureTest.cpp` compiles every token and logs any that are unsupported; it is mostly a compile-time validity check. The per-Standard `LBAL_DIAGNOSTIC_TEST(...)` lines live in `tests/fragments/lbalFeatureTest-{cpp,libcpp}NN.inc`, included as `"fragments/…"`. They're kept out of `include/` so they aren't installed or scanned by Doxygen. `tests/lbalFormattingTest.*` exercises the formatting and decorator macros. `tests/lbalTokenCoverage.cmake` is a CMake `-P` script registered as the `lbalTokenCoverage` CTest. Run it on its own with `ctest --test-dir build -R lbalTokenCoverage`. It checks that:
+- every overview token has its `LBAL_DIAGNOSTIC_TEST` line and, for `cpp*` tokens, its guard in `lbalDefinitionTests-<std>.inc`
+- every overview token has a false-positive probe (`tests/probes/<std>/<NAME>.cpp`, or `LBAL_FP_TEST(<STD>, <NAME>)` written exactly that way, since the false-negative tests search for that text), unless it's in the script's `LBAL_COVERAGE_NO_PROBE` list
+- every probe names a declared token of its own Standard and guards its body with `#if TOKEN`
+- a probe is tagged `LBAL_FP_SMOKE` exactly when its token is in the script's `LBAL_COVERAGE_SMOKE` list, so tagging or tightening a smoke probe means updating that list
+- every `LBAL_(LIB)CPPnn_*` name in `include/lucenaBAL` and `tests/lbalFalseNegativeKnown.hpp` is declared in an overview (the `LBAL_CPPnn_VERSION` constants aside), so a misspelled or retired token in a fixup fails
+- `LBAL_FN_STANDARD_TAGS` in `tests/lbalFalseNegative.cmake` lists exactly the overview Standards through C++23
 
 ### False-positive tests (optional)
 
@@ -113,7 +119,7 @@ Other headers:
 
 Run the soft probes with `ctest --test-dir build -R '^cxx'`.
 
-CI always enables these tests on every platform at `latest`: the soft probes run in the Test step, and the `False-Positive Probes` step builds `lbalFalsePositiveProbes` with keep-going. A false positive of either kind fails the job. To also test older Standards in CI, set the GitHub repository variable `LBAL_FALSE_POSITIVE_TEST_STANDARDS` (e.g. `17;20;23;latest`), which is passed straight to CMake. Every language, attribute and library token has a probe, except `LBAL_CPP20_MODULES` and `LBAL_LIBCPP23_MODULES`, which need a module-aware build. Library tokens follow the libcpp17 pattern: gtest probes first, and compile-only probes only for `constexpr`/`consteval`-only tokens and for facilities a later Standard removes. Probes marked SEEME were written from the paper and haven't yet been run against an implementation that reports the feature; a failure there may be a mistake in the probe. The `HARDENED_*` library probes are gtest death tests, using `LBAL_FP_EXPECT_HARDENED` in `lbalFalsePositiveTest-libcpp26.inc`. libstdc++ keeps `<stacktrace>` and some other facilities in `libstdc++exp`, so `tests/CMakeLists.txt` links `stdc++exp` into the gtest targets when it's available.
+CI always enables these tests on every platform at `latest`: the soft probes run in the Test step, and the `False-Positive Probes` step builds `lbalFalsePositiveProbes` with keep-going. A false positive of either kind fails the job. To also test older Standards in CI, set the GitHub repository variable `LBAL_FALSE_POSITIVE_TEST_STANDARDS` (e.g. `17;20;23;latest`), which is passed straight to CMake. Every language, attribute and library token has a probe, except `LBAL_CPP20_MODULES` and `LBAL_LIBCPP23_MODULES`, which need a module-aware build; `lbalTokenCoverage` enforces this. Library tokens follow the libcpp17 pattern: gtest probes first, and compile-only probes only for `constexpr`/`consteval`-only tokens and for facilities a later Standard removes. Probes marked SEEME were written from the paper and haven't yet been run against an implementation that reports the feature; a failure there may be a mistake in the probe. The `HARDENED_*` library probes are gtest death tests, using `LBAL_FP_EXPECT_HARDENED` in `lbalFalsePositiveTest-libcpp26.inc`. libstdc++ keeps `<stacktrace>` and some other facilities in `libstdc++exp`, so `tests/CMakeLists.txt` links `stdc++exp` into the gtest targets when it's available.
 
 ### False-negative tests (optional)
 
@@ -126,7 +132,7 @@ CI always enables these tests on every platform at `latest`: the soft probes run
   - FAILED if a compile-only probe compiles
   - for a gtest probe that compiles: run under `testing::ScopedFakeTestPartResultReporter`; FAILED if it passes, PASSED otherwise
 - **Known absences** (`tests/lbalFalseNegativeKnown.hpp`): a token can be `0` on purpose although its probe compiles, because the implementer documents the feature as incomplete and the probe can't reach the missing part (e.g. Clang's partial P1907R1 for `LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FIXES`). `known_absent()` gives the reason, conditioned on the compiler or library, and the test is SKIPPED with it. Add an entry only when the gap is documented; otherwise tighten the probe or fix the token.
-- **`LBAL_FP_SMOKE`** is a comment tag, in a gtest probe's body or a compile-only probe's header comment, for a probe that would also pass without its feature, so it can't detect a false negative. Prefer tightening a probe until it fails without its feature, which helps the false-positive tests too; mark it only when that isn't practical.
+- **`LBAL_FP_SMOKE`** is a comment tag, in a gtest probe's body or a compile-only probe's header comment, for a probe that would also pass without its feature, so it can't detect a false negative. Prefer tightening a probe until it fails without its feature, which helps the false-positive tests too; mark it only when that isn't practical, and add the token to `LBAL_COVERAGE_SMOKE` in `tests/lbalTokenCoverage.cmake`.
 - **Probes must fail without their feature.** A probe for a later revision must fail where the earlier revision is all there is. Lessons so far:
   - Check the effect, not just acceptance: MSVC accepts `[[no_unique_address]]` but ignores it, so that probe also checks `sizeof`.
   - Use rules that require a diagnostic. A rule the older Standard made "no diagnostic required" won't fail (see the P2448R2 probe, `CONSTEXPR_RELAX_RESTRICTIONS`).

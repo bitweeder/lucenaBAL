@@ -300,11 +300,6 @@
     #if (_LIBCPP_VERSION >= 7000)
       #if !defined(LBAL_LIBCPP17_FILESYSTEM)
         #define LBAL_LIBCPP17_FILESYSTEM 201603L
-
-        #if LBAL_LIBCPP17_FILESYSTEM_EXP
-          #undef LBAL_LIBCPP17_FILESYSTEM_EXP
-          #define LBAL_LIBCPP17_FILESYSTEM_EXP 0
-        #endif
       #endif  //	LBAL_LIBCPP17_FILESYSTEM
 
       #if !defined(LBAL_LIBCPP17_FILESYSTEM_PATHS_EXPANDED)
@@ -343,9 +338,9 @@
     #endif    //	6000
 
     #if (_LIBCPP_VERSION >= 7000)
-      #if !defined(LBAL_LIBCPP20_STD_ENDIAN)
-        #define LBAL_LIBCPP20_STD_ENDIAN 201907L
-      #endif  //	LBAL_LIBCPP20_STD_ENDIAN
+      #if !defined(LBAL_LIBCPP20_ENDIAN)
+        #define LBAL_LIBCPP20_ENDIAN 201907L
+      #endif  //	LBAL_LIBCPP20_ENDIAN
 
       //	SEEME libc++ has had the P0355R7 calendar types since 7, but not
       //	the whole paper: as of LLVM 21 it has no `parse`/`from_stream` or

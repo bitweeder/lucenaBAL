@@ -233,13 +233,6 @@
         #define LBAL_CPP20_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS 1L
       #endif
 
-      #if !defined(                                                                     \
-          LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION \
-      )
-        #define LBAL_CPP20_INITIALIZER_LIST_CONSTRUCTORS_IN_CLASS_TEMPLATE_ARGUMENT_DEDUCTION \
-          1L
-      #endif
-
       //	SEEME - bitweeder
       //	This did not have a proper SD-6 token value until Dec 2019.
       #if !defined(LBAL_CPP20_DESIGNATED_INITIALIZERS)

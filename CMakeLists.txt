@@ -240,8 +240,7 @@ target_include_directories(
             $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}>)
 
 if(MSVC)
-	# FIXME
-  # MSVC is failing to recognize `cxx_std_26` in GitHub
+	# SEEME (bitweeder) MSVC does not yet support `cxx_std_26`.
   target_compile_options(
 	  ${PROJECT_NAME}
 		INTERFACE
@@ -269,12 +268,11 @@ target_compile_definitions (
 		$<$<CONFIG:DEBUG>:LBAL_CONFIG_debug=1>
 )
 
-# FIXME - bitweeder
-# Simulator targets for Apple OS’s are effectively unavailable, as they will
-# not be configured properly. Even with proper configuration, it will be
-# necessary to manually specify Xcode generator arguments to CMake on the
-# command line, or rely on making correct choices in Xcode itself if not
-# building from the command line.
+# FIXME (bitweeder) Simulator targets for Apple OS’s are effectively
+# unavailable, as they will not be configured properly. Even with proper
+# configuration, it will be necessary to manually specify Xcode generator
+# arguments to CMake on the command line, or rely on making correct choices in
+# Xcode itself if not building from the command line.
 if ("${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
 	target_compile_definitions (
 		${PROJECT_NAME}
@@ -329,10 +327,9 @@ endif()
 # Helpful for when you don’t have IDE or commit prehook support, or 
 # bulk-reformat from your preferred setup to the canonical one before pushing.
 
-# FIXME
-# Kept in a variable since different projects tend to want different versions
-# of the `clang-format` executable; this version isn’t picky, but we should
-# probably pin to a user-supplied version.
+# SEEME (bitweeder) Kept in a variable since different projects tend to want
+# different versions of the `clang-format` executable; this version isn’t
+# picky, but we should probably pin to a user-supplied version.
 find_program(
 	CLANG_FORMAT_EXE
 	NAMES clang-format
@@ -341,7 +338,8 @@ find_program(
 if(CLANG_FORMAT_EXE)
 	# Pull down the latest `.clang-format` config if we have an upstream source
 	#
-	# FIXME Disabled until the config stabilizes and the Styleguide publishes.
+	# FIXME (bitweeder) Disabled until the config stabilizes and the Styleguide 
+	# publishes.
 	# if(CLANG_FORMAT_URL)
 	# 	file(
 	# 			DOWNLOAD 
@@ -378,9 +376,8 @@ if(CLANG_FORMAT_EXE)
 			tests/*.inc
 	)
 
-	# FIXME
-	# Should probably be a shell script that tests inputs and generates sensible
-	# errors rather than silently barfing.
+	# FIXME (bitweeder) Should probably be a shell script that tests inputs and
+	# generates sensible errors rather than silently barfing.
 	if(ALL_LINTABLE_FILES)
 		add_custom_target(
 			format
@@ -501,8 +498,7 @@ endif()
 #[[#############################################################################
     packaging
 
-    FIXME - bitweeder
-		Currently unused.
+    FIXME (bitweeder) Currently unused.
 #]]
 
 #set(CPACK_RESOURCE_FILE_LICENSE "${PROJECT_SOURCE_DIR}/LICENSE.md")
