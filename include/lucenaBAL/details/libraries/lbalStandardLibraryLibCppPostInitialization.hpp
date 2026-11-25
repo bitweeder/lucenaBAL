@@ -384,6 +384,39 @@
   //	double. libc++ lacks long double `from_chars`, so the token is only set
   //	if libc++ defines `__cpp_lib_to_chars` itself.
 
+  //	SEEME libc++ 17 and 18 ship a working `<format>` in C++20 and later
+  //	(P0645R10 and the DRs P2216R3 and P2418R2, complete from 15), but their
+  //	`<version>` leaves `__cpp_lib_format` commented out; libc++ 19 is the
+  //	first to define it. We use `202106L`, the value libc++ left commented
+  //	out, since P2372R3, which shares `202110L` with P2418R2, isn’t done
+  //	until 21; P2418R2 itself is reported through
+  //	`LBAL_LIBCPP23_FORMAT_GENERATOR`. Off Apple platforms, floating-point
+  //	`to_chars` is always in the library, so there’s no availability check.
+  //	See libc++’s `docs/Status/Cxx20Papers.csv`.
+  #if (_LIBCPP_VERSION >= 170000)                                              \
+      && (_LIBCPP_VERSION < 190000)                                            \
+      && (LBAL_cpp_version > LBAL_CPP17_VERSION)
+    #if __has_include(<format>)
+      #if !defined(LBAL_LIBCPP20_FORMAT)
+        #define LBAL_LIBCPP20_FORMAT 202106L
+      #endif
+      #if !defined(LBAL_LIBCPP23_FORMAT)
+        #define LBAL_LIBCPP23_FORMAT 202106L
+      #endif
+      #if !defined(LBAL_LIBCPP23_FORMAT_GENERATOR)
+        #define LBAL_LIBCPP23_FORMAT_GENERATOR 202110L
+      #endif
+    #endif
+  #endif
+
+  //	SEEME libc++ 19 and 20 report `__cpp_lib_format` as `202110L`, but
+  //	P2372R3 (locale handling in chrono formatters), which shares that value,
+  //	is only complete from libc++ 21.
+  #if (_LIBCPP_VERSION < 210000) && LBAL_LIBCPP23_FORMAT_LOCALE
+    #undef LBAL_LIBCPP23_FORMAT_LOCALE
+    #define LBAL_LIBCPP23_FORMAT_LOCALE 0
+  #endif
+
   //	SEEME libc++ only partly implements P2693R1: `thread::id` has a
   //	formatter from libc++ 17, but there is no `<stacktrace>`, so it never
   //	defines `__cpp_lib_formatters` and `LBAL_LIBCPP23_FORMATTERS` stays `0`.

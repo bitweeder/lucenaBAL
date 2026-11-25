@@ -164,6 +164,7 @@ MSVC, libc++ and Apple aren't usually available locally. These techniques check 
 
 ## Conventions
 
+- Never make a git commit on your own, even when a task seems finished: leave every change uncommitted in the working tree for the maintainer to review.
 - Source comment tags: `FIXME`, `APIME`, `OPTME`, `VERME`, `SEEME` (defined in `lucenaBAL.hpp`).
 - Sources are UTF-8, and the license headers and comments use non-ASCII punctuation. MSVC reads files without a BOM in the system code page unless it's given `/utf-8`, so every MSVC test target passes `/utf-8` (see `tests/CMakeLists.txt`). Put non-ASCII characters in string or character literals only where the encoding itself is under test; elsewhere use `\u` escapes.
 - Style comes from `.clang-format`. Long `#if` conditions are wrapped with aligned trailing `\`.

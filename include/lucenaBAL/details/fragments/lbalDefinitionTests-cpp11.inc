@@ -12,7 +12,6 @@
 
 #if defined(LBAL_CPP11_ALIAS_TEMPLATES)                                        \
     || defined(LBAL_CPP11_ATTRIBUTES)                                          \
-    || defined(LBAL_CPP11_ATTRIBUTE_CARRIES_DEPENDENCY)                        \
     || defined(LBAL_CPP11_ATTRIBUTE_NORETURN)                                  \
     || defined(LBAL_CPP11_CONSTEXPR)                                           \
     || defined(LBAL_CPP11_DECLTYPE)                                            \

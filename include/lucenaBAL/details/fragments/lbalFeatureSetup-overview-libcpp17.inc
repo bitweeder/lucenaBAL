@@ -414,6 +414,10 @@
   - `201703L` [P0154R1](https://wg21.link/P0154R1) constexpr
   std::thread::hardware_{true,false}_sharing_size
 
+  @remark Note that you may have ABI instability if you rely on this since its
+  value is affected by the target and `-mtune`/`-mcpu` (or equivalent flags,
+  depending on the compiler).
+
   @sa `freestanding` `<new>`
 */
 #ifndef LBAL_LIBCPP17_HARDWARE_INTERFERENCE_SIZE
@@ -924,6 +928,9 @@
   reflected by the creation of two tokens that feed into this one, despite there
   only being one underlying SD-6 macro.
 
+  @remark Effectivey, this is a superset of `LBAL_LIBCPP17_TO_CHARS_INTEGER`,
+  `LBAL_LIBCPP17_TO_CHARS_FP`, and support for outputting `long double`s.
+
   @sa `<charconv>`
 */
 #ifndef LBAL_LIBCPP17_TO_CHARS
@@ -956,6 +963,9 @@
   compliance, when they actually only support integer conversions. This is
   reflected by the creation of two tokens that feed into this one, despite there
   only being one underlying SD-6 macro.
+
+  @remark This specifically does not imply support for outputting `long
+  double`s.
 
   @sa `<charconv>`
 */

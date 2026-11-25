@@ -382,6 +382,85 @@
     #endif
   #endif
 
+  //	SEEME libc++ 17 and 18 ship a working `<format>` in C++20 and later
+  //	(P0645R10 and the DRs P2216R3 and P2418R2, complete from 15), but their
+  //	`<version>` leaves `__cpp_lib_format` commented out; libc++ 19 is the
+  //	first to define it. We use `202106L`, the value libc++ left commented
+  //	out, since P2372R3, which shares `202110L` with P2418R2, isn’t done
+  //	until 21; P2418R2 itself is reported through
+  //	`LBAL_LIBCPP23_FORMAT_GENERATOR`. See libc++’s
+  //	`docs/Status/Cxx20Papers.csv`.
+  //
+  //	Formatting floating-point values needs floating-point `to_chars`, which
+  //	lives in the OS’s dylib: macOS 13.3, iOS and tvOS 16.3 and watchOS 9.3
+  //	(`_LIBCPP_INTRODUCED_IN_LLVM_14`). The `<version>` of libc++ 17 and 18
+  //	doesn’t pull in libc++’s availability macros, so we check the
+  //	deployment target directly. This hasn’t been tested against Apple’s
+  //	libc++.
+  #if (_LIBCPP_VERSION >= 170000)                                              \
+      && (_LIBCPP_VERSION < 190000)                                            \
+      && (LBAL_cpp_version > LBAL_CPP17_VERSION)
+    #if __has_include(<format>)                                                \
+        && !(                                                                  \
+            (defined(__MAC_OS_X_VERSION_MIN_REQUIRED)                          \
+                && (__MAC_OS_X_VERSION_MIN_REQUIRED < 130300))                 \
+            || (defined(__IPHONE_OS_VERSION_MIN_REQUIRED)                      \
+                && (__IPHONE_OS_VERSION_MIN_REQUIRED < 160300))                \
+            || (defined(__TV_OS_VERSION_MIN_REQUIRED)                          \
+                && (__TV_OS_VERSION_MIN_REQUIRED < 160300))                    \
+            || (defined(__WATCH_OS_VERSION_MIN_REQUIRED)                       \
+                && (__WATCH_OS_VERSION_MIN_REQUIRED < 90300))                  \
+        )
+      #if !defined(LBAL_LIBCPP20_FORMAT)
+        #define LBAL_LIBCPP20_FORMAT 202106L
+      #endif
+      #if !defined(LBAL_LIBCPP23_FORMAT)
+        #define LBAL_LIBCPP23_FORMAT 202106L
+      #endif
+      #if !defined(LBAL_LIBCPP23_FORMAT_GENERATOR)
+        #define LBAL_LIBCPP23_FORMAT_GENERATOR 202110L
+      #endif
+    #endif
+  #endif
+
+  //	SEEME libc++ 19 defines `__cpp_lib_format` unconditionally; from 20 it
+  //	depends on `_LIBCPP_AVAILABILITY_HAS_TO_CHARS_FLOATING_POINT`, as it
+  //	should, since `<format>` can’t format floating-point values otherwise.
+  //	libc++ 19’s `<version>` does pull in the availability macros, so we
+  //	apply the later rule here. This hasn’t been tested against Apple’s
+  //	libc++.
+  #if (_LIBCPP_VERSION >= 190000)                                              \
+      && (_LIBCPP_VERSION < 200000)                                            \
+      && defined(_LIBCPP_AVAILABILITY_HAS_TO_CHARS_FLOATING_POINT)
+    #if !_LIBCPP_AVAILABILITY_HAS_TO_CHARS_FLOATING_POINT
+      #if LBAL_LIBCPP20_FORMAT
+        #undef LBAL_LIBCPP20_FORMAT
+        #define LBAL_LIBCPP20_FORMAT 0
+      #endif
+      #if LBAL_LIBCPP23_FORMAT
+        #undef LBAL_LIBCPP23_FORMAT
+        #define LBAL_LIBCPP23_FORMAT 0
+      #endif
+      #if LBAL_LIBCPP23_FORMAT_GENERATOR
+        #undef LBAL_LIBCPP23_FORMAT_GENERATOR
+        #define LBAL_LIBCPP23_FORMAT_GENERATOR 0
+      #endif
+      #if LBAL_LIBCPP23_FORMAT_LOCALE
+        #undef LBAL_LIBCPP23_FORMAT_LOCALE
+        #define LBAL_LIBCPP23_FORMAT_LOCALE 0
+      #endif
+    #endif
+  #endif
+
+  //	SEEME libc++ 19 and 20 report `__cpp_lib_format` as `202110L`, but
+  //	P2372R3 (locale handling in chrono formatters), which shares that value,
+  //	is only complete from libc++ 21. Apple’s `_LIBCPP_VERSION` tracks the
+  //	LLVM release.
+  #if (_LIBCPP_VERSION < 210000) && LBAL_LIBCPP23_FORMAT_LOCALE
+    #undef LBAL_LIBCPP23_FORMAT_LOCALE
+    #define LBAL_LIBCPP23_FORMAT_LOCALE 0
+  #endif
+
   //	SEEME libc++ only partly implements P2693R1: `thread::id` has a
   //	formatter from libc++ 17, but there is no `<stacktrace>`, so it never
   //	defines `__cpp_lib_formatters` and `LBAL_LIBCPP23_FORMATTERS` stays `0`.

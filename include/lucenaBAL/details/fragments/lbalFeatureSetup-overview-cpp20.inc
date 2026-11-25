@@ -540,11 +540,6 @@
   - `201911L` [P1907R1](https://wg21.link/P1907R1) Inconsistencies with non-type
   template parameters
 
-  @remark Most mainstream compilers support this, except for `float`-type
-  arguments, but there is no “partial support” value to qualify this. The latest
-  versions of some compilers even support `floats` “experimentally”, but have
-  not yet updated the macro value.
-
   @remark Newer `clang`s mostly support this, including for `float`-type
   arguments, but there is no “partial support” value to qualify their
   “experimental” support. Specifically, in the case of the `clang`s,

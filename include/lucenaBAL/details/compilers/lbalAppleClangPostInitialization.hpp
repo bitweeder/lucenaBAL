@@ -141,8 +141,10 @@
     #endif
   #endif
 
-  #if (LBAL_cpp_version < LBAL_CPP20_VERSION)
-    //  This can be erroneously defined for C++17.
+  #if (LBAL_cpp_version <= LBAL_CPP17_VERSION)
+    //  This can be erroneously defined for C++17. Preview modes such as
+    //  `-std=c++2a` report a `__cplusplus` below the final C++20 value, so
+    //  only C++17 and earlier are excluded.
     #if LBAL_CPP20_DESTROYING_DELETE
       #undef LBAL_CPP20_DESTROYING_DELETE
       #define LBAL_CPP20_DESTROYING_DELETE 0

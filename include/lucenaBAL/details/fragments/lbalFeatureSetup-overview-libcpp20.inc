@@ -343,9 +343,9 @@
   - `201803L` [P0355R7](https://wg21.link/P0355R7) Extending `<chrono>` to
   Calendars and Time Zones
 
-  @remark Older Apple Clangs don’t support the entirety of `__cpp_lib_chrono`,
-  but they do support the types associated with that token, which are useful on
-  their own.
+  @remark Older `libc++` releases don’t support the entirety of
+  `__cpp_lib_chrono`, but they do support the types associated with that token,
+  which are useful on their own.
 
   @sa `<chrono>`
 */
