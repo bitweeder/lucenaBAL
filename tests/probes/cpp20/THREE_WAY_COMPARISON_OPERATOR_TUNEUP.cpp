@@ -12,11 +12,9 @@
   `LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_TUNEUP`, from P1630R1. It only
   needs to compile; see `lbalFalsePositiveTest.cpp`.
 
-  SEEME: checks P1186R3 synthesis, one of the C++20 refinements tracked by
-  this value; P1630R1 itself is mostly wording.
-
-  LBAL_FP_SMOKE: it doesn’t isolate P1630R1, so it can’t detect a false
-  negative.
+  It checks the paper’s Annex C change: `x != y` is rewritten from `x == y`
+  only if that has type `bool`. Before, a result contextually convertible to
+  `bool` was enough.
 
 ------------------------------------------------------------------------------*/
 
@@ -24,33 +22,26 @@
 #include <lucenaBAL/lucenaBAL.hpp>
 
 #if LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_TUNEUP
-  //	std
-  #include <compare>
-
 namespace lbal_fp {
 
-struct Legacy {
-  int value;
-
-  constexpr bool
-  operator== (const Legacy& o) const {
-    return value == o.value;
-  }
-
-  constexpr bool
-  operator< (const Legacy& o) const {
-    return value < o.value;
+struct NotBool {
+  explicit
+  operator bool() const {
+    return true;
   }
 };
 
-//	The comparison category is given explicitly, so `<=>` is synthesized from
-//	`==` and `<` for the member that lacks it.
-struct S {
-  Legacy l;
-  std::strong_ordering operator<=> (const S&) const = default;
+struct X {
+  friend NotBool
+  operator== (X, int) {
+    return {};
+  }
 };
 
-static_assert(S{{1}} < S{{2}});
+template <class T>
+concept has_not_equal = requires (T t) { t != 4; };
+
+static_assert(!has_not_equal<X>);
 
 }  // namespace lbal_fp
 #endif

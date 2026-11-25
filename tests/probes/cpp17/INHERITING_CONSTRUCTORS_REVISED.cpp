@@ -11,11 +11,9 @@
   Hard false-positive probe for `LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED`,
   from P0136R1. It only needs to compile; see `lbalFalsePositiveTest.cpp`.
 
-  SEEME: exercises the P0136R1 model, but doesn’t isolate every change it
-  made.
-
-  LBAL_FP_SMOKE: it also compiles with the original inheriting-constructor
-  rules, so it can’t detect a false negative.
+  This is the paper’s own Annex C example: under the C++14 model, `B b(42L)`
+  used an injected `B<long>(long)`; now lookup finds the base constructor
+  template, its substitution fails, and `B(int)` is called.
 
 ------------------------------------------------------------------------------*/
 
@@ -25,22 +23,29 @@
 #if LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED
 namespace lbal_fp {
 
-struct Base {
-  template <class T>
-  constexpr Base(T x, int y = 1)
-    : value(static_cast<int>(x) + y) { }
+struct A {
+  template <typename T>
+  constexpr A(T, typename T::type = 0)
+    : value(1) { }
+
+  constexpr A(int)
+    : value(2) { }
 
   int value;
 };
 
-struct Derived : Base {
-  using Base::Base;
-  int extra = 2;
+struct B : A {
+  using A::A;
+
+  constexpr B(int)
+    : A(0), own(3) { }
+
+  int own = 4;
 };
 
-//	The inherited constructor template is found by lookup, with its default
-//	argument, and the derived class’s members are still initialized.
-static_assert(Derived(1.0).value == 2 && Derived(1.0).extra == 2);
+constexpr B b(42L);
+
+static_assert(b.own == 3);
 
 }  // namespace lbal_fp
 #endif

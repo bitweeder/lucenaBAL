@@ -182,7 +182,9 @@ LBAL_FP_TEST(LIBCPP23, ADAPTOR_ITERATOR_PAIR_CONSTRUCTOR) {
 LBAL_FP_TEST(LIBCPP23, ALGORITHM_ITERATOR_REQUIREMENTS) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_ALGORITHM_ITERATOR_REQUIREMENTS);
 #if LBAL_LIBCPP23_ALGORITHM_ITERATOR_REQUIREMENTS
-  //	LBAL_FP_SMOKE: can’t detect a false negative.
+  //	LBAL_FP_SMOKE: libstdc++ and libc++ accepted these iterators before
+  //	P2408R5 (only MSVC’s parallel algorithms rejected them), so it can’t
+  //	detect a false negative.
   //	SEEME
   //	Classic algorithms accept C++20 iterators whose category understates
   //	what they model (P2408R5).
@@ -207,7 +209,6 @@ LBAL_FP_TEST(LIBCPP23, ALGORITHM_ITERATOR_REQUIREMENTS) {
 LBAL_FP_TEST(LIBCPP23, ALLOCATE_AT_LEAST) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_ALLOCATE_AT_LEAST);
 #if LBAL_LIBCPP23_ALLOCATE_AT_LEAST
-  //	SEEME
   //	The member works in both revisions; the original free function was
   //	replaced in P2652R2.
   std::allocator<int> a;
@@ -221,7 +222,6 @@ LBAL_FP_TEST(LIBCPP23, ALLOCATE_AT_LEAST) {
 LBAL_FP_TEST(LIBCPP23, ALLOCATE_AT_LEAST_DISALLOW_USER_SPEC) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_ALLOCATE_AT_LEAST_DISALLOW_USER_SPEC);
 #if LBAL_LIBCPP23_ALLOCATE_AT_LEAST_DISALLOW_USER_SPEC
-  //	SEEME
   //	`allocator_traits::allocate_at_least` replaces the free function
   //	(P2652R2).
   std::allocator<int> a;
@@ -264,7 +264,8 @@ LBAL_FP_TEST(LIBCPP23, ASSOCIATIVE_HETEROGENEOUS_ERASURE) {
 LBAL_FP_TEST(LIBCPP23, BARRIER_RELAXED_COMPLETION) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_BARRIER_RELAXED_COMPLETION);
 #if LBAL_LIBCPP23_BARRIER_RELAXED_COMPLETION
-  //	LBAL_FP_SMOKE: can’t detect a false negative.
+  //	LBAL_FP_SMOKE: where the completion step runs isn’t portably
+  //	observable, so it can’t detect a false negative.
   //	SEEME
   //	P2588R3 relaxes where the completion step runs, which isn’t observable
   //	portably; this checks the completion still runs once per phase.
@@ -302,28 +303,38 @@ LBAL_FP_TEST(LIBCPP23, BYTESWAP) {
 #endif
 }
 
+#if LBAL_LIBCPP23_COMMON_REFERENCE
+namespace lbal_fp_libcpp23 {
+
+struct RefTarget { };
+
+struct RefSource {
+  operator RefTarget&() const;
+};
+
+}  // namespace lbal_fp_libcpp23
+#endif
+
 LBAL_FP_TEST(LIBCPP23, COMMON_REFERENCE) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_COMMON_REFERENCE);
 #if LBAL_LIBCPP23_COMMON_REFERENCE
-  //	LBAL_FP_SMOKE: can’t detect a false negative.
-  //	SEEME
-  //	P2655R3 has two parts. This token covers the change to how
-  //	`common_reference` treats reference types, which only applies in corner
-  //	cases, so this is a smoke test; the `reference_wrapper` part is
+  //	P2655R3’s own example for plain references: `COMMON-REF` no longer
+  //	accepts a user-defined conversion, so the result follows `?:` (`A&`)
+  //	instead of `const A&`. The `reference_wrapper` part is
   //	`LBAL_LIBCPP23_COMMON_REFERENCE_WRAPPER`.
-  EXPECT_TRUE((
-      std::is_same_v<std::common_reference_t<int&, int&&>, const int&>
-  ));
-  EXPECT_TRUE((
-      std::is_same_v<std::common_reference_t<int&, const int&>, const int&>
-  ));
+  EXPECT_TRUE((std::is_same_v<
+      std::common_reference_t<
+          lbal_fp_libcpp23::RefTarget&,
+          const lbal_fp_libcpp23::RefSource&
+      >,
+      lbal_fp_libcpp23::RefTarget&
+  >));
 #endif
 }
 
 LBAL_FP_TEST(LIBCPP23, COMMON_REFERENCE_WRAPPER) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_COMMON_REFERENCE_WRAPPER);
 #if LBAL_LIBCPP23_COMMON_REFERENCE_WRAPPER
-  //	SEEME
   EXPECT_TRUE((std::is_same_v<
       std::common_reference_t<std::reference_wrapper<int>, int&>,
       int&
@@ -334,7 +345,6 @@ LBAL_FP_TEST(LIBCPP23, COMMON_REFERENCE_WRAPPER) {
 LBAL_FP_TEST(LIBCPP23, CONCEPTS_MOVE_ONLY) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_CONCEPTS_MOVE_ONLY);
 #if LBAL_LIBCPP23_CONCEPTS_MOVE_ONLY
-  //	SEEME
   //	Comparison concepts accept move-only types (P2404R3).
   EXPECT_TRUE((
       std::equality_comparable_with<std::unique_ptr<int>, std::nullptr_t>
@@ -471,7 +481,8 @@ LBAL_FP_TEST(LIBCPP23, FORMAT_BASIC_FORMAT_STRING) {
 LBAL_FP_TEST(LIBCPP23, FORMAT_ENCODINGS) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_FORMAT_ENCODINGS);
 #if LBAL_LIBCPP23_FORMAT_ENCODINGS
-  //	LBAL_FP_SMOKE: can’t detect a false negative.
+  //	LBAL_FP_SMOKE: the encoding of localized output isn’t portably
+  //	observable, so it can’t detect a false negative.
   //	SEEME
   //	P2419R2 is about the encoding of localized output, which isn’t portably
   //	observable; this checks localized chrono formatting works.
@@ -603,7 +614,6 @@ LBAL_FP_TEST(LIBCPP23, IOS_NOREPLACE) {
 LBAL_FP_TEST(LIBCPP23, IS_IMPLICIT_LIFETIME) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_IS_IMPLICIT_LIFETIME);
 #if LBAL_LIBCPP23_IS_IMPLICIT_LIFETIME
-  //	SEEME
   struct Custom {
     Custom() { }
 
@@ -635,7 +645,6 @@ LBAL_FP_TEST(LIBCPP23, IS_SCOPED_ENUM) {
 LBAL_FP_TEST(LIBCPP23, MDSPAN) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_MDSPAN);
 #if LBAL_LIBCPP23_MDSPAN
-  //	SEEME
   int data[6] = {0, 1, 2, 3, 4, 5};
   std::mdspan m(data, 2, 3);
 
@@ -901,30 +910,42 @@ LBAL_FP_TEST(LIBCPP23, RANGES_NON_DEFAULT_CONSTRUCTIBLE) {
 LBAL_FP_TEST(LIBCPP23, RANGES_RELAXED) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_RANGES_RELAXED);
 #if LBAL_LIBCPP23_RANGES_RELAXED
-  //	LBAL_FP_SMOKE: can’t detect a false negative.
-  //	SEEME
-  //	Projections returning prvalues are accepted by indirect algorithms
-  //	(P2609R3); this is a smoke test.
-  std::vector<std::pair<int, int>> v{{2, 0}, {1, 0}};
+  //	P2609R3’s own example: a projection returning a move-only prvalue, and a
+  //	function that takes it by value. Before, the indirect callable concepts
+  //	also required calling it with `iter_value_t<projected<…>>&`, which can’t
+  //	bind to the by-value parameter.
+  using I = std::ranges::iterator_t<std::ranges::iota_view<int, int>>;
+  auto take = [](std::unique_ptr<int>) { };
+  auto proj = [](int v) {
+    return std::make_unique<int>(v);
+  };
 
-  std::ranges::sort(v, {}, [](const auto& p) {
-    return p.first;
-  });
-  EXPECT_EQ(v.front().first, 1);
+  EXPECT_TRUE((std::indirectly_unary_invocable<
+      decltype(take),
+      std::projected<I, decltype(proj)>
+  >));
 #endif
 }
+
+#if LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS
+namespace lbal_fp_libcpp23 {
+
+//	Only declared: `ranges::range` checks the expressions, it doesn’t call them.
+struct ConstOnlyRange {
+  friend const int* begin(const ConstOnlyRange&);
+  friend const int* end(const ConstOnlyRange&);
+};
+
+}  // namespace lbal_fp_libcpp23
+#endif
 
 LBAL_FP_TEST(LIBCPP23, RANGES_REMOVE_POISON_PILLS) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS);
 #if LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS
-  //	LBAL_FP_SMOKE: can’t detect a false negative.
-  //	SEEME
-  //	P2602R2 changes how customization points look up non-member functions;
-  //	this is a smoke test.
-  int a[] = {1, 2};
-
-  EXPECT_EQ(std::ranges::begin(a), a);
-  EXPECT_EQ(std::ranges::size(a), 2u);
+  //	P2602R2’s own example: with the old poison pills, a type whose
+  //	non-member `begin` and `end` take only a `const&` isn’t a range unless it
+  //	is `const`.
+  EXPECT_TRUE(std::ranges::range<lbal_fp_libcpp23::ConstOnlyRange>);
 #endif
 }
 
@@ -951,7 +972,6 @@ LBAL_FP_TEST(LIBCPP23, RANGES_SLIDE) {
 LBAL_FP_TEST(LIBCPP23, RANGES_STARTS_ENDS_WITH) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_RANGES_STARTS_ENDS_WITH);
 #if LBAL_LIBCPP23_RANGES_STARTS_ENDS_WITH
-  //	SEEME
   std::vector<int> v{1, 2, 3};
 
   EXPECT_TRUE(std::ranges::starts_with(v, std::vector<int>{1, 2}));
@@ -1057,7 +1077,6 @@ LBAL_FP_TEST(LIBCPP23, REFERENCE_FROM_TEMPORARY_TRAITS) {
 LBAL_FP_TEST(LIBCPP23, SHIFT_RANGES) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP23_SHIFT_RANGES);
 #if LBAL_LIBCPP23_SHIFT_RANGES
-  //	SEEME
   std::vector<int> v{1, 2, 3, 4};
   auto rest = std::ranges::shift_left(v, 1);
 

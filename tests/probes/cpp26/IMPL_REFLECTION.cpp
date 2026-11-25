@@ -15,21 +15,24 @@
   SEEME: written from P2996R13; not yet compiled by any compiler available
   here.
 
+  It uses only the core language (`^^`, splicing and comparing reflections),
+  so it doesn’t depend on the library’s `<meta>`.
+
 ------------------------------------------------------------------------------*/
 
 //	lbal
 #include <lucenaBAL/lucenaBAL.hpp>
 
-#if LBAL_CPP26_IMPL_REFLECTION && __has_include(<meta>)
+#if LBAL_CPP26_IMPL_REFLECTION
   //	std
-  #include <meta>
   #include <type_traits>
 
 namespace lbal_fp {
 
 constexpr auto r = ^^int;
 
-static_assert(std::meta::is_type(r));
+static_assert(r == ^^int);
+static_assert(r != ^^long);
 static_assert(std::is_same_v<[:r:], int>);
 
 }  // namespace lbal_fp

@@ -18,7 +18,7 @@
 //	lbal
 #include <lucenaBAL/lucenaBAL.hpp>
 
-#if LBAL_LIBCPP26_REFLECTION_CLEANUP && __has_include(<meta>)
+#if LBAL_LIBCPP26_REFLECTION_CLEANUP
   //	std
   #include <meta>
 

@@ -20,7 +20,7 @@
 //	lbal
 #include <lucenaBAL/lucenaBAL.hpp>
 
-#if LBAL_LIBCPP26_REFLECTION_RENAME_TO_IS_VARARG_FUNCTION && __has_include(<meta>)
+#if LBAL_LIBCPP26_REFLECTION_RENAME_TO_IS_VARARG_FUNCTION
   //	std
   #include <meta>
 

@@ -11,8 +11,7 @@
   Hard false-positive probe for `LBAL_LIBCPP26_CONSTEXPR_FORWARD_LIST`, from
   P3372R3. It only needs to compile; see `lbalFalsePositiveTest.cpp`.
 
-  SEEME: written from the paper; not yet compiled against a library that
-  reports this feature.
+  Checked against libc++ 23 with Clang 23 (C++26).
 
 ------------------------------------------------------------------------------*/
 

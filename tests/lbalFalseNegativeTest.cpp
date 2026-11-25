@@ -8,8 +8,8 @@
   This file is distributed under the University of Illinois Open Source
   License. See LICENSE.md for details.
 
-  Optional tests for false-negative feature tokens, through C++23; built only
-  when the CMake option `LBAL_BUILD_FALSE_NEGATIVE_TESTS` (or
+  Optional tests for false-negative feature tokens, in every Standard; built
+  only when the CMake option `LBAL_BUILD_FALSE_NEGATIVE_TESTS` (or
   `LBAL_BUILD_ALL_FEATURE_TESTS`) is `ON`.
 
   A false negative is a token that is `0` although its feature works. These
@@ -20,7 +20,8 @@
 
   - SKIPPED if the token is nonzero (the false-positive tests cover it), if
     it’s a known absence (`lbalFalseNegativeKnown.hpp`), if its probe is
-    marked `LBAL_FP_SMOKE`, or if it has no probe
+    marked `LBAL_FP_SMOKE`, if it has no probe, or if its fragment doesn’t
+    compile in this mode (that fragment is then left out of this executable)
   - PASSED if its probe doesn’t compile
   - FAILED if it’s a compile-only probe that compiles
   - for a gtest probe that compiles: run here, with its failures collected
@@ -50,6 +51,7 @@ namespace lbal_fn {
 
 LBAL_FN_SOFT(LBAL_FN_REAL)
 LBAL_FN_HARD(LBAL_FN_REAL)
+LBAL_FN_BROKEN(LBAL_FN_REAL)
 
 #undef LBAL_FN_REAL
 
@@ -112,7 +114,8 @@ check(long real, int state, int smoke, void (*probe)(), const char* token) {
 
 /*------------------------------------------------------------------------------
   The gtest probes, as plain functions. Only the tokens whose probes compiled
-  while they were 0 are forced on.
+  while they were 0 are forced on, and only the fragments that compile in this
+  mode are included.
 */
 
 //	generated
@@ -126,16 +129,8 @@ check(long real, int state, int smoke, void (*probe)(), const char* token) {
 
 #define LBAL_FP_REQUIRE(LBAL_FP_token_) static_cast<void>(0)
 
-#include "fragments/lbalFalsePositiveTest-cpp03.inc"
-#include "fragments/lbalFalsePositiveTest-cpp11.inc"
-#include "fragments/lbalFalsePositiveTest-cpp14.inc"
-#include "fragments/lbalFalsePositiveTest-cpp17.inc"
-#include "fragments/lbalFalsePositiveTest-cpp20.inc"
-#include "fragments/lbalFalsePositiveTest-cpp23.inc"
-#include "fragments/lbalFalsePositiveTest-libcpp14.inc"
-#include "fragments/lbalFalsePositiveTest-libcpp17.inc"
-#include "fragments/lbalFalsePositiveTest-libcpp20.inc"
-#include "fragments/lbalFalsePositiveTest-libcpp23.inc"
+//	generated
+#include "lbalFalseNegativeFragments.hpp"
 
 /*------------------------------------------------------------------------------
   One test per token.
@@ -167,6 +162,10 @@ check(long real, int state, int smoke, void (*probe)(), const char* token) {
     );                                                                         \
   }
 
+//	Gtest probes whose fragment doesn’t compile in this mode: the fragment
+//	isn’t included, so there’s no probe to call, and `check` skips them.
+#define LBAL_FN_BROKEN_TEST LBAL_FN_HARD_TEST
+
 #define LBAL_FN_NONE_TEST(LBAL_FN_std_, LBAL_FN_name_)                         \
   GTEST_TEST(lbalFalseNegative, LBAL_FN_std_##_##LBAL_FN_name_) {              \
     GTEST_SKIP()                                                               \
@@ -176,4 +175,5 @@ check(long real, int state, int smoke, void (*probe)(), const char* token) {
 
 LBAL_FN_SOFT(LBAL_FN_SOFT_TEST)
 LBAL_FN_HARD(LBAL_FN_HARD_TEST)
+LBAL_FN_BROKEN(LBAL_FN_BROKEN_TEST)
 LBAL_FN_NONE(LBAL_FN_NONE_TEST)

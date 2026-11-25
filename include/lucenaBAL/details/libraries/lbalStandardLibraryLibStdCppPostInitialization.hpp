@@ -431,6 +431,71 @@
     #define LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY 0
   #endif
 
+  //	SEEME libstdc++ applies P2602R2 (poison pills), P2609R3 (relaxed
+  //	indirect callable concepts) and P2655R3 (`common_reference` for plain
+  //	references) in C++20 mode too, as defect reports, but only raises
+  //	`__cpp_lib_ranges` and `__cpp_lib_common_reference` in C++23. Its status
+  //	page lists P2609R3 from 14.3 and P2655R3 from 15.3, and doesn’t list
+  //	P2602R2. `LBAL_GCC_VERSION` only knows the major version, so these start
+  //	at 15, where all three were checked.
+  #if (LBAL_GCC_VERSION >= 150000) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
+    #if !defined(LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS)
+      #define LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS 202211L
+    #endif
+    #if !defined(LBAL_LIBCPP23_RANGES_RELAXED)
+      #define LBAL_LIBCPP23_RANGES_RELAXED 202302L
+    #endif
+    #if !defined(LBAL_LIBCPP23_COMMON_REFERENCE)
+      #define LBAL_LIBCPP23_COMMON_REFERENCE 202302L
+    #endif
+  #endif
+
+  //	SEEME libstdc++ 15 ships these in C++26 without defining their SD-6
+  //	macros: `<stdbit.h>` and `<stdckdint.h>` (P3370R1), listed in the GCC 15
+  //	release notes, and `ranges::find_last` with a braced value (P3217R0),
+  //	while `__cpp_lib_algorithm_default_value_type` stays at P2248R8’s
+  //	`202403L`. Checked against libstdc++ 15 only.
+  #if (LBAL_GCC_VERSION >= 150000) && (LBAL_cpp_version > LBAL_CPP23_VERSION)
+    #if !defined(LBAL_LIBCPP26_STDBIT_H) && __has_include(<stdbit.h>)
+      #define LBAL_LIBCPP26_STDBIT_H 202603L
+    #endif
+    #if !defined(LBAL_LIBCPP26_STDCKDINT_H) && __has_include(<stdckdint.h>)
+      #define LBAL_LIBCPP26_STDCKDINT_H 202603L
+    #endif
+    #if !defined(LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE)
+      #define LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE 202603L
+    #endif
+  #endif
+
+  //	SEEME With clang, libstdc++ 15’s P2757R3 checks don’t compile: in C++26,
+  //	`basic_format_parse_context::check_dynamic_spec` calls a `consteval`
+  //	member template that’s defined out of line, and clang treats it as
+  //	undefined during constant evaluation. Every dynamic width or precision,
+  //	e.g. `std::format("{:{}}", 1, 3)`, then fails to compile; C++20 and C++23
+  //	modes are unaffected. Only the P2757R3 token is turned off, since the rest
+  //	of `<format>` works.
+  //	VERME Clang 23 with libstdc++ 15; a newer version of either is tested
+  //	again.
+  #if LBAL_TARGET_COMPILER_VANILLA_CLANG                                       \
+      && (__clang_major__ < 24)                                                \
+      && (LBAL_GCC_VERSION < 160000)                                           \
+      && LBAL_LIBCPP26_FORMAT_TYPE_CHECK
+    #undef LBAL_LIBCPP26_FORMAT_TYPE_CHECK
+    #define LBAL_LIBCPP26_FORMAT_TYPE_CHECK 0
+  #endif
+
+  //	SEEME libstdc++’s `std::complex<float>`, `<double>` and `<long double>`
+  //	store a GCC `__complex__` value, and their `operator*=` and `operator/=`
+  //	use its built-in arithmetic, which clang can’t evaluate at compile time.
+  //	So P0415R1 isn’t complete with clang, whatever the libstdc++ version.
+  //	VERME Clang 23; a newer clang is tested again.
+  #if LBAL_TARGET_COMPILER_VANILLA_CLANG                                       \
+      && (__clang_major__ < 24)                                                \
+      && LBAL_LIBCPP20_CONSTEXPR_COMPLEX
+    #undef LBAL_LIBCPP20_CONSTEXPR_COMPLEX
+    #define LBAL_LIBCPP20_CONSTEXPR_COMPLEX 0
+  #endif
+
   #if !defined(LBAL_LIBCPP17_TO_CHARS)                                         \
       && LBAL_LIBCPP17_TO_CHARS_INTEGER                                        \
       && LBAL_LIBCPP17_TO_CHARS_FP

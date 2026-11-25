@@ -412,6 +412,93 @@
     #define LBAL_LIBCPP23_FORMAT_LOCALE 0
   #endif
 
+  //	SEEME libc++ ships these without reporting them, usually because a
+  //	macro is held at a lower value until an unrelated paper that shares the
+  //	next value is done. Versions are from libc++’s status pages
+  //	(`docs/Status/Cxx{17,20,26}Papers.csv`).
+  //
+  //	C++17: P0426R1 (`constexpr` `char_traits` and `string_view`, libc++ 4)
+  //	is reported only from C++20, as `__cpp_lib_constexpr_string{,_view}`.
+  //	The `constexpr` iterators of `array` and `string_view` (P0031R0,
+  //	libc++ 4, and P0858R0, libc++ 12) work in C++17 too, but
+  //	`__cpp_lib_array_constexpr` and `__cpp_lib_string_view` stay at their
+  //	C++17 values there.
+  #if (LBAL_cpp_version > LBAL_CPP14_VERSION)
+    #if !defined(LBAL_LIBCPP17_CONSTEXPR_STRING) && __has_include(<string>)
+      #define LBAL_LIBCPP17_CONSTEXPR_STRING 201611L
+    #endif
+    #if !defined(LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW) && __has_include(<string_view>)
+      #define LBAL_LIBCPP17_CONSTEXPR_STRING_VIEW 201611L
+    #endif
+    #if (_LIBCPP_VERSION >= 12000)
+      #if !defined(LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR) && __has_include(<array>)
+        #define LBAL_LIBCPP20_ARRAY_CONSTEXPR_ITERATOR 201803L
+      #endif
+      #if !defined(LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR)               \
+          && __has_include(<string_view>)
+        #define LBAL_LIBCPP20_STRING_VIEW_CONSTEXPR_ITERATOR 201803L
+      #endif
+    #endif
+  #endif
+
+  //	C++20 and later: P2510R3 (formatting pointers, libc++ 17, a DR against
+  //	C++20). `__cpp_lib_format` is held at `202110L`.
+  #if (LBAL_cpp_version > LBAL_CPP17_VERSION)                                  \
+      && (_LIBCPP_VERSION >= 170000)                                           \
+      && LBAL_LIBCPP20_FORMAT                                                  \
+      && !defined(LBAL_LIBCPP26_FORMAT_POINTERS)
+    #define LBAL_LIBCPP26_FORMAT_POINTERS 202304L
+  #endif
+
+  //	C++20 and later, as defect reports: P2602R2 (poison pills, libc++ 19),
+  //	P2609R3 (relaxed indirect callable concepts, 20) and P2655R3
+  //	(`common_reference`, 21). `__cpp_lib_ranges` and
+  //	`__cpp_lib_common_reference` only reach those values in C++23.
+  #if (LBAL_cpp_version > LBAL_CPP17_VERSION)
+    #if (_LIBCPP_VERSION >= 190000)                                            \
+        && !defined(LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS)
+      #define LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS 202211L
+    #endif
+    #if (_LIBCPP_VERSION >= 200000) && !defined(LBAL_LIBCPP23_RANGES_RELAXED)
+      #define LBAL_LIBCPP23_RANGES_RELAXED 202302L
+    #endif
+    #if (_LIBCPP_VERSION >= 210000) && !defined(LBAL_LIBCPP23_COMMON_REFERENCE)
+      #define LBAL_LIBCPP23_COMMON_REFERENCE 202302L
+    #endif
+  #endif
+
+  //	C++26: P2637R3 (member `visit`, libc++ 19; `__cpp_lib_format` is
+  //	blocked by P2419R2), P2592R3 (`chrono` hashing, libc++ 22), P2821R5
+  //	(`span::at`, 18), P2497R0 (`to_chars` result testing, 18) and P2819R2
+  //	(tuple protocol for `complex`, 19).
+  #if (LBAL_cpp_version > LBAL_CPP23_VERSION)
+    #if (_LIBCPP_VERSION >= 190000)                                            \
+        && LBAL_LIBCPP20_FORMAT                                                \
+        && !defined(LBAL_LIBCPP26_FORMAT_MEMBER_VISIT)
+      #define LBAL_LIBCPP26_FORMAT_MEMBER_VISIT 202306L
+    #endif
+    #if (_LIBCPP_VERSION >= 220000)                                            \
+        && !defined(LBAL_LIBCPP26_CHRONO_HASHING)                              \
+        && __has_include(<chrono>)
+      #define LBAL_LIBCPP26_CHRONO_HASHING 202306L
+    #endif
+    #if (_LIBCPP_VERSION >= 180000)                                            \
+        && !defined(LBAL_LIBCPP26_SPAN_AT)                                     \
+        && __has_include(<span>)
+      #define LBAL_LIBCPP26_SPAN_AT 202311L
+    #endif
+    #if (_LIBCPP_VERSION >= 180000)                                            \
+        && !defined(LBAL_LIBCPP26_TO_CHARS_BOOL_TEST)                          \
+        && __has_include(<charconv>)
+      #define LBAL_LIBCPP26_TO_CHARS_BOOL_TEST 202306L
+    #endif
+    #if (_LIBCPP_VERSION >= 190000)                                            \
+        && !defined(LBAL_LIBCPP26_TUPLE_LIKE_COMPLEX)                          \
+        && __has_include(<complex>)
+      #define LBAL_LIBCPP26_TUPLE_LIKE_COMPLEX 202311L
+    #endif
+  #endif
+
   //	SEEME libc++ only partly implements P2693R1: `thread::id` has a
   //	formatter from libc++ 17, but there is no `<stacktrace>`, so it never
   //	defines `__cpp_lib_formatters` and `LBAL_LIBCPP23_FORMATTERS` stays `0`.
@@ -479,8 +566,9 @@
   #if (_LIBCPP_VERSION < 240000)
     //  `libc++` actually splits this between `std::priority_queue` (via
     //  `std::vector`) and `std::queue` (via `std::deque`) implementations, and
-    //  at least as of Clng 23, only supports the former, which is split out
+    //  at least as of Clang 23, only supports the former, which is split out
     //  into a proxy value as `LBAL_LIBCPP26_CONSTEXPR_QUEUE_PRIORITY_QUEUE`.
+    //  VERME libc++ 23; libc++ 24 is tested again.
     #if defined(LBAL_LIBCPP26_CONSTEXPR_QUEUE)
       #undef LBAL_LIBCPP26_CONSTEXPR_QUEUE
       #define LBAL_LIBCPP26_CONSTEXPR_QUEUE 0

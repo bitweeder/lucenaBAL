@@ -144,6 +144,17 @@
     #endif
   #endif
 
+  //	SEEME clang implements P2963R3 (ordering of constraints involving fold
+  //	expressions) from LLVM 19, Apple clang 17, without raising
+  //	`__cpp_fold_expressions` past `201603L`; see clang’s C++ status page.
+  //	The P2841R7 fixup in the clang header isn’t mapped here, as no Apple
+  //	clang release has been checked against it.
+  #if (LBAL_cpp_version > LBAL_CPP23_VERSION)                                  \
+      && (__clang_major__ >= 17)                                               \
+      && !defined(LBAL_CPP26_FOLD_EXPRESSIONS_CONSTRAINTS)
+    #define LBAL_CPP26_FOLD_EXPRESSIONS_CONSTRAINTS 202406L
+  #endif
+
 //	SEEME
 //	Clang accepts many later-Standard features in earlier modes as
 //	extensions, and predefines their SD-6 macros and `__has_cpp_attribute`

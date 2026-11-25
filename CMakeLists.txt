@@ -129,7 +129,7 @@ set (
 
 cmake_dependent_option (
 	LBAL_BUILD_FALSE_NEGATIVE_TESTS
-	"Build optional tests that check feature tokens for false negatives (through C++23)"
+	"Build optional tests that check feature tokens for false negatives"
 	OFF
 	"BUILD_TESTING"
 	OFF)

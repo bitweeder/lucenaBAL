@@ -19,7 +19,7 @@
 //	lbal
 #include <lucenaBAL/lucenaBAL.hpp>
 
-#if LBAL_LIBCPP26_REFLECTION && __has_include(<meta>)
+#if LBAL_LIBCPP26_REFLECTION
   //	std
   #include <meta>
 

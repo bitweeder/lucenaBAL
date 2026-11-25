@@ -100,6 +100,8 @@ LBAL_FP_TEST(LIBCPP2D, CONSTANT_WRAPPER_REVERT_STRING) {
 LBAL_FP_TEST(LIBCPP2D, EXPECTED_UEXPECTED) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP2D_EXPECTED_UEXPECTED);
 #if LBAL_LIBCPP2D_EXPECTED_UEXPECTED
+  //	LBAL_FP_SMOKE: it doesn’t isolate the paper’s changes, so it can’t detect
+  //	a false negative.
   //	Smoke test; it doesn’t isolate the P3798R1 changes.
   std::expected<int, int> e = std::unexpected(2);
 

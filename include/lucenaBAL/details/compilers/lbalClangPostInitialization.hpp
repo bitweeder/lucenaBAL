@@ -176,6 +176,23 @@
     #endif
   #endif
 
+  //	SEEME clang implements these C++26 features without predefining their
+  //	SD-6 macros. P2963R3 (ordering of constraints involving fold
+  //	expressions) is listed as “Clang 19” on clang’s C++ status page, but
+  //	`__cpp_fold_expressions` stays at `201603L`. P2841R7 (concept and
+  //	variable-template template-parameters) is listed as “No” there, but
+  //	clang 23 accepts it in C++26 under `-pedantic-errors`; the version bound
+  //	is the first release we’ve checked.
+  #if (LBAL_cpp_version > LBAL_CPP23_VERSION)
+    #if (__clang_major__ >= 19)                                                \
+        && !defined(LBAL_CPP26_FOLD_EXPRESSIONS_CONSTRAINTS)
+      #define LBAL_CPP26_FOLD_EXPRESSIONS_CONSTRAINTS 202406L
+    #endif
+    #if (__clang_major__ >= 23) && !defined(LBAL_CPP26_TEMPLATE_PARAMETERS)
+      #define LBAL_CPP26_TEMPLATE_PARAMETERS 202502L
+    #endif
+  #endif
+
 //	SEEME
 //	Clang accepts many later-Standard features in earlier modes as
 //	extensions, and predefines their SD-6 macros and `__has_cpp_attribute`

@@ -275,20 +275,20 @@ out_of_range_index() {
 LBAL_FP_TEST(LIBCPP26, ALGORITHM_DEFAULT_VALUE_TYPE) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE);
 #if LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE
-  //	SEEME
   //	The value parameter defaults to the value type, so a braced list works
-  //	(P2248R8, P3217R0).
+  //	(P2248R8); P3217R0, which this token reports, extends that to
+  //	`ranges::find_last`.
   std::vector<std::pair<int, int>> v{{1, 2}, {3, 4}};
 
   EXPECT_EQ(std::find(v.begin(), v.end(), {3, 4}) - v.begin(), 1);
   EXPECT_EQ(std::ranges::count(v, {1, 2}), 1);
+  EXPECT_EQ(std::ranges::find_last(v, {3, 4}).begin() - v.begin(), 1);
 #endif
 }
 
 LBAL_FP_TEST(LIBCPP26, ALIGNED_ACCESSOR) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_ALIGNED_ACCESSOR);
 #if LBAL_LIBCPP26_ALIGNED_ACCESSOR
-  //	SEEME
   alignas(64) float data[4] = {1.0f, 2.0f, 3.0f, 4.0f};
   std::mdspan<
       float,
@@ -371,7 +371,6 @@ LBAL_FP_TEST(LIBCPP26, ATOMIC_REDUCTIONS) {
 LBAL_FP_TEST(LIBCPP26, ATOMIC_REF_ADDRESS) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_ATOMIC_REF_ADDRESS);
 #if LBAL_LIBCPP26_ATOMIC_REF_ADDRESS
-  //	SEEME
   int value = 0;
   std::atomic_ref<int> ref(value);
 
@@ -398,19 +397,19 @@ LBAL_FP_TEST(LIBCPP26, ATOMIC_REF_SAFER_ADDRESS) {
 LBAL_FP_TEST(LIBCPP26, BIND_FRONT_NTTP_CALLABLES) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES);
 #if LBAL_LIBCPP26_BIND_FRONT_NTTP_CALLABLES
-  //	SEEME
+  //	The token follows `__cpp_lib_bind_front`, so only `bind_front` is checked.
+  //	P2714R1 also adds NTTP overloads of `bind_back` and `not_fn`, but those
+  //	are reported by `__cpp_lib_bind_back` and `__cpp_lib_not_fn`; libc++ 23,
+  //	for one, has the `bind_front` and `not_fn` overloads but not `bind_back`.
   auto from_ten = std::bind_front<std::minus<>{}>(10);
-  auto minus_three = std::bind_back<std::minus<>{}>(3);
 
   EXPECT_EQ(from_ten(3), 7);
-  EXPECT_EQ(minus_three(10), 7);
 #endif
 }
 
 LBAL_FP_TEST(LIBCPP26, BITSET) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_BITSET);
 #if LBAL_LIBCPP26_BITSET
-  //	SEEME
   std::bitset<4> b(std::string_view("1010"));
 
   EXPECT_EQ(b.to_ulong(), 10u);
@@ -420,7 +419,6 @@ LBAL_FP_TEST(LIBCPP26, BITSET) {
 LBAL_FP_TEST(LIBCPP26, CHRONO_HASHING) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_CHRONO_HASHING);
 #if LBAL_LIBCPP26_CHRONO_HASHING
-  //	SEEME
   using namespace std::chrono;
 
   std::unordered_set<seconds> s{seconds(1), seconds(1), seconds(2)};
@@ -432,7 +430,6 @@ LBAL_FP_TEST(LIBCPP26, CHRONO_HASHING) {
 LBAL_FP_TEST(LIBCPP26, CONSTANT_WRAPPER) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_CONSTANT_WRAPPER);
 #if LBAL_LIBCPP26_CONSTANT_WRAPPER
-  //	SEEME
   auto sum = std::cw<2> + std::cw<3>;
 
   EXPECT_EQ(decltype(sum)::value, 5);
@@ -454,7 +451,6 @@ add_one(int x) {
 LBAL_FP_TEST(LIBCPP26, CONSTANT_WRAPPER_UNWRAP_ON_CALL) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_CONSTANT_WRAPPER_UNWRAP_ON_CALL);
 #if LBAL_LIBCPP26_CONSTANT_WRAPPER_UNWRAP_ON_CALL
-  //	SEEME
   //	Calling a wrapped callable with runtime arguments calls it (P3978R3).
   int x = 1;
 
@@ -568,6 +564,8 @@ LBAL_FP_TEST(LIBCPP26, EXCEPTION_PTR_CAST_BETTER_RETURN_TYPES) {
 LBAL_FP_TEST(LIBCPP26, FLAT_MAP_FIXES) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FLAT_MAP_FIXES);
 #if LBAL_LIBCPP26_FLAT_MAP_FIXES
+  //	LBAL_FP_SMOKE: it doesn’t isolate the paper’s changes, so it can’t detect
+  //	a false negative.
   //	SEEME
   //	Smoke test; it doesn’t isolate the P3567R2 changes.
   std::flat_map<int, int> m{{2, 20}, {1, 10}};
@@ -579,6 +577,8 @@ LBAL_FP_TEST(LIBCPP26, FLAT_MAP_FIXES) {
 LBAL_FP_TEST(LIBCPP26, FLAT_SET_FIXES) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FLAT_SET_FIXES);
 #if LBAL_LIBCPP26_FLAT_SET_FIXES
+  //	LBAL_FP_SMOKE: it doesn’t isolate the paper’s changes, so it can’t detect
+  //	a false negative.
   //	SEEME
   //	Smoke test; it doesn’t isolate the P3567R2 changes.
   std::flat_set<int> s{2, 1, 2};
@@ -677,6 +677,8 @@ LBAL_FP_TEST(LIBCPP26, FORMAT_UCHAR) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_ALGORITHM) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_ALGORITHM);
 #if LBAL_LIBCPP26_FREESTANDING_ALGORITHM
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   int a[] = {3, 1, 2};
 
   std::sort(std::begin(a), std::end(a));
@@ -687,6 +689,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_ALGORITHM) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_ALGORITHM_MORE) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_ALGORITHM_MORE);
 #if LBAL_LIBCPP26_FREESTANDING_ALGORITHM_MORE
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   int a[] = {1, 2, 3};
 
@@ -697,6 +701,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_ALGORITHM_MORE) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_ARRAY) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_ARRAY);
 #if LBAL_LIBCPP26_FREESTANDING_ARRAY
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   std::array<int, 2> a{1, 2};
 
   EXPECT_EQ(a.back(), 2);
@@ -706,6 +712,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_ARRAY) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_CHARCONV) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_CHARCONV);
 #if LBAL_LIBCPP26_FREESTANDING_CHARCONV
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   char buffer[4] = {};
 
@@ -717,6 +725,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_CHARCONV) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_CHAR_TRAITS) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_CHAR_TRAITS);
 #if LBAL_LIBCPP26_FREESTANDING_CHAR_TRAITS
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   EXPECT_EQ(std::char_traits<char>::length("abc"), 3u);
 #endif
@@ -725,6 +735,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_CHAR_TRAITS) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_CSTDLIB) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_CSTDLIB);
 #if LBAL_LIBCPP26_FREESTANDING_CSTDLIB
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   EXPECT_EQ(std::abs(-2), 2);
   EXPECT_EQ(std::div(7, 2).rem, 1);
@@ -734,6 +746,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_CSTDLIB) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_CSTRING) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_CSTRING);
 #if LBAL_LIBCPP26_FREESTANDING_CSTRING
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   EXPECT_EQ(std::strlen("abc"), 3u);
   EXPECT_EQ(std::memcmp("ab", "ab", 2), 0);
 #endif
@@ -742,6 +756,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_CSTRING) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_CSTRING_REMOVE_STRTOK) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_CSTRING_REMOVE_STRTOK);
 #if LBAL_LIBCPP26_FREESTANDING_CSTRING_REMOVE_STRTOK
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	`strtok` is no longer required in freestanding (P2937R0); in a hosted
   //	build the rest of `<cstring>` is still there.
   EXPECT_NE(std::strchr("abc", 'b'), nullptr);
@@ -751,6 +767,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_CSTRING_REMOVE_STRTOK) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_CWCHAR) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_CWCHAR);
 #if LBAL_LIBCPP26_FREESTANDING_CWCHAR
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   EXPECT_EQ(std::wcslen(L"ab"), 2u);
 #endif
@@ -759,6 +777,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_CWCHAR) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_ERRC) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_ERRC);
 #if LBAL_LIBCPP26_FREESTANDING_ERRC
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   EXPECT_EQ(static_cast<int>(std::errc::invalid_argument), EINVAL);
 #endif
@@ -767,6 +787,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_ERRC) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_EXECUTION) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_EXECUTION);
 #if LBAL_LIBCPP26_FREESTANDING_EXECUTION
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   EXPECT_TRUE(std::is_execution_policy_v<std::execution::sequenced_policy>);
 #endif
@@ -775,6 +797,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_EXECUTION) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_EXPECTED) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_EXPECTED);
 #if LBAL_LIBCPP26_FREESTANDING_EXPECTED
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   std::expected<int, int> e = 1;
 
   EXPECT_EQ(*e, 1);
@@ -796,6 +820,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_FEATURE_TEST_MACROS) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_FUNCTIONAL) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_FUNCTIONAL);
 #if LBAL_LIBCPP26_FREESTANDING_FUNCTIONAL
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   EXPECT_EQ(std::invoke(std::plus<>{}, 1, 2), 3);
 #endif
@@ -804,6 +830,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_FUNCTIONAL) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_ITERATOR) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_ITERATOR);
 #if LBAL_LIBCPP26_FREESTANDING_ITERATOR
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   int a[] = {1, 2};
 
@@ -814,6 +842,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_ITERATOR) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_MDSPAN) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_MDSPAN);
 #if LBAL_LIBCPP26_FREESTANDING_MDSPAN
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   int data[4] = {};
   std::mdspan m(data, 2, 2);
@@ -825,6 +855,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_MDSPAN) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_MEMORY) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_MEMORY);
 #if LBAL_LIBCPP26_FREESTANDING_MEMORY
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   int x = 0;
 
@@ -835,6 +867,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_MEMORY) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_MEMORY_MORE) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_MEMORY_MORE);
 #if LBAL_LIBCPP26_FREESTANDING_MEMORY_MORE
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   alignas(int) unsigned char storage[sizeof(int)];
   int* p = std::construct_at(reinterpret_cast<int*>(storage), 3);
@@ -847,6 +881,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_MEMORY_MORE) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_NUMERIC) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_NUMERIC);
 #if LBAL_LIBCPP26_FREESTANDING_NUMERIC
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   int a[] = {1, 2, 3};
 
@@ -857,6 +893,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_NUMERIC) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_OPERATOR_NEW) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_OPERATOR_NEW);
 #if LBAL_LIBCPP26_FREESTANDING_OPERATOR_NEW
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   auto p = std::make_unique<int>(1);
 
@@ -867,6 +905,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_OPERATOR_NEW) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_OPTIONAL) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_OPTIONAL);
 #if LBAL_LIBCPP26_FREESTANDING_OPTIONAL
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   std::optional<int> o = 1;
 
   EXPECT_EQ(*o, 1);
@@ -876,6 +916,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_OPTIONAL) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_RANDOM) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_RANDOM);
 #if LBAL_LIBCPP26_FREESTANDING_RANDOM
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   std::minstd_rand engine;
 
@@ -886,6 +928,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_RANDOM) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_RANGES) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_RANGES);
 #if LBAL_LIBCPP26_FREESTANDING_RANGES
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   EXPECT_EQ(std::ranges::distance(std::views::iota(0, 3)), 3);
 #endif
@@ -894,6 +938,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_RANGES) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_RATIO) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_RATIO);
 #if LBAL_LIBCPP26_FREESTANDING_RATIO
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   EXPECT_EQ((std::ratio_add<std::ratio<1, 2>, std::ratio<1, 2>>::num), 1);
 #endif
@@ -902,6 +948,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_RATIO) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_STRING_VIEW) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_STRING_VIEW);
 #if LBAL_LIBCPP26_FREESTANDING_STRING_VIEW
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   EXPECT_EQ(std::string_view("abc").substr(1), "bc");
 #endif
 }
@@ -909,6 +957,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_STRING_VIEW) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_TUPLE) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_TUPLE);
 #if LBAL_LIBCPP26_FREESTANDING_TUPLE
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   EXPECT_EQ(std::get<1>(std::tuple<int, int>(1, 2)), 2);
 #endif
@@ -917,6 +967,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_TUPLE) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_UTILITY) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_UTILITY);
 #if LBAL_LIBCPP26_FREESTANDING_UTILITY
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   int a = 1;
   int b = 2;
@@ -929,6 +981,8 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_UTILITY) {
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_VARIANT) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_VARIANT);
 #if LBAL_LIBCPP26_FREESTANDING_VARIANT
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   std::variant<int, char> v = 'a';
 
   EXPECT_EQ(v.index(), 1u);
@@ -1359,7 +1413,6 @@ LBAL_FP_TEST(LIBCPP26, INPLACE_VECTOR_REMOVE_TRY_APPEND_RANGE) {
 LBAL_FP_TEST(LIBCPP26, INTEGER_SEQUENCE_EXPANSION_STATEMENTS) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS);
 #if LBAL_LIBCPP26_INTEGER_SEQUENCE_EXPANSION_STATEMENTS
-  //	SEEME
   //	`integer_sequence` supports the tuple protocol (P1789R3).
   using Seq = std::index_sequence<4, 5>;
 
@@ -1453,7 +1506,6 @@ LBAL_FP_TEST(LIBCPP26, LINALG_OPTIMIZE_CONJUGATED) {
 LBAL_FP_TEST(LIBCPP26, MDSPAN_DEXTENTS) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_MDSPAN_DEXTENTS);
 #if LBAL_LIBCPP26_MDSPAN_DEXTENTS
-  //	SEEME
   EXPECT_TRUE((std::is_same_v<std::dims<2>, std::dextents<std::size_t, 2>>));
   EXPECT_TRUE((std::is_same_v<std::dims<1, int>, std::dextents<int, 1>>));
 #endif
@@ -1473,7 +1525,6 @@ is_odd(int x) {
 LBAL_FP_TEST(LIBCPP26, NOT_FN_NTTP_CALLABLES) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_NOT_FN_NTTP_CALLABLES);
 #if LBAL_LIBCPP26_NOT_FN_NTTP_CALLABLES
-  //	SEEME
   auto is_even = std::not_fn<lbal_fp_libcpp26::is_odd>();
 
   EXPECT_TRUE(is_even(2));
@@ -1507,7 +1558,6 @@ LBAL_FP_TEST(LIBCPP26, OPTIONAL_RANGE_SUPPORT) {
 LBAL_FP_TEST(LIBCPP26, OPTIONAL_REFERENCE) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_OPTIONAL_REFERENCE);
 #if LBAL_LIBCPP26_OPTIONAL_REFERENCE
-  //	SEEME
   int x = 1;
   std::optional<int&> r = x;
   *r = 2;
@@ -1520,6 +1570,8 @@ LBAL_FP_TEST(LIBCPP26, OPTIONAL_REFERENCE) {
 LBAL_FP_TEST(LIBCPP26, OUT_PTR_MORE) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_OUT_PTR_MORE);
 #if LBAL_LIBCPP26_OUT_PTR_MORE
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	`out_ptr` and `inout_ptr` are freestanding (P2833R2).
   std::unique_ptr<int> p;
   auto make = [](int** out) {
@@ -1607,6 +1659,8 @@ LBAL_FP_TEST(LIBCPP26, POLYMORPHIC) {
 LBAL_FP_TEST(LIBCPP26, PRINT_EFFICIENT) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_PRINT_EFFICIENT);
 #if LBAL_LIBCPP26_PRINT_EFFICIENT
+  //	LBAL_FP_SMOKE: the output is the same with or without P3107R5, so it
+  //	can’t detect a false negative.
   //	SEEME
   //	P3107R5 allows printing without an intermediate string; the output is
   //	unchanged.
@@ -1626,6 +1680,9 @@ LBAL_FP_TEST(LIBCPP26, PRINT_EFFICIENT) {
 LBAL_FP_TEST(LIBCPP26, PRINT_MORE_EFFICIENT) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_PRINT_MORE_EFFICIENT);
 #if LBAL_LIBCPP26_PRINT_MORE_EFFICIENT
+  //	LBAL_FP_SMOKE: `enable_nonlocking_formatter_optimization` comes from
+  //	P3107R5; the types P3235R3 adds aren’t checked, so it can’t detect a
+  //	false negative.
   //	SEEME
   EXPECT_TRUE(std::enable_nonlocking_formatter_optimization<int>);
 #endif
@@ -1713,6 +1770,8 @@ LBAL_FP_TEST(LIBCPP26, RANGES_CONCAT) {
 LBAL_FP_TEST(LIBCPP26, RANGES_FILTER) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_RANGES_FILTER);
 #if LBAL_LIBCPP26_RANGES_FILTER
+  //	LBAL_FP_SMOKE: it doesn’t isolate the paper’s changes, so it can’t detect
+  //	a false negative.
   //	SEEME
   //	Smoke test; it doesn’t isolate the P3725R3 changes.
   std::vector<int> v{1, 2, 3, 4};
@@ -1744,7 +1803,6 @@ LBAL_FP_TEST(LIBCPP26, RANGES_GENERATE_RANDOM) {
 LBAL_FP_TEST(LIBCPP26, RANGES_INDICES) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_RANGES_INDICES);
 #if LBAL_LIBCPP26_RANGES_INDICES
-  //	SEEME
   int sum = 0;
 
   for (auto i : std::views::indices(4))
@@ -1756,6 +1814,8 @@ LBAL_FP_TEST(LIBCPP26, RANGES_INDICES) {
 LBAL_FP_TEST(LIBCPP26, RANGES_REMOVE_COMMON_REF_REQ) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_RANGES_REMOVE_COMMON_REF_REQ);
 #if LBAL_LIBCPP26_RANGES_REMOVE_COMMON_REF_REQ
+  //	LBAL_FP_SMOKE: it doesn’t isolate the paper’s changes, so it can’t detect
+  //	a false negative.
   //	Indirect callables no longer need a common reference between the
   //	iterator’s reference and value types (P2997R1); smoke test.
   std::vector<int> a{1, 2};
@@ -1782,6 +1842,8 @@ LBAL_FP_TEST(LIBCPP26, RANGES_RESERVE_HINT) {
 LBAL_FP_TEST(LIBCPP26, RATIO) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_RATIO);
 #if LBAL_LIBCPP26_RATIO
+  //	LBAL_FP_SMOKE: the new SI prefixes need a wider `intmax_t` than 64-bit
+  //	implementations have, so it can’t detect a false negative.
   //	The 2022 SI prefixes (P2734R0) don’t fit in a 64-bit `intmax_t`, so they
   //	only exist on wider implementations; this checks the existing ones.
   EXPECT_EQ(std::exa::num, 1'000'000'000'000'000'000);
@@ -1805,12 +1867,15 @@ LBAL_FP_TEST(LIBCPP26, RCU) {
 LBAL_FP_TEST(LIBCPP26, REFERENCE_WRAPPER) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_REFERENCE_WRAPPER);
 #if LBAL_LIBCPP26_REFERENCE_WRAPPER
-  int a = 1;
-  int b = 1;
-  int c = 2;
+  //	`std::string`’s comparisons are templates, so before P2944R3 they can’t
+  //	see through a `reference_wrapper`; `int`s would compare after an implicit
+  //	conversion in any mode.
+  std::string a = "a";
+  std::string b = "a";
+  std::string c = "c";
 
   EXPECT_TRUE(std::ref(a) == std::ref(b));
-  EXPECT_TRUE(std::ref(a) == 1);
+  EXPECT_TRUE(std::ref(a) == a);
   EXPECT_TRUE(std::ref(a) < std::ref(c));
 #endif
 }
@@ -1830,18 +1895,26 @@ LBAL_FP_TEST(LIBCPP26, REPLACEABLE_CONTRACT_VIOLATION_HANDLER) {
 LBAL_FP_TEST(LIBCPP26, SATURATION_ARITHMETIC) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_SATURATION_ARITHMETIC);
 #if LBAL_LIBCPP26_SATURATION_ARITHMETIC
+  //	P4052R0 renamed these functions, so a library that reports it only has
+  //	the new names (libc++ 23, for one).
+  #if LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING
+  EXPECT_EQ(std::saturating_add<std::uint8_t>(250, 10), 255);
+  EXPECT_EQ(std::saturating_sub<std::uint8_t>(5, 10), 0);
+  EXPECT_EQ(std::saturating_mul<std::int8_t>(100, 2), 127);
+  EXPECT_EQ(std::saturating_cast<std::int8_t>(1000), 127);
+  #else
   EXPECT_EQ(std::add_sat<std::uint8_t>(250, 10), 255);
   EXPECT_EQ(std::sub_sat<std::uint8_t>(5, 10), 0);
   EXPECT_EQ(std::mul_sat<std::int8_t>(100, 2), 127);
   EXPECT_EQ(std::saturate_cast<std::int8_t>(1000), 127);
+  #endif
 #endif
 }
 
 LBAL_FP_TEST(LIBCPP26, SATURATION_ARITHMETIC_RENAMING) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING);
 #if LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING
-  //	SEEME
-  //	The new names are from P4052R0 and unverified.
+  //	The new names are from P4052R0.
   EXPECT_EQ(std::saturating_add<std::uint8_t>(250, 10), 255);
   EXPECT_EQ(std::saturating_cast<std::int8_t>(1000), 127);
 #endif
@@ -2034,6 +2107,8 @@ LBAL_FP_TEST(LIBCPP26, SPAN_AT) {
 LBAL_FP_TEST(LIBCPP26, SPAN_MORE) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_SPAN_MORE);
 #if LBAL_LIBCPP26_SPAN_MORE
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
   //	`span` is freestanding (P2833R2).
   int data[] = {1, 2, 3};
 
@@ -2044,7 +2119,6 @@ LBAL_FP_TEST(LIBCPP26, SPAN_MORE) {
 LBAL_FP_TEST(LIBCPP26, SSTREAM_FROM_STRING_VIEW) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_SSTREAM_FROM_STRING_VIEW);
 #if LBAL_LIBCPP26_SSTREAM_FROM_STRING_VIEW
-  //	SEEME
   std::istringstream in(std::string_view("1 2"));
   int a = 0;
   int b = 0;
@@ -2061,7 +2135,6 @@ LBAL_FP_TEST(LIBCPP26, SSTREAM_FROM_STRING_VIEW) {
 LBAL_FP_TEST(LIBCPP26, STDBIT_H) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_STDBIT_H);
 #if LBAL_LIBCPP26_STDBIT_H
-  //	SEEME
   EXPECT_EQ(stdc_count_ones(0b1011u), 3u);
   EXPECT_TRUE(stdc_has_single_bit(8u));
 #endif
@@ -2070,7 +2143,6 @@ LBAL_FP_TEST(LIBCPP26, STDBIT_H) {
 LBAL_FP_TEST(LIBCPP26, STDCKDINT_H) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_STDCKDINT_H);
 #if LBAL_LIBCPP26_STDCKDINT_H
-  //	SEEME
   int result = 0;
 
   EXPECT_TRUE(ckd_add(&result, INT_MAX, 1));
@@ -2082,7 +2154,6 @@ LBAL_FP_TEST(LIBCPP26, STDCKDINT_H) {
 LBAL_FP_TEST(LIBCPP26, STRING_SUBVIEW) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_STRING_SUBVIEW);
 #if LBAL_LIBCPP26_STRING_SUBVIEW
-  //	SEEME
   std::string s = "hello";
 
   EXPECT_EQ(s.subview(1, 3), "ell");

@@ -32,8 +32,9 @@
 	  	`tests/lbalFalseNegativeKnown.hpp` is declared in an overview (the
 	  	`LBAL_CPP<nn>_VERSION` constants aside), so no fixup sets a token that
 	  	nothing documents or tests
-		- `LBAL_FN_STANDARD_TAGS` in `tests/lbalFalseNegative.cmake` lists exactly
-	  	the overview Standards through C++23
+		- `tests/lbalFalsePositiveTest.cpp` includes exactly one
+	  	`fragments/lbalFalsePositiveTest-<std>.inc` per overview Standard; the
+	  	false-negative tests find their Standards from the overviews themselves
 
 	SD-6 mappings are not checked, as some tokens legitimately have none.
 
@@ -63,18 +64,52 @@ set (
 		#	No implementation offers real garbage collection; always `0`.
 		LBAL_CPP11_MINIMAL_GARBAGE_COLLECTION
 		LBAL_CPP17_DEDUCTION_GUIDES_DR
-		LBAL_CPP17_INHERITING_CONSTRUCTORS_REVISED
-		LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_TUNEUP
+		LBAL_CPP26_IMPL_REFLECTION_CLEANUP
+		LBAL_CPP2D_CONSTEVAL_ONLY
 		LBAL_LIBCPP23_ALGORITHM_ITERATOR_REQUIREMENTS
 		LBAL_LIBCPP23_BARRIER_RELAXED_COMPLETION
-		LBAL_LIBCPP23_COMMON_REFERENCE
 		LBAL_LIBCPP23_FORMAT_ENCODINGS
-		LBAL_LIBCPP23_RANGES_RELAXED
-		LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS
+		LBAL_LIBCPP26_FLAT_MAP_FIXES
+		LBAL_LIBCPP26_FLAT_SET_FIXES
+		LBAL_LIBCPP26_IS_WITHIN_LIFETIME_EXTEND
+		LBAL_LIBCPP26_PRINT_EFFICIENT
+		LBAL_LIBCPP26_PRINT_MORE_EFFICIENT
+		LBAL_LIBCPP26_RANGES_FILTER
+		LBAL_LIBCPP26_RANGES_REMOVE_COMMON_REF_REQ
+		#	Needs a wider `intmax_t` than 64-bit implementations have.
+		LBAL_LIBCPP26_RATIO
+		LBAL_LIBCPP2D_EXPECTED_UEXPECTED
+		#	Freestanding requirements: a hosted library always has these.
+		LBAL_LIBCPP26_FREESTANDING_ALGORITHM
+		LBAL_LIBCPP26_FREESTANDING_ALGORITHM_MORE
+		LBAL_LIBCPP26_FREESTANDING_ARRAY
+		LBAL_LIBCPP26_FREESTANDING_CHARCONV
+		LBAL_LIBCPP26_FREESTANDING_CHAR_TRAITS
+		LBAL_LIBCPP26_FREESTANDING_CSTDLIB
+		LBAL_LIBCPP26_FREESTANDING_CSTRING
+		LBAL_LIBCPP26_FREESTANDING_CSTRING_REMOVE_STRTOK
+		LBAL_LIBCPP26_FREESTANDING_CWCHAR
+		LBAL_LIBCPP26_FREESTANDING_ERRC
+		LBAL_LIBCPP26_FREESTANDING_EXECUTION
+		LBAL_LIBCPP26_FREESTANDING_EXPECTED
+		LBAL_LIBCPP26_FREESTANDING_FUNCTIONAL
+		LBAL_LIBCPP26_FREESTANDING_ITERATOR
+		LBAL_LIBCPP26_FREESTANDING_MDSPAN
+		LBAL_LIBCPP26_FREESTANDING_MEMORY
+		LBAL_LIBCPP26_FREESTANDING_MEMORY_MORE
+		LBAL_LIBCPP26_FREESTANDING_NUMERIC
+		LBAL_LIBCPP26_FREESTANDING_OPERATOR_NEW
+		LBAL_LIBCPP26_FREESTANDING_OPTIONAL
+		LBAL_LIBCPP26_FREESTANDING_RANDOM
+		LBAL_LIBCPP26_FREESTANDING_RANGES
+		LBAL_LIBCPP26_FREESTANDING_RATIO
+		LBAL_LIBCPP26_FREESTANDING_STRING_VIEW
+		LBAL_LIBCPP26_FREESTANDING_TUPLE
+		LBAL_LIBCPP26_FREESTANDING_UTILITY
+		LBAL_LIBCPP26_FREESTANDING_VARIANT
+		LBAL_LIBCPP26_OUT_PTR_MORE
+		LBAL_LIBCPP26_SPAN_MORE
 )
-
-#	The last Standard the false-negative tests cover.
-set (LBAL_COVERAGE_FN_LAST_YEAR 2023)
 
 set (FRAGMENTS_DIR "${LBAL_SOURCE_DIR}/include/lucenaBAL/details/fragments")
 set (TESTS_DIR "${LBAL_SOURCE_DIR}/tests")
@@ -97,7 +132,7 @@ set (SOFT_COUNT 0)
 set (ALL_TOKENS)
 set (SMOKE_TOKENS)
 set (NO_PROBE_TOKENS)
-set (FN_EXPECTED_TAGS)
+set (OVERVIEW_TAGS)
 
 #	Report a problem; the script fails at the end if there were any.
 macro (lbal_coverage_error MESSAGE)
@@ -143,14 +178,7 @@ foreach (OVERVIEW IN LISTS OVERVIEW_FILES)
 	string (REGEX REPLACE "^lbalFeatureSetup-overview-" "" STD "${NAME}")
 	string (TOUPPER "${STD}" STD_UPPER)
 
-	#	Standards through C++23 are in scope for the false-negative tests.
-	if (STD MATCHES "^(lib)?cpp([0-9][0-9])$")
-		math (EXPR STD_YEAR "2000 + ${CMAKE_MATCH_2}")
-
-		if (STD_YEAR LESS_EQUAL LBAL_COVERAGE_FN_LAST_YEAR)
-			list (APPEND FN_EXPECTED_TAGS ${STD})
-		endif ()
-	endif ()
+	list (APPEND OVERVIEW_TAGS ${STD})
 
 	file (READ "${OVERVIEW}" OVERVIEW_CONTENT)
 	string (
@@ -326,20 +354,31 @@ foreach (SCANNED IN LISTS SCANNED_FILES)
 	endforeach ()
 endforeach ()
 
-#	The false-negative tests must cover exactly the Standards through C++23.
-file (READ "${TESTS_DIR}/lbalFalseNegative.cmake" FN_CONTENT)
+#	The false-positive executable lists its fragments by hand, so check that it
+#	includes each overview Standard’s fragment exactly once, and nothing else.
+#	(The false-negative tests find their Standards from the overviews.)
+set (FP_SOURCE "${TESTS_DIR}/lbalFalsePositiveTest.cpp")
+file (READ "${FP_SOURCE}" FP_CONTENT)
+string (REGEX MATCHALL "#[ \t]*include[ \t]+\"fragments/lbalFalsePositiveTest-[a-z0-9]+\\.inc\"" FP_INCLUDES "${FP_CONTENT}")
+set (FP_TAGS)
 
-if (FN_CONTENT MATCHES "set \\(LBAL_FN_STANDARD_TAGS ([^)]*)\\)")
-	separate_arguments (FN_TAGS UNIX_COMMAND "${CMAKE_MATCH_1}")
-	list (SORT FN_TAGS)
-	list (SORT FN_EXPECTED_TAGS)
+foreach (FP_INCLUDE IN LISTS FP_INCLUDES)
+	string (REGEX REPLACE ".*lbalFalsePositiveTest-([a-z0-9]+)\\.inc.*" "\\1" FP_TAG "${FP_INCLUDE}")
 
-	if (NOT FN_TAGS STREQUAL FN_EXPECTED_TAGS)
-		lbal_coverage_error ("LBAL_FN_STANDARD_TAGS in lbalFalseNegative.cmake is `${FN_TAGS}`; the overviews through C++23 are `${FN_EXPECTED_TAGS}`")
+	if (FP_TAG IN_LIST FP_TAGS)
+		lbal_coverage_error ("${FP_SOURCE} includes fragments/lbalFalsePositiveTest-${FP_TAG}.inc more than once")
+	elseif (NOT FP_TAG IN_LIST OVERVIEW_TAGS)
+		lbal_coverage_error ("${FP_SOURCE} includes fragments/lbalFalsePositiveTest-${FP_TAG}.inc, but there’s no overview for ${FP_TAG}")
 	endif ()
-else ()
-	lbal_coverage_error ("Can’t find `set (LBAL_FN_STANDARD_TAGS …)` in lbalFalseNegative.cmake")
-endif ()
+
+	list (APPEND FP_TAGS ${FP_TAG})
+endforeach ()
+
+foreach (STD IN LISTS OVERVIEW_TAGS)
+	if (NOT STD IN_LIST FP_TAGS)
+		lbal_coverage_error ("${FP_SOURCE} doesn’t include fragments/lbalFalsePositiveTest-${STD}.inc")
+	endif ()
+endforeach ()
 
 if (MISSING_COUNT GREATER 0)
 	message (FATAL_ERROR "${MISSING_COUNT} problem(s) across ${TOKEN_COUNT} tokens.")

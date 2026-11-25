@@ -21,7 +21,7 @@
   WinAPI Platforms
 */
 
-//	This duplicates the test peformed to include this file in the first place.
+//	This duplicates the test performed to include this file in the first place.
 #if LBAL_TARGET_OS_WINAPI
   //	We make no assumptions about the addressing model based on processor,
   //	instead relying on intrinsics.

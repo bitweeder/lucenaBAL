@@ -30,7 +30,7 @@
   Apple Platforms
 */
 
-//	This duplicates the test peformed to include this file in the first place.
+//	This duplicates the test performed to include this file in the first place.
 #if LBAL_TARGET_OS_MACOS || LBAL_TARGET_OS_IOS || LBAL_TARGET_OS_IOS_SIM
   /*
     SEEME - bitweeder

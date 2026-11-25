@@ -11,7 +11,8 @@
   Hard false-positive probe for `LBAL_LIBCPP23_CONSTEXPR_BITSET`, from
   P2417R2. It only needs to compile; see `lbalFalsePositiveTest.cpp`.
 
-  SEEME: not yet compiled against a library that reports this feature.
+  Checked against libstdc++ 15 with Clang 23 (C++23, C++26); libstdc++ 15 with
+  GCC 15 (C++23, C++26); libc++ 23 with Clang 23 (C++23, C++26).
 
 ------------------------------------------------------------------------------*/
 

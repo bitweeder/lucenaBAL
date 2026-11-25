@@ -40,6 +40,26 @@ known_absent(std::string_view token) {
     return "clang lists P1907R1 as only partly implemented; see "
            "LBAL_CPP20_NONTYPE_TEMPLATE_ARGS_FLOATS";
   }
+
+  //	clang 23 lists P1306R5 as partial: iterating expansion statements
+  //	can’t be expanded yet, though the probe’s enumerating form (over a
+  //	braced list) works.
+  if (token == "LBAL_CPP26_EXPANSION_STATEMENTS") {
+    return "clang lists P1306R5 (expansion statements) as only partly "
+           "implemented";
+  }
+#endif
+
+#if LBAL_TARGET_STANDARD_LIBRARY_LIBCPP                                        \
+    || LBAL_TARGET_STANDARD_LIBRARY_APPLE_LIBCPP
+  //	The C library supplies `<stdbit.h>` and `<stdckdint.h>`, so the probes
+  //	compile, but libc++ lists P3370R1, which makes them C++ headers with
+  //	their own requirements, as not started.
+  if (token == "LBAL_LIBCPP26_STDBIT_H" || token == "LBAL_LIBCPP26_STDCKDINT_H")
+  {
+    return "libc++ lists P3370R1 (C23 library headers) as not implemented; "
+           "the C library provides the functions";
+  }
 #endif
 
   static_cast<void>(token);

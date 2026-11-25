@@ -137,9 +137,9 @@ CI always runs the suite on every platform at `latest`, and a false positive fai
 
 #### False negatives
 
-A token that is `0` although its feature works is a false negative. A second optional suite checks for these, for every language, attribute and library token up through C++23, by reusing the false-positive tests: each zero-valued token’s probe is compiled with the token forced on, and if the probe compiles (and, for a behavioral test, passes), the token is wrong. Enable it by adding `-DLBAL_BUILD_FALSE_NEGATIVE_TESTS=ON` to line 2; `LBAL_FALSE_NEGATIVE_TEST_STANDARDS` chooses the Standard modes, in the same way as for false positives.
+A token that is `0` although its feature works is a false negative. A second optional suite checks for these, for every language, attribute and library token, C++26 and accepted C++29 proposals included, by reusing the false-positive tests: each zero-valued token’s probe is compiled with the token forced on, and if the probe compiles (and, for a behavioral test, passes), the token is wrong. Enable it by adding `-DLBAL_BUILD_FALSE_NEGATIVE_TESTS=ON` to line 2; `LBAL_FALSE_NEGATIVE_TEST_STANDARDS` chooses the Standard modes, in the same way as for false positives.
 
-The forced compiles happen when CMake configures the project, since failing to compile is the expected result. This adds a few seconds for the newest Standard, and a few minutes for each older Standard requested, as more tokens are `0` there. Results are cached, so reconfiguring only re-runs what changed. The results are reported under CTest as `cxx<NN>.lbalFalseNegative.<token>`: a nonzero token is skipped, as the false-positive suite covers it.
+The forced compiles happen when CMake configures the project, since failing to compile is the expected result. This adds a couple of minutes for the newest Standard, and up to several minutes for each older Standard requested, as more tokens are `0` there. Results are cached, so reconfiguring only re-runs what changed. The results are reported under CTest as `cxx<NN>.lbalFalseNegative.<token>`: a nonzero token is skipped, as the false-positive suite covers it.
 
 CI always runs this suite too, at `latest`; set the repository variable `LBAL_FALSE_NEGATIVE_TEST_STANDARDS` to add older Standards.
 

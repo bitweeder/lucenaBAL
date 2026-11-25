@@ -21,7 +21,7 @@
   POSIX Platforms
 */
 
-//	This duplicates the test peformed to include this file in the first place.
+//	This duplicates the test performed to include this file in the first place.
 #if LBAL_TARGET_OS_X11
   #ifndef LBAL_TARGET_API_POSIX
     #define LBAL_TARGET_API_POSIX 1

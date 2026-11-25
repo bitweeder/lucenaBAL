@@ -13,18 +13,21 @@
 
   SEEME: smoke test only; it doesn’t isolate the P3795R2 changes.
 
+  LBAL_FP_SMOKE: it also passes with only P2996R13, so it can’t detect a false
+  negative.
+
+  It uses only the core language (`^^`, splicing and comparing reflections),
+  so it doesn’t depend on the library’s `<meta>`.
+
 ------------------------------------------------------------------------------*/
 
 //	lbal
 #include <lucenaBAL/lucenaBAL.hpp>
 
-#if LBAL_CPP26_IMPL_REFLECTION_CLEANUP && __has_include(<meta>)
-  //	std
-  #include <meta>
-
+#if LBAL_CPP26_IMPL_REFLECTION_CLEANUP
 namespace lbal_fp {
 
-static_assert(std::meta::is_type(^^int));
+static_assert(^^int != ^^long);
 
 }  // namespace lbal_fp
 #endif

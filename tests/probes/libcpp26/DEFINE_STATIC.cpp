@@ -19,7 +19,7 @@
 //	lbal
 #include <lucenaBAL/lucenaBAL.hpp>
 
-#if LBAL_LIBCPP26_DEFINE_STATIC && __has_include(<meta>)
+#if LBAL_LIBCPP26_DEFINE_STATIC
   //	std
   #include <array>
   #include <meta>
