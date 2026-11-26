@@ -116,6 +116,12 @@
   #endif
 #endif  //  LBAL_LIBCPP26_CONSTEXPR_ATOMIC
 
+#if !defined(LBAL_LIBCPP26_CONSTEXPR_CMATH_MORE)
+  #if __cpp_lib_constexpr_cmath >= 202306L
+    #define LBAL_LIBCPP26_CONSTEXPR_CMATH_MORE __cpp_lib_constexpr_cmath
+  #endif
+#endif  //  LBAL_LIBCPP26_CONSTEXPR_CMATH_MORE
+
 #if !defined(LBAL_LIBCPP26_CONSTEXPR_COMPLEX)
   #if __cpp_lib_constexpr_complex >= 202306L
     #define LBAL_LIBCPP26_CONSTEXPR_COMPLEX __cpp_lib_constexpr_complex
@@ -133,6 +139,13 @@
     #define LBAL_LIBCPP26_CONSTEXPR_EXCEPTIONS __cpp_lib_constexpr_exceptions
   #endif
 #endif  //  LBAL_LIBCPP26_CONSTEXPR_EXCEPTIONS
+
+#if !defined(LBAL_LIBCPP26_CONSTEXPR_EXCEPTION_TYPES)
+  #if __cpp_lib_constexpr_exceptions >= 202411L
+    #define LBAL_LIBCPP26_CONSTEXPR_EXCEPTION_TYPES                            \
+      __cpp_lib_constexpr_exceptions
+  #endif
+#endif  //  LBAL_LIBCPP26_CONSTEXPR_EXCEPTION_TYPES
 
 #if !defined(LBAL_LIBCPP26_CONSTEXPR_FLAT_MAP)
   #if __cpp_lib_constexpr_flat_map >= 202502L
@@ -159,6 +172,13 @@
   #endif
 #endif  //  LBAL_LIBCPP26_CONSTEXPR_FORWARD_LIST
 
+#if !defined(LBAL_LIBCPP26_CONSTEXPR_INPLACE_VECTOR)
+  #if __cpp_lib_constexpr_inplace_vector >= 202502L
+    #define LBAL_LIBCPP26_CONSTEXPR_INPLACE_VECTOR                             \
+      __cpp_lib_constexpr_inplace_vector
+  #endif
+#endif  //  LBAL_LIBCPP26_CONSTEXPR_INPLACE_VECTOR
+
 #if !defined(LBAL_LIBCPP26_CONSTEXPR_LIST)
   #if __cpp_lib_constexpr_list >= 202502L
     #define LBAL_LIBCPP26_CONSTEXPR_LIST __cpp_lib_constexpr_list
@@ -176,6 +196,12 @@
     #define LBAL_LIBCPP26_CONSTEXPR_MEMORY_SHARED_PTR __cpp_lib_constexpr_memory
   #endif
 #endif  //  LBAL_LIBCPP26_CONSTEXPR_MEMORY_SHARED_PTR
+
+#if !defined(LBAL_LIBCPP26_CONSTEXPR_PLACEMENT_NEW)
+  #if __cpp_lib_constexpr_new >= 202406L
+    #define LBAL_LIBCPP26_CONSTEXPR_PLACEMENT_NEW __cpp_lib_constexpr_new
+  #endif
+#endif  //  LBAL_LIBCPP26_CONSTEXPR_PLACEMENT_NEW
 
 #if !defined(LBAL_LIBCPP26_CONSTEXPR_QUEUE)
   #if __cpp_lib_constexpr_queue >= 202502L
@@ -228,6 +254,12 @@
       __cpp_lib_constrained_equality
   #endif
 #endif  //  LBAL_LIBCPP26_CONSTRAINED_EQUALITY_EXPECTED
+
+#if !defined(LBAL_LIBCPP26_CONTRACTS)
+  #if __cpp_lib_contracts >= 202502L
+    #define LBAL_LIBCPP26_CONTRACTS __cpp_lib_contracts
+  #endif
+#endif  //  LBAL_LIBCPP26_CONTRACTS
 
 #if !defined(LBAL_LIBCPP26_COPYABLE_FUNCTION)
   #if __cpp_lib_copyable_function >= 202306L
@@ -473,6 +505,13 @@
   #endif
 #endif  //  LBAL_LIBCPP26_FREESTANDING_OPTIONAL
 
+#if !defined(LBAL_LIBCPP26_FREESTANDING_OPTIONAL_REFERENCE)
+  #if __cpp_lib_freestanding_optional >= 202506L
+    #define LBAL_LIBCPP26_FREESTANDING_OPTIONAL_REFERENCE                      \
+      __cpp_lib_freestanding_optional
+  #endif
+#endif  //  LBAL_LIBCPP26_FREESTANDING_OPTIONAL_REFERENCE
+
 #if !defined(LBAL_LIBCPP26_FREESTANDING_RANDOM)
   #if __cpp_lib_freestanding_random >= 202502L
     #define LBAL_LIBCPP26_FREESTANDING_RANDOM __cpp_lib_freestanding_random
@@ -490,6 +529,13 @@
     #define LBAL_LIBCPP26_FREESTANDING_RATIO __cpp_lib_freestanding_ratio
   #endif
 #endif  //  LBAL_LIBCPP26_FREESTANDING_RATIO
+
+#if !defined(LBAL_LIBCPP26_FREESTANDING_SATURATION_ARITHMETIC)
+  #if __cpp_lib_freestanding_numeric >= 202311L
+    #define LBAL_LIBCPP26_FREESTANDING_SATURATION_ARITHMETIC                   \
+      __cpp_lib_freestanding_numeric
+  #endif
+#endif  //  LBAL_LIBCPP26_FREESTANDING_SATURATION_ARITHMETIC
 
 #if !defined(LBAL_LIBCPP26_FREESTANDING_STRING_VIEW)
   #if __cpp_lib_freestanding_string_view >= 202311L
@@ -528,8 +574,14 @@
   #endif
 #endif  //  LBAL_LIBCPP26_FUNCTION_REF
 
-#if !defined(LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION)
+#if !defined(LBAL_LIBCPP26_FUNCTION_REF_CONSTANT_WRAPPER)
   #if __cpp_lib_function_ref >= 202603L
+    #define LBAL_LIBCPP26_FUNCTION_REF_CONSTANT_WRAPPER __cpp_lib_function_ref
+  #endif
+#endif  //  LBAL_LIBCPP26_FUNCTION_REF_CONSTANT_WRAPPER
+
+#if !defined(LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION)
+  #if __cpp_lib_function_ref >= 202604L
     #define LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION                 \
       __cpp_lib_function_ref
   #endif
@@ -718,6 +770,13 @@
     #define LBAL_LIBCPP26_IS_STRUCTURAL __cpp_lib_is_structural
   #endif
 #endif  //  LBAL_LIBCPP26_IS_STRUCTURAL
+
+#if !defined(LBAL_LIBCPP26_IS_SUFFICIENTLY_ALIGNED)
+  #if __cpp_lib_is_sufficiently_aligned >= 202411L
+    #define LBAL_LIBCPP26_IS_SUFFICIENTLY_ALIGNED                              \
+      __cpp_lib_is_sufficiently_aligned
+  #endif
+#endif  //  LBAL_LIBCPP26_IS_SUFFICIENTLY_ALIGNED
 
 #if !defined(LBAL_LIBCPP26_IS_VIRTUAL_BASE_OF)
   #if __cpp_lib_is_virtual_base_of >= 202406L
@@ -996,6 +1055,12 @@
   #endif
 #endif  //  LBAL_LIBCPP26_SIMD_COMPLEX
 
+#if !defined(LBAL_LIBCPP26_SIMD_CONSTEVAL_BROADCAST)
+  #if __cpp_lib_simd >= 202603L
+    #define LBAL_LIBCPP26_SIMD_CONSTEVAL_BROADCAST __cpp_lib_simd
+  #endif
+#endif  //  LBAL_LIBCPP26_SIMD_CONSTEVAL_BROADCAST
+
 #if !defined(LBAL_LIBCPP26_SIMD_DEDUCTION_GUIDES)
   #if __cpp_lib_simd >= 202511L
     #define LBAL_LIBCPP26_SIMD_DEDUCTION_GUIDES __cpp_lib_simd
@@ -1007,6 +1072,12 @@
     #define LBAL_LIBCPP26_SIMD_EXTEND __cpp_lib_simd
   #endif
 #endif  //  LBAL_LIBCPP26_SIMD_EXTEND
+
+#if !defined(LBAL_LIBCPP26_SIMD_GENERIC_REDUCTIONS)
+  #if __cpp_lib_simd >= 202603L
+    #define LBAL_LIBCPP26_SIMD_GENERIC_REDUCTIONS __cpp_lib_simd
+  #endif
+#endif  //  LBAL_LIBCPP26_SIMD_GENERIC_REDUCTIONS
 
 #if !defined(LBAL_LIBCPP26_SIMD_NAMESPACES)
   #if __cpp_lib_simd >= 202502L
@@ -1025,13 +1096,6 @@
     #define LBAL_LIBCPP26_SIMD_RANGE __cpp_lib_simd
   #endif
 #endif  //  LBAL_LIBCPP26_SIMD_RANGE
-
-#if !defined(LBAL_LIBCPP26_SMART_POINTER_OWNER_EQUALITY)
-  #if __cpp_lib_smart_pointer_owner_equality >= 202306L
-    #define LBAL_LIBCPP26_SMART_POINTER_OWNER_EQUALITY                         \
-      __cpp_lib_smart_pointer_owner_equality
-  #endif
-#endif  //  LBAL_LIBCPP26_SMART_POINTER_OWNER_EQUALITY
 
 #if !defined(LBAL_LIBCPP26_SMART_PTR_OWNER_EQUALITY)
   #if __cpp_lib_smart_ptr_owner_equality >= 202306L

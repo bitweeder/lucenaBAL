@@ -158,6 +158,8 @@
   proposal, or `0` if the proposal described here is not supported.
   - `202002L` [P0848R3](https://wg21.link/P0848R3) Conditionally Trivial Special
   Member Functions
+  - `202002L` [P2493R0](https://wg21.link/P2493R0) Missing feature test macros
+  for C++20 core papers
 */
 #ifndef LBAL_CPP20_CONCEPTS_CONDITIONALLY_TRIVIAL_SPECIAL_MEMBER_FUNCTIONS
   #define LBAL_CPP20_CONCEPTS_CONDITIONALLY_TRIVIAL_SPECIAL_MEMBER_FUNCTIONS 0
@@ -227,6 +229,8 @@
   proposal, or `0` if the proposal described here is not supported.
   - `202002L` [P1330R0](https://wg21.link/P1330R0) **PDF** Changing the active
   member of a union inside constexpr
+  - `202002L` [P2493R0](https://wg21.link/P2493R0) Missing feature test macros
+  for C++20 core papers
 */
 #ifndef LBAL_CPP20_CONSTEXPR_CHANGE_ACTIVE_UNION_MEMBER
   #define LBAL_CPP20_CONSTEXPR_CHANGE_ACTIVE_UNION_MEMBER 0
@@ -254,8 +258,6 @@
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201811L` [P1002R1](https://wg21.link/P1002R1) **PDF** Try-catch blocks in
-  constexpr functions
   - `201811L` [P1327R1](https://wg21.link/P1327R1) Allowing `dynamic_cast`,
   polymorphic `typeid` in Constant Expressions
 
@@ -300,7 +302,7 @@
 
 /**
   @def LBAL_CPP20_CONSTEXPR_TRIVIAL_DEFAULT_INITIALIZATION
-  @brief Address an inconsistency in the lambda specification
+  @brief Permit trivial default initialization in `constexpr` contexts
   @details SD-6 equivalent: `__cpp_constexpr >= 201907L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
@@ -317,7 +319,7 @@
 
 /**
   @def LBAL_CPP20_CONSTEXPR_TRY_CATCH
-  @brief Permit unevaluated inline assembly in constexpr functions
+  @brief Allow `try`-`catch` blocks in `constexpr` functions
   @details SD-6 equivalent: `__cpp_constexpr >= 201811L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
@@ -341,6 +343,10 @@
   proposal, or `0` if the proposal described here is not supported.
   - `202002L` [P1330R0](https://wg21.link/P1330R0) **PDF** Changing the active
   member of a union inside constexpr
+
+  @remark P1330R0 was adopted alongside the papers behind
+  `201811L`; P2493R0 later gave it its own value, `202002L`, which
+  `LBAL_CPP20_CONSTEXPR_CHANGE_ACTIVE_UNION_MEMBER` tests.
 
   @remark This and the `LBAL_CPP20_CONSTEXPR_TRY_CATCH` and
   `LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM` tokens are aliases for each other.
@@ -453,7 +459,7 @@
 
 /**
   @def LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST
-  @brief Generic (Polymorphic) Lambda Expressions
+  @brief Allow familiar template syntax for generic lambdas
   @details SD-6 equivalent: `__cpp_generic_lambdas >= 201707L`. Note that
   `__cpp_generic_lambdas` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
@@ -587,7 +593,7 @@
 
 /**
   @def LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR_EQUALITY_FIX
-  @brief This is the original three-way comparison operator
+  @brief Stop deriving `==` and `!=` from `<=>`
   @details SD-6 equivalent: `__cpp_impl_three_way_comparison >= 201902L`. Note
   that `__cpp_impl_three_way_comparison` has multiple values associated with
   it from a number of different proposals, so this token will have the value

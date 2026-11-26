@@ -21,6 +21,8 @@ After the maintainer imports regenerated files, bring the hand-written side up t
 - When a token moves to another Standard (e.g. `LIBCPP26_SIMD_IOTA` became `LIBCPP2D_SIMD_IOTA`), move its probe to that Standard's fragment or directory, along with any `#include` guard that names it.
 - Re-read the changed `@def`s. A recurring generator mistake is listing one paper under two SD-6 values; usually the later value belongs to a later paper with its own token. Report it as a generator follow-up.
 - Check that probes and fixups still match changed mapping thresholds.
+- Check removed tokens: a token can disappear because it was a duplicate whose SD-6 macro was misspelled (`LIBCPP26_SMART_POINTER_OWNER_EQUALITY` for `__cpp_lib_smart_ptr_owner_equality`). Fold anything useful from its probe into the surviving token's probe before deleting it.
+- Make sure every probe whose comment says it doesn't isolate its paper carries `LBAL_FP_SMOKE` and is in `LBAL_COVERAGE_SMOKE`. An untagged one passes locally and then fails the false-negative test on the first library that ships the base feature without the newer paper.
 
 ## Commands
 
@@ -145,7 +147,7 @@ CI always enables these tests on every platform at `latest`: the soft probes run
 - **Probes must fail without their feature.** A probe for a later revision must fail where the earlier revision is all there is. Lessons so far:
   - Check the effect, not just acceptance: MSVC accepts `[[no_unique_address]]` but ignores it, so that probe also checks `sizeof`.
   - Use rules that require a diagnostic. A rule the older Standard made "no diagnostic required" won't fail (see the P2448R2 probe, `CONSTEXPR_RELAX_RESTRICTIONS`).
-  - Avoid compiler built-ins: GCC evaluates `fabs` and similar at compile time in every mode, so `LIBCPP23_CONSTEXPR_CMATH` also checks `std::div`.
+  - Avoid compiler built-ins: GCC evaluates `fabs` and similar at compile time in every mode, so `LIBCPP23_CONSTEXPR_CMATH` also checks `std::div`. GCC 15 also folds `sqrt`, `sin`, `exp`, `pow`, `fmod`, `tgamma` and most other `<cmath>` calls, but not `lgamma` or three-argument `hypot`, which is why `LIBCPP26_CONSTEXPR_CMATH_MORE` uses those.
   - Don't rely on undefined behavior or indeterminate values (e.g. construct over storage filled with a non-zero pattern; `RANGE_BASED_FOR_TEMPORARIES` iterates a namespace-scope array).
   - Compile-only probes are included under `-Werror`, so silence any warning the feature itself brings with a pragma, as `HARDWARE_INTERFERENCE_SIZE` does for `-Winterference-size`.
   - Cover everything the token's macro covers. libc++ 21 made `flat_map` constexpr but not `flat_multimap`, so `CONSTEXPR_FLAT_MAP` uses both.

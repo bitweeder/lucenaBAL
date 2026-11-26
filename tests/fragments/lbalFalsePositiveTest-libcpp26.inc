@@ -193,12 +193,15 @@
   #include <rcu>
 #endif
 
-#if LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER
+#if LBAL_LIBCPP26_CONTRACTS                                                    \
+    || LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER
   #include <contracts>
 #endif
 
 #if LBAL_LIBCPP26_SIMD                                                         \
     || LBAL_LIBCPP26_SIMD_BIT                                                  \
+    || LBAL_LIBCPP26_SIMD_CONSTEVAL_BROADCAST                                  \
+    || LBAL_LIBCPP26_SIMD_GENERIC_REDUCTIONS                                   \
     || LBAL_LIBCPP26_SIMD_CHUNK                                                \
     || LBAL_LIBCPP26_SIMD_COMPLEX                                              \
     || LBAL_LIBCPP26_SIMD_DEDUCTION_GUIDES                                     \
@@ -526,6 +529,20 @@ LBAL_FP_TEST(LIBCPP26, CONSTRAINED_EQUALITY_EXPECTED) {
 #endif
 }
 
+LBAL_FP_TEST(LIBCPP26, CONTRACTS) {
+  LBAL_FP_REQUIRE(LBAL_LIBCPP26_CONTRACTS);
+#if LBAL_LIBCPP26_CONTRACTS
+  //	SEEME
+  //	The `<contracts>` library types from P2900R14.
+  EXPECT_FALSE(
+      std::is_copy_constructible_v<std::contracts::contract_violation>
+  );
+  EXPECT_NE(
+      std::contracts::assertion_kind::pre, std::contracts::assertion_kind::post
+  );
+#endif
+}
+
 LBAL_FP_TEST(LIBCPP26, COPYABLE_FUNCTION) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_COPYABLE_FUNCTION);
 #if LBAL_LIBCPP26_COPYABLE_FUNCTION
@@ -597,7 +614,8 @@ LBAL_FP_TEST(LIBCPP26, EXCEPTION_PTR_CAST_BETTER_RETURN_TYPES) {
 #if LBAL_LIBCPP26_EXCEPTION_PTR_CAST_BETTER_RETURN_TYPES                       \
     && LBAL_CPP03_EXCEPTIONS
   //	SEEME
-  //	Smoke test; it doesn’t isolate the P3981R2 changes.
+  //	LBAL_FP_SMOKE: it doesn’t isolate the P3981R2 changes, so it can’t
+  //	detect a false negative.
   auto p = std::make_exception_ptr(std::runtime_error("x"));
 
   EXPECT_TRUE(
@@ -975,6 +993,18 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_OPTIONAL) {
 #endif
 }
 
+LBAL_FP_TEST(LIBCPP26, FREESTANDING_OPTIONAL_REFERENCE) {
+  LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_OPTIONAL_REFERENCE);
+#if LBAL_LIBCPP26_FREESTANDING_OPTIONAL_REFERENCE
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
+  int x = 1;
+  std::optional<int&> r = x;
+
+  EXPECT_EQ(&*r, &x);
+#endif
+}
+
 LBAL_FP_TEST(LIBCPP26, FREESTANDING_RANDOM) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_RANDOM);
 #if LBAL_LIBCPP26_FREESTANDING_RANDOM
@@ -1004,6 +1034,19 @@ LBAL_FP_TEST(LIBCPP26, FREESTANDING_RATIO) {
   //	freestanding requirements, so it can’t detect a false negative.
   //	SEEME
   EXPECT_EQ((std::ratio_add<std::ratio<1, 2>, std::ratio<1, 2>>::num), 1);
+#endif
+}
+
+LBAL_FP_TEST(LIBCPP26, FREESTANDING_SATURATION_ARITHMETIC) {
+  LBAL_FP_REQUIRE(LBAL_LIBCPP26_FREESTANDING_SATURATION_ARITHMETIC);
+#if LBAL_LIBCPP26_FREESTANDING_SATURATION_ARITHMETIC
+  //	LBAL_FP_SMOKE: hosted libraries have this whether or not they meet the
+  //	freestanding requirements, so it can’t detect a false negative.
+  #if LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING
+  EXPECT_EQ(std::saturating_add<std::uint8_t>(250, 10), 255);
+  #else
+  EXPECT_EQ(std::add_sat<std::uint8_t>(250, 10), 255);
+  #endif
 #endif
 }
 
@@ -1085,11 +1128,41 @@ LBAL_FP_TEST(LIBCPP26, FUNCTION_REF) {
 #endif
 }
 
+#if LBAL_LIBCPP26_FUNCTION_REF_CONSTANT_WRAPPER
+namespace lbal_fp_libcpp26 {
+
+struct Adder {
+  int base;
+
+  int
+  add(int x) const {
+    return base + x;
+  }
+};
+
+}  // namespace lbal_fp_libcpp26
+#endif
+
+LBAL_FP_TEST(LIBCPP26, FUNCTION_REF_CONSTANT_WRAPPER) {
+  LBAL_FP_REQUIRE(LBAL_LIBCPP26_FUNCTION_REF_CONSTANT_WRAPPER);
+#if LBAL_LIBCPP26_FUNCTION_REF_CONSTANT_WRAPPER
+  //	SEEME
+  //	P3948R1 replaces `constant_arg` with `constant_wrapper` in the
+  //	constructors that bind an object; constructing from `cw<f>` alone already
+  //	worked without it.
+  lbal_fp_libcpp26::Adder a{10};
+  std::function_ref<int(int)> f(std::cw<&lbal_fp_libcpp26::Adder::add>, a);
+
+  EXPECT_EQ(f(5), 15);
+#endif
+}
+
 LBAL_FP_TEST(LIBCPP26, FUNCTION_REF_LESS_DOUBLE_INDIRECTION) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION);
 #if LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION
   //	SEEME
-  //	Smoke test; it doesn’t isolate the P3961R1 changes.
+  //	LBAL_FP_SMOKE: it doesn’t isolate the P3961R1 changes, so it can’t
+  //	detect a false negative.
   auto twice = [](int x) {
     return x * 2;
   };
@@ -1428,7 +1501,8 @@ LBAL_FP_TEST(LIBCPP26, INPLACE_VECTOR_BETTER_RETURN_TYPES) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_INPLACE_VECTOR_BETTER_RETURN_TYPES);
 #if LBAL_LIBCPP26_INPLACE_VECTOR_BETTER_RETURN_TYPES
   //	SEEME
-  //	Smoke test; it doesn’t isolate the P3981R2 changes.
+  //	LBAL_FP_SMOKE: it doesn’t isolate the P3981R2 changes, so it can’t
+  //	detect a false negative.
   std::inplace_vector<int, 1> v;
 
   EXPECT_TRUE(static_cast<bool>(v.try_push_back(1)));
@@ -1475,6 +1549,18 @@ LBAL_FP_TEST(LIBCPP26, IS_STRUCTURAL) {
   //	SEEME
   EXPECT_TRUE(std::is_structural_v<int>);
   EXPECT_FALSE(std::is_structural_v<std::string>);
+#endif
+}
+
+LBAL_FP_TEST(LIBCPP26, IS_SUFFICIENTLY_ALIGNED) {
+  LBAL_FP_REQUIRE(LBAL_LIBCPP26_IS_SUFFICIENTLY_ALIGNED);
+#if LBAL_LIBCPP26_IS_SUFFICIENTLY_ALIGNED
+  //	Checked against libc++ 23 with Clang 23 (C++26).
+  alignas(16) int x[4] = {};
+
+  EXPECT_TRUE(std::is_sufficiently_aligned<alignof(int)>(&x[1]));
+  EXPECT_TRUE(std::is_sufficiently_aligned<16>(&x[0]));
+  EXPECT_FALSE(std::is_sufficiently_aligned<16>(&x[1]));
 #endif
 }
 
@@ -1989,7 +2075,8 @@ LBAL_FP_TEST(LIBCPP26, SENDERS_OPTIONAL) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_SENDERS_OPTIONAL);
 #if LBAL_LIBCPP26_SENDERS_OPTIONAL
   //	SEEME
-  //	Smoke test; it doesn’t isolate the P3570R2 changes.
+  //	LBAL_FP_SMOKE: it doesn’t isolate the P3570R2 changes, so it can’t
+  //	detect a false negative.
   auto result = std::this_thread::sync_wait(std::execution::just(3));
 
   ASSERT_TRUE(result.has_value());
@@ -2040,11 +2127,25 @@ LBAL_FP_TEST(LIBCPP26, SIMD_COMPLEX) {
 #endif
 }
 
+LBAL_FP_TEST(LIBCPP26, SIMD_CONSTEVAL_BROADCAST) {
+  LBAL_FP_REQUIRE(LBAL_LIBCPP26_SIMD_CONSTEVAL_BROADCAST);
+#if LBAL_LIBCPP26_SIMD_CONSTEVAL_BROADCAST
+  //	SEEME
+  //	Assigning an `int` constant that `float` represents exactly is ill-formed
+  //	before P4012R1 (the paper’s own example).
+  std::simd::vec<float> x(0.5f);
+  x = 1;
+
+  EXPECT_EQ(x[0], 1.0f);
+#endif
+}
+
 LBAL_FP_TEST(LIBCPP26, SIMD_DEDUCTION_GUIDES) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_SIMD_DEDUCTION_GUIDES);
 #if LBAL_LIBCPP26_SIMD_DEDUCTION_GUIDES
   //	SEEME
-  //	Smoke test; it doesn’t isolate the P3922R1 changes.
+  //	LBAL_FP_SMOKE: it doesn’t isolate the P3922R1 changes, so it can’t
+  //	detect a false negative.
   std::simd::vec<int, 4> v(1);
   auto m = v == v;
 
@@ -2056,12 +2157,24 @@ LBAL_FP_TEST(LIBCPP26, SIMD_EXTEND) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_SIMD_EXTEND);
 #if LBAL_LIBCPP26_SIMD_EXTEND
   //	SEEME
-  //	Smoke test; it doesn’t isolate the P2876R3 changes.
+  //	LBAL_FP_SMOKE: it doesn’t isolate the P2876R3 changes, so it can’t
+  //	detect a false negative.
   std::simd::vec<int, 4> v([](int i) {
     return i;
   });
 
   EXPECT_EQ(v[3], 3);
+#endif
+}
+
+LBAL_FP_TEST(LIBCPP26, SIMD_GENERIC_REDUCTIONS) {
+  LBAL_FP_REQUIRE(LBAL_LIBCPP26_SIMD_GENERIC_REDUCTIONS);
+#if LBAL_LIBCPP26_SIMD_GENERIC_REDUCTIONS
+  //	SEEME
+  //	P3690R1 adds scalar overloads of the reductions.
+  EXPECT_EQ(std::simd::reduce(5), 5);
+  EXPECT_EQ(std::simd::reduce_min(3), 3);
+  EXPECT_EQ(std::simd::reduce_max(3), 3);
 #endif
 }
 
@@ -2102,9 +2215,9 @@ LBAL_FP_TEST(LIBCPP26, SIMD_RANGE) {
 #endif
 }
 
-LBAL_FP_TEST(LIBCPP26, SMART_POINTER_OWNER_EQUALITY) {
-  LBAL_FP_REQUIRE(LBAL_LIBCPP26_SMART_POINTER_OWNER_EQUALITY);
-#if LBAL_LIBCPP26_SMART_POINTER_OWNER_EQUALITY
+LBAL_FP_TEST(LIBCPP26, SMART_PTR_OWNER_EQUALITY) {
+  LBAL_FP_REQUIRE(LBAL_LIBCPP26_SMART_PTR_OWNER_EQUALITY);
+#if LBAL_LIBCPP26_SMART_PTR_OWNER_EQUALITY
   //	SEEME
   auto sp = std::make_shared<int>(1);
   std::weak_ptr<int> wp = sp;
@@ -2112,21 +2225,11 @@ LBAL_FP_TEST(LIBCPP26, SMART_POINTER_OWNER_EQUALITY) {
     wp
   };
 
+  EXPECT_TRUE(std::owner_equal{}(sp, wp));
+  EXPECT_EQ(std::owner_hash{}(sp), std::owner_hash{}(wp));
   EXPECT_TRUE(sp.owner_equal(wp));
   EXPECT_EQ(sp.owner_hash(), wp.owner_hash());
   EXPECT_EQ(s.count(sp), 1u);
-#endif
-}
-
-LBAL_FP_TEST(LIBCPP26, SMART_PTR_OWNER_EQUALITY) {
-  LBAL_FP_REQUIRE(LBAL_LIBCPP26_SMART_PTR_OWNER_EQUALITY);
-#if LBAL_LIBCPP26_SMART_PTR_OWNER_EQUALITY
-  //	SEEME
-  auto sp = std::make_shared<int>(1);
-  std::weak_ptr<int> wp = sp;
-
-  EXPECT_TRUE(std::owner_equal{}(sp, wp));
-  EXPECT_EQ(std::owner_hash{}(sp), std::owner_hash{}(wp));
 #endif
 }
 
@@ -2227,7 +2330,8 @@ LBAL_FP_TEST(LIBCPP26, SUBMDSPAN_FIX) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_SUBMDSPAN_FIX);
 #if LBAL_LIBCPP26_SUBMDSPAN_FIX
   //	SEEME
-  //	Smoke test; it doesn’t isolate the P3355R1 changes.
+  //	LBAL_FP_SMOKE: it doesn’t isolate the P3355R1 changes, so it can’t
+  //	detect a false negative.
   int data[4] = {0, 1, 2, 3};
   std::mdspan m(data, 2, 2);
 
@@ -2239,7 +2343,8 @@ LBAL_FP_TEST(LIBCPP26, SUBMDSPAN_FUTURE_PROOF) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_SUBMDSPAN_FUTURE_PROOF);
 #if LBAL_LIBCPP26_SUBMDSPAN_FUTURE_PROOF
   //	SEEME
-  //	Smoke test; it doesn’t isolate the P3663R3 changes.
+  //	LBAL_FP_SMOKE: it doesn’t isolate the P3663R3 changes, so it can’t
+  //	detect a false negative.
   int data[4] = {0, 1, 2, 3};
   std::mdspan m(data, 2, 2);
 
@@ -2264,7 +2369,8 @@ LBAL_FP_TEST(LIBCPP26, SUBMDSPAN_UPDATE) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_SUBMDSPAN_UPDATE);
 #if LBAL_LIBCPP26_SUBMDSPAN_UPDATE
   //	SEEME
-  //	Tracks later working-draft changes; smoke test.
+  //	LBAL_FP_SMOKE: it tracks later working-draft changes without isolating
+  //	them, so it can’t detect a false negative.
   int data[4] = {0, 1, 2, 3};
   std::mdspan m(data, 2, 2);
 

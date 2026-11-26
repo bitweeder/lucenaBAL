@@ -13,6 +13,9 @@
 
   SEEME: smoke test only; it doesn’t isolate the P3795R2 changes.
 
+  LBAL_FP_SMOKE: it also passes with only P2996R13, so it can’t detect a false
+  negative.
+
 ------------------------------------------------------------------------------*/
 
 //	lbal

@@ -93,8 +93,8 @@ LBAL_FP_TEST(LIBCPP2D, BITOPS_PERMUTATIONS) {
 LBAL_FP_TEST(LIBCPP2D, CONSTANT_WRAPPER_REVERT_STRING) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP2D_CONSTANT_WRAPPER_REVERT_STRING);
 #if LBAL_LIBCPP2D_CONSTANT_WRAPPER_REVERT_STRING
-  //	P4206R0 removes string support; the rest of `constant_wrapper` is
-  //	unaffected, so this is a smoke test.
+  //	LBAL_FP_SMOKE: P4206R0 removes string support, and the rest of
+  //	`constant_wrapper` is unaffected, so this can’t detect a false negative.
   EXPECT_EQ(std::cw<3>.value, 3);
 #endif
 }

@@ -33,6 +33,8 @@
   SD-6 equivalent: `__cpp_lib_algorithm_default_value_type >= 202603L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
+  - `202603L` [P2248R8](https://wg21.link/P2248R8) Enabling list-initialization
+  for algorithms
   - `202603L` [P3217R0](https://wg21.link/P3217R0) Adjoints to "Enabling
   list-initialization for algorithms": `find_last`
   - `202603L` [P3787R2](https://wg21.link/P3787R2) Adjoints to "Enabling
@@ -265,7 +267,7 @@
 
 /**
   @def LBAL_LIBCPP26_CONSTEXPR_ALGORITHMS_STABLE_SORT
-  @brief Add `constexpr` to `std::swap` and related functions
+  @brief Make stable sorting `constexpr`
   @details SD-6 equivalent: `__cpp_lib_constexpr_algorithms >= 202306L`. Note
   that `__cpp_lib_constexpr_algorithms` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
@@ -292,6 +294,22 @@
 */
 #ifndef LBAL_LIBCPP26_CONSTEXPR_ATOMIC
   #define LBAL_LIBCPP26_CONSTEXPR_ATOMIC 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_CONSTEXPR_CMATH_MORE
+  @brief Add more `constexpr` support to `<cmath>`
+  @details SD-6 equivalent: `__cpp_lib_constexpr_cmath >= 202306L`. Note that
+  `__cpp_lib_constexpr_cmath` has multiple values associated with it from a
+  number of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202306L` [P1383R2](https://wg21.link/P1383R2) **PDF** More `constexpr` for
+  `<cmath>` and `<complex>`
+
+  @sa `<cmath>` `<cstdlib>`
+*/
+#ifndef LBAL_LIBCPP26_CONSTEXPR_CMATH_MORE
+  #define LBAL_LIBCPP26_CONSTEXPR_CMATH_MORE 0
 #endif
 
 /**
@@ -326,7 +344,7 @@
 
 /**
   @def LBAL_LIBCPP26_CONSTEXPR_EXCEPTIONS
-  @brief constexpr exception types
+  @brief Make more exception types `constexpr`
   @details SD-6 equivalent: `__cpp_lib_constexpr_exceptions >= 202502L`. Note
   that `__cpp_lib_constexpr_exceptions` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
@@ -339,6 +357,24 @@
 */
 #ifndef LBAL_LIBCPP26_CONSTEXPR_EXCEPTIONS
   #define LBAL_LIBCPP26_CONSTEXPR_EXCEPTIONS 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_CONSTEXPR_EXCEPTION_TYPES
+  @brief Make standard exception types `constexpr`
+  @details SD-6 equivalent: `__cpp_lib_constexpr_exceptions >= 202411L`. Note
+  that `__cpp_lib_constexpr_exceptions` has multiple values associated with it
+  from a number of different proposals, so this token will have the value of
+  the latest supported proposal, or `0` if the proposal described here is not
+  supported.
+  - `202411L` [P3068R6](https://wg21.link/P3068R6) Allowing exception throwing
+  in constant-evaluation
+
+  @sa `<exception>` `<expected>` `<format>` `<optional>` `<stdexcept>`
+  `<variant>`
+*/
+#ifndef LBAL_LIBCPP26_CONSTEXPR_EXCEPTION_TYPES
+  #define LBAL_LIBCPP26_CONSTEXPR_EXCEPTION_TYPES 0
 #endif
 
 /**
@@ -400,6 +436,21 @@
 #endif
 
 /**
+  @def LBAL_LIBCPP26_CONSTEXPR_INPLACE_VECTOR
+  @brief Make `std::inplace_vector` `constexpr` for non-trivial types
+  @details SD-6 equivalent: `__cpp_lib_constexpr_inplace_vector >= 202502L`.
+  This token will have a value of `0` if the proposal described here is not
+  supported.
+  - `202502L` [P3074R7](https://wg21.link/P3074R7) trivial `union`s (was
+  `std::uninitialized<T>`)
+
+  @sa `<inplace_vector>`
+*/
+#ifndef LBAL_LIBCPP26_CONSTEXPR_INPLACE_VECTOR
+  #define LBAL_LIBCPP26_CONSTEXPR_INPLACE_VECTOR 0
+#endif
+
+/**
   @def LBAL_LIBCPP26_CONSTEXPR_LIST
   @brief constexpr containers and adapters
   @details SD-6 equivalent: `__cpp_lib_constexpr_list >= 202502L`. This token
@@ -441,6 +492,19 @@
 */
 #ifndef LBAL_LIBCPP26_CONSTEXPR_MEMORY_SHARED_PTR
   #define LBAL_LIBCPP26_CONSTEXPR_MEMORY_SHARED_PTR 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_CONSTEXPR_PLACEMENT_NEW
+  @brief Add `constexpr` placement `new`
+  @details SD-6 equivalent: `__cpp_lib_constexpr_new >= 202406L`. This token
+  will have a value of `0` if the proposal described here is not supported.
+  - `202406L` [P2747R2](https://wg21.link/P2747R2) `constexpr` placement new
+
+  @sa `freestanding` `<new>`
+*/
+#ifndef LBAL_LIBCPP26_CONSTEXPR_PLACEMENT_NEW
+  #define LBAL_LIBCPP26_CONSTEXPR_PLACEMENT_NEW 0
 #endif
 
 /**
@@ -535,7 +599,8 @@
 
 /**
   @def LBAL_LIBCPP26_CONSTRAINED_EQUALITY
-  @brief Comparisons for reference_wrapper
+  @brief Constrain the comparison operators of `std::pair`, `std::tuple`,
+  `std::optional` and `std::variant`
   @details SD-6 equivalent: `__cpp_lib_constrained_equality >= 202403L`. Note
   that `__cpp_lib_constrained_equality` has multiple values associated with it
   from a number of different proposals, so this token will have the value of
@@ -543,8 +608,6 @@
   supported.
   - `202403L` [P2944R3](https://wg21.link/P2944R3) Comparisons for
   `reference_wrapper`
-  - `202411L` [P3379R0](https://wg21.link/P3379R0) Constrain std::expected
-  equality operators
 
   @sa `<expected>` `freestanding` `<optional>` `<tuple>` `<utility>` `<variant>`
 */
@@ -560,11 +623,26 @@
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
   supported.
+  - `202411L` [P3379R0](https://wg21.link/P3379R0) Constrain std::expected
+  equality operators
 
   @sa `<expected>` `freestanding` `<optional>` `<tuple>` `<utility>` `<variant>`
 */
 #ifndef LBAL_LIBCPP26_CONSTRAINED_EQUALITY_EXPECTED
   #define LBAL_LIBCPP26_CONSTRAINED_EQUALITY_EXPECTED 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_CONTRACTS
+  @brief Add the `<contracts>` library support
+  @details SD-6 equivalent: `__cpp_lib_contracts >= 202502L`. This token will
+  have a value of `0` if the proposal described here is not supported.
+  - `202502L` [P2900R14](https://wg21.link/P2900R14) **PDF** Contracts for C++
+
+  @sa `<contracts>` `freestanding`
+*/
+#ifndef LBAL_LIBCPP26_CONTRACTS
+  #define LBAL_LIBCPP26_CONTRACTS 0
 #endif
 
 /**
@@ -1180,6 +1258,24 @@
 #endif
 
 /**
+  @def LBAL_LIBCPP26_FREESTANDING_OPTIONAL_REFERENCE
+  @brief Make `std::optional<T&>` freestanding
+  @details SD-6 equivalent: `__cpp_lib_freestanding_optional >= 202506L`. Note
+  that `__cpp_lib_freestanding_optional` has multiple values associated with
+  it from a number of different proposals, so this token will have the value
+  of the latest supported proposal, or `0` if the proposal described here is
+  not supported.
+  - `202506L` [P2988R12](https://wg21.link/P2988R12) **PDF** std::optional<T&>
+  - `202506L` [P3836R2](https://wg21.link/P3836R2) Make `optional<T&>` trivially
+  copyable (NB comment US 134-215)
+
+  @sa `freestanding` `<optional>`
+*/
+#ifndef LBAL_LIBCPP26_FREESTANDING_OPTIONAL_REFERENCE
+  #define LBAL_LIBCPP26_FREESTANDING_OPTIONAL_REFERENCE 0
+#endif
+
+/**
   @def LBAL_LIBCPP26_FREESTANDING_RANDOM
   @brief Freestanding Library: algorithm, numeric, and random
   @details SD-6 equivalent: `__cpp_lib_freestanding_random >= 202502L`.
@@ -1222,6 +1318,22 @@
 */
 #ifndef LBAL_LIBCPP26_FREESTANDING_RATIO
   #define LBAL_LIBCPP26_FREESTANDING_RATIO 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_FREESTANDING_SATURATION_ARITHMETIC
+  @brief Make saturation arithmetic freestanding
+  @details SD-6 equivalent: `__cpp_lib_freestanding_numeric >= 202311L`. Note
+  that `__cpp_lib_freestanding_numeric` has multiple values associated with it
+  from a number of different proposals, so this token will have the value of
+  the latest supported proposal, or `0` if the proposal described here is not
+  supported.
+  - `202311L` [P0543R3](https://wg21.link/P0543R3) Saturation arithmetic
+
+  @sa `freestanding` `<numeric>`
+*/
+#ifndef LBAL_LIBCPP26_FREESTANDING_SATURATION_ARITHMETIC
+  #define LBAL_LIBCPP26_FREESTANDING_SATURATION_ARITHMETIC 0
 #endif
 
 /**
@@ -1316,15 +1428,32 @@
 #endif
 
 /**
+  @def LBAL_LIBCPP26_FUNCTION_REF_CONSTANT_WRAPPER
+  @brief Construct `std::function_ref` from `std::constant_wrapper` instead
+  of `std::constant_arg`
+  @details SD-6 equivalent: `__cpp_lib_function_ref >= 202603L`. Note that
+  `__cpp_lib_function_ref` has multiple values associated with it from a number
+  of different proposals, so this token will have the value of the latest
+  supported proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P3948R1](https://wg21.link/P3948R1) **PDF** `constant_wrapper` is
+  the only tool needed for passing constant expressions via function arguments
+
+  @sa `freestanding` `<functional>`
+*/
+#ifndef LBAL_LIBCPP26_FUNCTION_REF_CONSTANT_WRAPPER
+  #define LBAL_LIBCPP26_FUNCTION_REF_CONSTANT_WRAPPER 0
+#endif
+
+/**
   @def LBAL_LIBCPP26_FUNCTION_REF_LESS_DOUBLE_INDIRECTION
   @brief Less double indirection in `function_ref`
   @details
 
-  SD-6 equivalent: `__cpp_lib_function_ref >= 202603L`. Note that
+  SD-6 equivalent: `__cpp_lib_function_ref >= 202604L`. Note that
   `__cpp_lib_function_ref` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202603L` [P3961R1](https://wg21.link/P3961R1) Less double indirection in
+  - `202604L` [P3961R1](https://wg21.link/P3961R1) Less double indirection in
   `function_ref`
 
   @remark The C++26 FDIS erroneously gives `__cpp_lib_function_ref` a value of
@@ -1757,6 +1886,21 @@
 #endif
 
 /**
+  @def LBAL_LIBCPP26_IS_SUFFICIENTLY_ALIGNED
+  @brief Add `std::is_sufficiently_aligned`
+  @details SD-6 equivalent: `__cpp_lib_is_sufficiently_aligned >= 202411L`.
+  This token will have a value of `0` if the proposal described here is not
+  supported.
+  - `202411L` [P2897R7](https://wg21.link/P2897R7) aligned_accessor: An mdspan
+  accessor expressing pointer overalignment
+
+  @sa `freestanding` `<memory>`
+*/
+#ifndef LBAL_LIBCPP26_IS_SUFFICIENTLY_ALIGNED
+  #define LBAL_LIBCPP26_IS_SUFFICIENTLY_ALIGNED 0
+#endif
+
+/**
   @def LBAL_LIBCPP26_IS_VIRTUAL_BASE_OF
   @brief A type trait for detecting virtual base classes
   @details SD-6 equivalent: `__cpp_lib_is_virtual_base_of >= 202406L`.
@@ -2080,7 +2224,7 @@
   @brief `views::to_input`
   @details SD-6 equivalent: `__cpp_lib_ranges_as_input >= 202502L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202502L` [P3137R3](https://wg21.link/P3137R3) views::to_input
+  - `202502L` [P3137R3](https://wg21.link/P3137R3) `views::to_input`
 
   @sa `freestanding` `<ranges>`
 */
@@ -2273,6 +2417,12 @@
   `__cpp_lib_reflection` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
+  - `202506L` [P2996R13](https://wg21.link/P2996R13) Reflection for C++26
+  - `202506L` [P3096R12](https://wg21.link/P3096R12) **PDF** Function Parameter
+  Reflection in Reflection for C++26
+  - `202506L` [P3293R3](https://wg21.link/P3293R3) Splicing a base class
+  subobject
+  - `202506L` [P3394R4](https://wg21.link/P3394R4) Annotations for Reflection
   - `202506L` [P3560R2](https://wg21.link/P3560R2) Error Handling in Reflection
 
   @sa `<meta>`
@@ -2366,6 +2516,9 @@
   - `202603L` [P4052R0](https://wg21.link/P4052R0) Renaming saturation
   arithmetic functions
 
+  @remark This renames the functions added by
+  `LBAL_LIBCPP26_SATURATION_ARITHMETIC`.
+
   @sa `freestanding` `<numeric>`
 */
 #ifndef LBAL_LIBCPP26_SATURATION_ARITHMETIC_RENAMING
@@ -2389,13 +2542,25 @@
 
 /**
   @def LBAL_LIBCPP26_SENDERS_OPTIONAL
-  @brief `optional` variants in sender/receiver
+  @brief `std::execution` updates, including `optional` variants in
+  sender/receiver
   @details SD-6 equivalent: `__cpp_lib_senders >= 202506L`. Note that
   `__cpp_lib_senders` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
+  - `202506L` [P3388R3](https://wg21.link/P3388R3) **PDF** When Do You Know
+  `connect` Doesn’t Throw?
+  - `202506L` [P3396R1](https://wg21.link/P3396R1) std::execution wording fixes
+  - `202506L` [P3433R1](https://wg21.link/P3433R1) **PDF** Allocator Support for
+  Operation States
+  - `202506L` [P3481R5](https://wg21.link/P3481R5) `std::execution::bulk()`
+  issues
   - `202506L` [P3570R2](https://wg21.link/P3570R2) optional variants in
   sender/receiver
+  - `202506L` [P3682R0](https://wg21.link/P3682R0) **PDF** Remove
+  `std::execution::split`
+  - `202506L` [P3887R1](https://wg21.link/P3887R1) **PDF** Make `when_all` a
+  Ronseal Algorithm
 
   @sa `<execution>`
 */
@@ -2466,6 +2631,22 @@
 #endif
 
 /**
+  @def LBAL_LIBCPP26_SIMD_CONSTEVAL_BROADCAST
+  @brief Value-preserving `consteval` broadcast to `simd::vec`
+  @details SD-6 equivalent: `__cpp_lib_simd >= 202603L`. Note that
+  `__cpp_lib_simd` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P4012R1](https://wg21.link/P4012R1) **PDF** value-preserving
+  `consteval` broadcast to `simd::vec`
+
+  @sa `<simd>`
+*/
+#ifndef LBAL_LIBCPP26_SIMD_CONSTEVAL_BROADCAST
+  #define LBAL_LIBCPP26_SIMD_CONSTEVAL_BROADCAST 0
+#endif
+
+/**
   @def LBAL_LIBCPP26_SIMD_DEDUCTION_GUIDES
   @brief Missing deduction guide from simd::mask to simd::vec
   @details SD-6 equivalent: `__cpp_lib_simd >= 202511L`. Note that
@@ -2495,6 +2676,22 @@
 */
 #ifndef LBAL_LIBCPP26_SIMD_EXTEND
   #define LBAL_LIBCPP26_SIMD_EXTEND 0
+#endif
+
+/**
+  @def LBAL_LIBCPP26_SIMD_GENERIC_REDUCTIONS
+  @brief Make `simd` reductions SIMD-generic
+  @details SD-6 equivalent: `__cpp_lib_simd >= 202603L`. Note that
+  `__cpp_lib_simd` has multiple values associated with it from a number of
+  different proposals, so this token will have the value of the latest supported
+  proposal, or `0` if the proposal described here is not supported.
+  - `202603L` [P3690R1](https://wg21.link/P3690R1) **PDF** Consistency fix: Make
+  `simd` reductions SIMD-generic
+
+  @sa `<simd>`
+*/
+#ifndef LBAL_LIBCPP26_SIMD_GENERIC_REDUCTIONS
+  #define LBAL_LIBCPP26_SIMD_GENERIC_REDUCTIONS 0
 #endif
 
 /**
@@ -2540,22 +2737,6 @@
 */
 #ifndef LBAL_LIBCPP26_SIMD_RANGE
   #define LBAL_LIBCPP26_SIMD_RANGE 0
-#endif
-
-/**
-  @def LBAL_LIBCPP26_SMART_POINTER_OWNER_EQUALITY
-  @brief Enabling the Use of weak_ptr as Keys in Unordered Associative
-  Containers
-  @details SD-6 equivalent: `__cpp_lib_smart_pointer_owner_equality >= 202306L`.
-  This token will have a value of `0` if the proposal described here is not
-  supported.
-  - `202306L` [P1901R2](https://wg21.link/P1901R2) Enabling the Use of
-  `weak_ptr` as Keys in Unordered Associative Containers
-
-  @sa `<memory>`
-*/
-#ifndef LBAL_LIBCPP26_SMART_POINTER_OWNER_EQUALITY
-  #define LBAL_LIBCPP26_SMART_POINTER_OWNER_EQUALITY 0
 #endif
 
 /**
@@ -2761,15 +2942,15 @@
 
 /**
   @def LBAL_LIBCPP26_SUBMDSPAN_UPDATE
-  @brief Working Draft: Programming Languages—C++
+  @brief Split `strided_slice` into `extent_slice` and `range_slice`
   @details
 
   SD-6 equivalent: `__cpp_lib_submdspan >= 202603L`. Note that
   `__cpp_lib_submdspan` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202603L` [N5050](https://wg21.link/N5050) Working Draft: Programming
-  Languages—C++
+  - `202603L` [P3982R2](https://wg21.link/P3982R2) Split `strided_slice` into
+  `extent_slice` and `range_slice` for C++26
 
   @sa `freestanding` `<mdspan>`
 */
@@ -2786,7 +2967,7 @@
   - `202506L` [P3927R2](https://wg21.link/P3927R2) `task_scheduler` support for
   parallel `bulk` execution
   - `202506L` [P3941R4](https://wg21.link/P3941R4) Scheduler Affinity
-  - `202506L` [P3980R1](https://wg21.link/P3980R1) Task's Allocator Use
+  - `202506L` [P3980R1](https://wg21.link/P3980R1) Task’s Allocator Use
   - `202506L` [P4151R1](https://wg21.link/P4151R1) **PDF** Rename `affine_on`
 
   @sa `<execution>`

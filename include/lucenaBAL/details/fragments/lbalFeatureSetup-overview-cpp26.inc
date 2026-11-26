@@ -46,7 +46,7 @@
 
 /**
   @def LBAL_CPP26_CONSTEXPR_CAST_FROM_VOID_STAR
-  @brief All `constexpr` cast from `void *`
+  @brief Allow `constexpr` cast from `void *`
   @details SD-6 equivalent: `__cpp_constexpr >= 202306L`. Note that
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
@@ -85,7 +85,7 @@
 
 /**
   @def LBAL_CPP26_CONSTEXPR_VIRTUAL_INHERITANCE
-  @brief Allow exception throwing in _constant-evaluation_
+  @brief Allow virtual inheritance in `constexpr`
   @details SD-6 equivalent: `__cpp_constexpr_virtual_inheritance >= 202506L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
