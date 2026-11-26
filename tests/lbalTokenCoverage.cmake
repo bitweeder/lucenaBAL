@@ -78,6 +78,8 @@ set (
 		LBAL_LIBCPP26_RANGES_REMOVE_COMMON_REF_REQ
 		#	Needs a wider `intmax_t` than 64-bit implementations have.
 		LBAL_LIBCPP26_RATIO
+		#	Replacing the contract-violation handler can’t be observed in-process.
+		LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER
 		LBAL_LIBCPP2D_EXPECTED_UEXPECTED
 		#	Freestanding requirements: a hosted library always has these.
 		LBAL_LIBCPP26_FREESTANDING_ALGORITHM

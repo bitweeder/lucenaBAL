@@ -16,6 +16,12 @@ The maintainer generates some files with an external tool that isn't in this rep
 
 Don't hand-edit these as a lasting fix. Describe the change needed so it can be made in the generator; if a hand edit is unavoidable, say that it must also go upstream, or the next regeneration will undo it. Regenerated files may not be clang-format clean. Everything else is hand-written, including `tests/fragments/lbalFalsePositiveTest-*.inc` and `tests/probes/`.
 
+After the maintainer imports regenerated files, bring the hand-written side up to date:
+- Run `lbalTokenCoverage` (see Tests). It reports new tokens without probes, and probes left behind by renamed, retired or moved tokens.
+- When a token moves to another Standard (e.g. `LIBCPP26_SIMD_IOTA` became `LIBCPP2D_SIMD_IOTA`), move its probe to that Standard's fragment or directory, along with any `#include` guard that names it.
+- Re-read the changed `@def`s. A recurring generator mistake is listing one paper under two SD-6 values; usually the later value belongs to a later paper with its own token. Report it as a generator follow-up.
+- Check that probes and fixups still match changed mapping thresholds.
+
 ## Commands
 
 CMake ≥ 3.30. In-source builds are rejected; always use a separate `build/` dir.
@@ -67,10 +73,13 @@ The include chain is `lucenaBAL.hpp` → `lbalConfig.hpp` + `lbalFeatureSetup.hp
 
    Fixup patterns in the Initialization and PostInitialization headers:
    - **Unreported features.** An implementation may ship a feature without reporting it. Either there is no SD-6 macro (e.g. MSVC and `LBAL_CPP20_DEFAULT_MEMBER_INITIALIZERS_FOR_BIT_FIELDS`), or the implementation holds a shared macro low because another paper with the same value is unfinished (MSVC's `__cpp_constexpr`; libc++'s `__cpp_lib_format`, for `LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING`). PostInitialization then sets the token, version-gated, with a SEEME citing the source: the implementer's status or conformance page first, cppreference's compiler-support tables otherwise.
+
+     libc++ often ships a paper releases before it reports it: `<version>` keeps a macro commented out until every paper sharing it is done (`__cpp_lib_format` is still `202110L` in libc++ 23; `__cpp_lib_constrained_equality` and `__cpp_lib_constexpr_flat_map` first appear in 22). To pick the gate, read `libcxx/include/version` and the headers on the `release/NN.x` branches, plus libc++'s status CSV (`libcxx/docs/Status/Cxx26Papers.csv` on `main`, `Cxx2cPapers.csv` on older branches, with a "First released version" column). Set a token from the release where its own paper is complete (`CONSTRAINED_EQUALITY_EXPECTED` from 21). If the implementer lists the paper as partial, add a known absence instead (`CONSTRAINED_EQUALITY` below 22), and if only part of what the macro covers is done, tighten the probe to cover the rest (the multi containers in `CONSTEXPR_FLAT_MAP` and `_SET`).
+   - **Renamed facilities.** When a later paper renames what a token provides, a `_RENAMING` token reports the new spelling (`SATURATION_ARITHMETIC_RENAMING`, `FORMAT_RUNTIME_RENAMING`). The original token's probe uses the new name when `_RENAMING` is set, since a library with the rename has only the new name. A library that has the rename but doesn't report it gets both tokens at the renaming value (libc++ 23: `FORMAT_RUNTIME` and `_RENAMING` at `202603L`). A fixup for the old name stops at the release that renamed it; that bound is a removal, not a VERME.
    - **Partial implementations.** The full token stays `0`, and a narrower proxy token reports the part that exists, e.g. `LBAL_LIBCPP20_CHRONO_CALENDAR_TYPES`, `LBAL_LIBCPP23_REFERENCE_FROM_TEMPORARY_TRAITS`, `LBAL_LIBCPP17_TO_CHARS_FP`/`_INTEGER`, `LBAL_LIBCPP23_FORMATTERS_THREAD_ID`. Proxy tokens come from the generator. One with no generated SD-6 mapping (e.g. `FORMATTERS_THREAD_ID`) must be set in every library's PostInitialization header.
    - **Known false positives.** Zero the token below an upper version bound marked VERME, so newer toolsets are tested again automatically, e.g. MSVC's `LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES` while `_MSC_VER < 1960`.
    - **Facilities a later Standard removes.** Zero the token from that Standard on, unless the library's opt-in is set, e.g. `LBAL_LIBCPP14_RESULT_OF_SFINAE` with `_LIBCPP_ENABLE_CXX20_REMOVED_TYPE_TRAITS` or `_HAS_DEPRECATED_RESULT_OF`.
-   - **Versions.** MSVC fixups gate on `_MSC_VER`; map product versions carefully (VS 2019 16.5 = 1925, VS 2022 17.1 = 1931, 17.14 = 1944, Build Tools 14.50 = 1950, VS 2026 = 1950+). AppleClang fixups gate on `__clang_major__`, which is Apple's own numbering, not LLVM's; map each Clang fixup to the matching AppleClang release.
+   - **Versions.** MSVC fixups gate on `_MSC_VER`; map product versions carefully (VS 2019 16.5 = 1925, VS 2022 17.1 = 1931, 17.14 = 1944, Build Tools 14.50 = 1950, VS 2026 = 1950+). AppleClang fixups gate on `__clang_major__`, which is Apple's own numbering, not LLVM's; map each Clang fixup to the matching AppleClang release. Apple libc++ keeps upstream's `_LIBCPP_VERSION` numbering. So far, Xcode 27.2 (Apple clang 21) ships libc++ 22 or later, and Xcode 26.4 behaves like libc++ 21; the latter is inferred from which features compile, so confirm it before relying on it.
 4. **`details/lbalPlatformSetup.hpp`**: includes `platforms/lbalPlatform{Apple,POSIX,WinAPI}.hpp`.
 5. **`lbalFeatureSetup.hpp`**: the documented public surface. It holds the Doxygen group docs and the non-feature tokens: build environment, platform, compiler control (`LBAL_DIAGNOSTIC_*`), builtins and decorators (`LBAL_VIS_*`, `LBAL_CLASS_*`, `LBAL_NO_UNIQUE_ADDRESS` etc.). Compiler Initialization headers define a decorator's compiler-specific form, and `lbalFeatureSetup.hpp` documents it and supplies the fallback; `LBAL_NO_UNIQUE_ADDRESS` uses `[[msvc::no_unique_address]]` for the MSVC ABI (MSVC and clang-cl), which ignores the standard spelling. It also includes one `details/fragments/lbalFeatureSetup-overview-{cpp,libcpp}NN.inc` per Standard. Each `overview-*.inc` is self-contained for Doxygen. It has:
    - the license header
@@ -139,6 +148,11 @@ CI always enables these tests on every platform at `latest`: the soft probes run
   - Avoid compiler built-ins: GCC evaluates `fabs` and similar at compile time in every mode, so `LIBCPP23_CONSTEXPR_CMATH` also checks `std::div`.
   - Don't rely on undefined behavior or indeterminate values (e.g. construct over storage filled with a non-zero pattern; `RANGE_BASED_FOR_TEMPORARIES` iterates a namespace-scope array).
   - Compile-only probes are included under `-Werror`, so silence any warning the feature itself brings with a pragma, as `HARDWARE_INTERFERENCE_SIZE` does for `-Winterference-size`.
+  - Cover everything the token's macro covers. libc++ 21 made `flat_map` constexpr but not `flat_multimap`, so `CONSTEXPR_FLAT_MAP` uses both.
+  - Check what the paper itself changes, not an earlier revision. P3726R2 dropped R0's approach of starting an array's lifetime by constructing an element, which already works under P3074R7; MSVC accepted the old probe even in C++23.
+  - When a language feature can't be shown without its library part (`TRIVIAL_UNION_LIFETIME` needs `std::start_lifetime`), use it, and don't also gate the probe on the library token: the false-negative test forces only the probe's own token, so a gated probe compiles empty and reports a false negative. Say so in the probe's comment.
+  - Write gtest probes so they compile cleanly with every token forced on. A comma outside parentheses splits a macro argument, so parenthesize it in `EXPECT_*` (`EXPECT_EQ((m[std::array{1, 2}]), 5)`); `LBAL_FP_EXPECT_HARDENED` is variadic for the same reason, and runs its statement in a lambda so warnings in it don't come with gtest's death-test macro chain. A probe that has never been compiled can carry warnings that only show up on the first toolchain that reports its token.
+  - Hardened-precondition probes (`HARDENED_*`) need the library's hardening mode. libc++ checks some preconditions, such as `forward_list::front` and `mdspan::operator[]`, only in its extensive mode.
 - **Cost:** roughly 0.5–1 s per try, only for zero-valued tokens that have a probe and aren't smoke. With every Standard in scope, a mode tries about 160–200 probes at C++26 (2–3 minutes) and about 400 at C++17 (5–6 minutes); configuring `17;20;23;latest` took 11–15 minutes per toolchain locally (GCC 15, Clang 23 with libstdc++ or libc++). `try_compile` is slower under MSBuild, so the Windows configure step takes longer. CI uses `latest`, plus the `LBAL_FALSE_NEGATIVE_TEST_STANDARDS` repository variable.
 - **Cross-compiling:** detection works, but the test executables must still run; CMake warns when either suite is enabled while cross-compiling without `CMAKE_CROSSCOMPILING_EMULATOR`. It's up to the user to turn the suites off or provide an emulator.
 
@@ -148,7 +162,9 @@ With GCC 15, Clang 23 with libstdc++ 15, and Clang 23 with libc++ 23 (`-stdlib=l
 
 These results aren't local, but they're the reference for the other toolchains:
 - **Xcode 27.2 (Apple Clang 21 with Apple libc++):** the maintainer reports no failures, warnings or notes from lucenaBAL.
-- **CI at `latest`:** GCC 15.2 on Ubuntu 26.04 passes. Xcode 26.4 (Apple libc++ 21) and MSVS 2026 (C++23 for `latest`) are expected to pass once CI reruns with the fixes listed in `HANDOFF.md`.
+- **CI at `latest`:** GCC 15.2 on Ubuntu 26.04 passes. For Xcode 26.4 and MSVS 2026, see `HANDOFF.md`.
+
+CMake resolves MSVC's `latest` to C++23, so CI's Windows tests are named `cxx23.*`, and C++26 tokens are tested there through the C++23 false-negative executable.
 
 ## Checking platforms you don't have
 

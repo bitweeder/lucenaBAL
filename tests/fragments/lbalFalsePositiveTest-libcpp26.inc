@@ -203,7 +203,6 @@
     || LBAL_LIBCPP26_SIMD_COMPLEX                                              \
     || LBAL_LIBCPP26_SIMD_DEDUCTION_GUIDES                                     \
     || LBAL_LIBCPP26_SIMD_EXTEND                                               \
-    || LBAL_LIBCPP26_SIMD_IOTA                                                 \
     || LBAL_LIBCPP26_SIMD_NAMESPACES                                           \
     || LBAL_LIBCPP26_SIMD_PERMUTATIONS                                         \
     || LBAL_LIBCPP26_SIMD_RANGE
@@ -1933,8 +1932,10 @@ LBAL_FP_TEST(LIBCPP26, REPLACEABLE_CONTRACT_VIOLATION_HANDLER) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER);
 #if LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER
   //	SEEME
-  //	Replacing the handler would affect the whole test program, so this only
-  //	checks the types it uses are available.
+  //	LBAL_FP_SMOKE: replacing the handler would affect the whole test program,
+  //	and any translation unit may define `handle_contract_violation` whether
+  //	or not P3886R0 makes it replaceable, so this only checks that the
+  //	P2900 types it uses are available.
   EXPECT_FALSE(
       std::is_copy_constructible_v<std::contracts::contract_violation>
   );
@@ -2061,17 +2062,6 @@ LBAL_FP_TEST(LIBCPP26, SIMD_EXTEND) {
   });
 
   EXPECT_EQ(v[3], 3);
-#endif
-}
-
-LBAL_FP_TEST(LIBCPP26, SIMD_IOTA) {
-  LBAL_FP_REQUIRE(LBAL_LIBCPP26_SIMD_IOTA);
-#if LBAL_LIBCPP26_SIMD_IOTA
-  //	SEEME
-  //	The spelling is from P3319R6 and unverified.
-  auto v = std::simd::iota<std::simd::vec<int, 4>>;
-
-  EXPECT_EQ(v[2], 2);
 #endif
 }
 

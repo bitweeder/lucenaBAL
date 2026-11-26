@@ -55,7 +55,9 @@
   #include <memory>
 #endif
 
-#if LBAL_LIBCPP2D_SIMD_BITOPS || LBAL_LIBCPP2D_SIMD_BITOPS_BETTER_SHIFTING
+#if LBAL_LIBCPP2D_SIMD_BITOPS                                                  \
+    || LBAL_LIBCPP2D_SIMD_BITOPS_BETTER_SHIFTING                               \
+    || LBAL_LIBCPP2D_SIMD_IOTA
   #include <simd>
 #endif
 
@@ -172,6 +174,17 @@ LBAL_FP_TEST(LIBCPP2D, SIMD_BITOPS_BETTER_SHIFTING) {
   std::simd::vec<unsigned, 4> v(1u);
 
   EXPECT_EQ(std::shl(v, 40)[0], 0u);
+#endif
+}
+
+LBAL_FP_TEST(LIBCPP2D, SIMD_IOTA) {
+  LBAL_FP_REQUIRE(LBAL_LIBCPP2D_SIMD_IOTA);
+#if LBAL_LIBCPP2D_SIMD_IOTA
+  //	SEEME
+  //	The spelling is from P3319R6 and unverified.
+  auto v = std::simd::iota<std::simd::vec<int, 4>>;
+
+  EXPECT_EQ(v[2], 2);
 #endif
 }
 
