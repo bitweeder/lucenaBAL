@@ -107,8 +107,7 @@
   `__cpp_lib_hazard_pointer` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202606L` [P3428R4 __PDF__](https://wg21.link/P3428R4) Hazard Pointer
-  Batches
+  - `202606L` [P3428R4](https://wg21.link/P3428R4) *PDF* Hazard Pointer Batches
 
   @sa `<hazard_pointer>`
 */
@@ -195,7 +194,7 @@
 
   SD-6 equivalent: `__cpp_lib_thread_attributes >= 202606L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `202606L` [P2019R9 __PDF__](https://wg21.link/P2019R9) Thread attributes
+  - `202606L` [P2019R9](https://wg21.link/P2019R9) *PDF* Thread attributes
 */
 #ifndef LBAL_LIBCPP2D_THREAD_ATTRIBUTES
   #define LBAL_LIBCPP2D_THREAD_ATTRIBUTES 0

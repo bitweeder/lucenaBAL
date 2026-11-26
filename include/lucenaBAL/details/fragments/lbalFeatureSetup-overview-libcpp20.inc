@@ -31,8 +31,8 @@
   `__cpp_lib_array_constexpr` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `201806L` [P1023R0 __PDF__](https://wg21.link/P1023R0) `constexpr`
-  comparison operators for `std::array`
+  - `201806L` [P1023R0](https://wg21.link/P1023R0) *PDF* `constexpr` comparison
+  operators for `std::array`
 
   @sa `<array>` `freestanding` `<iterator>`
 */
@@ -82,7 +82,7 @@
   @brief Provide `std::assume_aligned` compiler hint utility function Library
   @details SD-6 equivalent: `__cpp_lib_assume_aligned >= 201811L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `201811L` [P1007R3 __PDF__](https://wg21.link/P1007R3) `std::assume_aligned`
+  - `201811L` [P1007R3](https://wg21.link/P1007R3) *PDF* `std::assume_aligned`
 
   @sa `freestanding` `<memory>`
 */
@@ -167,7 +167,7 @@
   @details SD-6 equivalent: `__cpp_lib_atomic_value_initialization >= 201911L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201911L` [P0883R2 __PDF__](https://wg21.link/P0883R2) Fixing Atomic
+  - `201911L` [P0883R2](https://wg21.link/P0883R2) *PDF* Fixing Atomic
   Initialization
 
   @sa `<atomic>` `freestanding` `<memory>`
@@ -273,8 +273,8 @@
   @details SD-6 equivalent: `__cpp_lib_bounded_array_traits >= 201902L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201902L` [P1357R1 __PDF__](https://wg21.link/P1357R1) Traits for
-  [Un]bounded Arrays
+  - `201902L` [P1357R1](https://wg21.link/P1357R1) *PDF* Traits for [Un]bounded
+  Arrays
 
   @sa `freestanding` `<type_traits>`
 */
@@ -376,7 +376,7 @@
   `__cpp_lib_concepts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201806L` [P0898R3 __PDF__](https://wg21.link/P0898R3) Standard Library
+  - `201806L` [P0898R3](https://wg21.link/P0898R3) *PDF* Standard Library
   Concepts
 
   @sa `<compare>` `<concepts>` `freestanding`
@@ -408,7 +408,7 @@
   `__cpp_lib_concepts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201907L` [P1754R1 __PDF__](https://wg21.link/P1754R1) Rename concepts to
+  - `201907L` [P1754R1](https://wg21.link/P1754R1) *PDF* Rename concepts to
   standard_case for C++20, while we still can
 
   @sa `<compare>` `<concepts>` `freestanding`
@@ -537,7 +537,7 @@
   `__cpp_lib_constexpr_memory` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `201811L` [P1006R1 __PDF__](https://wg21.link/P1006R1) Constexpr in
+  - `201811L` [P1006R1](https://wg21.link/P1006R1) *PDF* Constexpr in
   `std::pointer_traits`
 
   @sa `freestanding` `<memory>`
@@ -567,7 +567,7 @@
   `__cpp_lib_constexpr_string` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `201907L` [P0980R1 __PDF__](https://wg21.link/P0980R1) Making `std::string`
+  - `201907L` [P0980R1](https://wg21.link/P0980R1) *PDF* Making `std::string`
   constexpr
 
   @sa `<string>`
@@ -638,7 +638,7 @@
   @brief Make `std::vector` `constexpr`
   @details SD-6 equivalent: `__cpp_lib_constexpr_vector >= 201907L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `201907L` [P1004R2 __PDF__](https://wg21.link/P1004R2) Making `std::vector`
+  - `201907L` [P1004R2](https://wg21.link/P1004R2) *PDF* Making `std::vector`
   constexpr
 
   @sa `<vector>`
@@ -697,7 +697,7 @@
   @brief Relocate `std::endian` to `<bit>`
   @details SD-6 equivalent: `__cpp_lib_endian >= 201907L`. This token will have
   a value of `0` if the proposal described here is not supported.
-  - `201907L` [P1612R1 __PDF__](https://wg21.link/P1612R1) Relocate Endian’s
+  - `201907L` [P1612R1](https://wg21.link/P1612R1) *PDF* Relocate Endian’s
   Specification
 
   @sa `<bit>` `freestanding`
@@ -730,7 +730,7 @@
   `__cpp_lib_erase_if` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202002L` [P1115R3 __PDF__](https://wg21.link/P1115R3) Improving the Return
+  - `202002L` [P1115R3](https://wg21.link/P1115R3) *PDF* Improving the Return
   Value of Erase-Like Algorithms II: Free erase/erase_if
 
   @sa `<deque>` `<forward_list>` `<list>` `<map>` `<set>` `<string>`
@@ -766,7 +766,7 @@
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P0645R10](https://wg21.link/P0645R10) Text Formatting
-  - `201907L` [P1361R2 __PDF__](https://wg21.link/P1361R2) Integration of chrono
+  - `201907L` [P1361R2](https://wg21.link/P1361R2) *PDF* Integration of chrono
   with text formatting
   - `201907L` [P1652R1](https://wg21.link/P1652R1) Printf corner cases in
   `std::format`
@@ -843,7 +843,7 @@
   `__cpp_lib_int_pow2` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202002L` [P1956R1 __PDF__](https://wg21.link/P1956R1) On the naming of
+  - `202002L` [P1956R1](https://wg21.link/P1956R1) *PDF* On the naming of
   low-level bit manipulation functions
 
   @sa `<bit>` `freestanding`
@@ -872,7 +872,7 @@
   @details SD-6 equivalent: `__cpp_lib_is_layout_compatible >= 201907L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201907L` [P0466R5 __PDF__](https://wg21.link/P0466R5) Layout-compatibility
+  - `201907L` [P0466R5](https://wg21.link/P0466R5) *PDF* Layout-compatibility
   and Pointer-interconvertibility Traits
 
   @sa `freestanding` `<type_traits>`
@@ -908,7 +908,7 @@
   @details SD-6 equivalent: `__cpp_lib_is_pointer_interconvertible >= 201907L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201907L` [P0466R5 __PDF__](https://wg21.link/P0466R5) Layout-compatibility
+  - `201907L` [P0466R5](https://wg21.link/P0466R5) *PDF* Layout-compatibility
   and Pointer-interconvertibility Traits
 
   @sa `freestanding` `<type_traits>`
@@ -924,7 +924,7 @@
   `__cpp_lib_jthread` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201907L` [P0660R10 __PDF__](https://wg21.link/P0660R10) Stop Token and
+  - `201907L` [P0660R10](https://wg21.link/P0660R10) *PDF* Stop Token and
   Joining Thread
 
   @sa `<stop_token>` `<thread>`
@@ -969,7 +969,7 @@
   @details SD-6 equivalent: `__cpp_lib_list_remove_return_type >= 201806L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201806L` [P0646R1 __PDF__](https://wg21.link/P0646R1) Improving the Return
+  - `201806L` [P0646R1](https://wg21.link/P0646R1) *PDF* Improving the Return
   Value of Erase-Like Algorithms I: `list`/`forward list`
 
   @sa `<forward_list>` `<list>`
@@ -983,7 +983,7 @@
   @brief Add common math constants to the C++ Standard
   @details SD-6 equivalent: `__cpp_lib_math_constants >= 201907L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `201907L` [P0631R8 __PDF__](https://wg21.link/P0631R8) Math Constants
+  - `201907L` [P0631R8](https://wg21.link/P0631R8) *PDF* Math Constants
 
   @sa `<numbers>`
 */
@@ -999,8 +999,8 @@
   supported.
   - `201902L` [LWG3437](https://wg21.link/LWG3437)
   `__cpp_lib_polymorphic_allocator` is in the wrong header
-  - `201902L` [P0339R6 __PDF__](https://wg21.link/P0339R6)
-  polymorphic_allocator<> as a vocabulary type
+  - `201902L` [P0339R6](https://wg21.link/P0339R6) *PDF* polymorphic_allocator<>
+  as a vocabulary type
 
   @sa `<memory_resource>`
 */
@@ -1015,8 +1015,7 @@
   `__cpp_lib_ranges` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201811L` [P0896R4 __PDF__](https://wg21.link/P0896R4) The One Ranges
-  Proposal
+  - `201811L` [P0896R4](https://wg21.link/P0896R4) *PDF* The One Ranges Proposal
 
   @sa `<algorithm>` `<functional>` `<iterator>` `<memory>` `<ranges>`
 */
@@ -1031,7 +1030,7 @@
   `__cpp_lib_ranges` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201907L` [P1035R7 __PDF__](https://wg21.link/P1035R7) Input Range Adaptors
+  - `201907L` [P1035R7](https://wg21.link/P1035R7) *PDF* Input Range Adaptors
 
   @sa `<algorithm>` `<functional>` `<iterator>` `<memory>` `<ranges>`
 */
@@ -1060,7 +1059,7 @@
   @brief Add `std::remove_cvref` type trait
   @details SD-6 equivalent: `__cpp_lib_remove_cvref >= 201711L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `201711L` [P0550R2 __PDF__](https://wg21.link/P0550R2) Transformation Trait
+  - `201711L` [P0550R2](https://wg21.link/P0550R2) *PDF* Transformation Trait
   remove_cvref
 
   @sa `freestanding` `<type_traits>`
@@ -1106,7 +1105,7 @@
   `__cpp_lib_shift` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201806L` [P0769R2 __PDF__](https://wg21.link/P0769R2) Add shift to
+  - `201806L` [P0769R2](https://wg21.link/P0769R2) *PDF* Add shift to
   `<algorithm>`
 
   @sa `<algorithm>`
@@ -1123,7 +1122,7 @@
   supported.
   - `202002L` [P1020R1](https://wg21.link/P1020R1) Smart pointer creation with
   default initialization
-  - `202002L` [P1973R1 __PDF__](https://wg21.link/P1973R1) Rename _default_init
+  - `202002L` [P1973R1](https://wg21.link/P1973R1) *PDF* Rename _default_init
   functions (NB Comment DE002)
 
   @remark The SD-6 token was renamed as part of
@@ -1141,7 +1140,7 @@
   @brief Adopt `std::source_location` from the Library Fundamentals V3 TS
   @details SD-6 equivalent: `__cpp_lib_source_location >= 201907L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `201907L` [P1208R6 __PDF__](https://wg21.link/P1208R6) Adopt source location
+  - `201907L` [P1208R6](https://wg21.link/P1208R6) *PDF* Adopt source location
   from Library Fundamentals V3 for C++20
 
   @sa `freestanding` `<source_location>`
@@ -1159,7 +1158,7 @@
   proposal, or `0` if the proposal described here is not supported.
   - `201803L` [LWG3274](https://wg21.link/LWG3274) Missing feature test macro
   for `<span>`
-  - `201803L` [P0122R7 __PDF__](https://wg21.link/P0122R7) `span`: bounds-safe
+  - `201803L` [P0122R7](https://wg21.link/P0122R7) *PDF* `span`: bounds-safe
   views for sequences of objects
 
   @remark The issue raised in [LWG3274](https://wg21.link/LWG3274) was simply
@@ -1195,8 +1194,8 @@
   `__cpp_lib_span` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201902L` [P1024R3 __PDF__](https://wg21.link/P1024R3) Usability
-  Enhancements for `std::span`
+  - `201902L` [P1024R3](https://wg21.link/P1024R3) *PDF* Usability Enhancements
+  for `std::span`
 
   @sa `freestanding` `<span>`
 */
@@ -1264,7 +1263,7 @@
   `__cpp_lib_syncbuf` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201711L` [P0053R7 __PDF__](https://wg21.link/P0053R7) C++ Synchronized
+  - `201711L` [P0053R7](https://wg21.link/P0053R7) *PDF* C++ Synchronized
   Buffered Ostream
 
   @sa `<iosfwd>` `<syncstream>`
@@ -1280,7 +1279,7 @@
   `__cpp_lib_syncbuf` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201803L` [P0753R2 __PDF__](https://wg21.link/P0753R2) Manipulators for C++
+  - `201803L` [P0753R2](https://wg21.link/P0753R2) *PDF* Manipulators for C++
   Synchronized Buffered Ostream
 
   @sa `<iosfwd>` `<syncstream>`
@@ -1297,8 +1296,8 @@
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
   supported.
-  - `201711L` [P0768R1 __PDF__](https://wg21.link/P0768R1) Library Support for
-  the Spaceship (Comparison) Operator
+  - `201711L` [P0768R1](https://wg21.link/P0768R1) *PDF* Library Support for the
+  Spaceship (Comparison) Operator
 
   @sa `<compare>` `freestanding`
 */
@@ -1356,7 +1355,7 @@
   @brief Add the `std::identity` metafunction
   @details SD-6 equivalent: `__cpp_lib_type_identity >= 201806L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `201806L` [P0887R1 __PDF__](https://wg21.link/P0887R1) The identity
+  - `201806L` [P0887R1](https://wg21.link/P0887R1) *PDF* The identity
   metafunction
 
   @sa `freestanding` `<type_traits>`
@@ -1372,7 +1371,7 @@
   have a value of `0` if the proposal described here is not supported.
   - `201811L` [LWG3348](https://wg21.link/LWG3348) `__cpp_lib_unwrap_ref` in
   wrong header
-  - `201811L` [P0318R1 __PDF__](https://wg21.link/P0318R1) `unwrap_ref_decay`
+  - `201811L` [P0318R1](https://wg21.link/P0318R1) *PDF* `unwrap_ref_decay`
   and `unwrap_reference`
 
   @remark Originally, this was in `<type_traits>`.

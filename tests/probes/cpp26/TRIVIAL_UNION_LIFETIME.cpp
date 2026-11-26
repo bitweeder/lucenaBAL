@@ -11,6 +11,15 @@
   Hard false-positive probe for `LBAL_CPP26_TRIVIAL_UNION_LIFETIME`, from
   P3726R2. It only needs to compile; see `lbalFalsePositiveTest.cpp`.
 
+  P3726R2 reverts P3074R7’s rule that a union’s default constructor starts its
+  first member’s lifetime, adds `std::start_lifetime` to make an
+  implicit-lifetime aggregate member active, and lets an array member of a
+  union have elements outside their lifetime in a constant expression. This
+  probe follows the paper’s example and needs both the library function and
+  the language rule: without the paper, `std::start_lifetime` is missing and
+  `v` isn’t a constant expression. There is no core-only form, since
+  constructing an element no longer starts the array’s lifetime.
+
   SEEME: written from P3726R2; not yet compiled by any compiler available
   here.
 
@@ -25,21 +34,26 @@
 
 namespace lbal_fp {
 
-//	Constructing an array member of a union starts the array’s lifetime, so
-//	its elements can be set one at a time during constant evaluation.
-union Storage {
-  int values[2];
+struct Holder {
+  union {
+    int values[4];
+  };
+
+  //	`values` becomes the active member; none of its elements is alive yet.
+  constexpr Holder() { std::start_lifetime(values); }
 };
 
-constexpr int
-fill() {
-  Storage s;
-  std::construct_at(&s.values[0], 1);
-  std::construct_at(&s.values[1], 2);
-  return s.values[0] + s.values[1];
+constexpr Holder
+make() {
+  Holder h;
+  std::construct_at(&h.values[1], 1);
+  return h;
 }
 
-static_assert(fill() == 3);
+//	`values[0]`, `[2]` and `[3]` are outside their lifetime.
+constexpr Holder v = make();
+
+static_assert(v.values[1] == 1);
 
 }  // namespace lbal_fp
 #endif

@@ -321,6 +321,12 @@
   #endif
 #endif  //  LBAL_LIBCPP26_FORMAT_RUNTIME
 
+#if !defined(LBAL_LIBCPP26_FORMAT_RUNTIME_RENAMING)
+  #if __cpp_lib_format >= 202603L
+    #define LBAL_LIBCPP26_FORMAT_RUNTIME_RENAMING __cpp_lib_format
+  #endif
+#endif  //  LBAL_LIBCPP26_FORMAT_RUNTIME_RENAMING
+
 #if !defined(LBAL_LIBCPP26_FORMAT_TYPE_CHECK)
   #if __cpp_lib_format >= 202305L
     #define LBAL_LIBCPP26_FORMAT_TYPE_CHECK __cpp_lib_format

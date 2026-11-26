@@ -51,7 +51,7 @@
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202306L` [P2738R1 __PDF__](https://wg21.link/P2738R1) `constexpr` cast from
+  - `202306L` [P2738R1](https://wg21.link/P2738R1) *PDF* `constexpr` cast from
   `void*`: towards `constexpr` type-erasure
 */
 #ifndef LBAL_CPP26_CONSTEXPR_CAST_FROM_VOID_STAR
@@ -102,7 +102,7 @@
   `__cpp_contracts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202502L` [P2900R14 __PDF__](https://wg21.link/P2900R14) Contracts for C++
+  - `202502L` [P2900R14](https://wg21.link/P2900R14) *PDF* Contracts for C++
 */
 #ifndef LBAL_CPP26_CONTRACTS
   #define LBAL_CPP26_CONTRACTS 0
@@ -138,8 +138,8 @@
   `__cpp_fold_expressions` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202406L` [P2963R3 __PDF__](https://wg21.link/P2963R3) Ordering of
-  constraints involving fold expressions
+  - `202406L` [P2963R3](https://wg21.link/P2963R3) *PDF* Ordering of constraints
+  involving fold expressions
 */
 #ifndef LBAL_CPP26_FOLD_EXPRESSIONS_CONSTRAINTS
   #define LBAL_CPP26_FOLD_EXPRESSIONS_CONSTRAINTS 0
@@ -153,7 +153,7 @@
   of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
   - `202506L` [P2996R13](https://wg21.link/P2996R13) Reflection for C++26
-  - `202506L` [P3096R12 __PDF__](https://wg21.link/P3096R12) Function Parameter
+  - `202506L` [P3096R12](https://wg21.link/P3096R12) *PDF* Function Parameter
   Reflection in Reflection for C++26
   - `202506L` [P3293R3](https://wg21.link/P3293R3) Splicing a base class
   subobject
@@ -188,7 +188,7 @@
   `__cpp_pack_indexing` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202311L` [P2662R3 __PDF__](https://wg21.link/P2662R3) Pack Indexing
+  - `202311L` [P2662R3](https://wg21.link/P2662R3) *PDF* Pack Indexing
 */
 #ifndef LBAL_CPP26_PACK_INDEXING
   #define LBAL_CPP26_PACK_INDEXING 0
@@ -199,8 +199,8 @@
   @brief Add placeholder variables (aka underscore, underbar, low line)
   @details SD-6 equivalent: `__cpp_placeholder_variables >= 202306L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202306L` [P2169R4 __PDF__](https://wg21.link/P2169R4) A Nice Placeholder
-  With No Name
+  - `202306L` [P2169R4](https://wg21.link/P2169R4) *PDF* A Nice Placeholder With
+  No Name
 */
 #ifndef LBAL_CPP26_PLACEHOLDER_VARIABLES
   #define LBAL_CPP26_PLACEHOLDER_VARIABLES 0
@@ -230,7 +230,7 @@
   `__cpp_static_assert` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202306L` [P2741R3 __PDF__](https://wg21.link/P2741R3) user-generated
+  - `202306L` [P2741R3](https://wg21.link/P2741R3) *PDF* user-generated
   `static_assert` messages
 */
 #ifndef LBAL_CPP26_STATIC_ASSERT_USER_MESSAGE
@@ -244,7 +244,7 @@
   `__cpp_structured_bindings` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202403L` [P0609R3 __PDF__](https://wg21.link/P0609R3) Attributes for
+  - `202403L` [P0609R3](https://wg21.link/P0609R3) *PDF* Attributes for
   Structured Bindings
 */
 #ifndef LBAL_CPP26_STRUCTURED_BINDINGS_ATTRIBUTES
@@ -270,7 +270,7 @@
   @brief Allow _concept_ and _variable-template_ _template-parameters_
   @details SD-6 equivalent: `__cpp_template_parameters >= 202502L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202502L` [P2841R7 __PDF__](https://wg21.link/P2841R7) Concept and
+  - `202502L` [P2841R7](https://wg21.link/P2841R7) *PDF* Concept and
   variable-template template-parameters
 */
 #ifndef LBAL_CPP26_TEMPLATE_PARAMETERS

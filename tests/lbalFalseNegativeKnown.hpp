@@ -60,6 +60,15 @@ known_absent(std::string_view token) {
     return "libc++ lists P3370R1 (C23 library headers) as not implemented; "
            "the C library provides the functions";
   }
+  #if _LIBCPP_VERSION < 220000
+  //	libc++ 21 already constrains the `pair`, `tuple`, `optional`, `variant`
+  //	and `reference_wrapper` comparisons, so the probe compiles, but its
+  //	status page lists P2944R3 as partial until 22.
+  if (token == "LBAL_LIBCPP26_CONSTRAINED_EQUALITY") {
+    return "libc++ before 22 lists P2944R3 (constrained equality) as only "
+           "partly implemented";
+  }
+  #endif
 #endif
 
   static_cast<void>(token);

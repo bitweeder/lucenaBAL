@@ -26,13 +26,18 @@ namespace lbal_fp {
 
 constexpr int
 use() {
+  //	The macro covers `flat_multimap` too; libc++ 21 made only `flat_map`
+  //	constexpr.
   std::flat_map<int, int> c;
   c[2] = 20;
   c.emplace(1, 10);
-  return c.begin()->second + c.at(2);
+  std::flat_multimap<int, int> d;
+  d.emplace(1, 1);
+  d.emplace(1, 2);
+  return c.begin()->second + c.at(2) + static_cast<int>(d.count(1));
 }
 
-static_assert(use() == 30);
+static_assert(use() == 32);
 
 }  // namespace lbal_fp
 #endif

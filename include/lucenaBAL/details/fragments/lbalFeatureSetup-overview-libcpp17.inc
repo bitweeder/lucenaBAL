@@ -47,8 +47,8 @@
   @details SD-6 equivalent: `__cpp_lib_allocator_traits_is_always_equal >=
   201411L`. This token will have a value of `0` if the proposal described here
   is not supported.
-  - `201411L` [N4258 __PDF__](https://wg21.link/N4258) Cleaning up noexcept in
-  the Library (Rev 3)
+  - `201411L` [N4258](https://wg21.link/N4258) *PDF* Cleaning up noexcept in the
+  Library (Rev 3)
 
   @sa `<deque>` `<forward_list>` `freestanding` `<list>` `<map>` `<memory>`
   `<scoped_allocator>` `<set>` `<string>` `<unordered_map>` `<unordered_set>`
@@ -84,7 +84,7 @@
   `__cpp_lib_any` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201606L` [P0032R3 __PDF__](https://wg21.link/P0032R3) Homogeneous interface
+  - `201606L` [P0032R3](https://wg21.link/P0032R3) *PDF* Homogeneous interface
   for `variant`, `any` and `optional` (Revision 3)
 
   @remark (APIME) We do not track experimental versions of this.
@@ -191,8 +191,7 @@
   @brief Define `std::byte` type
   @details SD-6 equivalent: `__cpp_lib_byte >= 201603L`. This token will have a
   value of `0` if the proposal described here is not supported.
-  - `201603L` [P0298R3 __PDF__](https://wg21.link/P0298R3) A byte type
-  definition
+  - `201603L` [P0298R3](https://wg21.link/P0298R3) *PDF* A byte type definition
 
   @sa `<cstddef>` `freestanding`
 */
@@ -364,8 +363,8 @@
   `__cpp_lib_filesystem` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201606L` [P0392R0 __PDF__](https://wg21.link/P0392R0) Adapting string_view
-  by filesystem paths
+  - `201606L` [P0392R0](https://wg21.link/P0392R0) *PDF* Adapting string_view by
+  filesystem paths
 
   @remark (SEEME - bitweeder) Full implementation missing on Apple platforms
   prior to macOS 10.15.
@@ -396,8 +395,8 @@
   @brief Add `std::gcd` and `std::lcm`
   @details SD-6 equivalent: `__cpp_lib_gcd_lcm >= 201606L`. This token will have
   a value of `0` if the proposal described here is not supported.
-  - `201606L` [P0295R0 __PDF__](https://wg21.link/P0295R0) Adopt Selected
-  Library Fundamentals V2 Components for C++17
+  - `201606L` [P0295R0](https://wg21.link/P0295R0) *PDF* Adopt Selected Library
+  Fundamentals V2 Components for C++17
 
   @sa `freestanding` `<numeric>`
 */
@@ -451,8 +450,8 @@
 
   SD-6 equivalent: `__cpp_lib_hypot >= 201603L`. This token will have a value of
   `0` if the proposal described here is not supported.
-  - `201603L` [P0030R1 __PDF__](https://wg21.link/P0030R1) Proposal to Introduce
-  a 3-Argument Overload to `std::hypot`
+  - `201603L` [P0030R1](https://wg21.link/P0030R1) *PDF* Proposal to Introduce a
+  3-Argument Overload to `std::hypot`
 
   @sa `<cmath>`
 */
@@ -564,7 +563,7 @@
   @brief Introduce `std::make_from_tuple` to unpack a tuple into arguments
   @details SD-6 equivalent: `__cpp_lib_make_from_tuple >= 201606L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `201606L` [P0209R2 __PDF__](https://wg21.link/P0209R2) `make_from_tuple`:
+  - `201606L` [P0209R2](https://wg21.link/P0209R2) *PDF* `make_from_tuple`:
   `apply` for construction
 
   @sa `freestanding` `<tuple>`
@@ -593,7 +592,7 @@
   @details SD-6 equivalent: `__cpp_lib_math_special_functions >= 201603L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201603L` [P0226R1 __PDF__](https://wg21.link/P0226R1) Mathematical Special
+  - `201603L` [P0226R1](https://wg21.link/P0226R1) *PDF* Mathematical Special
   Functions for C++17, v5
 
   @sa `<cmath>`
@@ -622,8 +621,8 @@
   @brief Add splicing to associative containers
   @details SD-6 equivalent: `__cpp_lib_node_extract >= 201606L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `201606L` [P0083R3 __PDF__](https://wg21.link/P0083R3) Splicing Maps and
-  Sets (Revision 5)
+  - `201606L` [P0083R3](https://wg21.link/P0083R3) *PDF* Splicing Maps and Sets
+  (Revision 5)
 
   @sa `<map>` `<set>` `<unordered_map>` `<unordered_set>`
 */
@@ -638,8 +637,8 @@
   @details SD-6 equivalent: `__cpp_lib_nonmember_container_access >= 201411L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201411L` [N4280 __PDF__](https://wg21.link/N4280) Non-member size() and
-  more (Revison 2)
+  - `201411L` [N4280](https://wg21.link/N4280) *PDF* Non-member size() and more
+  (Revison 2)
 
   @sa `<array>` `<deque>` `<forward_list>` `freestanding` `<iterator>` `<list>`
   `<map>` `<regex>` `<set>` `<string>` `<unordered_map>` `<unordered_set>`
@@ -688,7 +687,7 @@
   `__cpp_lib_optional` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201606L` [P0032R3 __PDF__](https://wg21.link/P0032R3) Homogeneous interface
+  - `201606L` [P0032R3](https://wg21.link/P0032R3) *PDF* Homogeneous interface
   for `variant`, `any` and `optional` (Revision 3)
 
   @remark Note that the [`P0032R3`](https://wg21.link/P0032R3) and
@@ -711,8 +710,8 @@
   `__cpp_lib_optional` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201606L` [P0307R2 __PDF__](https://wg21.link/P0307R2) Making Optional
-  Greater Equal Again
+  - `201606L` [P0307R2](https://wg21.link/P0307R2) *PDF* Making Optional Greater
+  Equal Again
 
   @remark Note that the [`P0032R3`](https://wg21.link/P0032R3) and
   [`P0307R2`](https://wg21.link/P0307R2) proposals were approved at the same
@@ -892,7 +891,7 @@
   `__cpp_lib_string_view` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `201606L` [P0254R2 __PDF__](https://wg21.link/P0254R2) Integrating
+  - `201606L` [P0254R2](https://wg21.link/P0254R2) *PDF* Integrating
   `std::string_view` and `std::string`
 
   @sa `<string>` `<string_view>`
@@ -1049,7 +1048,7 @@
   @details SD-6 equivalent: `__cpp_lib_uncaught_exceptions >= 201411L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201411L` [N4259 __PDF__](https://wg21.link/N4259) Wording for
+  - `201411L` [N4259](https://wg21.link/N4259) *PDF* Wording for
   std::uncaught_exceptions
 
   @sa `<exception>` `freestanding`
@@ -1080,7 +1079,7 @@
   `__cpp_lib_variant` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201606L` [P0032R3 __PDF__](https://wg21.link/P0032R3) Homogeneous interface
+  - `201606L` [P0032R3](https://wg21.link/P0032R3) *PDF* Homogeneous interface
   for `variant`, `any` and `optional` (Revision 3)
   - `201606L` [P0088R3](https://wg21.link/P0088R3) Variant: a type-safe union
   for C++17 (v8)
@@ -1101,7 +1100,7 @@
   @brief Add `std::void_t` as a transformation type trait
   @details SD-6 equivalent: `__cpp_lib_void_t >= 201411L`. This token will have
   a value of `0` if the proposal described here is not supported.
-  - `201411L` [N3911 __PDF__](https://wg21.link/N3911) TransformationTrait Alias
+  - `201411L` [N3911](https://wg21.link/N3911) *PDF* TransformationTrait Alias
   void_t
 
   @sa `freestanding` `<type_traits>`

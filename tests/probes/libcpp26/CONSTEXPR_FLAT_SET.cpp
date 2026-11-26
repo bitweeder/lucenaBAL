@@ -26,11 +26,16 @@ namespace lbal_fp {
 
 constexpr int
 use() {
+  //	The macro covers `flat_multiset` too; libc++ 21 made only `flat_set`
+  //	constexpr.
   std::flat_set<int> c{3, 1, 2, 1};
-  return *c.begin() * 10 + static_cast<int>(c.size());
+  std::flat_multiset<int> d{3, 1, 1};
+  return *c.begin() * 10
+       + static_cast<int>(c.size())
+       + static_cast<int>(d.count(1)) * 100;
 }
 
-static_assert(use() == 13);
+static_assert(use() == 213);
 
 }  // namespace lbal_fp
 #endif

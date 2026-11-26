@@ -55,7 +55,7 @@
   @details SD-6 equivalent: `__has_cpp_attribute(fallthrough) >= 201603L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201603L` [P0188R1 __PDF__](https://wg21.link/P0188R1) Wording for
+  - `201603L` [P0188R1](https://wg21.link/P0188R1) *PDF* Wording for
   [[fallthrough]] attribute
 */
 #ifndef LBAL_CPP17_ATTRIBUTE_FALLTHROUGH
@@ -68,7 +68,7 @@
   @details SD-6 equivalent: `__has_cpp_attribute(maybe_unused) >= 201603L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201603L` [P0212R1 __PDF__](https://wg21.link/P0212R1) Wording for
+  - `201603L` [P0212R1](https://wg21.link/P0212R1) *PDF* Wording for
   [[maybe_unused]] attribute
 */
 #ifndef LBAL_CPP17_ATTRIBUTE_MAYBE_UNUSED
@@ -83,7 +83,7 @@
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
   supported.
-  - `201603L` [P0189R1 __PDF__](https://wg21.link/P0189R1) Wording for
+  - `201603L` [P0189R1](https://wg21.link/P0189R1) *PDF* Wording for
   [[nodiscard]] attribute
 */
 #ifndef LBAL_CPP17_ATTRIBUTE_NODISCARD
@@ -109,7 +109,7 @@
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201603L` [P0170R1 __PDF__](https://wg21.link/P0170R1) Wording for Constexpr
+  - `201603L` [P0170R1](https://wg21.link/P0170R1) *PDF* Wording for Constexpr
   Lambda
 */
 #ifndef LBAL_CPP17_CONSTEXPR_LAMBDA
@@ -152,8 +152,8 @@
   `__cpp_deduction_guides` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `201611L` [P0512R0 __PDF__](https://wg21.link/P0512R0) Class Template
-  Argument Deduction Assorted NB resolution and issues
+  - `201611L` [P0512R0](https://wg21.link/P0512R0) *PDF* Class Template Argument
+  Deduction Assorted NB resolution and issues
 */
 #ifndef LBAL_CPP17_DEDUCTION_GUIDES_NB
   #define LBAL_CPP17_DEDUCTION_GUIDES_NB 0
@@ -192,7 +192,7 @@
   `__cpp_fold_expressions` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `201603L` [P0036R0 __PDF__](https://wg21.link/P0036R0) Unary Folds and Empty
+  - `201603L` [P0036R0](https://wg21.link/P0036R0) *PDF* Unary Folds and Empty
   Parameter Packs (Revision 1)
 */
 #ifndef LBAL_CPP17_FOLD_EXPRESSIONS_REVISED
@@ -256,7 +256,7 @@
   @brief `inline` variables
   @details SD-6 equivalent: `__cpp_inline_variables >= 201606L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `201606L` [P0386R2 __PDF__](https://wg21.link/P0386R2) Inline Variables
+  - `201606L` [P0386R2](https://wg21.link/P0386R2) *PDF* Inline Variables
 */
 #ifndef LBAL_CPP17_INLINE_VARIABLES
   #define LBAL_CPP17_INLINE_VARIABLES 0
@@ -335,8 +335,7 @@
   `__cpp_static_assert` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201411L` [N3928 __PDF__](https://wg21.link/N3928) Extending static_assert,
-  v2
+  - `201411L` [N3928](https://wg21.link/N3928) *PDF* Extending static_assert, v2
 */
 #ifndef LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE
   #define LBAL_CPP17_STATIC_ASSERT_NO_MESSAGE 0

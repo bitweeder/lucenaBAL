@@ -470,8 +470,9 @@
   //	C++26: P2637R3 (member `visit`, libc++ 19; `__cpp_lib_format` is
   //	blocked by P2419R2), P2918R2 (`runtime_format`, 18–22, also behind
   //	`__cpp_lib_format`), P2592R3 (`chrono` hashing, libc++ 22), P2821R5
-  //	(`span::at`, 18), P2497R0 (`to_chars` result testing, 18) and P2819R2
-  //	(tuple protocol for `complex`, 19).
+  //	(`span::at`, 18), P2497R0 (`to_chars` result testing, 18), P2819R2
+  //	(tuple protocol for `complex`, 19) and P3379R0 (constrained `expected`
+  //	equality, 21).
   #if (LBAL_cpp_version > LBAL_CPP23_VERSION)
     #if (_LIBCPP_VERSION >= 190000)                                            \
         && LBAL_LIBCPP20_FORMAT                                                \
@@ -486,6 +487,14 @@
         && LBAL_LIBCPP20_FORMAT                                                \
         && !defined(LBAL_LIBCPP26_FORMAT_RUNTIME)
       #define LBAL_LIBCPP26_FORMAT_RUNTIME 202311L
+    #endif
+    //	SEEME libc++ 21 completes P3379R0, but leaves
+    //	`__cpp_lib_constrained_equality` commented out until 22, because
+    //	P2944R3, which shares it, is listed as partial in 21.
+    #if (_LIBCPP_VERSION >= 210000)                                            \
+        && !defined(LBAL_LIBCPP26_CONSTRAINED_EQUALITY_EXPECTED)               \
+        && __has_include(<expected>)
+      #define LBAL_LIBCPP26_CONSTRAINED_EQUALITY_EXPECTED 202411L
     #endif
     #if (_LIBCPP_VERSION >= 220000)                                            \
         && !defined(LBAL_LIBCPP26_CHRONO_HASHING)                              \
