@@ -20,6 +20,11 @@
   `v` isn’t a constant expression. There is no core-only form, since
   constructing an element no longer starts the array’s lifetime.
 
+  `LBAL_LIBCPP26_START_LIFETIME` reports `std::start_lifetime`. A compiler with
+  the language rule paired with a library that lacks the function fails this
+  probe. The body isn’t gated on that token as well, because the false-negative
+  test forces only this one, and an empty probe would compile.
+
   SEEME: written from P3726R2; not yet compiled by any compiler available
   here.
 

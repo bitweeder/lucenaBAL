@@ -941,7 +941,7 @@
 #endif  //  LBAL_LIBCPP26_REFLECTION_RENAME_TO_IS_VARARG_FUNCTION
 
 #if !defined(LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER)
-  #if __cpp_lib_replaceable_contract_violation_handler >= 202306L
+  #if __cpp_lib_replaceable_contract_violation_handler >= 202603L
     #define LBAL_LIBCPP26_REPLACEABLE_CONTRACT_VIOLATION_HANDLER               \
       __cpp_lib_replaceable_contract_violation_handler
   #endif
@@ -1007,12 +1007,6 @@
     #define LBAL_LIBCPP26_SIMD_EXTEND __cpp_lib_simd
   #endif
 #endif  //  LBAL_LIBCPP26_SIMD_EXTEND
-
-#if !defined(LBAL_LIBCPP26_SIMD_IOTA)
-  #if __cpp_lib_simd >= 202603L
-    #define LBAL_LIBCPP26_SIMD_IOTA __cpp_lib_simd
-  #endif
-#endif  //  LBAL_LIBCPP26_SIMD_IOTA
 
 #if !defined(LBAL_LIBCPP26_SIMD_NAMESPACES)
   #if __cpp_lib_simd >= 202502L

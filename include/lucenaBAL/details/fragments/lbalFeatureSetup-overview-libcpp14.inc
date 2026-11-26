@@ -29,7 +29,7 @@
   @brief User-defined Literals for `<chrono>` types
   @details SD-6 equivalent: `__cpp_lib_chrono_udls >= 201304L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `201304L` [N3642](https://wg21.link/N3642) *PDF* User-defined Literals for
+  - `201304L` [N3642](https://wg21.link/N3642) **PDF** User-defined Literals for
   Standard Library Types (part 1 - version 4)
 
   @sa `<chrono>`
@@ -43,8 +43,8 @@
   @brief User-defined Literals for `<complex>`
   @details SD-6 equivalent: `__cpp_lib_complex_udls >= 201309L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `201309L` [N3779](https://wg21.link/N3779) *PDF* User-defined Literals for
-  std::complex
+  - `201309L` [N3779](https://wg21.link/N3779) **PDF** User-defined Literals
+  for std::complex
 
   @sa `<complex>`
 */
@@ -102,8 +102,8 @@
   @details SD-6 equivalent: `__cpp_lib_integral_constant_callable >= 201304L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201304L` [N3545](https://wg21.link/N3545) *PDF* An Incremental Improvement
-  to integral_constant
+  - `201304L` [N3545](https://wg21.link/N3545) **PDF** An Incremental
+  Improvement to integral_constant
 
   @sa `freestanding` `<type_traits>`
 */
@@ -171,7 +171,7 @@
   @brief Allow value-initialized forward iterators to be compared
   @details SD-6 equivalent: `__cpp_lib_null_iterators >= 201304L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `201304L` [N3644](https://wg21.link/N3644) *PDF* Null Forward Iterators
+  - `201304L` [N3644](https://wg21.link/N3644) **PDF** Null Forward Iterators
 
   @sa `freestanding` `<iterator>`
 */
@@ -241,7 +241,7 @@
   @brief Predefine UDLs for strings
   @details SD-6 equivalent: `__cpp_lib_string_udls >= 201304L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `201304L` [N3642](https://wg21.link/N3642) *PDF* User-defined Literals for
+  - `201304L` [N3642](https://wg21.link/N3642) **PDF** User-defined Literals for
   Standard Library Types (part 1 - version 4)
 
   @sa `<string>`
@@ -256,8 +256,8 @@
   @details SD-6 equivalent: `__cpp_lib_transformation_trait_aliases >= 201304L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `201304L` [N3655](https://wg21.link/N3655) *PDF* TransformationTraits Redux,
-  v2
+  - `201304L` [N3655](https://wg21.link/N3655) **PDF** TransformationTraits
+  Redux, v2
 
   @sa `freestanding` `<type_traits>`
 */
@@ -302,7 +302,7 @@
   @brief Add `std::tuple` `element_t` type alias
   @details SD-6 equivalent: `__cpp_lib_tuple_element_t >= 201402L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `201402L` [N3887](https://wg21.link/N3887) *PDF* Consistent Metafunction
+  - `201402L` [N3887](https://wg21.link/N3887) **PDF** Consistent Metafunction
   Aliases
 
   @sa `freestanding` `<tuple>`

@@ -41,7 +41,7 @@
   @brief Allow type aliases to be templated.
   @details SD-6 equivalent: `__cpp_alias_templates >= 200704L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `200704L` [N2258](https://wg21.link/N2258) *PDF* Templates Aliases
+  - `200704L` [N2258](https://wg21.link/N2258) **PDF** Templates Aliases
 */
 #ifndef LBAL_CPP11_ALIAS_TEMPLATES
   #define LBAL_CPP11_ALIAS_TEMPLATES 0
@@ -52,7 +52,7 @@
   @brief Formalize attributes as a language feature.
   @details SD-6 equivalent: `__cpp_attributes >= 200809L`. This token will have
   a value of `0` if the proposal described here is not supported.
-  - `200809L` [N2761](https://wg21.link/N2761) *PDF* Towards support for
+  - `200809L` [N2761](https://wg21.link/N2761) **PDF** Towards support for
   attributes in C++ (Revision 6)
 */
 #ifndef LBAL_CPP11_ATTRIBUTES
@@ -65,7 +65,7 @@
   @details SD-6 equivalent: `__has_cpp_attribute(noreturn) >= 200809L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `200809L` [N2761](https://wg21.link/N2761) *PDF* Towards support for
+  - `200809L` [N2761](https://wg21.link/N2761) **PDF** Towards support for
   attributes in C++ (Revision 6)
 */
 #ifndef LBAL_CPP11_ATTRIBUTE_NORETURN
@@ -79,7 +79,7 @@
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `200704L` [N2235](https://wg21.link/N2235) *PDF* Generalized Constant
+  - `200704L` [N2235](https://wg21.link/N2235) **PDF** Generalized Constant
   Expressions—Revision 5
 */
 #ifndef LBAL_CPP11_CONSTEXPR
@@ -91,7 +91,7 @@
   @brief Query the type of an expression
   @details SD-6 equivalent: `__cpp_decltype >= 200707L`. This token will have a
   value of `0` if the proposal described here is not supported.
-  - `200707L` [N2343](https://wg21.link/N2343) *PDF* Decltype (revision 7):
+  - `200707L` [N2343](https://wg21.link/N2343) **PDF** Decltype (revision 7):
   proposed wording
 */
 #ifndef LBAL_CPP11_DECLTYPE
@@ -104,7 +104,7 @@
   @details SD-6 equivalent: `__cpp_delegating_constructors >= 200604L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `200604L` [N1986](https://wg21.link/N1986) *PDF* Delegating Constructors
+  - `200604L` [N1986](https://wg21.link/N1986) **PDF** Delegating Constructors
   (revision 3)
 */
 #ifndef LBAL_CPP11_DELEGATING_CONSTRUCTORS
@@ -142,7 +142,7 @@
   @brief Support for Lambda functions
   @details SD-6 equivalent: `__cpp_lambdas >= 200907L`. This token will have a
   value of `0` if the proposal described here is not supported.
-  - `200907L` [N2927](https://wg21.link/N2927) *PDF* New wording for C++0x
+  - `200907L` [N2927](https://wg21.link/N2927) **PDF** New wording for C++0x
   Lambdas (rev. 2)
 */
 #ifndef LBAL_CPP11_LAMBDAS
@@ -276,8 +276,8 @@
   @brief Support for user-defined literals
   @details SD-6 equivalent: `__cpp_user_defined_literals >= 200809L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `200809L` [N2765](https://wg21.link/N2765) *PDF* User-defined Literals (aka.
-  Extensible Literals (revision 5))
+  - `200809L` [N2765](https://wg21.link/N2765) **PDF** User-defined Literals
+  (aka. Extensible Literals (revision 5))
 */
 #ifndef LBAL_CPP11_USER_DEFINED_LITERALS
   #define LBAL_CPP11_USER_DEFINED_LITERALS 0
@@ -288,7 +288,7 @@
   @brief Support for templates with variable numbers of arguments
   @details SD-6 equivalent: `__cpp_variadic_templates >= 200704L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `200704L` [N2242](https://wg21.link/N2242) *PDF* Proposed Wording for
+  - `200704L` [N2242](https://wg21.link/N2242) **PDF** Proposed Wording for
   Variadic Templates (Revision 2)
 */
 #ifndef LBAL_CPP11_VARIADIC_TEMPLATES

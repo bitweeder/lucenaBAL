@@ -88,7 +88,7 @@
   supported.
   - `201907L` [P1301R4](https://wg21.link/P1301R4) [[nodiscard(should have
   a reason)]]
-  - `201907L` [P1771R1](https://wg21.link/P1771R1) *PDF* [[nodiscard]] for
+  - `201907L` [P1771R1](https://wg21.link/P1771R1) **PDF** [[nodiscard]] for
   constructors
 */
 #ifndef LBAL_CPP20_ATTRIBUTE_NODISCARD_EXPANDED
@@ -142,7 +142,7 @@
   `__cpp_concepts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201707L` [P0734R0](https://wg21.link/P0734R0) *PDF* Wording Paper, C++
+  - `201707L` [P0734R0](https://wg21.link/P0734R0) **PDF** Wording Paper, C++
   extensions for Concepts
 */
 #ifndef LBAL_CPP20_CONCEPTS
@@ -184,7 +184,7 @@
   `__cpp_concepts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201811L` [P1084R2](https://wg21.link/P1084R2) *PDF* Today’s
+  - `201811L` [P1084R2](https://wg21.link/P1084R2) **PDF** Today’s
   return-type-requirements Are Insufficient
 */
 #ifndef LBAL_CPP20_CONCEPTS_RESPECIFY_RETURN_TYPE_REQUIREMENTS
@@ -225,7 +225,7 @@
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202002L` [P1330R0](https://wg21.link/P1330R0) *PDF* Changing the active
+  - `202002L` [P1330R0](https://wg21.link/P1330R0) **PDF** Changing the active
   member of a union inside constexpr
 */
 #ifndef LBAL_CPP20_CONSTEXPR_CHANGE_ACTIVE_UNION_MEMBER
@@ -254,7 +254,7 @@
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201811L` [P1002R1](https://wg21.link/P1002R1) *PDF* Try-catch blocks in
+  - `201811L` [P1002R1](https://wg21.link/P1002R1) **PDF** Try-catch blocks in
   constexpr functions
   - `201811L` [P1327R1](https://wg21.link/P1327R1) Allowing `dynamic_cast`,
   polymorphic `typeid` in Constant Expressions
@@ -305,7 +305,7 @@
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201907L` [P1331R2](https://wg21.link/P1331R2) *PDF* Permitting trivial
+  - `201907L` [P1331R2](https://wg21.link/P1331R2) **PDF** Permitting trivial
   default initialization in constexpr contexts
 
   @remark This and the `LBAL_CPP20_CONSTEXPR_INTRINSICS` token are aliases for
@@ -322,7 +322,7 @@
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `201811L` [P1002R1](https://wg21.link/P1002R1) *PDF* Try-catch blocks in
+  - `201811L` [P1002R1](https://wg21.link/P1002R1) **PDF** Try-catch blocks in
   constexpr functions
 
   @remark This and the `LBAL_CPP20_CONSTEXPR_DYNAMIC_POLYMORPHISM` and
@@ -339,7 +339,7 @@
   `__cpp_constexpr` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202002L` [P1330R0](https://wg21.link/P1330R0) *PDF* Changing the active
+  - `202002L` [P1330R0](https://wg21.link/P1330R0) **PDF** Changing the active
   member of a union inside constexpr
 
   @remark This and the `LBAL_CPP20_CONSTEXPR_TRY_CATCH` and
@@ -400,7 +400,7 @@
   supported proposal, or `0` if the proposal described here is not supported.
   - `201907L` [P1814R0](https://wg21.link/P1814R0) Wording for Class Template
   Argument Deduction for Alias Templates
-  - `201907L` [P1816R0](https://wg21.link/P1816R0) *PDF* Wording for class
+  - `201907L` [P1816R0](https://wg21.link/P1816R0) **PDF** Wording for class
   template argument deduction for aggregates
 */
 #ifndef LBAL_CPP20_DEDUCTION_GUIDES_FOR_AGGREGATES
@@ -431,7 +431,7 @@
   from a number of different proposals, so this token will have the value of
   the latest supported proposal, or `0` if the proposal described here is not
   supported.
-  - `201707L` [P0329R4](https://wg21.link/P0329R4) *PDF* Designated
+  - `201707L` [P0329R4](https://wg21.link/P0329R4) **PDF** Designated
   Initialization Wording
 */
 #ifndef LBAL_CPP20_DESIGNATED_INITIALIZERS
@@ -458,7 +458,7 @@
   `__cpp_generic_lambdas` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `201707L` [P0428R2](https://wg21.link/P0428R2) *PDF* Familiar template
+  - `201707L` [P0428R2](https://wg21.link/P0428R2) **PDF** Familiar template
   syntax for generic lambdas
 */
 #ifndef LBAL_CPP20_GENERIC_LAMBDAS_TEMPLATE_PARAMETER_LIST
@@ -522,7 +522,7 @@
   @brief Incorporate modules
   @details SD-6 equivalent: `__cpp_modules >= 201907L`. This token will have a
   value of `0` if the proposal described here is not supported.
-  - `201907L` [P1103R3](https://wg21.link/P1103R3) *PDF* Merging Modules
+  - `201907L` [P1103R3](https://wg21.link/P1103R3) **PDF** Merging Modules
   - `201907L` [P1811R0](https://wg21.link/P1811R0) Relaxing redefinition
   restrictions for re-exportation robustness
 */
@@ -577,9 +577,9 @@
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
   not supported.
-  - `201711L` [P0515R3](https://wg21.link/P0515R3) *PDF* Consistent comparison
-  - `201711L` [P0768R1](https://wg21.link/P0768R1) *PDF* Library Support for the
-  Spaceship (Comparison) Operator
+  - `201711L` [P0515R3](https://wg21.link/P0515R3) **PDF** Consistent comparison
+  - `201711L` [P0768R1](https://wg21.link/P0768R1) **PDF** Library Support for
+  the Spaceship (Comparison) Operator
 */
 #ifndef LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR
   #define LBAL_CPP20_THREE_WAY_COMPARISON_OPERATOR 0

@@ -469,7 +469,8 @@
 
   //	C++26: P2637R3 (member `visit`, libc++ 19; `__cpp_lib_format` is
   //	blocked by P2419R2), P2918R2 (`runtime_format`, 18–22, also behind
-  //	`__cpp_lib_format`), P2592R3 (`chrono` hashing, libc++ 22), P2821R5
+  //	`__cpp_lib_format`), P3953R3 (renamed to `dynamic_format`, 23), P2592R3
+  //(`chrono` hashing, libc++ 22), P2821R5
   //	(`span::at`, 18), P2497R0 (`to_chars` result testing, 18), P2819R2
   //	(tuple protocol for `complex`, 19) and P3379R0 (constrained `expected`
   //	equality, 21).
@@ -481,12 +482,21 @@
     #endif
     //	SEEME libc++ 23 implements P3953R3, which renamed `runtime_format` to
     //	`dynamic_format`, so the old name is gone from 23 on. This upper bound
-    //	is a removal, not a VERME; there is no token for the new name yet.
+    //	is a removal, not a VERME; from 23, both tokens are set to the value
+    //	`__cpp_lib_format` would have if libc++ reported P3953R3.
     #if (_LIBCPP_VERSION >= 180000)                                            \
         && (_LIBCPP_VERSION < 230000)                                          \
         && LBAL_LIBCPP20_FORMAT                                                \
         && !defined(LBAL_LIBCPP26_FORMAT_RUNTIME)
       #define LBAL_LIBCPP26_FORMAT_RUNTIME 202311L
+    #endif
+    #if (_LIBCPP_VERSION >= 230000) && LBAL_LIBCPP20_FORMAT
+      #if !defined(LBAL_LIBCPP26_FORMAT_RUNTIME_RENAMING)
+        #define LBAL_LIBCPP26_FORMAT_RUNTIME_RENAMING 202603L
+      #endif
+      #if !defined(LBAL_LIBCPP26_FORMAT_RUNTIME)
+        #define LBAL_LIBCPP26_FORMAT_RUNTIME 202603L
+      #endif
     #endif
     //	SEEME libc++ 21 completes P3379R0, but leaves
     //	`__cpp_lib_constrained_equality` commented out until 22, because

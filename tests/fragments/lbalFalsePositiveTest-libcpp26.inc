@@ -133,6 +133,7 @@
     || LBAL_LIBCPP26_FORMAT_PATH_FIXES                                         \
     || LBAL_LIBCPP26_FORMAT_POINTERS                                           \
     || LBAL_LIBCPP26_FORMAT_RUNTIME                                            \
+    || LBAL_LIBCPP26_FORMAT_RUNTIME_RENAMING                                   \
     || LBAL_LIBCPP26_FORMAT_TYPE_CHECK                                         \
     || LBAL_LIBCPP26_FORMAT_UCHAR
   #include <format>
@@ -681,9 +682,26 @@ LBAL_FP_TEST(LIBCPP26, FORMAT_POINTERS) {
 LBAL_FP_TEST(LIBCPP26, FORMAT_RUNTIME) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_FORMAT_RUNTIME);
 #if LBAL_LIBCPP26_FORMAT_RUNTIME
+  //	P3953R3 renamed `runtime_format`, so a library that reports it only has
+  //	the new name (libc++ 23, for one).
   std::string fmt = "{}+{}";
 
+  #if LBAL_LIBCPP26_FORMAT_RUNTIME_RENAMING
+  EXPECT_EQ(std::format(std::dynamic_format(fmt), 1, 2), "1+2");
+  #else
   EXPECT_EQ(std::format(std::runtime_format(fmt), 1, 2), "1+2");
+  #endif
+#endif
+}
+
+LBAL_FP_TEST(LIBCPP26, FORMAT_RUNTIME_RENAMING) {
+  LBAL_FP_REQUIRE(LBAL_LIBCPP26_FORMAT_RUNTIME_RENAMING);
+#if LBAL_LIBCPP26_FORMAT_RUNTIME_RENAMING
+  //	P3953R3 renamed `std::runtime_format` to `std::dynamic_format`.
+  //	Checked against libc++ 23 with Clang 23 (C++26).
+  std::string fmt = "{}+{}";
+
+  EXPECT_EQ(std::format(std::dynamic_format(fmt), 1, 2), "1+2");
 #endif
 }
 

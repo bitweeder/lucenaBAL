@@ -30,7 +30,7 @@
   @details SD-6 equivalent: `__cpp_lib_adaptor_iterator_pair_constructor >=
   202106L`. This token will have a value of `0` if the proposal described here
   is not supported.
-  - `202106L` [P1425R4](https://wg21.link/P1425R4) *PDF* Iterators pair
+  - `202106L` [P1425R4](https://wg21.link/P1425R4) **PDF** Iterators pair
   constructors for stack and queue
 
   @sa `<queue>` `<stack>`
@@ -185,7 +185,7 @@
   `__cpp_lib_concepts` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202207L` [P2404R3](https://wg21.link/P2404R3) *PDF* Move-only types for
+  - `202207L` [P2404R3](https://wg21.link/P2404R3) **PDF** Move-only types for
   equality_comparable_with, totally_ordered_with, and three_way_comparable_with
 
   @sa `<compare>` `<concepts>` `freestanding`
@@ -199,7 +199,8 @@
   @brief A more constexpr bitset
   @details SD-6 equivalent: `__cpp_lib_constexpr_bitset >= 202207L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202207L` [P2417R2](https://wg21.link/P2417R2) *PDF* A more constexpr bitset
+  - `202207L` [P2417R2](https://wg21.link/P2417R2) **PDF** A more constexpr
+  bitset
 
   @sa `<bitset>`
 */
@@ -214,8 +215,8 @@
   @details SD-6 equivalent: `__cpp_lib_constexpr_charconv >= 202207L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `202207L` [P2291R3](https://wg21.link/P2291R3) *PDF* Add Constexpr Modifiers
-  to Functions to_chars and from_chars for Integral Types in Header
+  - `202207L` [P2291R3](https://wg21.link/P2291R3) **PDF** Add Constexpr
+  Modifiers to Functions to_chars and from_chars for Integral Types in Header
 
   @sa `<charconv>` `freestanding`
 */
@@ -230,7 +231,7 @@
   `__cpp_lib_constexpr_cmath` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202202L` [P0533R9](https://wg21.link/P0533R9) *PDF* `constexpr` for
+  - `202202L` [P0533R9](https://wg21.link/P0533R9) **PDF** `constexpr` for
   `<cmath>` and `<cstdlib>`
 
   @sa `<cmath>` `<cstdlib>`
@@ -246,7 +247,7 @@
   `__cpp_lib_constexpr_memory` has multiple values associated with it from a
   number of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202202L` [P2273R3](https://wg21.link/P2273R3) *PDF* Making
+  - `202202L` [P2273R3](https://wg21.link/P2273R3) **PDF** Making
   `std::unique_ptr` constexpr
 
   @sa `freestanding` `<memory>`
@@ -275,8 +276,8 @@
   @brief Conversions from ranges to containers
   @details SD-6 equivalent: `__cpp_lib_containers_ranges >= 202202L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202202L` [P1206R7](https://wg21.link/P1206R7) *PDF* Conversions from ranges
-  to containers
+  - `202202L` [P1206R7](https://wg21.link/P1206R7) **PDF** Conversions from
+  ranges to containers
 
   @sa `<deque>` `<forward_list>` `<list>` `<map>` `<queue>` `<set>` `<stack>`
   `<string>` `<unordered_map>` `<unordered_set>` `<vector>`
@@ -323,7 +324,7 @@
   `__cpp_lib_flat_map` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202207L` [P0429R9](https://wg21.link/P0429R9) *PDF* A Standard `flat_map`
+  - `202207L` [P0429R9](https://wg21.link/P0429R9) **PDF** A Standard `flat_map`
 
   @sa `<flat_map>`
 */
@@ -340,7 +341,7 @@
   proposal, or `0` if the proposal described here is not supported.
   - `202207L` [LWG3751](https://wg21.link/LWG3751) Missing feature macro for
   `flat_set`
-  - `202207L` [P1222R4](https://wg21.link/P1222R4) *PDF* A Standard `flat_set`
+  - `202207L` [P1222R4](https://wg21.link/P1222R4) **PDF** A Standard `flat_set`
 
   @sa `<flat_set>`
 */
@@ -368,8 +369,8 @@
   @brief Formatting thread::id and stacktrace
   @details SD-6 equivalent: `__cpp_lib_formatters >= 202302L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `202302L` [P2693R1](https://wg21.link/P2693R1) *PDF* Formatting `thread::id`
-  and `stacktrace`
+  - `202302L` [P2693R1](https://wg21.link/P2693R1) **PDF** Formatting
+  `thread::id` and `stacktrace`
 
   @sa `<stacktrace>` `<thread>`
 */
@@ -491,7 +492,7 @@
   @brief forward_like
   @details SD-6 equivalent: `__cpp_lib_forward_like >= 202207L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `202207L` [P2445R1](https://wg21.link/P2445R1) *PDF* forward_like
+  - `202207L` [P2445R1](https://wg21.link/P2445R1) **PDF** forward_like
 
   @sa `freestanding` `<utility>`
 */
@@ -504,7 +505,7 @@
   @brief std::generator: Synchronous Coroutine Generator for Ranges
   @details SD-6 equivalent: `__cpp_lib_generator >= 202207L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `202207L` [P2502R2](https://wg21.link/P2502R2) *PDF* `std::generator`:
+  - `202207L` [P2502R2](https://wg21.link/P2502R2) **PDF** `std::generator`:
   Synchronous Coroutine Generator for Ranges
 
   @sa `<generator>`
@@ -546,7 +547,7 @@
   @details SD-6 equivalent: `__cpp_lib_is_implicit_lifetime >= 202302L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `202302L` [P2674R1](https://wg21.link/P2674R1) *PDF* A trait for implicit
+  - `202302L` [P2674R1](https://wg21.link/P2674R1) **PDF** A trait for implicit
   lifetime types
 
   @sa `freestanding` `<type_traits>`
@@ -560,7 +561,7 @@
   @brief A proposal for a type trait to detect scoped enumerations
   @details SD-6 equivalent: `__cpp_lib_is_scoped_enum >= 202011L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202011L` [P1048R1](https://wg21.link/P1048R1) *PDF* A proposal for a type
+  - `202011L` [P1048R1](https://wg21.link/P1048R1) **PDF** A proposal for a type
   trait to detect scoped enumerations
 
   @sa `freestanding` `<type_traits>`
@@ -577,8 +578,8 @@
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
   - `202207L` [P0009R18](https://wg21.link/P0009R18) `MDSPAN`
-  - `202207L` [P2599R2](https://wg21.link/P2599R2) *PDF* index _type & size_type
-  in mdspan
+  - `202207L` [P2599R2](https://wg21.link/P2599R2) **PDF** index _type &
+  size_type in mdspan
   - `202207L` [P2604R0](https://wg21.link/P2604R0) MDSPAN: rename pointer and
   contiguous
   - `202207L` [P2613R1](https://wg21.link/P2613R1) Add the missing `empty` to
@@ -595,7 +596,7 @@
   @brief Standard Library Modules std and std.compat
   @details SD-6 equivalent: `__cpp_lib_modules >= 202207L`. This token will have
   a value of `0` if the proposal described here is not supported.
-  - `202207L` [P2465R3](https://wg21.link/P2465R3) *PDF* Standard Library
+  - `202207L` [P2465R3](https://wg21.link/P2465R3) **PDF** Standard Library
   Modules `std` and `std.compat`
 
   @sa `freestanding`
@@ -806,7 +807,7 @@
   @brief views::enumerate
   @details SD-6 equivalent: `__cpp_lib_ranges_enumerate >= 202302L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202302L` [P2164R9](https://wg21.link/P2164R9) *PDF* `views::enumerate`
+  - `202302L` [P2164R9](https://wg21.link/P2164R9) **PDF** `views::enumerate`
 
   @sa `freestanding` `<ranges>`
 */
@@ -821,7 +822,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `202207L` [LWG3807](https://wg21.link/LWG3807) The feature test macro for
   `ranges::find_last` should be renamed
-  - `202207L` [P1223R5](https://wg21.link/P1223R5) *PDF* `find_last`
+  - `202207L` [P1223R5](https://wg21.link/P1223R5) **PDF** `find_last`
 
   @sa `<algorithm>` `freestanding`
 */
@@ -1006,8 +1007,8 @@
   @details SD-6 equivalent: `__cpp_lib_ranges_to_container >= 202202L`.
   This token will have a value of `0` if the proposal described here is not
   supported.
-  - `202202L` [P1206R7](https://wg21.link/P1206R7) *PDF* Conversions from ranges
-  to containers
+  - `202202L` [P1206R7](https://wg21.link/P1206R7) **PDF** Conversions from
+  ranges to containers
 
   @sa `freestanding` `<ranges>`
 */
@@ -1101,8 +1102,8 @@
   @brief A strstream replacement using span as buffer
   @details SD-6 equivalent: `__cpp_lib_spanstream >= 202106L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `202106L` [P0448R4](https://wg21.link/P0448R4) *PDF* A strstream replacement
-  using span as buffer
+  - `202106L` [P0448R4](https://wg21.link/P0448R4) **PDF** A strstream
+  replacement using span as buffer
 
   @sa `<iosfwd>` `<spanstream>`
 */
@@ -1129,7 +1130,7 @@
   @brief Explicit lifetime management
   @details SD-6 equivalent: `__cpp_lib_start_lifetime_as >= 202207L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `202207L` [P2590R2](https://wg21.link/P2590R2) *PDF* Explicit lifetime
+  - `202207L` [P2590R2](https://wg21.link/P2590R2) **PDF** Explicit lifetime
   management
 
   @sa `freestanding` `<memory>`
@@ -1200,7 +1201,7 @@
   `__cpp_lib_tuple_like` has multiple values associated with it from a number of
   different proposals, so this token will have the value of the latest supported
   proposal, or `0` if the proposal described here is not supported.
-  - `202207L` [P2165R4](https://wg21.link/P2165R4) *PDF* Compatibility between
+  - `202207L` [P2165R4](https://wg21.link/P2165R4) **PDF** Compatibility between
   `tuple`, `pair` and tuple-like objects
 
   @sa `<map>` `<tuple>` `<unordered_map>` `<utility>`
@@ -1214,7 +1215,7 @@
   @brief Function to mark unreachable code
   @details SD-6 equivalent: `__cpp_lib_unreachable >= 202202L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `202202L` [P0627R6](https://wg21.link/P0627R6) *PDF* Function to mark
+  - `202202L` [P0627R6](https://wg21.link/P0627R6) **PDF** Function to mark
   unreachable code
 
   @sa `freestanding` `<utility>`

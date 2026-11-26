@@ -11,7 +11,7 @@
 ------------------------------------------------------------------------------*/
 
 #if !defined(LBAL_LIBCPP2D_BITOPS_BETTER_SHIFTING)
-  #if __cpp_lib_bitops >= 202607L
+  #if __cpp_lib_bitops >= 202606L
     #define LBAL_LIBCPP2D_BITOPS_BETTER_SHIFTING __cpp_lib_bitops
   #endif
 #endif  //  LBAL_LIBCPP2D_BITOPS_BETTER_SHIFTING
@@ -66,10 +66,16 @@
 #endif  //  LBAL_LIBCPP2D_SIMD_BITOPS
 
 #if !defined(LBAL_LIBCPP2D_SIMD_BITOPS_BETTER_SHIFTING)
-  #if __cpp_lib_simd_bitops >= 202607L
+  #if __cpp_lib_simd_bitops >= 202606L
     #define LBAL_LIBCPP2D_SIMD_BITOPS_BETTER_SHIFTING __cpp_lib_simd_bitops
   #endif
 #endif  //  LBAL_LIBCPP2D_SIMD_BITOPS_BETTER_SHIFTING
+
+#if !defined(LBAL_LIBCPP2D_SIMD_IOTA)
+  #if __cpp_lib_simd >= 202606L
+    #define LBAL_LIBCPP2D_SIMD_IOTA __cpp_lib_simd
+  #endif
+#endif  //  LBAL_LIBCPP2D_SIMD_IOTA
 
 #if !defined(LBAL_LIBCPP2D_THREAD_ATTRIBUTES)
   #if __cpp_lib_thread_attributes >= 202606L

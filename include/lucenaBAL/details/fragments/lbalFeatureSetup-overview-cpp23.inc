@@ -37,7 +37,7 @@
   will have a value of `0` if the proposal described here is not supported.
   - `202207L` [CWG2615](https://wg21.link/CWG2615) Missing
   `__has_cpp_attribute(assume)`
-  - `202207L` [P1774R8](https://wg21.link/P1774R8) *PDF* Portable assumptions
+  - `202207L` [P1774R8](https://wg21.link/P1774R8) **PDF** Portable assumptions
 */
 #ifndef LBAL_CPP23_ATTRIBUTE_ASSUME
   #define LBAL_CPP23_ATTRIBUTE_ASSUME 0
@@ -132,7 +132,7 @@
   `__cpp_deduction_guides` has multiple values associated with it from a number
   of different proposals, so this token will have the value of the latest
   supported proposal, or `0` if the proposal described here is not supported.
-  - `202207L` [P2582R1](https://wg21.link/P2582R1) *PDF* Wording for class
+  - `202207L` [P2582R1](https://wg21.link/P2582R1) **PDF** Wording for class
   template argument deduction from inherited constructors
 */
 #ifndef LBAL_CPP23_DEDUCTION_GUIDES_FROM_INHERITED_CONSTRUCTORS
@@ -181,7 +181,7 @@
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
   not supported.
-  - `202110L` [P2128R6](https://wg21.link/P2128R6) *PDF* Multidimensional
+  - `202110L` [P2128R6](https://wg21.link/P2128R6) **PDF** Multidimensional
   subscript operator
 */
 #ifndef LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT
@@ -196,7 +196,7 @@
   it from a number of different proposals, so this token will have the value
   of the latest supported proposal, or `0` if the proposal described here is
   not supported.
-  - `202211L` [P2589R1](https://wg21.link/P2589R1) *PDF* `static operator[]`
+  - `202211L` [P2589R1](https://wg21.link/P2589R1) **PDF** `static operator[]`
 */
 #ifndef LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT_STATIC
   #define LBAL_CPP23_MULTIDIMENSIONAL_SUBSCRIPT_STATIC 0
@@ -224,7 +224,7 @@
   supported proposal, or `0` if the proposal described here is not supported.
   - `202211L` [CWG2659](https://wg21.link/CWG2659) Missing feature-test macro
   for lifetime extension in range-for loop
-  - `202211L` [P2644R1](https://wg21.link/P2644R1) *PDF* Final Fix of Broken
+  - `202211L` [P2644R1](https://wg21.link/P2644R1) **PDF** Final Fix of Broken
   Range based for Loop Rev 1
   - `202211L` [P2718R0](https://wg21.link/P2718R0) Wording for P2644R1 Fix for
   Range-based for Loop

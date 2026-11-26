@@ -54,8 +54,8 @@
   @brief Add binary literal support.
   @details SD-6 equivalent: `__cpp_binary_literals >= 201304L`. This token will
   have a value of `0` if the proposal described here is not supported.
-  - `201304L` [N3472](https://wg21.link/N3472) *PDF* Binary Literals in the C++
-  Core Language
+  - `201304L` [N3472](https://wg21.link/N3472) **PDF** Binary Literals in the
+  C++ Core Language
 */
 #ifndef LBAL_CPP14_BINARY_LITERALS
   #define LBAL_CPP14_BINARY_LITERALS 0
@@ -147,7 +147,7 @@
   @brief Support for variable templates
   @details SD-6 equivalent: `__cpp_variable_templates >= 201304L`. This token
   will have a value of `0` if the proposal described here is not supported.
-  - `201304L` [N3651](https://wg21.link/N3651) *PDF* Variable Templates
+  - `201304L` [N3651](https://wg21.link/N3651) **PDF** Variable Templates
   (Revision 1)
 */
 #ifndef LBAL_CPP14_VARIABLE_TEMPLATES
