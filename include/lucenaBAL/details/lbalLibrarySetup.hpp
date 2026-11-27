@@ -203,9 +203,10 @@ LBAL_CPP_WARNING(
   We “fail off” if we have no header detection method available.
 */
 
-//  (FIXME - bitweeder) These are on hold till the associated proposals
-//  are published publicly.
-// #include <lucenaBAL/details/fragments/lbalLibrarySetup-headers-cpp2d.inc>
+//  SEEME - bitweeder
+//  No C++2d proposal adds a header yet; the C++2d header tests only check
+//  headers that already exist. Include the generated
+//  `lbalLibrarySetup-headers-cpp2d.inc` here once one does.
 
 /*
   Token Tests

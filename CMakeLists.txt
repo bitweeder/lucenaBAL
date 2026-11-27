@@ -268,39 +268,35 @@ target_compile_definitions (
 		$<$<CONFIG:DEBUG>:LBAL_CONFIG_debug=1>
 )
 
-# FIXME (bitweeder) Simulator targets for Apple OS’s are effectively
-# unavailable, as they will not be configured properly. Even with proper
-# configuration, it will be necessary to manually specify Xcode generator
-# arguments to CMake on the command line, or rely on making correct choices in
-# Xcode itself if not building from the command line.
-if ("${CMAKE_SYSTEM_NAME}" MATCHES "Darwin")
+# SEEME (bitweeder) tvOS, watchOS and visionOS share the iOS path in the
+# headers, so they report as LBAL_TARGET_OS_IOS; only `LBAL_PACKAGING_API`
+# keeps the real name. A Simulator build is recognized from the sysroot
+# (e.g. `-DCMAKE_OSX_SYSROOT=iphonesimulator`) and also sets
+# LBAL_TARGET_OS_IOS_SIM. With the Xcode generator, the sysroot must be chosen
+# when configuring: switching SDKs inside Xcode afterwards can’t change these
+# definitions.
+if ("${CMAKE_SYSTEM_NAME}" STREQUAL "Darwin")
 	target_compile_definitions (
 		${PROJECT_NAME}
 		INTERFACE
 			LBAL_PACKAGING_API="macOS"
 			LBAL_TARGET_OS_MACOS=1
 	)
-elseif ("${CMAKE_SYSTEM_NAME}" MATCHES "iOS")
+elseif ("${CMAKE_SYSTEM_NAME}" MATCHES "^(iOS|tvOS|watchOS|visionOS)$")
 	target_compile_definitions (
 		${PROJECT_NAME}
 		INTERFACE
-			LBAL_PACKAGING_API="iOS"
+			LBAL_PACKAGING_API="${CMAKE_SYSTEM_NAME}"
 			LBAL_TARGET_OS_IOS=1
 	)
-elseif ("${CMAKE_SYSTEM_NAME}" MATCHES "tvOS")
-	target_compile_definitions (
-		${PROJECT_NAME}
-		INTERFACE
-			LBAL_PACKAGING_API="tvOS"
-			LBAL_TARGET_OS_TVOS=1
-	)
-elseif ("${CMAKE_SYSTEM_NAME}" MATCHES "watchOS")
-	target_compile_definitions (
-		${PROJECT_NAME}
-		INTERFACE
-			LBAL_PACKAGING_API="watchOS"
-			LBAL_TARGET_OS_WATCHOS=1
-	)
+
+	if ("${CMAKE_OSX_SYSROOT}" MATCHES "[Ss]imulator")
+		target_compile_definitions (
+			${PROJECT_NAME}
+			INTERFACE
+				LBAL_TARGET_OS_IOS_SIM=1
+		)
+	endif()
 elseif ("${CMAKE_SYSTEM_NAME}" MATCHES "Windows")
 	target_compile_definitions (
 		${PROJECT_NAME}
@@ -376,37 +372,45 @@ if(CLANG_FORMAT_EXE)
 			tests/*.inc
 	)
 
-	# FIXME (bitweeder) Should probably be a shell script that tests inputs and
-	# generates sensible errors rather than silently barfing.
+	# The file list goes in a file so long lists don’t hit command-line limits;
+	# `tools/cmake/lbalFormat.cmake` checks its inputs and reports failures.
 	if(ALL_LINTABLE_FILES)
+		list(JOIN ALL_LINTABLE_FILES "\n" LBAL_LINTABLE_FILES_TEXT)
+		file(
+			CONFIGURE
+				OUTPUT "${CMAKE_BINARY_DIR}/lbalLintableFiles.txt"
+				CONTENT "${LBAL_LINTABLE_FILES_TEXT}\n"
+		)
+
+		# Optional; `format-dry` shows a diff per file when it’s available.
+		find_program(LBAL_DIFF_EXE NAMES diff)
+		mark_as_advanced(LBAL_DIFF_EXE)
+
+		set(
+			LBAL_FORMAT_ARGS
+				-DLBAL_CLANG_FORMAT=${CLANG_FORMAT_EXE}
+				-DLBAL_CLANG_FORMAT_CONFIG=${CLANG_FORMAT_CONFIG}
+				-DLBAL_FORMAT_FILE_LIST=${CMAKE_BINARY_DIR}/lbalLintableFiles.txt
+				-DLBAL_FORMAT_WORK_DIR=${CMAKE_BINARY_DIR}/lbalFormat
+				-DLBAL_DIFF=$<$<BOOL:${LBAL_DIFF_EXE}>:${LBAL_DIFF_EXE}>
+		)
+
 		add_custom_target(
 			format
-			COMMAND ${CLANG_FORMAT_EXE} --style=file:${CLANG_FORMAT_CONFIG} -i ${ALL_LINTABLE_FILES}
-			COMMAND_EXPAND_LISTS
+			COMMAND ${CMAKE_COMMAND} ${LBAL_FORMAT_ARGS} -DLBAL_FORMAT_MODE=format
+				-P ${PROJECT_SOURCE_DIR}/tools/cmake/lbalFormat.cmake
+			VERBATIM
 			COMMENT "Run clang-format on all lintable files"
 		)
 
+		# Fails if any file isn’t formatted.
 		add_custom_target(
 			format-dry
-			COMMAND /usr/bin/env bash -c "IFS=';' read -ra DELIMITED_FILES <<< \"${ALL_LINTABLE_FILES}\" ; for file in \"\$\{DELIMITED_FILES[@]\}\" ; do diff -u \$\{file\} <(${CLANG_FORMAT_EXE} --style=file:${CLANG_FORMAT_CONFIG} \$\{file\}) ; done"
+			COMMAND ${CMAKE_COMMAND} ${LBAL_FORMAT_ARGS} -DLBAL_FORMAT_MODE=check
+				-P ${PROJECT_SOURCE_DIR}/tools/cmake/lbalFormat.cmake
 			VERBATIM
 			COMMENT "Dry-run clang-format on all lintable files"
 		)
-
-		# foreach(FILE IN ALL_LINTABLE_FILES MY_FILES)
-		# 	add_custom_command(
-		# 		COMMAND diff <(cat ${FILE}) <(${CLANG_FORMAT_EXE} --style=file:${CLANG_FORMAT_CONFIG} ${FILE})
-		# 		DEPENDS ${FILE}
-		# 		VERBATIM
-		# 	)
-		# 	list(APPEND ALL_OUTPUTS ${OUTPUT_FILE})
-		# endforeach()
-
-		# # Link the commands to a target so they actually run during build
-		# add_custom_target(
-		# 	format-dry
-		# 	DEPENDS ${ALL_OUTPUTS}
-		# )
 	endif()
 endif()
 

@@ -168,6 +168,9 @@ Please note that this project is released with a Contributor Code of Conduct, do
 
 We use [SemVer](https://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/bitweeder/lucenaBAL/tags).
 
+Breaking changes in 3.0:
+- lucenaBAL no longer defines `WIN32_LEAN_AND_MEAN` or `NOMINMAX` on Windows. It never includes `<windows.h>` itself, so these only ever affected client code, and only when `<windows.h>` was included after lucenaBAL. If you relied on them, define them in your build flags (e.g. `target_compile_definitions(… PRIVATE WIN32_LEAN_AND_MEAN NOMINMAX)`) so every translation unit sees the same `<windows.h>`.
+
 ## Authors
 
 -   [**bitweeder**](https://bitweeder.com/) - _Originator and maintainer_

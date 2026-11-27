@@ -456,7 +456,10 @@
     #endif
 
     #if (_MSC_VER >= 1951)
-      //	P2647R1, P2448R2 and P2071R2: 19.51, per cppreference.
+      //	P2647R1, P2448R2 and P2071R2: 19.51, per cppreference. Microsoft’s
+      //	conformance page still lists P2448R2 and P2071R2 as unsupported (as
+      //	of October 2026), but CI’s MSVS 18.7 passes the probes for both,
+      //	including the tightened P2448R2 one, at C++23.
       #if !defined(LBAL_CPP23_CONSTEXPR_PERMIT_STATIC_CONSTEXPR)
         #define LBAL_CPP23_CONSTEXPR_PERMIT_STATIC_CONSTEXPR 202211L
       #endif
@@ -475,7 +478,8 @@
   //	MSVC advertises `__cpp_range_based_for >= 202211L`, but doesn’t extend
   //	the lifetime of temporaries in the range-initializer (P2718R0); the
   //	false-positive tests catch this. Raise the version bound once a release
-  //	actually implements it.
+  //	actually implements it; as of November 2026, neither Microsoft’s
+  //	conformance page nor the STL changelog mentions P2718R0.
   #if (_MSC_VER < 1960)
     #if LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES
       #undef LBAL_CPP23_RANGE_BASED_FOR_TEMPORARIES

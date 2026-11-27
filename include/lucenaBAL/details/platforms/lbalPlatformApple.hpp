@@ -38,11 +38,12 @@
     Assume we’re also using Apple’s Standard Library runtime; a more precise
     test may be necessary if this turns out to be an overly broad assumption.
 
-    FIXME - bitweeder
-    Currently, we don’t break out support for bridgeOS, the watchOS variant
-    running on the T-series system-on-a-chip secure enclaves, or for iPadOS,
-    the iOS variant that split from iOS in version
-    13. More research is needed to determine how to support these properly.
+    SEEME - bitweeder
+    We don’t break out bridgeOS, the watchOS variant running on the T-series
+    secure enclaves, or iPadOS, the iOS variant that split from iOS in
+    version 13. bridgeOS has no public SDK, and no public compile-time macro
+    tells iPadOS apart from iOS. tvOS, watchOS and visionOS builds are mapped
+    onto LBAL_TARGET_OS_IOS (and LBAL_TARGET_OS_IOS_SIM) by the build system.
   */
 
   /*
@@ -63,10 +64,11 @@
     #define LBAL_TARGET_API_COCOA_TOUCH 1
 
     /*
-      FIXME - bitweeder
-      We should do some verification of this; there seems to be enough drift in
-      iOS the related OS’s that it might fail some of the practical litmus
-      tests for POSIX-compatibility.
+      SEEME - bitweeder
+      The iOS family ships the same libSystem POSIX layer as macOS. What
+      differs is policy, not API: `fork` and `exec` are unavailable to apps,
+      and file access is sandboxed. LBAL_TARGET_API_POSIX describes the API,
+      so it’s set here too.
     */
     #define LBAL_TARGET_API_POSIX 1
   #else
@@ -167,6 +169,11 @@
   #elif defined(__WATCH_OS_VERSION_MIN_REQUIRED)
     #define LBAL_NAME_TARGET_OS                                                \
       u8"Min watchOS version " LBAL_Stringify_(__WATCH_OS_VERSION_MIN_REQUIRED)
+  #elif defined(__VISION_OS_VERSION_MIN_REQUIRED)
+    #define LBAL_NAME_TARGET_OS                                                \
+      u8"Min visionOS version " LBAL_Stringify_(                               \
+          __VISION_OS_VERSION_MIN_REQUIRED                                     \
+      )
   #else
     #error "Unknown Apple platform"
   #endif

@@ -50,17 +50,14 @@
 
   #define LBAL_FEATURE_UTF16_FILE_SYSTEM 1
 
-  //	WinAPI configuration; these are set up to avoid stomping on any
-  //	prefix header-originated definitions that might be in use.
-  #ifndef WIN32_LEAN_AND_MEAN
-    #define WIN32_LEAN_AND_MEAN
-  //	FIXME - bitweeder
-  //	Maybe not super-smart to set this up globally
-  #endif
-
-  #ifndef NOMINMAX
-    #define NOMINMAX
-  #endif
+//	SEEME - bitweeder
+//	We deliberately leave `WIN32_LEAN_AND_MEAN`, `NOMINMAX` and similar
+//	`<windows.h>` configuration macros to the client (removed in 3.0).
+//	lucenaBAL never includes `<windows.h>`, so they only ever affected
+//	client code, and only when `<windows.h>` happened to be included after
+//	lucenaBAL; the same program could then see different `<windows.h>`
+//	contents in different translation units. Clients that want them should
+//	set them in their build flags so every translation unit agrees.
 
   #define LBAL_NAME_TARGET_OS u8"Windows"
 #else

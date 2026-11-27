@@ -350,9 +350,11 @@
   it’s been viewed as more useful to differentiate on feature sets, instead
   (e.g., AVX2 availability).
 
-  @remarks FIXME (bitweeder) Testing for specific non-SIMD instruction
-  availability, and additionally providing instrinsics, would be very helpful.
-  Specifically, generic ways to invoke POPCNT and LZCNT would be helpful.
+  @remarks SEEME (bitweeder) We don’t test for specific non-SIMD
+  instructions or provide intrinsics for them, since lucenaBAL is
+  preprocessor-only. C++20’s `<bit>` (`std::popcount`, `std::countl_zero`
+  etc.; see `LBAL_LIBCPP20_BITOPS`) covers the common cases, such as POPCNT
+  and LZCNT, portably.
 
   @{
 */
@@ -489,8 +491,12 @@
   LBAL_TARGET_OS_IOS, which is set whenever LBAL_TARGET_OS_IOS_SIM is set,
   but can also be set alone).
 
-  @remarks (SEEME - bitweeder) Candidates for additions include
-  console-specific operating systems, Android, tvOS, and watchOS. BSD could
+  @remarks (SEEME - bitweeder) tvOS, watchOS and visionOS currently report
+  as LBAL_TARGET_OS_IOS (or LBAL_TARGET_OS_IOS_SIM under a Simulator), since
+  they share its APIs closely enough for our purposes; iPadOS can’t be told
+  apart from iOS at compile time. Candidates for additions include
+  console-specific operating systems, Android, and separate tokens for the
+  other iOS-family OS’s. BSD could
   conceivably have its own flag, but we currently roll it in under
   LBAL_TARGET_OS_X11.
 
@@ -501,8 +507,10 @@
   practical need was found. It’s possible that once additional platform support
   is added to that library, we’ll find we need to revisit this design decision.
 
-  @remarks (FIXME - bitweeder) Wayland needs to be accounted for; currently,
-  it’s rolled into LBAL_TARGET_OS_X11.
+  @remarks (SEEME - bitweeder) LBAL_TARGET_OS_X11 stands for a
+  freedesktop-style POSIX desktop, Wayland included. Whether X11 or Wayland
+  is in use is decided when the program runs, not when it’s compiled, so no
+  preprocessor token can tell them apart.
 
   @{
 */
@@ -1302,7 +1310,11 @@
   consumption patterns. None of these is guaranteed to have any effect; in
   the absence of effect, the statement will simply compile normally.
 
-  @remarks (FIXME - bitweeder) This needs a usage example.
+  @code
+  if (LBAL_HINT_unlikely(ptr == nullptr)) {
+    return handle_missing_value();
+  }
+  @endcode
 
   @{
 */
@@ -1727,10 +1739,15 @@
   `LBAL_VIS_FUNC_EXPORT` is only needed by Windows due to how DLLs are handled:
   namely, a function marked with `dllimport` cannot be overloaded locally.
 
-  @remarks (FIXME - bitweeder) Our method for handling this derives from how
+  @remarks (SEEME - bitweeder) Our method for handling this derives from how
   libc++ does it: they simply don’t decorate the function declaration for
-  import. The method has not been tested, and I haven’t seen examples in the
-  wild of other people using it.
+  import. The `lbalVisibility.*` tests check it with a real shared library: a
+  client can define its own replacement, its own calls reach that
+  replacement, and a client that doesn’t replace the function still links to
+  the library’s. Calls made from inside the library reach the replacement
+  only where the platform interposes symbols (ELF); with Apple’s two-level
+  namespace and with Windows DLLs, they keep reaching the library’s own
+  definition.
 */
 #ifndef LBAL_VIS_OVERLOADABLE_FUNC_EXPORT
   #define LBAL_VIS_OVERLOADABLE_FUNC_EXPORT
@@ -1750,10 +1767,15 @@
   `LBAL_VIS_FUNC_IMPORT` is only needed by Windows due to how DLLs are handled:
   namely, a function marked with `dllimport` cannot be overloaded locally.
 
-  @remarks (FIXME - bitweeder) Our method for handling this derives from how
+  @remarks (SEEME - bitweeder) Our method for handling this derives from how
   libc++ does it: they simply don’t decorate the function declaration for
-  import. The method has not been tested, and I haven’t seen examples in the
-  wild of other people using it.
+  import. The `lbalVisibility.*` tests check it with a real shared library: a
+  client can define its own replacement, its own calls reach that
+  replacement, and a client that doesn’t replace the function still links to
+  the library’s. Calls made from inside the library reach the replacement
+  only where the platform interposes symbols (ELF); with Apple’s two-level
+  namespace and with Windows DLLs, they keep reaching the library’s own
+  definition.
 */
 #ifndef LBAL_VIS_OVERLOADABLE_FUNC_IMPORT
   #define LBAL_VIS_OVERLOADABLE_FUNC_IMPORT

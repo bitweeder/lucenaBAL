@@ -436,32 +436,75 @@
   //	references) in C++20 mode too, as defect reports, but only raises
   //	`__cpp_lib_ranges` and `__cpp_lib_common_reference` in C++23. Its status
   //	page lists P2609R3 from 14.3 and P2655R3 from 15.3, and doesn’t list
-  //	P2602R2. `LBAL_GCC_VERSION` only knows the major version, so these start
-  //	at 15, where all three were checked.
-  #if (LBAL_GCC_VERSION >= 150000) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
+  //	P2602R2. `LBAL_GCC_VERSION` only knows the major version, so 14.3 is
+  //	recognized by `__GLIBCXX__`, the library’s date stamp, from 14.3’s
+  //	release date (2025-05-23). The first two were checked against
+  //	libstdc++ 14 (dated 2026-03-16) and 15, and P2655R3 against 15 (14 fails
+  //	its probe).
+  //	Digit separators would break C++11 mode, so keep clang-format from
+  //	adding them to the date.
+  // clang-format off
+  #if (                                                                        \
+      (LBAL_GCC_VERSION >= 150000)                                             \
+      || ((LBAL_GCC_VERSION >= 140000) && (__GLIBCXX__ >= 20250523))           \
+  ) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
+  // clang-format on
     #if !defined(LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS)
       #define LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS 202211L
     #endif
     #if !defined(LBAL_LIBCPP23_RANGES_RELAXED)
       #define LBAL_LIBCPP23_RANGES_RELAXED 202302L
     #endif
+  #endif
+
+  #if (LBAL_GCC_VERSION >= 150000) && (LBAL_cpp_version > LBAL_CPP17_VERSION)
     #if !defined(LBAL_LIBCPP23_COMMON_REFERENCE)
       #define LBAL_LIBCPP23_COMMON_REFERENCE 202302L
     #endif
   #endif
 
-  //	SEEME libstdc++ 15 ships these in C++26 without defining their SD-6
+  //	SEEME libstdc++ holds `__cpp_lib_format` at `202110L` until 15.1, so
+  //	these `<format>` papers go unreported before then. Its status page lists
+  //	P2508R1 (`basic_format_string::get`) from 13.1 and P2510R3 (formatting
+  //	pointers) from 13.2. libstdc++ 14 also has P2918R2’s `runtime_format`,
+  //	which the status page doesn’t list. Pointer formatting and
+  //	`runtime_format` are only declared in C++26 (or without
+  //	`__STRICT_ANSI__`). Checked against libstdc++ 14; 15 reports all three.
+  #if (LBAL_GCC_VERSION >= 130000)                                             \
+      && (LBAL_GCC_VERSION < 150000)                                           \
+      && LBAL_LIBCPP20_FORMAT
+    #if !defined(LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING)
+      #define LBAL_LIBCPP23_FORMAT_BASIC_FORMAT_STRING 202207L
+    #endif
+
+    #if (LBAL_GCC_VERSION >= 140000) && (LBAL_cpp_version > LBAL_CPP23_VERSION)
+      #if !defined(LBAL_LIBCPP26_FORMAT_POINTERS)
+        #define LBAL_LIBCPP26_FORMAT_POINTERS 202304L
+      #endif
+      #if !defined(LBAL_LIBCPP26_FORMAT_RUNTIME)
+        #define LBAL_LIBCPP26_FORMAT_RUNTIME 202311L
+      #endif
+    #endif
+  #endif
+
+  //	SEEME libstdc++ ships these in C++26 without defining their SD-6
   //	macros: `<stdbit.h>` and `<stdckdint.h>` (P3370R1), listed in the GCC 15
   //	release notes, and `ranges::find_last` with a braced value (P3217R0),
   //	while `__cpp_lib_algorithm_default_value_type` stays at P2248R8’s
-  //	`202403L`. Checked against libstdc++ 15 only.
-  #if (LBAL_GCC_VERSION >= 150000) && (LBAL_cpp_version > LBAL_CPP23_VERSION)
+  //	`202403L`. The headers are also in Ubuntu’s libstdc++ 14 (dated
+  //	2026-03-16), though no GCC 14 release note mentions them, so they’re set
+  //	from 14 wherever `__has_include` finds them; P3217R0 is checked against
+  //	15 (14 fails its probe).
+  #if (LBAL_GCC_VERSION >= 140000) && (LBAL_cpp_version > LBAL_CPP23_VERSION)
     #if !defined(LBAL_LIBCPP26_STDBIT_H) && __has_include(<stdbit.h>)
       #define LBAL_LIBCPP26_STDBIT_H 202603L
     #endif
     #if !defined(LBAL_LIBCPP26_STDCKDINT_H) && __has_include(<stdckdint.h>)
       #define LBAL_LIBCPP26_STDCKDINT_H 202603L
     #endif
+  #endif
+
+  #if (LBAL_GCC_VERSION >= 150000) && (LBAL_cpp_version > LBAL_CPP23_VERSION)
     #if !defined(LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE)
       #define LBAL_LIBCPP26_ALGORITHM_DEFAULT_VALUE_TYPE 202603L
     #endif

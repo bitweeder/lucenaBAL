@@ -20,6 +20,8 @@ jobs:
   build:
     name: ${{ matrix.config.name }}
     runs-on: ${{ matrix.config.os }}
+    # An `experimental` entry reports its failures without failing the run.
+    continue-on-error: ${{ matrix.config.experimental || false }}
     env:
       # Make every `ctest` invocation print the output of failing tests.
       CTEST_OUTPUT_ON_FAILURE: 1
@@ -27,38 +29,87 @@ jobs:
       fail-fast: false
       matrix:
         config:
-        - # Currently macOS 26.5.1 and Xcode 26.5
-          name: "macOS-26/Xcode/libc++"
+        # Each runner is the newest LTS (or equivalent) image for its OS, and
+        # the `Select Toolchain` step picks the newest released tools on it,
+        # so tool versions float with the images; each job logs what it chose.
+        - name: "macOS/Xcode/libc++"
           artifact: "macOS-AppleClang-libcpp.tar.xz"
           os: macos-26
           build_type: "Release"
-          cc: "clang"
-          cxx: "clang++"
-        - # Currently Ubuntu 26.04 LTS and gcc 15.2
-          name: "Ubuntu-26.04/gcc/libstdc++"
+        - name: "Ubuntu-LTS/gcc/libstdc++"
           artifact: "linux64-gcc-libstdcpp.tar.xz"
           os: ubuntu-26.04
           build_type: "Release"
-          cc: "gcc-15"
-          cxx: "g++-15"
-        - # Currently Windows Server 2025 and MSVS 18.7
-          name: "Windows-2025/MSVS/Microsoft"
+        - name: "Windows-Server/MSVS/Microsoft"
           artifact: "win64-msvc-microsoft.tar.xz"
           os: windows-2025-vs2026
           build_type: "Release"
-          cc: "cl"
-          cxx: "cl"
+
+          # Partial path to ENV setup script for MSVC
+          environment_script: "VC/Auxiliary/Build/vcvars64.bat"
+        # clang-cl with the MSVC STL, through Visual Studio’s ClangCL toolset.
+        # Experimental until this compiler and library pairing passes; drop
+        # `experimental` then.
+        - name: "Windows-Server/clang-cl/Microsoft"
+          artifact: "win64-clangcl-microsoft.tar.xz"
+          os: windows-2025-vs2026
+          build_type: "Release"
+          toolset: "ClangCL"
+          experimental: true
 
           # Partial path to ENV setup script for MSVC
           environment_script: "VC/Auxiliary/Build/vcvars64.bat"
 
     steps:
-    - uses: actions/checkout@v7
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+
+    # Use the newest released toolchain on the image: the newest non-beta
+    # Xcode on macOS, the newest versioned GCC on Ubuntu, and MSVC (whose
+    # newest released Visual Studio is found by `vswhere` in `Configure`).
+    - name: Select Toolchain
+      shell: bash
+      env:
+        TOOLSET: ${{ matrix.config.toolset }}
+      run: |
+        case "${RUNNER_OS}" in
+          macOS)
+            # Only full version names: this skips betas, release candidates and
+            # alias links such as `Xcode_26.app`.
+            xcode_app="$(ls -d /Applications/Xcode_*.app | grep -E '/Xcode_[0-9]+\.[0-9]+(\.[0-9]+)?\.app$' | sort -V | tail -1)"
+            [ -n "${xcode_app}" ] || { echo "No released Xcode found"; exit 1; }
+            sudo xcode-select -s "${xcode_app}/Contents/Developer" || exit 1
+            xcodebuild -version
+            cc=clang
+            cxx=clang++
+            ;;
+          Linux)
+            gcc_version="$(ls /usr/bin/g++-[0-9]* | sed 's|.*/g++-||' | grep -E '^[0-9]+$' | sort -n | tail -1)"
+            [ -n "${gcc_version}" ] && [ -x "/usr/bin/gcc-${gcc_version}" ] \
+            || { echo "No versioned GCC found"; exit 1; }
+            cc="gcc-${gcc_version}"
+            cxx="g++-${gcc_version}"
+            ;;
+          Windows)
+            # The Visual Studio generator takes the compiler from its toolset
+            # (`-T` in `Configure`), which reports the compiler it found.
+            cc=cl
+            cxx=cl
+            echo "Visual Studio toolset: ${TOOLSET:-default (MSVC)}"
+            ;;
+          *)
+            echo "Unexpected runner OS: ${RUNNER_OS}"
+            exit 1
+            ;;
+        esac
+
+        echo "CC=${cc}" >> "${GITHUB_ENV}"
+        echo "CXX=${cxx}" >> "${GITHUB_ENV}"
+
+        if [ "${RUNNER_OS}" != "Windows" ]; then
+          "${cxx}" --version
+        fi
 
     - name: Configure
-      env:
-        CC: ${{ matrix.config.cc }}
-        CXX: ${{ matrix.config.cxx }}
       shell: cmake -P {0}
       run: |
         # Manually set up the shell environment for MSVS since we’re not coming
@@ -80,11 +131,11 @@ jobs:
               "Found vswhere at: ${vswhere_exec}"
           )
 
-          # FIXME (bitweeder) `latest` should be replaced with an appropriate
-          # version string.
+          # Deliberately unpinned: use the newest released (not preview)
+          # Visual Studio on the image, like the other jobs’ toolchains.
           execute_process(
             COMMAND
-              "${vswhere_exec}" -products * -latest -prerelease -property installationPath
+              "${vswhere_exec}" -products * -latest -property installationPath
             OUTPUT_VARIABLE
               vs_install_path
             OUTPUT_STRIP_TRAILING_WHITESPACE
@@ -93,6 +144,19 @@ jobs:
           message(
             STATUS
               "Found MSVC install dir at: ${vs_install_path}"
+          )
+
+          execute_process(
+            COMMAND
+              "${vswhere_exec}" -path "${vs_install_path}" -property catalog_productDisplayVersion
+            OUTPUT_VARIABLE
+              vs_version
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+          )
+
+          message(
+            STATUS
+              "Using Visual Studio ${vs_version}"
           )
 
 
@@ -121,11 +185,18 @@ jobs:
           endforeach()
         endif()
 
+        # A Visual Studio toolset other than the default, e.g. `ClangCL`.
+        set(toolset_args)
+        if (NOT "x${{ matrix.config.toolset }}" STREQUAL "x")
+          set(toolset_args -T "${{ matrix.config.toolset }}")
+        endif()
+
         execute_process(
           COMMAND
             cmake
               -S .
               -B build
+              ${toolset_args}
               -DCMAKE_BUILD_TYPE=${{ matrix.config.build_type }}
               -DLBAL_BUILD_FALSE_POSITIVE_TESTS=ON
               # The newest Standard the compiler supports, unless the
@@ -225,11 +296,11 @@ jobs:
 
     - name: Upload Test Log
       if: failure() && steps.test.outcome == 'failure'
-      uses: actions/upload-artifact@v7
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
       with:
-        # Keyed by runner, as matrix names contain `/`, which artifact names
-        # can’t.
-        name: test-log-${{ matrix.config.os }}
+        # Keyed by the entry’s archive name, as matrix names contain `/`,
+        # which artifact names can’t, and two entries can share a runner.
+        name: test-log-${{ matrix.config.artifact }}
         path: build/Testing/Temporary/LastTest*.log
 
 
@@ -290,84 +361,38 @@ jobs:
 
 
     - name: Upload
-      uses: actions/upload-artifact@v7
+      uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
       with:
         path: ./${{ matrix.config.artifact }}
         name: ${{ matrix.config.artifact }}
 
+  # On a `v*` tag, create a draft release holding every entry’s archive.
   release:
-    if: contains(github.ref, 'tags/v')
+    if: startsWith(github.ref, 'refs/tags/v')
     name: Release
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     needs: build
+    permissions:
+      contents: write
 
     steps:
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Download archives
+      uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
       with:
-        tag_name: ${{ github.ref }}
-        release_name: Release ${{ github.ref }}
-        draft: true
-        prerelease: false
-
-    - name: Store Release url
-      run: |
-        echo "${{ steps.create_release.outputs.upload_url }}" > ./upload_url
-
-    - uses: actions/upload-artifact@v7
-      with:
-        path: ./upload_url
-        name: upload_url
-
-  publish:
-    if: contains(github.ref, 'tags/v')
-    name: ${{ matrix.config.name }}
-    runs-on: ${{ matrix.config.os }}
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-        - name: "macOS-latest/Xcode/libc++"
-          artifact: "macOS-AppleClang-libcpp.tar.xz"
-          os: macos-latest
-        - name: "Ubuntu-latest/gcc/libstdc++"
-          artifact: "linux64-gcc-libstdcpp.tar.xz"
-          os: ubuntu-latest
-        - name: "Windows-latest/MSVS/Microsoft"
-          artifact: "win64-msvc-microsoft.tar.xz"
-          os: windows-latest
-    needs: release
-
-    steps:
-    - name: Download artifact
-      uses: actions/download-artifact@v8
-      with:
-        name: ${{ matrix.config.artifact }}
-        path: ./
+        pattern: "*.tar.xz"
+        path: ./archives
         merge-multiple: true
 
-    - name: Download URL
-      uses: actions/download-artifact@v8
-      with:
-        name: upload_url
-        path: ./
-        merge-multiple: true
-    - id: set_upload_url
-      run: |
-        upload_url=`cat ./upload_url`
-        echo ::set-output name=upload_url::$upload_url
-
-    - name: Upload to Release
-      id: upload_to_release
-      uses: actions/upload-release-asset@v1
+    - name: Create draft release
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.set_upload_url.outputs.upload_url }}
-        asset_path: ./${{ matrix.config.artifact }}
-        asset_name: ${{ matrix.config.artifact }}
-        asset_content_type: application/x-gtar
+        GH_TOKEN: ${{ github.token }}
+        GH_REPO: ${{ github.repository }}
+      shell: bash
+      run: |
+        gh release create "${GITHUB_REF_NAME}" \
+          --draft \
+          --verify-tag \
+          --title "Release ${GITHUB_REF_NAME}" \
+          ./archives/*.tar.xz
+
 ...

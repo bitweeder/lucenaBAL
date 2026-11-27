@@ -217,81 +217,145 @@
   #define LBAL_HINT_unlikely(LBAL_expr_) __builtin_expect(LBAL_expr_, false)
 
   //	Symbol visibility macros
-  #define LBAL_VIS_HIDDEN __attribute__((__visibility__("hidden")))
+  #if defined(_WIN32)
+    //	SEEME - bitweeder
+    //	Clang targeting Windows (clang-cl, or the MinGW targets) produces COFF
+    //	objects, which have no symbol visibility: exports come from
+    //	`__declspec(dllexport)` and imports from `__declspec(dllimport)`, as
+    //	with MSVC. These mirror `lbalMSVCInitialization.hpp`; the visibility
+    //	attributes below would leave a DLL exporting nothing.
+    #define LBAL_VIS_HIDDEN
 
-  #define LBAL_VIS_CLASS_EXPORT __attribute__((__visibility__("default")))
-  #define LBAL_VIS_CLASS_IMPORT __attribute__((__visibility__("default")))
-
-  #if __has_attribute(__type_visibility__)
-    #define LBAL_VIS_ENUM __attribute__((__type_visibility__("default")))
-
-    #define LBAL_VIS_CLASS_TEMPLATE                                            \
-      __attribute__((__type_visibility__("default")))
-
-    #define LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT                              \
-      __attribute__((__visibility__("default")))
-    #define LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT                              \
-      __attribute__((__visibility__("default")))
-  #else
     #define LBAL_VIS_ENUM
 
-    #define LBAL_VIS_CLASS_TEMPLATE __attribute__((__visibility__("default")))
+    #define LBAL_VIS_CLASS_TEMPLATE
+
+    #define LBAL_VIS_CLASS_EXPORT __declspec(dllexport)
+    #define LBAL_VIS_CLASS_IMPORT __declspec(dllimport)
 
     #define LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT
-    #define LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT
-  #endif
+    #define LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT __declspec(dllimport)
 
-  #define LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_EXPORT
-  #define LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_IMPORT
+    #define LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_EXPORT __declspec(dllexport)
+    #define LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_IMPORT
 
-  #define LBAL_VIS_MEMBER_CLASS_TEMPLATE                                       \
-    __attribute__((__visibility__("hidden")))
+    #define LBAL_VIS_MEMBER_CLASS_TEMPLATE
 
-  #define LBAL_VIS_MEMBER_FUNCTION_TEMPLATE                                    \
-    inline __attribute__((__visibility__("hidden")))
-//	SEEME - bitweeder
-//	The “inline” declaration is extraneous, but required due to a currently
-//	 unaddressed clang defect (cf., the elusive PR32114).
+    #define LBAL_VIS_MEMBER_FUNCTION_TEMPLATE
 
-  #define LBAL_VIS_FUNC_EXPORT __attribute__((__visibility__("default")))
-  #define LBAL_VIS_FUNC_IMPORT __attribute__((__visibility__("default")))
+    #define LBAL_VIS_FUNC_EXPORT __declspec(dllexport)
+    #define LBAL_VIS_FUNC_IMPORT __declspec(dllimport)
 
-//	SEEME - bitweeder
-//	The first definition is a fallback if it turns out I’ve misunderstood the
-//	requirements on general inline functions.
-//	#define LBAL_VIS_INLINE_FUNC LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC
-  #define LBAL_VIS_INLINE_FUNC __attribute__((__visibility__("hidden")))
+    //	MinGW has no `__forceinline` keyword unless its headers define it.
+    #if defined(_MSC_VER)
+      #define LBAL_VIS_INLINE_FUNC __forceinline
+      #define LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC __forceinline
+    #else
+      #define LBAL_VIS_INLINE_FUNC inline __attribute__((__always_inline__))
+      #define LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC                             \
+        inline __attribute__((__always_inline__))
+    #endif
+
+    //	Undecorated on import so a client can define its own replacement; see
+    //	`LBAL_VIS_OVERLOADABLE_FUNC_IMPORT` in `lbalFeatureSetup.hpp`.
+    #define LBAL_VIS_OVERLOADABLE_FUNC_EXPORT __declspec(dllexport)
+    #define LBAL_VIS_OVERLOADABLE_FUNC_IMPORT
+
+    #define LBAL_VIS_EXTERN_EXPORT __declspec(dllexport)
+    #define LBAL_VIS_EXTERN_IMPORT __declspec(dllimport)
+
+    #define LBAL_VIS_EXCEPTION_EXPORT __declspec(dllexport)
+    #define LBAL_VIS_EXCEPTION_IMPORT __declspec(dllimport)
+
+    //	`__declspec(empty_bases)` is an MSVC-ABI layout feature.
+    #if defined(_MSC_VER)
+      #define LBAL_CLASS_FORCE_EBCO __declspec(empty_bases)
+    #endif
+
+    #define LBAL_FUNC_CALL_C(LBAL_func_name_) __cdecl LBAL_func_name_
+    #define LBAL_FUNC_CALL_STD(LBAL_func_name_) __stdcall LBAL_func_name_
+    #define LBAL_FUNC_CALLBACK_C(LBAL_func_name_) (__cdecl * LBAL_func_name_)
+    #define LBAL_FUNC_CALLBACK_STD(LBAL_func_name_)                            \
+      (__stdcall * LBAL_func_name_)
+  #else
+    #define LBAL_VIS_HIDDEN __attribute__((__visibility__("hidden")))
+
+    #define LBAL_VIS_CLASS_EXPORT __attribute__((__visibility__("default")))
+    #define LBAL_VIS_CLASS_IMPORT __attribute__((__visibility__("default")))
+
+    #if __has_attribute(__type_visibility__)
+      #define LBAL_VIS_ENUM __attribute__((__type_visibility__("default")))
+
+      #define LBAL_VIS_CLASS_TEMPLATE                                          \
+        __attribute__((__type_visibility__("default")))
+
+      #define LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT                            \
+        __attribute__((__visibility__("default")))
+      #define LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT                            \
+        __attribute__((__visibility__("default")))
+    #else
+      #define LBAL_VIS_ENUM
+
+      #define LBAL_VIS_CLASS_TEMPLATE __attribute__((__visibility__("default")))
+
+      #define LBAL_VIS_EXTERN_CLASS_TEMPLATE_EXPORT
+      #define LBAL_VIS_EXTERN_CLASS_TEMPLATE_IMPORT
+    #endif
+
+    #define LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_EXPORT
+    #define LBAL_VIS_CLASS_TEMPLATE_INSTANTIATION_IMPORT
+
+    #define LBAL_VIS_MEMBER_CLASS_TEMPLATE                                     \
+      __attribute__((__visibility__("hidden")))
+
+    #define LBAL_VIS_MEMBER_FUNCTION_TEMPLATE                                  \
+      inline __attribute__((__visibility__("hidden")))
+  //	SEEME - bitweeder
+  //	The “inline” declaration is extraneous, but required due to a clang
+  //	defect: hidden visibility on a member function template is ignored when
+  //	its class template is explicitly instantiated with default visibility
+  //	(llvm/llvm-project#31462, formerly PR32114). Still present in Clang 23.
+
+    #define LBAL_VIS_FUNC_EXPORT __attribute__((__visibility__("default")))
+    #define LBAL_VIS_FUNC_IMPORT __attribute__((__visibility__("default")))
 
   //	SEEME - bitweeder
-  //	Using the internal_linkage attribute is equivalent to using the static
-  //	keyword in C, and is semantically preferrable to inlining. However, what
-  //	we -really- want is be able to strip this down to just LBAL_VIS_HIDDEN,
-  //	but this requires linker support we don’t have, yet. See
-  //	<http://lists.llvm.org/pipermail/cfe-dev/2018-July/058450.html> and
-  //	<https://reviews.llvm.org/D49240?id=155185> for details.
-  #if __has_attribute(internal_linkage)
-    #define LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC                               \
-      __attribute__((__visibility__("hidden"), internal_linkage))
-  #else
-    #define LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC                               \
-      __attribute__((__visibility__("hidden"), __always_inline__))
+  //	The first definition is a fallback if it turns out I’ve misunderstood the
+  //	requirements on general inline functions.
+  //	#define LBAL_VIS_INLINE_FUNC LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC
+    #define LBAL_VIS_INLINE_FUNC __attribute__((__visibility__("hidden")))
+
+    //	SEEME - bitweeder
+    //	Using the internal_linkage attribute is equivalent to using the static
+    //	keyword in C, and is semantically preferrable to inlining. However, what
+    //	we -really- want is be able to strip this down to just LBAL_VIS_HIDDEN,
+    //	but this requires linker support we don’t have, yet. See
+    //	<http://lists.llvm.org/pipermail/cfe-dev/2018-July/058450.html> and
+    //	<https://reviews.llvm.org/D49240?id=155185> for details.
+    #if __has_attribute(internal_linkage)
+      #define LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC                             \
+        __attribute__((__visibility__("hidden"), internal_linkage))
+    #else
+      #define LBAL_VIS_INLINE_TEMPLATE_MEMBER_FUNC                             \
+        __attribute__((__visibility__("hidden"), __always_inline__))
+    #endif
+
+    #define LBAL_VIS_OVERLOADABLE_FUNC_EXPORT                                  \
+      __attribute__((__visibility__("default")))
+    #define LBAL_VIS_OVERLOADABLE_FUNC_IMPORT                                  \
+      __attribute__((__visibility__("default")))
+
+    #define LBAL_VIS_EXTERN_EXPORT
+    #define LBAL_VIS_EXTERN_IMPORT
+
+    #define LBAL_VIS_EXCEPTION_EXPORT __attribute__((__visibility__("default")))
+    #define LBAL_VIS_EXCEPTION_IMPORT __attribute__((__visibility__("default")))
+
+    #define LBAL_FUNC_CALL_C(LBAL_func_name_) LBAL_func_name_
+    #define LBAL_FUNC_CALL_STD(LBAL_func_name_) LBAL_func_name_
+    #define LBAL_FUNC_CALLBACK_C(LBAL_func_name_) (*LBAL_func_name_)
+    #define LBAL_FUNC_CALLBACK_STD(LBAL_func_name_) (*LBAL_func_name_)
   #endif
-
-  #define LBAL_VIS_OVERLOADABLE_FUNC_EXPORT                                    \
-    __attribute__((__visibility__("default")))
-  #define LBAL_VIS_OVERLOADABLE_FUNC_IMPORT                                    \
-    __attribute__((__visibility__("default")))
-
-  #define LBAL_VIS_EXTERN_EXPORT
-  #define LBAL_VIS_EXTERN_IMPORT
-
-  #define LBAL_VIS_EXCEPTION_EXPORT __attribute__((__visibility__("default")))
-  #define LBAL_VIS_EXCEPTION_IMPORT __attribute__((__visibility__("default")))
-
-  #define LBAL_FUNC_CALL_C(LBAL_func_name_) LBAL_func_name_
-  #define LBAL_FUNC_CALL_STD(LBAL_func_name_) LBAL_func_name_
-  #define LBAL_FUNC_CALLBACK_C(LBAL_func_name_) (*LBAL_func_name_)
-  #define LBAL_FUNC_CALLBACK_STD(LBAL_func_name_) (*LBAL_func_name_)
 #else
   #error                                                                       \
       "lbalClangInitialization.hpp was directly included while using the wrong compiler"

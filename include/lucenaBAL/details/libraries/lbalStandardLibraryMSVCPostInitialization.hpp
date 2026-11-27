@@ -476,6 +476,14 @@
       #define LBAL_LIBCPP14_RESULT_OF_SFINAE 0
     #endif
   #endif
+
+//	SEEME
+//	libstdc++ and libc++ apply P2602R2, P2609R3 and P2655R3 to C++20 as
+//	defect reports, so their PostInitialization headers set
+//	`LBAL_LIBCPP23_RANGES_REMOVE_POISON_PILLS`, `_RANGES_RELAXED` and
+//	`_COMMON_REFERENCE` there. The MSVC STL lists all three as C++23 features
+//	(VS 2022 17.6 and 17.7), not defect reports, so there’s no C++20 fixup
+//	here; a C++20 CI run confirms the tokens should be `0` in that mode.
 #else
   #error                                                                       \
       "lbalStandardLibraryMSVCPostInitialization.hpp was directly included with the incorrect Standard Library implementation"

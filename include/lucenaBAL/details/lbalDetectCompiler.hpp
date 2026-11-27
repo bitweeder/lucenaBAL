@@ -68,8 +68,10 @@
 #elif defined(__clang__) && defined(__llvm__)
   //	Vanilla llvm/clang compiler
   //
-  //	FIXME - bitweeder
-  //	Separate support should be added for c2/clang.
+  //	SEEME - bitweeder
+  //	This also covers clang-cl, which defines `_MSC_VER` as well. Clang/C2,
+  //	the old Clang front end for Microsoft’s code generator, was dropped
+  //	after Visual Studio 2017 and isn’t supported.
   #if (__clang_major__ < 6)
     #error "clang 6.0 is the earliest supported version"
   #endif

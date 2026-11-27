@@ -229,10 +229,11 @@
 
   #define LBAL_VIS_MEMBER_FUNCTION_TEMPLATE                                    \
     __attribute__((__visibility__("hidden")))
-//	FIXME - bitweeder
-//	There is a clang defect which requires an extraneous “inline”
-//	declaration to be prepended here; it’s currently unknown if gcc is
-//	impacted by the same defect.
+//	SEEME - bitweeder
+//	Clang needs an extraneous “inline” here (llvm/llvm-project#31462, formerly
+//	PR32114); GCC doesn’t. Checked with GCC 15: a hidden member function
+//	template of an explicitly instantiated, default-visibility class template
+//	stays hidden without it.
 
   #define LBAL_VIS_FUNC_EXPORT __attribute__((__visibility__("default")))
   #define LBAL_VIS_FUNC_IMPORT __attribute__((__visibility__("default")))

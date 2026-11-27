@@ -1,6 +1,6 @@
 ---
 # Lucena Build Abstraction Library
-# “main.yml”
+# “doxygen.yml”
 # Copyright © 2026 Lucena
 # All Rights Reserved
 #
@@ -8,22 +8,32 @@
 # License. See LICENSE.md for details.
 #
 # Update Doxygen-generated docs whenever we commit to `main`.
+#
+# The docs are published with GitHub’s own Pages actions, so the repository’s
+# Pages source (Settings → Pages → Build and deployment) must be set to
+# “GitHub Actions”. Every action is pinned to a full commit SHA, with its tag
+# in a comment; update both together.
 
-name: Doxygen gh-pages Update Action
+name: Doxygen GitHub Pages Update Action
 
 on:
   push:
     branches:
       - main
 
+# Only one deployment at a time; don’t cancel one that’s already running.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-26.04
     permissions:
-      contents: write
+      contents: read
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
         with:
           # Use a shallow clone to keep Doxygen focused.
           fetch-depth: 0
@@ -43,14 +53,21 @@ jobs:
           temp_dir="$(mktemp -d "doxygen.XXXXXX")"
           trap 'rm -rf "${temp_dir}"' EXIT
 
-          # FIXME (bitweeder) Possible supply-chain attack vector; archive
-          # should be cached in a safe location. Even just adding a hash check
-          # would be better.
+          # SEEME (bitweeder) The archive is checked against a SHA-256 taken
+          # from the release asset when this version was adopted (trust on
+          # first use); Doxygen doesn’t publish checksums. Update the hash
+          # together with the version.
+          doxygen_sha256='75419ef4f446fc1c24ef12514b574e66e898ee6f527c6ae2ad84f91a905823c2'
+          doxygen_archive="doxygen-${doxygen_version}.linux.bin.tar.gz"
+
           pushd "${temp_dir}" >/dev/null || exit 31
-            wget "https://github.com/doxygen/doxygen/releases/download/Release_${doxygen_dir_version}/doxygen-${doxygen_version}.linux.bin.tar.gz" \
+            wget "https://github.com/doxygen/doxygen/releases/download/Release_${doxygen_dir_version}/${doxygen_archive}" \
             || exit 32
 
-            tar xf "doxygen-${doxygen_version}.linux.bin.tar.gz" \
+            echo "${doxygen_sha256}  ${doxygen_archive}" | sha256sum -c - \
+            || exit 36
+
+            tar xf "${doxygen_archive}" \
             || exit 33
 
             mkdir -p "/usr/local/bin" \
@@ -63,11 +80,19 @@ jobs:
           popd >/dev/null
         shell: bash
 
-      - name: Generate docs
-        env:
-          CC: "gcc-15"
-          CXX: "g++-15"
+      # Use the newest GCC installed on the image.
+      - name: Select Toolchain
+        run: |
+          gcc_version="$(ls /usr/bin/g++-[0-9]* | sed 's|.*/g++-||' | grep -E '^[0-9]+$' | sort -n | tail -1)"
+          [ -n "${gcc_version}" ] && [ -x "/usr/bin/gcc-${gcc_version}" ] \
+          || { echo "No versioned GCC found"; exit 51; }
 
+          echo "CC=gcc-${gcc_version}" >> "${GITHUB_ENV}"
+          echo "CXX=g++-${gcc_version}" >> "${GITHUB_ENV}"
+          "g++-${gcc_version}" --version
+        shell: bash
+
+      - name: Generate docs
         # We run a full CMake build for this as some input files are 
         # dynamically generated.
         run: |
@@ -91,12 +116,24 @@ jobs:
           || exit 45
         shell: bash
 
-      # FIXME - Another supply-chain attack vector; in this case, replicating
-      # the functionality may be the best option.
-      - name: Deploy to gh-pages
-        uses: JamesIves/github-pages-deploy-action@v4
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5
         with:
-          folder: "build/docs/doxygen"
-          token: ${{ secrets.GITHUB_TOKEN }}
+          path: "build/docs/doxygen"
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-26.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5
 
 ...

@@ -71,32 +71,21 @@ target_include_directories (
 		$<BUILD_INTERFACE:${CMAKE_CURRENT_LIST_DIR}>
 )
 
-# FIXME - bitweeder
-# Needs refinement. Or elimination.
-if(MSVC)
-  target_compile_options (
-    lbalTest
-    PRIVATE
-      $<$<CXX_COMPILER_ID:MSVC>:/std:c++latest>
-      $<$<CXX_COMPILER_ID:MSVC>:/Zc:__cplusplus>
-      $<$<CXX_COMPILER_ID:MSVC>:/W4>
-      # Sources are UTF-8; without this, MSVC reads them in the system code page.
-      $<$<CXX_COMPILER_ID:MSVC>:/utf-8>
-  )
-else()
-  target_compile_features (
-    lbalTest
-      PRIVATE
-          cxx_std_26
-  )
-
-  target_compile_options (
-    lbalTest
-    PRIVATE
-      $<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-Wall>
-      $<$<OR:$<CXX_COMPILER_ID:GNU>,$<CXX_COMPILER_ID:Clang>>:-pedantic>
-  )
-endif()
+# The language mode comes from the `lucenaBAL` interface (`cxx_std_26`, or
+# `/std:c++latest` on MSVC); only the warning and conformance options are
+# added here. Options key on the front end, not the compiler: clang-cl reports
+# the `Clang` compiler ID but takes MSVC-style options, and reads `-Wall` as
+# `-Weverything`.
+target_compile_options (
+  lbalTest
+  PRIVATE
+    $<$<CXX_COMPILER_FRONTEND_VARIANT:MSVC>:/Zc:__cplusplus>
+    $<$<CXX_COMPILER_FRONTEND_VARIANT:MSVC>:/W4>
+    # Sources are UTF-8; without this, MSVC reads them in the system code page.
+    $<$<CXX_COMPILER_FRONTEND_VARIANT:MSVC>:/utf-8>
+    $<$<AND:$<CXX_COMPILER_ID:GNU,Clang>,$<CXX_COMPILER_FRONTEND_VARIANT:GNU>>:-Wall>
+    $<$<AND:$<CXX_COMPILER_ID:GNU,Clang>,$<CXX_COMPILER_FRONTEND_VARIANT:GNU>>:-pedantic>
+)
 
 target_compile_definitions (
 	lbalTest
@@ -112,6 +101,48 @@ target_link_libraries (
 )
 
 gtest_discover_tests (lbalTest)
+
+# Check the `LBAL_VIS_OVERLOADABLE_FUNC_*` scheme with a real shared library:
+# a client can replace an exported function and still link to the rest; see
+# `visibility/lbalVisibilityLib.hpp`. Everything goes in one output directory
+# so the Windows DLL is found next to the executables.
+set (LBALVIS_OUTPUT_DIR ${CMAKE_CURRENT_BINARY_DIR}/visibility)
+
+add_library (lbalVisibilityLib SHARED visibility/lbalVisibilityLib.cpp)
+target_compile_definitions (lbalVisibilityLib PRIVATE LBALVIS_BUILDING_LIB=1)
+# Sources are UTF-8; without this, MSVC reads them in the system code page.
+target_compile_options (
+	lbalVisibilityLib
+	PUBLIC
+		$<$<CXX_COMPILER_FRONTEND_VARIANT:MSVC>:/utf-8>
+)
+target_link_libraries (lbalVisibilityLib PUBLIC lucenaBAL)
+target_include_directories (
+	lbalVisibilityLib
+	PUBLIC
+		$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>
+)
+
+foreach (LBALVIS_TEST IN ITEMS Replace NoReplace)
+	add_executable (
+		lbalVisibility${LBALVIS_TEST}
+		visibility/lbalVisibility${LBALVIS_TEST}.cpp
+	)
+	target_link_libraries (lbalVisibility${LBALVIS_TEST} PRIVATE lbalVisibilityLib)
+
+	add_test (
+		NAME lbalVisibility.${LBALVIS_TEST}
+		COMMAND lbalVisibility${LBALVIS_TEST}
+	)
+endforeach()
+
+set_target_properties (
+	lbalVisibilityLib lbalVisibilityReplace lbalVisibilityNoReplace
+	PROPERTIES
+		RUNTIME_OUTPUT_DIRECTORY ${LBALVIS_OUTPUT_DIR}
+		LIBRARY_OUTPUT_DIRECTORY ${LBALVIS_OUTPUT_DIR}
+		ARCHIVE_OUTPUT_DIRECTORY ${LBALVIS_OUTPUT_DIR}
+)
 
 # Make sure every documented feature token has its test line and, for language
 # tokens, its external-definition guard.
@@ -202,8 +233,12 @@ if (LBAL_RUN_FALSE_POSITIVE_TESTS OR LBAL_RUN_FALSE_NEGATIVE_TESTS)
 	set (LBAL_PROBE_STRICT_OPTIONS)
 	set (LBAL_PROBE_STRICT_DEFINITIONS LBAL_CONFIG_enable_pedantic_warnings=0)
 
+	# clang-cl (Clang with the MSVC front end) takes `-W` options directly, but
+	# `-pedantic-errors` only through `/clang:`.
 	if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
 		set (LBAL_PROBE_STRICT_OPTIONS -pedantic-errors -Werror=attributes)
+	elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND CMAKE_CXX_COMPILER_FRONTEND_VARIANT STREQUAL "MSVC")
+		set (LBAL_PROBE_STRICT_OPTIONS /clang:-pedantic-errors -Werror=unknown-attributes -Werror=ignored-attributes)
 	elseif (CMAKE_CXX_COMPILER_ID MATCHES "Clang")
 		set (LBAL_PROBE_STRICT_OPTIONS -pedantic-errors -Werror=unknown-attributes -Werror=ignored-attributes)
 	elseif (MSVC)
