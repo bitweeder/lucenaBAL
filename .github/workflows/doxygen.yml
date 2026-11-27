@@ -105,10 +105,6 @@ jobs:
           cmake --build build \
           || exit 43
 
-          # Prevent `jekyll` from causing trouble, if it runs.
-          touch "build/docs/doxygen/html/.nojekyll" \
-          || exit 44
-
           # Top-level redirect
           cp -n \
             "docs/index.html" \
