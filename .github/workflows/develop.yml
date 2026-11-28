@@ -1,0 +1,40 @@
+---
+# Lucena Build Abstraction Library
+# “develop.yml”
+# Copyright © 2026 Lucena
+# All Rights Reserved
+#
+# This file is distributed under the University of Illinois Open Source
+# License. See LICENSE.md for details.
+#
+# Validation for feature and test branches before they merge into `main`:
+# every push to a branch whose name starts with `develop` runs the full
+# build-and-test matrix in `ci-matrix.yml`, in every language mode. It
+# publishes nothing but logs (failing tests’ logs are uploaded as artifacts):
+# no install archives, no release, and no docs, since `doxygen.yml` only runs
+# for `main`.
+
+name: Develop
+
+on:
+  push:
+    branches:
+      # `**` also matches names with slashes, e.g. `develop/foo`.
+      - "develop**"
+
+permissions:
+  contents: read
+
+# A new push to a branch cancels that branch’s run still in progress.
+concurrency:
+  group: develop-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    uses: ./.github/workflows/ci-matrix.yml
+    with:
+      standards: "17;20;23;latest"
+      upload_archives: false
+
+...

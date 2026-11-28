@@ -1,4 +1,4 @@
-[![Actions Status](https://github.com/bitweeder/lucenaBAL/workflows/Build%20Matrix/badge.svg)](https://github.com/bitweeder/lucenaBAL/actions)
+[![Actions Status](https://github.com/bitweeder/lucenaBAL/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/bitweeder/lucenaBAL/actions/workflows/main.yml)
 
 # Lucena Build Abstraction Library
 
@@ -90,7 +90,7 @@ If you link against the installed CMake target (`lucenaBAL::lucenaBAL`), the tar
 
 ## Prerequisites
 
-The lucenaBAL headers require compiler support for C++11 or later. By default, the CMake target assumes C++26 (`cxx_std_26`, or `/std:c++latest` under MSVC); building the tests requires a minimum of C++17. The library has been tested with many versions of **gcc**, **Microsoft Visual Studio**, **Xcode**, and **llvm/clang**, both with the compilers’ bundled Standard Library implementations, as well as with others. Support for pre-C++17 compilers should be considered spotty, and generally we only actively maintain compatibility with the 2 most recent major macOS family versions when it comes to Xcode.
+The lucenaBAL headers require compiler support for C++11 or later. By default, the CMake target assumes C++26 (`cxx_std_26`, or `/std:c++latest` under MSVC); building the tests requires a minimum of C++17. The library has been tested with many versions of **gcc**, **Microsoft Visual Studio**, **Xcode**, and **llvm/clang** (including clang-cl), both with the compilers’ bundled Standard Library implementations, as well as with others. Support for pre-C++17 compilers should be considered spotty, and generally we only actively maintain compatibility with the 2 most recent major macOS family versions when it comes to Xcode.
 
 ## Building, Installing, and Testing
 
@@ -133,7 +133,7 @@ The suite has two parts:
 - Tests of behavior and library interfaces, which run with the other tests under CTest and are named `cxx<NN>.lbalFalsePositive.<token>`. A token that is `0` is reported as skipped.
 - Compile-only probes, for syntax that can only fail to compile. These aren’t part of the default build, so a failure can’t stop the other tests from building. Build them with `cmake --build build --target lbalFalsePositiveProbes -- -k` (use `-k 0` with Ninja) to see every failure at once.
 
-CI always runs the suite on every platform at `latest`, and a false positive fails the build. To test older Standards in CI as well, set the GitHub repository variable `LBAL_FALSE_POSITIVE_TEST_STANDARDS`, e.g. to `17;20;23;latest`.
+CI always runs the suite on every platform, and a false positive fails the build. On `main` it runs at `latest`; to test older Standards there as well, set the GitHub repository variable `LBAL_FALSE_POSITIVE_TEST_STANDARDS`, e.g. to `17;20;23;latest`. Branches whose names start with `develop` always run every mode (`17;20;23;latest`), so a branch can be validated before it's merged; those runs publish only logs.
 
 #### False negatives
 
@@ -141,7 +141,7 @@ A token that is `0` although its feature works is a false negative. A second opt
 
 The forced compiles happen when CMake configures the project, since failing to compile is the expected result. This adds a couple of minutes for the newest Standard, and up to several minutes for each older Standard requested, as more tokens are `0` there. Results are cached, so reconfiguring only re-runs what changed. The results are reported under CTest as `cxx<NN>.lbalFalseNegative.<token>`: a nonzero token is skipped, as the false-positive suite covers it.
 
-CI always runs this suite too, at `latest`; set the repository variable `LBAL_FALSE_NEGATIVE_TEST_STANDARDS` to add older Standards.
+CI always runs this suite too: on `main` at `latest`, plus any older Standards set in the repository variable `LBAL_FALSE_NEGATIVE_TEST_STANDARDS`, and on `develop*` branches in every mode.
 
 As indicated above, we do _not_ currently perform false-negative tests for tokens specific to C++26 and later. This is a work-in-progress.
 
