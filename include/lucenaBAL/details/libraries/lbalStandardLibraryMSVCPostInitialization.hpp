@@ -477,6 +477,18 @@
     #endif
   #endif
 
+  //	SEEME
+  //	The MSVC STL declares placement `operator new` without `constexpr` and
+  //	doesn’t define `__cpp_lib_constexpr_new`, but clang evaluates the
+  //	reserved placement form in constant expressions whenever it implements
+  //	P2747R2 itself (C++26, clang 20+), whatever the declaration says. So
+  //	with clang-cl the library feature works. Found by CI’s clang-cl run.
+  #if LBAL_TARGET_COMPILER_CLANG                                               \
+      && LBAL_CPP26_CONSTEXPR_PLACEMENT_NEW                                    \
+      && !defined(LBAL_LIBCPP26_CONSTEXPR_PLACEMENT_NEW)
+    #define LBAL_LIBCPP26_CONSTEXPR_PLACEMENT_NEW 202406L
+  #endif
+
 //	SEEME
 //	libstdc++ and libc++ apply P2602R2, P2609R3 and P2655R3 to C++20 as
 //	defect reports, so their PostInitialization headers set

@@ -52,11 +52,11 @@ known_absent(std::string_view token) {
 
 #if LBAL_TARGET_STANDARD_LIBRARY_LIBCPP                                        \
     || LBAL_TARGET_STANDARD_LIBRARY_APPLE_LIBCPP
-  //	The C library supplies `<stdbit.h>` and `<stdckdint.h>`, so the probes
-  //	compile, but libc++ lists P3370R1, which makes them C++ headers with
-  //	their own requirements, as not started.
-  if (token == "LBAL_LIBCPP26_STDBIT_H" || token == "LBAL_LIBCPP26_STDCKDINT_H")
-  {
+  //	The C library supplies `<stdbit.h>`, so the probe compiles, but libc++
+  //	lists P3370R1, which makes it a C++ header with its own requirements, as
+  //	not started. (`<stdckdint.h>` needs no entry: its probe rejects the C
+  //	header’s macros.)
+  if (token == "LBAL_LIBCPP26_STDBIT_H") {
     return "libc++ lists P3370R1 (C23 library headers) as not implemented; "
            "the C library provides the functions";
   }

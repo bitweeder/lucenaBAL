@@ -2285,6 +2285,14 @@ LBAL_FP_TEST(LIBCPP26, STDBIT_H) {
 LBAL_FP_TEST(LIBCPP26, STDCKDINT_H) {
   LBAL_FP_REQUIRE(LBAL_LIBCPP26_STDCKDINT_H);
 #if LBAL_LIBCPP26_STDCKDINT_H
+  //	P3370R1 makes these function templates in C++. C23’s `<stdckdint.h>`,
+  //	which clang ships for C (and which libc++ and the MSVC STL fall back
+  //	to), defines them as macros instead.
+  #if defined(ckd_add) || defined(ckd_sub) || defined(ckd_mul)
+  ADD_FAILURE() << "ckd_add, ckd_sub and ckd_mul are C23 macros, not the C++ "
+                   "function templates";
+  #endif
+
   int result = 0;
 
   EXPECT_TRUE(ckd_add(&result, INT_MAX, 1));
